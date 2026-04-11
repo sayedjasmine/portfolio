@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomSAFE — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose: #1A2744;
+      --rose-mid: #2E4268;
+      --rose-light: #7B9ACC;
+      --rose-bg: #F0F4FA;
+      --rose-deep: #0F1A2E;
+      --teal: #00796B;
+      --teal-bg: #E0F2F1;
+      --dark: #18161A;
+      --mid: #7A7585;
+      --light: #EDE9F5;
+      --white: #FFFFFF;
+      --purple: #6B3FA0;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(26,39,68,0.08);
+    }
+
+    .nav-back {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--mid);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--rose); }
+    .nav-back .arrow { transition: transform 0.2s; }
+    .nav-back:hover .arrow { transform: translateX(-3px); }
+
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-right a {
+      font-size: 12.5px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--rose); }
+
+    /* ── SECTION TABS ── */
+    .section-tabs {
+      position: sticky; top: 62px; z-index: 90;
+      display: flex; gap: 6px;
+      padding: 12px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(26,39,68,0.06);
+      overflow-x: auto;
+    }
+
+    .tab-link {
+      font-size: 11.5px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 100px;
+      color: var(--mid); text-decoration: none;
+      white-space: nowrap; transition: all 0.2s;
+      border: 1.5px solid transparent;
+    }
+    .tab-link:hover { color: var(--rose); border-color: rgba(26,39,68,0.15); }
+    .tab-link.active {
+      background: var(--rose); color: white; border-color: var(--rose);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 60px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; filter: blur(80px); opacity: 0.5;
+    }
+    .hero-glow-1 {
+      width: 600px; height: 600px;
+      top: -180px; left: 50%; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(26,39,68,0.15), transparent 65%);
+    }
+    .hero-glow-2 {
+      width: 400px; height: 400px;
+      bottom: -80px; right: -100px;
+      background: radial-gradient(circle, rgba(0,121,107,0.1), transparent 65%);
+    }
+
+    .hero-tag {
+      font-size: 11.5px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--rose);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(48px, 6.5vw, 84px);
+      font-weight: 400; line-height: 1.04;
+      color: var(--dark); margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--rose); }
+
+    .hero-sub {
+      font-size: 17px; font-weight: 300; color: var(--mid);
+      line-height: 1.75; max-width: 640px; margin: 0 auto 48px;
+    }
+
+    .hero-meta {
+      display: flex; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+
+    .hero-meta-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 4px;
+    }
+    .hero-meta-value {
+      font-size: 14px; font-weight: 400;
+      color: var(--dark); line-height: 1.5;
+    }
+
+    /* ── RESOURCE LINKS ── */
+    .resource-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .resource-link {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(26,39,68,0.2);
+      color: var(--rose);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .resource-link:hover {
+      background: var(--rose); color: white; border-color: var(--rose);
+    }
+
+    /* ── ROLE STRIP ── */
+    .role-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(26,39,68,0.06);
+      border-top: 1px solid rgba(26,39,68,0.08);
+      border-bottom: 1px solid rgba(26,39,68,0.08);
+    }
+
+    .role-strip > div {
+      background: var(--white);
+      padding: 28px 36px; text-align: center;
+    }
+
+    .role-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 8px;
+    }
+    .role-value {
+      font-size: 14px; font-weight: 400;
+      color: var(--dark); line-height: 1.55;
+    }
+
+    /* ── SECTIONS ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400; line-height: 1.15;
+      color: var(--dark); margin-bottom: 24px;
+    }
+
+    .body-text {
+      font-size: 15.5px; font-weight: 300;
+      color: var(--mid); line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .body-text strong { font-weight: 500; color: var(--dark); }
+
+    section { padding: 72px 0; }
+
+    .divider {
+      max-width: 780px; margin: 0 auto;
+      height: 1px; background: rgba(26,39,68,0.08);
+    }
+
+    /* ── SDG CARDS ── */
+    .sdg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .sdg-card {
+      background: var(--white);
+      border: 1px solid rgba(26,39,68,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .sdg-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(26,39,68,0.08);
+    }
+
+    .sdg-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+    }
+    .sdg-icon.health { background: #E8F5E9; }
+    .sdg-icon.equality { background: #FCE4EC; }
+    .sdg-icon.reduce { background: #E3F2FD; }
+
+    .sdg-goal {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 6px;
+    }
+
+    .sdg-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px; font-weight: 400;
+      color: var(--dark); margin-bottom: 8px;
+    }
+
+    .sdg-desc {
+      font-size: 13px; font-weight: 300;
+      color: var(--mid); line-height: 1.65;
+    }
+
+    /* ── PROBLEM STAT CARDS ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .problem-card {
+      background: var(--rose-bg);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .problem-stat {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--rose);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .problem-label {
+      font-size: 13px; font-weight: 300;
+      color: var(--mid); line-height: 1.55;
+    }
+
+    /* ── FEATURE CARDS ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .feature-card {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: transform 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-3px); }
+    .feature-card.span-full { grid-column: span 2; }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; font-weight: 400;
+      color: var(--white); margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 13.5px; font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── QUOTE CARDS ── */
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .quote-card {
+      background: var(--rose-bg);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .quote-card::before {
+      content: '"';
+      font-family: 'DM Serif Display', serif;
+      font-size: 64px;
+      color: var(--rose-light);
+      position: absolute;
+      top: 12px; left: 20px;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16.5px; font-style: italic;
+      color: var(--dark); line-height: 1.5;
+      margin-bottom: 14px;
+      padding-top: 20px;
+    }
+
+    .quote-attr {
+      font-size: 12px; font-weight: 500;
+      color: var(--rose);
+    }
+
+    .quote-context {
+      font-size: 11px; font-weight: 400;
+      color: var(--mid); margin-top: 2px;
+    }
+
+    /* ── RESEARCH METHOD CARDS ── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .research-card {
+      background: var(--white);
+      border: 1px solid rgba(26,39,68,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .research-tag {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 12px;
+    }
+
+    .research-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; font-weight: 400;
+      color: var(--dark); margin-bottom: 10px;
+    }
+
+    .research-desc {
+      font-size: 13.5px; font-weight: 300;
+      color: var(--mid); line-height: 1.65;
+    }
+
+    /* ── DESIGN PRINCIPLES ── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .principle-card {
+      background: var(--rose-bg);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .principle-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .principle-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px; font-weight: 400;
+      color: var(--dark); margin-bottom: 8px;
+    }
+
+    .principle-desc {
+      font-size: 13px; font-weight: 300;
+      color: var(--mid); line-height: 1.65;
+    }
+
+    /* ── IMPACT / NEXT STEPS ── */
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .vision-card {
+      background: linear-gradient(135deg, var(--rose-deep), var(--rose));
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .vision-card:hover { transform: translateY(-3px); }
+
+    .vision-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .vision-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px; font-weight: 400;
+      color: var(--white); margin-bottom: 8px;
+    }
+
+    .vision-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      text-align: center;
+      padding: 80px 60px;
+      border-top: 1px solid rgba(26,39,68,0.08);
+    }
+
+    .next-project-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 14px;
+    }
+
+    .next-project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px; font-weight: 400;
+    }
+    .next-project-title a {
+      color: var(--dark); text-decoration: none; transition: color 0.2s;
+    }
+    .next-project-title a:hover { color: var(--rose); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px; background: #12101A;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 28px; }
+      .section-tabs { padding: 12px 28px; }
+      .hero { padding: 140px 28px 60px; }
+      .container { padding: 0 28px; }
+      .role-strip { grid-template-columns: repeat(2, 1fr); }
+      .sdg-grid { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
+      .principles-grid { grid-template-columns: 1fr; }
+      .vision-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+      .hero-meta { flex-direction: column; gap: 20px; }
+      .role-strip { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card.span-full { grid-column: span 1; }
+      .quote-grid { grid-template-columns: 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      .resource-bar { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html#work" class="nav-back">
+      <span class="arrow">←</span> Back to Work
+    </a>
+    <div class="nav-right">
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- SECTION TABS -->
+  <div class="section-tabs" id="sectionTabs">
+    <a href="#overview"   class="tab-link active">Overview</a>
+    <a href="#problem"    class="tab-link">Problem</a>
+    <a href="#research"   class="tab-link">Research</a>
+    <a href="#features"   class="tab-link">Features</a>
+    <a href="#prototype"  class="tab-link">Design</a>
+    <a href="#impact"     class="tab-link">Impact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <p class="hero-tag">AI · Maternal Health · User Research · Product Design</p>
+    <h1>Mom<em>SAFE</em></h1>
+    <p class="hero-sub">An AI-powered maternal health companion designed to bridge the gap in prenatal care — providing personalized, real-time pregnancy insights and proactive care recommendations for expectant mothers.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">My Role</div>
+        <div class="hero-meta-value">UX Researcher & Designer</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">AI-Driven Maternal Healthcare</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Methods</div>
+        <div class="hero-meta-value">Expert Interviews · User Research<br />Prototyping · Usability Testing</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Alignment</div>
+        <div class="hero-meta-value">UN Sustainable<br />Development Goals</div>
+      </div>
+    </div>
+    <div class="resource-bar">
+      <a href="momsafe-research-paper copy.pdf" target="_blank" class="resource-link">Read the Research Paper</a>
+      <a href="momsafe-infographic.png" target="_blank" class="resource-link">View the Infographic</a>
+    </div>
+  </section>
+
+  <!-- ROLE STRIP -->
+  <div class="role-strip">
+    <div>
+      <div class="role-label">Context</div>
+      <div class="role-value">Maternal health disparities<br />affecting millions globally</div>
+    </div>
+    <div>
+      <div class="role-label">Approach</div>
+      <div class="role-value">LLM-powered insights<br />+ human-centered design</div>
+    </div>
+    <div>
+      <div class="role-label">Core Tech</div>
+      <div class="role-value">Large language models<br />& machine learning</div>
+    </div>
+    <div>
+      <div class="role-label">Outcome</div>
+      <div class="role-value">Evidence-based, accessible<br />pregnancy companion</div>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <section id="overview-detail">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Introduction</p>
+      <h2 class="section-title">Empowering expectant mothers through AI-driven care.</h2>
+      <p class="body-text">Maternal health remains a critical global challenge, with disparities in access to quality care affecting millions of women. MomSAFE is an AI-powered maternal health companion I designed to bridge this gap — providing <strong>personalized, real-time pregnancy insights</strong> and <strong>proactive care recommendations</strong>.</p>
+      <p class="body-text">By leveraging large language models and machine learning, the platform synthesizes user inputs and clinical data to identify potential pregnancy risks, promote informed decision-making, and enhance maternal well-being.</p>
+      <p class="body-text">Grounded in extensive user research, MomSAFE integrates features like <strong>daily health check-ins, trend analysis, and secure data options</strong> to ensure a trustworthy, evidence-based, and accessible healthcare experience.</p>
+    </div>
+
+    <div class="container fade-in" style="margin-top: 48px;">
+      <p class="section-eyebrow">Global Alignment</p>
+      <h2 class="section-title">Designing for the UN's Sustainable Development Goals.</h2>
+      <div class="sdg-grid">
+        <div class="sdg-card">
+          <div class="sdg-icon health">🌍</div>
+          <div class="sdg-goal">Goal 3</div>
+          <div class="sdg-title">Good Health & Well-being</div>
+          <div class="sdg-desc">Ensuring access to essential maternal healthcare for all women regardless of location or socioeconomic status.</div>
+        </div>
+        <div class="sdg-card">
+          <div class="sdg-icon equality">🚺</div>
+          <div class="sdg-goal">Goal 5</div>
+          <div class="sdg-title">Gender Equality</div>
+          <div class="sdg-desc">Empowering women with personalized, evidence-based care and the information they need to make informed decisions.</div>
+        </div>
+        <div class="sdg-card">
+          <div class="sdg-icon reduce">🌎</div>
+          <div class="sdg-goal">Goal 10</div>
+          <div class="sdg-title">Reduced Inequalities</div>
+          <div class="sdg-desc">Closing the healthcare gap in underserved communities where access to OB/GYNs and prenatal care is limited.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM STATEMENT -->
+  <section id="problem">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Problem Statement</p>
+      <h2 class="section-title">The maternal healthcare gap is a crisis hiding in plain sight.</h2>
+      <p class="body-text">Access to quality maternal healthcare is a widespread issue. Millions of women navigate pregnancy without adequate support, and the consequences are devastating. MomSAFE was designed to address this head-on — providing a <strong>reliable, accessible, and AI-powered</strong> maternal health solution.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-stat">49%</div>
+          <div class="problem-label">of U.S. counties lack a<br />single OB/GYN — impacting<br />10M+ women</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-stat">800</div>
+          <div class="problem-label">women die daily from<br />preventable pregnancy-<br />related complications</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-stat">34%</div>
+          <div class="problem-label">of 590,912 surveyed pregnant<br />women had access to<br />personalized prenatal care</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- USER RESEARCH -->
+  <section id="research">
+    <div class="container fade-in">
+      <p class="section-eyebrow">User Research & Insights</p>
+      <h2 class="section-title">Listening to the people who matter most.</h2>
+      <p class="body-text">I conducted research with both healthcare professionals and expectant mothers to deeply understand the pain points in current maternal care. The insights shaped every design decision in MomSAFE.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="research-tag">Expert Consultations</div>
+          <div class="research-title">Healthcare Professionals</div>
+          <div class="research-desc">Consulted with labor nurses and OB/GYNs who advocated for pain-rating scales and simplified medical terminology — making clinical information accessible to all mothers.</div>
+        </div>
+        <div class="research-card">
+          <div class="research-tag">User Interviews</div>
+          <div class="research-title">Expectant Mothers</div>
+          <div class="research-desc">Interviewed pregnant women who expressed a strong need for real-time support — especially during off-hours when their providers aren't available.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container fade-in" style="margin-top: 32px;">
+      <div class="quote-grid">
+        <div class="quote-card">
+          <div class="quote-text">It's not expected that an average mother understands complex medical terms.</div>
+          <div class="quote-attr">— Labor Nurse</div>
+          <div class="quote-context">Expert Consultation</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">I would love a chat feature with professionals at 2 AM when I'm struggling.</div>
+          <div class="quote-attr">— Expectant Mother</div>
+          <div class="quote-context">User Interview</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- KEY FEATURES -->
+  <section id="features">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Key Features</p>
+      <h2 class="section-title">Built around what mothers actually need.</h2>
+      <p class="body-text">Every feature in MomSAFE was informed by research and designed to address specific gaps in the current maternal healthcare experience.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <div class="feature-title">AI Chatbot</div>
+          <div class="feature-desc">24/7 multilingual support for maternal health inquiries — answering questions, providing guidance, and connecting mothers to resources any time of day.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Survey Check-ins</div>
+          <div class="feature-desc">Regular symptom tracking for mood, physical health, and pregnancy milestones — building a longitudinal view of each mother's journey.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <div class="feature-title">Appointment Booking</div>
+          <div class="feature-desc">Direct access to healthcare providers with streamlined scheduling — reducing the friction between recognizing a concern and getting professional care.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <div class="feature-title">Data-Driven Insights</div>
+          <div class="feature-desc">AI-powered trend analysis that surfaces patterns across check-ins — proactively flagging potential risks before they become emergencies.</div>
+        </div>
+        <div class="feature-card span-full">
+          <div class="feature-icon">🔐</div>
+          <div class="feature-title">Privacy & Security</div>
+          <div class="feature-desc">User-controlled data with transparent policies — because trust is non-negotiable when it comes to sensitive health information. Every mother decides what to share and with whom.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROTOTYPE / DESIGN -->
+  <section id="prototype">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Final Prototype</p>
+      <h2 class="section-title">Designed for accessibility, inclusivity, and trust.</h2>
+      <p class="body-text">The final design prioritizes clarity and calm. A <strong>minimalist UI</strong> keeps the experience clutter-free and easy to navigate, with a clear content structure that guides mothers through their health data without overwhelming them.</p>
+      <p class="body-text"><strong>Predictive AI-driven insights</strong> are surfaced contextually — so mothers see what matters most at the right moment, helping prevent maternal health risks before they escalate.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-icon">🎯</div>
+          <div class="principle-title">Accessibility</div>
+          <div class="principle-desc">Simplified language, multilingual support, and intuitive navigation for mothers of all backgrounds and tech comfort levels.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-icon">🤲</div>
+          <div class="principle-title">Inclusivity</div>
+          <div class="principle-desc">Designed to serve all mothers — regardless of location, language, or access to traditional healthcare resources.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-icon">🛡️</div>
+          <div class="principle-title">Trust</div>
+          <div class="principle-desc">Evidence-based recommendations, transparent AI, and user-controlled data create a safe space for health decisions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- IMPACT & FUTURE VISION -->
+  <section id="impact">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Impact & Future Vision</p>
+      <h2 class="section-title">Where MomSAFE goes from here.</h2>
+      <p class="body-text">MomSAFE revolutionizes maternal healthcare by combining AI, user research, and human-centered design to create a reliable, accessible, and proactive care solution. With its scalable, data-driven approach, MomSAFE has the potential to <strong>transform pregnancy care for women worldwide.</strong></p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="vision-grid">
+        <div class="vision-card">
+          <div class="vision-icon">🩺</div>
+          <div class="vision-title">Telehealth Integration</div>
+          <div class="vision-desc">Direct doctor consultations built into the platform — bridging the gap between expectant mothers and healthcare professionals.</div>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">🧠</div>
+          <div class="vision-title">Predictive AI Diagnostics</div>
+          <div class="vision-desc">Real-time AI-powered diagnostics to detect high-risk pregnancies earlier — when intervention matters most.</div>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">🌐</div>
+          <div class="vision-title">Global Language Support</div>
+          <div class="vision-desc">Expanded multilingual capabilities for a truly inclusive experience — ensuring no mother is left behind because of a language barrier.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project">
+    <p class="next-project-label">Next Project</p>
+    <h2 class="next-project-title"><a href="index.html#work">← Back to Work</a></h2>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Fade-in observer
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Scroll-spy for tabs
+    const tabs = document.querySelectorAll('.tab-link');
+    const sections = [];
+    tabs.forEach(t => {
+      const id = t.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) sections.push({ id, el, tab: t });
+    });
+
+    function updateActiveTab() {
+      let current = sections[0];
+      sections.forEach(s => {
+        if (s.el.getBoundingClientRect().top <= 140) current = s;
+      });
+      tabs.forEach(t => t.classList.remove('active'));
+      current.tab.classList.add('active');
+    }
+
+    window.addEventListener('scroll', updateActiveTab);
+    updateActiveTab();
+  </script>
+</body>
+</html>

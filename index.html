@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasmine Sayed — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --off-white: #FAFAFA;
+      --dark: #18161A;
+      --mid: #7A7585;
+      --light: #EDE9F5;
+      --purple: #6B3FA0;
+      --purple-mid: #8B5CC8;
+      --purple-light: #C9B3E8;
+      --purple-bg: #F3EEFB;
+      --purple-glow: rgba(107, 63, 160, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(107,63,160,0.08);
+    }
+
+    nav .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    nav ul { list-style: none; display: flex; gap: 36px; }
+
+    nav ul a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--purple); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 110px 60px 80px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative blobs */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px; right: -140px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle at 40% 40%, var(--purple-bg) 0%, transparent 66%);
+      z-index: 0; pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 60px; left: -80px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle at 60% 60%, rgba(107,63,160,0.06) 0%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--purple);
+      background: var(--purple-bg);
+      border: 1px solid rgba(107,63,160,0.18);
+      border-radius: 100px;
+      padding: 7px 16px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      background: #4CAF50;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(76,175,80,0.25);
+      animation: pulse 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 2px rgba(76,175,80,0.25); }
+      50%       { box-shadow: 0 0 0 5px rgba(76,175,80,0.1); }
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 5.2vw, 76px);
+      line-height: 1.06;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--purple); }
+
+    .hero-sub {
+      font-size: 16.5px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 22px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 100px;
+      transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .hero-cta-primary { color: var(--white); background: var(--purple); }
+    .hero-cta-primary:hover { background: var(--purple-mid); gap: 16px; }
+
+    /* Skill bubbles */
+    .hero-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    .hero-skill-tag {
+      font-size: 12.5px;
+      font-weight: 500;
+      border-radius: 100px;
+      padding: 8px 16px;
+      letter-spacing: 0.01em;
+      transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s;
+      cursor: default;
+    }
+    .hero-skill-tag:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(107,63,160,0.16);
+    }
+    /* Bubble colours */
+    .hero-skill-tag:nth-child(1) { background: #EDE4FF; color: #5B2EA6; border: 1px solid rgba(91,46,166,0.15); }
+    .hero-skill-tag:nth-child(2) { background: #E4EEFF; color: #2E5FA6; border: 1px solid rgba(46,95,166,0.15); }
+    .hero-skill-tag:nth-child(3) { background: #FFE9F2; color: #A6385B; border: 1px solid rgba(166,56,91,0.15); }
+    .hero-skill-tag:nth-child(7) { background: #E4F4FF; color: #1A6FA6; border: 1px solid rgba(26,111,166,0.15); }
+    .hero-skill-tag:nth-child(8) { background: #F2E4FF; color: #8B2EA6; border: 1px solid rgba(139,46,166,0.15); }
+
+    /* Hero photo column */
+    .hero-photo-col {
+      position: relative;
+      z-index: 1;
+      height: 540px;
+    }
+
+    .hero-photo-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(107,63,160,0.18);
+    }
+
+    .hero-photo-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Floating info card */
+    .hero-float-card {
+      position: absolute;
+      bottom: -18px; left: -28px;
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: 0 12px 40px rgba(107,63,160,0.14);
+      border: 1px solid rgba(107,63,160,0.08);
+      min-width: 180px;
+    }
+    .hero-float-card .fc-label {
+      font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 6px;
+    }
+    .hero-float-card .fc-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; color: var(--dark);
+    }
+    .hero-float-card .fc-value em { font-style: italic; color: var(--purple); }
+
+
+    /* ── SECTION DIVIDERS ── */
+    .work-section,
+    .about-teaser,
+    .exp-section {
+      border-top: 1px solid rgba(107,63,160,0.12);
+    }
+
+    /* ── WORK SECTION ── */
+    .work-section {
+      padding: 56px 60px 100px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-label::after {
+      content: '';
+      width: 48px; height: 1.5px;
+      background: var(--purple-light);
+    }
+
+    /* ── CARDS ── */
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      height: 320px;
+      transition: transform 0.42s cubic-bezier(0.16,1,0.3,1), box-shadow 0.42s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 2px 20px rgba(107,63,160,0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px rgba(107,63,160,0.16);
+    }
+
+    /* Image preview pane */
+    .card-preview {
+      flex: 0 0 52%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .card-preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,0.22));
+    }
+
+    /* Text info pane */
+    .card-info {
+      flex: 0 0 48%;
+      background: #fff;
+      padding: 32px 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .card-year {
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      color: var(--mid);
+    }
+
+    .card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: white;
+      background: var(--purple);
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-top: 8px;
+      width: fit-content;
+      transition: background 0.22s, gap 0.28s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .card:hover .card-link { background: var(--purple-mid); gap: 16px; }
+
+    /* Per-card preview background colors — sampled exactly from each mockup */
+    .card-microsoft .card-preview { background: #004369; }
+    .card-nox .card-preview       { background: #7f63e8; }
+    .card-saksham .card-preview   { background: linear-gradient(160deg, #FFF0F0 0%, #FDE8E8 40%, #EEF4FF 100%); border-right: 1px solid rgba(107,63,160,0.07); }
+    .card-nexstera .card-preview  { background: #b4dbdc; }
+    .card-uxfest .card-preview    { background: linear-gradient(135deg, #6B3FA0, #9B6DD7 55%, #C9B3E8); }
+    .card-momsafe .card-preview   { background: #FFFFFF; border-right: 1px solid rgba(0,0,0,0.06); }
+    .card-codeswitching .card-preview { background: linear-gradient(160deg, #4B2E83 0%, #6A4BA1 50%, #9575CD 100%); }
+
+
+    /* ── ABOUT TEASER ── */
+    .about-teaser {
+      padding: 56px 60px 96px;
+      background: var(--purple-bg);
+    }
+
+    .about-teaser-inner {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-thumb {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--light);
+      box-shadow: 0 20px 52px rgba(107,63,160,0.12);
+    }
+
+    .about-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .about-teaser-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3.2vw, 46px);
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .about-teaser-text h2 em { font-style: italic; color: var(--purple); }
+
+    .about-teaser-text p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.82;
+      color: var(--mid);
+      margin-bottom: 14px;
+    }
+
+    .about-teaser-text p strong { color: var(--dark); font-weight: 500; }
+
+    .about-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0 32px;
+    }
+
+    .about-fact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--mid);
+    }
+
+    .about-fact-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .about-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--purple);
+      text-decoration: none;
+      padding: 12px 24px;
+      border: 1.5px solid var(--purple);
+      border-radius: 100px;
+      transition: background 0.22s, color 0.22s, gap 0.28s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .about-more:hover {
+      background: var(--purple);
+      color: white;
+      gap: 16px;
+    }
+
+    /* ── EXPERIENCE TEASER ── */
+    .exp-section {
+      padding: 56px 60px 80px;
+      background: var(--white);
+    }
+
+    .exp-teaser {
+      margin-top: 44px;
+      border: 1.5px solid rgba(107,63,160,0.1);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .exp-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 28px;
+      border-bottom: 1px solid rgba(107,63,160,0.07);
+      transition: background 0.2s;
+    }
+
+    .exp-row:last-of-type { border-bottom: none; }
+    .exp-row:hover { background: var(--purple-bg); }
+
+    .exp-icon {
+      width: 42px; height: 42px;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      border: 1px solid rgba(107,63,160,0.1);
+    }
+
+    .exp-row-text { flex: 1; }
+    .exp-role { font-size: 14px; font-weight: 500; color: var(--dark); }
+    .exp-company { font-size: 12.5px; color: var(--purple); margin-top: 2px; }
+
+    .exp-date {
+      font-size: 11.5px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .exp-view-more {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      background: var(--purple-bg);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .exp-view-more:hover { background: var(--light); }
+
+    .exp-view-more span {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--purple);
+    }
+
+    .exp-view-more .arrow {
+      font-size: 13px;
+      color: var(--purple);
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .exp-view-more:hover .arrow { transform: translateX(5px); }
+
+    /* ── NAV CARDS ── */
+    .nav-cards {
+      display: flex;
+      gap: 16px;
+      padding: 0 60px 64px;
+    }
+
+    .nav-card {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      border-radius: 16px;
+      text-decoration: none;
+      border: 1px solid rgba(107,63,160,0.1);
+      transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .nav-card:hover {
+      border-color: var(--purple);
+      box-shadow: 0 8px 28px rgba(107,63,160,0.1);
+      transform: translateY(-3px);
+    }
+
+    .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
+
+    .nav-card-label {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+    }
+
+    .nav-card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--dark);
+    }
+
+    .nav-card-arrow {
+      font-size: 18px;
+      color: var(--purple-light);
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s;
+    }
+
+    .nav-card:hover .nav-card-arrow {
+      transform: translateX(5px);
+      color: var(--purple);
+    }
+
+    @media (max-width: 600px) {
+      .nav-cards { flex-direction: column; padding: 0 28px 48px; }
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 112px 60px;
+      background: var(--purple);
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 400;
+      line-height: 1.06;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .contact-section h2 em { font-style: italic; color: var(--purple-light); }
+
+    .contact-section p {
+      font-size: 15.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 420px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: all 0.22s;
+    }
+
+    .contact-btn.primary { background: white; color: var(--purple); }
+    .contact-btn.primary:hover { background: var(--light); }
+    .contact-btn.secondary { border: 1.5px solid rgba(255,255,255,0.3); color: white; }
+    .contact-btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+        /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px;
+      background: #12101A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-right a:hover { color: var(--purple-light); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 28px; }
+      nav ul { gap: 22px; }
+      .hero { grid-template-columns: 1fr; padding: 100px 28px 56px; min-height: auto; gap: 48px; }
+      .hero-photo-col { height: 400px; }
+      .hero h1 { font-size: clamp(36px, 8vw, 52px); }
+      .about-thumb { aspect-ratio: 16/9; max-height: 220px; }
+      .work-section { padding: 36px 28px 80px; }
+      .card { flex-direction: column; height: auto; }
+      .card-preview { height: 220px; flex: none; }
+      .card-info { padding: 24px 24px 28px; }
+      .card h3 { font-size: 24px; }
+      .about-teaser { padding: 40px 28px 64px; }
+      .about-teaser-inner { grid-template-columns: 1fr; gap: 36px; }
+      .about-thumb { aspect-ratio: 4/3; max-height: 340px; }
+
+      .exp-section { padding: 64px 28px; }
+      .exp-grid { grid-template-columns: 1fr; }
+      .exp-item:nth-child(odd) { padding-right: 0; }
+      .exp-item:nth-child(even) { padding-left: 0; border-left: none; }
+      .contact-section { padding: 80px 28px; }
+      footer { padding: 20px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .hero h1 { font-size: 36px; }
+      .card-preview { height: 180px; }
+      .card-info { padding: 20px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Jasmine Sayed</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Open to work
+      </div>
+      <h1>
+        Hi, I'm <em>Jasmine.</em><br />Product designer &amp;<br />UX researcher.
+      </h1>
+      <p class="hero-sub">I build thoughtful, research-driven experiences at the intersection of AI, accessibility, and real people.</p>
+      <div class="hero-skills">
+        <span class="hero-skill-tag">🧠 Human-Centered Design</span>
+        <span class="hero-skill-tag">🤖 AI &amp; Product</span>
+        <span class="hero-skill-tag">🔍 UX Research</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#work" class="hero-cta hero-cta-primary">View my work →</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="work-section">
+    <p class="section-label">Selected Work</p>
+
+    <div class="cards-grid" id="cardsGrid">
+
+      <!-- 1. MICROSOFT -->
+      <a href="microsoft.html" class="card card-microsoft fade-in">
+        <div class="card-preview">
+          <img src="microsoft-mockup.png" alt="Microsoft Foundry" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">UX Research · Usability Testing</span>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Microsoft Foundry</h3>
+          <p class="card-desc">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 2. NOX+ -->
+      <a href="nox.html" class="card card-nox fade-in">
+        <div class="card-preview">
+          <img src="nox-mockup.png" alt="Nox+ app" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">Identity · Mobile App</span>
+            <span class="card-year">2025</span>
+          </div>
+          <h3>Nox+</h3>
+          <p class="card-desc">Universal digital identity & verification platform bridging physical and digital environments for secure, privacy-first verification.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 3. SAKSHAM -->
+      <a href="saksham.html" class="card card-saksham fade-in">
+        <div class="card-preview">
+          <img src="saksham-screen1.png" alt="Saksham app" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">Accessibility · EdTech · Research</span>
+            <span class="card-year">2025</span>
+          </div>
+          <h3>Saksham</h3>
+          <p class="card-desc">Accessible learning tool for 5M+ neurodiverse students in India. Published in TAGA Journal 2026.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 4. CODE-SWITCHING -->
+      <a href="#" class="card card-codeswitching fade-in">
+        <div class="card-preview">
+          <img src="codeswitching-mockup.svg" alt="Code-Switching UW Study" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">UX Research · Sociolinguistics</span>
+            <span class="card-year">2025</span>
+          </div>
+          <h3>Code-Switching — UW Study</h3>
+          <p class="card-desc">University of Washington research examining code-switching behavior — how people navigate between languages, dialects, and cultural contexts.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 5. NEXSTERA (moved down) -->
+      <a href="nexstera.html" class="card card-nexstera fade-in">
+        <div class="card-preview">
+          <img src="nexstera-mockup.png" alt="Nexstera Tech website" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">Website Redesign · Strategy</span>
+            <span class="card-year">2024</span>
+          </div>
+          <h3>Nexstera Tech</h3>
+          <p class="card-desc">Website UX redesign that boosted investor engagement 40% and helped secure $65K in seed funding.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 6. UXFEST -->
+      <a href="uxfest.html" class="card card-uxfest fade-in">
+        <div class="card-preview">
+          <img src="uxfest-mockup.svg" alt="UXFest hackathon" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">Leadership · UX Design · Hackathon</span>
+            <span class="card-year">2024</span>
+          </div>
+          <h3>UXFest — Solo President</h3>
+          <p class="card-desc">Led Cal Poly's biggest UX design hackathon as the first-ever solo president — growing the event and building a community of 200+ students.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 7. MOMSAFE -->
+      <a href="momsafe.html" class="card card-momsafe fade-in">
+        <div class="card-preview">
+          <img src="momsafe-infographic.png" alt="MomSAFE infographic" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag">AI · Maternal Health · Research</span>
+            <span class="card-year">2025</span>
+          </div>
+          <h3>MomSAFE</h3>
+          <p class="card-desc">AI-powered maternal health companion bridging the prenatal care gap with personalized insights and proactive risk detection.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- NAV CARDS -->
+  <div class="nav-cards fade-in">
+    <a href="about.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">About</span>
+        <span class="nav-card-title">Get to know me</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a href="experience.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Resume</span>
+        <span class="nav-card-title">View my experience</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <h2 class="fade-in">Let's make something<br /><em>great together.</em></h2>
+    <p class="fade-in">Open to full-time roles, internships, and collaborations in product design and UX research.</p>
+    <div class="contact-links fade-in">
+      <a href="mailto:sayedjasmine@gmail.com" class="contact-btn primary">Say hello →</a>
+      <a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" class="contact-btn secondary">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 75);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Stagger cards on first view
+    const grid = document.getElementById('cardsGrid');
+    const cards = grid.querySelectorAll('.card');
+    const cardIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('visible'), idx * 120);
+          cardIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(c => cardIO.observe(c));
+  </script>
+</body>
+</html>

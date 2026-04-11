@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Foundry — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --dark: #0F1A2E;
+      --mid: #5A6A80;
+      --light-bg: #F5F8FC;
+      --blue: #0058B4;
+      --blue-mid: #2B88D8;
+      --blue-light: #7BC0F7;
+      --blue-pale: #E1F0FE;
+      --blue-bg: #EFF6FD;
+      --teal: #00A9A5;
+      --teal-light: #A8E0DF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,88,180,0.08);
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--blue); }
+    .nav-back .arrow { font-size: 16px; transition: transform 0.2s; }
+    .nav-back:hover .arrow { transform: translateX(-3px); }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-right a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--blue); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      background: linear-gradient(155deg, #091428 0%, #0D2240 40%, #0058B4 80%, #2B88D8 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 60px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-1 { width: 500px; height: 500px; top: -80px; right: -80px; background: radial-gradient(circle, rgba(123,192,247,0.2) 0%, transparent 60%); }
+    .hero-glow-2 { width: 360px; height: 360px; bottom: 0; left: 15%; background: radial-gradient(circle, rgba(43,136,216,0.35) 0%, transparent 65%); }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(123,192,247,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: rgba(123,192,247,0.5); }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 100px);
+      font-weight: 400;
+      color: white;
+      line-height: 0.95;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .hero h1 em { color: var(--blue-light); font-style: italic; }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      line-height: 1.72;
+      margin-bottom: 52px;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(123,192,247,0.5);
+      margin-bottom: 5px;
+    }
+
+    .hero-meta-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    section { padding: 96px 0; }
+
+    .section-eyebrow {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--blue); border-radius: 2px; }
+
+    h2.section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+    h2.section-title em { font-style: italic; color: var(--blue); }
+
+    h3.sub-heading {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 14px;
+      margin-top: 44px;
+    }
+
+    p.body-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: #3A4555;
+      line-height: 1.82;
+      margin-bottom: 20px;
+    }
+    p.body-text strong { color: var(--dark); font-weight: 500; }
+
+    .divider { width: 100%; height: 1px; background: rgba(0,88,180,0.1); }
+
+    /* ── ROLE STRIP ── */
+    .role-strip {
+      background: var(--blue-bg);
+      padding: 52px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .role-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .role-value { font-size: 14.5px; font-weight: 400; color: var(--dark); line-height: 1.6; }
+
+    /* ── RESEARCH QUESTIONS ── */
+    .rq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 40px 0;
+    }
+
+    .rq-card {
+      border: 1px solid rgba(0,88,180,0.12);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .rq-card:hover {
+      border-color: var(--blue-mid);
+      box-shadow: 0 4px 20px rgba(0,88,180,0.08);
+    }
+
+    .rq-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: rgba(0,88,180,0.15);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+
+    .rq-text {
+      font-size: 15px;
+      font-weight: 400;
+      color: #3A4555;
+      line-height: 1.65;
+    }
+
+    /* ── METHOD CARDS ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .method-card {
+      background: var(--white);
+      border: 1px solid rgba(0,88,180,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .method-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--blue-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .method-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .method-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; }
+
+    .method-n {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--blue);
+      background: var(--blue-bg);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── PARTICIPANT CRITERIA ── */
+    .criteria-strip {
+      background: var(--blue-bg);
+      border-radius: 20px;
+      padding: 40px 44px;
+      margin: 40px 0;
+    }
+
+    .criteria-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .criteria-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .criteria-tag {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--dark);
+      background: white;
+      border: 1px solid rgba(0,88,180,0.12);
+      border-radius: 100px;
+      padding: 8px 18px;
+    }
+
+    /* ── SEVERITY LEGEND ── */
+    .severity-legend {
+      background: var(--light-bg);
+      border: 1px solid rgba(0,88,180,0.1);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 32px 0;
+    }
+
+    .severity-legend-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .severity-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 0;
+    }
+
+    .severity-row + .severity-row { border-top: 1px solid rgba(0,88,180,0.06); }
+
+    .severity-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      flex-shrink: 0;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .severity-4 { background: #FDE8E8; color: #B91C1C; }
+    .severity-3 { background: #FEF3C7; color: #92400E; }
+    .severity-2 { background: #E1F0FE; color: #1E5A9E; }
+    .severity-1 { background: #E8F5E9; color: #2E7D32; }
+
+    .severity-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* ── FINDING CARDS ── */
+    .finding-card {
+      border: 1px solid rgba(0,88,180,0.12);
+      border-radius: 20px;
+      padding: 36px 36px 32px;
+      margin: 24px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finding-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+    }
+
+    .finding-card.sev-4::before { background: #EF4444; }
+    .finding-card.sev-3::before { background: #F59E0B; }
+    .finding-card.sev-2::before { background: var(--blue-mid); }
+
+    .finding-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .finding-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .finding-body {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: #3A4555;
+      line-height: 1.78;
+      margin-bottom: 16px;
+    }
+    .finding-body strong { color: var(--dark); font-weight: 500; }
+
+    .finding-quote {
+      background: var(--light-bg);
+      border-left: 3px solid var(--blue-light);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 22px;
+      margin: 18px 0;
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    .finding-rec {
+      background: var(--blue-bg);
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-top: 20px;
+    }
+
+    .finding-rec-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .finding-rec-text {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: #3A4555;
+      line-height: 1.72;
+    }
+
+    /* ── SUCCESS CARDS ── */
+    .success-card {
+      background: var(--white);
+      border: 1px solid rgba(0,88,180,0.1);
+      border-radius: 16px;
+      padding: 28px 28px;
+      margin: 16px 0;
+    }
+
+    .success-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .success-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.72;
+    }
+
+    .success-quote {
+      background: var(--light-bg);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 12px 12px 0;
+      padding: 14px 20px;
+      margin-top: 14px;
+      font-size: 13.5px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── MOCKUP SHOWCASE ── */
+    .mockup-showcase {
+      border-radius: 24px;
+      margin: 48px 0;
+      overflow: hidden;
+      text-align: center;
+      background: transparent;
+    }
+
+    /* ── NEXT STEPS ── */
+    .next-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 36px 0;
+    }
+
+    .next-step-card {
+      background: linear-gradient(145deg, #091428, #0D2240);
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .next-step-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,192,247,0.18) 0%, transparent 70%);
+    }
+
+    .next-step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      color: rgba(123,192,247,0.18);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .next-step-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .next-step-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* ── REFLECTION ── */
+    .reflection-section {
+      background: var(--light-bg);
+      padding: 96px 0;
+    }
+
+    .callout-box {
+      background: white;
+      border: 1px solid rgba(0,88,180,0.15);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 16px 16px 0;
+      padding: 32px 36px;
+      margin: 32px 0;
+    }
+
+    .callout-box p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #3A4555;
+      line-height: 1.78;
+    }
+    .callout-box p strong { color: var(--dark); font-weight: 500; }
+
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 36px 0;
+    }
+
+    .reflection-col-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .reflection-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 300;
+      color: #3A4555;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .reflection-icon { flex-shrink: 0; font-size: 14px; margin-top: 2px; }
+
+    /* ── IMPACT STATS ── */
+    .impact-section {
+      background: linear-gradient(145deg, #091428, #0D2240);
+      padding: 96px 0;
+    }
+
+    .impact-section .section-eyebrow { color: var(--blue-light); }
+    .impact-section .section-eyebrow::before { background: var(--blue-light); }
+    .impact-section h2.section-title { color: white; }
+    .impact-section h2.section-title em { color: var(--blue-light); }
+    .impact-section p.body-text { color: rgba(255,255,255,0.6); }
+    .impact-section p.body-text strong { color: white; }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .impact-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(123,192,247,0.15);
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .impact-stat:hover { background: rgba(255,255,255,0.08); }
+
+    .impact-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 400;
+      color: var(--blue-light);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .impact-label {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      padding: 80px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(0,88,180,0.1);
+    }
+
+    .next-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 3.5vw, 48px);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+
+    .next-title em { font-style: italic; color: var(--blue); }
+
+    .next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      background: var(--blue);
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 100px;
+      transition: background 0.2s, gap 0.25s;
+    }
+    .next-btn:hover { background: var(--blue-mid); gap: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px;
+      background: #12101A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-right a:hover { color: var(--blue-light); }
+
+    /* ── SECTION TABS ── */
+    .section-tabs {
+      position: sticky;
+      top: 66px;
+      z-index: 90;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,88,180,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 0 60px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .section-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+      top: 1px;
+    }
+
+    .tab-link:hover { color: var(--blue); }
+    .tab-link.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 24px; }
+      .hero { padding: 100px 28px 56px; }
+      .container, .container-wide { padding: 0 28px; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
+      .method-grid { grid-template-columns: 1fr; }
+      .next-steps-grid { grid-template-columns: 1fr; }
+      .reflection-grid { grid-template-columns: 1fr; }
+      .impact-stats { grid-template-columns: 1fr; gap: 16px; }
+      .next-project { padding: 60px 28px; }
+      footer { padding: 22px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-back">
+      <span class="arrow">←</span> All work
+    </a>
+    <div class="nav-right">
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- SECTION TABS -->
+  <div class="section-tabs" id="sectionTabs">
+    <a href="#overview"     class="tab-link active">Overview</a>
+    <a href="#questions"    class="tab-link">Research Questions</a>
+    <a href="#method"       class="tab-link">Method</a>
+    <a href="#findings"     class="tab-link">Findings</a>
+    <a href="#improvements" class="tab-link">Improvements</a>
+    <a href="#impact"       class="tab-link">Impact</a>
+    <a href="#nextsteps"    class="tab-link">Next Steps</a>
+    <a href="#reflection"   class="tab-link">Reflection</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <p class="hero-tag">UX Research · Usability Testing · AI Platform</p>
+    <h1>Microsoft<br /><em>Foundry</em></h1>
+    <p class="hero-sub">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform — uncovering critical blockers in the agent-creation flow.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">My Role</div>
+        <div class="hero-meta-value">UX Designer & Researcher</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Team</div>
+        <div class="hero-meta-value">4 researchers · Microsoft CoreAI</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Timeline</div>
+        <div class="hero-meta-value">Jan – Mar 2026 (10 weeks)</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Methods</div>
+        <div class="hero-meta-value">Moderated Usability Testing · Think Aloud</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLE STRIP -->
+  <div class="role-strip">
+    <div>
+      <div class="role-label">Context</div>
+      <div class="role-value">Microsoft CoreAI<br />Developer Platform</div>
+    </div>
+    <div>
+      <div class="role-label">Focus</div>
+      <div class="role-value">Agent Creation Flow<br />& Usability</div>
+    </div>
+    <div>
+      <div class="role-label">Participants</div>
+      <div class="role-value">8 moderated<br />usability sessions</div>
+    </div>
+    <div>
+      <div class="role-label">Study Design</div>
+      <div class="role-value">Within-subject<br />Think Aloud</div>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <section id="overview-detail">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Introduction</p>
+      <h2 class="section-title">How might we make AI agent creation more intuitive for new developers?</h2>
+      <p class="body-text">Microsoft Foundry is a platform built for students, developers, and startup founders who want to create AI agents for their websites or apps. It helps users build smart assistants that work with their data and automate tasks — even if they're still learning or exploring AI.</p>
+      <p class="body-text">I led usability testing on Foundry's CoreAI platform, specifically the <strong>Knowledge, Data, and FoundryIQ features</strong> used in agent creation. My goal was to identify challenges in this flow and make the experience more successful for users, so they are more inclined to use and adopt the platform.</p>
+      <p class="body-text">I focused on students with technical backgrounds and startup founders — people who are curious about AI and looking to leverage it for real projects, but may not be experts in the platform itself.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RESEARCH QUESTIONS -->
+  <section id="questions">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Research Questions</p>
+      <h2 class="section-title">What we set out<br />to understand.</h2>
+      <p class="body-text">I shaped the research questions to investigate participants' mental models when interacting with Microsoft Foundry — where confusion begins, what makes it feel like a blocker, and what users actually want to build.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="rq-grid">
+        <div class="rq-card">
+          <div class="rq-num">01</div>
+          <div class="rq-text">At what point in the Foundry agent-creation flow do users first feel confused or overwhelmed?</div>
+        </div>
+        <div class="rq-card">
+          <div class="rq-num">02</div>
+          <div class="rq-text">Which concepts or terms make users feel like they need external help to continue?</div>
+        </div>
+        <div class="rq-card">
+          <div class="rq-num">03</div>
+          <div class="rq-text">Do users perceive confusion as a temporary learning curve — or a hard blocker that makes the tool unusable?</div>
+        </div>
+        <div class="rq-card">
+          <div class="rq-num">04</div>
+          <div class="rq-text">What data types do users want to work with, and what do they want their agents to do?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- METHOD -->
+  <section id="method" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Method</p>
+      <h2 class="section-title">How we conducted<br />the study.</h2>
+      <p class="body-text">I conducted <strong>moderated usability testing</strong> utilizing a within-subject design. This was the most appropriate method because the research questions are designed to investigate participants' mental models. With moderated sessions, I used the <strong>Think Aloud protocol</strong>, which helped me understand exactly which points of the user flow were most confusing.</p>
+    </div>
+
+    <div class="container-wide">
+      <div class="method-grid fade-in">
+        <div class="method-card">
+          <div class="method-icon">🎙️</div>
+          <div class="method-name">Moderated Sessions</div>
+          <div class="method-desc">I facilitated one-on-one moderated usability tests with real tasks in the live Foundry platform, using Think Aloud protocol to capture real-time reasoning and confusion points.</div>
+          <span class="method-n">n = 8 participants</span>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📋</div>
+          <div class="method-name">Task-Based Scenarios</div>
+          <div class="method-desc">Participants completed structured tasks including agent creation, configuring knowledge sources, uploading data, and publishing agents — mirroring real use cases.</div>
+          <span class="method-n">Within-subject design</span>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📊</div>
+          <div class="method-name">Likert Ratings & Quotes</div>
+          <div class="method-desc">Post-task ease-of-use ratings on a 1–5 scale combined with qualitative Think Aloud data and direct participant quotes for triangulated findings.</div>
+          <span class="method-n">Mixed methods</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Participant Criteria -->
+    <div class="container fade-in">
+      <h3 class="sub-heading">Participant Criteria</h3>
+      <p class="body-text">I recruited participants who matched Foundry's target audience — students and early-career professionals with technical backgrounds who are curious about AI and looking to leverage it for projects.</p>
+
+      <div class="criteria-strip">
+        <div class="criteria-title">Critical Criteria</div>
+        <div class="criteria-list">
+          <span class="criteria-tag">Active student status</span>
+          <span class="criteria-tag">CS or technical background</span>
+          <span class="criteria-tag">Curious about AI</span>
+          <span class="criteria-tag">Looking to leverage AI for a project</span>
+          <span class="criteria-tag">Experience with data sets</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINDINGS — WHAT WORKED WELL -->
+  <section id="findings">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Findings</p>
+      <h2 class="section-title">What worked well.</h2>
+      <p class="body-text">Before diving into areas for improvement, it's important to highlight features where participants had a smooth, positive experience — signaling strong existing design decisions.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="success-card">
+        <div class="success-title">
+          <span style="font-size:18px;">✅</span>
+          Publishing an Agent
+        </div>
+        <div class="success-body"><strong>5 out of 8 participants</strong> rated the ease of publishing their agent as a 1 out of 5 (very easy). The publishing flow aligned with familiar patterns from other tools, making it intuitive and frictionless.</div>
+        <div class="success-quote">"Publishing the agent was pretty straightforward and aligns with what I would expect it to do because it's very similar UI elements to what other tools do right now."</div>
+      </div>
+
+      <div class="success-card">
+        <div class="success-title">
+          <span style="font-size:18px;">✅</span>
+          Overall Task Completion
+        </div>
+        <div class="success-body"><strong>4 out of 8 participants</strong> rated the overall ease of use as a 2 out of 5 (easy). While the platform had areas of confusion, participants were ultimately able to navigate and complete tasks — suggesting a solid foundation to build on.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FINDINGS — AREAS OF IMPROVEMENT -->
+  <section id="improvements" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Areas of Improvement</p>
+      <h2 class="section-title">Opportunities to improve the <em>Foundry experience.</em></h2>
+      <p class="body-text">I prioritized issues by severity (highest first) using Norman's severity scale. Each finding includes the interface problem, supporting data, and actionable recommendations.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="severity-legend">
+        <div class="severity-legend-title">Severity Scale (Norman's)</div>
+        <div class="severity-row">
+          <span class="severity-badge severity-4">4</span>
+          <span class="severity-desc"><strong>Usability catastrophe</strong> — Prevents task completion; imperative to fix</span>
+        </div>
+        <div class="severity-row">
+          <span class="severity-badge severity-3">3</span>
+          <span class="severity-desc"><strong>Major problem</strong> — Causes significant confusion; important to fix</span>
+        </div>
+        <div class="severity-row">
+          <span class="severity-badge severity-2">2</span>
+          <span class="severity-desc"><strong>Minor problem</strong> — Adds friction but doesn't block completion; should be addressed</span>
+        </div>
+        <div class="severity-row">
+          <span class="severity-badge severity-1">1</span>
+          <span class="severity-desc"><strong>Cosmetic</strong> — Surface-level issue; fix if time permits</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 1: Guardrails -->
+    <div class="container fade-in">
+      <div class="finding-card sev-4">
+        <div class="finding-header">
+          <span class="severity-badge severity-4">Severity 4</span>
+          <span class="finding-title">Guardrail Blocks Agent Creation</span>
+        </div>
+        <div class="finding-body"><strong>8 out of 8 participants</strong> were unable to proceed with creating an agent because the interface blocked interactions due to an unassigned or mismanaged guardrail. The system leaves new agents in an ambiguous "inheriting" state instead of automatically assigning Microsoft's default guardrail, causing the interface to prevent users from completing the task.</div>
+        <div class="finding-body">The error message further compounds confusion by prompting users to <strong>"create guardrail,"</strong> when the actual resolution is to reassign to an existing default guardrail. Participants lacked contextual guidance on why the interaction was blocked, were unclear about the differences between guardrail versions, and could not see the active guardrail status — all of which increased frustration and wasted time.</div>
+
+        <div class="finding-rec">
+          <div class="finding-rec-label">Recommendations</div>
+          <div class="finding-rec-text">Automatically assign Microsoft's default guardrail during agent creation. Update error messages to direct users to "Reassign Guardrail" rather than "Create Guardrail." Provide inline explanations about why interactions are blocked and how to resolve them. Clarify guardrail purposes and version differences through tooltips or descriptions. Make guardrail status more visible in the interface.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 2: Terminology -->
+    <div class="container fade-in">
+      <div class="finding-card sev-3">
+        <div class="finding-header">
+          <span class="severity-badge severity-3">Severity 3</span>
+          <span class="finding-title">Confusing Terminology & Labeling</span>
+        </div>
+        <div class="finding-body"><strong>7 out of 8 participants</strong> were confused by overlapping or unclear terminology in the platform. Key points of confusion included the distinction between "Tools" and "Knowledge" (and why file uploads appeared under Tools), as well as the difference between "Agent Instructions" and "Message Agent." While this didn't fully prevent task completion, it was the most relevant usability friction to the overall experience.</div>
+
+        <div class="finding-rec">
+          <div class="finding-rec-label">Recommendations</div>
+          <div class="finding-rec-text">Audit and simplify terminology across the platform to ensure labels are distinct, descriptive, and consistent. Add contextual definitions (tooltips or inline descriptions) for key concepts like "Tools," "Knowledge," and "Agent Instructions." Consider renaming overlapping terms to reduce cognitive load for first-time users.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 3: Cluttered UI -->
+    <div class="container fade-in">
+      <div class="finding-card sev-2">
+        <div class="finding-header">
+          <span class="severity-badge severity-2">Severity 2</span>
+          <span class="finding-title">Cluttered Landing Page & Visual Hierarchy</span>
+        </div>
+        <div class="finding-body"><strong>4 out of 8 participants</strong> experienced discoverability issues on the landing page. The "Start Building" button lacked visual prominence due to its relatively small size and the presence of multiple competing visual elements. The "Coding Quick Start" bar was significantly larger and attracted users' attention first. Additionally, the similarity in terminology between these two options created confusion regarding the appropriate starting point.</div>
+        <div class="finding-quote">"I see a couple of places I could go to. Do I go to Start Building? Do I go to the Coding Quick Start part?"</div>
+
+        <div class="finding-rec">
+          <div class="finding-rec-label">Recommendations</div>
+          <div class="finding-rec-text">Rebalance the page layout to reduce visual competition among elements and enhance hierarchical clarity. Increase the visual prominence of the "Start Building" button by enlarging its size, contrast, and positioning it within a primary focal area.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 4: Platform Flow -->
+    <div class="container fade-in">
+      <div class="finding-card sev-2">
+        <div class="finding-header">
+          <span class="severity-badge severity-2">Severity 2</span>
+          <span class="finding-title">Unclear Platform Navigation Flow</span>
+        </div>
+        <div class="finding-body"><strong>8 out of 8 participants</strong> demonstrated a different flow for navigating Microsoft Foundry. After creating an agent, 2 out of 8 participants interacted with the navigation sidebar tabs to gain more understanding about the platform's terminology. While participants were ultimately able to navigate, the lack of guided structure forced exploratory behavior.</div>
+        <div class="finding-quote">"I'll start by looking at the nav bar because there was no clear instruction of how like the different steps that will be involved in making the AI agents, so I'll have to explore the software on my own."</div>
+
+        <div class="finding-rec">
+          <div class="finding-rec-label">Recommendations</div>
+          <div class="finding-rec-text">Introduce onboarding assistance or a guided tutorial for first-time users. 3 out of 8 participants specifically suggested this. As one shared: "I feel like if I looked up a tutorial or if the platform gave me some info when I created my account, it would be pretty easy to figure out as you go."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 5: Technical Errors -->
+    <div class="container fade-in">
+      <div class="finding-card sev-2">
+        <div class="finding-header">
+          <span class="severity-badge severity-2">Severity 2</span>
+          <span class="finding-title">Misleading Error Messages on File Upload</span>
+        </div>
+        <div class="finding-body"><strong>5 out of 8 participants</strong> experienced confusion when files were successfully uploaded but an error message appeared. The upload process itself was straightforward, but the false error introduced unnecessary doubt and broke user confidence in the system.</div>
+        <div class="finding-quote">"At least uploading [files] was straightforward. But that error message was a little bit confusing."</div>
+
+        <div class="finding-rec">
+          <div class="finding-rec-label">Recommendations</div>
+          <div class="finding-rec-text">Investigate and resolve the underlying bug causing false error messages on successful uploads. Ensure confirmation states clearly communicate success and distinguish between warnings, errors, and informational messages.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="impact-section">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Study at a Glance</p>
+      <h2 class="section-title">The numbers behind<br />the <em>research.</em></h2>
+      <p class="body-text">Key metrics from the moderated usability sessions I conducted that shaped findings and recommendations for the Foundry team.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <div class="impact-number">8</div>
+          <div class="impact-label">moderated usability sessions conducted with technical students and founders</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">5</div>
+          <div class="impact-label">distinct usability issues identified and prioritized by severity for the Foundry team</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">100%</div>
+          <div class="impact-label">of participants encountered the critical guardrail blocker during agent creation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section id="nextsteps">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Next Steps</p>
+      <h2 class="section-title">Where this research<br /><em>goes from here.</em></h2>
+      <p class="body-text">My study surfaced both immediate fixes and broader areas to explore in future research cycles.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="next-steps-grid">
+        <div class="next-step-card">
+          <div class="next-step-num">01</div>
+          <div class="next-step-title">Resolve the Guardrail Blocker</div>
+          <div class="next-step-body">The guardrail issue emerged mid-study and affected every single participant. Addressing this is the highest priority, as it completely blocks the core agent-creation workflow.</div>
+        </div>
+        <div class="next-step-card">
+          <div class="next-step-num">02</div>
+          <div class="next-step-title">Test Agent Integration End-to-End</div>
+          <div class="next-step-body">Future studies should explore how easily users can take a published agent and actually integrate it (via code or embed) into a product or website — a critical step my study didn't cover.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REFLECTION -->
+  <section id="reflection" class="reflection-section">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Reflection</p>
+      <h2 class="section-title">What I learned &<br /><em>what comes next.</em></h2>
+      <p class="body-text">Conducting a usability study for a live Microsoft product was an incredible learning experience — from navigating stakeholder relationships to adapting on the fly when the guardrail issue caught the team off guard.</p>
+
+      <div class="callout-box">
+        <p>My biweekly check-ins with the Microsoft sponsor were invaluable for resolving technical issues in a timely manner and keeping the study on track. The combination of <strong>strong team collaboration and productive usability sessions</strong> meant that every test taught me something new.</p>
+      </div>
+
+      <div class="reflection-grid">
+        <div>
+          <div class="reflection-col-title">What Went Well</div>
+          <div class="reflection-item">
+            <span class="reflection-icon">+</span>
+            <span>Timely and sufficient participant recruitment — I met the minimum of 6–8 participants</span>
+          </div>
+          <div class="reflection-item">
+            <span class="reflection-icon">+</span>
+            <span>Biweekly 1-hour check-ins with the Microsoft sponsor helped me resolve issues in real time</span>
+          </div>
+          <div class="reflection-item">
+            <span class="reflection-icon">+</span>
+            <span>Strong team organization with weekly internal syncs</span>
+          </div>
+          <div class="reflection-item">
+            <span class="reflection-icon">+</span>
+            <span>Each usability session was productive and surfaced new insights</span>
+          </div>
+        </div>
+        <div>
+          <div class="reflection-col-title">What I'd Do Differently</div>
+          <div class="reflection-item">
+            <span class="reflection-icon">~</span>
+            <span>Prepare workarounds for known platform issues before testing begins — the guardrail blocker was so new that it caught the team off guard too</span>
+          </div>
+          <div class="reflection-item">
+            <span class="reflection-icon">~</span>
+            <span>Otherwise, the study ran smoothly — a testament to strong planning and team dynamics</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project fade-in">
+    <div class="next-label">Next Project</div>
+    <div class="next-title">Nox+ — <em>Secure Digital Identity</em></div>
+    <a href="nox.html" class="next-btn">View case study →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 75);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Scroll-spy: highlight the active tab
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const sectionIds = ['overview', 'questions', 'method', 'findings', 'improvements', 'impact', 'nextsteps', 'reflection'];
+    const tabsBar = document.getElementById('sectionTabs');
+    const navH = document.querySelector('nav').offsetHeight;
+    const tabsH = tabsBar.offsetHeight;
+    const offset = navH + tabsH + 16;
+
+    function setActiveTab(id) {
+      tabLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+      const activeLink = tabsBar.querySelector('.tab-link.active');
+      if (activeLink) {
+        const linkLeft = activeLink.offsetLeft;
+        const linkW = activeLink.offsetWidth;
+        const barW = tabsBar.offsetWidth;
+        tabsBar.scrollLeft = linkLeft - barW / 2 + linkW / 2;
+      }
+    }
+
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, { rootMargin: `-${offset}px 0px -55% 0px`, threshold: 0 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) spyObserver.observe(el);
+    });
+
+    // Smooth scroll with offset
+    tabLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - offset + 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saksham — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --dark: #2A1A1E;
+      --mid: #7A6268;
+      --light-bg: #FDF8F8;
+      --rose: #C4425A;
+      --rose-mid: #D96B7E;
+      --rose-light: #F0B3BE;
+      --rose-pale: #FDE8EC;
+      --rose-bg: #FFF5F7;
+      --coral: #E88B7D;
+      --coral-light: #F5C4BB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(196,66,90,0.08);
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--rose); }
+    .nav-back .arrow { font-size: 16px; transition: transform 0.2s; }
+    .nav-back:hover .arrow { transform: translateX(-3px); }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-right a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--rose); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      background: linear-gradient(155deg, #2A1420 0%, #4A1F30 40%, #C4425A 80%, #D96B7E 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 60px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-1 { width: 500px; height: 500px; top: -80px; right: -80px; background: radial-gradient(circle, rgba(240,179,190,0.22) 0%, transparent 60%); }
+    .hero-glow-2 { width: 360px; height: 360px; bottom: 0; left: 15%; background: radial-gradient(circle, rgba(217,107,126,0.35) 0%, transparent 65%); }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,179,190,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: rgba(240,179,190,0.5); }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 100px);
+      font-weight: 400;
+      color: white;
+      line-height: 0.95;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .hero h1 em { color: var(--rose-light); font-style: italic; }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      line-height: 1.72;
+      margin-bottom: 52px;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240,179,190,0.5);
+      margin-bottom: 5px;
+    }
+
+    .hero-meta-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    section { padding: 96px 0; }
+
+    .section-eyebrow {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--rose); border-radius: 2px; }
+
+    h2.section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+    h2.section-title em { font-style: italic; color: var(--rose); }
+
+    h3.sub-heading {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 14px;
+      margin-top: 44px;
+    }
+
+    p.body-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: #4A3A3E;
+      line-height: 1.82;
+      margin-bottom: 20px;
+    }
+    p.body-text strong { color: var(--dark); font-weight: 500; }
+
+    .divider { width: 100%; height: 1px; background: rgba(196,66,90,0.1); }
+
+    /* ── ROLE STRIP ── */
+    .role-strip {
+      background: var(--rose-bg);
+      padding: 52px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .role-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+    .role-value { font-size: 14.5px; font-weight: 400; color: var(--dark); line-height: 1.6; }
+
+    /* ── PROBLEM CARDS ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .problem-card {
+      border: 1px solid rgba(196,66,90,0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .problem-icon {
+      font-size: 24px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .problem-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .problem-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── RESEARCH METHODS ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .method-card {
+      background: var(--white);
+      border: 1px solid rgba(196,66,90,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .method-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--rose-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .method-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .method-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; }
+
+    /* ── INSIGHTS ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .insight-card {
+      background: linear-gradient(145deg, #2A1420, #4A1F30);
+      border-radius: 16px;
+      padding: 32px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,179,190,0.18) 0%, transparent 70%);
+    }
+
+    .insight-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      color: rgba(240,179,190,0.18);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .insight-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .insight-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* ── PERSONA CARD ── */
+    .persona-card {
+      background: var(--rose-bg);
+      border-radius: 20px;
+      padding: 40px 44px;
+      border-left: 4px solid var(--rose);
+      margin: 36px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .persona-card::after {
+      content: '"';
+      position: absolute;
+      top: 16px; right: 36px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 100px;
+      color: rgba(196,66,90,0.08);
+      line-height: 1;
+    }
+
+    .persona-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+
+    .persona-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(17px, 2vw, 24px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.45;
+    }
+
+    /* ── DESIGN PROCESS STEPS ── */
+    .process-timeline {
+      margin: 48px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 28px;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(196,66,90,0.08);
+      position: relative;
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .process-num-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .process-num {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--rose-bg);
+      border: 1.5px solid rgba(196,66,90,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--rose);
+    }
+
+    .process-line {
+      width: 1.5px;
+      flex: 1;
+      background: rgba(196,66,90,0.1);
+      margin-top: 10px;
+    }
+
+    .process-step:last-child .process-line { display: none; }
+
+    .process-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+
+    .process-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .process-body {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: #4A3A3E;
+      line-height: 1.75;
+    }
+    .process-body strong { color: var(--dark); font-weight: 500; }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      border: 1px solid rgba(196,66,90,0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--rose);
+      box-shadow: 0 4px 24px rgba(196,66,90,0.1);
+    }
+
+    .feature-emoji {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .feature-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── MOCKUP SHOWCASE ── */
+    .mockup-showcase {
+      margin: 48px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .mockup-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(196,66,90,0.12);
+      border: 1px solid rgba(196,66,90,0.08);
+    }
+
+    .mockup-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── SCREEN FLOW GALLERY ── */
+    .screen-flow {
+      margin: 56px 0;
+    }
+
+    .screen-flow-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .screen-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .screen-flow-item {
+      text-align: center;
+    }
+
+    .screen-flow-item img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 28px rgba(196,66,90,0.1);
+      border: 1px solid rgba(196,66,90,0.06);
+      display: block;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .screen-flow-item img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(196,66,90,0.16);
+    }
+
+    .screen-flow-item .flow-label {
+      margin-top: 12px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .screen-flow-item .flow-desc {
+      font-size: 11.5px;
+      font-weight: 300;
+      color: var(--mid);
+      margin-top: 3px;
+    }
+
+    /* ── DESIGN SYSTEM ── */
+    .ds-strip {
+      background: var(--rose-bg);
+      border-radius: 20px;
+      padding: 48px;
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .ds-block-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 20px;
+    }
+
+    .ds-colors { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .ds-color { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+    .ds-swatch { width: 48px; height: 48px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .ds-swatch-name { font-size: 9px; color: var(--mid); }
+
+    .ds-type { display: flex; flex-direction: column; gap: 14px; }
+    .ds-type-name { font-size: 10px; color: var(--mid); margin-bottom: 3px; }
+
+    /* ── IMPACT ── */
+    .impact-section {
+      background: linear-gradient(145deg, #2A1420, #4A1F30);
+      padding: 96px 0;
+    }
+
+    .impact-section .section-eyebrow { color: var(--rose-light); }
+    .impact-section .section-eyebrow::before { background: var(--rose-light); }
+    .impact-section h2.section-title { color: white; }
+    .impact-section h2.section-title em { color: var(--rose-light); }
+    .impact-section p.body-text { color: rgba(255,255,255,0.6); }
+    .impact-section p.body-text strong { color: white; }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .impact-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(240,179,190,0.15);
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .impact-stat:hover { background: rgba(255,255,255,0.08); }
+
+    .impact-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 400;
+      color: var(--rose-light);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .impact-label {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* ── REFLECTION ── */
+    .reflection-section {
+      background: var(--light-bg);
+      padding: 96px 0;
+    }
+
+    .callout-box {
+      background: white;
+      border: 1px solid rgba(196,66,90,0.15);
+      border-left: 4px solid var(--rose);
+      border-radius: 0 16px 16px 0;
+      padding: 32px 36px;
+      margin: 32px 0;
+    }
+
+    .callout-box p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #4A3A3E;
+      line-height: 1.78;
+    }
+    .callout-box p strong { color: var(--dark); font-weight: 500; }
+
+    .next-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 32px 0;
+    }
+
+    .next-step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 24px;
+      border: 1px solid rgba(196,66,90,0.1);
+      border-radius: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .next-step-row:hover {
+      border-color: var(--rose-mid);
+      box-shadow: 0 4px 20px rgba(196,66,90,0.08);
+    }
+
+    .next-step-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--rose-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .next-step-name { font-size: 14.5px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+    .next-step-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.6; }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      padding: 80px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(196,66,90,0.1);
+    }
+
+    .next-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 3.5vw, 48px);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+
+    .next-title em { font-style: italic; color: var(--rose); }
+
+    .next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      background: var(--rose);
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 100px;
+      transition: background 0.2s, gap 0.25s;
+    }
+    .next-btn:hover { background: var(--rose-mid); gap: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px;
+      background: #12101A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-right a:hover { color: var(--rose-light); }
+
+    /* ── SECTION TABS ── */
+    .section-tabs {
+      position: sticky;
+      top: 66px;
+      z-index: 90;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,66,90,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 0 60px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .section-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+      top: 1px;
+    }
+
+    .tab-link:hover { color: var(--rose); }
+    .tab-link.active { color: var(--rose); border-bottom-color: var(--rose); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 24px; }
+      .hero { padding: 100px 28px 56px; }
+      .container, .container-wide { padding: 0 28px; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
+      .problem-grid, .method-grid, .insights-grid, .features-grid { grid-template-columns: 1fr; }
+      .mockup-showcase { grid-template-columns: 1fr; gap: 16px; }
+      .ds-strip { grid-template-columns: 1fr; }
+      .impact-stats { grid-template-columns: 1fr; gap: 16px; }
+      .process-step { grid-template-columns: 56px 1fr; gap: 20px; }
+      .next-project { padding: 60px 28px; }
+      footer { padding: 22px 28px; }
+      .screen-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+      .screen-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-back">
+      <span class="arrow">←</span> All work
+    </a>
+    <div class="nav-right">
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- SECTION TABS -->
+  <div class="section-tabs" id="sectionTabs">
+    <a href="#overview"  class="tab-link active">Overview</a>
+    <a href="#problem"   class="tab-link">Problem</a>
+    <a href="#research"  class="tab-link">Research</a>
+    <a href="#insights"  class="tab-link">Insights</a>
+    <a href="#design"    class="tab-link">Design Process</a>
+    <a href="#solution"  class="tab-link">Solution</a>
+    <a href="#impact"    class="tab-link">Impact</a>
+    <a href="#reflection" class="tab-link">Reflection</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <p class="hero-tag">Accessibility · EdTech · Inclusive Design</p>
+    <h1>Saksham</h1>
+    <p class="hero-sub">Designing inclusive education for every learner — an accessible learning platform for neurodivergent students in India. Published on Cal Poly's Digital Commons and featured in TAGA Journal.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">My Role</div>
+        <div class="hero-meta-value">UX Designer & Researcher</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Type</div>
+        <div class="hero-meta-value">Personal Research Project</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Timeline</div>
+        <div class="hero-meta-value">2024 – 2025</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Tools</div>
+        <div class="hero-meta-value">Figma · Illustrator · UX Research</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLE STRIP -->
+  <div class="role-strip">
+    <div>
+      <div class="role-label">Context</div>
+      <div class="role-value">Inclusive EdTech for<br />Neurodivergent Learners</div>
+    </div>
+    <div>
+      <div class="role-label">Focus</div>
+      <div class="role-value">Accessibility &<br />Cognitive Adaptation</div>
+    </div>
+    <div>
+      <div class="role-label">Published</div>
+      <div class="role-value">Cal Poly Digital Commons<br />& TAGA Journal</div>
+    </div>
+    <div>
+      <div class="role-label">Target Users</div>
+      <div class="role-value">Students with Dyslexia,<br />ADHD & Autism</div>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <section id="overview-detail">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Introduction</p>
+      <h2 class="section-title">Designing for neurodiversity in<br /><em>Indian education.</em></h2>
+      <p class="body-text">In India, millions of children with learning disabilities such as dyslexia, ADHD, and autism face barriers to quality education. Limited awareness, inaccessible teaching tools, and the stigma surrounding neurodiversity contribute to an exclusionary learning environment.</p>
+      <p class="body-text"><strong>Saksham</strong>, meaning "capable" in Hindi, is my personal UX project that explores how digital design can make education more inclusive, accessible, and empowering for neurodivergent students. What began as a passion project became a deeper research initiative — eventually <strong>published on Cal Poly's Digital Commons</strong> and now set to be featured in the <strong>TAGA Journal</strong>, recognizing its contribution to inclusive design in education technology.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Problem Statement</p>
+      <h2 class="section-title">How might we create an experience that adapts to each <em>learner's</em> cognitive style?</h2>
+      <p class="body-text">Children with learning disabilities in India often lack access to tools that support their specific needs. Schools rarely integrate assistive technologies, and most educational apps are not designed for cognitive diversity.</p>
+      <p class="body-text">The challenge was clear: design an educational experience that adapts to each learner's cognitive style, while promoting <strong>independence and confidence</strong>.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="problem-icon">🧠</span>
+          <div class="problem-title">Visual Overload</div>
+          <div class="problem-desc">Many apps use overstimulating visuals that can overwhelm students with ADHD or autism, making focused learning nearly impossible.</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">⚙️</span>
+          <div class="problem-title">Lack of Personalization</div>
+          <div class="problem-desc">Few platforms offer adaptive learning paths or adjustable reading modes — forcing a one-size-fits-all approach to diverse cognitive needs.</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">🌐</span>
+          <div class="problem-title">Language Barriers</div>
+          <div class="problem-desc">Educational tools often exclude regional languages, alienating rural students and limiting access to millions across India.</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">💛</span>
+          <div class="problem-title">Need for Empathy</div>
+          <div class="problem-desc">Inclusive design is not just about usability — it's about emotional safety and representation in every interaction.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RESEARCH -->
+  <section id="research" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Research</p>
+      <h2 class="section-title">Understanding the landscape<br />of <em>inclusive education.</em></h2>
+      <p class="body-text">My research began with qualitative interviews and a literature review focusing on accessibility and inclusive design in education. Key insights were derived from educators, parents, and accessibility experts. I also conducted a comparative analysis of existing edtech tools to understand gaps in accessibility features.</p>
+    </div>
+
+    <div class="container-wide">
+      <div class="method-grid fade-in">
+        <div class="method-card">
+          <div class="method-icon">🎙️</div>
+          <div class="method-name">Qualitative Interviews</div>
+          <div class="method-desc">In-depth conversations with educators, parents of neurodiverse children, and accessibility experts to understand real-world challenges in Indian classrooms.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📖</div>
+          <div class="method-name">Literature Review</div>
+          <div class="method-desc">Academic research on accessibility, cognitive load theory, and inclusive design principles in educational technology contexts.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🔍</div>
+          <div class="method-name">Comparative Analysis</div>
+          <div class="method-desc">Evaluated existing edtech tools including Byju's, Duolingo, and Microsoft Learning Tools — identifying critical gaps in accessibility features.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persona -->
+    <div class="container fade-in">
+      <h3 class="sub-heading">Meet the Users</h3>
+      <p class="body-text">I created personas based on real interviews to ground every design decision in human experience.</p>
+
+      <div class="persona-card">
+        <div class="persona-name">Bilal · 14 years old · Student with Dyslexia & ADHD</div>
+        <p class="persona-text">"Reading feels impossible sometimes. The words blur together, and I can't keep up with everyone else. I wish learning could work the way my brain does."</p>
+      </div>
+
+      <div class="persona-card" style="border-left-color: var(--coral);">
+        <div class="persona-name" style="color: var(--coral);">Meera · Educator · Inclusive Classroom Teacher</div>
+        <p class="persona-text">"I want to support every student, but I have 40 kids and no tools designed for differentiated instruction. I'm constantly improvising."</p>
+      </div>
+    </div>
+
+    <div class="container fade-in">
+      <h3 class="sub-heading">Published Research</h3>
+      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published through Cal Poly's Digital Commons and set to appear in the TAGA Journal. The publication emphasizes design ethics, human-centered research, and practical design interventions for neurodiverse students.</p>
+    </div>
+  </section>
+
+  <!-- KEY INSIGHTS -->
+  <section id="insights">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Key Insights</p>
+      <h2 class="section-title">Four findings that shaped<br />every design decision.</h2>
+    </div>
+    <div class="container-wide">
+      <div class="insights-grid fade-in">
+        <div class="insight-card">
+          <div class="insight-num">01</div>
+          <div class="insight-title">Simplicity reduces cognitive load</div>
+          <div class="insight-body">Visual simplicity and clear structure are not just preferences — they are necessities for students with ADHD and autism. Overstimulating interfaces directly impede learning.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">02</div>
+          <div class="insight-title">Multi-sensory input improves retention</div>
+          <div class="insight-body">Integrating audio, visual, and tactile learning modalities creates multiple pathways for understanding — helping students engage in the way that works best for them.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">03</div>
+          <div class="insight-title">Customization builds confidence</div>
+          <div class="insight-body">Allowing students to control their reading speed, font type, and color contrast transforms the experience from frustrating to empowering — fostering independence.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">04</div>
+          <div class="insight-title">Self-paced progress sustains motivation</div>
+          <div class="insight-body">Gamified rewards and the freedom to learn at one's own pace prevent discouragement and build a positive relationship with learning over time.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DESIGN PROCESS -->
+  <section id="design" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design Process</p>
+      <h2 class="section-title">From empathy to<br /><em>interactive prototype.</em></h2>
+      <p class="body-text">I followed a human-centered design process — empathizing deeply with users, defining clear goals, ideating broadly, prototyping in Figma, and testing with real educators and parents.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="process-timeline">
+
+        <div class="process-step">
+          <div class="process-num-col">
+            <div class="process-num">1</div>
+            <div class="process-line"></div>
+          </div>
+          <div>
+            <div class="process-label">Empathize</div>
+            <div class="process-body">Created personas based on real interviews — such as <strong>Bilal</strong>, a 14-year-old student with dyslexia and ADHD, and <strong>Meera</strong>, a teacher struggling to differentiate instruction for neurodiverse classrooms. Their stories grounded every design decision.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-num-col">
+            <div class="process-num">2</div>
+            <div class="process-line"></div>
+          </div>
+          <div>
+            <div class="process-label">Define</div>
+            <div class="process-body">The goal: design a learning experience that uses <strong>visual simplicity</strong> to minimize cognitive load, integrates <strong>multi-sensory learning</strong> (audio, visual, tactile), provides customization for reading speed, font type, and color contrast, and encourages self-paced progress with gamified motivation.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-num-col">
+            <div class="process-num">3</div>
+            <div class="process-line"></div>
+          </div>
+          <div>
+            <div class="process-label">Ideate</div>
+            <div class="process-body">Brainstormed design ideas using mind maps and low-fidelity wireframes in Figma. Concepts explored: a <strong>voice-guided reading assistant</strong>, emotion-based feedback tracking to identify when learners feel overwhelmed, and a reward system for progress to foster confidence.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-num-col">
+            <div class="process-num">4</div>
+            <div class="process-line"></div>
+          </div>
+          <div>
+            <div class="process-label">Prototype</div>
+            <div class="process-body">Built interactive wireframes in Figma for a tablet-based app. Features included a <strong>customizable dashboard</strong> (preferred colors, fonts like OpenDyslexic typeface), a <strong>guided reading mode</strong> with audio narration and text highlighting, and <strong>offline functionality</strong> for low-connectivity regions.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-num-col">
+            <div class="process-num">5</div>
+          </div>
+          <div>
+            <div class="process-label">Test</div>
+            <div class="process-body">User testing with educators and parents of children with dyslexia and ADHD led to key refinements: <strong>simplified navigation</strong> for easier task completion, added <strong>voice cues</strong> for non-readers, and <strong>reduced visual motion</strong> to prevent overstimulation.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Solution</p>
+      <h2 class="section-title">Introducing <em>Saksham.</em></h2>
+      <p class="body-text">Saksham delivers a personalized learning ecosystem where students can engage with lessons at their own pace through audio, visuals, and interactive exercises. The interface adapts to each learner's needs — creating an environment that promotes comfort, confidence, and curiosity.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <!-- App Mockups -->
+      <div class="mockup-showcase">
+        <div class="mockup-frame">
+          <img src="saksham-screen1.png" alt="Saksham app — home screen" />
+        </div>
+        <div class="mockup-frame">
+          <img src="saksham-screen2.png" alt="Saksham app — learning mode" />
+        </div>
+        <div class="mockup-frame">
+          <img src="saksham-screen3.png" alt="Saksham app — progress dashboard" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen Flow Gallery -->
+    <div class="container-wide fade-in">
+      <div class="screen-flow">
+        <p class="screen-flow-label">Key Screens</p>
+        <div class="screen-flow-grid">
+          <div class="screen-flow-item">
+            <img src="assets/saksham/onboarding.png" alt="Saksham onboarding — personalized learning intro" loading="lazy" />
+            <div class="flow-label">Onboarding</div>
+            <div class="flow-desc">Personalized learning intro</div>
+          </div>
+          <div class="screen-flow-item">
+            <img src="assets/saksham/courses.png" alt="Saksham courses — course browser with categories" loading="lazy" />
+            <div class="flow-label">Course Browser</div>
+            <div class="flow-desc">Discover & filter courses</div>
+          </div>
+          <div class="screen-flow-item">
+            <img src="assets/saksham/course-playing.png" alt="Saksham course playing — lesson in progress with video" loading="lazy" />
+            <div class="flow-label">Guided Learning</div>
+            <div class="flow-desc">Audio + video lessons</div>
+          </div>
+          <div class="screen-flow-item">
+            <img src="assets/saksham/my-progress.png" alt="Saksham my progress — course completion tracking" loading="lazy" />
+            <div class="flow-label">My Progress</div>
+            <div class="flow-desc">Track course completion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-wide">
+      <div class="features-grid fade-in">
+        <div class="feature-card">
+          <span class="feature-emoji">🎨</span>
+          <div class="feature-name">Customizable Dashboard</div>
+          <div class="feature-desc">Learners select preferred colors, fonts (including OpenDyslexic), and layout — making the interface truly their own.</div>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">🔊</span>
+          <div class="feature-name">Guided Reading Mode</div>
+          <div class="feature-desc">Audio narration with synchronized text highlighting supports reading comprehension across ability levels.</div>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">📴</span>
+          <div class="feature-name">Offline Functionality</div>
+          <div class="feature-desc">Full learning access without internet — critical for low-connectivity regions across rural India.</div>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">🏆</span>
+          <div class="feature-name">Gamified Progress</div>
+          <div class="feature-desc">Self-paced rewards and milestone celebrations build confidence and sustain motivation over time.</div>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">👩‍🏫</span>
+          <div class="feature-name">Teacher Dashboard</div>
+          <div class="feature-desc">Provides educators with real-time insights into student progress, enabling individualized support at scale.</div>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">🗣️</span>
+          <div class="feature-name">Voice Cues for Non-Readers</div>
+          <div class="feature-desc">Audio guidance throughout the interface ensures students who can't yet read can still navigate and learn independently.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design System</p>
+      <h2 class="section-title">Warm, calm &<br /><em>accessible by design.</em></h2>
+      <p class="body-text">The design system uses warm, approachable tones to create emotional safety — paired with high-contrast text and generous spacing to reduce cognitive load for neurodiverse learners.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="ds-strip">
+        <div>
+          <div class="ds-block-title">Color Palette</div>
+          <div class="ds-colors">
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#2A1A1E;"></div>
+              <div class="ds-swatch-name">Deep</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#C4425A;"></div>
+              <div class="ds-swatch-name">Rose</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#E88B7D;"></div>
+              <div class="ds-swatch-name">Coral</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#F0B3BE;"></div>
+              <div class="ds-swatch-name">Blush</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#FFF5F7; border: 1px solid #f0e0e4;"></div>
+              <div class="ds-swatch-name">Cream</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="ds-block-title">Typography</div>
+          <div class="ds-type">
+            <div>
+              <div class="ds-type-name">Display — DM Serif Display</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark);">Capable of Anything.</div>
+            </div>
+            <div>
+              <div class="ds-type-name">Body — DM Sans Regular</div>
+              <div style="font-size:14px;color:var(--mid);font-weight:300;">Learning that adapts to every mind</div>
+            </div>
+            <div>
+              <div class="ds-type-name">Label — DM Sans Medium</div>
+              <div style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--rose);">Start Learning →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="impact-section">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Impact</p>
+      <h2 class="section-title">Research recognition &<br /><em>real-world impact.</em></h2>
+      <p class="body-text">Saksham's impact extends beyond design — it has contributed to meaningful conversations about inclusive education in India and earned recognition in academic publishing.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">Published</div>
+          <div class="impact-label">on Cal Poly's Digital Commons and accepted for TAGA Journal, recognizing its contribution to inclusive design</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">5M+</div>
+          <div class="impact-label">neurodivergent students in India who could benefit from accessible, adaptive learning tools</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">Catalyst</div>
+          <div class="impact-label">for discussions among Indian educators and nonprofits about scalable inclusive education tools</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section id="reflection" class="reflection-section">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Reflection & Next Steps</p>
+      <h2 class="section-title">Accessibility is not a feature —<br />it's a <em>mindset.</em></h2>
+      <p class="body-text">Saksham taught me that designing for neurodiversity requires empathy, iteration, and the willingness to challenge assumptions about "standard" users. It also reinforced my belief that inclusive design doesn't just serve a niche — it makes experiences better for everyone.</p>
+
+      <div class="callout-box">
+        <p>What began as a personal passion project evolved into <strong>published research</strong> and a design framework that can be applied at scale. The journey from curiosity to publication was one of the most meaningful experiences of my design career — and it's only the beginning.</p>
+      </div>
+
+      <h3 class="sub-heading">Looking Ahead</h3>
+
+      <div class="next-steps-list">
+        <div class="next-step-row">
+          <div class="next-step-icon">🤝</div>
+          <div>
+            <div class="next-step-name">NGO Collaboration</div>
+            <div class="next-step-desc">Partner with Indian NGOs to develop a pilot version of Saksham for real classrooms.</div>
+          </div>
+        </div>
+        <div class="next-step-row">
+          <div class="next-step-icon">🤖</div>
+          <div>
+            <div class="next-step-name">AI-Driven Personalization</div>
+            <div class="next-step-desc">Integrate AI for real-time learning support — adapting content difficulty and presentation based on individual progress.</div>
+          </div>
+        </div>
+        <div class="next-step-row">
+          <div class="next-step-icon">🌍</div>
+          <div>
+            <div class="next-step-name">Cross-Cultural Research</div>
+            <div class="next-step-desc">Expand research on cross-cultural inclusivity in educational UX beyond the Indian context.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project fade-in">
+    <div class="next-label">Next Project</div>
+    <div class="next-title">Nexstera Tech — <em>Redesigning for Climate Impact</em></div>
+    <a href="nexstera.html" class="next-btn">View case study →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 75);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Scroll-spy: highlight the active tab
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const sectionIds = ['overview', 'problem', 'research', 'insights', 'design', 'solution', 'impact', 'reflection'];
+    const tabsBar = document.getElementById('sectionTabs');
+    const navH = document.querySelector('nav').offsetHeight;
+    const tabsH = tabsBar.offsetHeight;
+    const offset = navH + tabsH + 16;
+
+    function setActiveTab(id) {
+      tabLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+      const activeLink = tabsBar.querySelector('.tab-link.active');
+      if (activeLink) {
+        const linkLeft = activeLink.offsetLeft;
+        const linkW = activeLink.offsetWidth;
+        const barW = tabsBar.offsetWidth;
+        tabsBar.scrollLeft = linkLeft - barW / 2 + linkW / 2;
+      }
+    }
+
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, { rootMargin: `-${offset}px 0px -55% 0px`, threshold: 0 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) spyObserver.observe(el);
+    });
+
+    // Smooth scroll with offset
+    tabLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - offset + 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

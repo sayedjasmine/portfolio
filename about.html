@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --dark: #18161A;
+      --mid: #7A7585;
+      --light: #EDE9F5;
+      --purple: #6B3FA0;
+      --purple-mid: #8B5CC8;
+      --purple-light: #C9B3E8;
+      --purple-bg: #F3EEFB;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--dark); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px;
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(107,63,160,0.08);
+    }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--dark); text-decoration: none; }
+    nav ul { display: flex; gap: 32px; list-style: none; }
+    nav ul a { font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    nav ul a:hover, nav ul a.active { color: var(--purple); }
+
+    /* ── HERO ── */
+    .about-hero {
+      padding: 130px 60px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .about-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 22px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .about-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--purple); }
+
+    .hero-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(38px, 4.4vw, 62px);
+      font-weight: 400; line-height: 1.08;
+      color: var(--dark); margin-bottom: 22px;
+    }
+    .hero-text h1 em { font-style: italic; color: var(--purple); }
+
+    .hero-text .lead {
+      font-size: 16px; font-weight: 300; color: var(--mid);
+      line-height: 1.78; margin-bottom: 36px; max-width: 460px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+    .hero-stat {
+      display: flex; flex-direction: column; gap: 4px;
+      padding-right: 28px; margin-right: 28px;
+      border-right: 1px solid rgba(107,63,160,0.12);
+    }
+    .hero-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px; line-height: 1; color: var(--purple);
+    }
+    .stat-label { font-size: 12px; font-weight: 400; color: var(--mid); line-height: 1.4; }
+
+    /* Photo collage */
+    .hero-photos {
+      position: relative;
+      height: 580px;
+    }
+    .hero-photo-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 72%; height: 100%;
+      border-radius: 22px; overflow: hidden;
+      box-shadow: 0 28px 72px rgba(107,63,160,0.16);
+    }
+    .hero-photo-main img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top; display: block;
+    }
+    .hero-photo-accent {
+      position: absolute;
+      bottom: 40px; right: 0;
+      width: 46%; height: 44%;
+      border-radius: 18px; overflow: hidden;
+      border: 4px solid var(--white);
+      box-shadow: 0 16px 48px rgba(107,63,160,0.22);
+    }
+    .hero-photo-accent img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .photo-tag {
+      position: absolute;
+      top: 24px; right: 0;
+      background: var(--purple-bg);
+      border: 1px solid rgba(107,63,160,0.15);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 12px; font-weight: 500; color: var(--purple);
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(107,63,160,0.1);
+    }
+
+    /* ── STORY ── */
+    .story-section { padding: 0 60px 80px; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 32px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--light); }
+
+    .story-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start;
+    }
+
+    .story-col h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 2.6vw, 34px);
+      font-weight: 400; line-height: 1.2; color: var(--dark); margin-bottom: 22px;
+    }
+    .story-col h2 em { font-style: italic; color: var(--purple); }
+    .story-col p {
+      font-size: 15.5px; font-weight: 300; color: var(--mid);
+      line-height: 1.82; margin-bottom: 18px;
+    }
+    .story-col p strong { font-weight: 500; color: var(--dark); }
+
+    /* Fun facts grid */
+    .facts-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 20px;
+    }
+    .facts-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    .fact-card {
+      background: var(--purple-bg);
+      border: 1px solid rgba(107,63,160,0.1);
+      border-radius: 18px; padding: 18px 16px;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+    }
+    .fact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,63,160,0.12); }
+    .fact-emoji { font-size: 20px; margin-bottom: 10px; display: block; }
+    .fact-card strong { display: block; font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
+    .fact-card span { font-size: 12px; font-weight: 300; color: var(--mid); line-height: 1.55; }
+
+    /* ── AVAILABILITY ── */
+    .availability-section {
+      margin: 0 60px 80px;
+      background: var(--purple); border-radius: 24px; padding: 56px 64px;
+      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+    }
+    .availability-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 2.4vw, 34px);
+      font-weight: 400; color: white; line-height: 1.2; margin-bottom: 14px;
+    }
+    .availability-section h2 em { font-style: italic; color: var(--purple-light); }
+    .availability-section p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.72; max-width: 520px; }
+    .availability-ctas { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .avail-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13.5px; font-weight: 500; padding: 13px 26px;
+      border-radius: 100px; text-decoration: none; white-space: nowrap; transition: all 0.22s;
+    }
+    .avail-btn.primary { background: white; color: var(--purple); }
+    .avail-btn.primary:hover { background: var(--light); }
+    .avail-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.3); }
+    .avail-btn.secondary:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.6); }
+
+    /* ── CAROUSEL ── */
+    .carousel-section { padding: 0 0 88px; }
+    .carousel-header {
+      padding: 0 60px; margin-bottom: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .carousel-title {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mid);
+    }
+    .carousel-hint { font-size: 12px; color: var(--purple-light); }
+
+    .carousel-outer {
+      overflow-x: scroll; overflow-y: hidden;
+      cursor: grab; scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .carousel-outer::-webkit-scrollbar { display: none; }
+    .carousel-outer:active { cursor: grabbing; }
+
+    .carousel-strip {
+      display: flex; gap: 14px;
+      padding: 0 60px 12px;
+      width: max-content;
+    }
+
+    .c-slide {
+      flex-shrink: 0; height: 380px;
+      border-radius: 18px; overflow: hidden; background: var(--light);
+    }
+    .c-slide:nth-child(5n+1) { width: 290px; }
+    .c-slide:nth-child(5n+2) { width: 340px; }
+    .c-slide:nth-child(5n+3) { width: 260px; }
+    .c-slide:nth-child(5n+4) { width: 320px; }
+    .c-slide:nth-child(5n+0) { width: 280px; }
+    .c-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+    }
+    .c-slide:hover img { transform: scale(1.04); }
+
+    .carousel-progress-wrap {
+      padding: 16px 60px 0;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .carousel-progress-track {
+      flex: 1; height: 3px; background: var(--light); border-radius: 2px; overflow: hidden;
+    }
+    .carousel-progress-fill {
+      height: 100%; background: var(--purple); border-radius: 2px;
+      width: 0%; transition: width 0.1s linear;
+    }
+    .carousel-progress-label { font-size: 11.5px; color: var(--mid); white-space: nowrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px; background: #12101A;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-right a:hover { color: var(--purple-light); }
+
+    /* ── FADE IN ── */
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-hero { grid-template-columns: 1fr; padding: 120px 40px 60px; gap: 48px; min-height: auto; }
+      .hero-photos { height: 420px; }
+      .story-grid { grid-template-columns: 1fr; gap: 44px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .about-hero { padding: 100px 24px 48px; }
+      .story-section { padding: 0 24px 56px; }
+      .availability-section { grid-template-columns: 1fr; margin: 0 24px 56px; padding: 36px; }
+      .availability-ctas { flex-direction: row; }
+      .facts-grid { grid-template-columns: 1fr; }
+      .hero-photos { height: 320px; }
+      .carousel-header { padding: 0 24px; }
+      .carousel-strip { padding: 0 24px 12px; }
+      .carousel-progress-wrap { padding: 14px 24px 0; }
+      .c-slide { height: 260px; }
+      footer { padding: 24px; }
+    }
+    @media (max-width: 480px) {
+      nav ul { display: none; }
+      .hero-stats { flex-wrap: wrap; }
+      .c-slide { height: 200px; }
+      .availability-ctas { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <ul>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="experience.html">Resume</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="about-hero">
+
+    <div class="hero-text fade-in">
+      <p class="about-eyebrow">A little more about me</p>
+      <h1>Designer, researcher,<br /><em>perpetual learner.</em></h1>
+      <p class="lead">Product designer + UX researcher driven by curiosity, inclusion, and the belief that thoughtful design can make the world more human.</p>
+    </div>
+
+    <div class="hero-photos fade-in">
+      <div class="hero-photo-main">
+        <img src="about-carousel-22.png" alt="Jasmine Sayed" />
+      </div>
+      <div class="hero-photo-accent" id="heroAccent">
+        <img src="about-carousel-2.png" alt="Jasmine" onerror="document.getElementById('heroAccent').style.display='none'" />
+      </div>
+      <div class="photo-tag">📍 San Francisco, CA &amp; Seattle, WA</div>
+    </div>
+
+  </section>
+
+  <!-- STORY + FACTS -->
+  <section class="story-section">
+    <p class="section-label fade-in">My story</p>
+
+    <div class="story-grid">
+      <div class="story-col fade-in">
+        <h2>Designing with purpose,<br /><em>always.</em></h2>
+        <p>I'm <strong>Jasmine Sayed</strong> — a Product Designer and UX Researcher pursuing my <strong>Master's in Human Centered Design & Engineering at the University of Washington</strong> ('27).</p>
+        <p>My design journey started with my Girl Scout Gold Award, where I built my first website and realized tech could actually make a difference for people.</p>
+        <p>Since then I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> building research-driven, human-centered experiences — especially at the crossroads of AI and accessibility.</p>
+      </div>
+
+      <div class="facts-col fade-in">
+        <p class="facts-label">When I'm not designing</p>
+        <div class="facts-grid">
+          <div class="fact-card">
+            <span class="fact-emoji">👩‍🏫</span>
+            <strong>I'm Teaching!</strong>
+            <span>Nothing beats watching a kid's face light up when something finally clicks</span>
+          </div>
+          <div class="fact-card">
+            <span class="fact-emoji">🌋</span>
+            <strong>I'm Out Exploring</strong>
+            <span>I once hiked an active volcano and would absolutely do it again</span>
+          </div>
+          <div class="fact-card">
+            <span class="fact-emoji">💡</span>
+            <strong>I'm at a Hackathon</strong>
+            <span>48 hours of chaos that somehow turns into something real? Sign me up</span>
+          </div>
+          <div class="fact-card">
+            <span class="fact-emoji">🍣</span>
+            <strong>I'm Being a Foodie</strong>
+            <span>Sushi and tiramisu are my love languages, no further questions</span>
+          </div>
+          <div class="fact-card">
+            <span class="fact-emoji">🏀</span>
+            <strong>I'm Cheering on My Teams</strong>
+            <span>Seahawks and Lakers ride or die — I don't make the rules</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVAILABILITY -->
+  <div class="availability-section fade-in">
+    <div>
+      <h2>Currently open to<br /><em>new opportunities.</em></h2>
+      <p>Looking for full-time roles in <strong style="color:rgba(255,255,255,0.9)">Product Design, UX Research, Product Management, and AI</strong>. My Master's classes are evenings-only, so I'm available full-time and open to relocating. Let's talk!</p>
+    </div>
+    <div class="availability-ctas">
+      <a href="mailto:sayedjasmine@gmail.com" class="avail-btn primary">Say hello →</a>
+      <a href="index.html#work" class="avail-btn secondary">View my work</a>
+    </div>
+  </div>
+
+  <!-- CAROUSEL -->
+  <section class="carousel-section fade-in">
+    <div class="carousel-header">
+      <p class="carousel-title">Life through my eyes 🌸</p>
+      <p class="carousel-hint">← drag to explore →</p>
+    </div>
+
+    <div class="carousel-outer" id="carouselOuter">
+      <div class="carousel-strip" id="carouselStrip">
+        <!-- Set 1 — 18 photos, shuffled -->
+        <div class="c-slide"><img src="about-carousel-12.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-5.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-21.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-9.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-16.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-20.JPG" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-7.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-1.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-18.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-6.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-22.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-4.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-11.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-2.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-10.png" alt="Jasmine" /></div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="c-slide"><img src="about-carousel-12.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-5.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-21.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-9.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-16.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-20.JPG" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-7.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-1.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-18.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-6.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-22.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-4.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-11.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-2.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="about-carousel-10.png" alt="Jasmine" /></div>
+      </div>
+    </div>
+
+    <div class="carousel-progress-wrap">
+      <div class="carousel-progress-track">
+        <div class="carousel-progress-fill" id="progressFill"></div>
+      </div>
+      <span class="carousel-progress-label" id="progressLabel">drag to explore</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Hide carousel slides whose image fails to load (no blank boxes)
+    document.querySelectorAll('.c-slide img').forEach(img => {
+      img.addEventListener('error', () => {
+        img.closest('.c-slide').style.display = 'none';
+      });
+    });
+
+    // Fade-in
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // ── CAROUSEL ──
+    const outer  = document.getElementById('carouselOuter');
+    const strip  = document.getElementById('carouselStrip');
+    const fill   = document.getElementById('progressFill');
+    const label  = document.getElementById('progressLabel');
+
+    let isHovering = false;
+    let isDragging = false;
+    const autoSpeed = 0.7;
+
+    function autoScrollTick() {
+      if (!isHovering && !isDragging) {
+        outer.scrollLeft += autoSpeed;
+        const half = strip.scrollWidth / 2;
+        if (outer.scrollLeft >= half) outer.scrollLeft -= half;
+      }
+      updateProgress();
+      requestAnimationFrame(autoScrollTick);
+    }
+
+    function updateProgress() {
+      const half = strip.scrollWidth / 2;
+      const pct  = half > 0 ? Math.min((outer.scrollLeft % half) / half * 100, 100) : 0;
+      fill.style.width = pct + '%';
+      const idx = Math.round(pct / (100 / 18));
+      label.textContent = idx > 0 ? `${Math.min(idx, 18)} / 18` : 'drag to explore';
+    }
+
+    outer.addEventListener('mouseenter', () => isHovering = true);
+    outer.addEventListener('mouseleave', () => { isHovering = false; isDragging = false; });
+
+    let dragStartX = 0, dragScrollL = 0;
+    outer.addEventListener('mousedown', e => {
+      isDragging = true; dragStartX = e.pageX; dragScrollL = outer.scrollLeft;
+      outer.style.cursor = 'grabbing';
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; outer.style.cursor = 'grab'; });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      outer.scrollLeft = dragScrollL - (e.pageX - dragStartX) * 1.4;
+    });
+
+    let touchStartX = 0, touchScrollL = 0;
+    outer.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].pageX; touchScrollL = outer.scrollLeft; isHovering = true;
+    }, { passive: true });
+    outer.addEventListener('touchmove', e => {
+      outer.scrollLeft = touchScrollL + (touchStartX - e.touches[0].pageX);
+    }, { passive: true });
+    outer.addEventListener('touchend', () => { isHovering = false; });
+
+    outer.addEventListener('scroll', () => {
+      const half = strip.scrollWidth / 2;
+      if (outer.scrollLeft >= half) outer.scrollLeft -= half;
+      if (outer.scrollLeft <= 0 && half > 0) outer.scrollLeft += half;
+    });
+
+    autoScrollTick();
+  </script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --dark: #18161A;
+      --mid: #7A7585;
+      --light: #EDE9F5;
+      --purple: #6B3FA0;
+      --purple-mid: #8B5CC8;
+      --purple-light: #C9B3E8;
+      --purple-bg: #F3EEFB;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(107,63,160,0.08);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px; color: var(--dark);
+      text-decoration: none; letter-spacing: -0.02em;
+    }
+    nav ul { display: flex; gap: 32px; list-style: none; }
+    nav ul a {
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--mid);
+      text-decoration: none; transition: color 0.2s;
+    }
+    nav ul a:hover, nav ul a.active { color: var(--purple); }
+
+    /* ── HERO (compact) ── */
+    .page-hero {
+      padding: 120px 60px 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      max-width: 1200px;
+    }
+
+    .hero-left { max-width: 560px; }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .page-eyebrow::before {
+      content: ''; width: 28px; height: 1.5px; background: var(--purple);
+    }
+
+    .page-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400; line-height: 1.1;
+      color: var(--dark); margin-bottom: 14px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--purple); }
+
+    .page-hero p {
+      font-size: 16px; font-weight: 300;
+      color: var(--mid); line-height: 1.7;
+    }
+
+    .resume-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 500;
+      color: var(--purple); background: var(--purple-bg);
+      border: 1.5px solid rgba(107,63,160,0.2);
+      padding: 10px 22px; border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .resume-btn:hover {
+      background: var(--light); border-color: var(--purple);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .exp-content {
+      padding: 0 60px 80px;
+      max-width: 1200px;
+    }
+
+    /* Section labels */
+    .section-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 20px;
+      padding-top: 40px;
+      display: flex; align-items: center; gap: 14px;
+      scroll-margin-top: 90px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--light);
+    }
+
+    /* ── FEATURED ROLE (Microsoft) ── */
+    .featured-role {
+      display: flex;
+      gap: 28px;
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid rgba(107,63,160,0.1);
+      background: var(--white);
+      margin-bottom: 20px;
+      transition: box-shadow 0.2s;
+    }
+    .featured-role:hover {
+      box-shadow: 0 8px 32px rgba(107,63,160,0.06);
+    }
+
+    .featured-logo {
+      width: 52px; height: 52px;
+      border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .featured-info { flex: 1; }
+
+    .featured-company {
+      font-size: 17px; font-weight: 500;
+      color: var(--dark); margin-bottom: 2px;
+    }
+
+    .featured-location {
+      font-size: 12px; color: var(--mid); margin-bottom: 14px;
+    }
+
+    .featured-roles {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .featured-role-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .featured-role-left { flex: 1; }
+
+    .featured-title {
+      font-size: 14.5px; font-weight: 500; color: var(--dark);
+    }
+
+    .featured-type {
+      font-size: 11px; font-weight: 500; color: var(--purple); margin-top: 2px;
+    }
+
+    .featured-desc {
+      font-size: 13px; font-weight: 300; color: var(--mid);
+      line-height: 1.6; margin-top: 4px;
+    }
+
+    .featured-date {
+      font-size: 11.5px; color: var(--mid);
+      white-space: nowrap; flex-shrink: 0; padding-top: 2px;
+    }
+
+    /* ── COMPACT WORK GRID ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .work-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(107,63,160,0.08);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .work-card:hover {
+      border-color: var(--purple-light);
+      box-shadow: 0 4px 16px rgba(107,63,160,0.06);
+    }
+
+    .work-emoji {
+      width: 36px; height: 36px;
+      border-radius: 10px; background: var(--light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+      border: 1px solid rgba(107,63,160,0.08);
+    }
+
+    .work-card-info { flex: 1; min-width: 0; }
+
+    .work-card-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 8px;
+    }
+
+    .work-card-title {
+      font-size: 13.5px; font-weight: 500; color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .work-card-date {
+      font-size: 10.5px; color: var(--mid);
+      white-space: nowrap; flex-shrink: 0; padding-top: 2px;
+    }
+
+    .work-card-company {
+      font-size: 11.5px; color: var(--purple);
+      font-weight: 500; margin-top: 2px;
+    }
+
+    .work-card-desc {
+      font-size: 12px; font-weight: 300;
+      color: var(--mid); line-height: 1.55; margin-top: 6px;
+    }
+
+    /* ── ACTIVITIES (compact rows) ── */
+    .activities-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+
+    .activity-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+    .activity-row:hover { background: var(--purple-bg); }
+
+    .activity-row-main { flex: 1; }
+
+    .activity-row-title {
+      font-size: 14px; font-weight: 500; color: var(--dark);
+    }
+
+    .activity-row-org {
+      font-size: 11.5px; color: var(--purple);
+      font-weight: 500; margin-top: 2px;
+    }
+
+    .activity-row-desc {
+      font-size: 12.5px; font-weight: 300;
+      color: var(--mid); line-height: 1.6; margin-top: 6px;
+    }
+
+    .activity-row-date {
+      font-size: 11px; color: var(--mid);
+      white-space: nowrap; flex-shrink: 0; padding-top: 3px;
+    }
+
+    /* ── CERTS (inline row) ── */
+    .certs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .cert-chip {
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(107,63,160,0.1);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .cert-chip:hover {
+      border-color: var(--purple-light);
+      box-shadow: 0 4px 16px rgba(107,63,160,0.06);
+    }
+
+    .cert-chip-icon { font-size: 20px; margin-bottom: 10px; }
+
+    .cert-chip-name {
+      font-size: 12.5px; font-weight: 500;
+      color: var(--dark); line-height: 1.35; margin-bottom: 4px;
+    }
+
+    .cert-chip-meta {
+      font-size: 11px; color: var(--mid);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px; background: #12101A;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-right a:hover { color: var(--purple-light); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 28px; }
+      .page-hero { padding: 100px 28px 36px; flex-direction: column; align-items: flex-start; }
+      .exp-content { padding: 0 28px 60px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .certs-row { grid-template-columns: repeat(2, 1fr); }
+      footer { padding: 24px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .featured-role { flex-direction: column; gap: 16px; }
+      .certs-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <ul>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html" class="active">Resume</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero fade-in">
+    <div class="hero-left">
+      <p class="page-eyebrow">Resume</p>
+      <h1>Where I've been,<br /><em>what I've built.</em></h1>
+      <p>Designer, researcher, and builder — from Girl Scout Gold Award to Microsoft CoreAI.</p>
+    </div>
+    <a href="Official Jasmine Resume.pdf" target="_blank" class="resume-btn">
+      ↓ &nbsp;Download Resume
+    </a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="exp-content">
+
+    <!-- ── WORK ── -->
+    <h2 class="section-label" id="work">Work Experience</h2>
+
+    <!-- Featured: Microsoft -->
+    <div class="featured-role fade-in">
+      <div class="featured-logo" style="background: #f25022;">
+        <svg width="52" height="52" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" fill="white"/><rect x="9" y="9" width="10" height="10" fill="#f25022"/><rect x="21" y="9" width="10" height="10" fill="#7fba00"/><rect x="9" y="21" width="10" height="10" fill="#00a4ef"/><rect x="21" y="21" width="10" height="10" fill="#ffb900"/></svg>
+      </div>
+      <div class="featured-info">
+        <div class="featured-company">Microsoft</div>
+        <div class="featured-location">Redmond, WA</div>
+        <div class="featured-roles">
+          <div>
+            <div class="featured-role-row">
+              <div class="featured-role-left">
+                <div class="featured-title">User Experience Designer</div>
+                <div class="featured-type">Co-op · Microsoft CoreAI</div>
+              </div>
+              <div class="featured-date">Apr 2026 – Present</div>
+            </div>
+            <div class="featured-desc">Working with Microsoft's CoreAI team to redesign Microsoft Foundry.</div>
+          </div>
+          <div>
+            <div class="featured-role-row">
+              <div class="featured-role-left">
+                <div class="featured-title">User Experience Researcher</div>
+                <div class="featured-type">Co-op · Microsoft CoreAI</div>
+              </div>
+              <div class="featured-date">Jan – Mar 2026</div>
+            </div>
+            <div class="featured-desc">End-to-end usability testing and research to improve the Microsoft Foundry experience.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rest of work: compact 2-col grid -->
+    <div class="work-grid fade-in">
+
+      <div class="work-card">
+        <div class="work-emoji">🎓</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">Design & Operations Associate</div>
+            <div class="work-card-date">Sep 2025 – Present</div>
+          </div>
+          <div class="work-card-company">UW Children's Center</div>
+          <div class="work-card-desc">Digital materials and classroom operations support.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">🚀</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">AI Product Design Intern</div>
+            <div class="work-card-date">Jun – Sep 2025</div>
+          </div>
+          <div class="work-card-company">DevSpot</div>
+          <div class="work-card-desc">Designed messaging feature, design system annotations, and recap reports.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">⚙️</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">Junior Product Designer</div>
+            <div class="work-card-date">Jun – Sep 2024</div>
+          </div>
+          <div class="work-card-company">Ensemble Technologies</div>
+          <div class="work-card-desc">UI design for software bridging design and development workflows.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji" style="background: #232F3E; border-color: #232F3E;">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none"><text x="20" y="22" text-anchor="middle" fill="white" font-family="DM Sans, sans-serif" font-size="10" font-weight="600">aws</text><path d="M12 26 Q20 30 28 26" stroke="#FF9900" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M26 24 L28 26 L26 28" stroke="#FF9900" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">UX Design Consultant</div>
+            <div class="work-card-date">Feb – Jun 2024</div>
+          </div>
+          <div class="work-card-company">Amazon Web Services (AWS)</div>
+          <div class="work-card-desc">AI & Ethics Hackathon — event logistics, branding, and promotional design.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">🌿</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">UX Designer</div>
+            <div class="work-card-date">Jan – Mar 2024</div>
+          </div>
+          <div class="work-card-company">Nexstera Tech</div>
+          <div class="work-card-desc">Full website and investor pitch deck design.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">🛒</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">UX Designer</div>
+            <div class="work-card-date">Jun – Aug 2023</div>
+          </div>
+          <div class="work-card-company">Conspire Commerce</div>
+          <div class="work-card-desc">Shared cart pop-up extension and end-to-end user flows.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">🖨️</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">Project Management Intern</div>
+            <div class="work-card-date">Apr – Jun 2023</div>
+          </div>
+          <div class="work-card-company">University Graphic Systems</div>
+          <div class="work-card-desc">Promotional items, project management, and building operations.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">✈️</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">UX Designer</div>
+            <div class="work-card-date">Mar – May 2023</div>
+          </div>
+          <div class="work-card-company">Hidden Travel</div>
+          <div class="work-card-desc">Full brand identity — guidelines, logo, and website UI.</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-emoji">🎬</div>
+        <div class="work-card-info">
+          <div class="work-card-top">
+            <div class="work-card-title">Social Media Marketing Intern</div>
+            <div class="work-card-date">Dec 2022 – May 2023</div>
+          </div>
+          <div class="work-card-company">15 Seconds of Fame, Inc.</div>
+          <div class="work-card-desc">Sports clip production for social platform brand visibility.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ACTIVITIES ── -->
+    <h2 class="section-label" id="activities">Activities & Leadership</h2>
+
+    <div class="activities-list fade-in">
+
+      <div class="activity-row">
+        <div class="activity-row-main">
+          <div class="activity-row-title">Member — Figma @ University of Washington</div>
+          <div class="activity-row-org">UW College of Engineering</div>
+          <div class="activity-row-desc">Collaborative design projects and community events. Won 1st place at the Figma Make Hackathon for Best Game Mechanics.</div>
+        </div>
+        <div class="activity-row-date">Sep 2025 – Present</div>
+      </div>
+
+      <div class="activity-row">
+        <div class="activity-row-main">
+          <div class="activity-row-title">President — UX Fest SLO</div>
+          <div class="activity-row-org">Cal Poly San Luis Obispo</div>
+          <div class="activity-row-desc">Led Cal Poly's UX design hackathon with 140+ participants. Managed 50 members across events, design, multimedia, finance, and marketing.</div>
+        </div>
+        <div class="activity-row-date">Sep 2022 – Jun 2025</div>
+      </div>
+
+      <div class="activity-row">
+        <div class="activity-row-main">
+          <div class="activity-row-title">Product Designer — Cal Poly Iter8</div>
+          <div class="activity-row-org">Cal Poly San Luis Obispo</div>
+          <div class="activity-row-desc">Delivered user-centered web and app solutions for clients including Hidden Travel, Nexstera Tech, Amazon DX Hub, and Conspire Commerce. 15+ interactive Figma prototypes.</div>
+        </div>
+        <div class="activity-row-date">Apr 2023 – May 2025</div>
+      </div>
+
+      <div class="activity-row">
+        <div class="activity-row-main">
+          <div class="activity-row-title">Graphics & Marketing Coordinator — Mat Pica Pi</div>
+          <div class="activity-row-org">Cal Poly San Luis Obispo</div>
+          <div class="activity-row-desc">Designed all marketing assets and visual materials for the typography and design organization.</div>
+        </div>
+        <div class="activity-row-date">Jun 2023 – Jun 2024</div>
+      </div>
+
+      <div class="activity-row">
+        <div class="activity-row-main">
+          <div class="activity-row-title">UX/UI Designer — Hack4Impact</div>
+          <div class="activity-row-org">Cal Poly San Luis Obispo</div>
+          <div class="activity-row-desc">Delivered 2 full-stack nonprofit projects (GoSee Foundation, Central Coast Coalition) — apps and volunteer tools with engineers, PMs, and designers.</div>
+        </div>
+        <div class="activity-row-date">Jan – May 2024</div>
+      </div>
+
+    </div>
+
+    <!-- ── CERTIFICATIONS ── -->
+    <h2 class="section-label" id="certifications">Certifications</h2>
+
+    <div class="certs-row fade-in">
+      <div class="cert-chip">
+        <div class="cert-chip-icon">🎨</div>
+        <div class="cert-chip-name">Style Guides & Design Systems</div>
+        <div class="cert-chip-meta">LinkedIn Learning · Jan 2026</div>
+      </div>
+      <div class="cert-chip">
+        <div class="cert-chip-icon">🧪</div>
+        <div class="cert-chip-name">Usability Testing</div>
+        <div class="cert-chip-meta">LinkedIn Learning · Dec 2025</div>
+      </div>
+      <div class="cert-chip">
+        <div class="cert-chip-icon">🖼️</div>
+        <div class="cert-chip-name">Figma for UX Design</div>
+        <div class="cert-chip-meta">LinkedIn Learning · Dec 2025</div>
+      </div>
+      <div class="cert-chip">
+        <div class="cert-chip-icon">💡</div>
+        <div class="cert-chip-name">Enterprise Design Thinking</div>
+        <div class="cert-chip-meta">IBM · Jun 2025</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

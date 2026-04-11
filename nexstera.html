@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexstera Tech — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --dark: #0F1F18;
+      --mid: #5A6E62;
+      --light-bg: #F4FAF7;
+      --green: #2D6A4F;
+      --green-mid: #40916C;
+      --green-light: #95D5B2;
+      --green-pale: #D8F3DC;
+      --green-bg: #EBF5EE;
+      --teal: #4FA8A2;
+      --teal-light: #A8D8D4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(45,106,79,0.1);
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--green); }
+    .nav-back .arrow { transition: transform 0.2s; }
+    .nav-back:hover .arrow { transform: translateX(-3px); }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-right a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--green); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      background: linear-gradient(155deg, #0B1F15 0%, #1B3D2A 40%, #2D6A4F 80%, #40916C 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 60px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-1 { width: 500px; height: 500px; top: -80px; right: -80px; background: radial-gradient(circle, rgba(149,213,178,0.2) 0%, transparent 60%); }
+    .hero-glow-2 { width: 360px; height: 360px; bottom: 0; left: 15%; background: radial-gradient(circle, rgba(64,145,108,0.35) 0%, transparent 65%); }
+
+    /* Subtle grid texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(149,213,178,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: rgba(149,213,178,0.5); }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 100px);
+      font-weight: 400;
+      color: white;
+      line-height: 0.95;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .hero h1 em { color: var(--green-light); font-style: italic; }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 540px;
+      line-height: 1.72;
+      margin-bottom: 52px;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(149,213,178,0.5);
+      margin-bottom: 5px;
+    }
+
+    .hero-meta-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    section { padding: 96px 0; }
+
+    .section-eyebrow {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--green); border-radius: 2px; }
+
+    h2.section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+    h2.section-title em { font-style: italic; color: var(--green); }
+
+    h3.sub-heading {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 14px;
+      margin-top: 44px;
+    }
+
+    p.body-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: #3A4E42;
+      line-height: 1.82;
+      margin-bottom: 20px;
+    }
+    p.body-text strong { color: var(--dark); font-weight: 500; }
+
+    .divider { width: 100%; height: 1px; background: rgba(45,106,79,0.1); }
+
+    /* ── ROLE STRIP ── */
+    .role-strip {
+      background: var(--green-bg);
+      padding: 52px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .role-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .role-value { font-size: 14.5px; font-weight: 400; color: var(--dark); line-height: 1.6; }
+
+    /* ── PROBLEM CARDS ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .problem-card {
+      border: 1px solid rgba(45,106,79,0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .problem-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: rgba(45,106,79,0.12);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .problem-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .problem-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── RESEARCH METHODS ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .method-card {
+      background: var(--white);
+      border: 1px solid rgba(45,106,79,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .method-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--green-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .method-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .method-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; }
+
+    /* ── COMPETITOR GRID ── */
+    .competitor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .competitor-card {
+      background: var(--light-bg);
+      border-radius: 14px;
+      padding: 22px 20px;
+      border-left: 3px solid var(--green-light);
+    }
+
+    .competitor-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .competitor-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* ── INSIGHTS ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .insight-card {
+      background: linear-gradient(145deg, #0B1F15, #1B3D2A);
+      border-radius: 16px;
+      padding: 32px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(149,213,178,0.18) 0%, transparent 70%);
+    }
+
+    .insight-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      color: rgba(149,213,178,0.18);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .insight-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .insight-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* ── OPPORTUNITIES ── */
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 32px 0;
+    }
+
+    .opp-card {
+      background: var(--white);
+      border: 1px solid rgba(45,106,79,0.12);
+      border-radius: 14px;
+      padding: 24px 20px;
+    }
+
+    .opp-category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .opp-text {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── WIREFRAME GRID ── */
+    .wireframe-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 40px 0;
+    }
+
+    .wireframe-frame {
+      background: #f6f6f6;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 10px 8px;
+      gap: 6px;
+    }
+
+    .wf-bar { height: 6px; border-radius: 3px; background: #e0e0e0; }
+    .wf-bar.dark { background: #c0c0c0; }
+    .wf-bar.green { background: rgba(45,106,79,0.2); }
+    .wf-rect { border-radius: 6px; background: #e8e8e8; }
+    .wf-label { font-size: 7px; font-weight: 600; color: #aaa; margin-bottom: 4px; }
+
+    /* ── FEATURES ── */
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 36px 0;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 24px;
+      border: 1px solid rgba(45,106,79,0.1);
+      border-radius: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-row:hover {
+      border-color: var(--green-mid);
+      box-shadow: 0 4px 20px rgba(45,106,79,0.08);
+    }
+
+    .feature-icon-box {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--green-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .feature-name { font-size: 14.5px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+    .feature-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.6; }
+
+    /* ── PROCESS GALLERY ── */
+    .process-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .process-gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(45,106,79,0.1);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .process-gallery-item:hover {
+      box-shadow: 0 12px 36px rgba(45,106,79,0.1);
+      transform: translateY(-3px);
+    }
+
+    .process-gallery-item.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .process-gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .process-gallery-caption {
+      padding: 16px 20px;
+    }
+
+    .process-gallery-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+
+    .process-gallery-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .process-gallery-desc {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--mid);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    /* ── WEBSITE MOCKUP ── */
+    .mockup-showcase {
+      border-radius: 24px;
+      margin: 48px 0;
+      overflow: hidden;
+      text-align: center;
+      background: transparent;
+    }
+
+    .laptop-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .laptop-screen {
+      background: white;
+      border-radius: 8px 8px 0 0;
+      border: 2px solid rgba(0,0,0,0.12);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .site-nav {
+      background: #3D6050;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-brand { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: 0.08em; }
+
+    .site-nav-links { display: flex; gap: 14px; }
+    .site-nav-link { font-size: 8px; color: rgba(255,255,255,0.65); }
+
+    .site-nav-btns { display: flex; gap: 6px; }
+    .site-btn {
+      font-size: 7.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: white;
+    }
+    .site-btn.outline { border: 1px solid rgba(255,255,255,0.4); }
+    .site-btn.filled { background: #2D5040; }
+
+    .site-hero {
+      background: linear-gradient(135deg, #E8F4EE 0%, #D4EDE0 100%);
+      padding: 28px 24px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .site-hero-text {}
+    .site-hero-headline { font-size: 16px; font-weight: 700; color: #1B3D2A; margin-bottom: 4px; }
+    .site-hero-sub { font-size: 9px; color: #5A6E62; margin-bottom: 10px; }
+
+    .site-hero-btns { display: flex; gap: 6px; }
+    .site-hero-btn {
+      font-size: 7.5px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: #2D5040;
+      color: white;
+    }
+
+    .site-hero-img {
+      height: 70px;
+      background: linear-gradient(135deg, rgba(45,80,64,0.1), rgba(64,145,108,0.15));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: rgba(45,80,64,0.3);
+    }
+
+    .site-section {
+      padding: 16px 24px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .site-section-title { font-size: 10px; font-weight: 700; color: #1B3D2A; margin-bottom: 8px; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .site-cards { display: flex; gap: 8px; }
+    .site-card {
+      flex: 1;
+      background: #f6f9f7;
+      border-radius: 6px;
+      padding: 8px;
+      border: 1px solid rgba(45,106,79,0.1);
+    }
+    .site-card-img { height: 32px; background: rgba(45,106,79,0.08); border-radius: 4px; margin-bottom: 5px; }
+    .site-card-title { font-size: 7px; font-weight: 600; color: #1B3D2A; }
+    .site-card-sub { font-size: 6px; color: #888; margin-top: 2px; }
+
+    .laptop-base { height: 10px; background: #e0e0e0; border-radius: 0 0 4px 4px; }
+    .laptop-stand { width: 35%; height: 10px; background: #d0d0d0; margin: 0 auto; border-radius: 0 0 6px 6px; }
+
+    /* ── DESIGN SYSTEM ── */
+    .ds-strip {
+      background: var(--green-bg);
+      border-radius: 20px;
+      padding: 48px;
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .ds-block-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .ds-colors { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .ds-color { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+    .ds-swatch { width: 48px; height: 48px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .ds-swatch-name { font-size: 9px; color: var(--mid); }
+
+    .ds-type { display: flex; flex-direction: column; gap: 14px; }
+    .ds-type-name { font-size: 10px; color: var(--mid); margin-bottom: 3px; }
+
+    /* ── IMPACT ── */
+    .impact-section {
+      background: linear-gradient(145deg, #0B1F15, #1B3D2A);
+      padding: 96px 0;
+    }
+
+    .impact-section .section-eyebrow { color: var(--green-light); }
+    .impact-section .section-eyebrow::before { background: var(--green-light); }
+    .impact-section h2.section-title { color: white; }
+    .impact-section h2.section-title em { color: var(--green-light); }
+    .impact-section p.body-text { color: rgba(255,255,255,0.6); }
+    .impact-section p.body-text strong { color: white; }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .impact-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(149,213,178,0.15);
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .impact-stat:hover { background: rgba(255,255,255,0.08); }
+
+    .impact-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 400;
+      color: var(--green-light);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .impact-label {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* ── REFLECTION ── */
+    .reflection-section {
+      background: var(--light-bg);
+      padding: 96px 0;
+    }
+
+    .callout-box {
+      background: white;
+      border: 1px solid rgba(45,106,79,0.15);
+      border-left: 4px solid var(--green);
+      border-radius: 0 16px 16px 0;
+      padding: 32px 36px;
+      margin: 32px 0;
+    }
+
+    .callout-box p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #3A4E42;
+      line-height: 1.78;
+    }
+    .callout-box p strong { color: var(--dark); font-weight: 500; }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      padding: 80px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(45,106,79,0.1);
+    }
+
+    .next-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 3.5vw, 48px);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+
+    .next-title em { font-style: italic; color: var(--green); }
+
+    .next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      background: var(--green);
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 100px;
+      transition: background 0.2s, gap 0.25s;
+    }
+    .next-btn:hover { background: var(--green-mid); gap: 18px; }
+
+        /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px;
+      background: #12101A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-right a:hover { color: var(--purple-light); }
+
+    /* ── SECTION TABS ── */
+    .section-tabs {
+      position: sticky;
+      top: 66px;
+      z-index: 90;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45,106,79,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 0 60px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .section-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+      top: 1px;
+    }
+
+    .tab-link:hover { color: var(--green); }
+    .tab-link.active { color: var(--green); border-bottom-color: var(--green); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 24px; }
+      .hero { padding: 100px 28px 56px; }
+      .container, .container-wide { padding: 0 28px; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
+      .problem-grid, .method-grid, .insights-grid, .competitor-grid, .opportunity-grid { grid-template-columns: 1fr; }
+      .wireframe-grid { grid-template-columns: 1fr 1fr; }
+      .ds-strip { grid-template-columns: 1fr; }
+      .impact-stats { grid-template-columns: 1fr; gap: 16px; }
+      .next-project { padding: 60px 28px; }
+      footer { padding: 22px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+      .wireframe-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-back">
+      <span class="arrow">←</span> All work
+    </a>
+    <div class="nav-right">
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- SECTION TABS -->
+  <div class="section-tabs" id="sectionTabs">
+    <a href="#overview"  class="tab-link active">Overview</a>
+    <a href="#problem"   class="tab-link">Problem</a>
+    <a href="#research"  class="tab-link">Research</a>
+    <a href="#insights"  class="tab-link">Insights</a>
+    <a href="#design"    class="tab-link">Design Process</a>
+    <a href="#solution"  class="tab-link">Solution</a>
+    <a href="#impact"    class="tab-link">Impact</a>
+    <a href="#reflection" class="tab-link">Reflection</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <p class="hero-tag">UX Design · Website Redesign · Climate Tech</p>
+    <h1>Nexstera<br /><em>Tech</em></h1>
+    <p class="hero-sub">Designed a website for a lithium-ion battery AI startup — helping secure $65K in seed funding and a 120% increase in investor engagement.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">My Role</div>
+        <div class="hero-meta-value">UX Designer</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Team</div>
+        <div class="hero-meta-value">5 designers · 2 PMs · Founding team</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Timeline</div>
+        <div class="hero-meta-value">Jan – Mar 2024 (8 weeks)</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Tools</div>
+        <div class="hero-meta-value">Figma · Illustrator · Miro</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLE STRIP -->
+  <div class="role-strip">
+    <div>
+      <div class="role-label">Context</div>
+      <div class="role-value">Early-stage climate<br />tech startup</div>
+    </div>
+    <div>
+      <div class="role-label">Focus</div>
+      <div class="role-value">Investor & Education<br />page design</div>
+    </div>
+    <div>
+      <div class="role-label">Funding Impact</div>
+      <div class="role-value">$65K seed funding<br />secured</div>
+    </div>
+    <div>
+      <div class="role-label">Engagement Lift</div>
+      <div class="role-value">120% increase in<br />page interactions</div>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <section id="overview-detail">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Introduction</p>
+      <h2 class="section-title">How might we build investor trust while educating the public about battery safety?</h2>
+      <p class="body-text">Nexstera Tech is a climate-tech startup using AI to detect lithium-ion batteries in waste facilities, reducing fire risk and improving safety. Their AI product, <strong>Pyrotack</strong>, identifies batteries before they cause harm in processing facilities.</p>
+      <p class="body-text">As a UX Designer, I contributed to ideation and design system development, and owned the <strong>Education & Investor page</strong> — shaping how Nexstera communicates its mission, credibility, and business value. I worked closely with designers, project managers, and Nexstera's founding team to align design decisions with funding and growth goals.</p>
+      <p class="body-text">My final design contributed to <strong>$65,000 in seed funding</strong> and a significant increase in investor engagement.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM IDENTIFICATION -->
+  <section id="problem">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Problem Identification</p>
+      <h2 class="section-title">Understanding<br />the problem.</h2>
+      <p class="body-text">Improper disposal of lithium-ion batteries in waste facilities leads to fires, equipment damage, and <strong>millions of dollars in losses annually</strong> — posing serious safety, environmental, and financial risks. As lithium-ion batteries become increasingly common, waste management systems struggle to reliably detect and remove them.</p>
+      <p class="body-text">Nexstera addresses this with Pyrotack, but as an early-stage startup, they faced the challenge of communicating complex technology in a way that builds investor trust while remaining accessible to the public. Their existing site struggled in three critical areas:</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-num">01</div>
+          <div class="problem-title">No Investor Resources</div>
+          <div class="problem-desc">The site had no dedicated investor page, making it difficult to showcase traction, business value, and funding potential to prospective backers.</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-num">02</div>
+          <div class="problem-title">Missing Educational Content</div>
+          <div class="problem-desc">Lithium-ion battery technology is widely misunderstood, yet the site offered little educational material to inform users and build credibility.</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-num">03</div>
+          <div class="problem-title">Weak Design Foundation</div>
+          <div class="problem-desc">Inconsistent design, poor hierarchy, and limited polish reduced brand credibility and user confidence in the platform.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- USER RESEARCH -->
+  <section id="research" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">User Research</p>
+      <h2 class="section-title">Let's dive deeper<br />into the data.</h2>
+      <p class="body-text">To empathize with the target users, I deployed three research methods to understand both investor expectations and the experience of a curious first-time visitor.</p>
+    </div>
+
+    <div class="container-wide">
+      <div class="method-grid fade-in">
+        <div class="method-card">
+          <div class="method-icon">🗺️</div>
+          <div class="method-name">Journey Mapping</div>
+          <div class="method-desc">Mapped the end-to-end journeys of two distinct users — an investor and a curious visitor — to identify friction points and emotional gaps at each stage.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🔍</div>
+          <div class="method-name">Competitive & Market Analysis</div>
+          <div class="method-desc">Analyzed 6 competitors in the battery and sustainability space to understand effective layout, tone, and content patterns across the industry.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📐</div>
+          <div class="method-name">UX & Content Audit</div>
+          <div class="method-desc">Conducted a full audit of Nexstera's existing web content and user flow to identify areas for simplification, clarity, and credibility improvement.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Competitors -->
+    <div class="container fade-in">
+      <h3 class="sub-heading">Competitive Landscape</h3>
+      <p class="body-text">I analyzed 6 companies in the battery and sustainability space to understand what effective digital presence looks like in this sector.</p>
+    </div>
+    <div class="container-wide fade-in">
+      <div class="competitor-grid">
+        <div class="competitor-card">
+          <div class="competitor-name">Nuvola Tech</div>
+          <div class="competitor-desc">SafeCoat™ DDS spray-on battery separator improving safety, energy density, and manufacturing efficiency.</div>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">Li-ion Tamer</div>
+          <div class="competitor-desc">Off-gas monitoring to prevent thermal runaway — offering up to 30 minutes of early warning for battery fires.</div>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">Li-Cycle</div>
+          <div class="competitor-desc">Battery recycling provider collecting and processing lithium-ion batteries to recover materials and support safer disposal.</div>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">Battery Recyclers of America</div>
+          <div class="competitor-desc">Canadian recycler active in the U.S., recovering 95%+ of materials from spent lithium batteries using shredding and chemical leaching.</div>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">InfraTec</div>
+          <div class="competitor-desc">Industrial infrared systems for battery production — improving manufacturing efficiency rather than end-of-life safety.</div>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">Redwood Materials</div>
+          <div class="competitor-desc">Founded by former Tesla CTO JB Straubel — major lithium-ion recycling and materials supply recovering critical metals from end-of-life batteries.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Opportunities -->
+    <div class="container fade-in">
+      <h3 class="sub-heading">Key Opportunities from the Audit</h3>
+    </div>
+    <div class="container-wide fade-in">
+      <div class="opportunity-grid">
+        <div class="opp-card">
+          <div class="opp-category">Content</div>
+          <div class="opp-text">Make the site more engaging and credible — simplify text, add personality and visuals, and highlight media coverage to build social proof.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-category">Structure</div>
+          <div class="opp-text">Improve navigation with clear actions, dedicated pages for battery types, step-by-step processes, FAQs, and intuitive dropdown menus.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-category">Design</div>
+          <div class="opp-text">Adopt minimalistic layouts with purposeful visuals and videos to clearly communicate product functionality without overwhelming users.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY INSIGHTS -->
+  <section id="insights">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Key Insights</p>
+      <h2 class="section-title">Three findings that shaped<br />every design decision.</h2>
+    </div>
+    <div class="container-wide">
+      <div class="insights-grid fade-in">
+        <div class="insight-card">
+          <div class="insight-num">01</div>
+          <div class="insight-title">Users prioritize clarity over complexity</div>
+          <div class="insight-body">Technical depth is only valuable if it's understandable. Simplified storytelling consistently outperformed dense technical explanations in user comprehension.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">02</div>
+          <div class="insight-title">Investors require a dedicated journey</div>
+          <div class="insight-body">They need fast access to traction, credibility signals, product value, and clear contact pathways — a general site wasn't enough.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">03</div>
+          <div class="insight-title">Competitor differentiation is critical</div>
+          <div class="insight-body">Strong visual identity and brand storytelling significantly impact trust and perceived legitimacy in the climate tech space.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DESIGN PROCESS -->
+  <section id="design" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design Process</p>
+      <h2 class="section-title">Creating the blueprint.</h2>
+      <p class="body-text">I started transforming concepts into tangible ideas — exploring features, refining layouts, and iterating through sketches. I built low, mid, and high fidelity wireframes in Figma, adding new pages including Product, Education, FAQ, Investor, and Contact.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="wireframe-grid">
+        <div class="wireframe-frame">
+          <div class="wf-label">Home</div>
+          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1;">
+            <div style="display:flex;flex-direction:column;gap:4px;justify-content:center;">
+              <div class="wf-bar dark" style="width:80%;height:7px;"></div>
+              <div class="wf-bar" style="width:60%;"></div>
+              <div class="wf-bar green" style="width:40%;height:10px;border-radius:5px;margin-top:4px;"></div>
+            </div>
+            <div class="wf-rect" style="height:100%;min-height:40px;"></div>
+          </div>
+        </div>
+        <div class="wireframe-frame">
+          <div class="wf-label">Product</div>
+          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
+          <div class="wf-rect" style="height:40px;margin:4px 0;"></div>
+          <div class="wf-bar" style="width:90%;"></div>
+          <div class="wf-bar" style="width:75%;margin:3px 0;"></div>
+          <div style="display:flex;gap:5px;margin-top:4px;">
+            <div class="wf-rect" style="flex:1;height:24px;"></div>
+            <div class="wf-rect" style="flex:1;height:24px;background:rgba(45,106,79,0.12);"></div>
+          </div>
+        </div>
+        <div class="wireframe-frame">
+          <div class="wf-label">Investor</div>
+          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:4px 0;">
+            <div class="wf-rect" style="height:20px;background:rgba(45,106,79,0.15);"></div>
+            <div class="wf-rect" style="height:20px;background:rgba(45,106,79,0.15);"></div>
+            <div class="wf-rect" style="height:20px;background:rgba(45,106,79,0.15);"></div>
+          </div>
+          <div class="wf-bar" style="width:100%;"></div>
+          <div class="wf-bar" style="width:80%;margin:3px 0;"></div>
+          <div class="wf-rect" style="height:20px;margin-top:auto;background:rgba(45,106,79,0.2);"></div>
+        </div>
+        <div class="wireframe-frame">
+          <div class="wf-label">Education</div>
+          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
+          <div class="wf-bar dark" style="width:60%;height:8px;margin:4px 0;"></div>
+          <div class="wf-rect" style="height:28px;margin:3px 0;"></div>
+          <div class="wf-bar" style="width:100%;"></div>
+          <div class="wf-bar" style="width:85%;margin:3px 0;"></div>
+          <div class="wf-bar" style="width:70%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Solution</p>
+      <h2 class="section-title">Introducing Nexstera Tech's<br /><em>new website.</em></h2>
+      <p class="body-text">A modern, investor-ready platform designed to balance technical depth, clarity, and credibility — creating a seamless experience for both investors and the general public.</p>
+    </div>
+
+    <!-- Website mockup -->
+    <div class="container-wide fade-in">
+      <div class="mockup-showcase">
+        <img src="nexstera-mockup.png" alt="Nexstera Tech redesigned website" style="width:100%;height:100%;object-fit:contain;border-radius:16px;display:block;" />
+      </div>
+
+      <!-- Key Features -->
+      <div class="features-list fade-in">
+        <div class="feature-row">
+          <div class="feature-icon-box">💰</div>
+          <div>
+            <div class="feature-name">Dedicated Investor Page</div>
+            <div class="feature-desc">Clearly presents traction, Pyrotack's value, and business potential — designed specifically to support funding conversations and investor outreach.</div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box">📚</div>
+          <div>
+            <div class="feature-name">Educational Content Hub</div>
+            <div class="feature-desc">Simplifies technical concepts about lithium-ion battery risks and Pyrotack's AI detection — building public awareness and credibility.</div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box">📖</div>
+          <div>
+            <div class="feature-name">Streamlined Product Storytelling</div>
+            <div class="feature-desc">Translates Pyrotack's complex technical functionality into accessible, engaging narratives that any visitor can understand.</div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box">🧩</div>
+          <div>
+            <div class="feature-name">Modular, Scalable Design System</div>
+            <div class="feature-desc">A cool green palette reflecting sustainability and innovation — ensuring visual consistency and long-term adaptability as Nexstera grows.</div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box">→</div>
+          <div>
+            <div class="feature-name">Clear Calls to Action</div>
+            <div class="feature-desc">Intentional engagement pathways that drive user flow from initial awareness through inquiry and conversion — for both investors and the public.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design System</p>
+      <h2 class="section-title">Built for credibility<br />and sustainability.</h2>
+      <p class="body-text">The design system features a sleek palette of cool greens to reflect sustainability and innovation — balancing professionalism with approachability.</p>
+    </div>
+
+    <div class="container fade-in">
+      <div class="ds-strip">
+        <div>
+          <div class="ds-block-title">Color Palette</div>
+          <div class="ds-colors">
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#0B1F15;"></div>
+              <div class="ds-swatch-name">Forest</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#2D6A4F;"></div>
+              <div class="ds-swatch-name">Primary</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#40916C;"></div>
+              <div class="ds-swatch-name">Mid Green</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#95D5B2;"></div>
+              <div class="ds-swatch-name">Sage</div>
+            </div>
+            <div class="ds-color">
+              <div class="ds-swatch" style="background:#D8F3DC; border: 1px solid #e0ede4;"></div>
+              <div class="ds-swatch-name">Pale</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="ds-block-title">Typography</div>
+          <div class="ds-type">
+            <div>
+              <div class="ds-type-name">Display — DM Serif Display</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark);">Safeguarding Waste.</div>
+            </div>
+            <div>
+              <div class="ds-type-name">Body — DM Sans Regular</div>
+              <div style="font-size:14px;color:var(--mid);font-weight:300;">AI-powered detection for safer facilities</div>
+            </div>
+            <div>
+              <div class="ds-type-name">Label — DM Sans Medium</div>
+              <div style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);">Learn More →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="impact-section">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Impact</p>
+      <h2 class="section-title">Redesigning the website contributed directly to <em>measurable results.</em></h2>
+      <p class="body-text">The redesigned experience significantly improved brand credibility, investor confidence, and storytelling clarity — with outcomes that directly supported Nexstera's funding goals.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <div class="impact-number">$65K</div>
+          <div class="impact-label">secured in investment funding directly supported by the redesigned investor page</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">120%</div>
+          <div class="impact-label">increase in page interactions and engagement following the website launch</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">40%</div>
+          <div class="impact-label">reduction in navigation friction through cleaner storytelling and intuitive structure</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section id="reflection" class="reflection-section">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Reflection</p>
+      <h2 class="section-title">What I learned &<br /><em>what comes next.</em></h2>
+      <p class="body-text">Working on Nexstera was an incredible experience, and I'm especially proud of owning the Investor page design, which had tangible real-world impact by helping secure funding.</p>
+
+      <div class="callout-box">
+        <p>Leading the Investor and Education page design while collaborating with designers, project managers, and the Nexstera founding team taught me a lot about <strong>aligning design decisions with business goals</strong>. The Nexstera team described the launch as a <strong>"monumental step toward attracting investors and global interest."</strong></p>
+      </div>
+
+      <p class="body-text">The next phase is to transition the design into a live website using Webflow, expanding reach and making the platform fully interactive. Given more time, I'd invest further in user testing across both investor and public-facing audiences.</p>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project fade-in">
+    <div class="next-label">Next Project</div>
+    <div class="next-title">Saksham — <em>Inclusive Learning for All</em></div>
+    <a href="saksham.html" class="next-btn">View case study →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">© 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 75);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Scroll-spy: highlight the active tab
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const sectionIds = ['overview', 'problem', 'research', 'insights', 'design', 'solution', 'impact', 'reflection'];
+    const tabsBar = document.getElementById('sectionTabs');
+    const navH = document.querySelector('nav').offsetHeight;
+    const tabsH = tabsBar.offsetHeight;
+    const offset = navH + tabsH + 16;
+
+    function setActiveTab(id) {
+      tabLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+      // Auto-scroll the tabs bar so the active tab is visible
+      const activeLink = tabsBar.querySelector('.tab-link.active');
+      if (activeLink) {
+        const linkLeft = activeLink.offsetLeft;
+        const linkW = activeLink.offsetWidth;
+        const barW = tabsBar.offsetWidth;
+        tabsBar.scrollLeft = linkLeft - barW / 2 + linkW / 2;
+      }
+    }
+
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, { rootMargin: `-${offset}px 0px -55% 0px`, threshold: 0 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) spyObserver.observe(el);
+    });
+
+    // Smooth scroll with offset so the section clears the sticky header
+    tabLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - offset + 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
