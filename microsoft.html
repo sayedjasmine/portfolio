@@ -82,12 +82,12 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 88vh;
+      min-height: 80vh;
       background: linear-gradient(155deg, #091428 0%, #0D2240 40%, #0058B4 80%, #2B88D8 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 120px 60px 72px;
+      padding: 90px 60px 42px;
       position: relative;
       overflow: hidden;
     }
@@ -142,13 +142,13 @@
       color: rgba(255,255,255,0.6);
       max-width: 560px;
       line-height: 1.72;
-      margin-bottom: 52px;
+      margin-bottom: 14px;
       position: relative;
     }
 
     .hero-meta {
       display: flex;
-      gap: 48px;
+      gap: 36px;
       flex-wrap: wrap;
       position: relative;
     }
@@ -172,7 +172,7 @@
     .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
     .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-    section { padding: 96px 0; }
+    section { padding: 64px 0; }
 
     .section-eyebrow {
       font-size: 10.5px;
@@ -193,7 +193,7 @@
       font-weight: 400;
       line-height: 1.12;
       color: var(--dark);
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
     h2.section-title em { font-style: italic; color: var(--blue); }
 
@@ -202,7 +202,7 @@
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 14px;
-      margin-top: 44px;
+      margin-top: 28px;
     }
 
     p.body-text {
@@ -210,7 +210,7 @@
       font-weight: 300;
       color: #3A4555;
       line-height: 1.82;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
     p.body-text strong { color: var(--dark); font-weight: 500; }
 
@@ -219,7 +219,7 @@
     /* ── ROLE STRIP ── */
     .role-strip {
       background: var(--blue-bg);
-      padding: 52px 60px;
+      padding: 40px 60px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
@@ -240,7 +240,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .rq-card {
@@ -279,7 +279,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .method-card {
@@ -318,7 +318,7 @@
       background: var(--blue-bg);
       border-radius: 20px;
       padding: 40px 44px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .criteria-title {
@@ -352,7 +352,7 @@
       border: 1px solid rgba(0,88,180,0.1);
       border-radius: 16px;
       padding: 28px 32px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .severity-legend-title {
@@ -400,7 +400,7 @@
       border: 1px solid rgba(0,88,180,0.12);
       border-radius: 20px;
       padding: 36px 36px 32px;
-      margin: 24px 0;
+      margin: 16px 0;
       position: relative;
       overflow: hidden;
     }
@@ -481,7 +481,7 @@
       border: 1px solid rgba(0,88,180,0.1);
       border-radius: 16px;
       padding: 28px 28px;
-      margin: 16px 0;
+      margin: 12px 0;
     }
 
     .success-title {
@@ -517,7 +517,7 @@
     /* ── MOCKUP SHOWCASE ── */
     .mockup-showcase {
       border-radius: 24px;
-      margin: 48px 0;
+      margin: 32px 0;
       overflow: hidden;
       text-align: center;
       background: transparent;
@@ -528,7 +528,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
-      margin: 36px 0;
+      margin: 24px 0;
     }
 
     .next-step-card {
@@ -574,7 +574,7 @@
     /* ── REFLECTION ── */
     .reflection-section {
       background: var(--light-bg);
-      padding: 96px 0;
+      padding: 64px 0;
     }
 
     .callout-box {
@@ -583,7 +583,7 @@
       border-left: 4px solid var(--blue);
       border-radius: 0 16px 16px 0;
       padding: 32px 36px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .callout-box p {
@@ -598,7 +598,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin: 36px 0;
+      margin: 24px 0;
     }
 
     .reflection-col-title {
@@ -626,7 +626,7 @@
     /* ── IMPACT STATS ── */
     .impact-section {
       background: linear-gradient(145deg, #091428, #0D2240);
-      padding: 96px 0;
+      padding: 64px 0;
     }
 
     .impact-section .section-eyebrow { color: var(--blue-light); }
@@ -640,7 +640,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin: 48px 0;
+      margin: 32px 0;
     }
 
     .impact-stat {
@@ -672,7 +672,7 @@
 
     /* ── NEXT PROJECT ── */
     .next-project {
-      padding: 80px 60px;
+      padding: 56px 60px;
       text-align: center;
       border-top: 1px solid rgba(0,88,180,0.1);
     }
@@ -710,6 +710,32 @@
       transition: background 0.2s, gap 0.25s;
     }
     .next-btn:hover { background: var(--blue-mid); gap: 18px; }
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding: 32px 60px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .bottom-nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-nav-link:hover { color: var(--dark); }
+    .bottom-nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -820,6 +846,7 @@
     <p class="hero-tag">UX Research · Usability Testing · AI Platform</p>
     <h1>Microsoft<br /><em>Foundry</em></h1>
     <p class="hero-sub">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform — uncovering critical blockers in the agent-creation flow.</p>
+    <p style="font-size: 12.5px; font-weight: 400; color: rgba(255,255,255,0.45); margin-top: 0; margin-bottom: 36px; max-width: 640px; line-height: 1.6; position: relative;">Microsoft Foundry is a publicly available platform. All information shared in this case study is based on publicly accessible features. Participant identities and internal data remain confidential and fully anonymized.</p>
     <div class="hero-meta">
       <div>
         <div class="hero-meta-label">My Role</div>
@@ -1145,6 +1172,11 @@
           <div class="next-step-title">Test Agent Integration End-to-End</div>
           <div class="next-step-body">Future studies should explore how easily users can take a published agent and actually integrate it (via code or embed) into a product or website — a critical step my study didn't cover.</div>
         </div>
+        <div class="next-step-card" style="grid-column: 1 / -1; border-left: 3px solid var(--blue-light);">
+          <div class="next-step-num">03</div>
+          <div class="next-step-title">Redesigning Foundry — UX Design Co-op</div>
+          <div class="next-step-body">As of April 2026, I've taken on a User Experience Design co-op under the same Microsoft CoreAI team to redesign Foundry — turning the research insights from this study into tangible design solutions.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1203,6 +1235,15 @@
     <div class="next-label">Next Project</div>
     <div class="next-title">Nox+ — <em>Secure Digital Identity</em></div>
     <a href="nox.html" class="next-btn">View case study →</a>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">My Work</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="about.html" class="bottom-nav-link">About</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="experience.html" class="bottom-nav-link">Resume</a>
   </div>
 
   <!-- FOOTER -->

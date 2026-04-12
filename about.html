@@ -248,6 +248,32 @@
     }
     .carousel-progress-label { font-size: 11.5px; color: var(--mid); white-space: nowrap; }
 
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding: 48px 60px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .bottom-nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-nav-link:hover { color: var(--dark); }
+    .bottom-nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+    }
+
     /* ── FOOTER ── */
     footer {
       padding: 28px 60px; background: #12101A;
@@ -314,10 +340,10 @@
 
     <div class="hero-photos fade-in">
       <div class="hero-photo-main">
-        <img src="about-carousel-22.png" alt="Jasmine Sayed" />
+        <img src="images/about-carousel-22.png" alt="Jasmine Sayed" />
       </div>
       <div class="hero-photo-accent" id="heroAccent">
-        <img src="about-carousel-2.png" alt="Jasmine" onerror="document.getElementById('heroAccent').style.display='none'" />
+        <img src="images/about-carousel-2.png" alt="Jasmine" onerror="document.getElementById('heroAccent').style.display='none'" />
       </div>
       <div class="photo-tag">📍 San Francisco, CA &amp; Seattle, WA</div>
     </div>
@@ -391,43 +417,43 @@
     <div class="carousel-outer" id="carouselOuter">
       <div class="carousel-strip" id="carouselStrip">
         <!-- Set 1 — 18 photos, shuffled -->
-        <div class="c-slide"><img src="about-carousel-12.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-5.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-21.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-9.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-16.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-3.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-20.JPG" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-7.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-14.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-1.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-18.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-6.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-22.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-4.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-11.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-2.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-13.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-10.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-1.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-4.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-11.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-10.png" alt="Jasmine" /></div>
         <!-- Set 2 — duplicate for seamless loop -->
-        <div class="c-slide"><img src="about-carousel-12.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-5.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-21.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-9.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-16.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-3.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-20.JPG" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-7.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-14.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-1.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-18.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-6.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-22.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-4.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-11.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-2.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-13.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="about-carousel-10.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-1.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-4.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-11.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-10.png" alt="Jasmine" /></div>
       </div>
     </div>
 
@@ -438,6 +464,15 @@
       <span class="carousel-progress-label" id="progressLabel">drag to explore</span>
     </div>
   </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">My Work</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="about.html" class="bottom-nav-link">About</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="experience.html" class="bottom-nav-link">Resume</a>
+  </div>
 
   <!-- FOOTER -->
   <footer>

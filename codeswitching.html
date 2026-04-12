@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code-Switching — Jasmine Sayed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #FFFFFF;
+      --dark: #1A1530;
+      --mid: #6B6580;
+      --light-bg: #F8F6FC;
+      --purple: #4B2E83;
+      --purple-mid: #6A4BA1;
+      --purple-light: #9575CD;
+      --purple-pale: #D1C4E9;
+      --purple-bg: #F3EEFB;
+      --gold: #B7A57A;
+      --gold-light: #E8DCC8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(75,46,131,0.08);
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--purple); }
+    .nav-back .arrow { transition: transform 0.2s; }
+    .nav-back:hover .arrow { transform: translateX(-3px); }
+
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-right a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--purple); }
+
+    /* ── SECTION TABS ── */
+    .section-tabs {
+      position: sticky;
+      top: 66px;
+      z-index: 90;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,46,131,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 0 60px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .section-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+      top: 1px;
+    }
+    .tab-link:hover { color: var(--purple); }
+    .tab-link.active { color: var(--purple); border-bottom-color: var(--purple); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 80vh;
+      background: linear-gradient(155deg, #1A1530 0%, #2E2252 30%, #4B2E83 65%, #6A4BA1 90%, #9575CD 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 100px 60px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-1 { width: 500px; height: 500px; top: -80px; right: -80px; background: radial-gradient(circle, rgba(149,117,205,0.25) 0%, transparent 60%); }
+    .hero-glow-2 { width: 360px; height: 360px; bottom: 0; left: 15%; background: radial-gradient(circle, rgba(183,165,122,0.2) 0%, transparent 65%); }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(209,196,233,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: rgba(209,196,233,0.5); }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 100px);
+      font-weight: 400;
+      color: white;
+      line-height: 0.95;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      line-height: 1.72;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(209,196,233,0.5);
+      margin-bottom: 5px;
+    }
+
+    .hero-meta-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    section { padding: 56px 0; }
+
+    .section-eyebrow {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--purple); border-radius: 2px; }
+
+    h2.section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+    h2.section-title em { font-style: italic; color: var(--purple); }
+
+    h3.sub-heading {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 14px;
+      margin-top: 40px;
+    }
+
+    p.body-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: #4A4260;
+      line-height: 1.82;
+      margin-bottom: 14px;
+    }
+    p.body-text strong { color: var(--dark); font-weight: 500; }
+
+    .divider { width: 100%; height: 1px; background: rgba(75,46,131,0.1); }
+
+    /* ── ROLE STRIP ── */
+    .role-strip {
+      background: var(--purple-bg);
+      padding: 40px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .role-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+    .role-value { font-size: 14.5px; font-weight: 400; color: var(--dark); line-height: 1.6; }
+
+    /* ── METHOD CARDS ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .method-card {
+      background: var(--white);
+      border: 1px solid rgba(75,46,131,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .method-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--purple-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .method-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .method-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; }
+
+    /* ── THEME CARDS ── */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .theme-card {
+      background: linear-gradient(145deg, #1A1530, #2E2252);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .theme-card:hover { transform: translateY(-3px); }
+
+    .theme-icon { font-size: 28px; margin-bottom: 12px; }
+
+    .theme-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .theme-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+
+    /* ── FINDING BLOCKS ── */
+    .finding-block {
+      background: var(--white);
+      border: 1px solid rgba(75,46,131,0.1);
+      border-radius: 20px;
+      padding: 28px 26px;
+      margin-bottom: 16px;
+    }
+
+    .finding-block-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .finding-block-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--purple-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .finding-block-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    .finding-block p {
+      font-size: 15px;
+      font-weight: 300;
+      color: #4A4260;
+      line-height: 1.78;
+      margin-bottom: 14px;
+    }
+    .finding-block p strong { color: var(--dark); font-weight: 500; }
+
+    /* ── QUOTE CARDS ── */
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .quote-card {
+      background: var(--purple-bg);
+      border-radius: 14px;
+      padding: 24px 22px;
+      position: relative;
+    }
+
+    .quote-card::before {
+      content: '\201C';
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      color: var(--purple-pale);
+      position: absolute;
+      top: 8px; left: 16px;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      padding-top: 16px;
+    }
+
+    .quote-attr {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--purple);
+    }
+
+    .quote-context {
+      font-size: 10.5px;
+      font-weight: 400;
+      color: var(--mid);
+      margin-top: 2px;
+    }
+
+    /* ── INSIGHT CARDS ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .insight-card {
+      background: linear-gradient(145deg, #1A1530, #2E2252);
+      border-radius: 16px;
+      padding: 28px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(149,117,205,0.18) 0%, transparent 70%);
+    }
+
+    .insight-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: rgba(209,196,233,0.18);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .insight-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .insight-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* ── OPEN QUESTIONS ── */
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .question-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid rgba(75,46,131,0.1);
+      border-radius: 14px;
+    }
+
+    .question-marker {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--purple-light);
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    .question-text {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout-box {
+      background: white;
+      border: 1px solid rgba(75,46,131,0.15);
+      border-left: 4px solid var(--purple);
+      border-radius: 0 16px 16px 0;
+      padding: 28px 32px;
+      margin: 24px 0;
+    }
+
+    .callout-box p {
+      font-size: 15.5px;
+      font-weight: 300;
+      color: #4A4260;
+      line-height: 1.78;
+    }
+    .callout-box p strong { color: var(--dark); font-weight: 500; }
+
+    /* ── TEAM SECTION ── */
+    .team-grid {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .team-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--purple-bg);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .team-chip span {
+      font-size: 11px;
+      color: var(--purple);
+      font-weight: 400;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      padding: 56px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(75,46,131,0.1);
+    }
+
+    .next-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .next-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 3.5vw, 48px);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+    .next-title em { font-style: italic; color: var(--purple); }
+
+    .next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      background: var(--purple);
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 100px;
+      transition: background 0.2s, gap 0.25s;
+    }
+    .next-btn:hover { background: var(--purple-mid); gap: 18px; }
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding: 32px 60px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .bottom-nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-nav-link:hover { color: var(--dark); }
+    .bottom-nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px;
+      background: #12101A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 24px; }
+      .hero { padding: 100px 28px 56px; }
+      .container, .container-wide { padding: 0 28px; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
+      .theme-grid { grid-template-columns: repeat(3, 1fr); }
+      .method-grid, .quote-grid { grid-template-columns: 1fr; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .next-project { padding: 60px 28px; }
+      footer { padding: 22px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+      .role-strip { grid-template-columns: 1fr; }
+      .theme-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-back">
+      <span class="arrow">&larr;</span> All work
+    </a>
+    <div class="nav-right">
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- SECTION TABS -->
+  <div class="section-tabs" id="sectionTabs">
+    <a href="#overview"  class="tab-link active">Overview</a>
+    <a href="#method"    class="tab-link">Method</a>
+    <a href="#findings"  class="tab-link">Findings</a>
+    <a href="#nuance"    class="tab-link">Nuance</a>
+    <a href="#questions" class="tab-link">Open Questions</a>
+    <a href="#reflection" class="tab-link">Reflection</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <p class="hero-tag">UX Research &middot; Sociolinguistics &middot; Qualitative Methods</p>
+    <h1>Code-<br /><em>Switching</em></h1>
+    <p class="hero-sub">A qualitative study examining how multilingual individuals use code-switching in everyday social and digital interactions &mdash; uncovering the identity, emotion, and social dynamics behind language choice.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">My Role</div>
+        <div class="hero-meta-value">UX Researcher</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Team</div>
+        <div class="hero-meta-value">4 researchers &middot; HCDE 519</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Context</div>
+        <div class="hero-meta-value">University of Washington</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Methods</div>
+        <div class="hero-meta-value">Interviews &middot; Observation &middot; Thematic Analysis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLE STRIP -->
+  <div class="role-strip">
+    <div>
+      <div class="role-label">Focus</div>
+      <div class="role-value">Multilingual language<br />practices &amp; identity</div>
+    </div>
+    <div>
+      <div class="role-label">Participants</div>
+      <div class="role-value">5 multilingual<br />individuals</div>
+    </div>
+    <div>
+      <div class="role-label">Data</div>
+      <div class="role-value">Interviews &amp;<br />field observations</div>
+    </div>
+    <div>
+      <div class="role-label">Analysis</div>
+      <div class="role-value">Collaborative thematic<br />coding on FigJam</div>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <section id="overview-detail">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Introduction</p>
+      <h2 class="section-title">Why do multilingual people switch between <em>languages?</em></h2>
+      <p class="body-text">Code-switching &mdash; the practice of alternating between languages within a conversation &mdash; is a deeply personal and socially complex behavior. This study examined how multilingual individuals use code-switching in everyday social and digital interactions, exploring the <strong>motivations, emotions, and social dynamics</strong> that drive language choice.</p>
+      <p class="body-text">We collected two primary types of qualitative data: <strong>narrative interviews</strong> (audio-recorded and transcribed) to capture participants' reflections and motivations, and <strong>fly-on-the-wall observations</strong> documented through detailed field notes to see how code-switching unfolds in real time.</p>
+      <p class="body-text">Our dataset represents five multilingual participants from East, Southeast, and South Asian communities who actively code-switch in their everyday lives. Each participated in a one-hour interview, with a subset also participating in observational sessions.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- METHOD -->
+  <section id="method" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Analytical Process</p>
+      <h2 class="section-title">From raw data to<br /><em>thematic insights.</em></h2>
+      <p class="body-text">Our team individually reviewed transcripts and field notes, then identified meaningful quotes about participants' motivations behind code-switching. We collaboratively organized these on a <strong>shared FigJam board</strong>, grouping them into thematic categories through discussion and iterative refinement.</p>
+    </div>
+
+    <div class="container-wide">
+      <div class="method-grid fade-in">
+        <div class="method-card">
+          <div class="method-icon">&#x1F3A4;</div>
+          <div class="method-name">Narrative Interviews</div>
+          <div class="method-desc">One-hour audio-recorded interviews capturing participants' reflections, motivations, and personal interpretations of their own code-switching behaviors across contexts.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">&#x1F440;</div>
+          <div class="method-name">Fly-on-the-Wall Observation</div>
+          <div class="method-desc">Detailed field notes documenting naturally occurring code-switching in real-time social interactions &mdash; comparing self-reported experiences with observed behaviors.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">&#x1F4CB;</div>
+          <div class="method-name">Collaborative Coding</div>
+          <div class="method-desc">Team-based thematic analysis using FigJam to visually organize quotes, identify patterns, and develop interpretive codes across all participant data.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">&#x1F50D;</div>
+          <div class="method-name">Thematic Construction</div>
+          <div class="method-desc">Refined groupings into five overarching themes: identity, cultural separation, situational dependence, emotion, and comfort &mdash; each supported by participant evidence.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINDINGS -->
+  <section id="findings">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Findings</p>
+      <h2 class="section-title">Five themes that explain why <em>people switch.</em></h2>
+      <p class="body-text">Our analysis revealed five interconnected themes driving code-switching behavior. Each theme emerged from multiple participants and was supported by both interview data and observational evidence.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="theme-grid">
+        <div class="theme-card">
+          <div class="theme-icon">&#x1F464;</div>
+          <div class="theme-title">Identity</div>
+          <div class="theme-desc">Language as self-expression and cultural continuity</div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon">&#x1F30D;</div>
+          <div class="theme-title">Cultural Separation</div>
+          <div class="theme-desc">Creating distance from taboo or sacred content</div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon">&#x1F4CD;</div>
+          <div class="theme-title">Situational</div>
+          <div class="theme-desc">Strategic choices based on context and audience</div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon">&#x1F4AB;</div>
+          <div class="theme-title">Emotion</div>
+          <div class="theme-desc">Intense feelings as a catalyst for switching</div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon">&#x2615;</div>
+          <div class="theme-title">Comfort</div>
+          <div class="theme-desc">Navigating conversations with ease and familiarity</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Identity -->
+    <div class="container fade-in">
+      <div class="finding-block">
+        <div class="finding-block-header">
+          <div class="finding-block-icon">&#x1F464;</div>
+          <div class="finding-block-title">Identity</div>
+        </div>
+        <p>Participants overwhelmingly view code-switching as <strong>purposeful and constitutive</strong> &mdash; not a sign of confusion, but an integral part of who they are. Language serves as a vehicle for preserving cultural continuity across generations.</p>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-text">It's just such a natural part of our everyday exchange... it's just who we are, it's part of our identity.</div>
+            <div class="quote-attr">&mdash; P4</div>
+            <div class="quote-context">Identity Recognition</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">When I am with my grandkids, I want them to speak and understand Tagalog, so I try to speak in Tagalog as much as possible.</div>
+            <div class="quote-attr">&mdash; P5</div>
+            <div class="quote-context">Intergenerational Transmission</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cultural Separation -->
+    <div class="container fade-in">
+      <div class="finding-block">
+        <div class="finding-block-header">
+          <div class="finding-block-icon">&#x1F30D;</div>
+          <div class="finding-block-title">Cultural Separation</div>
+        </div>
+        <p>Code-switching creates <strong>psychological distance</strong> from culturally loaded or taboo content. It also serves as the only way to convey meanings that are deeply specific to certain cultures &mdash; concepts that simply don't translate.</p>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-text">When I speak in English, it automatically builds up a boundary for me when I say something like... taboo topics.</div>
+            <div class="quote-attr">&mdash; P3</div>
+            <div class="quote-context">Protective Distancing</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">There's certain words in Punjabi that just do not translate over to English.</div>
+            <div class="quote-attr">&mdash; P4</div>
+            <div class="quote-context">Semantic Untranslatability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Situational & Context-Dependent -->
+    <div class="container fade-in">
+      <div class="finding-block">
+        <div class="finding-block-header">
+          <div class="finding-block-icon">&#x1F4CD;</div>
+          <div class="finding-block-title">Situational &amp; Context-Dependent</div>
+        </div>
+        <p>The largest theme in our dataset. Code-switching is <strong>shaped by situational demands</strong> &mdash; topic, social norms, institutional expectations, and audience. Language choice functions as a tool for navigating relationships across different settings.</p>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-text">The setting matters, the person that you're communicating with, their ability to absorb the information that you're trying to relay matters.</div>
+            <div class="quote-attr">&mdash; P4</div>
+            <div class="quote-context">Situational Awareness</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">Something happened to us at work &mdash; we were talking in Tagalog because of comfortability and a coworker walked by and said, "English please!"</div>
+            <div class="quote-attr">&mdash; P5</div>
+            <div class="quote-context">Institutional Pressure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emotion -->
+    <div class="container fade-in">
+      <div class="finding-block">
+        <div class="finding-block-header">
+          <div class="finding-block-icon">&#x1F4AB;</div>
+          <div class="finding-block-title">Emotion</div>
+        </div>
+        <p>Intense emotions &mdash; excitement, stress, nostalgia &mdash; act as <strong>catalysts for code-switching</strong>, often causing it to happen unconsciously. Cognitive load and storytelling both increase switching frequency.</p>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-text">...and then more emotional, I guess, when I speak Chinese.</div>
+            <div class="quote-attr">&mdash; P3</div>
+            <div class="quote-context">Emotional Resonance</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">I utilized both languages, just so I knew that my children were understanding the process of what was happening.</div>
+            <div class="quote-attr">&mdash; P4</div>
+            <div class="quote-context">Storytelling &amp; Memory Recall</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comfort -->
+    <div class="container fade-in">
+      <div class="finding-block">
+        <div class="finding-block-header">
+          <div class="finding-block-icon">&#x2615;</div>
+          <div class="finding-block-title">Comfort</div>
+        </div>
+        <p>Code-switching bridges gaps in language proficiency and allows speakers to hold <strong>complex, nuanced conversations</strong> that might otherwise not occur. Speakers default to whichever language feels most natural for the topic at hand.</p>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-text">I didn't actually feel anything when I'm switching languages. It just feels like I do whatever makes me feel most easy and convenient.</div>
+            <div class="quote-attr">&mdash; P3</div>
+            <div class="quote-context">Natural Occurrence</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">When I say something really judgmental... I would just say in Chinese, because I don't really know how to say that in English to express exactly what I want to say.</div>
+            <div class="quote-attr">&mdash; P3</div>
+            <div class="quote-context">Nuanced Expression</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- NUANCE & BOUNDARIES -->
+  <section id="nuance" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Boundaries &amp; Nuance</p>
+      <h2 class="section-title">Where the findings get <em>more complex.</em></h2>
+      <p class="body-text">Each theme carries tensions and contradictions worth examining. These boundaries reveal that code-switching is rarely a simple, one-dimensional behavior.</p>
+    </div>
+
+    <div class="container-wide">
+      <div class="insights-grid fade-in">
+        <div class="insight-card">
+          <div class="insight-num">01</div>
+          <div class="insight-title">Strategic vs. Spontaneous</div>
+          <div class="insight-body">Code-switching is tied to identity, but there's a boundary between strategic use (teaching grandchildren) and spontaneous expression (natural everyday exchange).</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">02</div>
+          <div class="insight-title">Distance vs. Resonance</div>
+          <div class="insight-body">While switching creates emotional distance from taboo topics, this only holds when speakers want to detach &mdash; not when they seek deep emotional vulnerability.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">03</div>
+          <div class="insight-title">Clarity vs. Cultural Expression</div>
+          <div class="insight-body">In high-stakes situations speakers prioritize clarity, but in other contexts they may accept less linguistic clarity to preserve cultural expressions or tone.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">04</div>
+          <div class="insight-title">Inclusion vs. Comfort</div>
+          <div class="insight-body">Participants worry about excluding others, yet switch languages for comfort with loved ones &mdash; a constant tension between social inclusion and cultural belonging.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">05</div>
+          <div class="insight-title">Institutional Norms vs. Personal Choice</div>
+          <div class="insight-body">External pressures restrict when multilingual expression is "acceptable," yet participants continue code-switching informally despite these constraints.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">06</div>
+          <div class="insight-title">Semantic vs. Psychological Boundaries</div>
+          <div class="insight-body">There's a distinction between switching because a word is untranslatable (structural) and switching for psychological comfort (emotional) &mdash; different mechanisms entirely.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section id="questions">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Open Questions</p>
+      <h2 class="section-title">What we're still <em>thinking about.</em></h2>
+      <p class="body-text">Our findings surfaced as many questions as answers. These are the threads we believe are most promising for future research.</p>
+
+      <div class="questions-list">
+        <div class="question-item">
+          <div class="question-marker">?</div>
+          <div class="question-text">How does cultural upbringing shape language choice? Do first-generation and second-generation immigrants differ significantly in emotionally-prompted code-switching?</div>
+        </div>
+        <div class="question-item">
+          <div class="question-marker">?</div>
+          <div class="question-text">When speakers code-switch to create emotional distance, is there an emotional loss? Can a second language serve as a "safe harbor" for processing trauma?</div>
+        </div>
+        <div class="question-item">
+          <div class="question-marker">?</div>
+          <div class="question-text">How do power dynamics in workplaces and schools influence when multilingual speakers feel comfortable switching languages?</div>
+        </div>
+        <div class="question-item">
+          <div class="question-marker">?</div>
+          <div class="question-text">To what extent are situational language choices conscious decisions versus automatic habits? Do multilingual speakers develop distinct cognitive strategies for managing language use?</div>
+        </div>
+        <div class="question-item">
+          <div class="question-marker">?</div>
+          <div class="question-text">Our data focused on the speaker's intent &mdash; but how are these language shifts received by the listener? How does the listener's perception shape future switching behavior?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REFLECTION -->
+  <section id="reflection" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Reflection</p>
+      <h2 class="section-title">What I learned from <em>this study.</em></h2>
+
+      <div class="callout-box">
+        <p>This project deepened my understanding of how <strong>language functions as both identity and strategy</strong> in multilingual communities. The combination of interviews and observation revealed nuances that neither method alone could surface &mdash; participants' self-reported behaviors often differed from what we observed, creating a richer, more honest picture of code-switching in practice.</p>
+      </div>
+
+      <p class="body-text">Our participants were recruited from personal networks, which means the data primarily reflects experiences from <strong>East, Southeast, and South Asian multilingual communities</strong>. Future work should expand to include a broader range of linguistic and cultural backgrounds, as well as multilingual speakers of three or more languages.</p>
+      <p class="body-text">The most promising uninformed insight from this study is the concept of <strong>language as a "safe space"</strong> &mdash; the idea that a second language can act as a psychological harbor for processing sensitive information that feels too heavy in one's mother tongue. This could have meaningful implications for designing multilingual user experiences.</p>
+    </div>
+
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project fade-in">
+    <div class="next-label">Next Project</div>
+    <div class="next-title">Nexstera &mdash; <em>Climate Tech Redesign</em></div>
+    <a href="nexstera.html" class="next-btn">View case study &rarr;</a>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">My Work</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="about.html" class="bottom-nav-link">About</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="experience.html" class="bottom-nav-link">Resume</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-left">&copy; 2026 Jasmine Sayed</p>
+    <p class="footer-right">Made with &hearts; + HTML by Jasmine Sayed</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 75);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Scroll-spy for tabs
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const sectionIds = ['overview', 'method', 'findings', 'nuance', 'questions', 'reflection'];
+    const tabsBar = document.getElementById('sectionTabs');
+    const navH = document.querySelector('nav').offsetHeight;
+    const tabsH = tabsBar.offsetHeight;
+    const offset = navH + tabsH + 16;
+
+    function setActiveTab(id) {
+      tabLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+      const activeLink = tabsBar.querySelector('.tab-link.active');
+      if (activeLink) {
+        const linkLeft = activeLink.offsetLeft;
+        const linkW = activeLink.offsetWidth;
+        const barW = tabsBar.offsetWidth;
+        tabsBar.scrollLeft = linkLeft - barW / 2 + linkW / 2;
+      }
+    }
+
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, { rootMargin: `-${offset}px 0px -55% 0px`, threshold: 0 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) spyObserver.observe(el);
+    });
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - offset + 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

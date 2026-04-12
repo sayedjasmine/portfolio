@@ -90,12 +90,12 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 90vh;
+      min-height: 80vh;
       background: linear-gradient(160deg, #1C1630 0%, #2D1A52 45%, #4A2088 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 120px 60px 72px;
+      padding: 95px 60px 47px;
       position: relative;
       overflow: hidden;
     }
@@ -154,12 +154,12 @@
       color: rgba(255,255,255,0.6);
       max-width: 560px;
       line-height: 1.7;
-      margin-bottom: 52px;
+      margin-bottom: 36px;
     }
 
     .hero-meta {
       display: flex;
-      gap: 48px;
+      gap: 36px;
       flex-wrap: wrap;
     }
 
@@ -192,7 +192,7 @@
     }
 
     /* ── SECTION STYLES ── */
-    section { padding: 96px 0; }
+    section { padding: 64px 0; }
 
     .section-eyebrow {
       font-size: 10.5px;
@@ -219,7 +219,7 @@
       font-weight: 400;
       line-height: 1.12;
       color: var(--dark);
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
 
     h2.section-title em { font-style: italic; color: var(--purple); }
@@ -229,7 +229,7 @@
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 14px;
-      margin-top: 40px;
+      margin-top: 28px;
     }
 
     p.body-text {
@@ -237,7 +237,7 @@
       font-weight: 300;
       color: #4A4455;
       line-height: 1.82;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     p.body-text strong { color: var(--dark); font-weight: 500; }
@@ -252,7 +252,7 @@
     /* ── ROLE STRIP ── */
     .role-strip {
       background: var(--purple-bg);
-      padding: 56px 60px;
+      padding: 40px 60px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
@@ -356,7 +356,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .method-card {
@@ -406,7 +406,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .insight-card {
@@ -453,7 +453,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .feature-card {
@@ -516,44 +516,43 @@
 
     /* ── SCREEN GALLERY ── */
     .screen-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      margin: 56px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 40px 0;
     }
 
     .screen-card {
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
       background: var(--light-bg);
       border: 1px solid rgba(107,63,160,0.08);
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.3s, transform 0.3s;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
     }
 
     .screen-card:hover {
-      box-shadow: 0 12px 40px rgba(107,63,160,0.1);
+      box-shadow: 0 8px 28px rgba(107,63,160,0.1);
+      transform: translateY(-2px);
     }
 
-    .screen-card img {
-      width: 100%;
-      display: block;
-    }
-
-    .screen-card-caption {
-      padding: 20px 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .screen-card:last-child {
+      grid-column: 1 / -1;
+      max-width: 50%;
+      justify-self: center;
     }
 
     .screen-card-num {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--purple-bg);
       color: var(--purple);
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -561,16 +560,17 @@
     }
 
     .screen-card-title {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--dark);
     }
 
     .screen-card-desc {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 300;
       color: var(--mid);
-      margin-top: 2px;
+      margin-top: 4px;
+      line-height: 1.5;
     }
 
     /* ── MOCKUP IMAGE ── */
@@ -841,7 +841,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .wireframe-frame {
@@ -865,7 +865,7 @@
     /* ── REFLECTION ── */
     .reflection-section {
       background: linear-gradient(145deg, #1C1630, #2D1A52);
-      padding: 96px 0;
+      padding: 64px 0;
     }
 
     .reflection-section .section-eyebrow { color: var(--purple-light); }
@@ -880,7 +880,7 @@
       border: 1px solid rgba(180,130,255,0.2);
       border-radius: 16px;
       padding: 32px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .callout-box p {
@@ -894,7 +894,7 @@
 
     /* ── NEXT UP ── */
     .next-project {
-      padding: 80px 60px;
+      padding: 56px 60px;
       text-align: center;
       border-top: 1px solid rgba(107,63,160,0.1);
     }
@@ -936,7 +936,7 @@
 
         /* ── FOOTER ── */
     footer {
-      padding: 28px 60px;
+      padding: 32px 60px;
       background: #12101A;
       display: flex;
       justify-content: space-between;
@@ -1009,7 +1009,8 @@
       .next-project { padding: 64px 28px; }
       footer { padding: 22px 28px; }
       .prototype-video-wrap { padding: 20px; }
-      .screen-gallery { gap: 32px; }
+      .screen-gallery { grid-template-columns: 1fr; gap: 16px; }
+      .screen-card:last-child { max-width: 100%; }
     }
 
     @media (max-width: 600px) {
@@ -1017,10 +1018,43 @@
       .features-grid { grid-template-columns: 1fr; }
       .wireframe-grid { grid-template-columns: 1fr; }
       .prototype-video-wrap { padding: 14px; }
+      .skip-pill { position: static; margin: 16px 28px 0; }
     }
+
+    /* ── SKIP TO PROTOTYPE PILL ── */
+    .skip-pill {
+      position: fixed;
+      top: 18px;
+      right: 60px;
+      z-index: 101;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--nox-purple);
+      color: white;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(123,68,200,0.3);
+      transition: background 0.2s, gap 0.25s, transform 0.2s;
+    }
+    .skip-pill:hover {
+      background: var(--purple-mid);
+      gap: 12px;
+      transform: translateY(-1px);
+    }
+    .skip-pill-sparkle { font-size: 14px; }
   </style>
 </head>
 <body>
+
+  <!-- SKIP TO PROTOTYPE PILL -->
+  <a href="#prototype" class="skip-pill">
+    <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
+  </a>
 
   <!-- NAV -->
   <nav>
@@ -1253,11 +1287,6 @@
     </div>
 
     <div class="container-wide">
-      <!-- Phone mockups -->
-      <div class="phones-showcase fade-in">
-        <img src="nox-mockup.png" alt="Nox+ app screens" style="width:100%;height:100%;object-fit:contain;border-radius:16px;display:block;" />
-      </div>
-
       <!-- Key Features -->
       <div class="container fade-in" style="padding: 0;">
         <h3 class="sub-heading" style="margin-top:0;">Key Features</h3>
@@ -1298,7 +1327,7 @@
   </section>
 
   <!-- PROTOTYPE VIDEO -->
-  <section style="background: linear-gradient(160deg, #1C1630 0%, #2D1A52 45%, #4A2088 100%);">
+  <section id="prototype" style="background: linear-gradient(160deg, #1C1630 0%, #2D1A52 45%, #4A2088 100%);">
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: rgba(200,170,255,0.7);">Interactive Prototype</p>
       <h2 class="section-title" style="color: white;">See Nox+ <em style="color: var(--purple-light);">in action.</em></h2>
@@ -1306,11 +1335,8 @@
     </div>
     <div class="container-wide fade-in">
       <div class="prototype-video-wrap" style="background: rgba(255,255,255,0.06);">
-        <p class="prototype-label">Figma Prototype Walkthrough</p>
-        <video controls playsinline preload="metadata" poster="nox-mockup.png">
-          <source src="assets/nox/nox-prototype-actual.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <p class="prototype-label">Prototype Walkthrough</p>
+        <iframe src="https://drive.google.com/file/d/1srATv0P306tj-vyMobzG8L22GPwixawJ/preview" style="width:100%;height:506px;border:none;display:block;border-radius:12px;" allow="autoplay" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -1325,109 +1351,38 @@
     <div class="container-wide">
       <div class="screen-gallery">
         <div class="screen-card fade-in">
-          <img src="assets/nox/onboarding.png" alt="Nox+ onboarding flow — splash screen, biometric verification, and light mode introduction" loading="lazy" />
-          <div class="screen-card-caption">
-            <div class="screen-card-num">1</div>
-            <div>
-              <div class="screen-card-title">Onboarding Flow</div>
-              <div class="screen-card-desc">Splash, biometric verification via Face ID, and introduction to Light Mode for limited access</div>
-            </div>
+          <div class="screen-card-num">1</div>
+          <div>
+            <div class="screen-card-title">Onboarding Flow</div>
+            <div class="screen-card-desc">Splash, biometric verification via Face ID, and introduction to Light Mode for limited access</div>
           </div>
         </div>
         <div class="screen-card fade-in">
-          <img src="assets/nox/home-pincode.png" alt="Nox+ home screen with universal verification card, document list, and pincode entry" loading="lazy" />
-          <div class="screen-card-caption">
-            <div class="screen-card-num">2</div>
-            <div>
-              <div class="screen-card-title">Home & Pincode</div>
-              <div class="screen-card-desc">Universal verification card, primary documents display, search bar, and secure one-time pincode generation</div>
-            </div>
+          <div class="screen-card-num">2</div>
+          <div>
+            <div class="screen-card-title">Home & Pincode</div>
+            <div class="screen-card-desc">Universal verification card, primary documents display, search bar, and secure one-time pincode generation</div>
           </div>
         </div>
         <div class="screen-card fade-in">
-          <img src="assets/nox/documents.png" alt="Nox+ document management — expiration alerts, document details, and verification status" loading="lazy" />
-          <div class="screen-card-caption">
-            <div class="screen-card-num">3</div>
-            <div>
-              <div class="screen-card-title">Document Management</div>
-              <div class="screen-card-desc">Auto-populated document list with security reassurance, expiration alerts, physical document display, and verification actions</div>
-            </div>
+          <div class="screen-card-num">3</div>
+          <div>
+            <div class="screen-card-title">Document Management</div>
+            <div class="screen-card-desc">Auto-populated document list with security reassurance, expiration alerts, physical document display, and verification actions</div>
           </div>
         </div>
         <div class="screen-card fade-in">
-          <img src="assets/nox/family.png" alt="Nox+ family access controls — member profiles, notifications, and document sharing" loading="lazy" />
-          <div class="screen-card-caption">
-            <div class="screen-card-num">4</div>
-            <div>
-              <div class="screen-card-title">Family Access</div>
-              <div class="screen-card-desc">Family access notifications, member profiles with swipe navigation, and shared document management controls</div>
-            </div>
+          <div class="screen-card-num">4</div>
+          <div>
+            <div class="screen-card-title">Family Access</div>
+            <div class="screen-card-desc">Family access notifications, member profiles with swipe navigation, and shared document management controls</div>
           </div>
         </div>
         <div class="screen-card fade-in">
-          <img src="assets/nox/history.png" alt="Nox+ verification history — chronological log with data transparency and access controls" loading="lazy" />
-          <div class="screen-card-caption">
-            <div class="screen-card-num">5</div>
-            <div>
-              <div class="screen-card-title">Verification History</div>
-              <div class="screen-card-desc">Chronological verification log with search, data sharing transparency, and action controls for each event</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN SYSTEM -->
-  <section style="background: var(--light-bg);">
-    <div class="container fade-in">
-      <p class="section-eyebrow">Design System</p>
-      <h2 class="section-title">Built for trust<br />and clarity.</h2>
-      <p class="body-text">The design system features blue and purple tones to evoke safety and calm, with clear, legible fonts and formatting designed to reduce cognitive load during sensitive verification flows.</p>
-    </div>
-
-    <div class="container fade-in">
-      <div class="ds-strip">
-        <div>
-          <div class="ds-block-title">Color Palette</div>
-          <div class="ds-colors">
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#4A2088;"></div>
-              <div class="ds-swatch-name">Deep Purple</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#7B44C8;"></div>
-              <div class="ds-swatch-name">Nox Purple</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#C9B3E8;"></div>
-              <div class="ds-swatch-name">Lavender</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#F3EEFB;"></div>
-              <div class="ds-swatch-name">Purple Tint</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#FFFFFF; border: 1px solid #e5e5e5;"></div>
-              <div class="ds-swatch-name">White</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="ds-block-title">Typography</div>
-          <div class="ds-type">
-            <div class="ds-type-sample">
-              <div class="ds-type-name">Display — DM Serif Display</div>
-              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark);">Identity, Secured.</div>
-            </div>
-            <div class="ds-type-sample">
-              <div class="ds-type-name">Body — DM Sans Regular</div>
-              <div style="font-size:14px;color:var(--mid);font-weight:300;">Verify anywhere, share only what's necessary</div>
-            </div>
-            <div class="ds-type-sample">
-              <div class="ds-type-name">Label — DM Sans Medium</div>
-              <div style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);">Enable Biometric</div>
-            </div>
+          <div class="screen-card-num">5</div>
+          <div>
+            <div class="screen-card-title">Verification History</div>
+            <div class="screen-card-desc">Chronological verification log with search, data sharing transparency, and action controls for each event</div>
           </div>
         </div>
       </div>

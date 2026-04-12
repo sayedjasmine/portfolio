@@ -87,7 +87,7 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 160px 60px 80px;
+      padding: 130px 60px 56px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -124,12 +124,12 @@
 
     .hero-sub {
       font-size: 17px; font-weight: 300; color: var(--mid);
-      line-height: 1.75; max-width: 640px; margin: 0 auto 48px;
+      line-height: 1.75; max-width: 640px; margin: 0 auto 32px;
     }
 
     .hero-meta {
       display: flex; justify-content: center;
-      gap: 48px; flex-wrap: wrap;
+      gap: 36px; flex-wrap: wrap;
     }
 
     .hero-meta-label {
@@ -148,7 +148,7 @@
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 40px;
+      margin-top: 24px;
     }
 
     .resource-link {
@@ -207,17 +207,17 @@
       font-family: 'DM Serif Display', serif;
       font-size: clamp(28px, 3.5vw, 40px);
       font-weight: 400; line-height: 1.15;
-      color: var(--dark); margin-bottom: 24px;
+      color: var(--dark); margin-bottom: 18px;
     }
 
     .body-text {
       font-size: 15.5px; font-weight: 300;
       color: var(--mid); line-height: 1.8;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .body-text strong { font-weight: 500; color: var(--dark); }
 
-    section { padding: 72px 0; }
+    section { padding: 52px 0; }
 
     .divider {
       max-width: 780px; margin: 0 auto;
@@ -229,7 +229,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .sdg-card {
@@ -278,7 +278,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .problem-card {
@@ -306,7 +306,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .feature-card {
@@ -340,7 +340,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .quote-card {
@@ -383,7 +383,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .research-card {
@@ -415,7 +415,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .principle-card {
@@ -446,7 +446,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 24px;
     }
 
     .vision-card {
@@ -478,7 +478,7 @@
     /* ── NEXT PROJECT ── */
     .next-project {
       text-align: center;
-      padding: 80px 60px;
+      padding: 56px 60px;
       border-top: 1px solid rgba(26,39,68,0.08);
     }
 
@@ -496,6 +496,32 @@
       color: var(--dark); text-decoration: none; transition: color 0.2s;
     }
     .next-project-title a:hover { color: var(--rose); }
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding: 32px 60px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .bottom-nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-nav-link:hover { color: var(--dark); }
+    .bottom-nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -588,8 +614,8 @@
       </div>
     </div>
     <div class="resource-bar">
-      <a href="momsafe-research-paper copy.pdf" target="_blank" class="resource-link">Read the Research Paper</a>
-      <a href="momsafe-infographic.png" target="_blank" class="resource-link">View the Infographic</a>
+      <a href="assets/momsafe-research-paper copy.pdf" target="_blank" class="resource-link">Read the Research Paper</a>
+      <a href="assets/momsafe-infographic.png" target="_blank" class="resource-link">View the Infographic</a>
     </div>
   </section>
 
@@ -623,7 +649,7 @@
       <p class="body-text">Grounded in extensive user research, MomSAFE integrates features like <strong>daily health check-ins, trend analysis, and secure data options</strong> to ensure a trustworthy, evidence-based, and accessible healthcare experience.</p>
     </div>
 
-    <div class="container fade-in" style="margin-top: 48px;">
+    <div class="container fade-in" style="margin-top: 28px;">
       <p class="section-eyebrow">Global Alignment</p>
       <h2 class="section-title">Designing for the UN's Sustainable Development Goals.</h2>
       <div class="sdg-grid">
@@ -826,6 +852,15 @@
   <div class="next-project">
     <p class="next-project-label">Next Project</p>
     <h2 class="next-project-title"><a href="index.html#work">← Back to Work</a></h2>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">My Work</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="about.html" class="bottom-nav-link">About</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="experience.html" class="bottom-nav-link">Resume</a>
   </div>
 
   <!-- FOOTER -->

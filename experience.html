@@ -310,6 +310,32 @@
       font-size: 11px; color: var(--mid);
     }
 
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding: 48px 60px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .bottom-nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-nav-link:hover { color: var(--dark); }
+    .bottom-nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+    }
+
     /* ── FOOTER ── */
     footer {
       padding: 28px 60px; background: #12101A;
@@ -364,7 +390,7 @@
       <h1>Where I've been,<br /><em>what I've built.</em></h1>
       <p>Designer, researcher, and builder — from Girl Scout Gold Award to Microsoft CoreAI.</p>
     </div>
-    <a href="Official Jasmine Resume.pdf" target="_blank" class="resume-btn">
+    <a href="assets/Official Jasmine Resume.pdf" target="_blank" class="resume-btn">
       ↓ &nbsp;Download Resume
     </a>
   </div>
@@ -601,6 +627,15 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">My Work</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="about.html" class="bottom-nav-link">About</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="experience.html" class="bottom-nav-link">Resume</a>
   </div>
 
   <!-- FOOTER -->

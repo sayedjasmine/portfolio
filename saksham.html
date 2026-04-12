@@ -82,12 +82,12 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 88vh;
+      min-height: 80vh;
       background: linear-gradient(155deg, #2A1420 0%, #4A1F30 40%, #C4425A 80%, #D96B7E 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 120px 60px 72px;
+      padding: 90px 60px 52px;
       position: relative;
       overflow: hidden;
     }
@@ -142,13 +142,13 @@
       color: rgba(255,255,255,0.6);
       max-width: 560px;
       line-height: 1.72;
-      margin-bottom: 52px;
+      margin-bottom: 36px;
       position: relative;
     }
 
     .hero-meta {
       display: flex;
-      gap: 48px;
+      gap: 36px;
       flex-wrap: wrap;
       position: relative;
     }
@@ -172,7 +172,7 @@
     .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
     .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-    section { padding: 96px 0; }
+    section { padding: 64px 0; }
 
     .section-eyebrow {
       font-size: 10.5px;
@@ -193,7 +193,7 @@
       font-weight: 400;
       line-height: 1.12;
       color: var(--dark);
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
     h2.section-title em { font-style: italic; color: var(--rose); }
 
@@ -202,7 +202,7 @@
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 14px;
-      margin-top: 44px;
+      margin-top: 28px;
     }
 
     p.body-text {
@@ -210,7 +210,7 @@
       font-weight: 300;
       color: #4A3A3E;
       line-height: 1.82;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
     p.body-text strong { color: var(--dark); font-weight: 500; }
 
@@ -219,7 +219,7 @@
     /* ── ROLE STRIP ── */
     .role-strip {
       background: var(--rose-bg);
-      padding: 52px 60px;
+      padding: 40px 60px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
@@ -240,7 +240,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .problem-card {
@@ -275,7 +275,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .method-card {
@@ -302,7 +302,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .insight-card {
@@ -351,7 +351,7 @@
       border-radius: 20px;
       padding: 40px 44px;
       border-left: 4px solid var(--rose);
-      margin: 36px 0;
+      margin: 24px 0;
       position: relative;
       overflow: hidden;
     }
@@ -386,7 +386,7 @@
 
     /* ── DESIGN PROCESS STEPS ── */
     .process-timeline {
-      margin: 48px 0;
+      margin: 24px 0;
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -458,7 +458,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .feature-card {
@@ -495,7 +495,7 @@
 
     /* ── MOCKUP SHOWCASE ── */
     .mockup-showcase {
-      margin: 48px 0;
+      margin: 24px 0;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -517,7 +517,7 @@
 
     /* ── SCREEN FLOW GALLERY ── */
     .screen-flow {
-      margin: 56px 0;
+      margin: 24px 0;
     }
 
     .screen-flow-label {
@@ -573,7 +573,7 @@
       background: var(--rose-bg);
       border-radius: 20px;
       padding: 48px;
-      margin: 40px 0;
+      margin: 24px 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
@@ -615,7 +615,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin: 48px 0;
+      margin: 32px 0;
     }
 
     .impact-stat {
@@ -657,7 +657,7 @@
       border-left: 4px solid var(--rose);
       border-radius: 0 16px 16px 0;
       padding: 32px 36px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .callout-box p {
@@ -672,7 +672,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .next-step-row {
@@ -704,7 +704,7 @@
 
     /* ── NEXT PROJECT ── */
     .next-project {
-      padding: 80px 60px;
+      padding: 56px 60px;
       text-align: center;
       border-top: 1px solid rgba(196,66,90,0.1);
     }
@@ -745,7 +745,7 @@
 
     /* ── FOOTER ── */
     footer {
-      padding: 28px 60px;
+      padding: 32px 60px;
       background: #12101A;
       display: flex;
       justify-content: space-between;
@@ -820,10 +820,67 @@
     @media (max-width: 600px) {
       .nav-right { display: none; }
       .screen-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .skip-pill { position: static; margin: 16px 28px 0; }
+    }
+
+    /* ── SKIP TO PROTOTYPE PILL ── */
+    .skip-pill {
+      position: fixed;
+      top: 18px;
+      right: 60px;
+      z-index: 101;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--rose);
+      color: white;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(196,66,90,0.3);
+      transition: background 0.2s, gap 0.25s, transform 0.2s;
+    }
+    .skip-pill:hover {
+      background: var(--rose-mid);
+      gap: 12px;
+      transform: translateY(-1px);
+    }
+    .skip-pill-sparkle { font-size: 14px; }
+
+    /* ── RESOURCE LINK ── */
+    .resource-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      position: relative;
+    }
+    .resource-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .resource-link:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.5);
     }
   </style>
 </head>
 <body>
+
+  <!-- SKIP TO PROTOTYPE PILL -->
+  <a href="#solution" class="skip-pill">
+    <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
+  </a>
 
   <!-- NAV -->
   <nav>
@@ -872,6 +929,9 @@
         <div class="hero-meta-label">Tools</div>
         <div class="hero-meta-value">Figma · Illustrator · UX Research</div>
       </div>
+    </div>
+    <div class="resource-bar">
+      <a href="https://docs.google.com/document/d/11UjLgznvh5pQZDShy_BykBvPtHsFwwriqmQKxYkcEPs/edit?usp=sharing" target="_blank" class="resource-link">Read the Research Paper ↗</a>
     </div>
   </section>
 
@@ -1105,47 +1165,10 @@
       <p class="body-text">Saksham delivers a personalized learning ecosystem where students can engage with lessons at their own pace through audio, visuals, and interactive exercises. The interface adapts to each learner's needs — creating an environment that promotes comfort, confidence, and curiosity.</p>
     </div>
 
+    <!-- Figma Prototype -->
     <div class="container-wide fade-in">
-      <!-- App Mockups -->
-      <div class="mockup-showcase">
-        <div class="mockup-frame">
-          <img src="saksham-screen1.png" alt="Saksham app — home screen" />
-        </div>
-        <div class="mockup-frame">
-          <img src="saksham-screen2.png" alt="Saksham app — learning mode" />
-        </div>
-        <div class="mockup-frame">
-          <img src="saksham-screen3.png" alt="Saksham app — progress dashboard" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Screen Flow Gallery -->
-    <div class="container-wide fade-in">
-      <div class="screen-flow">
-        <p class="screen-flow-label">Key Screens</p>
-        <div class="screen-flow-grid">
-          <div class="screen-flow-item">
-            <img src="assets/saksham/onboarding.png" alt="Saksham onboarding — personalized learning intro" loading="lazy" />
-            <div class="flow-label">Onboarding</div>
-            <div class="flow-desc">Personalized learning intro</div>
-          </div>
-          <div class="screen-flow-item">
-            <img src="assets/saksham/courses.png" alt="Saksham courses — course browser with categories" loading="lazy" />
-            <div class="flow-label">Course Browser</div>
-            <div class="flow-desc">Discover & filter courses</div>
-          </div>
-          <div class="screen-flow-item">
-            <img src="assets/saksham/course-playing.png" alt="Saksham course playing — lesson in progress with video" loading="lazy" />
-            <div class="flow-label">Guided Learning</div>
-            <div class="flow-desc">Audio + video lessons</div>
-          </div>
-          <div class="screen-flow-item">
-            <img src="assets/saksham/my-progress.png" alt="Saksham my progress — course completion tracking" loading="lazy" />
-            <div class="flow-label">My Progress</div>
-            <div class="flow-desc">Track course completion</div>
-          </div>
-        </div>
+      <div style="border-radius:20px;overflow:hidden;border:1px solid rgba(196,66,90,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);margin:40px auto;">
+        <iframe style="border:none;width:100%;height:640px;display:block;" src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -1180,62 +1203,6 @@
           <span class="feature-emoji">🗣️</span>
           <div class="feature-name">Voice Cues for Non-Readers</div>
           <div class="feature-desc">Audio guidance throughout the interface ensures students who can't yet read can still navigate and learn independently.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN SYSTEM -->
-  <section style="background: var(--light-bg);">
-    <div class="container fade-in">
-      <p class="section-eyebrow">Design System</p>
-      <h2 class="section-title">Warm, calm &<br /><em>accessible by design.</em></h2>
-      <p class="body-text">The design system uses warm, approachable tones to create emotional safety — paired with high-contrast text and generous spacing to reduce cognitive load for neurodiverse learners.</p>
-    </div>
-
-    <div class="container fade-in">
-      <div class="ds-strip">
-        <div>
-          <div class="ds-block-title">Color Palette</div>
-          <div class="ds-colors">
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#2A1A1E;"></div>
-              <div class="ds-swatch-name">Deep</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#C4425A;"></div>
-              <div class="ds-swatch-name">Rose</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#E88B7D;"></div>
-              <div class="ds-swatch-name">Coral</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#F0B3BE;"></div>
-              <div class="ds-swatch-name">Blush</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#FFF5F7; border: 1px solid #f0e0e4;"></div>
-              <div class="ds-swatch-name">Cream</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="ds-block-title">Typography</div>
-          <div class="ds-type">
-            <div>
-              <div class="ds-type-name">Display — DM Serif Display</div>
-              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark);">Capable of Anything.</div>
-            </div>
-            <div>
-              <div class="ds-type-name">Body — DM Sans Regular</div>
-              <div style="font-size:14px;color:var(--mid);font-weight:300;">Learning that adapts to every mind</div>
-            </div>
-            <div>
-              <div class="ds-type-name">Label — DM Sans Medium</div>
-              <div style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--rose);">Start Learning →</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

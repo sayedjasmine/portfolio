@@ -261,7 +261,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--purple-mid);
-      margin-bottom: 36px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -271,6 +271,43 @@
       content: '';
       width: 48px; height: 1.5px;
       background: var(--purple-light);
+    }
+
+    /* ── FILTER PILLS ── */
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(107,63,160,0.15);
+      background: transparent;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+      letter-spacing: 0.01em;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .filter-pill.active {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: white;
+    }
+
+    /* Card hide/show */
+    .card.hidden {
+      display: none;
     }
 
     /* ── CARDS ── */
@@ -379,14 +416,13 @@
 
     .card:hover .card-link { background: var(--purple-mid); gap: 16px; }
 
-    /* Per-card preview background colors — sampled exactly from each mockup */
-    .card-microsoft .card-preview { background: #004369; }
-    .card-nox .card-preview       { background: #7f63e8; }
-    .card-saksham .card-preview   { background: linear-gradient(160deg, #FFF0F0 0%, #FDE8E8 40%, #EEF4FF 100%); border-right: 1px solid rgba(107,63,160,0.07); }
-    .card-nexstera .card-preview  { background: #b4dbdc; }
-    .card-uxfest .card-preview    { background: linear-gradient(135deg, #6B3FA0, #9B6DD7 55%, #C9B3E8); }
-    .card-momsafe .card-preview   { background: #FFFFFF; border-right: 1px solid rgba(0,0,0,0.06); }
-    .card-codeswitching .card-preview { background: linear-gradient(160deg, #4B2E83 0%, #6A4BA1 50%, #9575CD 100%); }
+    /* Per-card preview background colors */
+    .card-microsoft .card-preview     { background: #004369; }
+    .card-nox .card-preview           { background: #7f63e8; }
+    .card-saksham .card-preview       { background: #C4425A; }
+    .card-codeswitching .card-preview { background: #4B2E83; }
+    .card-nexstera .card-preview      { background: #b4dbdc; }
+    .card-momsafe .card-preview       { background: #1A2744; }
 
 
     /* ── ABOUT TEASER ── */
@@ -654,6 +690,32 @@
     .contact-btn.secondary { border: 1.5px solid rgba(255,255,255,0.3); color: white; }
     .contact-btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
 
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      padding: 48px 60px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .bottom-nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bottom-nav-link:hover { color: var(--dark); }
+    .bottom-nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+    }
+
         /* ── FOOTER ── */
     footer {
       padding: 28px 60px;
@@ -748,12 +810,19 @@
   <section id="work" class="work-section">
     <p class="section-label">Selected Work</p>
 
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">All (6)</button>
+      <button class="filter-pill" data-filter="design">Design</button>
+      <button class="filter-pill" data-filter="research">Research</button>
+      <button class="filter-pill" data-filter="ai">AI</button>
+    </div>
+
     <div class="cards-grid" id="cardsGrid">
 
       <!-- 1. MICROSOFT -->
-      <a href="microsoft.html" class="card card-microsoft fade-in">
+      <a href="microsoft.html" class="card card-microsoft fade-in" data-category="research ai">
         <div class="card-preview">
-          <img src="microsoft-mockup.png" alt="Microsoft Foundry" />
+          <img src="assets/microsoft-mockup.png" alt="Microsoft Foundry" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -767,9 +836,9 @@
       </a>
 
       <!-- 2. NOX+ -->
-      <a href="nox.html" class="card card-nox fade-in">
+      <a href="nox.html" class="card card-nox fade-in" data-category="design ai">
         <div class="card-preview">
-          <img src="nox-mockup.png" alt="Nox+ app" />
+          <img src="assets/nox-mockup.png" alt="Nox+ app" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -783,9 +852,9 @@
       </a>
 
       <!-- 3. SAKSHAM -->
-      <a href="saksham.html" class="card card-saksham fade-in">
+      <a href="saksham.html" class="card card-saksham fade-in" data-category="design ai">
         <div class="card-preview">
-          <img src="saksham-screen1.png" alt="Saksham app" />
+          <img src="assets/saksham-screen1.png" alt="Saksham app" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -799,9 +868,9 @@
       </a>
 
       <!-- 4. CODE-SWITCHING -->
-      <a href="#" class="card card-codeswitching fade-in">
+      <a href="codeswitching.html" class="card card-codeswitching fade-in" data-category="research">
         <div class="card-preview">
-          <img src="codeswitching-mockup.svg" alt="Code-Switching UW Study" />
+          <img src="images/codeswitching-thumbnail.png" alt="Code-Switching UW Study" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -815,9 +884,9 @@
       </a>
 
       <!-- 5. NEXSTERA (moved down) -->
-      <a href="nexstera.html" class="card card-nexstera fade-in">
+      <a href="nexstera.html" class="card card-nexstera fade-in" data-category="design">
         <div class="card-preview">
-          <img src="nexstera-mockup.png" alt="Nexstera Tech website" />
+          <img src="assets/nexstera-mockup.png" alt="Nexstera Tech website" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -830,26 +899,10 @@
         </div>
       </a>
 
-      <!-- 6. UXFEST -->
-      <a href="uxfest.html" class="card card-uxfest fade-in">
-        <div class="card-preview">
-          <img src="uxfest-mockup.svg" alt="UXFest hackathon" />
-        </div>
-        <div class="card-info">
-          <div class="card-meta">
-            <span class="card-tag">Leadership · UX Design · Hackathon</span>
-            <span class="card-year">2024</span>
-          </div>
-          <h3>UXFest — Solo President</h3>
-          <p class="card-desc">Led Cal Poly's biggest UX design hackathon as the first-ever solo president — growing the event and building a community of 200+ students.</p>
-          <div class="card-link">View case study →</div>
-        </div>
-      </a>
-
       <!-- 7. MOMSAFE -->
-      <a href="momsafe.html" class="card card-momsafe fade-in">
+      <a href="momsafe.html" class="card card-momsafe fade-in" data-category="research ai">
         <div class="card-preview">
-          <img src="momsafe-infographic.png" alt="MomSAFE infographic" />
+          <img src="assets/momsafe-infographic.png" alt="MomSAFE infographic" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -893,6 +946,15 @@
     </div>
   </section>
 
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">My Work</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="about.html" class="bottom-nav-link">About</a>
+    <span class="bottom-nav-dot"></span>
+    <a href="experience.html" class="bottom-nav-link">Resume</a>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
@@ -923,6 +985,34 @@
       });
     }, { threshold: 0.1 });
     cards.forEach(c => cardIO.observe(c));
+
+    // Filter pills
+    const pills = document.querySelectorAll('.filter-pill');
+    const allCards = document.querySelectorAll('.card');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const filter = pill.dataset.filter;
+
+        allCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category.includes(filter)) {
+            card.classList.remove('hidden');
+            // Re-trigger fade-in
+            card.classList.remove('visible');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                card.classList.add('visible');
+              });
+            });
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>

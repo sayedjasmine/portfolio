@@ -82,12 +82,12 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 88vh;
+      min-height: 80vh;
       background: linear-gradient(155deg, #0B1F15 0%, #1B3D2A 40%, #2D6A4F 80%, #40916C 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 120px 60px 72px;
+      padding: 100px 60px 52px;
       position: relative;
       overflow: hidden;
     }
@@ -143,13 +143,13 @@
       color: rgba(255,255,255,0.6);
       max-width: 540px;
       line-height: 1.72;
-      margin-bottom: 52px;
+      margin-bottom: 36px;
       position: relative;
     }
 
     .hero-meta {
       display: flex;
-      gap: 48px;
+      gap: 36px;
       flex-wrap: wrap;
       position: relative;
     }
@@ -173,7 +173,7 @@
     .container { max-width: 840px; margin: 0 auto; padding: 0 60px; }
     .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-    section { padding: 96px 0; }
+    section { padding: 64px 0; }
 
     .section-eyebrow {
       font-size: 10.5px;
@@ -194,7 +194,7 @@
       font-weight: 400;
       line-height: 1.12;
       color: var(--dark);
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
     h2.section-title em { font-style: italic; color: var(--green); }
 
@@ -203,7 +203,7 @@
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 14px;
-      margin-top: 44px;
+      margin-top: 28px;
     }
 
     p.body-text {
@@ -211,7 +211,7 @@
       font-weight: 300;
       color: #3A4E42;
       line-height: 1.82;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
     p.body-text strong { color: var(--dark); font-weight: 500; }
 
@@ -220,7 +220,7 @@
     /* ── ROLE STRIP ── */
     .role-strip {
       background: var(--green-bg);
-      padding: 52px 60px;
+      padding: 40px 60px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
@@ -241,7 +241,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .problem-card {
@@ -278,7 +278,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .method-card {
@@ -305,7 +305,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .competitor-card {
@@ -334,7 +334,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .insight-card {
@@ -382,7 +382,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .opp-card {
@@ -413,7 +413,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin: 40px 0;
+      margin: 24px 0;
     }
 
     .wireframe-frame {
@@ -439,7 +439,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin: 36px 0;
+      margin: 24px 0;
     }
 
     .feature-row {
@@ -674,7 +674,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin: 48px 0;
+      margin: 32px 0;
     }
 
     .impact-stat {
@@ -716,7 +716,7 @@
       border-left: 4px solid var(--green);
       border-radius: 0 16px 16px 0;
       padding: 32px 36px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
 
     .callout-box p {
@@ -729,7 +729,7 @@
 
     /* ── NEXT PROJECT ── */
     .next-project {
-      padding: 80px 60px;
+      padding: 56px 60px;
       text-align: center;
       border-top: 1px solid rgba(45,106,79,0.1);
     }
@@ -843,10 +843,43 @@
     @media (max-width: 600px) {
       .nav-right { display: none; }
       .wireframe-grid { grid-template-columns: 1fr; }
+      .skip-pill { position: static; margin: 16px 28px 0; }
     }
+
+    /* ── SKIP TO PROTOTYPE PILL ── */
+    .skip-pill {
+      position: fixed;
+      top: 18px;
+      right: 60px;
+      z-index: 101;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--green);
+      color: white;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(45,106,79,0.25);
+      transition: background 0.2s, gap 0.25s, transform 0.2s;
+    }
+    .skip-pill:hover {
+      background: var(--green-mid);
+      gap: 12px;
+      transform: translateY(-1px);
+    }
+    .skip-pill-sparkle { font-size: 14px; }
   </style>
 </head>
 <body>
+
+  <!-- SKIP TO PROTOTYPE PILL -->
+  <a href="#solution" class="skip-pill">
+    <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
+  </a>
 
   <!-- NAV -->
   <nav>
@@ -1142,10 +1175,10 @@
       <p class="body-text">A modern, investor-ready platform designed to balance technical depth, clarity, and credibility — creating a seamless experience for both investors and the general public.</p>
     </div>
 
-    <!-- Website mockup -->
+    <!-- Figma Prototype -->
     <div class="container-wide fade-in">
-      <div class="mockup-showcase">
-        <img src="nexstera-mockup.png" alt="Nexstera Tech redesigned website" style="width:100%;height:100%;object-fit:contain;border-radius:16px;display:block;" />
+      <div class="mockup-showcase" style="border-radius:20px;overflow:hidden;border:1px solid rgba(45,106,79,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);">
+        <iframe style="border:1px solid rgba(0,0,0,0.1);width:100%;height:640px;display:block;" src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?content-scaling=fixed&embed_origin=cdn.embedly.com&kind=proto&node-id=363-45&page-id=363%3A36&scaling=scale-down&show-proto-sidebar=1&starting-point-node-id=473%3A54&embed-host=share" allowfullscreen></iframe>
       </div>
 
       <!-- Key Features -->
@@ -1183,62 +1216,6 @@
           <div>
             <div class="feature-name">Clear Calls to Action</div>
             <div class="feature-desc">Intentional engagement pathways that drive user flow from initial awareness through inquiry and conversion — for both investors and the public.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN SYSTEM -->
-  <section style="background: var(--light-bg);">
-    <div class="container fade-in">
-      <p class="section-eyebrow">Design System</p>
-      <h2 class="section-title">Built for credibility<br />and sustainability.</h2>
-      <p class="body-text">The design system features a sleek palette of cool greens to reflect sustainability and innovation — balancing professionalism with approachability.</p>
-    </div>
-
-    <div class="container fade-in">
-      <div class="ds-strip">
-        <div>
-          <div class="ds-block-title">Color Palette</div>
-          <div class="ds-colors">
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#0B1F15;"></div>
-              <div class="ds-swatch-name">Forest</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#2D6A4F;"></div>
-              <div class="ds-swatch-name">Primary</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#40916C;"></div>
-              <div class="ds-swatch-name">Mid Green</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#95D5B2;"></div>
-              <div class="ds-swatch-name">Sage</div>
-            </div>
-            <div class="ds-color">
-              <div class="ds-swatch" style="background:#D8F3DC; border: 1px solid #e0ede4;"></div>
-              <div class="ds-swatch-name">Pale</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="ds-block-title">Typography</div>
-          <div class="ds-type">
-            <div>
-              <div class="ds-type-name">Display — DM Serif Display</div>
-              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark);">Safeguarding Waste.</div>
-            </div>
-            <div>
-              <div class="ds-type-name">Body — DM Sans Regular</div>
-              <div style="font-size:14px;color:var(--mid);font-weight:300;">AI-powered detection for safer facilities</div>
-            </div>
-            <div>
-              <div class="ds-type-name">Label — DM Sans Medium</div>
-              <div style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);">Learn More →</div>
-            </div>
           </div>
         </div>
       </div>
