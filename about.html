@@ -189,8 +189,8 @@
       font-size: 13.5px; font-weight: 500; padding: 13px 26px;
       border-radius: 100px; text-decoration: none; white-space: nowrap; transition: all 0.22s;
     }
-    .avail-btn.primary { background: white; color: var(--purple); }
-    .avail-btn.primary:hover { background: var(--light); }
+    .avail-btn.primary { background: white; color: var(--purple); border: 1.5px solid white; }
+    .avail-btn.primary:hover { background: transparent; color: white; border-color: white; }
     .avail-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.3); }
     .avail-btn.secondary:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.6); }
 
@@ -402,9 +402,14 @@
       <p>Looking for full-time roles in <strong style="color:rgba(255,255,255,0.9)">Product Design, UX Research, Product Management, and AI</strong>. My Master's classes are evenings-only, so I'm available full-time and open to relocating. Let's talk!</p>
     </div>
     <div class="availability-ctas">
-      <a href="mailto:sayedjasmine@gmail.com" class="avail-btn primary">Say hello →</a>
+      <a href="mailto:sayedjasmine@gmail.com" class="avail-btn primary" id="emailBtn">Say hello →</a>
       <a href="index.html#work" class="avail-btn secondary">View my work</a>
     </div>
+    <p id="emailFallback" style="display:none; margin-top: 14px; text-align: center;">
+      <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Or copy my email:</span><br />
+      <span id="emailText" style="font-size: 14px; color: white; cursor: pointer; border-bottom: 1px dashed rgba(255,255,255,0.4); padding-bottom: 2px;" title="Click to copy">sayedjasmine@gmail.com</span>
+      <span id="copyConfirm" style="font-size: 12px; color: rgba(255,255,255,0.6); margin-left: 8px; opacity: 0; transition: opacity 0.3s;"></span>
+    </p>
   </div>
 
   <!-- CAROUSEL -->
@@ -416,44 +421,42 @@
 
     <div class="carousel-outer" id="carouselOuter">
       <div class="carousel-strip" id="carouselStrip">
-        <!-- Set 1 — 18 photos, shuffled -->
-        <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-1.png"  alt="Jasmine" /></div>
+        <!-- Set 1 — 18 photos, randomized -->
         <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-4.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-11.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-10.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
         <!-- Set 2 — duplicate for seamless loop -->
-        <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-1.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-4.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-11.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-10.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
       </div>
     </div>
 
@@ -481,6 +484,46 @@
   </footer>
 
   <script>
+    // Email fallback — show copyable address if mailto doesn't open a client
+    (function() {
+      const emailBtn = document.getElementById('emailBtn');
+      const fallback = document.getElementById('emailFallback');
+      const emailText = document.getElementById('emailText');
+      const copyConfirm = document.getElementById('copyConfirm');
+
+      if (emailBtn && fallback) {
+        emailBtn.addEventListener('click', function() {
+          setTimeout(() => {
+            fallback.style.display = 'block';
+          }, 300);
+        });
+
+        emailText.addEventListener('click', function() {
+          navigator.clipboard.writeText('sayedjasmine@gmail.com').then(() => {
+            copyConfirm.textContent = 'Copied!';
+            copyConfirm.style.opacity = '1';
+            setTimeout(() => { copyConfirm.style.opacity = '0'; }, 2000);
+          }).catch(() => {
+            const range = document.createRange();
+            range.selectNodeContents(emailText);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            try {
+              document.execCommand('copy');
+              copyConfirm.textContent = 'Copied!';
+              copyConfirm.style.opacity = '1';
+              setTimeout(() => { copyConfirm.style.opacity = '0'; }, 2000);
+            } catch(err) {
+              copyConfirm.textContent = 'Select & copy manually';
+              copyConfirm.style.opacity = '1';
+            }
+            sel.removeAllRanges();
+          });
+        });
+      }
+    })();
+
     // Hide carousel slides whose image fails to load (no blank boxes)
     document.querySelectorAll('.c-slide img').forEach(img => {
       img.addEventListener('error', () => {
