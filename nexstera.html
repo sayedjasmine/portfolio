@@ -768,6 +768,219 @@
     }
     .next-btn:hover { background: var(--green-mid); gap: 18px; }
 
+    /* ── CASE IMAGES ── */
+    .case-img-wrapper {
+      margin: 24px auto;
+      max-width: 70%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(45,106,79,0.1);
+      background: var(--green-bg);
+    }
+    .case-img-wrapper img {
+      width: 100%;
+      display: block;
+    }
+    .case-img-caption {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--mid);
+      text-align: center;
+      padding: 10px 16px;
+      background: var(--green-bg);
+      letter-spacing: 0.01em;
+    }
+    .case-img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px auto;
+      max-width: 75%;
+    }
+    .case-img-grid .case-img-wrapper { margin: 0; max-width: 100%; }
+
+    .case-gif-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 28px auto;
+      max-width: 80%;
+    }
+    .case-gif-showcase .case-img-wrapper {
+      margin: 0;
+      max-width: 100%;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+    .case-gif-showcase .case-img-caption {
+      font-size: 10.5px;
+      padding: 8px 10px;
+    }
+
+    /* ── JOURNEY MAP ── */
+    .jm-wrapper {
+      margin: 24px auto;
+      max-width: 85%;
+      border-radius: 12px;
+      border: 1px solid rgba(45,106,79,0.12);
+      overflow-x: auto;
+      background: var(--white);
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.88em;
+    }
+    .jm-table {
+      min-width: 900px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .jm-table th,
+    .jm-table td {
+      padding: 7px 6px;
+      vertical-align: top;
+      border: 1px solid rgba(45,106,79,0.08);
+    }
+    .jm-table thead th {
+      background: var(--green);
+      color: white;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 8px;
+      position: sticky;
+      top: 0;
+    }
+    .jm-table thead th:first-child {
+      background: var(--dark);
+      min-width: 80px;
+      text-align: left;
+    }
+    .jm-arrow {
+      display: inline-block;
+      color: rgba(255,255,255,0.5);
+      margin: 0 2px;
+      font-size: 10px;
+    }
+    .jm-row-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: 0.04em;
+      background: var(--light-bg);
+      min-width: 80px;
+      vertical-align: middle;
+    }
+    .jm-cell {
+      display: flex;
+      gap: 4px;
+    }
+    .jm-note {
+      flex: 1;
+      border-radius: 6px;
+      padding: 7px 8px;
+      font-size: 10px;
+      line-height: 1.48;
+      color: var(--dark);
+    }
+    .jm-note-green {
+      background: var(--green-pale);
+      border: 1px solid rgba(45,106,79,0.12);
+    }
+    .jm-note-orange {
+      background: #FFF0D4;
+      border: 1px solid rgba(220,170,80,0.2);
+    }
+    .jm-note .jm-persona {
+      display: block;
+      font-size: 8.5px;
+      color: var(--mid);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .jm-label-row { font-size: 10px; font-weight: 500; color: var(--green); margin-bottom: 4px; letter-spacing: 0.03em; }
+
+    /* ── DESIGN SYSTEM COMPONENT ── */
+    .ds-wrapper {
+      margin: 24px auto;
+      max-width: 60%;
+      border-radius: 12px;
+      border: 1px solid rgba(45,106,79,0.12);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .ds-section {
+      padding: 22px 28px;
+      border-bottom: 1px solid rgba(45,106,79,0.08);
+    }
+    .ds-section:last-child { border-bottom: none; }
+    .ds-section-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+    .ds-section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .ds-colors {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .ds-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .ds-swatch-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .ds-swatch-hex {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--mid);
+      font-family: 'DM Sans', monospace;
+      letter-spacing: 0.02em;
+    }
+    .ds-type-specimen {
+      font-family: 'DM Sans', sans-serif;
+    }
+    .ds-type-name {
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .ds-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(45,106,79,0.06);
+    }
+    .ds-type-row:last-child { border-bottom: none; }
+    .ds-type-role {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      min-width: 100px;
+    }
+    .ds-type-sample-h { font-size: 24px; font-weight: 500; color: var(--dark); }
+    .ds-type-sample-sh { font-size: 17px; font-weight: 500; color: var(--dark); font-style: italic; }
+    .ds-type-sample-b { font-size: 13px; font-weight: 300; color: #3A4E42; line-height: 1.6; }
+
         /* ── FOOTER ── */
     footer {
       padding: 28px 60px;
@@ -1024,6 +1237,134 @@
       </div>
     </div>
 
+    <!-- Journey Map — HTML Component -->
+    <div class="container-wide fade-in">
+      <div class="jm-wrapper">
+        <table class="jm-table">
+          <thead>
+            <tr>
+              <th>Journey step</th>
+              <th>Awareness <span class="jm-arrow">→</span></th>
+              <th>Consideration <span class="jm-arrow">→</span></th>
+              <th>Acquisition <span class="jm-arrow">→</span></th>
+              <th>Service <span class="jm-arrow">→</span></th>
+              <th>Loyalty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- USER ACTIONS -->
+            <tr>
+              <td class="jm-row-label">User actions</td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Arrives on homepage of website<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Arrives on homepage of website<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Clicks on get in touch to ask more questions<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Clicks on get in touch to learn more or joins email list<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Gets in contact to invest / start this process<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Learns more about what to do with batteries as an individual and either reaches out, joins mailing list<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Invests in product<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Becomes more educated on batteries<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Continues investing<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Continues taking action and sharing progress<span class="jm-persona">Visitor</span></div>
+              </div></td>
+            </tr>
+
+            <!-- TOUCH POINTS -->
+            <tr>
+              <td class="jm-row-label">Touch point</td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Click on homepage<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Clicks on home page<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Click on get in touch point<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Click on get in touch or email<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Gets in contact via email / phone<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Learns and gets in contact, joins mailing list<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">After contacting person and learning more, invests<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">After learning, takes actions<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-green">Invests<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-green">Visits website<span class="jm-persona">Visitor</span></div>
+              </div></td>
+            </tr>
+
+            <!-- PAIN POINTS -->
+            <tr>
+              <td class="jm-row-label">Pain point</td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Learns about product and problem on homepage but no details for investors<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Learns about product and problem not really in depth, less visuals and direction of what to do as consumer<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Barrier to information by contact; less investor-centric, wait for contact response by form format<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Learn little about product and problems / significance or what to do if have batteries or to learn more<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Meeting setup less straightforward — more of a guessing process<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">More ways to help as individual? Battery drop-off and list of things to do?<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">How can investors market it to others? Not much investor info and big eye-catching graphics<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Learn and take action — now what?<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">How to create investor loyalty?<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">How to keep people visiting to learn more? Or after they learn<span class="jm-persona">Visitor</span></div>
+              </div></td>
+            </tr>
+
+            <!-- SOLUTIONS -->
+            <tr>
+              <td class="jm-row-label">Solution</td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Create an investor-specific page<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Create one page for learning about product and problem; homepage buttons take you to sections with step-by-steps and visuals<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Create more straightforward contact where investor can reach out with more assurance of hearing back, plus investor tab with info for success and easy to find<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Emphasize educating users on rechargeable and disposable battery drop-off instructions and how to approach collecting to find areas of battery recycling<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Use direct wording like "set up meeting" or "reach out to invest" and include specific investor info<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Visual list of where lithium batteries exist; if your device has lithium batteries, step-by-step individual drop-off button and more page after education<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Investor section again but prioritize impressive product features and stats<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Ability to share on social media — like an infographic or personalized message to encourage others to do same<span class="jm-persona">Visitor</span></div>
+              </div></td>
+              <td><div class="jm-cell">
+                <div class="jm-note jm-note-orange">Keep updates, stats, and progress somehow<span class="jm-persona">Investor</span></div>
+                <div class="jm-note jm-note-orange">Progress chart that is updated so users feel inclined to keep helping. Include educational part useful for school?<span class="jm-persona">Visitor</span></div>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="case-img-caption">Journey map — dual-track mapping of the investor and curious visitor experience across five stages</div>
+    </div>
+
+    <!-- Think-Aloud Studies -->
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <img src="assets/nexstera-thinkaloud-studies-markup.webp" alt="Think-aloud study markup showing annotated user feedback on the original site" loading="lazy" />
+        <div class="case-img-caption">Think-aloud study — annotated markup highlighting usability issues and user confusion points</div>
+      </div>
+    </div>
+
     <!-- Competitors -->
     <div class="container fade-in">
       <h3 class="sub-heading">Competitive Landscape</h3>
@@ -1117,54 +1458,80 @@
       <p class="body-text">I started transforming concepts into tangible ideas — exploring features, refining layouts, and iterating through sketches. I built low, mid, and high fidelity wireframes in Figma, adding new pages including Product, Education, FAQ, Investor, and Contact.</p>
     </div>
 
+    <!-- Sketches -->
     <div class="container-wide fade-in">
-      <div class="wireframe-grid">
-        <div class="wireframe-frame">
-          <div class="wf-label">Home</div>
-          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1;">
-            <div style="display:flex;flex-direction:column;gap:4px;justify-content:center;">
-              <div class="wf-bar dark" style="width:80%;height:7px;"></div>
-              <div class="wf-bar" style="width:60%;"></div>
-              <div class="wf-bar green" style="width:40%;height:10px;border-radius:5px;margin-top:4px;"></div>
-            </div>
-            <div class="wf-rect" style="height:100%;min-height:40px;"></div>
-          </div>
+      <div class="case-img-grid">
+        <div class="case-img-wrapper">
+          <img src="assets/nexstera-sketch-1.webp" alt="Early concept sketch exploring layout and information hierarchy" loading="lazy" />
+          <div class="case-img-caption">Initial sketches — exploring layout concepts</div>
         </div>
-        <div class="wireframe-frame">
-          <div class="wf-label">Product</div>
-          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
-          <div class="wf-rect" style="height:40px;margin:4px 0;"></div>
-          <div class="wf-bar" style="width:90%;"></div>
-          <div class="wf-bar" style="width:75%;margin:3px 0;"></div>
-          <div style="display:flex;gap:5px;margin-top:4px;">
-            <div class="wf-rect" style="flex:1;height:24px;"></div>
-            <div class="wf-rect" style="flex:1;height:24px;background:rgba(45,106,79,0.12);"></div>
-          </div>
-        </div>
-        <div class="wireframe-frame">
-          <div class="wf-label">Investor</div>
-          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:4px 0;">
-            <div class="wf-rect" style="height:20px;background:rgba(45,106,79,0.15);"></div>
-            <div class="wf-rect" style="height:20px;background:rgba(45,106,79,0.15);"></div>
-            <div class="wf-rect" style="height:20px;background:rgba(45,106,79,0.15);"></div>
-          </div>
-          <div class="wf-bar" style="width:100%;"></div>
-          <div class="wf-bar" style="width:80%;margin:3px 0;"></div>
-          <div class="wf-rect" style="height:20px;margin-top:auto;background:rgba(45,106,79,0.2);"></div>
-        </div>
-        <div class="wireframe-frame">
-          <div class="wf-label">Education</div>
-          <div class="wf-bar dark" style="width:100%;height:14px;background:#3D6050;border-radius:3px;"></div>
-          <div class="wf-bar dark" style="width:60%;height:8px;margin:4px 0;"></div>
-          <div class="wf-rect" style="height:28px;margin:3px 0;"></div>
-          <div class="wf-bar" style="width:100%;"></div>
-          <div class="wf-bar" style="width:85%;margin:3px 0;"></div>
-          <div class="wf-bar" style="width:70%;"></div>
+        <div class="case-img-wrapper">
+          <img src="assets/nestera-sketch-2.webp" alt="Refined sketch iterations for key pages" loading="lazy" />
+          <div class="case-img-caption">Refined sketches — iterating on page structure</div>
         </div>
       </div>
     </div>
+
+    <!-- Mid-fi Wireframe -->
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <img src="assets/nexstera-midfi-wireframe.webp" alt="Mid-fidelity wireframes showing page layouts in Figma" loading="lazy" />
+        <div class="case-img-caption">Mid-fidelity wireframes — translating sketches into structured Figma layouts</div>
+      </div>
+    </div>
+
+    <!-- Design System — HTML Component -->
+    <div class="container-wide fade-in">
+      <div class="ds-wrapper">
+        <div class="ds-section">
+          <div class="ds-section-label">Styles</div>
+          <div class="ds-section-title">Colors</div>
+          <div class="ds-colors">
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #436062;"></div>
+              <span class="ds-swatch-hex">#436062</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #1A461A;"></div>
+              <span class="ds-swatch-hex">#1A461A</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #E2EFDD;"></div>
+              <span class="ds-swatch-hex">#E2EFDD</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #253839;"></div>
+              <span class="ds-swatch-hex">#253839</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #AFC6A6;"></div>
+              <span class="ds-swatch-hex">#AFC6A6</span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-section">
+          <div class="ds-section-label">Styles</div>
+          <div class="ds-section-title">Typeface</div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-name">Neue Haas Grotesk</div>
+            <div class="ds-type-row">
+              <span class="ds-type-role">Heading</span>
+              <span class="ds-type-sample-h">Heading</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-role">Subheading</span>
+              <span class="ds-type-sample-sh">Subheading</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-role">Body</span>
+              <span class="ds-type-sample-b">Body</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-img-caption">Design system — color palette and typography scale for the Nexstera brand</div>
+    </div>
+
   </section>
 
   <!-- SOLUTION -->
@@ -1179,6 +1546,22 @@
     <div class="container-wide fade-in">
       <div class="mockup-showcase" style="border-radius:20px;overflow:hidden;border:1px solid rgba(45,106,79,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);">
         <iframe style="border:1px solid rgba(0,0,0,0.1);width:100%;height:640px;display:block;" src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?content-scaling=fixed&embed_origin=cdn.embedly.com&kind=proto&node-id=363-45&page-id=363%3A36&scaling=scale-down&show-proto-sidebar=1&starting-point-node-id=473%3A54&embed-host=share" allowfullscreen></iframe>
+      </div>
+
+      <!-- Solution GIF Showcase -->
+      <div class="case-gif-showcase fade-in">
+        <div class="case-img-wrapper">
+          <img src="assets/nexstera-homepage-gif.gif" alt="Animated walkthrough of the redesigned Nexstera homepage" loading="lazy" />
+          <div class="case-img-caption">Homepage — clean hero, clear value proposition, and streamlined navigation</div>
+        </div>
+        <div class="case-img-wrapper">
+          <img src="assets/nexstera-investor-page-gif.gif" alt="Animated walkthrough of the dedicated investor page" loading="lazy" />
+          <div class="case-img-caption">Investor page — traction metrics, business value, and clear calls to action</div>
+        </div>
+        <div class="case-img-wrapper">
+          <img src="assets/nexstera-pyrotack-features-gif.gif" alt="Animated walkthrough of the Pyrotack product features page" loading="lazy" />
+          <div class="case-img-caption">Pyrotack features — accessible storytelling of AI-powered battery detection</div>
+        </div>
       </div>
 
       <!-- Key Features -->

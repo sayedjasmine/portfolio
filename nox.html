@@ -934,6 +934,129 @@
 
     .next-btn:hover { background: var(--purple-mid); gap: 18px; }
 
+    /* ── CASE IMAGES ── */
+    .case-img-wrapper {
+      margin: 24px auto;
+      max-width: 70%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(107,63,160,0.1);
+      background: var(--purple-bg);
+    }
+    .case-img-wrapper img {
+      width: 100%;
+      display: block;
+    }
+    .case-img-caption {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--mid);
+      text-align: center;
+      padding: 10px 16px;
+      background: var(--purple-bg);
+      letter-spacing: 0.01em;
+    }
+    .case-img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px auto;
+      max-width: 75%;
+    }
+    .case-img-grid .case-img-wrapper { margin: 0; max-width: 100%; }
+
+    /* ── DESIGN SYSTEM COMPONENT ── */
+    .ds-wrapper {
+      margin: 24px auto;
+      max-width: 60%;
+      border-radius: 12px;
+      border: 1px solid rgba(107,63,160,0.12);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .ds-section {
+      padding: 22px 28px;
+      border-bottom: 1px solid rgba(107,63,160,0.08);
+    }
+    .ds-section:last-child { border-bottom: none; }
+    .ds-section-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 4px;
+    }
+    .ds-section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .ds-colors {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .ds-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .ds-swatch-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .ds-swatch-hex {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--mid);
+      font-family: 'DM Sans', monospace;
+      letter-spacing: 0.02em;
+    }
+    .ds-gradient-bar {
+      height: 48px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .ds-gradient-swatches {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .ds-type-specimen {
+      font-family: 'Inter', 'DM Sans', sans-serif;
+    }
+    .ds-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(107,63,160,0.06);
+    }
+    .ds-type-row:last-child { border-bottom: none; }
+    .ds-type-style {
+      min-width: 110px;
+    }
+    .ds-type-style-name {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 13px;
+    }
+    .ds-type-style-weight {
+      font-size: 10px;
+      color: var(--purple);
+      font-weight: 500;
+    }
+    .ds-type-content {
+      font-size: 11.5px;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
         /* ── FOOTER ── */
     footer {
       padding: 32px 60px;
@@ -1237,45 +1360,121 @@
       <h2 class="section-title">Creating the blueprint.</h2>
       <p class="body-text">I started transforming concepts into tangible ideas — exploring features, refining layouts, and iterating through sketches. I designed a detailed sketch to explore features and layout before moving into mid-fidelity wireframes.</p>
 
+    </div>
+
+    <!-- Sketch -->
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <img src="assets/nox-sketch.webp" alt="Early concept sketches exploring Nox+ app features and layout" loading="lazy" />
+        <div class="case-img-caption">Sketching — exploring feature ideas, screen flows, and layout before moving to digital</div>
+      </div>
+    </div>
+
+    <div class="container fade-in">
       <h3 class="sub-heading">Wireframes</h3>
       <p class="body-text">I built mid-fidelity Figma wireframes to validate early navigation, test safe presentation of sensitive data, and explore flows for document renewal, history logs, and one-time PIN verification.</p>
     </div>
 
-    <div class="container-wide">
-      <div class="wireframe-grid fade-in">
-        <div class="wireframe-frame">
-          <div class="wf-title">Welcome / Onboarding</div>
-          <div class="wf-bar dark" style="width:60%;height:14px;margin:10px auto;"></div>
-          <div class="wf-rect" style="height:80px;margin:4px 0;"></div>
-          <div class="wf-bar" style="width:80%;margin:0 auto;"></div>
-          <div class="wf-bar" style="width:60%;margin:6px auto;"></div>
-          <div class="wf-rect" style="height:20px;margin-top:auto;background:rgba(107,63,160,0.2);"></div>
-        </div>
-        <div class="wireframe-frame">
-          <div class="wf-title">Document Management</div>
-          <div class="wf-bar dark" style="width:40%;height:10px;margin:8px 0;"></div>
-          <div class="wf-rect" style="height:52px;margin:4px 0;background:#e0e0e0;"></div>
-          <div class="wf-rect" style="height:52px;margin:4px 0;"></div>
-          <div class="wf-rect" style="height:52px;margin:4px 0;"></div>
-          <div class="wf-bar purple" style="width:90%;height:22px;border-radius:11px;margin-top:auto;"></div>
-        </div>
-        <div class="wireframe-frame">
-          <div class="wf-title">Data Transparency</div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;">
-            <div class="wf-bar dark" style="width:40%;height:10px;"></div>
-            <div style="width:20px;height:20px;border-radius:50%;background:#e0e0e0;"></div>
+    <!-- Mid-fi / Hi-fi Designs -->
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <img src="assets/nox-midfi-hifi-figma-designs.webp" alt="Mid-fidelity and high-fidelity Figma designs for Nox+" loading="lazy" />
+        <div class="case-img-caption">Mid-fi to hi-fi — evolving wireframes into polished, interaction-ready screens</div>
+      </div>
+    </div>
+
+    <!-- Design System — HTML Component -->
+    <div class="container-wide fade-in">
+      <div class="ds-wrapper">
+        <div class="ds-section">
+          <div class="ds-section-label">Styles</div>
+          <div class="ds-section-title">Gradient</div>
+          <div class="ds-gradient-bar" style="background: linear-gradient(135deg, #24C0E9 0%, #2135AA 35%, #794AB7 70%, #F68DFF 100%);"></div>
+          <div class="ds-gradient-swatches">
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #24C0E9;"></div>
+              <span class="ds-swatch-hex">#24C0E9</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #2135AA;"></div>
+              <span class="ds-swatch-hex">#2135AA</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #794AB7;"></div>
+              <span class="ds-swatch-hex">#794AB7</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #F68DFF;"></div>
+              <span class="ds-swatch-hex">#F68DFF</span>
+            </div>
           </div>
-          <div class="wf-rect" style="height:70px;margin:4px 0;background:rgba(107,63,160,0.1);"></div>
-          <div class="wf-bar" style="width:100%;margin:4px 0;"></div>
-          <div class="wf-bar" style="width:75%;margin:4px 0;"></div>
-          <div class="wf-bar" style="width:90%;margin:4px 0;"></div>
-          <div style="display:flex;gap:6px;margin-top:auto;">
-            <div class="wf-rect" style="flex:1;height:18px;"></div>
-            <div class="wf-rect" style="flex:1;height:18px;background:rgba(107,63,160,0.2);"></div>
+        </div>
+        <div class="ds-section">
+          <div class="ds-section-label">Styles</div>
+          <div class="ds-section-title">Colors</div>
+          <div class="ds-colors">
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #333333;"></div>
+              <span class="ds-swatch-hex">#333333</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #6A00B5;"></div>
+              <span class="ds-swatch-hex">#6A00B5</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #9C40D6;"></div>
+              <span class="ds-swatch-hex">#9C40D6</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #B58F98;"></div>
+              <span class="ds-swatch-hex">#B58F98</span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-section">
+          <div class="ds-section-label">Typography</div>
+          <div class="ds-section-title">Typefaces</div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-row">
+              <div class="ds-type-style">
+                <div class="ds-type-style-name" style="font-family:'Futura','DM Sans',sans-serif; text-transform:uppercase; letter-spacing:0.05em;">FUTURA</div>
+              </div>
+              <div class="ds-type-content">Used for logo font</div>
+            </div>
+            <div class="ds-type-row">
+              <div class="ds-type-style">
+                <div class="ds-type-style-name">Inter</div>
+                <div class="ds-type-style-weight">Bold</div>
+              </div>
+              <div class="ds-type-content">Used for app page headings</div>
+            </div>
+            <div class="ds-type-row">
+              <div class="ds-type-style">
+                <div class="ds-type-style-name">Inter</div>
+                <div class="ds-type-style-weight">Semi Bold</div>
+              </div>
+              <div class="ds-type-content">Used for labeling on history page</div>
+            </div>
+            <div class="ds-type-row">
+              <div class="ds-type-style">
+                <div class="ds-type-style-name">Inter</div>
+                <div class="ds-type-style-weight">Medium</div>
+              </div>
+              <div class="ds-type-content">Used for subheadings in pages and button CTAs</div>
+            </div>
+            <div class="ds-type-row">
+              <div class="ds-type-style">
+                <div class="ds-type-style-name">Inter</div>
+                <div class="ds-type-style-weight">Regular</div>
+              </div>
+              <div class="ds-type-content">Used for paragraph text</div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="case-img-caption">Design system — gradient, color palette, and typography for the Nox+ brand</div>
     </div>
+
   </section>
 
   <!-- FINAL DESIGNS / KEY FEATURES -->
@@ -1337,54 +1536,6 @@
       <div class="prototype-video-wrap" style="background: rgba(255,255,255,0.06);">
         <p class="prototype-label">Prototype Walkthrough</p>
         <iframe src="https://drive.google.com/file/d/1srATv0P306tj-vyMobzG8L22GPwixawJ/preview" style="width:100%;height:506px;border:none;display:block;border-radius:12px;" allow="autoplay" allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- DETAILED SCREENS -->
-  <section>
-    <div class="container fade-in">
-      <p class="section-eyebrow">Detailed Screens</p>
-      <h2 class="section-title">Every screen, <em>annotated.</em></h2>
-      <p class="body-text">Each screen was carefully documented with design rationale — explaining the purpose of every element, interaction pattern, and information hierarchy decision.</p>
-    </div>
-    <div class="container-wide">
-      <div class="screen-gallery">
-        <div class="screen-card fade-in">
-          <div class="screen-card-num">1</div>
-          <div>
-            <div class="screen-card-title">Onboarding Flow</div>
-            <div class="screen-card-desc">Splash, biometric verification via Face ID, and introduction to Light Mode for limited access</div>
-          </div>
-        </div>
-        <div class="screen-card fade-in">
-          <div class="screen-card-num">2</div>
-          <div>
-            <div class="screen-card-title">Home & Pincode</div>
-            <div class="screen-card-desc">Universal verification card, primary documents display, search bar, and secure one-time pincode generation</div>
-          </div>
-        </div>
-        <div class="screen-card fade-in">
-          <div class="screen-card-num">3</div>
-          <div>
-            <div class="screen-card-title">Document Management</div>
-            <div class="screen-card-desc">Auto-populated document list with security reassurance, expiration alerts, physical document display, and verification actions</div>
-          </div>
-        </div>
-        <div class="screen-card fade-in">
-          <div class="screen-card-num">4</div>
-          <div>
-            <div class="screen-card-title">Family Access</div>
-            <div class="screen-card-desc">Family access notifications, member profiles with swipe navigation, and shared document management controls</div>
-          </div>
-        </div>
-        <div class="screen-card fade-in">
-          <div class="screen-card-num">5</div>
-          <div>
-            <div class="screen-card-title">Verification History</div>
-            <div class="screen-card-desc">Chronological verification log with search, data sharing transparency, and action controls for each event</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
