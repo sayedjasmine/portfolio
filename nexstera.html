@@ -66,6 +66,7 @@
       font-size: 16px;
       color: var(--dark);
       text-decoration: none;
+      display: none;
     }
 
     .nav-right { display: flex; align-items: center; gap: 32px; }
@@ -79,6 +80,59 @@
       transition: color 0.2s;
     }
     .nav-right a:hover { color: var(--green); }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      z-index: 201;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 199;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--dark);
+      text-decoration: none;
+      padding: 16px 0;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--green); }
 
     /* ── HERO ── */
     .hero {
@@ -1043,76 +1097,103 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
-      .hero { padding: 100px 28px 56px; }
+      .nav-back, .nav-right { display: none; }
+      .hamburger { display: flex; }
+      .nav-logo { display: block; }
+      .hero { padding: 100px 28px 48px; }
+      .skip-pill { top: 85px; right: 28px; }
       .container, .container-wide { padding: 0 24px; }
-      .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
+      section { padding: 36px 0; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 32px 28px; gap: 24px; }
       .problem-grid, .method-grid, .insights-grid, .competitor-grid, .opportunity-grid { grid-template-columns: 1fr; }
       .wireframe-grid { grid-template-columns: 1fr 1fr; }
       .ds-strip { grid-template-columns: 1fr; }
       .impact-stats { grid-template-columns: 1fr; gap: 16px; }
-      .next-project { padding: 60px 28px; }
+      .next-project { padding: 48px 28px; }
       footer { padding: 22px 28px; }
     }
 
     @media (max-width: 600px) {
-      .nav-right { display: none; }
-      .hero { padding: 90px 24px 40px; }
-      .hero h1 { font-size: clamp(36px, 10vw, 52px); }
-      .hero-meta { flex-direction: column; gap: 18px; }
-      .role-strip { grid-template-columns: 1fr; }
+      .hero { padding: 85px 20px 36px; }
+      .hero h1 { font-size: clamp(32px, 9vw, 48px); }
+      .hero-sub { font-size: 15px; }
+      .hero-meta { flex-direction: column; gap: 14px; }
+      .hero-meta-value { font-size: 13px; }
+      .container, .container-wide { padding: 0 20px; }
+      section { padding: 28px 0; }
+      h2.section-title { font-size: clamp(22px, 6vw, 32px); margin-bottom: 14px; }
+      h3.sub-heading { font-size: 16px; margin-top: 22px; margin-bottom: 10px; }
+      p.body-text { font-size: 14.5px; line-height: 1.72; margin-bottom: 12px; }
+      .section-eyebrow { font-size: 10px; margin-bottom: 12px; }
+      .role-strip { grid-template-columns: 1fr; padding: 24px 20px; gap: 18px; }
       .wireframe-grid { grid-template-columns: 1fr; }
-      .skip-pill { position: static; margin: 16px 28px 0; }
+      .skip-pill { position: relative; top: auto; right: auto; align-self: flex-start; margin-bottom: 12px; font-size: 11.5px; padding: 8px 16px; }
       .case-img-wrapper { max-width: 100%; }
       .case-img-grid { max-width: 100%; grid-template-columns: 1fr; }
       .ds-wrapper { max-width: 100%; }
       .gif-showcase { max-width: 100%; grid-template-columns: 1fr; }
+      .method-card, .problem-card { padding: 20px 18px; }
+      .divider { margin: 8px 20px; }
+      .impact-stats { margin: 28px 0; }
+      .next-project { padding: 40px 20px; }
+      footer { padding: 18px 20px; }
     }
 
     /* ── SKIP TO PROTOTYPE PILL ── */
     .skip-pill {
-      position: fixed;
-      top: 18px;
+      position: absolute;
+      top: 95px;
       right: 60px;
-      z-index: 101;
+      z-index: 10;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
-      background: var(--green);
-      color: white;
+      padding: 10px 22px;
+      background: rgba(255,255,255,0.95);
+      color: var(--green);
       font-size: 12.5px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.02em;
       border-radius: 100px;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(45,106,79,0.25);
-      transition: background 0.2s, gap 0.25s, transform 0.2s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
     }
     .skip-pill:hover {
-      background: var(--green-mid);
+      background: var(--green);
+      color: white;
       gap: 12px;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(45,106,79,0.35);
     }
     .skip-pill-sparkle { font-size: 14px; }
   </style>
 </head>
 <body>
 
-  <!-- SKIP TO PROTOTYPE PILL -->
-  <a href="#solution" class="skip-pill">
-    <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
-  </a>
-
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-back">
       <span class="arrow">←</span> All work
     </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
     <div class="nav-right">
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Resume</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
 
   <!-- SECTION TABS -->
   <div class="section-tabs" id="sectionTabs">
@@ -1130,6 +1211,9 @@
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
+    <a href="#solution" class="skip-pill">
+      <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
+    </a>
     <p class="hero-tag">UX Design · Website Redesign · Climate Tech</p>
     <h1>Nexstera<br /><em>Tech</em></h1>
     <p class="hero-sub">Designed a website for a lithium-ion battery AI startup — helping secure $65K in seed funding and a 120% increase in investor engagement.</p>
@@ -1678,6 +1762,19 @@
   </footer>
 
   <script>
+    // Hamburger menu
+    (function() {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function() {
+          hamburger.classList.toggle('active');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+      }
+    })();
+
     // Fade-in on scroll
     const io = new IntersectionObserver(entries => {
       entries.forEach((e, i) => {
