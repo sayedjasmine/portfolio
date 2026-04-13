@@ -127,14 +127,11 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
-      opacity: 0;
-      max-width: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: none;
     }
     .hamburger.active .hamburger-close-label {
-      opacity: 1;
-      max-width: 60px;
+      display: inline;
     }
 
     .mobile-menu {
