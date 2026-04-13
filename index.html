@@ -322,7 +322,8 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
-    .hero-pill:hover .pill-tooltip {
+    .hero-pill:hover .pill-tooltip,
+    .hero-pill.active .pill-tooltip {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
@@ -1000,6 +1001,16 @@
       .hero-cta-wrap { width: 100%; }
       .hero-pills { flex-wrap: wrap; }
       .hero-pill { font-size: 11px; padding: 7px 14px; }
+      .hero-pill .pill-tooltip {
+        top: auto;
+        bottom: calc(100% + 10px);
+        transform: translateX(-50%) translateY(4px);
+        z-index: 10;
+      }
+      .hero-pill:hover .pill-tooltip,
+      .hero-pill.active .pill-tooltip {
+        transform: translateX(-50%) translateY(0);
+      }
       .card-preview { height: 180px; }
       .card-info { padding: 20px 20px 24px; }
     }
@@ -1246,6 +1257,20 @@
         }
       }, 1000);
     })();
+
+    // Hero pill tap-to-show tooltip (mobile)
+    document.querySelectorAll('.hero-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        const wasActive = pill.classList.contains('active');
+        document.querySelectorAll('.hero-pill').forEach(p => p.classList.remove('active'));
+        if (!wasActive) pill.classList.add('active');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.hero-pill')) {
+        document.querySelectorAll('.hero-pill').forEach(p => p.classList.remove('active'));
+      }
+    });
 
     // Filter pill ripple
     document.querySelectorAll('.filter-pill').forEach(pill => {

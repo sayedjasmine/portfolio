@@ -893,7 +893,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
-      .hero { padding: 100px 28px 56px; }
+      .hero { padding: 100px 28px 56px; flex-direction: column; align-items: flex-start; }
+      .hero-site-card { width: 100%; margin-left: 0; margin-top: 32px; }
+      .hero-browser-frame { border-radius: 10px; }
       .container, .container-wide { padding: 0 24px; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
       .method-grid { grid-template-columns: 1fr; }
@@ -906,6 +908,12 @@
 
     @media (max-width: 600px) {
       .nav-right { display: none; }
+      .hero { padding: 90px 24px 40px; }
+      .hero h1 { font-size: clamp(36px, 10vw, 52px); }
+      .hero-meta { flex-direction: column; gap: 18px; }
+      .hero-site-card { width: 100%; }
+      .hero-site-pill { font-size: 11px; padding: 7px 16px; }
+      .role-strip { grid-template-columns: 1fr; }
     }
   </style>
 </head>

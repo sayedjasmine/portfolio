@@ -662,7 +662,10 @@
     @media (max-width: 960px) {
       nav { padding: 18px 28px; }
       .section-tabs { padding: 12px 28px; }
-      .hero { padding: 140px 28px 60px; }
+      .hero { padding: 140px 28px 60px; flex-direction: column; align-items: center; }
+      .hero-content { text-align: center; }
+      .hero-docs { width: 100%; margin-top: 28px; }
+      .hero-doc-card { width: 100%; }
       .container { padding: 0 24px; }
       .role-strip { grid-template-columns: repeat(2, 1fr); }
       .sdg-grid { grid-template-columns: 1fr; }
@@ -674,7 +677,10 @@
 
     @media (max-width: 600px) {
       .nav-right { display: none; }
+      .hero { padding: 110px 24px 48px; }
+      .hero h1 { font-size: clamp(36px, 10vw, 52px); }
       .hero-meta { flex-direction: column; gap: 20px; }
+      .hero-docs { flex-direction: column; gap: 12px; }
       .role-strip { grid-template-columns: 1fr; }
       .problem-grid { grid-template-columns: 1fr; }
       .feature-grid { grid-template-columns: 1fr; }

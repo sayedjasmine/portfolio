@@ -1028,7 +1028,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
-      .hero { padding: 100px 28px 56px; }
+      .hero { padding: 100px 28px 56px; flex-direction: column; align-items: flex-start; }
+      .hero-docs { width: 100%; margin-left: 0; margin-top: 28px; }
+      .hero-doc-card { width: 100%; }
       .container, .container-wide { padding: 0 24px; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 40px 28px; }
       .problem-grid, .method-grid, .insights-grid, .features-grid { grid-template-columns: 1fr; }
@@ -1043,8 +1045,15 @@
 
     @media (max-width: 600px) {
       .nav-right { display: none; }
+      .hero { padding: 90px 24px 40px; }
+      .hero h1 { font-size: clamp(36px, 10vw, 52px); }
+      .hero-meta { flex-direction: column; gap: 18px; }
+      .role-strip { grid-template-columns: 1fr; }
       .screen-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .skip-pill { position: static; margin: 16px 28px 0; }
+      .case-img-wrapper { max-width: 100%; }
+      .case-img-grid { max-width: 100%; grid-template-columns: 1fr; }
+      .ds-wrapper { max-width: 100%; }
     }
 
     /* ── SKIP TO PROTOTYPE PILL ── */
