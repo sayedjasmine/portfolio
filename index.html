@@ -875,78 +875,83 @@
 
     /* ── CONTACT ── */
     .contact-section {
-      padding: 112px 60px;
+      padding: 52px 60px;
       background: var(--purple);
-      text-align: center;
     }
+
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-left { flex: 1; min-width: 0; }
 
     .contact-section h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 5vw, 72px);
+      font-size: clamp(28px, 3.5vw, 42px);
       font-weight: 400;
-      line-height: 1.06;
+      line-height: 1.1;
       color: white;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
 
     .contact-section h2 em { font-style: italic; color: var(--purple-light); }
 
-    .contact-section p {
-      font-size: 15.5px;
+    .contact-desc {
+      font-size: 14.5px;
       font-weight: 300;
-      color: rgba(255,255,255,0.65);
-      max-width: 420px;
-      margin: 0 auto 44px;
-      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      max-width: 380px;
     }
 
-    .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .contact-right {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    .contact-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .contact-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 13.5px;
-      font-weight: 500;
-      padding: 14px 28px;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 16px 32px;
       border-radius: 100px;
       text-decoration: none;
       letter-spacing: 0.03em;
-      transition: all 0.22s;
+      transition: all 0.25s ease;
     }
 
-    .contact-btn.primary { background: white; color: var(--purple); border: 1.5px solid white; }
-    .contact-btn.primary:hover { background: transparent; color: white; border-color: white; }
-    .contact-btn.secondary { border: 1.5px solid rgba(255,255,255,0.3); color: white; }
-    .contact-btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+    .contact-btn.primary { background: white; color: var(--purple); border: 2px solid white; }
+    .contact-btn.primary:hover { background: transparent; color: white; border-color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .contact-btn.secondary { border: 2px solid rgba(255,255,255,0.5); color: white; background: transparent; }
+    .contact-btn.secondary:hover { background: white; color: var(--purple); border-color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 
-    /* ── BOTTOM NAV ── */
-    .bottom-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      padding: 48px 60px;
-      background: var(--white);
-      border-top: 1px solid rgba(0,0,0,0.06);
-    }
-    .bottom-nav-link {
+    .contact-email {
       font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
+      color: rgba(255,255,255,0.45);
+      text-align: right;
     }
-    .bottom-nav-link:hover { color: var(--dark); }
-    .bottom-nav-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.15);
+    .contact-email-addr {
+      font-size: 14px;
+      color: white;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+      padding-bottom: 2px;
     }
 
-        /* ── FOOTER ── */
+    /* ── FOOTER ── */
     footer {
       padding: 28px 60px;
       background: #12101A;
@@ -989,43 +994,44 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0; right: 0;
       z-index: 199;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      padding: 90px 40px 40px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
+      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     }
     .mobile-menu.open { display: flex; opacity: 1; }
     .mobile-menu a {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
       text-decoration: none;
-      padding: 20px 40px;
-      transition: all 0.25s ease;
-      letter-spacing: 0.01em;
-      border-radius: 12px;
+      padding: 18px 0;
+      transition: color 0.2s ease;
       position: relative;
+      width: 100%;
     }
     .mobile-menu a:hover {
       color: var(--purple);
-      background: rgba(107,63,160,0.06);
-      transform: translateX(4px);
     }
     .mobile-menu a::after {
       content: '';
       position: absolute;
-      bottom: 4px;
-      left: 40px;
-      right: 40px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: rgba(107,63,160,0.08);
+      background: rgba(0,0,0,0.06);
     }
     .mobile-menu a:last-child::after { display: none; }
 
@@ -1060,7 +1066,9 @@
       .about-teaser-inner { grid-template-columns: 1fr; gap: 36px; }
       .about-thumb { aspect-ratio: 4/3; max-height: 340px; }
       .exp-section { padding: 64px 28px; }
-      .contact-section { padding: 80px 28px; }
+      .contact-section { padding: 40px 28px; }
+      .contact-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .contact-right { align-items: flex-start; }
       footer { padding: 20px 28px; }
     }
 
@@ -1173,7 +1181,7 @@
       <!-- 2. NOX+ -->
       <a href="nox.html" class="card card-nox fade-in" data-category="design ai">
         <div class="card-preview">
-          <img src="assets/nox-mockup.png" alt="Nox+ app" />
+          <img src="assets/nox-mockup-transparent.png" alt="Nox+ app" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -1268,27 +1276,24 @@
 
   <!-- CONTACT -->
   <section id="contact" class="contact-section">
-    <h2 class="fade-in">Let's make something<br /><em>great together.</em></h2>
-    <p class="fade-in">Open to full-time roles, internships, and collaborations in product design and UX research.</p>
-    <div class="contact-links fade-in">
-      <a href="mailto:sayedjasmine@gmail.com" class="contact-btn primary" id="emailBtn">Say hello →</a>
-      <a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" class="contact-btn secondary">LinkedIn ↗</a>
+    <div class="contact-inner fade-in">
+      <div class="contact-left">
+        <h2>Let's make something<br /><em>great together.</em></h2>
+        <p class="contact-desc">Open to full-time roles, internships, and collaborations in product design and UX research.</p>
+      </div>
+      <div class="contact-right">
+        <div class="contact-links">
+          <a href="mailto:sayedjasmine@gmail.com" class="contact-btn primary" id="emailBtn">Say hello →</a>
+          <a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" class="contact-btn secondary">LinkedIn ↗</a>
+        </div>
+        <div class="contact-email">
+          Or copy my email:<br />
+          <span id="emailText" class="contact-email-addr" title="Click to copy">sayedjasmine@gmail.com</span>
+          <span id="copyConfirm" style="font-size: 12px; color: var(--purple-light); margin-left: 6px; opacity: 0; transition: opacity 0.3s;"></span>
+        </div>
+      </div>
     </div>
-    <p class="fade-in" style="margin-top: 18px;">
-      <span style="font-size: 14px; color: rgba(255,255,255,0.55);">Or copy my email:</span><br />
-      <span id="emailText" style="font-size: 15px; color: white; letter-spacing: 0.02em; cursor: pointer; border-bottom: 1px dashed rgba(255,255,255,0.4); padding-bottom: 2px;" title="Click to copy">sayedjasmine@gmail.com</span>
-      <span id="copyConfirm" style="font-size: 13px; color: var(--purple-light); margin-left: 8px; opacity: 0; transition: opacity 0.3s;"></span>
-    </p>
   </section>
-
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <a href="#work" class="bottom-nav-link">My Work</a>
-    <span class="bottom-nav-dot"></span>
-    <a href="about.html" class="bottom-nav-link">About</a>
-    <span class="bottom-nav-dot"></span>
-    <a href="experience.html" class="bottom-nav-link">Resume</a>
-  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -1476,9 +1481,25 @@
 
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
+        const wasActive = pill.classList.contains('active');
         pills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
 
+        // If clicking the same pill again, deselect it and show all
+        if (wasActive) {
+          document.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+          allCards.forEach(card => {
+            card.classList.remove('hidden');
+            card.classList.remove('visible');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                card.classList.add('visible');
+              });
+            });
+          });
+          return;
+        }
+
+        pill.classList.add('active');
         const filter = pill.dataset.filter;
 
         allCards.forEach(card => {

@@ -67,43 +67,44 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0; right: 0;
       z-index: 199;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      padding: 90px 40px 40px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
+      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     }
     .mobile-menu.open { display: flex; opacity: 1; }
     .mobile-menu a {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
       text-decoration: none;
-      padding: 20px 40px;
-      transition: all 0.25s ease;
-      letter-spacing: 0.01em;
-      border-radius: 12px;
+      padding: 18px 0;
+      transition: color 0.2s ease;
       position: relative;
+      width: 100%;
     }
     .mobile-menu a:hover {
       color: var(--purple);
-      background: rgba(107,63,160,0.06);
-      transform: translateX(4px);
     }
     .mobile-menu a::after {
       content: '';
       position: absolute;
-      bottom: 4px;
-      left: 40px;
-      right: 40px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: rgba(107,63,160,0.08);
+      background: rgba(0,0,0,0.06);
     }
     .mobile-menu a:last-child::after { display: none; }
 
@@ -230,7 +231,7 @@
 
     .story-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: start;
+      gap: 60px; align-items: stretch;
     }
 
     .story-col h2 {
@@ -245,20 +246,10 @@
     }
     .story-col p strong { font-weight: 500; color: var(--dark); }
 
-    /* Fun facts grid */
-    .facts-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--mid); margin-bottom: 20px;
-    }
-    .facts-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-    }
-    .fact-card {
-      background: var(--purple-bg);
-      border: 1px solid rgba(107,63,160,0.1);
-      border-radius: 18px; padding: 18px 16px;
-      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
-    }
+    /* Fun facts */
+    .facts-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; }
+    .facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fact-card { background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.1); border-radius: 18px; padding: 18px 16px; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; }
     .fact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,63,160,0.12); }
     .fact-emoji { font-size: 20px; margin-bottom: 10px; display: block; }
     .fact-card strong { display: block; font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
@@ -342,31 +333,15 @@
     }
     .carousel-progress-label { font-size: 11.5px; color: var(--mid); white-space: nowrap; }
 
-    /* ── BOTTOM NAV ── */
-    .bottom-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      padding: 48px 60px;
-      background: var(--white);
-      border-top: 1px solid rgba(0,0,0,0.06);
-    }
-    .bottom-nav-link {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .bottom-nav-link:hover { color: var(--dark); }
-    .bottom-nav-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.15);
-    }
+    /* ── NAV CARDS ── */
+    .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(107,63,160,0.1); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { border-color: var(--purple); box-shadow: 0 8px 28px rgba(107,63,160,0.1); transform: translateY(-3px); }
+    .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
+    .nav-card-arrow { font-size: 18px; color: rgba(107,63,160,0.3); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--purple); }
 
     /* ── FOOTER ── */
     footer {
@@ -398,9 +373,11 @@
       .availability-section { grid-template-columns: 1fr; margin: 0 24px 56px; padding: 36px; }
       .availability-ctas { flex-direction: row; }
       .facts-grid { grid-template-columns: 1fr; }
-      .hero-photos { height: 300px; }
-      .hero-photo-main { width: 65%; border-radius: 16px; }
-      .hero-photo-accent { width: 42%; height: 40%; border-radius: 14px; }
+      .hero-photos { height: auto; }
+      .hero-photo-main { position: relative; width: 100%; height: auto; border-radius: 16px; }
+      .hero-photo-main img { height: auto; object-fit: contain; object-position: center; }
+      .hero-photo-accent { width: 35%; height: auto; bottom: -20px; right: 12px; border-radius: 14px; }
+      .hero-photo-accent img { height: auto; object-fit: contain; }
       .photo-tag { font-size: 11px; padding: 6px 12px; top: 16px; }
       .carousel-section { padding: 0 0 56px; }
       .carousel-header { padding: 0 24px; }
@@ -413,7 +390,7 @@
       .c-slide:nth-child(5n+4) { width: 220px; }
       .c-slide:nth-child(5n+0) { width: 200px; }
       .c-slide { border-radius: 12px; }
-      .bottom-nav { padding: 32px 24px; gap: 20px; }
+      .nav-cards { flex-direction: column; padding: 0 24px 36px; }
       footer { padding: 24px; }
     }
     @media (max-width: 480px) {
@@ -423,9 +400,9 @@
       .hero-stats { flex-wrap: wrap; gap: 16px; }
       .hero-stat { padding-right: 20px; margin-right: 20px; }
       .stat-num { font-size: 26px; }
-      .hero-photos { height: 240px; }
-      .hero-photo-main { width: 62%; border-radius: 14px; }
-      .hero-photo-accent { width: 40%; height: 38%; border-radius: 12px; border-width: 3px; bottom: 24px; }
+      .hero-photos { height: auto; }
+      .hero-photo-main { width: 100%; border-radius: 14px; }
+      .hero-photo-accent { width: 32%; bottom: -16px; right: 8px; border-radius: 12px; border-width: 3px; }
       .photo-tag { font-size: 10px; padding: 5px 10px; top: 12px; }
       .c-slide { height: 170px; }
       .c-slide:nth-child(5n+1) { width: 160px; }
@@ -501,34 +478,14 @@
         <p>Since then I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> building research-driven, human-centered experiences — especially at the crossroads of AI and accessibility.</p>
       </div>
 
-      <div class="facts-col fade-in">
+      <div class="fade-in">
         <p class="facts-label">When I'm not designing</p>
         <div class="facts-grid">
-          <div class="fact-card">
-            <span class="fact-emoji">👩‍🏫</span>
-            <strong>I'm Teaching!</strong>
-            <span>Nothing beats watching a kid's face light up when something finally clicks</span>
-          </div>
-          <div class="fact-card">
-            <span class="fact-emoji">🌋</span>
-            <strong>I'm Out Exploring</strong>
-            <span>I once hiked an active volcano and would absolutely do it again</span>
-          </div>
-          <div class="fact-card">
-            <span class="fact-emoji">💡</span>
-            <strong>I'm at a Hackathon</strong>
-            <span>48 hours of chaos that somehow turns into something real? Sign me up</span>
-          </div>
-          <div class="fact-card">
-            <span class="fact-emoji">🍣</span>
-            <strong>I'm Being a Foodie</strong>
-            <span>Sushi and tiramisu are my love languages, no further questions</span>
-          </div>
-          <div class="fact-card">
-            <span class="fact-emoji">🏀</span>
-            <strong>I'm Cheering on My Teams</strong>
-            <span>Seahawks and Lakers ride or die — I don't make the rules</span>
-          </div>
+          <div class="fact-card"><span class="fact-emoji">👩‍🏫</span><strong>I'm Teaching!</strong><span>Nothing beats watching a kid's face light up when something finally clicks</span></div>
+          <div class="fact-card"><span class="fact-emoji">🌋</span><strong>I'm Out Exploring</strong><span>I once hiked an active volcano and would absolutely do it again</span></div>
+          <div class="fact-card"><span class="fact-emoji">💡</span><strong>I'm at a Hackathon</strong><span>48 hours of chaos that somehow turns into something real? Sign me up</span></div>
+          <div class="fact-card"><span class="fact-emoji">🍣</span><strong>I'm Being a Foodie</strong><span>Sushi and tiramisu are my love languages, no further questions</span></div>
+          <div class="fact-card"><span class="fact-emoji">🏀</span><strong>I'm Cheering on My Teams</strong><span>Seahawks and Lakers ride or die — I don't make the rules</span></div>
         </div>
       </div>
     </div>
@@ -607,13 +564,22 @@
     </div>
   </section>
 
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <a href="index.html" class="bottom-nav-link">My Work</a>
-    <span class="bottom-nav-dot"></span>
-    <a href="about.html" class="bottom-nav-link">About</a>
-    <span class="bottom-nav-dot"></span>
-    <a href="experience.html" class="bottom-nav-link">Resume</a>
+  <!-- NAV CARDS -->
+  <div class="nav-cards fade-in">
+    <a href="index.html#work" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Work</span>
+        <span class="nav-card-title">View my projects</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a href="experience.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Resume</span>
+        <span class="nav-card-title">View my experience</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
   </div>
 
   <!-- FOOTER -->

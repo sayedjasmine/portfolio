@@ -119,43 +119,44 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0; right: 0;
       z-index: 199;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      padding: 90px 40px 40px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
+      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     }
     .mobile-menu.open { display: flex; opacity: 1; }
     .mobile-menu a {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
       text-decoration: none;
-      padding: 20px 40px;
-      transition: all 0.25s ease;
-      letter-spacing: 0.01em;
-      border-radius: 12px;
+      padding: 18px 0;
+      transition: color 0.2s ease;
       position: relative;
+      width: 100%;
     }
     .mobile-menu a:hover {
-      color: var(--purple);
-      background: rgba(107,63,160,0.06);
-      transform: translateX(4px);
+      color: var(--nox-purple);
     }
     .mobile-menu a::after {
       content: '';
       position: absolute;
-      bottom: 4px;
-      left: 40px;
-      right: 40px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: rgba(107,63,160,0.08);
+      background: rgba(0,0,0,0.06);
     }
     .mobile-menu a:last-child::after { display: none; }
 
@@ -879,26 +880,15 @@
 
     .nox-passport-label { font-size: 7px; font-weight: 700; color: var(--purple-deep); letter-spacing: 0.08em; }
 
-    .nox-bottom-nav {
-      display: flex;
-      justify-content: space-around;
-      padding: 6px 0 2px;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .nox-nav-icon {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      font-size: 12px;
-    }
-
-    .nox-nav-icon .dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--purple);
-    }
+    /* ── NAV CARDS ── */
+    .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { border-color: var(--purple); box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
+    .nav-card-arrow { font-size: 18px; color: rgba(0,0,0,0.2); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--purple); }
 
     /* ── DESIGN SYSTEM STRIP ── */
     .ds-strip {
@@ -1249,6 +1239,7 @@
       .ds-strip { grid-template-columns: 1fr; }
       .wireframe-grid { grid-template-columns: 1fr 1fr; }
       .next-project { padding: 48px 28px; }
+      .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; }
       .prototype-video-wrap { padding: 20px; }
       .screen-gallery { grid-template-columns: 1fr; gap: 16px; }
@@ -1291,23 +1282,22 @@
       gap: 8px;
       padding: 10px 22px;
       margin-top: 14px;
-      background: rgba(255,255,255,0.95);
-      color: var(--nox-purple);
+      background: var(--nox-purple);
+      color: white;
       font-size: 12.5px;
       font-weight: 600;
       letter-spacing: 0.02em;
       border-radius: 100px;
       text-decoration: none;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 24px rgba(123,68,200,0.35);
       transition: all 0.25s ease;
-      backdrop-filter: blur(8px);
     }
     .skip-pill:hover {
-      background: var(--nox-purple);
-      color: white;
+      background: rgba(255,255,255,0.95);
+      color: var(--nox-purple);
       gap: 12px;
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(123,68,200,0.4);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.15);
     }
     .skip-pill-sparkle { font-size: 14px; }
   </style>
@@ -1444,7 +1434,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">Let's dive deeper<br />into the data.</h2>
-      <p class="body-text">I designed a 21-question survey to understand how students manage identity verification — which documents they use, where they store them, what challenges they face, and their confidence in data security.</p>
+      <p class="body-text">I led our research efforts by designing and deploying a 21-question survey to understand how students manage identity verification — which documents they use, where they store them, what challenges they face, and their confidence in data security. I coordinated with my team to align our research goals and conducted regular check-ins to keep everyone on track.</p>
     </div>
 
     <div class="container-wide">
@@ -1517,7 +1507,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">Creating the blueprint.</h2>
-      <p class="body-text">I started transforming concepts into tangible ideas — exploring features, refining layouts, and iterating through sketches. I designed a detailed sketch to explore features and layout before moving into mid-fidelity wireframes.</p>
+      <p class="body-text">I directed the design process from ideation to execution — leading team sketching sessions, making key decisions on feature prioritization, and iterating through concepts. I designed detailed sketches to explore features and layout before moving into mid-fidelity wireframes.</p>
 
     </div>
 
@@ -1531,7 +1521,7 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Wireframes</h3>
-      <p class="body-text">I built mid-fidelity Figma wireframes to validate early navigation, test safe presentation of sensitive data, and explore flows for document renewal, history logs, and one-time PIN verification.</p>
+      <p class="body-text">I built mid-fidelity Figma wireframes and delegated screen assignments across the team, reviewing each iteration to ensure consistency. The wireframes validated early navigation, tested safe presentation of sensitive data, and explored flows for document renewal, history logs, and one-time PIN verification.</p>
     </div>
 
     <!-- Mid-fi / Hi-fi Designs -->
@@ -1713,7 +1703,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
       <h2 class="section-title">Next Steps &<br /><em>What I Learned.</em></h2>
-      <p class="body-text">Leading Nox+ was an incredibly rewarding experience, and I'm proud of how the app came together from concept to prototype. I learned the importance of continuous iteration based on user feedback and how even small design decisions can impact trust, clarity, and usability.</p>
+      <p class="body-text">Leading Nox+ — from running team standups and design critiques to making final calls on direction — was an incredibly rewarding experience, and I'm proud of how the app came together from concept to prototype. I learned how to balance creative vision with team dynamics, the importance of continuous iteration based on user feedback, and how even small design decisions can impact trust, clarity, and usability.</p>
 
       <div class="callout-box">
         <p>I had the opportunity to <strong>demo Nox+ at the User Centered Design Showcase at UW</strong>, and in November, Apple released a digital ID passport — a development closely aligned with my concept, reinforcing the real-world relevance of the research direction I led.</p>
@@ -1729,6 +1719,24 @@
     <div class="next-label">Next Project</div>
     <div class="next-title">Saksham — <em>Inclusive Learning for All</em></div>
     <a href="saksham.html" class="next-btn">View case study →</a>
+  </div>
+
+  <!-- NAV CARDS -->
+  <div class="nav-cards fade-in">
+    <a href="about.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">About</span>
+        <span class="nav-card-title">Get to know me</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a href="experience.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Resume</span>
+        <span class="nav-card-title">View my experience</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
   </div>
 
   <!-- FOOTER -->

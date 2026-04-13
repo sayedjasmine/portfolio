@@ -111,43 +111,44 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0; right: 0;
       z-index: 199;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      padding: 90px 40px 40px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
+      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     }
     .mobile-menu.open { display: flex; opacity: 1; }
     .mobile-menu a {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
       text-decoration: none;
-      padding: 20px 40px;
-      transition: all 0.25s ease;
-      letter-spacing: 0.01em;
-      border-radius: 12px;
+      padding: 18px 0;
+      transition: color 0.2s ease;
       position: relative;
+      width: 100%;
     }
     .mobile-menu a:hover {
       color: var(--purple);
-      background: rgba(75,46,131,0.06);
-      transform: translateX(4px);
     }
     .mobile-menu a::after {
       content: '';
       position: absolute;
-      bottom: 4px;
-      left: 40px;
-      right: 40px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: rgba(75,46,131,0.08);
+      background: rgba(0,0,0,0.06);
     }
     .mobile-menu a:last-child::after { display: none; }
 
@@ -653,31 +654,15 @@
     }
     .next-btn:hover { background: var(--purple-mid); gap: 18px; }
 
-    /* ── BOTTOM NAV ── */
-    .bottom-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      padding: 32px 60px;
-      background: var(--white);
-      border-top: 1px solid rgba(0,0,0,0.06);
-    }
-    .bottom-nav-link {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .bottom-nav-link:hover { color: var(--dark); }
-    .bottom-nav-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.15);
-    }
+    /* ── NAV CARDS ── */
+    .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { border-color: var(--purple); box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
+    .nav-card-arrow { font-size: 18px; color: rgba(0,0,0,0.2); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--purple); }
 
     /* ── FOOTER ── */
     footer {
@@ -712,6 +697,7 @@
       .method-grid, .quote-grid { grid-template-columns: 1fr; }
       .insights-grid { grid-template-columns: 1fr; }
       .next-project { padding: 48px 28px; }
+      .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; }
     }
 
@@ -1123,13 +1109,22 @@
     <a href="nexstera.html" class="next-btn">View case study &rarr;</a>
   </div>
 
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <a href="index.html" class="bottom-nav-link">My Work</a>
-    <span class="bottom-nav-dot"></span>
-    <a href="about.html" class="bottom-nav-link">About</a>
-    <span class="bottom-nav-dot"></span>
-    <a href="experience.html" class="bottom-nav-link">Resume</a>
+  <!-- NAV CARDS -->
+  <div class="nav-cards fade-in">
+    <a href="about.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">About</span>
+        <span class="nav-card-title">Get to know me</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a href="experience.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Resume</span>
+        <span class="nav-card-title">View my experience</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
   </div>
 
   <!-- FOOTER -->
