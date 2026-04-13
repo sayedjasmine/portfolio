@@ -277,9 +277,14 @@
       pointer-events: none;
     }
 
-    .hero-cta-wrap:hover .cta-tooltip {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    @media (hover: hover) {
+      .hero-cta-wrap:hover .cta-tooltip {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    @media (hover: none) {
+      .cta-tooltip { display: none; }
     }
 
     .hero-pills {
@@ -1308,10 +1313,19 @@
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
       if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function(e) {
+          e.stopPropagation();
           hamburger.classList.toggle('active');
           mobileMenu.classList.toggle('open');
           document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          }
         });
       }
     })();
