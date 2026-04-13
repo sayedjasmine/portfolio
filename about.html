@@ -325,19 +325,48 @@
       .availability-section { grid-template-columns: 1fr; margin: 0 24px 56px; padding: 36px; }
       .availability-ctas { flex-direction: row; }
       .facts-grid { grid-template-columns: 1fr; }
-      .hero-photos { height: 320px; }
+      .hero-photos { height: 300px; }
+      .hero-photo-main { width: 65%; border-radius: 16px; }
+      .hero-photo-accent { width: 42%; height: 40%; border-radius: 14px; }
+      .photo-tag { font-size: 11px; padding: 6px 12px; top: 16px; }
+      .carousel-section { padding: 0 0 56px; }
       .carousel-header { padding: 0 24px; }
-      .carousel-strip { padding: 0 24px 12px; }
+      .carousel-strip { padding: 0 24px 12px; gap: 10px; }
       .carousel-progress-wrap { padding: 14px 24px 0; }
-      .c-slide { height: 260px; }
+      .c-slide { height: 220px; }
+      .c-slide:nth-child(5n+1) { width: 200px; }
+      .c-slide:nth-child(5n+2) { width: 240px; }
+      .c-slide:nth-child(5n+3) { width: 180px; }
+      .c-slide:nth-child(5n+4) { width: 220px; }
+      .c-slide:nth-child(5n+0) { width: 200px; }
+      .c-slide { border-radius: 12px; }
+      .bottom-nav { padding: 32px 24px; gap: 20px; }
       footer { padding: 24px; }
     }
     @media (max-width: 480px) {
       nav ul { display: none; }
-      .hero-stats { flex-wrap: wrap; }
-      .c-slide { height: 200px; }
+      .about-hero { padding: 90px 20px 36px; }
+      .hero-text h1 { font-size: clamp(28px, 8vw, 38px); }
+      .hero-text .lead { font-size: 14px; }
+      .hero-stats { flex-wrap: wrap; gap: 16px; }
+      .hero-stat { padding-right: 20px; margin-right: 20px; }
+      .stat-num { font-size: 26px; }
+      .hero-photos { height: 240px; }
+      .hero-photo-main { width: 62%; border-radius: 14px; }
+      .hero-photo-accent { width: 40%; height: 38%; border-radius: 12px; border-width: 3px; bottom: 24px; }
+      .photo-tag { font-size: 10px; padding: 5px 10px; top: 12px; }
+      .c-slide { height: 170px; }
+      .c-slide:nth-child(5n+1) { width: 160px; }
+      .c-slide:nth-child(5n+2) { width: 190px; }
+      .c-slide:nth-child(5n+3) { width: 150px; }
+      .c-slide:nth-child(5n+4) { width: 175px; }
+      .c-slide:nth-child(5n+0) { width: 160px; }
+      .carousel-strip { gap: 8px; }
+      .availability-section { margin: 0 20px 56px; padding: 28px 24px; }
       .availability-ctas { flex-direction: column; }
       .photo-tag-tooltip { display: none; }
+      .bottom-nav { flex-wrap: wrap; gap: 14px; }
+      .bottom-nav-link { font-size: 11px; }
     }
   </style>
 </head>

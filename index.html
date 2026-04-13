@@ -1007,8 +1007,12 @@
         transform: translateX(-50%) translateY(4px);
         z-index: 10;
       }
-      .hero-pill:hover .pill-tooltip,
+      .hero-pill:hover .pill-tooltip {
+        opacity: 0;
+        transform: translateX(-50%) translateY(4px);
+      }
       .hero-pill.active .pill-tooltip {
+        opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
       .card-preview { height: 180px; }
