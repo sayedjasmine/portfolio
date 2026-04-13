@@ -113,26 +113,43 @@
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       z-index: 199;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
     }
     .mobile-menu.open { display: flex; opacity: 1; }
     .mobile-menu a {
       font-family: 'DM Serif Display', serif;
-      font-size: 28px;
+      font-size: 32px;
       color: var(--dark);
       text-decoration: none;
-      padding: 16px 0;
-      transition: color 0.2s;
+      padding: 20px 40px;
+      transition: all 0.25s ease;
+      letter-spacing: 0.01em;
+      border-radius: 12px;
+      position: relative;
     }
-    .mobile-menu a:hover { color: var(--green); }
+    .mobile-menu a:hover {
+      color: var(--green);
+      background: rgba(45,106,79,0.06);
+      transform: translateX(4px);
+    }
+    .mobile-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 40px;
+      right: 40px;
+      height: 1px;
+      background: rgba(45,106,79,0.08);
+    }
+    .mobile-menu a:last-child::after { display: none; }
 
     /* ── HERO ── */
     .hero {
@@ -1101,7 +1118,7 @@
       .hamburger { display: flex; }
       .nav-logo { display: block; }
       .hero { padding: 100px 28px 48px; }
-      .skip-pill { top: 85px; right: 28px; }
+      .skip-pill { bottom: 48px; right: 28px; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 32px 28px; gap: 24px; }
@@ -1127,7 +1144,7 @@
       .section-eyebrow { font-size: 10px; margin-bottom: 12px; }
       .role-strip { grid-template-columns: 1fr; padding: 24px 20px; gap: 18px; }
       .wireframe-grid { grid-template-columns: 1fr; }
-      .skip-pill { position: relative; top: auto; right: auto; align-self: flex-start; margin-bottom: 12px; font-size: 11.5px; padding: 8px 16px; }
+      .skip-pill { bottom: 36px; right: 20px; font-size: 11.5px; padding: 8px 16px; }
       .case-img-wrapper { max-width: 100%; }
       .case-img-grid { max-width: 100%; grid-template-columns: 1fr; }
       .ds-wrapper { max-width: 100%; }
@@ -1142,7 +1159,7 @@
     /* ── SKIP TO PROTOTYPE PILL ── */
     .skip-pill {
       position: absolute;
-      top: 95px;
+      bottom: 52px;
       right: 60px;
       z-index: 10;
       display: inline-flex;
