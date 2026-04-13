@@ -91,6 +91,126 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-docs {
+      flex-shrink: 0;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 2;
+      margin-bottom: 8px;
+    }
+
+    .hero-doc-card {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--rose-bg);
+      border: 1px solid rgba(26,39,68,0.1);
+      border-radius: 14px;
+      padding: 20px;
+      transition: all 0.25s ease;
+    }
+
+    .hero-doc-card:hover {
+      transform: translateY(-3px);
+      background: var(--rose);
+      border-color: var(--rose);
+      box-shadow: 0 12px 36px rgba(26,39,68,0.2);
+    }
+
+    .hero-doc-icon {
+      width: 44px;
+      height: 52px;
+      background: white;
+      border-radius: 8px;
+      border: 1.5px solid rgba(26,39,68,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-icon {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .hero-doc-icon span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--rose);
+      transition: color 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-icon span {
+      color: white;
+    }
+
+    .hero-doc-info {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .hero-doc-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--rose);
+      margin-bottom: 3px;
+      transition: color 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-title {
+      color: white;
+    }
+
+    .hero-doc-meta {
+      font-size: 11px;
+      color: var(--mid);
+      transition: color 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-meta {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hero-doc-arrow {
+      font-size: 16px;
+      color: var(--rose);
+      opacity: 0.3;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .hero-doc-card:hover .hero-doc-arrow {
+      opacity: 1;
+      color: white;
+      transform: translateX(3px);
+    }
+
+    .hero-docs-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-align: center;
+      margin-bottom: 2px;
     }
 
     .hero-glow {
@@ -592,30 +712,47 @@
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
-    <p class="hero-tag">AI · Maternal Health · User Research · Product Design</p>
-    <h1>Mom<em>SAFE</em></h1>
-    <p class="hero-sub">An AI-powered maternal health companion designed to bridge the gap in prenatal care — providing personalized, real-time pregnancy insights and proactive care recommendations for expectant mothers.</p>
-    <div class="hero-meta">
-      <div>
-        <div class="hero-meta-label">My Role</div>
-        <div class="hero-meta-value">UX Researcher & Designer</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Focus</div>
-        <div class="hero-meta-value">AI-Driven Maternal Healthcare</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Methods</div>
-        <div class="hero-meta-value">Expert Interviews · User Research<br />Prototyping · Usability Testing</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Alignment</div>
-        <div class="hero-meta-value">UN Sustainable<br />Development Goals</div>
+    <div class="hero-content">
+      <p class="hero-tag">AI · Maternal Health · User Research · Product Design</p>
+      <h1>Mom<em>SAFE</em></h1>
+      <p class="hero-sub">An AI-powered maternal health companion designed to bridge the gap in prenatal care — providing personalized, real-time pregnancy insights and proactive care recommendations for expectant mothers.</p>
+      <div class="hero-meta">
+        <div>
+          <div class="hero-meta-label">My Role</div>
+          <div class="hero-meta-value">UX Researcher & Designer</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Focus</div>
+          <div class="hero-meta-value">AI-Driven Maternal Healthcare</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Methods</div>
+          <div class="hero-meta-value">Expert Interviews · User Research<br />Prototyping · Usability Testing</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Alignment</div>
+          <div class="hero-meta-value">UN Sustainable<br />Development Goals</div>
+        </div>
       </div>
     </div>
-    <div class="resource-bar">
-      <a href="assets/momsafe-research-paper copy.pdf" target="_blank" class="resource-link">Read the Research Paper</a>
-      <a href="assets/momsafe-infographic.png" target="_blank" class="resource-link">View the Infographic</a>
+    <div class="hero-docs">
+      <div class="hero-docs-label">Project Resources</div>
+      <a href="assets/momsafe-research-paper copy.pdf" target="_blank" class="hero-doc-card">
+        <div class="hero-doc-icon"><span>PDF</span></div>
+        <div class="hero-doc-info">
+          <div class="hero-doc-title">Research Paper</div>
+          <div class="hero-doc-meta">Full study & findings</div>
+        </div>
+        <div class="hero-doc-arrow">→</div>
+      </a>
+      <a href="assets/momsafe-infographic.png" target="_blank" class="hero-doc-card">
+        <div class="hero-doc-icon"><span>PNG</span></div>
+        <div class="hero-doc-info">
+          <div class="hero-doc-title">Infographic</div>
+          <div class="hero-doc-meta">Visual research summary</div>
+        </div>
+        <div class="hero-doc-arrow">→</div>
+      </a>
     </div>
   </section>
 
@@ -644,9 +781,9 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Empowering expectant mothers through AI-driven care.</h2>
-      <p class="body-text">Maternal health remains a critical global challenge, with disparities in access to quality care affecting millions of women. MomSAFE is an AI-powered maternal health companion I designed to bridge this gap — providing <strong>personalized, real-time pregnancy insights</strong> and <strong>proactive care recommendations</strong>.</p>
-      <p class="body-text">By leveraging large language models and machine learning, the platform synthesizes user inputs and clinical data to identify potential pregnancy risks, promote informed decision-making, and enhance maternal well-being.</p>
-      <p class="body-text">Grounded in extensive user research, MomSAFE integrates features like <strong>daily health check-ins, trend analysis, and secure data options</strong> to ensure a trustworthy, evidence-based, and accessible healthcare experience.</p>
+      <p class="body-text">Maternal health remains a critical global challenge, with disparities in access to quality care affecting millions of women.</p>
+      <p class="body-text">As <strong>UX Researcher & Designer</strong>, I led this project end-to-end — I conducted expert interviews with healthcare professionals, ran user research sessions with expectant mothers, synthesized findings into personas and design principles, and designed a full AI-powered maternal health companion in Figma. I defined the product's core features — <strong>daily health check-ins, trend analysis, and secure data options</strong> — grounded in the real pain points I uncovered through research.</p>
+      <p class="body-text">MomSAFE leverages large language models and machine learning to synthesize user inputs and clinical data, identify potential pregnancy risks, and deliver <strong>personalized, real-time pregnancy insights</strong> and <strong>proactive care recommendations</strong> — making evidence-based prenatal care more accessible.</p>
     </div>
 
     <div class="container fade-in" style="margin-top: 28px;">

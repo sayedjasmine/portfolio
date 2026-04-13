@@ -280,6 +280,53 @@
       white-space: nowrap; flex-shrink: 0; padding-top: 3px;
     }
 
+    /* Grouped activity (multiple roles under one org) */
+    .activity-group {
+      padding: 14px 18px;
+      border-radius: 14px;
+      margin-bottom: 4px;
+      transition: background 0.2s;
+    }
+    .activity-group:hover {
+      background: var(--purple-bg);
+    }
+    .activity-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+    .activity-group-org {
+      font-size: 15px; font-weight: 500; color: var(--dark);
+    }
+    .activity-group-school {
+      font-size: 11.5px; color: var(--purple); font-weight: 500;
+    }
+    .activity-group-roles {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 14px;
+      border-left: 2px solid rgba(107,63,160,0.1);
+    }
+    .activity-group-role {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .activity-group-role-title {
+      font-size: 13.5px; font-weight: 500; color: var(--dark);
+    }
+    .activity-group-role-desc {
+      font-size: 12px; font-weight: 300; color: var(--mid);
+      line-height: 1.55; margin-top: 3px;
+    }
+    .activity-group-role-date {
+      font-size: 11px; color: var(--mid);
+      white-space: nowrap; flex-shrink: 0; padding-top: 2px;
+    }
+
     /* ── CERTS (inline row) ── */
     .certs-row {
       display: grid;
@@ -563,22 +610,68 @@
         <div class="activity-row-date">Sep 2025 – Present</div>
       </div>
 
-      <div class="activity-row">
-        <div class="activity-row-main">
-          <div class="activity-row-title">President — UX Fest SLO</div>
-          <div class="activity-row-org">Cal Poly San Luis Obispo</div>
-          <div class="activity-row-desc">Led Cal Poly's UX design hackathon with 140+ participants. Managed 50 members across events, design, multimedia, finance, and marketing.</div>
+      <div class="activity-group fade-in">
+        <div class="activity-group-header">
+          <div>
+            <div class="activity-group-org">UXFest SLO</div>
+            <div class="activity-group-school">Cal Poly San Luis Obispo</div>
+          </div>
         </div>
-        <div class="activity-row-date">Sep 2022 – Jun 2025</div>
+        <div class="activity-group-roles">
+          <div class="activity-group-role">
+            <div>
+              <div class="activity-group-role-title">President</div>
+              <div class="activity-group-role-desc">Led Cal Poly's UX design hackathon with 140+ participants. Managed 50 members across events, design, multimedia, finance, and marketing.</div>
+            </div>
+            <div class="activity-group-role-date">2024 – 2025</div>
+          </div>
+          <div class="activity-group-role">
+            <div>
+              <div class="activity-group-role-title">Events and Experience Director</div>
+              <div class="activity-group-role-desc">Directed event programming and attendee experience for UX-focused design events and workshops.</div>
+            </div>
+            <div class="activity-group-role-date">2023 – 2024</div>
+          </div>
+          <div class="activity-group-role">
+            <div>
+              <div class="activity-group-role-title">Multimedia Officer</div>
+              <div class="activity-group-role-desc">Created visual content and multimedia assets for the organization's brand and communications.</div>
+            </div>
+            <div class="activity-group-role-date">2022 – 2023</div>
+          </div>
+        </div>
       </div>
 
-      <div class="activity-row">
-        <div class="activity-row-main">
-          <div class="activity-row-title">Product Designer — Cal Poly Iter8</div>
-          <div class="activity-row-org">Cal Poly San Luis Obispo</div>
-          <div class="activity-row-desc">Delivered user-centered web and app solutions for clients including Hidden Travel, Nexstera Tech, Amazon DX Hub, and Conspire Commerce. 15+ interactive Figma prototypes.</div>
+      <div class="activity-group fade-in">
+        <div class="activity-group-header">
+          <div>
+            <div class="activity-group-org">Cal Poly Iter8</div>
+            <div class="activity-group-school">Cal Poly San Luis Obispo</div>
+          </div>
         </div>
-        <div class="activity-row-date">Apr 2023 – May 2025</div>
+        <div class="activity-group-roles">
+          <div class="activity-group-role">
+            <div>
+              <div class="activity-group-role-title">Product Designer</div>
+              <div class="activity-group-role-desc">Delivered user-centered web and app solutions for clients including Hidden Travel, Nexstera Tech, Amazon DX Hub, and Conspire Commerce. 15+ interactive Figma prototypes.</div>
+            </div>
+            <div class="activity-group-role-date">2023 – 2025</div>
+          </div>
+          <div class="activity-group-role">
+            <div>
+              <div class="activity-group-role-title">Bootcamp Lead</div>
+              <div class="activity-group-role-desc">Led design bootcamp training sessions for new members on UX fundamentals, Figma, and design thinking.</div>
+            </div>
+            <div class="activity-group-role-date">2023 – 2024</div>
+          </div>
+          <div class="activity-group-role">
+            <div>
+              <div class="activity-group-role-title">Design Coordinator</div>
+              <div class="activity-group-role-desc">Coordinated design workflows and deliverables across client project teams.</div>
+            </div>
+            <div class="activity-group-role-date">2023 – 2024</div>
+          </div>
+        </div>
       </div>
 
       <div class="activity-row">
@@ -587,7 +680,7 @@
           <div class="activity-row-org">Cal Poly San Luis Obispo</div>
           <div class="activity-row-desc">Designed all marketing assets and visual materials for the typography and design organization.</div>
         </div>
-        <div class="activity-row-date">Jun 2023 – Jun 2024</div>
+        <div class="activity-row-date">2023 – 2024</div>
       </div>
 
       <div class="activity-row">
@@ -596,7 +689,7 @@
           <div class="activity-row-org">Cal Poly San Luis Obispo</div>
           <div class="activity-row-desc">Delivered 2 full-stack nonprofit projects (GoSee Foundation, Central Coast Coalition) — apps and volunteer tools with engineers, PMs, and designers.</div>
         </div>
-        <div class="activity-row-date">Jan – May 2024</div>
+        <div class="activity-row-date">2024 – 2025</div>
       </div>
 
     </div>

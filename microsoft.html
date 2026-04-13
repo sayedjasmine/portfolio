@@ -85,11 +85,106 @@
       min-height: 60vh;
       background: linear-gradient(155deg, #091428 0%, #0D2240 40%, #0058B4 80%, #2B88D8 100%);
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: space-between;
       padding: 90px 60px 42px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-site-card {
+      flex-shrink: 0;
+      width: 560px;
+      margin-left: 48px;
+      margin-bottom: 8px;
+      z-index: 2;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-site-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-browser-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+      background: #252538;
+    }
+
+    .hero-browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #252538;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hero-browser-dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .hero-browser-dots span:nth-child(1) { background: #ff5f57; }
+    .hero-browser-dots span:nth-child(2) { background: #febc2e; }
+    .hero-browser-dots span:nth-child(3) { background: #28c840; }
+
+    .hero-browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      font-family: 'DM Sans', monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hero-browser-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    .hero-site-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 8px 20px;
+      background: rgba(123,192,247,0.1);
+      border: 1px solid rgba(123,192,247,0.15);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(123,192,247,0.7);
+      letter-spacing: 0.02em;
+      transition: all 0.25s ease;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero-site-card:hover .hero-site-pill {
+      background: var(--blue-light);
+      border-color: var(--blue-light);
+      color: #091428;
     }
 
     .hero-glow {
@@ -843,28 +938,42 @@
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
-    <p class="hero-tag">UX Research · Usability Testing · AI Platform</p>
-    <h1>Microsoft<br /><em>Foundry</em></h1>
-    <p class="hero-sub">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform — uncovering critical blockers in the agent-creation flow.</p>
-    <p style="font-size: 12.5px; font-weight: 400; color: rgba(255,255,255,0.45); margin-top: 0; margin-bottom: 36px; max-width: 640px; line-height: 1.6; position: relative;">Microsoft Foundry is a publicly available platform. All information shared in this case study is based on publicly accessible features. Participant identities and internal data remain confidential and fully anonymized.</p>
-    <div class="hero-meta">
-      <div>
-        <div class="hero-meta-label">My Role</div>
-        <div class="hero-meta-value">User Experience Researcher</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Team</div>
-        <div class="hero-meta-value">4 researchers · Microsoft CoreAI</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Timeline</div>
-        <div class="hero-meta-value">Jan – Mar 2026 (10 weeks)</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Methods</div>
-        <div class="hero-meta-value">Moderated Usability Testing · Think Aloud</div>
+    <div class="hero-content">
+      <p class="hero-tag">UX Research · Usability Testing · AI Platform</p>
+      <h1>Microsoft<br /><em>Foundry</em></h1>
+      <p class="hero-sub">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform — uncovering critical blockers in the agent-creation flow.</p>
+      <p style="font-size: 12.5px; font-weight: 400; color: rgba(255,255,255,0.45); margin-top: 0; margin-bottom: 36px; max-width: 640px; line-height: 1.6; position: relative;">Microsoft Foundry is a publicly available platform. All information shared in this case study is based on publicly accessible features. Participant identities and internal data remain confidential and fully anonymized.</p>
+      <div class="hero-meta">
+        <div>
+          <div class="hero-meta-label">My Role</div>
+          <div class="hero-meta-value">User Experience Researcher</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Team</div>
+          <div class="hero-meta-value">4 researchers · Microsoft CoreAI</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">Jan – Mar 2026 (10 weeks)</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Methods</div>
+          <div class="hero-meta-value">Moderated Usability Testing · Think Aloud</div>
+        </div>
       </div>
     </div>
+    <a href="https://azure.microsoft.com/en-us/products/ai-foundry" target="_blank" rel="noopener" class="hero-site-card">
+      <div class="hero-browser-frame">
+        <div class="hero-browser-bar">
+          <div class="hero-browser-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="hero-browser-url">azure.microsoft.com/en-us/products/ai-foundry</div>
+        </div>
+        <img src="assets/Azure-ai-website-demo.png" alt="Azure AI Foundry website" />
+      </div>
+      <div class="hero-site-pill">Explore the live platform <span style="font-size: 13px;">→</span></div>
+    </a>
   </section>
 
   <!-- ROLE STRIP -->
@@ -893,8 +1002,8 @@
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How might we make AI agent creation more intuitive for new developers?</h2>
       <p class="body-text">Microsoft Foundry is a platform built for students, developers, and startup founders who want to create AI agents for their websites or apps. It helps users build smart assistants that work with their data and automate tasks — even if they're still learning or exploring AI.</p>
-      <p class="body-text">I led usability testing on Foundry's CoreAI platform, specifically the <strong>Knowledge, Data, and FoundryIQ features</strong> used in agent creation. My goal was to identify challenges in this flow and make the experience more successful for users, so they are more inclined to use and adopt the platform.</p>
-      <p class="body-text">I focused on students with technical backgrounds and startup founders — people who are curious about AI and looking to leverage it for real projects, but may not be experts in the platform itself.</p>
+      <p class="body-text">As a <strong>User Experience Researcher</strong> on Microsoft's CoreAI team, I planned and led 8 moderated usability sessions testing the <strong>Knowledge, Data, and FoundryIQ features</strong> used in agent creation. I shaped the research questions, designed the study protocol, recruited participants, facilitated think-aloud sessions in the live platform, and synthesized findings into actionable design recommendations.</p>
+      <p class="body-text">I focused on students with technical backgrounds and startup founders — people who are curious about AI and looking to leverage it for real projects, but may not be experts in the platform itself. My goal was to uncover critical blockers in the agent-creation flow and deliver insights that would directly improve adoption.</p>
     </div>
   </section>
 

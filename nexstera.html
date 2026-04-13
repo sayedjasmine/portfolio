@@ -902,14 +902,14 @@
     /* ── DESIGN SYSTEM COMPONENT ── */
     .ds-wrapper {
       margin: 24px auto;
-      max-width: 60%;
+      max-width: 70%;
       border-radius: 12px;
       border: 1px solid rgba(45,106,79,0.12);
       overflow: hidden;
       background: var(--white);
     }
     .ds-section {
-      padding: 22px 28px;
+      padding: 28px 36px;
       border-bottom: 1px solid rgba(45,106,79,0.08);
     }
     .ds-section:last-child { border-bottom: none; }
@@ -925,27 +925,28 @@
       font-family: 'DM Serif Display', serif;
       font-size: 18px;
       color: var(--dark);
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .ds-colors {
       display: flex;
-      gap: 10px;
+      gap: 40px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .ds-swatch {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .ds-swatch-box {
-      width: 60px;
-      height: 60px;
-      border-radius: 10px;
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
       border: 1px solid rgba(0,0,0,0.06);
     }
     .ds-swatch-hex {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 500;
       color: var(--mid);
       font-family: 'DM Sans', monospace;
@@ -1170,8 +1171,8 @@
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How might we build investor trust while educating the public about battery safety?</h2>
       <p class="body-text">Nexstera Tech is a climate-tech startup using AI to detect lithium-ion batteries in waste facilities, reducing fire risk and improving safety. Their AI product, <strong>Pyrotack</strong>, identifies batteries before they cause harm in processing facilities.</p>
-      <p class="body-text">As a UX Designer, I contributed to ideation and design system development, and owned the <strong>Education & Investor page</strong> — shaping how Nexstera communicates its mission, credibility, and business value. I worked closely with designers, project managers, and Nexstera's founding team to align design decisions with funding and growth goals.</p>
-      <p class="body-text">My final design contributed to <strong>$65,000 in seed funding</strong> and a significant increase in investor engagement.</p>
+      <p class="body-text">As a <strong>UX Designer</strong>, I owned the <strong>Education & Investor page</strong> end-to-end — from conducting think-aloud usability sessions and competitive analysis, to building out the design system and delivering final high-fidelity screens. I led ideation workshops with the founding team, created journey maps to understand investor decision-making, and collaborated closely with project managers to align every design decision with Nexstera's funding and growth goals.</p>
+      <p class="body-text">My final design contributed to <strong>$65,000 in seed funding</strong> and a <strong>120% increase in investor engagement</strong>.</p>
     </div>
   </section>
 
@@ -1480,7 +1481,16 @@
       </div>
     </div>
 
-    <!-- Design System — HTML Component -->
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section id="design-system">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design System</p>
+      <h2 class="section-title">Building a consistent<br /><em>visual language.</em></h2>
+      <p class="body-text">A modular system of colors and typography grounded in Nexstera's sustainability mission — ensuring visual consistency across every page and component.</p>
+    </div>
+
     <div class="container-wide fade-in">
       <div class="ds-wrapper">
         <div class="ds-section">
@@ -1529,10 +1539,10 @@
           </div>
         </div>
       </div>
-      <div class="case-img-caption">Design system — color palette and typography scale for the Nexstera brand</div>
     </div>
-
   </section>
+
+  <div class="divider"></div>
 
   <!-- SOLUTION -->
   <section id="solution">

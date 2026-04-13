@@ -90,14 +90,54 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 60vh;
+      min-height: 72vh;
       background: linear-gradient(160deg, #1C1630 0%, #2D1A52 45%, #4A2088 100%);
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      align-items: flex-end;
+      justify-content: space-between;
       padding: 95px 60px 47px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-video {
+      flex-shrink: 0;
+      width: 520px;
+      margin-left: 48px;
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .hero-video-frame {
+      width: 520px;
+      aspect-ratio: 16 / 10;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.08);
+      background: #000;
+    }
+
+    .hero-video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .hero-video-caption {
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(200,170,255,0.55);
+      text-align: center;
+      letter-spacing: 0.02em;
     }
 
     .hero-glow-1 {
@@ -968,14 +1008,14 @@
     /* ── DESIGN SYSTEM COMPONENT ── */
     .ds-wrapper {
       margin: 24px auto;
-      max-width: 60%;
+      max-width: 70%;
       border-radius: 12px;
       border: 1px solid rgba(107,63,160,0.12);
       overflow: hidden;
       background: var(--white);
     }
     .ds-section {
-      padding: 22px 28px;
+      padding: 28px 36px;
       border-bottom: 1px solid rgba(107,63,160,0.08);
     }
     .ds-section:last-child { border-bottom: none; }
@@ -991,27 +1031,28 @@
       font-family: 'DM Serif Display', serif;
       font-size: 18px;
       color: var(--dark);
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .ds-colors {
       display: flex;
-      gap: 10px;
+      gap: 40px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .ds-swatch {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .ds-swatch-box {
-      width: 60px;
-      height: 60px;
-      border-radius: 10px;
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
       border: 1px solid rgba(0,0,0,0.06);
     }
     .ds-swatch-hex {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 500;
       color: var(--mid);
       font-family: 'DM Sans', monospace;
@@ -1019,13 +1060,14 @@
     }
     .ds-gradient-bar {
       height: 48px;
-      border-radius: 10px;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      margin-bottom: 16px;
     }
     .ds-gradient-swatches {
       display: flex;
-      gap: 10px;
+      gap: 40px;
       margin-top: 8px;
+      justify-content: center;
     }
     .ds-type-specimen {
       font-family: 'Inter', 'DM Sans', sans-serif;
@@ -1205,26 +1247,34 @@
   <section class="hero" id="overview">
     <div class="hero-glow-1"></div>
     <div class="hero-glow-2"></div>
-    <p class="hero-tag">Product Design · Identity · Mobile App</p>
-    <h1>Nox<span>+</span></h1>
-    <p class="hero-sub">A secure, universal identity verification platform designed to give users control, transparency, and trust across digital and physical environments.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">My Role</div>
-        <div class="hero-meta-value">Project Lead</div>
+    <div class="hero-content">
+      <p class="hero-tag">Product Design · Identity · Mobile App</p>
+      <h1>Nox<span>+</span></h1>
+      <p class="hero-sub">A secure, universal identity verification platform designed to give users control, transparency, and trust across digital and physical environments.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">My Role</div>
+          <div class="hero-meta-value">Project Lead</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Team</div>
+          <div class="hero-meta-value">1 lead · 1 researcher · 2 designers</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">Sep – Dec 2025</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Tools</div>
+          <div class="hero-meta-value">Figma · Illustrator · Qualtrics</div>
+        </div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Team</div>
-        <div class="hero-meta-value">1 lead · 1 researcher · 2 designers</div>
+    </div>
+    <div class="hero-video">
+      <div class="hero-video-frame">
+        <iframe src="https://drive.google.com/file/d/1LAcXx9To7dGk39Y472XVRjNKtA_VvvNc/preview" allow="autoplay" allowfullscreen></iframe>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Timeline</div>
-        <div class="hero-meta-value">Sep – Dec 2025</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Tools</div>
-        <div class="hero-meta-value">Figma · Illustrator · Qualtrics</div>
-      </div>
+      <p class="hero-video-caption">Product demo</p>
     </div>
   </section>
 
@@ -1254,7 +1304,8 @@
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How can we simplify identity<br />verification for college students?</h2>
       <p class="body-text">Nox+ is a streamlined, secure access solution designed to simplify identity verification and authentication globally. The platform balances robust security with an intuitive, user-friendly interface, enabling seamless and trustworthy access management across applications.</p>
-      <p class="body-text">As a project at the University of Washington, I led design and research efforts, collaborating closely with researchers and other designers to identify usability gaps, optimize workflows, and deliver an <strong>accessible, secure user experience</strong>. The concepts I explored in this project were later adapted in similar form by Apple.</p>
+      <p class="body-text">As <strong>Project Lead</strong>, I drove the end-to-end design and research process — I designed and deployed a 21-question survey to uncover student pain points, led competitive analysis across existing identity platforms, created user personas and journey maps, and iterated from sketches through mid-fi to a polished high-fidelity prototype in Figma. I also coordinated a team of one researcher and two designers, aligning our work toward a cohesive product vision.</p>
+      <p class="body-text">I demoed Nox+ at the <strong>User Centered Design Showcase at UW</strong>, and the concepts I explored in this project were later adapted in similar form by Apple's Digital ID.</p>
     </div>
   </section>
 
@@ -1383,7 +1434,16 @@
       </div>
     </div>
 
-    <!-- Design System — HTML Component -->
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section id="design-system">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design System</p>
+      <h2 class="section-title">The visual language<br />behind <em>Nox+.</em></h2>
+      <p class="body-text">A gradient-driven system built around trust, security, and modernity — from the vibrant app icon to every screen interaction.</p>
+    </div>
+
     <div class="container-wide fade-in">
       <div class="ds-wrapper">
         <div class="ds-section">
@@ -1472,10 +1532,10 @@
           </div>
         </div>
       </div>
-      <div class="case-img-caption">Design system — gradient, color palette, and typography for the Nox+ brand</div>
     </div>
-
   </section>
+
+  <div class="divider"></div>
 
   <!-- FINAL DESIGNS / KEY FEATURES -->
   <section id="solution">

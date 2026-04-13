@@ -85,11 +85,129 @@
       min-height: 60vh;
       background: linear-gradient(155deg, #2A1420 0%, #4A1F30 40%, #C4425A 80%, #D96B7E 100%);
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      align-items: flex-end;
+      justify-content: space-between;
       padding: 90px 60px 52px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-docs {
+      flex-shrink: 0;
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 2;
+      margin-left: 48px;
+      margin-bottom: 8px;
+    }
+
+    .hero-docs-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      margin-bottom: 2px;
+    }
+
+    .hero-doc-card {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(255,255,255,0.98);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      transition: all 0.25s ease;
+    }
+
+    .hero-doc-card:hover {
+      transform: translateY(-3px);
+      background: #2A1420;
+      border-color: rgba(240,179,190,0.3);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+    }
+
+    .hero-doc-icon {
+      width: 44px;
+      height: 52px;
+      background: var(--rose-bg, #FFF0F2);
+      border-radius: 8px;
+      border: 1.5px solid rgba(196,66,90,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-icon {
+      background: rgba(240,179,190,0.15);
+      border-color: rgba(240,179,190,0.3);
+    }
+
+    .hero-doc-icon span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--rose);
+      transition: color 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-icon span {
+      color: var(--rose-light);
+    }
+
+    .hero-doc-info {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .hero-doc-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--rose);
+      margin-bottom: 3px;
+      transition: color 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-title {
+      color: white;
+    }
+
+    .hero-doc-meta {
+      font-size: 11px;
+      color: #7A7585;
+      transition: color 0.25s ease;
+    }
+
+    .hero-doc-card:hover .hero-doc-meta {
+      color: rgba(240,179,190,0.6);
+    }
+
+    .hero-doc-arrow {
+      font-size: 16px;
+      color: var(--rose);
+      opacity: 0.4;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .hero-doc-card:hover .hero-doc-arrow {
+      color: var(--rose-light);
+      opacity: 1;
+      transform: translateX(3px);
     }
 
     .hero-glow {
@@ -743,6 +861,89 @@
     }
     .next-btn:hover { background: var(--rose-mid); gap: 18px; }
 
+    /* ── DESIGN SYSTEM COMPONENT ── */
+    .ds-wrapper {
+      margin: 24px auto;
+      max-width: 70%;
+      border-radius: 12px;
+      border: 1px solid rgba(196,66,90,0.12);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .ds-section {
+      padding: 28px 36px;
+      border-bottom: 1px solid rgba(196,66,90,0.08);
+    }
+    .ds-section:last-child { border-bottom: none; }
+    .ds-section-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 4px;
+    }
+    .ds-section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+    .ds-colors {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ds-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .ds-swatch-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .ds-swatch-hex {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--mid);
+      font-family: 'DM Sans', monospace;
+      letter-spacing: 0.02em;
+    }
+    .ds-type-specimen {
+      font-family: 'DM Sans', sans-serif;
+    }
+    .ds-type-name {
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .ds-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(196,66,90,0.06);
+    }
+    .ds-type-row:last-child { border-bottom: none; }
+    .ds-type-role {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      min-width: 100px;
+    }
+    .ds-type-sample-h { font-size: 24px; font-weight: 600; color: var(--dark); }
+    .ds-type-sample-sh { font-size: 17px; font-weight: 500; color: var(--dark); }
+    .ds-type-sample-b { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.6; }
+
     /* ── CASE IMAGES ── */
     .case-img-wrapper {
       margin: 24px auto;
@@ -932,29 +1133,39 @@
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
-    <p class="hero-tag">Accessibility · EdTech · Inclusive Design</p>
-    <h1>Saksham</h1>
-    <p class="hero-sub">Designing inclusive education for every learner — an accessible learning platform for neurodivergent students in India. Published on Cal Poly's Digital Commons and featured in TAGA Journal.</p>
-    <div class="hero-meta">
-      <div>
-        <div class="hero-meta-label">My Role</div>
-        <div class="hero-meta-value">UX Designer & Researcher</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Type</div>
-        <div class="hero-meta-value">Personal Research Project</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Timeline</div>
-        <div class="hero-meta-value">2024 – 2025</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Tools</div>
-        <div class="hero-meta-value">Figma · Illustrator · UX Research</div>
+    <div class="hero-content">
+      <p class="hero-tag">Accessibility · EdTech · Inclusive Design</p>
+      <h1>Saksham</h1>
+      <p class="hero-sub">Designing inclusive education for every learner — an accessible learning platform for neurodivergent students in India. Published on Cal Poly's Digital Commons and featured in TAGA 2026 Journal.</p>
+      <div class="hero-meta">
+        <div>
+          <div class="hero-meta-label">My Role</div>
+          <div class="hero-meta-value">UX Designer & Researcher</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Type</div>
+          <div class="hero-meta-value">Personal Research Project</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">2024 – 2025</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Tools</div>
+          <div class="hero-meta-value">Figma · Illustrator · UX Research</div>
+        </div>
       </div>
     </div>
-    <div class="resource-bar">
-      <a href="https://docs.google.com/document/d/11UjLgznvh5pQZDShy_BykBvPtHsFwwriqmQKxYkcEPs/edit?usp=sharing" target="_blank" class="resource-link">Read the Research Paper ↗</a>
+    <div class="hero-docs">
+      <div class="hero-docs-label">Project Resources</div>
+      <a href="https://docs.google.com/document/d/11UjLgznvh5pQZDShy_BykBvPtHsFwwriqmQKxYkcEPs/edit?usp=sharing" target="_blank" class="hero-doc-card">
+        <div class="hero-doc-icon"><span>DOC</span></div>
+        <div class="hero-doc-info">
+          <div class="hero-doc-title">Research Paper</div>
+          <div class="hero-doc-meta">Cal Poly Digital Commons</div>
+        </div>
+        <div class="hero-doc-arrow">→</div>
+      </a>
     </div>
   </section>
 
@@ -970,7 +1181,7 @@
     </div>
     <div>
       <div class="role-label">Published</div>
-      <div class="role-value">Cal Poly Digital Commons<br />& TAGA Journal</div>
+      <div class="role-value">Cal Poly Digital Commons<br />& TAGA 2026 Journal</div>
     </div>
     <div>
       <div class="role-label">Target Users</div>
@@ -984,7 +1195,7 @@
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Designing for neurodiversity in<br /><em>Indian education.</em></h2>
       <p class="body-text">In India, millions of children with learning disabilities such as dyslexia, ADHD, and autism face barriers to quality education. Limited awareness, inaccessible teaching tools, and the stigma surrounding neurodiversity contribute to an exclusionary learning environment.</p>
-      <p class="body-text"><strong>Saksham</strong>, meaning "capable" in Hindi, is my personal UX project that explores how digital design can make education more inclusive, accessible, and empowering for neurodivergent students. What began as a passion project became a deeper research initiative — eventually <strong>published on Cal Poly's Digital Commons</strong> and now set to be featured in the <strong>TAGA Journal</strong>, recognizing its contribution to inclusive design in education technology.</p>
+      <p class="body-text">As both <strong>UX Designer and Researcher</strong>, I independently led this project from start to finish — I conducted qualitative interviews with educators and parents, performed a literature review on accessibility in education, synthesized insights into personas and design principles, and designed an accessible mobile learning platform in Figma. I also authored the accompanying research paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> which was <strong>published on Cal Poly's Digital Commons</strong> and is set to be featured in the <strong>TAGA 2026 Journal</strong>.</p>
     </div>
   </section>
 
@@ -1073,7 +1284,7 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Published Research</h3>
-      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published through Cal Poly's Digital Commons and set to appear in the TAGA Journal. The publication emphasizes design ethics, human-centered research, and practical design interventions for neurodiverse students.</p>
+      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published through Cal Poly's Digital Commons and set to appear in the TAGA 2026 Journal. The publication emphasizes design ethics, human-centered research, and practical design interventions for neurodiverse students.</p>
     </div>
   </section>
 
@@ -1170,7 +1381,7 @@
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <img src="assets/saksham-lowfi-wireframe.webp" alt="Low-fidelity wireframes showing early layout explorations for the Saksham app" loading="lazy" />
-        <div class="case-img-caption">Low-fidelity wireframes — early layout explorations for the tablet-based learning app</div>
+        <div class="case-img-caption">Low-fidelity wireframes — early layout explorations for the mobile learning app</div>
       </div>
     </div>
 
@@ -1184,7 +1395,7 @@
           </div>
           <div>
             <div class="process-label">Prototype</div>
-            <div class="process-body">Built interactive wireframes in Figma for a tablet-based app. Features included a <strong>customizable dashboard</strong> (preferred colors, fonts like OpenDyslexic typeface), a <strong>guided reading mode</strong> with audio narration and text highlighting, and <strong>offline functionality</strong> for low-connectivity regions.</div>
+            <div class="process-body">Built interactive wireframes in Figma for a mobile app. Features included a <strong>customizable dashboard</strong> (preferred colors, fonts like OpenDyslexic typeface), a <strong>guided reading mode</strong> with audio narration and text highlighting, and <strong>offline functionality</strong> for low-connectivity regions.</div>
           </div>
         </div>
 
@@ -1201,6 +1412,71 @@
       </div>
     </div>
   </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section id="design-system">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design System</p>
+      <h2 class="section-title">A visual language built for<br /><em>accessibility.</em></h2>
+      <p class="body-text">Warm, high-contrast colors and a friendly typeface chosen to reduce cognitive load — making every screen feel inviting and easy to navigate for neurodiverse learners.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="ds-wrapper">
+        <div class="ds-section">
+          <div class="ds-section-label">Styles</div>
+          <div class="ds-section-title">Colors</div>
+          <div class="ds-colors">
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #3D5CFF;"></div>
+              <span class="ds-swatch-hex">#3D5CFF</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #8699FF;"></div>
+              <span class="ds-swatch-hex">#8699FF</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #FF7C24;"></div>
+              <span class="ds-swatch-hex">#FF7C24</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #FFD301;"></div>
+              <span class="ds-swatch-hex">#FFD301</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #EFE0FF;"></div>
+              <span class="ds-swatch-hex">#EFE0FF</span>
+            </div>
+            <div class="ds-swatch">
+              <div class="ds-swatch-box" style="background: #FFE7EE;"></div>
+              <span class="ds-swatch-hex">#FFE7EE</span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-section">
+          <div class="ds-section-label">Styles</div>
+          <div class="ds-section-title">Typeface</div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-name">Poppins</div>
+            <div class="ds-type-row">
+              <span class="ds-type-role">Heading</span>
+              <span class="ds-type-sample-h">Heading</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-role">Subheading</span>
+              <span class="ds-type-sample-sh">Subheading</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-role">Body</span>
+              <span class="ds-type-sample-b">Body</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
 
   <!-- SOLUTION -->
   <section id="solution">
@@ -1265,7 +1541,7 @@
       <div class="impact-stats">
         <div class="impact-stat">
           <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">Published</div>
-          <div class="impact-label">on Cal Poly's Digital Commons and accepted for TAGA Journal, recognizing its contribution to inclusive design</div>
+          <div class="impact-label">on Cal Poly's Digital Commons and accepted for TAGA 2026 Journal, recognizing its contribution to inclusive design</div>
         </div>
         <div class="impact-stat">
           <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">5M+</div>

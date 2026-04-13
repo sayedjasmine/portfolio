@@ -296,11 +296,35 @@
       cursor: default;
       white-space: nowrap;
       transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s;
+      position: relative;
     }
 
     .hero-pill:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 18px rgba(107,63,160,0.16);
+    }
+
+    .hero-pill .pill-tooltip {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      font-size: 11.5px;
+      font-weight: 400;
+      padding: 8px 14px;
+      border-radius: 10px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: all 0.25s ease;
+      pointer-events: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero-pill:hover .pill-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     .hero-pill:nth-child(1) { background: #EDE4FF; color: #5B2EA6; border: 1px solid rgba(91,46,166,0.15); }
@@ -598,11 +622,15 @@
     }
 
     /* Per-card preview background colors */
-    .card-microsoft .card-preview     { background: #004369; }
-    .card-nox .card-preview           { background: #7f63e8; }
-    .card-saksham .card-preview       { background: #C4425A; }
+    .card-microsoft .card-preview     { background: #004369; padding: 0; }
+    .card-microsoft .card-preview img { max-width: 130%; max-height: 130%; }
+    .card-nox .card-preview           { background: #7f63e8; padding: 20px; }
+    .card-nox .card-preview img       { max-width: 100%; max-height: 100%; }
+    .card-saksham .card-preview       { background: #C4425A; padding: 16px; }
+    .card-saksham .card-preview img   { max-width: 108%; max-height: 108%; }
     .card-codeswitching .card-preview { background: #4B2E83; }
-    .card-nexstera .card-preview      { background: #b4dbdc; }
+    .card-nexstera .card-preview      { background: #b4dbdc; padding: 12px; }
+    .card-nexstera .card-preview img  { max-width: 110%; max-height: 110%; }
     .card-momsafe .card-preview       { background: #1A2744; }
 
 
@@ -997,9 +1025,9 @@
   <section class="hero">
     <div class="hero-top">
       <div class="hero-pills">
-        <span class="hero-pill">&#129504; Human-Centered Design</span>
-        <span class="hero-pill">&#129302; AI &amp; Product</span>
-        <span class="hero-pill">&#128269; UX Research</span>
+        <span class="hero-pill">&#129504; Human-Centered Design<span class="pill-tooltip">Empathy first, always</span></span>
+        <span class="hero-pill">&#129302; AI &amp; Product<span class="pill-tooltip">Designing with intelligence, literally</span></span>
+        <span class="hero-pill">&#128269; UX Research<span class="pill-tooltip">Letting users lead the way</span></span>
       </div>
     </div>
 
@@ -1078,7 +1106,7 @@
       <!-- 4. SAKSHAM -->
       <a href="saksham.html" class="card card-saksham fade-in" data-category="design ai">
         <div class="card-preview">
-          <img src="assets/saksham-screen1.png" alt="Saksham app" />
+          <img src="assets/saksham-mockup.png" alt="Saksham app" />
         </div>
         <div class="card-info">
           <div class="card-meta">
@@ -1149,7 +1177,7 @@
       <a href="mailto:sayedjasmine@gmail.com" class="contact-btn primary" id="emailBtn">Say hello →</a>
       <a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" class="contact-btn secondary">LinkedIn ↗</a>
     </div>
-    <p class="contact-email-fallback fade-in" id="emailFallback" style="display:none; margin-top: 18px;">
+    <p class="fade-in" style="margin-top: 18px;">
       <span style="font-size: 14px; color: rgba(255,255,255,0.55);">Or copy my email:</span><br />
       <span id="emailText" style="font-size: 15px; color: white; letter-spacing: 0.02em; cursor: pointer; border-bottom: 1px dashed rgba(255,255,255,0.4); padding-bottom: 2px;" title="Click to copy">sayedjasmine@gmail.com</span>
       <span id="copyConfirm" style="font-size: 13px; color: var(--purple-light); margin-left: 8px; opacity: 0; transition: opacity 0.3s;"></span>
@@ -1279,22 +1307,12 @@
     }, { threshold: 0.1 });
     cards.forEach(c => cardIO.observe(c));
 
-    // Email fallback — show copyable address if mailto doesn't open a client
+    // Email copy functionality
     (function() {
-      const emailBtn = document.getElementById('emailBtn');
-      const fallback = document.getElementById('emailFallback');
       const emailText = document.getElementById('emailText');
       const copyConfirm = document.getElementById('copyConfirm');
 
-      emailBtn.addEventListener('click', function(e) {
-        // Show the fallback email after a brief delay regardless —
-        // if mailto worked, they already have the client open.
-        // If it didn't, they now have a way to copy the address.
-        setTimeout(() => {
-          fallback.style.display = 'block';
-          fallback.classList.add('visible');
-        }, 300);
-      });
+      if (!emailText) return;
 
       // Click-to-copy on the email text
       emailText.addEventListener('click', function() {
