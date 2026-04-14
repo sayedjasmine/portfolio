@@ -144,8 +144,8 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 12px; right: 12px;
-      left: auto;
+      top: 12px; left: 12px;
+      right: auto;
       z-index: 199;
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(20px);
@@ -830,7 +830,7 @@
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 24px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 18px; }
+      .footer-center .footer-sep { margin: 0 6px; }
     }
 
     @media (max-width: 600px) {
@@ -907,11 +907,11 @@
     <div class="hero-content">
       <p class="hero-tag">AI · Maternal Health · User Research · Product Design</p>
       <h1>Mom<em>SAFE</em></h1>
-      <p class="hero-sub">An AI-powered maternal health companion designed to bridge the gap in prenatal care: providing personalized, real-time pregnancy insights and proactive care recommendations for expectant mothers.</p>
+      <p class="hero-sub">A research-driven exploration into AI-powered maternal healthcare: uncovering the gaps in prenatal care through interviews with mothers and healthcare providers, and translating findings into a design direction for personalized, real-time pregnancy support.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
-          <div class="hero-meta-value">UX Researcher & Designer</div>
+          <div class="hero-meta-value">UX Researcher</div>
         </div>
         <div>
           <div class="hero-meta-label">Focus</div>
@@ -919,7 +919,7 @@
         </div>
         <div>
           <div class="hero-meta-label">Methods</div>
-          <div class="hero-meta-value">Expert Interviews · User Research<br />Prototyping · Usability Testing</div>
+          <div class="hero-meta-value">Expert Interviews · User Research<br />Synthesis · Design Direction</div>
         </div>
         <div>
           <div class="hero-meta-label">Alignment</div>
@@ -976,7 +976,7 @@
       <p class="body-text">During our user interviews, an expectant mother told us: <strong>"I would love a chat feature with professionals at 2 AM when I'm struggling."</strong> That sentence captures the core problem MomSAFE exists to solve; pregnancy doesn't follow office hours, and for millions of women, there's no one to ask when something feels wrong at midnight.</p>
       <p class="body-text">As a <strong>UX Researcher & Designer</strong> working alongside two other UX researchers, I helped drive this project from research through final design. I conducted expert interviews with labor nurses and OB/GYNs, ran user research sessions with expectant mothers, and collaborated with my team to synthesize findings into personas and design principles. One thing became clear early: <strong>the gap wasn't just about access to doctors; it was about access to understanding.</strong> Mothers couldn't parse the medical language, couldn't tell when a symptom was normal, and couldn't get reassurance when they needed it most.</p>
       <p class="body-text">MomSAFE uses large language models and machine learning to bridge that gap: synthesizing user inputs and clinical data to deliver personalized, real-time pregnancy insights and proactive care recommendations in language mothers actually understand.</p>
-      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: #EBF2FA; border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> I led user research (interviews with expectant mothers and healthcare providers), synthesized findings into design requirements, created the information architecture and interaction flows, and designed the high-fidelity prototype.</p>
+      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: #EBF2FA; border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> UX researcher, contributing equally with my team. I participated in user research (interviews with expectant mothers and healthcare providers), synthesized findings into design requirements, and helped shape the research direction and recommendations.</p>
     </div>
 
     <div class="container fade-in" style="margin-top: 28px;">
@@ -1121,12 +1121,6 @@
       </div>
     </div>
 
-    <div class="container-wide fade-in">
-      <div class="case-img-wrapper">
-        <div class="case-img-caption">High-fidelity screens: key flows for symptom tracking, appointment prep, and AI health insights</div>
-        <img src="assets/momsafe-hifi-screens.webp" alt="High-fidelity app screens showing MomSAFE's core features" loading="lazy" style="background: #EBF2FA; min-height: 200px;" />
-      </div>
-    </div>
   </section>
 
   <div class="divider"></div>
@@ -1134,9 +1128,9 @@
   <!-- PROTOTYPE / DESIGN -->
   <section id="prototype">
     <div class="container fade-in">
-      <p class="section-eyebrow">Final Prototype</p>
-      <h2 class="section-title">Designed for accessibility, inclusivity, and trust.</h2>
-      <p class="body-text">The design philosophy came from an unexpected insight: mothers told us that most health apps made them <em>more</em> anxious, not less. Overloaded dashboards, alarming color codes, and medical jargon turned routine tracking into a source of stress. So we deliberately designed MomSAFE to feel <strong>calm</strong>. A minimalist UI that surfaces only what's relevant at the right moment. Predictive insights framed as guidance, not warnings. And language that explains rather than diagnoses.</p>
+      <p class="section-eyebrow">Design Direction</p>
+      <h2 class="section-title">Research-informed principles for accessibility, inclusivity, and trust.</h2>
+      <p class="body-text">One of the most striking findings from our research: mothers told us that most health apps made them <em>more</em> anxious, not less. Overloaded dashboards, alarming color codes, and medical jargon turned routine tracking into a source of stress. That insight shaped the design direction for MomSAFE: a <strong>calm</strong> experience that surfaces only what's relevant at the right moment, frames predictive insights as guidance rather than warnings, and uses language that explains rather than diagnoses. We iterated on light Figma screens to illustrate these principles, though a full prototype remains future work.</p>
     </div>
 
     <div class="container fade-in">
@@ -1221,7 +1215,7 @@
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
     <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
-    <p class="footer-right">Made with ♡ by Jasmine</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
   <script>

@@ -72,6 +72,84 @@
       display: block;
     }
 
+    /* ── PROCESS DIAGRAM ── */
+    .process-diagram {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .process-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .process-steps {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      position: relative;
+    }
+    .process-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      padding: 0 8px;
+    }
+    .process-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--blue-bg);
+      border: 2px solid var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .process-step.active .process-icon {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+    .process-step-title {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .process-step-desc {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+    .process-connector {
+      position: absolute;
+      top: 22px;
+      left: calc(50% + 22px);
+      right: calc(-50% + 22px);
+      height: 2px;
+      background: var(--blue-light);
+      z-index: 1;
+    }
+    .process-step:last-child .process-connector { display: none; }
+
+    @media (max-width: 960px) {
+      .process-diagram { padding: 0 24px; }
+      .process-steps { flex-wrap: wrap; gap: 20px; justify-content: center; }
+      .process-step { flex: 0 0 calc(33% - 16px); }
+      .process-connector { display: none; }
+    }
+    @media (max-width: 600px) {
+      .process-diagram { padding: 0 20px; }
+      .process-step { flex: 0 0 calc(50% - 12px); }
+    }
+
     /* ── HAMBURGER MENU ── */
     .hamburger {
       display: none;
@@ -120,8 +198,8 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 12px; right: 12px;
-      left: auto;
+      top: 12px; left: 12px;
+      right: auto;
       z-index: 199;
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(20px);
@@ -1052,7 +1130,7 @@
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 18px; }
+      .footer-center .footer-sep { margin: 0 6px; }
     }
 
     @media (max-width: 600px) {
@@ -1191,8 +1269,46 @@
       <p class="body-text">As a <strong>User Experience Researcher</strong> on Microsoft's CoreAI team, our 4-person research team conducted 8 moderated usability sessions testing the Knowledge, Data, and FoundryIQ features at the heart of agent creation. I helped shape the research questions, co-designed the study protocol, facilitated 3 of the 8 sessions, and led team communication and meeting coordination throughout the study. What we discovered in the first session, and confirmed in every subsequent one, was a critical blocker that <strong>100% of participants hit</strong>, and that the team hadn't anticipated.</p>
       <p class="body-text">This study went from "let's see how intuitive the flow is" to "we need to fix this before anything else matters."</p>
       <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--blue-bg, #EBF2FA); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> I co-led the research process on a 4-person team: helped scope research questions, co-designed the study protocol, facilitated 3 of 8 think-aloud sessions, and owned team communication, meeting planning, and coordination. I contributed to synthesizing findings and co-presented prioritized recommendations to the Microsoft CoreAI team.</p>
+      <p class="body-text" style="margin-top: 12px; font-size: 12.5px; color: var(--mid); font-style: italic;">Note: Due to the confidential nature of this product and user privacy, visuals in this case study are limited. I'm happy to walk through the full research process and findings in person.</p>
     </div>
   </section>
+
+  <!-- PROCESS DIAGRAM -->
+  <div class="process-diagram fade-in" style="margin: 40px auto;">
+    <p class="process-label">Research Process</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-connector"></div>
+        <div class="process-icon">🎯</div>
+        <div class="process-step-title">Scoping</div>
+        <div class="process-step-desc">Defined research questions with the design team</div>
+      </div>
+      <div class="process-step">
+        <div class="process-connector"></div>
+        <div class="process-icon">📋</div>
+        <div class="process-step-title">Protocol Design</div>
+        <div class="process-step-desc">Co-designed study protocol and task scenarios</div>
+      </div>
+      <div class="process-step">
+        <div class="process-connector"></div>
+        <div class="process-icon">🎙️</div>
+        <div class="process-step-title">8 Sessions</div>
+        <div class="process-step-desc">Moderated think-aloud usability sessions (I facilitated 3)</div>
+      </div>
+      <div class="process-step">
+        <div class="process-connector"></div>
+        <div class="process-icon">🔍</div>
+        <div class="process-step-title">Synthesis</div>
+        <div class="process-step-desc">Coded findings, identified 5 themes and 1 critical blocker</div>
+      </div>
+      <div class="process-step active">
+        <div class="process-connector"></div>
+        <div class="process-icon" style="color: #fff;">📊</div>
+        <div class="process-step-title">Readout</div>
+        <div class="process-step-desc">Presented prioritized recommendations to CoreAI team</div>
+      </div>
+    </div>
+  </div>
 
   <div class="divider"></div>
 
@@ -1569,7 +1685,7 @@
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
     <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
-    <p class="footer-right">Made with ♡ by Jasmine</p>
+    <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
   <script>
