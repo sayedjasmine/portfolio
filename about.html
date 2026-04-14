@@ -331,11 +331,11 @@
       .nav-logo { order: 1; }
       .nav-logo img { height: 40px; }
       .about-hero { padding: 100px 24px 40px; }
-      .hero-photos { height: auto; }
-      .hero-photo-main { position: relative; width: 100%; height: auto; border-radius: 16px; }
-      .hero-photo-main img { height: auto; object-fit: contain; object-position: center; }
+      .hero-photos { height: auto; position: relative; }
+      .hero-photo-main { position: relative; width: 100%; height: auto; border-radius: 16px; overflow: hidden; }
+      .hero-photo-main img { width: 100%; height: auto; object-fit: contain; object-position: center; display: block; }
       .hero-photo-accent { width: 35%; height: auto; bottom: -20px; right: 12px; border-radius: 14px; }
-      .hero-photo-accent img { height: auto; object-fit: contain; }
+      .hero-photo-accent img { width: 100%; height: auto; object-fit: contain; display: block; }
       .photo-tag { font-size: 11px; padding: 6px 12px; top: 16px; }
       .section-container { padding: 0 24px 40px; }
       .facts-grid { grid-template-columns: repeat(3, 1fr); }
@@ -533,11 +533,14 @@
         <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-8.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-11.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-19.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-15.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-10.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
@@ -551,11 +554,14 @@
         <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-6.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-8.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-11.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-3.png"  alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-19.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-16.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-7.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
+        <div class="c-slide"><img src="images/about-carousel-15.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-10.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-13.png" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
@@ -620,8 +626,13 @@
       entries.forEach((e, i) => {
         if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
       });
-    }, { threshold: 0.06 });
+    }, { threshold: 0.01, rootMargin: '0px 0px 80px 0px' });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // Fallback: ensure all sections become visible after 2s (catches mobile observer failures)
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 2000);
 
     // Carousel: auto-scroll + drag
     (function() {
