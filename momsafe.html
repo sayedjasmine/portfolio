@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MomSAFE — Jasmine Sayed</title>
+  <title>MomSAFE | Jasmine Sayed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -86,11 +86,14 @@
     }
 
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 16px;
-      color: var(--dark);
       text-decoration: none;
       display: none;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
     }
 
     /* ── HAMBURGER MENU ── */
@@ -141,32 +144,37 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 12px; right: 12px;
+      left: auto;
       z-index: 199;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: flex-start;
-      padding: 24px 28px 40px;
+      padding: 16px 20px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-width: 160px;
     }
-    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: none;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
-      padding: 10px 18px 10px 14px;
-      margin-bottom: 24px;
+      padding: 6px 12px 6px 8px;
+      margin-bottom: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -178,20 +186,20 @@
       border-color: rgba(0,0,0,0.25);
     }
     .mobile-menu-close svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       stroke: currentColor;
       stroke-width: 2;
     }
     .mobile-menu a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
       text-decoration: none;
-      padding: 18px 0;
+      padding: 10px 0;
       transition: color 0.2s ease;
       position: relative;
       width: 100%;
@@ -742,6 +750,34 @@
     }
     .next-project-title a:hover { color: var(--rose); }
 
+    /* ── TESTIMONIAL ── */
+    .testimonial-block {
+      margin: 32px auto;
+      max-width: 640px;
+      text-align: center;
+      padding: 36px 40px;
+      background: #EBF2FA;
+      border-radius: 16px;
+      border: 1px solid rgba(26,39,68,0.08);
+    }
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .testimonial-attr {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+    .testimonial-attr strong {
+      color: var(--dark);
+    }
+
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
     .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
@@ -758,7 +794,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center a:hover { color: var(--pink-light); }
+    .footer-center .footer-sep { margin: 0 14px; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in {
@@ -771,7 +811,8 @@
     @media (max-width: 960px) {
       .nav-back, .nav-right { display: none; }
       .hamburger { display: flex; }
-      .nav-logo { display: block; }
+      .nav-logo { display: flex; }
+      .nav-logo img { height: 40px; }
       nav { padding: 18px 28px; }
       .section-tabs { padding: 12px 28px; }
       .hero { padding: 120px 28px 48px; flex-direction: column; align-items: center; }
@@ -787,7 +828,9 @@
       .vision-grid { grid-template-columns: 1fr; }
       .next-project { padding: 48px 28px; }
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
-      footer { padding: 24px 28px; }
+      footer { padding: 24px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; }
+      .footer-center .footer-sep { margin: 0 18px; }
     }
 
     @media (max-width: 600px) {
@@ -828,7 +871,7 @@
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <div class="nav-right">
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
@@ -864,7 +907,7 @@
     <div class="hero-content">
       <p class="hero-tag">AI · Maternal Health · User Research · Product Design</p>
       <h1>Mom<em>SAFE</em></h1>
-      <p class="hero-sub">An AI-powered maternal health companion designed to bridge the gap in prenatal care — providing personalized, real-time pregnancy insights and proactive care recommendations for expectant mothers.</p>
+      <p class="hero-sub">An AI-powered maternal health companion designed to bridge the gap in prenatal care: providing personalized, real-time pregnancy insights and proactive care recommendations for expectant mothers.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -930,9 +973,10 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Empowering expectant mothers through AI-driven care.</h2>
-      <p class="body-text">Maternal health remains a critical global challenge, with disparities in access to quality care affecting millions of women.</p>
-      <p class="body-text">As a <strong>UX Researcher & Designer</strong> working alongside two other UX researchers, I helped drive this project from research through final design — I conducted expert interviews with healthcare professionals, ran user research sessions with expectant mothers, and collaborated with my team to synthesize findings into personas and design principles. I designed the AI-powered maternal health companion in Figma and helped define the product's core features — <strong>daily health check-ins, trend analysis, and secure data options</strong> — grounded in the real pain points we uncovered through our research.</p>
-      <p class="body-text">MomSAFE leverages large language models and machine learning to synthesize user inputs and clinical data, identify potential pregnancy risks, and deliver <strong>personalized, real-time pregnancy insights</strong> and <strong>proactive care recommendations</strong> — making evidence-based prenatal care more accessible.</p>
+      <p class="body-text">During our user interviews, an expectant mother told us: <strong>"I would love a chat feature with professionals at 2 AM when I'm struggling."</strong> That sentence captures the core problem MomSAFE exists to solve; pregnancy doesn't follow office hours, and for millions of women, there's no one to ask when something feels wrong at midnight.</p>
+      <p class="body-text">As a <strong>UX Researcher & Designer</strong> working alongside two other UX researchers, I helped drive this project from research through final design. I conducted expert interviews with labor nurses and OB/GYNs, ran user research sessions with expectant mothers, and collaborated with my team to synthesize findings into personas and design principles. One thing became clear early: <strong>the gap wasn't just about access to doctors; it was about access to understanding.</strong> Mothers couldn't parse the medical language, couldn't tell when a symptom was normal, and couldn't get reassurance when they needed it most.</p>
+      <p class="body-text">MomSAFE uses large language models and machine learning to bridge that gap: synthesizing user inputs and clinical data to deliver personalized, real-time pregnancy insights and proactive care recommendations in language mothers actually understand.</p>
+      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: #EBF2FA; border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> I led user research (interviews with expectant mothers and healthcare providers), synthesized findings into design requirements, created the information architecture and interaction flows, and designed the high-fidelity prototype.</p>
     </div>
 
     <div class="container fade-in" style="margin-top: 28px;">
@@ -968,14 +1012,14 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Statement</p>
       <h2 class="section-title">The maternal healthcare gap is a crisis hiding in plain sight.</h2>
-      <p class="body-text">Access to quality maternal healthcare is a widespread issue. Millions of women navigate pregnancy without adequate support, and the consequences are devastating. MomSAFE was designed to address this head-on — providing a <strong>reliable, accessible, and AI-powered</strong> maternal health solution.</p>
+      <p class="body-text">The numbers are staggering, but what struck us most during research was how normalized the gap has become. Women in nearly half of U.S. counties don't even have access to an OB/GYN. Globally, 800 women die every day from preventable pregnancy-related complications. And yet, when we asked expectant mothers about their prenatal experience, most described it as "fine" because they had no benchmark for what adequate care looks like. <strong>They didn't know what they were missing.</strong></p>
     </div>
 
     <div class="container fade-in">
       <div class="problem-grid">
         <div class="problem-card">
           <div class="problem-stat">49%</div>
-          <div class="problem-label">of U.S. counties lack a<br />single OB/GYN — impacting<br />10M+ women</div>
+          <div class="problem-label">of U.S. counties lack a<br />single OB/GYN, impacting<br />10M+ women</div>
         </div>
         <div class="problem-card">
           <div class="problem-stat">800</div>
@@ -995,8 +1039,8 @@
   <section id="research">
     <div class="container fade-in">
       <p class="section-eyebrow">User Research & Insights</p>
-      <h2 class="section-title">Listening to the people who matter most.</h2>
-      <p class="body-text">Our team of three UX researchers conducted research with both healthcare professionals and expectant mothers to deeply understand the pain points in current maternal care. The insights shaped every design decision in MomSAFE.</p>
+      <h2 class="section-title">Doctors and mothers told us<br />completely different stories.</h2>
+      <p class="body-text">This was the pivotal discovery. Healthcare professionals framed the problem as one of <strong>medical literacy</strong>: mothers don't understand clinical terminology, so they either panic over normal symptoms or ignore serious ones. But mothers framed the problem as one of <strong>access and timing</strong>: they knew something felt off, they just couldn't reach anyone when it mattered. Both perspectives were right, and MomSAFE needed to solve for both simultaneously.</p>
     </div>
 
     <div class="container fade-in">
@@ -1004,12 +1048,12 @@
         <div class="research-card">
           <div class="research-tag">Expert Consultations</div>
           <div class="research-title">Healthcare Professionals</div>
-          <div class="research-desc">Consulted with labor nurses and OB/GYNs who advocated for pain-rating scales and simplified medical terminology — making clinical information accessible to all mothers.</div>
+          <div class="research-desc">Consulted with labor nurses and OB/GYNs who advocated for pain-rating scales and simplified medical terminology to make clinical information accessible to all mothers.</div>
         </div>
         <div class="research-card">
           <div class="research-tag">User Interviews</div>
           <div class="research-title">Expectant Mothers</div>
-          <div class="research-desc">Interviewed pregnant women who expressed a strong need for real-time support — especially during off-hours when their providers aren't available.</div>
+          <div class="research-desc">Interviewed pregnant women who expressed a strong need for real-time support, especially during off-hours when their providers aren't available.</div>
         </div>
       </div>
     </div>
@@ -1018,14 +1062,21 @@
       <div class="quote-grid">
         <div class="quote-card">
           <div class="quote-text">It's not expected that an average mother understands complex medical terms.</div>
-          <div class="quote-attr">— Labor Nurse</div>
+          <div class="quote-attr">- Labor Nurse</div>
           <div class="quote-context">Expert Consultation</div>
         </div>
         <div class="quote-card">
           <div class="quote-text">I would love a chat feature with professionals at 2 AM when I'm struggling.</div>
-          <div class="quote-attr">— Expectant Mother</div>
+          <div class="quote-attr">- Expectant Mother</div>
           <div class="quote-context">User Interview</div>
         </div>
+      </div>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <div class="case-img-caption">Research synthesis: mapping interview insights to feature opportunities</div>
+        <img src="assets/momsafe-research-synthesis.webp" alt="Research synthesis showing interview findings mapped to design opportunities" loading="lazy" style="background: #EBF2FA; min-height: 200px;" />
       </div>
     </div>
   </section>
@@ -1036,8 +1087,8 @@
   <section id="features">
     <div class="container fade-in">
       <p class="section-eyebrow">Key Features</p>
-      <h2 class="section-title">Built around what mothers actually need.</h2>
-      <p class="body-text">Every feature in MomSAFE was informed by research and designed to address specific gaps in the current maternal healthcare experience.</p>
+      <h2 class="section-title">Every feature traces back to<br />something a mother or nurse told us.</h2>
+      <p class="body-text">The AI chatbot exists because mothers told us they need answers at 2 AM. The simplified language exists because a labor nurse told us "it's not expected that an average mother understands complex medical terms." The survey check-ins exist because OB/GYNs told us longitudinal data is the single most valuable input for early risk detection. Nothing is speculative; every feature is rooted in a specific research finding.</p>
     </div>
 
     <div class="container fade-in">
@@ -1045,28 +1096,35 @@
         <div class="feature-card">
           <div class="feature-icon">💬</div>
           <div class="feature-title">AI Chatbot</div>
-          <div class="feature-desc">24/7 multilingual support for maternal health inquiries — answering questions, providing guidance, and connecting mothers to resources any time of day.</div>
+          <div class="feature-desc">24/7 multilingual support for maternal health inquiries: answering questions, providing guidance, and connecting mothers to resources any time of day.</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📊</div>
           <div class="feature-title">Survey Check-ins</div>
-          <div class="feature-desc">Regular symptom tracking for mood, physical health, and pregnancy milestones — building a longitudinal view of each mother's journey.</div>
+          <div class="feature-desc">Regular symptom tracking for mood, physical health, and pregnancy milestones to build a longitudinal view of each mother's journey.</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📅</div>
           <div class="feature-title">Appointment Booking</div>
-          <div class="feature-desc">Direct access to healthcare providers with streamlined scheduling — reducing the friction between recognizing a concern and getting professional care.</div>
+          <div class="feature-desc">Direct access to healthcare providers with streamlined scheduling to reduce the friction between recognizing a concern and getting professional care.</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔍</div>
           <div class="feature-title">Data-Driven Insights</div>
-          <div class="feature-desc">AI-powered trend analysis that surfaces patterns across check-ins — proactively flagging potential risks before they become emergencies.</div>
+          <div class="feature-desc">AI-powered trend analysis that surfaces patterns across check-ins; proactively flags potential risks before they become emergencies.</div>
         </div>
         <div class="feature-card span-full">
           <div class="feature-icon">🔐</div>
           <div class="feature-title">Privacy & Security</div>
-          <div class="feature-desc">User-controlled data with transparent policies — because trust is non-negotiable when it comes to sensitive health information. Every mother decides what to share and with whom.</div>
+          <div class="feature-desc">User-controlled data with transparent policies; trust is non-negotiable when it comes to sensitive health information. Every mother decides what to share and with whom.</div>
         </div>
+      </div>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <div class="case-img-caption">High-fidelity screens: key flows for symptom tracking, appointment prep, and AI health insights</div>
+        <img src="assets/momsafe-hifi-screens.webp" alt="High-fidelity app screens showing MomSAFE's core features" loading="lazy" style="background: #EBF2FA; min-height: 200px;" />
       </div>
     </div>
   </section>
@@ -1078,8 +1136,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Final Prototype</p>
       <h2 class="section-title">Designed for accessibility, inclusivity, and trust.</h2>
-      <p class="body-text">The final design prioritizes clarity and calm. A <strong>minimalist UI</strong> keeps the experience clutter-free and easy to navigate, with a clear content structure that guides mothers through their health data without overwhelming them.</p>
-      <p class="body-text"><strong>Predictive AI-driven insights</strong> are surfaced contextually — so mothers see what matters most at the right moment, helping prevent maternal health risks before they escalate.</p>
+      <p class="body-text">The design philosophy came from an unexpected insight: mothers told us that most health apps made them <em>more</em> anxious, not less. Overloaded dashboards, alarming color codes, and medical jargon turned routine tracking into a source of stress. So we deliberately designed MomSAFE to feel <strong>calm</strong>. A minimalist UI that surfaces only what's relevant at the right moment. Predictive insights framed as guidance, not warnings. And language that explains rather than diagnoses.</p>
     </div>
 
     <div class="container fade-in">
@@ -1092,7 +1149,7 @@
         <div class="principle-card">
           <div class="principle-icon">🤲</div>
           <div class="principle-title">Inclusivity</div>
-          <div class="principle-desc">Designed to serve all mothers — regardless of location, language, or access to traditional healthcare resources.</div>
+          <div class="principle-desc">Designed to serve all mothers, regardless of location, language, or access to traditional healthcare resources.</div>
         </div>
         <div class="principle-card">
           <div class="principle-icon">🛡️</div>
@@ -1105,12 +1162,14 @@
 
   <div class="divider"></div>
 
+  <!-- TESTIMONIAL (add quote when available) -->
+
   <!-- IMPACT & FUTURE VISION -->
   <section id="impact">
     <div class="container fade-in">
       <p class="section-eyebrow">Impact & Future Vision</p>
       <h2 class="section-title">Where MomSAFE goes from here.</h2>
-      <p class="body-text">MomSAFE revolutionizes maternal healthcare by combining AI, user research, and human-centered design to create a reliable, accessible, and proactive care solution. With its scalable, data-driven approach, MomSAFE has the potential to <strong>transform pregnancy care for women worldwide.</strong></p>
+      <p class="body-text">MomSAFE is a proof of concept, not a finished product; I want to be honest about that. What we demonstrated is that <strong>the combination of AI, simplified medical language, and 24/7 access addresses real, validated pain points</strong> that mothers and healthcare providers independently confirmed. The next steps would require clinical validation, regulatory review, and partnerships with healthcare systems. But the research foundation is solid, and the design framework is ready to scale.</p>
     </div>
 
     <div class="container fade-in">
@@ -1118,17 +1177,17 @@
         <div class="vision-card">
           <div class="vision-icon">🩺</div>
           <div class="vision-title">Telehealth Integration</div>
-          <div class="vision-desc">Direct doctor consultations built into the platform — bridging the gap between expectant mothers and healthcare professionals.</div>
+          <div class="vision-desc">Direct doctor consultations built into the platform to bridge the gap between expectant mothers and healthcare professionals.</div>
         </div>
         <div class="vision-card">
           <div class="vision-icon">🧠</div>
           <div class="vision-title">Predictive AI Diagnostics</div>
-          <div class="vision-desc">Real-time AI-powered diagnostics to detect high-risk pregnancies earlier — when intervention matters most.</div>
+          <div class="vision-desc">Real-time AI-powered diagnostics to detect high-risk pregnancies earlier, when intervention matters most.</div>
         </div>
         <div class="vision-card">
           <div class="vision-icon">🌐</div>
           <div class="vision-title">Global Language Support</div>
-          <div class="vision-desc">Expanded multilingual capabilities for a truly inclusive experience — ensuring no mother is left behind because of a language barrier.</div>
+          <div class="vision-desc">Expanded multilingual capabilities for a truly inclusive experience: ensuring no mother is left behind because of a language barrier.</div>
         </div>
       </div>
     </div>
@@ -1161,7 +1220,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-right">Made with ♡ by Jasmine</p>
   </footer>
 
   <script>

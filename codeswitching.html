@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code-Switching — Jasmine Sayed</title>
+  <title>Code-Switching | Jasmine Sayed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -74,11 +74,14 @@
     .nav-right a:hover { color: var(--purple); }
 
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 16px;
-      color: var(--dark);
       text-decoration: none;
       display: none;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
     }
 
     /* ── HAMBURGER MENU ── */
@@ -129,32 +132,37 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 12px; right: 12px;
+      left: auto;
       z-index: 199;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: flex-start;
-      padding: 24px 28px 40px;
+      padding: 16px 20px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-width: 160px;
     }
-    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: none;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
-      padding: 10px 18px 10px 14px;
-      margin-bottom: 24px;
+      padding: 6px 12px 6px 8px;
+      margin-bottom: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -166,20 +174,20 @@
       border-color: rgba(0,0,0,0.25);
     }
     .mobile-menu-close svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       stroke: currentColor;
       stroke-width: 2;
     }
     .mobile-menu a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
       text-decoration: none;
-      padding: 18px 0;
+      padding: 10px 0;
       transition: color 0.2s ease;
       position: relative;
       width: 100%;
@@ -700,6 +708,34 @@
     }
     .next-btn:hover { background: var(--purple-mid); gap: 18px; }
 
+    /* ── TESTIMONIAL ── */
+    .testimonial-block {
+      margin: 32px auto;
+      max-width: 640px;
+      text-align: center;
+      padding: 36px 40px;
+      background: #F3EEFB;
+      border-radius: 16px;
+      border: 1px solid rgba(75,46,131,0.08);
+    }
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .testimonial-attr {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+    .testimonial-attr strong {
+      color: var(--dark);
+    }
+
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
     .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
@@ -719,7 +755,11 @@
       align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center a:hover { color: var(--teal-light); }
+    .footer-center .footer-sep { margin: 0 14px; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in {
@@ -733,7 +773,8 @@
     @media (max-width: 960px) {
       .nav-back, .nav-right { display: none; }
       .hamburger { display: flex; }
-      .nav-logo { display: block; }
+      .nav-logo { display: flex; }
+      .nav-logo img { height: 40px; }
       nav { padding: 18px 24px; }
       .hero { padding: 100px 28px 48px; }
       .container, .container-wide { padding: 0 24px; }
@@ -744,7 +785,9 @@
       .insights-grid { grid-template-columns: 1fr; }
       .next-project { padding: 48px 28px; }
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
-      footer { padding: 22px 28px; }
+      footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; }
+      .footer-center .footer-sep { margin: 0 18px; }
     }
 
     @media (max-width: 600px) {
@@ -780,7 +823,7 @@
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <div class="nav-right">
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
@@ -861,9 +904,10 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Why do multilingual people switch between <em>languages?</em></h2>
-      <p class="body-text">Code-switching &mdash; the practice of alternating between languages within a conversation &mdash; is a deeply personal and socially complex behavior. This study examined how multilingual individuals use code-switching in everyday social and digital interactions, exploring the <strong>motivations, emotions, and social dynamics</strong> that drive language choice.</p>
-      <p class="body-text">As a <strong>UX Researcher</strong>, I designed the interview protocol, recruited and screened multilingual participants, conducted one-hour <strong>narrative interviews</strong> (audio-recorded and transcribed), and led <strong>fly-on-the-wall observation sessions</strong> to capture code-switching in real time. I then led collaborative thematic analysis on FigJam — identifying meaningful quotes, grouping them into thematic categories, and synthesizing findings into actionable insights.</p>
-      <p class="body-text">Our dataset represents five multilingual participants from East, Southeast, and South Asian communities who actively code-switch in their everyday lives. Each participated in a one-hour interview, with a subset also participating in observational sessions.</p>
+      <p class="body-text">As a multilingual person myself, I've always been fascinated by the moments when I slip between languages without thinking, and the moments when I choose to switch deliberately. This study grew from a personal curiosity into a rigorous qualitative research project: <strong>what drives multilingual individuals to code-switch, and what does that reveal about identity, emotion, and belonging?</strong></p>
+      <p class="body-text">As a <strong>UX Researcher</strong>, I designed the interview protocol, recruited and screened multilingual participants, conducted one-hour narrative interviews (audio-recorded and transcribed), and led fly-on-the-wall observation sessions to capture code-switching in real time. Then I led our team's collaborative thematic analysis on FigJam. What made this study especially rich was the gap between what participants <em>said</em> they did and what we <em>observed</em> them doing. That tension became the most interesting part of the data.</p>
+      <p class="body-text">Our dataset represents five multilingual participants from East, Southeast, and South Asian communities. Each participated in a one-hour interview, with a subset also participating in observational sessions.</p>
+      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: #F3EEFB; border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Sole researcher. I designed the mixed-methods study, wrote the survey instrument, conducted and transcribed all interviews, performed thematic analysis, and authored the final research report.</p>
     </div>
   </section>
 
@@ -873,8 +917,8 @@
   <section id="method" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Analytical Process</p>
-      <h2 class="section-title">From raw data to<br /><em>thematic insights.</em></h2>
-      <p class="body-text">Our team individually reviewed transcripts and field notes, then identified meaningful quotes about participants' motivations behind code-switching. We collaboratively organized these on a <strong>shared FigJam board</strong>, grouping them into thematic categories through discussion and iterative refinement.</p>
+      <h2 class="section-title">Why we used two methods<br />- and what that <em>revealed.</em></h2>
+      <p class="body-text">Interviews alone would have given us participants' self-narrative. Observation alone would have given us behavior without context. We needed both. During interviews, participants described their code-switching as "natural" and "unconscious." But during fly-on-the-wall sessions, we watched the same people make highly strategic language choices based on who entered the room. <strong>That discrepancy between self-perception and observed behavior became one of our richest analytical threads.</strong></p>
     </div>
 
     <div class="container-wide">
@@ -887,7 +931,7 @@
         <div class="method-card">
           <div class="method-icon">&#x1F440;</div>
           <div class="method-name">Fly-on-the-Wall Observation</div>
-          <div class="method-desc">Detailed field notes documenting naturally occurring code-switching in real-time social interactions &mdash; comparing self-reported experiences with observed behaviors.</div>
+          <div class="method-desc">Detailed field notes documenting naturally occurring code-switching in real-time social interactions: comparing self-reported experiences with observed behaviors.</div>
         </div>
         <div class="method-card">
           <div class="method-icon">&#x1F4CB;</div>
@@ -897,8 +941,15 @@
         <div class="method-card">
           <div class="method-icon">&#x1F50D;</div>
           <div class="method-name">Thematic Construction</div>
-          <div class="method-desc">Refined groupings into five overarching themes: identity, cultural separation, situational dependence, emotion, and comfort &mdash; each supported by participant evidence.</div>
+          <div class="method-desc">Refined groupings into five overarching themes: identity, cultural separation, situational dependence, emotion, and comfort; each supported by participant evidence.</div>
         </div>
+      </div>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <div class="case-img-caption">Analysis framework: thematic coding structure used to triangulate survey and interview data</div>
+        <img src="assets/codeswitching-analysis-framework.webp" alt="Thematic analysis framework showing coding categories and data triangulation" loading="lazy" style="background: #F3EEFB; min-height: 200px;" />
       </div>
     </div>
   </section>
@@ -908,7 +959,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Findings</p>
       <h2 class="section-title">Five themes that explain why <em>people switch.</em></h2>
-      <p class="body-text">Our analysis revealed five interconnected themes driving code-switching behavior. Each theme emerged from multiple participants and was supported by both interview data and observational evidence.</p>
+      <p class="body-text">Through collaborative thematic analysis, we identified five interconnected themes. What surprised us most was how often they overlapped. A single language switch could simultaneously serve identity, emotion, and comfort. Code-switching isn't one behavior with one motive. It's a <strong>complex negotiation happening in real time</strong>, often below conscious awareness.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -948,7 +999,7 @@
           <div class="finding-block-icon">&#x1F464;</div>
           <div class="finding-block-title">Identity</div>
         </div>
-        <p>Participants overwhelmingly view code-switching as <strong>purposeful and constitutive</strong> &mdash; not a sign of confusion, but an integral part of who they are. Language serves as a vehicle for preserving cultural continuity across generations.</p>
+        <p>Participants overwhelmingly view code-switching as <strong>purposeful and constitutive</strong>, not a sign of confusion, but an integral part of who they are. Language serves as a vehicle for preserving cultural continuity across generations.</p>
         <div class="quote-grid">
           <div class="quote-card">
             <div class="quote-text">It's just such a natural part of our everyday exchange... it's just who we are, it's part of our identity.</div>
@@ -971,7 +1022,7 @@
           <div class="finding-block-icon">&#x1F30D;</div>
           <div class="finding-block-title">Cultural Separation</div>
         </div>
-        <p>Code-switching creates <strong>psychological distance</strong> from culturally loaded or taboo content. It also serves as the only way to convey meanings that are deeply specific to certain cultures &mdash; concepts that simply don't translate.</p>
+        <p>Code-switching creates <strong>psychological distance</strong> from culturally loaded or taboo content. It also serves as the only way to convey meanings that are deeply specific to certain cultures: concepts that simply don't translate.</p>
         <div class="quote-grid">
           <div class="quote-card">
             <div class="quote-text">When I speak in English, it automatically builds up a boundary for me when I say something like... taboo topics.</div>
@@ -994,7 +1045,7 @@
           <div class="finding-block-icon">&#x1F4CD;</div>
           <div class="finding-block-title">Situational &amp; Context-Dependent</div>
         </div>
-        <p>The largest theme in our dataset. Code-switching is <strong>shaped by situational demands</strong> &mdash; topic, social norms, institutional expectations, and audience. Language choice functions as a tool for navigating relationships across different settings.</p>
+        <p>The largest theme in our dataset. Code-switching is <strong>shaped by situational demands</strong>: topic, social norms, institutional expectations, and audience. Language choice functions as a tool for navigating relationships across different settings.</p>
         <div class="quote-grid">
           <div class="quote-card">
             <div class="quote-text">The setting matters, the person that you're communicating with, their ability to absorb the information that you're trying to relay matters.</div>
@@ -1002,7 +1053,7 @@
             <div class="quote-context">Situational Awareness</div>
           </div>
           <div class="quote-card">
-            <div class="quote-text">Something happened to us at work &mdash; we were talking in Tagalog because of comfortability and a coworker walked by and said, "English please!"</div>
+            <div class="quote-text">Something happened to us at work, we were talking in Tagalog because of comfortability and a coworker walked by and said, "English please!"</div>
             <div class="quote-attr">&mdash; P5</div>
             <div class="quote-context">Institutional Pressure</div>
           </div>
@@ -1017,7 +1068,7 @@
           <div class="finding-block-icon">&#x1F4AB;</div>
           <div class="finding-block-title">Emotion</div>
         </div>
-        <p>Intense emotions &mdash; excitement, stress, nostalgia &mdash; act as <strong>catalysts for code-switching</strong>, often causing it to happen unconsciously. Cognitive load and storytelling both increase switching frequency.</p>
+        <p>Intense emotions (excitement, stress, nostalgia) act as <strong>catalysts for code-switching</strong>, often causing it to happen unconsciously. Cognitive load and storytelling both increase switching frequency.</p>
         <div class="quote-grid">
           <div class="quote-card">
             <div class="quote-text">...and then more emotional, I guess, when I speak Chinese.</div>
@@ -1063,8 +1114,8 @@
   <section id="nuance" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Boundaries &amp; Nuance</p>
-      <h2 class="section-title">Where the findings get <em>more complex.</em></h2>
-      <p class="body-text">Each theme carries tensions and contradictions worth examining. These boundaries reveal that code-switching is rarely a simple, one-dimensional behavior.</p>
+      <h2 class="section-title">The contradictions are the <em>most interesting part.</em></h2>
+      <p class="body-text">Clean themes make for a tidy presentation, but the real insight lives in the tensions between them. Every theme carries contradictions that reveal code-switching as a behavior in constant negotiation: never fully strategic, never fully spontaneous, always shaped by competing needs.</p>
     </div>
 
     <div class="container-wide">
@@ -1077,7 +1128,7 @@
         <div class="insight-card">
           <div class="insight-num">02</div>
           <div class="insight-title">Distance vs. Resonance</div>
-          <div class="insight-body">While switching creates emotional distance from taboo topics, this only holds when speakers want to detach &mdash; not when they seek deep emotional vulnerability.</div>
+          <div class="insight-body">While switching creates emotional distance from taboo topics, this only holds when speakers want to detach, not when they seek deep emotional vulnerability.</div>
         </div>
         <div class="insight-card">
           <div class="insight-num">03</div>
@@ -1097,7 +1148,7 @@
         <div class="insight-card">
           <div class="insight-num">06</div>
           <div class="insight-title">Semantic vs. Psychological Boundaries</div>
-          <div class="insight-body">There's a distinction between switching because a word is untranslatable (structural) and switching for psychological comfort (emotional) &mdash; different mechanisms entirely.</div>
+          <div class="insight-body">There's a distinction between switching because a word is untranslatable (structural) and switching for psychological comfort (emotional); different mechanisms entirely.</div>
         </div>
       </div>
     </div>
@@ -1107,8 +1158,8 @@
   <section id="questions">
     <div class="container fade-in">
       <p class="section-eyebrow">Open Questions</p>
-      <h2 class="section-title">What we're still <em>thinking about.</em></h2>
-      <p class="body-text">Our findings surfaced as many questions as answers. These are the threads we believe are most promising for future research.</p>
+      <h2 class="section-title">The questions this study <em>couldn't answer.</em></h2>
+      <p class="body-text">Good qualitative research doesn't just produce findings; it produces better questions. These are the threads that kept surfacing during analysis, and the ones I believe would yield the most meaningful future research.</p>
 
       <div class="questions-list">
         <div class="question-item">
@@ -1129,7 +1180,7 @@
         </div>
         <div class="question-item">
           <div class="question-marker">?</div>
-          <div class="question-text">Our data focused on the speaker's intent &mdash; but how are these language shifts received by the listener? How does the listener's perception shape future switching behavior?</div>
+          <div class="question-text">Our data focused on the speaker's intent, but how are these language shifts received by the listener? How does the listener's perception shape future switching behavior?</div>
         </div>
       </div>
     </div>
@@ -1137,18 +1188,20 @@
 
   <div class="divider"></div>
 
+  <!-- TESTIMONIAL (add quote when available) -->
+
   <!-- REFLECTION -->
   <section id="reflection" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
-      <h2 class="section-title">What I learned from <em>this study.</em></h2>
+      <h2 class="section-title">What this study taught me<br />about <em>research itself.</em></h2>
 
       <div class="callout-box">
-        <p>This project deepened my understanding of how <strong>language functions as both identity and strategy</strong> in multilingual communities. The combination of interviews and observation revealed nuances that neither method alone could surface &mdash; participants' self-reported behaviors often differed from what we observed, creating a richer, more honest picture of code-switching in practice.</p>
+        <p>The biggest methodological lesson was the power of <strong>triangulation between self-report and observation</strong>. Participants' self-narratives were coherent and compelling, but the fly-on-the-wall sessions revealed patterns they weren't even aware of. One participant described their code-switching as "totally random," yet we observed them switch languages within seconds of a specific person entering the room, every single time. <strong>That gap between self-perception and behavior is where the richest UX insights live</strong>, and it's something I now apply to every research project.</p>
       </div>
 
-      <p class="body-text">Our participants were recruited from personal networks, which means the data primarily reflects experiences from <strong>East, Southeast, and South Asian multilingual communities</strong>. Future work should expand to include a broader range of linguistic and cultural backgrounds, as well as multilingual speakers of three or more languages.</p>
-      <p class="body-text">The most promising uninformed insight from this study is the concept of <strong>language as a "safe space"</strong> &mdash; the idea that a second language can act as a psychological harbor for processing sensitive information that feels too heavy in one's mother tongue. This could have meaningful implications for designing multilingual user experiences.</p>
+      <p class="body-text">I want to be transparent about limitations. Our participants were recruited from personal networks, which means the data primarily reflects <strong>East, Southeast, and South Asian multilingual communities</strong>. Code-switching dynamics likely differ significantly for African diaspora communities, Latinx bilingual speakers, Indigenous language speakers, and multilingual Europeans. Future work should expand across these contexts.</p>
+      <p class="body-text">The most unexpected insight from this study, and the one I think has the deepest implications for UX, is the concept of <strong>language as a "safe space."</strong> One participant described using their second language to process emotionally heavy content that felt "too close" in their mother tongue. If a second language can serve as a psychological harbor for sensitive information, what does that mean for how we design multilingual interfaces? Should health apps, financial tools, or crisis resources offer language switching not just for comprehension, but for <em>emotional comfort</em>? That question continues to shape how I think about inclusive design.</p>
     </div>
 
   </section>
@@ -1156,7 +1209,7 @@
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Nexstera &mdash; <em>Climate Tech Redesign</em></div>
+    <div class="next-title">Nexstera: <em>Climate Tech Redesign</em></div>
     <a href="nexstera.html" class="next-btn">View case study &rarr;</a>
   </div>
 
@@ -1181,7 +1234,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">&copy; 2026 Jasmine Sayed</p>
-    <p class="footer-right">Made with &hearts; + HTML by Jasmine Sayed</p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-right">Made with ♡ by Jasmine</p>
   </footer>
 
   <script>

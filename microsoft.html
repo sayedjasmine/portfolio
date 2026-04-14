@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Microsoft Foundry — Jasmine Sayed</title>
+  <title>Microsoft Foundry - Jasmine Sayed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -62,11 +62,14 @@
     .nav-back:hover .arrow { transform: translateX(-3px); }
 
     .nav-logo {
-      display: none;
-      font-family: 'DM Serif Display', serif;
-      font-size: 16px;
-      color: var(--dark);
       text-decoration: none;
+      display: none;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
     }
 
     /* ── HAMBURGER MENU ── */
@@ -117,32 +120,37 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 12px; right: 12px;
+      left: auto;
       z-index: 199;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: flex-start;
-      padding: 24px 28px 40px;
+      padding: 16px 20px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-width: 160px;
     }
-    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: none;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
-      padding: 10px 18px 10px 14px;
-      margin-bottom: 24px;
+      padding: 6px 12px 6px 8px;
+      margin-bottom: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -154,20 +162,20 @@
       border-color: rgba(0,0,0,0.25);
     }
     .mobile-menu-close svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       stroke: currentColor;
       stroke-width: 2;
     }
     .mobile-menu a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
       text-decoration: none;
-      padding: 18px 0;
+      padding: 10px 0;
       transition: color 0.2s ease;
       position: relative;
       width: 100%;
@@ -836,6 +844,34 @@
 
     .reflection-icon { flex-shrink: 0; font-size: 14px; margin-top: 2px; }
 
+    /* ── TESTIMONIAL ── */
+    .testimonial-block {
+      margin: 32px auto;
+      max-width: 640px;
+      text-align: center;
+      padding: 36px 40px;
+      background: var(--blue-bg, #EBF2FA);
+      border-radius: 16px;
+      border: 1px solid rgba(43,136,216,0.08);
+    }
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .testimonial-attr {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+    .testimonial-attr strong {
+      color: var(--dark);
+    }
+
     /* ── IMPACT STATS ── */
     .impact-section {
       background: linear-gradient(145deg, #091428, #0D2240);
@@ -943,9 +979,11 @@
       align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center a:hover { color: var(--blue-light); }
+    .footer-center .footer-sep { margin: 0 14px; }
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
-    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-right a:hover { color: var(--blue-light); }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -997,7 +1035,8 @@
       nav { padding: 18px 24px; }
       .nav-back, .nav-right { display: none; }
       .hamburger { display: flex; }
-      .nav-logo { display: block; }
+      .nav-logo { display: flex; }
+      .nav-logo img { height: 40px; }
       .hero { padding: 100px 28px 48px; flex-direction: column; align-items: flex-start; }
       .hero-site-card { width: 100%; margin-left: 0; margin-top: 32px; }
       .hero-browser-frame { border-radius: 10px; }
@@ -1010,7 +1049,9 @@
       .impact-stats { grid-template-columns: 1fr; gap: 16px; }
       .next-project { padding: 48px 28px; }
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
-      footer { padding: 22px 28px; }
+      footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; }
+      .footer-center .footer-sep { margin: 0 18px; }
     }
 
     @media (max-width: 600px) {
@@ -1047,7 +1088,7 @@
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <div class="nav-right">
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
@@ -1085,7 +1126,7 @@
     <div class="hero-content">
       <p class="hero-tag">UX Research · Usability Testing · AI Platform</p>
       <h1>Microsoft<br /><em>Foundry</em></h1>
-      <p class="hero-sub">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform — uncovering critical blockers in the agent-creation flow.</p>
+      <p class="hero-sub">End-to-end usability testing and research driving strategic design improvements for Microsoft's AI developer platform: uncovering critical blockers in the agent-creation flow.</p>
       <p style="font-size: 12.5px; font-weight: 400; color: rgba(255,255,255,0.45); margin-top: 0; margin-bottom: 36px; max-width: 640px; line-height: 1.6; position: relative;">Microsoft Foundry is a publicly available platform. All information shared in this case study is based on publicly accessible features. Participant identities and internal data remain confidential and fully anonymized.</p>
       <div class="hero-meta">
         <div>
@@ -1145,9 +1186,10 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How might we make AI agent creation more intuitive for new developers?</h2>
-      <p class="body-text">Microsoft Foundry is a platform built for students, developers, and startup founders who want to create AI agents for their websites or apps. It helps users build smart assistants that work with their data and automate tasks — even if they're still learning or exploring AI.</p>
-      <p class="body-text">As a <strong>User Experience Researcher</strong> on Microsoft's CoreAI team, I conducted 8 moderated usability sessions testing the <strong>Knowledge, Data, and FoundryIQ features</strong> used in agent creation. I shaped the research questions, helped design the study protocol, recruited participants, facilitated think-aloud sessions in the live platform, and synthesized findings into actionable design recommendations.</p>
-      <p class="body-text">I focused on students with technical backgrounds and startup founders — people who are curious about AI and looking to leverage it for real projects, but may not be experts in the platform itself. My goal was to uncover critical blockers in the agent-creation flow and deliver insights that would directly improve adoption.</p>
+      <p class="body-text">Microsoft Foundry is a platform that lets students, developers, and startup founders build AI agents for their products: smart assistants that work with their data and automate tasks. The vision is powerful: democratize AI agent creation for people who are still learning. But <strong>vision only matters if users can actually get through the flow.</strong></p>
+      <p class="body-text">As a <strong>User Experience Researcher</strong> on Microsoft's CoreAI team, our 4-person research team conducted 8 moderated usability sessions testing the Knowledge, Data, and FoundryIQ features at the heart of agent creation. I helped shape the research questions, co-designed the study protocol, facilitated 3 of the 8 sessions, and led team communication and meeting coordination throughout the study. What we discovered in the first session, and confirmed in every subsequent one, was a critical blocker that <strong>100% of participants hit</strong>, and that the team hadn't anticipated.</p>
+      <p class="body-text">This study went from "let's see how intuitive the flow is" to "we need to fix this before anything else matters."</p>
+      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--blue-bg, #EBF2FA); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> I co-led the research process on a 4-person team: helped scope research questions, co-designed the study protocol, facilitated 3 of 8 think-aloud sessions, and owned team communication, meeting planning, and coordination. I contributed to synthesizing findings and co-presented prioritized recommendations to the Microsoft CoreAI team.</p>
     </div>
   </section>
 
@@ -1158,7 +1200,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Research Questions</p>
       <h2 class="section-title">What we set out<br />to understand.</h2>
-      <p class="body-text">I shaped the research questions to investigate participants' mental models when interacting with Microsoft Foundry — where confusion begins, what makes it feel like a blocker, and what users actually want to build.</p>
+      <p class="body-text">I shaped the research questions to go beyond surface-level usability by investigating participants' mental models: where confusion transforms from "learning curve" into "I'm done," and what users actually envision building. The distinction between temporary confusion and hard blockers turned out to be the most critical framing of the entire study.</p>
     </div>
 
     <div class="container fade-in">
@@ -1173,7 +1215,7 @@
         </div>
         <div class="rq-card">
           <div class="rq-num">03</div>
-          <div class="rq-text">Do users perceive confusion as a temporary learning curve — or a hard blocker that makes the tool unusable?</div>
+          <div class="rq-text">Do users perceive confusion as a temporary learning curve or a hard blocker that makes the tool unusable?</div>
         </div>
         <div class="rq-card">
           <div class="rq-num">04</div>
@@ -1190,7 +1232,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Method</p>
       <h2 class="section-title">How we conducted<br />the study.</h2>
-      <p class="body-text">I conducted <strong>moderated usability testing</strong> utilizing a within-subject design. This was the most appropriate method because the research questions are designed to investigate participants' mental models. With moderated sessions, I used the <strong>Think Aloud protocol</strong>, which helped me understand exactly which points of the user flow were most confusing.</p>
+      <p class="body-text">I chose <strong>moderated usability testing</strong> with a within-subject design deliberately. Because the research questions centered on mental models, I needed to be in the room (virtually) when confusion happened. Remote unmoderated testing would have captured task failure, but not <em>why</em> it felt like a failure. The <strong>Think Aloud protocol</strong> let me hear participants' reasoning in real time, and the moments where they went silent were often the most revealing.</p>
     </div>
 
     <div class="container-wide">
@@ -1204,7 +1246,7 @@
         <div class="method-card">
           <div class="method-icon">📋</div>
           <div class="method-name">Task-Based Scenarios</div>
-          <div class="method-desc">Participants completed structured tasks including agent creation, configuring knowledge sources, uploading data, and publishing agents — mirroring real use cases.</div>
+          <div class="method-desc">Participants completed structured tasks including agent creation, configuring knowledge sources, uploading data, and publishing agents to mirror real use cases.</div>
           <span class="method-n">Within-subject design</span>
         </div>
         <div class="method-card">
@@ -1219,7 +1261,7 @@
     <!-- Participant Criteria -->
     <div class="container fade-in">
       <h3 class="sub-heading">Participant Criteria</h3>
-      <p class="body-text">I recruited participants who matched Foundry's target audience — students and early-career professionals with technical backgrounds who are curious about AI and looking to leverage it for projects.</p>
+      <p class="body-text">I recruited participants who matched Foundry's target audience: students and early-career professionals with technical backgrounds who are curious about AI and looking to leverage it for projects.</p>
 
       <div class="criteria-strip">
         <div class="criteria-title">Critical Criteria</div>
@@ -1232,14 +1274,15 @@
         </div>
       </div>
     </div>
+
   </section>
 
-  <!-- FINDINGS — WHAT WORKED WELL -->
+  <!-- FINDINGS - WHAT WORKED WELL -->
   <section id="findings">
     <div class="container fade-in">
       <p class="section-eyebrow">Findings</p>
       <h2 class="section-title">What worked well.</h2>
-      <p class="body-text">Before diving into areas for improvement, it's important to highlight features where participants had a smooth, positive experience — signaling strong existing design decisions.</p>
+      <p class="body-text">Not everything was broken, and that matters. Identifying what works well is just as important as flagging problems because it tells the team which patterns to protect and replicate as they iterate.</p>
     </div>
 
     <div class="container fade-in">
@@ -1257,19 +1300,20 @@
           <span style="font-size:18px;">✅</span>
           Overall Task Completion
         </div>
-        <div class="success-body"><strong>4 out of 8 participants</strong> rated the overall ease of use as a 2 out of 5 (easy). While the platform had areas of confusion, participants were ultimately able to navigate and complete tasks — suggesting a solid foundation to build on.</div>
+        <div class="success-body"><strong>4 out of 8 participants</strong> rated the overall ease of use as a 2 out of 5 (easy). While the platform had areas of confusion, participants were ultimately able to navigate and complete tasks, suggesting a solid foundation to build on.</div>
       </div>
     </div>
+
   </section>
 
   <div class="divider"></div>
 
-  <!-- FINDINGS — AREAS OF IMPROVEMENT -->
+  <!-- FINDINGS - AREAS OF IMPROVEMENT -->
   <section id="improvements" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Areas of Improvement</p>
-      <h2 class="section-title">Opportunities to improve the <em>Foundry experience.</em></h2>
-      <p class="body-text">I prioritized issues by severity (highest first) using Norman's severity scale. Each finding includes the interface problem, supporting data, and actionable recommendations.</p>
+      <h2 class="section-title">Five issues. One that stops <em>everything.</em></h2>
+      <p class="body-text">I prioritized findings using Norman's severity scale because not all usability issues are equal. A confusing label is a different kind of problem than a blocker that prevents every single user from completing the core task. Framing severity clearly was essential for giving the Foundry team an actionable roadmap, not just a list of complaints.</p>
     </div>
 
     <div class="container fade-in">
@@ -1277,19 +1321,19 @@
         <div class="severity-legend-title">Severity Scale (Norman's)</div>
         <div class="severity-row">
           <span class="severity-badge severity-4">4</span>
-          <span class="severity-desc"><strong>Usability catastrophe</strong> — Prevents task completion; imperative to fix</span>
+          <span class="severity-desc"><strong>Usability catastrophe:</strong> Prevents task completion; imperative to fix</span>
         </div>
         <div class="severity-row">
           <span class="severity-badge severity-3">3</span>
-          <span class="severity-desc"><strong>Major problem</strong> — Causes significant confusion; important to fix</span>
+          <span class="severity-desc"><strong>Major problem:</strong> Causes significant confusion; important to fix</span>
         </div>
         <div class="severity-row">
           <span class="severity-badge severity-2">2</span>
-          <span class="severity-desc"><strong>Minor problem</strong> — Adds friction but doesn't block completion; should be addressed</span>
+          <span class="severity-desc"><strong>Minor problem:</strong> Adds friction but doesn't block completion; should be addressed</span>
         </div>
         <div class="severity-row">
           <span class="severity-badge severity-1">1</span>
-          <span class="severity-desc"><strong>Cosmetic</strong> — Surface-level issue; fix if time permits</span>
+          <span class="severity-desc"><strong>Cosmetic:</strong> Surface-level issue; fix if time permits</span>
         </div>
       </div>
     </div>
@@ -1302,7 +1346,7 @@
           <span class="finding-title">Guardrail Blocks Agent Creation</span>
         </div>
         <div class="finding-body"><strong>8 out of 8 participants</strong> were unable to proceed with creating an agent because the interface blocked interactions due to an unassigned or mismanaged guardrail. The system leaves new agents in an ambiguous "inheriting" state instead of automatically assigning Microsoft's default guardrail, causing the interface to prevent users from completing the task.</div>
-        <div class="finding-body">The error message further compounds confusion by prompting users to <strong>"create guardrail,"</strong> when the actual resolution is to reassign to an existing default guardrail. Participants lacked contextual guidance on why the interaction was blocked, were unclear about the differences between guardrail versions, and could not see the active guardrail status — all of which increased frustration and wasted time.</div>
+        <div class="finding-body">The error message further compounds confusion by prompting users to <strong>"create guardrail,"</strong> when the actual resolution is to reassign to an existing default guardrail. Participants lacked contextual guidance on why the interaction was blocked, were unclear about the differences between guardrail versions, and could not see the active guardrail status; all of which increased frustration and wasted time.</div>
 
         <div class="finding-rec">
           <div class="finding-rec-label">Recommendations</div>
@@ -1384,7 +1428,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Study at a Glance</p>
       <h2 class="section-title">The numbers behind<br />the <em>research.</em></h2>
-      <p class="body-text">Key metrics from the moderated usability sessions I conducted that shaped findings and recommendations for the Foundry team.</p>
+      <p class="body-text">Eight sessions. Five distinct findings. One critical blocker affected every single participant, a finding so consistent it immediately became the team's top priority.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1410,7 +1454,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Next Steps</p>
       <h2 class="section-title">Where this research<br /><em>goes from here.</em></h2>
-      <p class="body-text">My study surfaced both immediate fixes and broader areas to explore in future research cycles.</p>
+      <p class="body-text">Good research doesn't just answer questions; it reveals the next ones. My study surfaced both immediate fixes and open areas that need deeper exploration.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1423,12 +1467,12 @@
         <div class="next-step-card">
           <div class="next-step-num">02</div>
           <div class="next-step-title">Test Agent Integration End-to-End</div>
-          <div class="next-step-body">Future studies should explore how easily users can take a published agent and actually integrate it (via code or embed) into a product or website — a critical step my study didn't cover.</div>
+          <div class="next-step-body">Future studies should explore how easily users can take a published agent and actually integrate it (via code or embed) into a product or website, a critical step my study didn't cover.</div>
         </div>
         <div class="next-step-card" style="grid-column: 1 / -1; border-left: 3px solid var(--blue-light);">
           <div class="next-step-num">03</div>
-          <div class="next-step-title">Redesigning Foundry — UX Design Co-op</div>
-          <div class="next-step-body">As of April 2026, I've taken on a User Experience Design co-op under the same Microsoft CoreAI team to redesign Foundry — turning the research insights from this study into tangible design solutions.</div>
+          <div class="next-step-title">Redesigning Foundry: UX Design Co-op</div>
+          <div class="next-step-body">As of April 2026, I've taken on a User Experience Design co-op under the same Microsoft CoreAI team to redesign Foundry and turn the research insights from this study into tangible design solutions.</div>
         </div>
       </div>
     </div>
@@ -1436,15 +1480,23 @@
 
   <div class="divider"></div>
 
+  <!-- TESTIMONIAL -->
+  <div class="container fade-in">
+    <div class="testimonial-block">
+      <p class="testimonial-quote">"You dived into a complex product, asked all the right questions, and it's very clear that you put a lot of thought into planning and executing the study, and then translated that into a clear, engaging readout."</p>
+      <p class="testimonial-attr"><strong>Research Mentor</strong> · Microsoft CoreAI</p>
+    </div>
+  </div>
+
   <!-- REFLECTION -->
   <section id="reflection" class="reflection-section">
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
-      <h2 class="section-title">What I learned &<br /><em>what comes next.</em></h2>
-      <p class="body-text">Conducting a usability study for a live Microsoft product was an incredible learning experience — from navigating stakeholder relationships to adapting on the fly when the guardrail issue caught the team off guard.</p>
+      <h2 class="section-title">What I learned & <em>what surprised me.</em></h2>
+      <p class="body-text">The biggest lesson wasn't methodological; it was about adaptability. The guardrail blocker emerged in Session 1 and immediately threatened to derail the study. Every participant hit the same wall, and I had to decide in real time: do I help them past it (and lose data about the blocker's impact) or let them struggle (and lose data about everything downstream)? I chose a hybrid approach where participants attempted the task fully while I documented their confusion, then provided a workaround so we could still test the rest of the flow. That decision preserved both the severity-4 finding and the downstream insights.</p>
 
       <div class="callout-box">
-        <p>My biweekly check-ins with the Microsoft sponsor were invaluable for resolving technical issues in a timely manner and keeping the study on track. The combination of <strong>strong team collaboration and productive usability sessions</strong> meant that every test taught me something new.</p>
+        <p>Biweekly check-ins with the Microsoft sponsor became more critical than I'd expected: not just for logistics, but for <strong>real-time alignment on what mattered most</strong>. When I flagged the guardrail issue after Session 2, the sponsor confirmed it was a known-but-underestimated bug. My data gave the engineering team the evidence they needed to prioritize the fix. That moment of watching research directly influence a product decision was the highlight of this experience.</p>
       </div>
 
       <div class="reflection-grid">
@@ -1452,7 +1504,7 @@
           <div class="reflection-col-title">What Went Well</div>
           <div class="reflection-item">
             <span class="reflection-icon">+</span>
-            <span>Timely and sufficient participant recruitment — I met the minimum of 6–8 participants</span>
+            <span>Timely and sufficient participant recruitment: I met the minimum of 6–8 participants</span>
           </div>
           <div class="reflection-item">
             <span class="reflection-icon">+</span>
@@ -1471,11 +1523,15 @@
           <div class="reflection-col-title">What I'd Do Differently</div>
           <div class="reflection-item">
             <span class="reflection-icon">~</span>
-            <span>Prepare workarounds for known platform issues before testing begins — the guardrail blocker was so new that it caught the team off guard too</span>
+            <span>Run a pilot session before the formal study: a dry run would have surfaced the guardrail blocker earlier and given me time to design a cleaner workaround protocol</span>
           </div>
           <div class="reflection-item">
             <span class="reflection-icon">~</span>
-            <span>Otherwise, the study ran smoothly — a testament to strong planning and team dynamics</span>
+            <span>Include a broader participant pool: startup founders (not just students) would have revealed whether the terminology issues are universal or expertise-dependent</span>
+          </div>
+          <div class="reflection-item">
+            <span class="reflection-icon">~</span>
+            <span>Add a retrospective interview after each session: some of my best insights came from off-script comments, and a structured debrief would have captured more of them</span>
           </div>
         </div>
       </div>
@@ -1486,7 +1542,7 @@
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Nox+ — <em>Secure Digital Identity</em></div>
+    <div class="next-title">Nox+: <em>Secure Digital Identity</em></div>
     <a href="nox.html" class="next-btn">View case study →</a>
   </div>
 
@@ -1511,7 +1567,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-right">Made with ♡ by Jasmine</p>
   </footer>
 
   <script>

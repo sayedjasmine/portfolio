@@ -32,7 +32,8 @@
       background: rgba(255,255,255,0.88); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(107,63,160,0.08);
     }
-    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--dark); text-decoration: none; }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo img { height: 52px; width: auto; display: block; }
     nav ul { display: flex; gap: 32px; list-style: none; }
     nav ul a { font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
     nav ul a:hover, nav ul a.active { color: var(--purple); }
@@ -85,32 +86,37 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 12px; right: 12px;
+      left: auto;
       z-index: 199;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: flex-start;
-      padding: 24px 28px 40px;
+      padding: 16px 20px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-width: 160px;
     }
-    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: none;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
-      padding: 10px 18px 10px 14px;
-      margin-bottom: 24px;
+      padding: 6px 12px 6px 8px;
+      margin-bottom: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -122,20 +128,20 @@
       border-color: rgba(0,0,0,0.25);
     }
     .mobile-menu-close svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       stroke: currentColor;
       stroke-width: 2;
     }
     .mobile-menu a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
       text-decoration: none;
-      padding: 18px 0;
+      padding: 10px 0;
       transition: color 0.2s ease;
       position: relative;
       width: 100%;
@@ -301,6 +307,89 @@
     .fact-card strong { display: block; font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
     .fact-card span { font-size: 12px; font-weight: 300; color: var(--mid); line-height: 1.55; }
 
+    /* ── DESIGN PHILOSOPHY ── */
+    .philosophy-section {
+      max-width: 900px;
+      margin: 0 auto 64px;
+      padding: 0 60px;
+    }
+    .philosophy-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .philosophy-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--light);
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .philosophy-card {
+      padding: 24px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(107,63,160,0.1);
+      background: var(--white);
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+    }
+    .philosophy-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(107,63,160,0.08);
+    }
+    .philosophy-card-num {
+      font-size: 28px; font-family: 'DM Serif Display', serif;
+      color: var(--purple-light); margin-bottom: 12px;
+    }
+    .philosophy-card h3 {
+      font-size: 15px; font-weight: 600; color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .philosophy-card p {
+      font-size: 13px; font-weight: 300; color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS & TOOLS ── */
+    .skills-section {
+      max-width: 900px;
+      margin: 0 auto 64px;
+      padding: 0 60px;
+    }
+    .skills-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .skills-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--light);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .skill-group {
+      padding: 20px 18px;
+      border-radius: 14px;
+      background: var(--purple-bg);
+      border: 1px solid rgba(107,63,160,0.08);
+    }
+    .skill-group-title {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+    }
+    .skill-group ul {
+      list-style: none;
+    }
+    .skill-group li {
+      font-size: 12.5px; font-weight: 400;
+      color: var(--dark); line-height: 1.8;
+    }
+
     /* ── AVAILABILITY ── */
     .availability-section {
       margin: 0 60px 80px;
@@ -395,9 +484,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center a:hover { color: var(--purple-light); }
+    .footer-center .footer-sep { margin: 0 14px; }
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
-    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-right a:hover { color: var(--purple-light); }
 
     /* ── FADE IN ── */
     .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
@@ -408,12 +499,17 @@
       .about-hero { grid-template-columns: 1fr; padding: 120px 40px 60px; gap: 48px; min-height: auto; }
       .hero-photos { height: 420px; }
       .story-grid { grid-template-columns: 1fr; gap: 44px; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
+      .philosophy-section, .skills-section { padding: 0 24px; margin-bottom: 48px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
       nav { padding: 18px 24px; }
       nav ul { display: none; }
       .hamburger { display: flex; order: -1; }
       .nav-logo { order: 1; }
+      .nav-logo img { height: 40px; }
       .about-hero { padding: 100px 24px 48px; }
       .story-section { padding: 0 24px 56px; }
       .availability-section { grid-template-columns: 1fr; margin: 0 24px 56px; padding: 36px; }
@@ -437,7 +533,9 @@
       .c-slide:nth-child(5n+0) { width: 200px; }
       .c-slide { border-radius: 12px; }
       .nav-cards { flex-direction: column; padding: 0 24px 36px; }
-      footer { padding: 24px; }
+      footer { padding: 24px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; }
+      .footer-center .footer-sep { margin: 0 18px; }
     }
     @media (max-width: 480px) {
       .about-hero { padding: 90px 20px 36px; }
@@ -469,7 +567,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <ul>
       <li><a href="index.html#work">Work</a></li>
       <li><a href="about.html" class="active">About</a></li>
@@ -542,11 +640,81 @@
     </div>
   </section>
 
+  <!-- DESIGN PHILOSOPHY -->
+  <div class="philosophy-section fade-in">
+    <p class="philosophy-label">How I Work</p>
+    <div class="philosophy-grid">
+      <div class="philosophy-card">
+        <div class="philosophy-card-num">01</div>
+        <h3>Research before pixels</h3>
+        <p>I don't start designing until I understand the people I'm designing for. Interviews, observations, and data come first. The best interfaces are built on evidence, not assumptions.</p>
+      </div>
+      <div class="philosophy-card">
+        <div class="philosophy-card-num">02</div>
+        <h3>Design for the edges</h3>
+        <p>If it works for the most constrained user, it works for everyone. I prioritize accessibility and inclusion not as afterthoughts, but as the starting point for better product decisions.</p>
+      </div>
+      <div class="philosophy-card">
+        <div class="philosophy-card-num">03</div>
+        <h3>Show the thinking</h3>
+        <p>Good design looks obvious in hindsight. I make sure stakeholders see the reasoning behind every decision, so the work sells itself and survives beyond the meeting room.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS & TOOLS -->
+  <div class="skills-section fade-in">
+    <p class="skills-label">Skills & Tools</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Design</p>
+        <ul>
+          <li>Figma</li>
+          <li>FigJam</li>
+          <li>Adobe Creative Suite</li>
+          <li>Prototyping</li>
+          <li>Design Systems</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Research</p>
+        <ul>
+          <li>Usability Testing</li>
+          <li>User Interviews</li>
+          <li>Survey Design</li>
+          <li>Maze</li>
+          <li>UserTesting</li>
+          <li>Lookback</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Analysis</p>
+        <ul>
+          <li>Miro</li>
+          <li>Affinity Mapping</li>
+          <li>Thematic Analysis</li>
+          <li>Python</li>
+          <li>R</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Strategy</p>
+        <ul>
+          <li>Journey Mapping</li>
+          <li>Competitive Analysis</li>
+          <li>Information Architecture</li>
+          <li>Stakeholder Workshops</li>
+          <li>Design Thinking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- AVAILABILITY -->
   <div class="availability-section fade-in">
     <div>
       <h2>Currently open to<br /><em>new opportunities.</em></h2>
-      <p>Looking for full-time roles in <strong style="color:rgba(255,255,255,0.9)">Product Design, UX Research, Product Management, and AI</strong>. My Master's classes are evenings-only, so I'm available full-time and open to relocating. Let's talk!</p>
+      <p>Looking for full-time roles in <strong style="color:rgba(255,255,255,0.9)">Product Design, UX Research, Product Management, and AI</strong>.</p>
     </div>
     <div class="availability-ctas">
       <a href="mailto:sayedjasmine@gmail.com" class="avail-btn primary" id="emailBtn">Say hello →</a>
@@ -636,7 +804,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-right">Made with ♡ by Jasmine</p>
   </footer>
 
   <script>

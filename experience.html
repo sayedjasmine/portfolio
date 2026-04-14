@@ -39,9 +39,14 @@
       border-bottom: 1px solid rgba(107,63,160,0.08);
     }
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 17px; color: var(--dark);
-      text-decoration: none; letter-spacing: -0.02em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
     }
     nav ul { display: flex; gap: 32px; list-style: none; }
     nav ul a {
@@ -99,32 +104,37 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 12px; right: 12px;
+      left: auto;
       z-index: 199;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: flex-start;
-      padding: 24px 28px 40px;
+      padding: 16px 20px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-width: 160px;
     }
-    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: none;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
-      padding: 10px 18px 10px 14px;
-      margin-bottom: 24px;
+      padding: 6px 12px 6px 8px;
+      margin-bottom: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -136,20 +146,20 @@
       border-color: rgba(0,0,0,0.25);
     }
     .mobile-menu-close svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       stroke: currentColor;
       stroke-width: 2;
     }
     .mobile-menu a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
       text-decoration: none;
-      padding: 18px 0;
+      padding: 10px 0;
       transition: color 0.2s ease;
       position: relative;
       width: 100%;
@@ -175,10 +185,11 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 32px;
-      max-width: 1200px;
+      max-width: 1320px;
+      margin: 0 auto;
     }
 
-    .hero-left { max-width: 560px; }
+    .hero-left { max-width: 640px; }
 
     .page-eyebrow {
       font-size: 11px; font-weight: 500;
@@ -220,7 +231,8 @@
     /* ── MAIN CONTENT ── */
     .exp-content {
       padding: 0 60px 80px;
-      max-width: 1200px;
+      max-width: 1320px;
+      margin: 0 auto;
     }
 
     /* Section labels */
@@ -303,7 +315,7 @@
     /* ── COMPACT WORK GRID ── */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 8px;
     }
@@ -444,6 +456,46 @@
       white-space: nowrap; flex-shrink: 0; padding-top: 2px;
     }
 
+    /* ── JOURNEY TIMELINE ── */
+    .journey-strip {
+      display: flex;
+      gap: 0;
+      margin: 0 0 36px;
+      padding: 28px 0;
+      border-top: 1px solid var(--light);
+      border-bottom: 1px solid var(--light);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .journey-step {
+      flex: 1;
+      min-width: 140px;
+      padding: 0 20px;
+      position: relative;
+      border-left: 2px solid var(--light);
+    }
+    .journey-step:first-child { border-left: none; }
+    .journey-step-year {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 6px;
+    }
+    .journey-step-title {
+      font-size: 13px; font-weight: 500;
+      color: var(--dark); margin-bottom: 2px;
+    }
+    .journey-step-desc {
+      font-size: 11.5px; font-weight: 300;
+      color: var(--mid); line-height: 1.5;
+    }
+    .journey-step.current .journey-step-year {
+      color: white;
+      background: var(--purple);
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
     /* ── CERTS (inline row) ── */
     .certs-row {
       display: grid;
@@ -490,9 +542,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); }
-    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-right a:hover { color: var(--purple-light); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center a:hover { color: var(--purple-light); }
+    .footer-center .footer-sep { margin: 0 14px; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in {
@@ -502,17 +556,28 @@
     .fade-in.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 960px) {
       nav { padding: 18px 28px; }
       nav ul { display: none; }
       .hamburger { display: flex; order: -1; }
       .nav-logo { order: 1; }
+      .nav-logo img { height: 40px; }
       .page-hero { padding: 100px 28px 36px; flex-direction: column; align-items: flex-start; }
       .exp-content { padding: 0 28px 60px; }
       .work-grid { grid-template-columns: 1fr; }
+      .journey-strip { gap: 0; padding: 20px 0; }
+      .journey-step { min-width: 120px; padding: 0 14px; }
+      .journey-step-title { font-size: 12px; }
+      .journey-step-desc { font-size: 11px; }
       .certs-row { grid-template-columns: repeat(2, 1fr); }
       .nav-cards { flex-direction: column; padding: 0 24px 36px; }
-      footer { padding: 24px 28px; }
+      footer { padding: 24px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; }
+      .footer-center .footer-sep { margin: 0 18px; }
     }
 
     @media (max-width: 600px) {
@@ -525,7 +590,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
@@ -554,7 +619,7 @@
     <div class="hero-left">
       <p class="page-eyebrow">Resume</p>
       <h1>Where I've been,<br /><em>what I've built.</em></h1>
-      <p>Designer, researcher, and builder — from Girl Scout Gold Award to Microsoft CoreAI.</p>
+      <p>From building my first website for a Girl Scout project to shaping AI experiences at Microsoft, every role taught me something new about designing for people.</p>
     </div>
     <a href="assets/Official Jasmine Resume.pdf" target="_blank" class="resume-btn">
       ↓ &nbsp;Download Resume
@@ -563,6 +628,35 @@
 
   <!-- MAIN -->
   <div class="exp-content">
+
+    <!-- ── JOURNEY ── -->
+    <div class="journey-strip fade-in">
+      <div class="journey-step">
+        <p class="journey-step-year">2020</p>
+        <p class="journey-step-title">The Spark</p>
+        <p class="journey-step-desc">Girl Scout Gold Award project. Built my first website and discovered design could create real impact.</p>
+      </div>
+      <div class="journey-step">
+        <p class="journey-step-year">2022</p>
+        <p class="journey-step-title">Going Deep</p>
+        <p class="journey-step-desc">Led UXFest SLO, joined Cal Poly Iter8. Started shipping real client work and leading design teams.</p>
+      </div>
+      <div class="journey-step">
+        <p class="journey-step-year">2024</p>
+        <p class="journey-step-title">Industry + Research</p>
+        <p class="journey-step-desc">Designed for AWS, Nexstera, and Ensemble. Published accessibility research in TAGA Journal.</p>
+      </div>
+      <div class="journey-step">
+        <p class="journey-step-year">2025</p>
+        <p class="journey-step-title">Graduate School</p>
+        <p class="journey-step-desc">HCDE Master's at UW. AI product design at DevSpot. Deepened research methodology and systems thinking.</p>
+      </div>
+      <div class="journey-step current">
+        <p class="journey-step-year">Now</p>
+        <p class="journey-step-title">Microsoft CoreAI</p>
+        <p class="journey-step-desc">Shaping AI developer experiences at Microsoft Foundry. Research and design for agent creation tools.</p>
+      </div>
+    </div>
 
     <!-- ── WORK ── -->
     <h2 class="section-label" id="work">Work Experience</h2>
@@ -582,7 +676,7 @@
                 <div class="featured-title">User Experience Designer</div>
                 <div class="featured-type">Co-op · Microsoft CoreAI</div>
               </div>
-              <div class="featured-date">Apr 2026 – Present</div>
+              <div class="featured-date">Apr – Jun 2026</div>
             </div>
             <div class="featured-desc">Working with Microsoft's CoreAI team to redesign Microsoft Foundry.</div>
           </div>
@@ -862,7 +956,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-right">Made with ♡ by Jasmine</p>
   </footer>
 
   <script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nox+ — Jasmine Sayed</title>
+  <title>Nox+ | Jasmine Sayed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -82,11 +82,14 @@
     .nav-right a:hover { color: var(--purple); }
 
     .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 16px;
-      color: var(--dark);
       text-decoration: none;
       display: none;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
     }
 
     /* ── HAMBURGER MENU ── */
@@ -137,32 +140,37 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 12px; right: 12px;
+      left: auto;
       z-index: 199;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: flex-start;
-      padding: 24px 28px 40px;
+      padding: 16px 20px;
       gap: 0;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-width: 160px;
     }
-    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: none;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
-      padding: 10px 18px 10px 14px;
-      margin-bottom: 24px;
+      padding: 6px 12px 6px 8px;
+      margin-bottom: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -174,20 +182,20 @@
       border-color: rgba(0,0,0,0.25);
     }
     .mobile-menu-close svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       stroke: currentColor;
       stroke-width: 2;
     }
     .mobile-menu a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--mid);
       text-decoration: none;
-      padding: 18px 0;
+      padding: 10px 0;
       transition: color 0.2s ease;
       position: relative;
       width: 100%;
@@ -926,6 +934,34 @@
 
     .nox-passport-label { font-size: 7px; font-weight: 700; color: var(--purple-deep); letter-spacing: 0.08em; }
 
+    /* ── TESTIMONIAL ── */
+    .testimonial-block {
+      margin: 32px auto;
+      max-width: 640px;
+      text-align: center;
+      padding: 36px 40px;
+      background: var(--purple-bg);
+      border-radius: 16px;
+      border: 1px solid rgba(107,63,160,0.08);
+    }
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .testimonial-attr {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+    .testimonial-attr strong {
+      color: var(--dark);
+    }
+
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
     .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
@@ -1102,6 +1138,7 @@
       padding: 10px 16px;
       background: var(--purple-bg);
       letter-spacing: 0.01em;
+      border-radius: 6px 6px 0 0;
     }
     .case-img-grid {
       display: grid;
@@ -1215,9 +1252,11 @@
       align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center a:hover { color: var(--purple-light); }
+    .footer-center .footer-sep { margin: 0 14px; }
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
-    .footer-right a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-right a:hover { color: var(--purple-light); }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -1269,7 +1308,8 @@
       nav { padding: 18px 24px; }
       .nav-back, .nav-right { display: none; }
       .hamburger { display: flex; }
-      .nav-logo { display: block; }
+      .nav-logo { display: flex; }
+      .nav-logo img { height: 40px; }
       .hero { padding: 100px 28px 48px; flex-direction: column; align-items: flex-start; min-height: auto; }
       .hero-video { width: 100%; margin-left: 0; margin-top: 32px; }
       .hero-video-frame { width: 100%; height: auto; aspect-ratio: 16 / 10; }
@@ -1286,7 +1326,9 @@
       .wireframe-grid { grid-template-columns: 1fr 1fr; }
       .next-project { padding: 48px 28px; }
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
-      footer { padding: 22px 28px; }
+      footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; }
+      .footer-center .footer-sep { margin: 0 18px; }
       .prototype-video-wrap { padding: 20px; }
       .screen-gallery { grid-template-columns: 1fr; gap: 16px; }
       .screen-card:last-child { max-width: 100%; }
@@ -1312,6 +1354,7 @@
       .prototype-video-wrap { padding: 14px; }
       .skip-pill { font-size: 11.5px; padding: 8px 16px; margin-top: 10px; }
       .case-img-wrapper { max-width: 100%; }
+      .case-img-caption { font-size: 10.5px; padding: 8px 12px; }
       .case-img-grid { max-width: 100%; grid-template-columns: 1fr; }
       .ds-wrapper { max-width: 100%; }
       .callout-box { padding: 20px; font-size: 14px; }
@@ -1359,7 +1402,7 @@
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo">Jasmine Sayed</a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <div class="nav-right">
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
@@ -1452,9 +1495,9 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How can we simplify identity<br />verification for college students?</h2>
-      <p class="body-text">Nox+ is a streamlined, secure access solution designed to simplify identity verification and authentication globally. The platform balances robust security with an intuitive, user-friendly interface, enabling seamless and trustworthy access management across applications.</p>
-      <p class="body-text">As <strong>Project Lead</strong>, I drove the end-to-end design and research process — I designed and deployed a 21-question survey to uncover student pain points, led competitive analysis across existing identity platforms, created user personas and journey maps, and iterated from sketches through mid-fi to a polished high-fidelity prototype in Figma. I also coordinated a team of one researcher and two designers, aligning our work toward a cohesive product vision.</p>
-      <p class="body-text">I demoed Nox+ at the <strong>User Centered Design Showcase at UW</strong>, and the concepts I explored in this project were later adapted in similar form by Apple's Digital ID.</p>
+      <p class="body-text">Here's something that surprised me during research: <strong>64% of our survey respondents had personally experienced or knew someone affected by identity theft related to verification.</strong> This wasn't an abstract security problem; it was something students were anxious about every time they uploaded a passport or driver's license to yet another portal. And yet, the tools they were forced to use offered zero transparency about where that data went.</p>
+      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--purple-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Project lead and lead UX designer. I oversaw the full design and research process, directing a team of one researcher and two designers. Our researcher deployed a 21-question survey (n=96) and I led semi-structured interviews with students affected by data breaches, ran competitive analysis, created personas, and iterated from sketches through high-fidelity prototype in Figma. I coordinated the team through standups and design critiques to keep our work aligned toward a cohesive product vision.</p>
+      <p class="body-text">I demoed Nox+ at the <strong>User Centered Design Showcase at UW</strong>. Months later, Apple released its Digital ID feature, a development closely aligned with the concepts I'd been exploring, reinforcing that the problem space was not only real but urgent.</p>
     </div>
   </section>
 
@@ -1465,7 +1508,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Identification</p>
       <h2 class="section-title">Meet <em>Pam.</em></h2>
-      <p class="body-text">She's a graduate student verifying her identity for yet another university system. Before uploading her documents, she hesitates — unsure where her data will go or who can access it.</p>
+      <p class="body-text">She's a graduate student verifying her identity for yet another university system. Before uploading her documents, she hesitates, unsure where her data will go or who can access it.</p>
 
       <div class="persona-card fade-in">
         <div class="persona-name">Pam · Graduate Student · University of Washington</div>
@@ -1474,7 +1517,7 @@
 
       <p class="body-text">For students like Pam, identity verification is fragmented and unclear. Multiple logins, inconsistent requirements, and vague privacy policies create stress and erode trust. Without transparency and strong security signals, users feel <strong>exposed rather than protected.</strong></p>
       <p class="body-text">Students struggle with inefficient identity verification processes and ongoing privacy concerns. Navigating multiple platforms often requires repeatedly submitting sensitive personal information, leading to frustration, wasted time, and increased anxiety about data security.</p>
-      <p class="body-text">To address these challenges, there is a need for a <strong>unified identity verification system</strong> that simplifies authentication while prioritizing privacy and trust — providing secure, streamlined verification with both digital and physical options.</p>
+      <p class="body-text">To address these challenges, there is a need for a <strong>unified identity verification system</strong> that simplifies authentication while prioritizing privacy and trust, providing secure, streamlined verification with both digital and physical options.</p>
     </div>
   </section>
 
@@ -1484,8 +1527,8 @@
   <section id="research" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
-      <h2 class="section-title">Let's dive deeper<br />into the data.</h2>
-      <p class="body-text">I led our research efforts by designing and deploying a 21-question survey to understand how students manage identity verification — which documents they use, where they store them, what challenges they face, and their confidence in data security. I coordinated with my team to align our research goals and conducted regular check-ins to keep everyone on track.</p>
+      <h2 class="section-title">The data confirmed the anxiety.<br />The interviews revealed <em>why.</em></h2>
+      <p class="body-text">The survey gave us the "what": 57% experienced frequent upload errors, 34% didn't even know which documents were required. But it was the interviews that revealed the emotional layer underneath. Students described a feeling of <strong>learned helplessness</strong>: they'd been burned so many times by confusing verification flows that they'd stopped trusting any system, even legitimate ones. One participant told me, "I just assume every portal is going to leak my data eventually." That resigned distrust became the core problem Nox+ was designed to solve.</p>
     </div>
 
     <div class="container-wide">
@@ -1532,20 +1575,20 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Key Insights</p>
       <h2 class="section-title">What users<br />actually need.</h2>
-      <p class="body-text">After conducting the survey, 4 semi-structured interviews, and 2 contextual inquiries, two core insights shaped my entire design direction.</p>
+      <p class="body-text">After synthesizing 96 survey responses, 16 interviews, and 2 contextual inquiry sessions, two core insights reframed the entire problem and changed what I thought I was designing.</p>
     </div>
 
     <div class="container-wide">
       <div class="insights-grid fade-in">
         <div class="insight-card">
           <div class="insight-num">01</div>
-          <div class="insight-title">A Unified, Intuitive Process</div>
-          <div class="insight-body">Students want a single, consistent verification system across institutions — simple, smooth, and error-free. They cited Duo Security as a benchmark: quick, clear, and reliable. Fewer repeated steps, fewer errors.</div>
+          <div class="insight-title">"Why do I have to prove who I am 12 different ways?"</div>
+          <div class="insight-body">Students weren't just frustrated by bad UX; they were frustrated by fragmentation. Every new platform required re-uploading the same documents with different requirements and different interfaces. They cited Duo Security as a benchmark for what "simple and reliable" looks like. The insight: we didn't need a better verification form. We needed a single source of truth.</div>
         </div>
         <div class="insight-card">
           <div class="insight-num">02</div>
-          <div class="insight-title">Visible, Reassuring Security</div>
-          <div class="insight-body">Users want visible security cues — lock icons, confirmation messages, and clear explanations of what data is shared and with whom. They need to feel <em>informed, in control,</em> and confident their data won't be exposed.</div>
+          <div class="insight-title">Security that's invisible feels like no security at all</div>
+          <div class="insight-body">During contextual inquiries, I watched participants store passport scans in Google Drive with no encryption and no access controls because "at least I can see it there." They didn't trust black-box security. They needed visible proof: lock icons, confirmation messages, audit trails of who accessed what and when. Trust had to be <em>performed</em>, not just promised.</div>
         </div>
       </div>
     </div>
@@ -1557,29 +1600,29 @@
   <section id="design" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
-      <h2 class="section-title">Creating the blueprint.</h2>
-      <p class="body-text">I directed the design process from ideation to execution — leading team sketching sessions, making key decisions on feature prioritization, and iterating through concepts. I designed detailed sketches to explore features and layout before moving into mid-fidelity wireframes.</p>
+      <h2 class="section-title">We designed three versions<br />before we got it right.</h2>
+      <p class="body-text">The first round of sketches treated Nox+ as a document vault: upload, store, retrieve. But team critiques and early feedback made it clear that storage alone didn't solve the trust problem. The second iteration added transparency panels (who accessed your data, when, why), which tested better, but the flow felt overwhelming. The breakthrough came when I reorganized the architecture around <strong>moments of verification</strong> rather than document management: the app surfaces exactly what you need, only when you need it, with clear security signals at every step.</p>
 
     </div>
 
     <!-- Sketch -->
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
+        <div class="case-img-caption">Sketching: exploring feature ideas, screen flows, and layout before moving to digital</div>
         <img src="assets/nox-sketch.webp" alt="Early concept sketches exploring Nox+ app features and layout" loading="lazy" />
-        <div class="case-img-caption">Sketching — exploring feature ideas, screen flows, and layout before moving to digital</div>
       </div>
     </div>
 
     <div class="container fade-in">
       <h3 class="sub-heading">Wireframes</h3>
-      <p class="body-text">I built mid-fidelity Figma wireframes and delegated screen assignments across the team, reviewing each iteration to ensure consistency. The wireframes validated early navigation, tested safe presentation of sensitive data, and explored flows for document renewal, history logs, and one-time PIN verification.</p>
+      <p class="body-text">I delegated screen assignments across the team while maintaining design consistency through regular critiques. One key decision at this stage: I chose to show redacted document previews (blurred details with only relevant fields visible) instead of full documents in the UI, directly addressing the contextual inquiry finding that users felt exposed when their full passport was displayed on-screen, even on their own device.</p>
     </div>
 
     <!-- Mid-fi / Hi-fi Designs -->
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
+        <div class="case-img-caption">Mid-fi to hi-fi: evolving wireframes into polished, interaction-ready screens</div>
         <img src="assets/nox-midfi-hifi-figma-designs.webp" alt="Mid-fidelity and high-fidelity Figma designs for Nox+" loading="lazy" />
-        <div class="case-img-caption">Mid-fi to hi-fi — evolving wireframes into polished, interaction-ready screens</div>
       </div>
     </div>
 
@@ -1590,7 +1633,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Design System</p>
       <h2 class="section-title">The visual language<br />behind <em>Nox+.</em></h2>
-      <p class="body-text">A gradient-driven system built around trust, security, and modernity — from the vibrant app icon to every screen interaction.</p>
+      <p class="body-text">A gradient-driven system built around trust, security, and modernity: from the vibrant app icon to every screen interaction.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1691,7 +1734,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Nox+.</em></h2>
-      <p class="body-text">Nox+ is a digital identity management app that streamlines personal verification — giving users <strong>control, transparency, and security</strong> over their information. The platform integrates a physical proof card with the Nox+ mobile app, enabling secure identity verification across both offline and digital environments.</p>
+      <p class="body-text">Nox+ is built on a simple premise from our research: <strong>people don't want to manage their identity; they want to forget about it until the moment they need it.</strong> The app pairs a physical proof card with a mobile platform, so verification works seamlessly across both digital and in-person environments. Every feature, from biometric onboarding to data transparency panels, was designed to answer the question our participants kept asking: "Who has my data, and can I trust them?"</p>
     </div>
 
     <div class="container-wide">
@@ -1739,7 +1782,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: rgba(200,170,255,0.7);">Interactive Prototype</p>
       <h2 class="section-title" style="color: white;">See Nox+ <em style="color: var(--purple-light);">in action.</em></h2>
-      <p class="body-text" style="color: rgba(255,255,255,0.55);">A walkthrough of the Figma prototype demonstrating the complete user flow — from onboarding and biometric setup through document management and identity verification.</p>
+      <p class="body-text" style="color: rgba(255,255,255,0.55);">A walkthrough of the Figma prototype demonstrating the complete user flow: from onboarding and biometric setup through document management and identity verification.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="prototype-video-wrap" style="background: rgba(255,255,255,0.06);">
@@ -1749,26 +1792,34 @@
     </div>
   </section>
 
+  <!-- TESTIMONIAL -->
+  <div class="container fade-in">
+    <div class="testimonial-block">
+      <p class="testimonial-quote">"I had an amazing time working with you. Couldn't have asked for a better teammate."</p>
+      <p class="testimonial-attr"><strong>Teammate</strong> · Designer, Nox+ Team</p>
+    </div>
+  </div>
+
   <!-- REFLECTION -->
   <section id="reflection" class="reflection-section">
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
-      <h2 class="section-title">Next Steps &<br /><em>What I Learned.</em></h2>
-      <p class="body-text">Leading Nox+ — from running team standups and design critiques to making final calls on direction — was an incredibly rewarding experience, and I'm proud of how the app came together from concept to prototype. I learned how to balance creative vision with team dynamics, the importance of continuous iteration based on user feedback, and how even small design decisions can impact trust, clarity, and usability.</p>
+      <h2 class="section-title">What leading taught me<br />& <em>what I'd do differently.</em></h2>
+      <p class="body-text">The hardest part of leading this project wasn't the design; it was the prioritization. With four team members and a 12-week timeline, we couldn't build everything. I had to cut features I believed in (an AI document scanner, a social verification network) to focus on the core trust experience. That constraint was uncomfortable, but it made the final product sharper. The lesson: <strong>saying no to good ideas is part of leading well.</strong></p>
 
       <div class="callout-box">
-        <p>I had the opportunity to <strong>demo Nox+ at the User Centered Design Showcase at UW</strong>, and in November, Apple released a digital ID passport — a development closely aligned with my concept, reinforcing the real-world relevance of the research direction I led.</p>
+        <p>Demoing Nox+ at the <strong>User Centered Design Showcase at UW</strong> was a milestone, but the moment that validated this work most was when Apple released its Digital ID feature months later, tackling nearly the same problem space. It confirmed that the research direction I'd led wasn't just an academic exercise; it anticipated a real industry shift.</p>
       </div>
 
-      <p class="body-text">Given more time, I would dedicate additional cycles to refining functionality, integrating features into an existing platform, and conducting <strong>broader user testing</strong> across different demographic groups beyond college students.</p>
-      <p class="body-text">Shoutout to my amazing team — it was super fun to lead this project and bring these ideas to life!</p>
+      <p class="body-text">If I had more time, I'd expand beyond college students. Our research was scoped to UW, but identity verification anxiety isn't unique to students. Immigrants navigating visa systems, elderly people managing healthcare documents, and gig workers verifying credentials all face similar fragmentation. Testing with these groups would reveal whether our trust-first framework holds across demographics.</p>
+      <p class="body-text">I'm grateful to my team for their dedication and talent throughout this project; collaborating with them made me a better leader and a more intentional designer.</p>
     </div>
   </section>
 
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Saksham — <em>Inclusive Learning for All</em></div>
+    <div class="next-title">Saksham: <em>Inclusive Learning for All</em></div>
     <a href="saksham.html" class="next-btn">View case study →</a>
   </div>
 
@@ -1793,7 +1844,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-right">Made with ♡ + HTML by Jasmine Sayed</p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-right">Made with ♡ by Jasmine</p>
   </footer>
 
   <script>
