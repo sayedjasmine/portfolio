@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nox+ | Jasmine Sayed</title>
+  <title>Nox+ — Product Design Case Study | Jasmine Sayed</title>
+  <meta name="description" content="Product design case study: privacy-first identity verification app. Led UX research, interaction design, and Figma prototyping. Demoed at UW's User Centered Design Showcase." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -1329,13 +1330,14 @@
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 6px; }
+      .footer-center { display: none; }
       .prototype-video-wrap { padding: 20px; }
       .screen-gallery { grid-template-columns: 1fr; gap: 16px; }
       .screen-card:last-child { max-width: 100%; }
     }
 
     @media (max-width: 600px) {
+      .role-callout { padding: 12px 16px !important; font-size: 13px !important; }
       .hero { padding: 85px 20px 36px; }
       .hero h1 { font-size: clamp(32px, 9vw, 48px); }
       .hero-sub { font-size: 15px; }
@@ -1496,9 +1498,9 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How can we simplify identity<br />verification for college students?</h2>
-      <p class="body-text">Here's something that surprised me during research: <strong>64% of our survey respondents had personally experienced or knew someone affected by identity theft related to verification.</strong> This wasn't an abstract security problem; it was something students were anxious about every time they uploaded a passport or driver's license to yet another portal. And yet, the tools they were forced to use offered zero transparency about where that data went.</p>
-      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--purple-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Project lead and lead UX designer. I oversaw the full design and research process, directing a team of one researcher and two designers. Our researcher deployed a 21-question survey (n=96) and I led semi-structured interviews with students affected by data breaches, ran competitive analysis, created personas, and iterated from sketches through high-fidelity prototype in Figma. I coordinated the team through standups and design critiques to keep our work aligned toward a cohesive product vision.</p>
-      <p class="body-text">I demoed Nox+ at the <strong>User Centered Design Showcase at UW</strong>. While we were working on this project, Apple released its Digital ID feature in November 2025, tackling the same problem space. Rather than making our work redundant, it reinforced that the need was real and industry was moving in this direction.</p>
+      <p class="body-text"><strong>64% of our survey respondents had experienced or knew someone affected by identity theft related to verification.</strong> This wasn't an abstract security problem — students were anxious every time they uploaded a passport or license to another portal. Yet the tools they used offered zero transparency about where that data went.</p>
+      <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: var(--purple-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Project lead and lead UX designer on a 4-person team. I drove survey research (n=96), led interviews with students affected by data breaches, ran competitive analysis, created personas, and iterated from sketches through high-fidelity prototype in Figma.</p>
+      <p class="body-text">I demoed Nox+ at the <strong>User Centered Design Showcase at UW</strong>. While we were working on this, Apple released its Digital ID feature in November 2025, tackling the same problem space — reinforcing that the need was real and industry was moving in this direction.</p>
     </div>
   </section>
 
@@ -1516,8 +1518,7 @@
         <p class="persona-text">"I've uploaded my passport to so many different portals. I never know who actually sees it or how it's stored. Every new system feels like a privacy risk."</p>
       </div>
 
-      <p class="body-text">For students like Pam, identity verification is fragmented and unclear. Multiple logins, inconsistent requirements, and vague privacy policies create stress and erode trust. Without transparency and strong security signals, users feel <strong>exposed rather than protected.</strong></p>
-      <p class="body-text">Students struggle with inefficient identity verification processes and ongoing privacy concerns. Navigating multiple platforms often requires repeatedly submitting sensitive personal information, leading to frustration, wasted time, and increased anxiety about data security.</p>
+      <p class="body-text">For students like Pam, identity verification is fragmented and unclear. Multiple logins, inconsistent requirements, and vague privacy policies create stress and erode trust. Users feel <strong>exposed rather than protected.</strong></p>
       <p class="body-text">To address these challenges, there is a need for a <strong>unified identity verification system</strong> that simplifies authentication while prioritizing privacy and trust, providing secure, streamlined verification with both digital and physical options.</p>
     </div>
   </section>
@@ -1529,7 +1530,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">The data confirmed the anxiety.<br />The interviews revealed <em>why.</em></h2>
-      <p class="body-text">The survey gave us the "what": 57% experienced frequent upload errors, 34% didn't even know which documents were required. But it was the interviews that revealed the emotional layer underneath. Students described a feeling of <strong>learned helplessness</strong>: they'd been burned so many times by confusing verification flows that they'd stopped trusting any system, even legitimate ones. One participant told me, "I just assume every portal is going to leak my data eventually." That resigned distrust became the core problem Nox+ was designed to solve.</p>
+      <p class="body-text">The survey showed the stats: 57% experienced frequent upload errors, 34% didn't know which documents were required. But interviews revealed the emotional core. Students felt <strong>learned helplessness</strong>—burned so many times they'd stopped trusting any system. One told me, "I just assume every portal is going to leak my data eventually." That distrust became the problem Nox+ was designed to solve.</p>
     </div>
 
     <div class="container-wide">
@@ -1576,7 +1577,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Key Insights</p>
       <h2 class="section-title">What users<br />actually need.</h2>
-      <p class="body-text">After synthesizing 96 survey responses, 16 interviews, and 2 contextual inquiry sessions, two core insights reframed the entire problem and changed what I thought I was designing.</p>
+      <p class="body-text">After synthesizing 96 survey responses, 16 interviews, and 2 contextual inquiry sessions, two core insights reframed the entire problem.</p>
     </div>
 
     <div class="container-wide">
@@ -1602,7 +1603,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">We designed three versions<br />before we got it right.</h2>
-      <p class="body-text">The first round of sketches treated Nox+ as a document vault: upload, store, retrieve. But team critiques and early feedback made it clear that storage alone didn't solve the trust problem. The second iteration added transparency panels (who accessed your data, when, why), which tested better, but the flow felt overwhelming. The breakthrough came when I reorganized the architecture around <strong>moments of verification</strong> rather than document management: the app surfaces exactly what you need, only when you need it, with clear security signals at every step.</p>
+      <p class="body-text">Early sketches treated Nox+ as a document vault: upload, store, retrieve. But critiques revealed that storage alone didn't solve the trust problem. The second iteration added transparency panels (who accessed your data, when, why), which tested better but felt overwhelming. The breakthrough came when I reorganized around <strong>moments of verification</strong> rather than document management: the app surfaces exactly what you need, when you need it, with clear security signals at every step.</p>
 
     </div>
 
@@ -1616,7 +1617,7 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Wireframes</h3>
-      <p class="body-text">I delegated screen assignments across the team while maintaining design consistency through regular critiques. One key decision at this stage: I chose to show redacted document previews (blurred details with only relevant fields visible) instead of full documents in the UI, directly addressing the contextual inquiry finding that users felt exposed when their full passport was displayed on-screen, even on their own device.</p>
+      <p class="body-text">I delegated screen assignments across the team while maintaining consistency through regular critiques. One key decision: I chose to show redacted document previews (blurred details with only relevant fields visible) instead of full documents, directly addressing the finding that users felt exposed when their full passport was displayed on-screen.</p>
     </div>
 
     <!-- Mid-fi / Hi-fi Designs -->
@@ -1735,7 +1736,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Nox+.</em></h2>
-      <p class="body-text">Nox+ is built on a simple premise from our research: <strong>people don't want to manage their identity; they want to forget about it until the moment they need it.</strong> The app pairs a physical proof card with a mobile platform, so verification works seamlessly across both digital and in-person environments. Every feature, from biometric onboarding to data transparency panels, was designed to answer the question our participants kept asking: "Who has my data, and can I trust them?"</p>
+      <p class="body-text">Nox+ is built on a simple premise: <strong>people don't want to manage their identity; they want to forget about it until they need it.</strong> The app pairs a physical proof card with a mobile platform for seamless verification across digital and in-person contexts. Every feature answers the core question participants asked: "Who has my data, and can I trust them?"</p>
     </div>
 
     <div class="container-wide">
@@ -1806,13 +1807,13 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
       <h2 class="section-title">What leading taught me<br />& <em>what I'd do differently.</em></h2>
-      <p class="body-text">The hardest part of leading this project wasn't the design; it was the prioritization. With four team members and a 12-week timeline, we couldn't build everything. I had to cut features I believed in (an AI document scanner, a social verification network) to focus on the core trust experience. That constraint was uncomfortable, but it made the final product sharper. The lesson: <strong>saying no to good ideas is part of leading well.</strong></p>
+      <p class="body-text">The hardest part wasn't the design — it was prioritization. With four team members and 12 weeks, we couldn't build everything. I cut features I believed in (an AI document scanner, a social verification network) to focus on the core trust experience. <strong>Saying no to good ideas is part of leading well.</strong></p>
 
       <div class="callout-box">
         <p>Demoing Nox+ at the <strong>User Centered Design Showcase at UW</strong> was a milestone. Apple's Digital ID launch in November 2025, while we were still building Nox+, confirmed that this problem space was real and that industry leaders were prioritizing it too. It validated our research direction and reinforced the urgency of the work.</p>
       </div>
 
-      <p class="body-text">If I had more time, I'd expand beyond college students. Our research was scoped to UW, but identity verification anxiety isn't unique to students. Immigrants navigating visa systems, elderly people managing healthcare documents, and gig workers verifying credentials all face similar fragmentation. Testing with these groups would reveal whether our trust-first framework holds across demographics.</p>
+      <p class="body-text">With more time, I'd expand beyond college students. Identity verification anxiety isn't unique to UW students — immigrants, elderly people managing healthcare documents, and gig workers face similar fragmentation. Testing with these groups would reveal whether our trust-first framework holds across demographics.</p>
       <p class="body-text">I'm grateful to my team for their dedication and talent throughout this project; collaborating with them made me a better leader and a more intentional designer.</p>
     </div>
   </section>

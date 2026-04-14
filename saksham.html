@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saksham | Jasmine Sayed</title>
+  <title>Saksham — Accessible EdTech Case Study | Jasmine Sayed</title>
+  <meta name="description" content="UX research and product design case study: inclusive learning platform for neurodivergent students. User interviews, accessibility design, and Figma prototyping. Published in TAGA Journal 2026." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -1215,11 +1216,12 @@
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 6px; }
+      .footer-center { display: none; }
       .screen-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     }
 
     @media (max-width: 600px) {
+      .role-callout { padding: 12px 16px !important; font-size: 13px !important; }
       .hero { padding: 85px 20px 36px; }
       .hero h1 { font-size: clamp(32px, 9vw, 48px); }
       .hero-sub { font-size: 15px; }
@@ -1355,6 +1357,10 @@
           <div class="hero-meta-value">UX Designer & Researcher</div>
         </div>
         <div>
+          <div class="hero-meta-label">Team</div>
+          <div class="hero-meta-value">3 UX Researchers</div>
+        </div>
+        <div>
           <div class="hero-meta-label">Type</div>
           <div class="hero-meta-value">Personal Research Project</div>
         </div>
@@ -1410,9 +1416,8 @@
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Designing for neurodiversity in<br /><em>Indian education.</em></h2>
       <p class="body-text">During an interview for this project, an educator in India told me something I couldn't stop thinking about: <strong>"I have 40 students and no tools. I know some of them learn differently, but all I can do is teach the same way and hope for the best."</strong> That sentence became the emotional foundation for everything I designed.</p>
-      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--rose-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Sole designer and researcher. I independently drove every phase of this project: research strategy, user interviews, interaction design, high-fidelity prototyping, and usability testing. I also authored the published research paper (TAGA Journal 2026).</p>
-      <p class="body-text">In India, over 5 million children with learning disabilities like dyslexia, ADHD, and autism face a system that wasn't built for them. The tools don't adapt to their cognition. The interfaces overwhelm instead of support. And the stigma surrounding neurodiversity means many go undiagnosed entirely. This isn't a niche problem; it's a systemic failure affecting millions of families.</p>
-      <p class="body-text">As both <strong>UX Designer and Researcher</strong>, I independently led this project from start to finish: from qualitative interviews and literature review, to persona development, accessible design in Figma, and authoring the accompanying research paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> which was <strong>published on Cal Poly's Digital Commons</strong> and featured in the <strong>TAGA 2026 Journal</strong>.</p>
+      <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: var(--rose-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Sole designer and researcher. I independently drove every phase of this project: research strategy, user interviews, interaction design, high-fidelity prototyping, and usability testing. I also authored the published research paper (TAGA Journal 2026).</p>
+      <p class="body-text">In India, over 5 million children with learning disabilities like dyslexia, ADHD, and autism face a system that wasn't built for them. Tools don't adapt to their cognition, interfaces overwhelm instead of support, and stigma means many go undiagnosed entirely.</p>
     </div>
   </section>
 
@@ -1423,7 +1428,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Statement</p>
       <h2 class="section-title">How might we create an experience that adapts to each <em>learner's</em> cognitive style?</h2>
-      <p class="body-text">I started by auditing the tools these students actually have access to: Byju's, Duolingo, and government-issued e-learning apps. What I found was striking: not a single major platform in India offered cognitive adaptation for neurodiverse learners. The apps that existed were designed for a "default" student (fast-paced, visually dense, and text-heavy). For a child with dyslexia, these interfaces don't just fail to help; they actively create anxiety.</p>
+      <p class="body-text">I audited the tools these students actually use: Byju's, Duolingo, and government e-learning apps. Not a single major platform in India offered cognitive adaptation for neurodiverse learners. The apps were designed for a "default" student — fast-paced, visually dense, text-heavy. For a child with dyslexia, these interfaces don't just fail to help; they create anxiety.</p>
       <p class="body-text">The challenge became clear: design an educational experience that adapts to each learner's cognitive style, while promoting <strong>independence and confidence</strong>, not just learning outcomes.</p>
     </div>
 
@@ -1460,7 +1465,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Research</p>
       <h2 class="section-title">The research that changed<br /><em>what I thought I was designing.</em></h2>
-      <p class="body-text">I went in thinking I was designing a learning app. After interviewing educators, parents, and accessibility experts, I realized I was designing something more fundamental: <strong>a way for children to feel capable.</strong> Every parent I spoke with described the same pattern: their child wasn't struggling with the content, they were struggling with the interface. The technology meant to help them was the very thing making them feel broken.</p>
+      <p class="body-text">I went in thinking I was designing a learning app. After interviewing educators, parents, and accessibility experts, I realized I was designing <strong>a way for children to feel capable.</strong> Every parent described the same pattern: their child wasn't struggling with the content — they were struggling with the interface.</p>
     </div>
 
     <div class="container-wide">
@@ -1501,7 +1506,7 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Published Research</h3>
-      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published through Cal Poly's Digital Commons and set to appear in the TAGA 2026 Journal. The publication emphasizes design ethics, human-centered research, and practical design interventions for neurodiverse students.</p>
+      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published through Cal Poly's Digital Commons and set to appear in the TAGA 2026 Journal.</p>
     </div>
   </section>
 
@@ -1552,7 +1557,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">From empathy to<br /><em>interactive prototype.</em></h2>
-      <p class="body-text">My early designs were too ambitious. I initially tried to build an AI-powered emotion tracker that would detect when a student felt overwhelmed, but testing revealed this felt invasive rather than supportive. Parents said, "I don't want an app watching my child's face." That feedback forced me to pivot from reactive AI to proactive customization: <strong>let the student control their environment before frustration ever starts.</strong> This became the design's central philosophy.</p>
+      <p class="body-text">I initially tried to build an AI-powered emotion tracker, but testing revealed this felt invasive. Parents said, "I don't want an app watching my child's face." That feedback forced me to pivot to proactive customization: <strong>let the student control their environment before frustration ever starts.</strong></p>
     </div>
 
     <div class="container fade-in">
@@ -1751,7 +1756,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Impact</p>
       <h2 class="section-title">From a personal project to<br /><em>published research.</em></h2>
-      <p class="body-text">What started as a passion project became something larger than I expected. The research paper was accepted for publication, not because it proposed a finished product, but because it demonstrated a rigorous, human-centered framework for designing accessible educational technology in a context where very little exists.</p>
+      <p class="body-text">What started as a passion project became something larger. The research paper was accepted for publication because it demonstrated a rigorous, human-centered framework for designing accessible educational technology in a context where very little exists.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1785,8 +1790,8 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection & Next Steps</p>
       <h2 class="section-title">What I got wrong,<br />what I'd <em>change.</em></h2>
-      <p class="body-text">My biggest blind spot was assuming I could design for neurodivergent children without involving them directly. Ethical constraints made it difficult to include minors in my research, so I relied heavily on parents and educators as proxies. The designs are better for it, but I know there's a gap between what adults report and what children actually experience. If I continue this work, participatory design with children (with proper ethical frameworks) is the essential next step.</p>
-      <p class="body-text">I also learned that "inclusive design" and "simple design" are not the same thing. My early iterations stripped away too much, removing the visual richness that makes learning feel joyful. Finding the line between "calming" and "boring" required multiple rounds of testing and honest feedback from educators who told me my first prototype felt clinical.</p>
+      <p class="body-text">My biggest blind spot was assuming I could design for neurodivergent children without involving them directly. Ethical constraints made it difficult to include minors, so I relied on parents and educators as proxies. The designs are stronger for it, but I know there's a gap between what adults report and what children experience. Participatory design with children is the essential next step.</p>
+      <p class="body-text">I also learned that "inclusive design" and "simple design" are not the same thing. My early iterations stripped away too much, removing the visual richness that makes learning joyful. Finding the line between "calming" and "boring" required multiple rounds of testing and honest feedback from educators who told me my first prototype felt clinical.</p>
 
       <div class="callout-box">
         <p>This project changed how I think about design itself. Accessibility isn't a feature you add at the end; it's a lens that shapes every decision from the start. The journey from a personal question to <strong>published research</strong> was the most meaningful experience of my design career, and it's made me a fundamentally more thoughtful designer on every project since.</p>

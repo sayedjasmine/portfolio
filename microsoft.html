@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Microsoft Foundry - Jasmine Sayed</title>
+  <title>Microsoft Foundry — UX Research Case Study | Jasmine Sayed</title>
+  <meta name="description" content="UX research case study at Microsoft CoreAI. Conducted 8 moderated usability testing sessions on an AI agent-building platform. Uncovered a critical blocker affecting 100% of participants." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -1130,10 +1131,11 @@
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 6px; }
+      .footer-center { display: none; }
     }
 
     @media (max-width: 600px) {
+      .role-callout { padding: 12px 16px !important; font-size: 13px !important; }
       .hero { padding: 85px 20px 36px; min-height: auto; }
       .hero h1 { font-size: clamp(32px, 9vw, 48px); }
       .hero-sub { font-size: 15px; }
@@ -1265,11 +1267,11 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How might we make AI agent creation more intuitive for new developers?</h2>
-      <p class="body-text">Microsoft Foundry is a platform that lets students, developers, and startup founders build AI agents for their products: smart assistants that work with their data and automate tasks. The vision is powerful: democratize AI agent creation for people who are still learning. But <strong>vision only matters if users can actually get through the flow.</strong></p>
-      <p class="body-text">As a <strong>User Experience Researcher</strong> on Microsoft's CoreAI team, our 4-person research team conducted 8 moderated usability sessions testing the Knowledge, Data, and FoundryIQ features at the heart of agent creation. I helped shape the research questions, co-designed the study protocol, facilitated 3 of the 8 sessions, and led team communication and meeting coordination throughout the study. What we discovered in the first session, and confirmed in every subsequent one, was a critical blocker that <strong>100% of participants hit</strong>, and that the team hadn't anticipated.</p>
+      <p class="body-text">Microsoft Foundry lets students, developers, and startup founders build AI agents for their products. The vision: democratize AI agent creation for people still learning. But <strong>vision only matters if users can get through the flow.</strong></p>
+      <p class="body-text">As a <strong>User Experience Researcher</strong> on Microsoft's CoreAI team, I led 8 moderated usability sessions testing the Knowledge, Data, and FoundryIQ features. I defined research questions, designed the study protocol, and owned team communication. In the first session—and confirmed in every subsequent one—we discovered a critical blocker that <strong>100% of participants hit</strong>, one the team hadn't anticipated.</p>
       <p class="body-text">This study went from "let's see how intuitive the flow is" to "we need to fix this before anything else matters."</p>
-      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--blue-bg, #EBF2FA); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> I co-led the research process on a 4-person team: helped scope research questions, co-designed the study protocol, facilitated 3 of 8 think-aloud sessions, and owned team communication, meeting planning, and coordination. I contributed to synthesizing findings and co-presented prioritized recommendations to the Microsoft CoreAI team.</p>
-      <p class="body-text" style="margin-top: 12px; font-size: 12.5px; color: var(--mid); font-style: italic;">Note: Due to the confidential nature of this product and user privacy, visuals in this case study are limited. I'm happy to walk through the full research process and findings in person.</p>
+      <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: var(--blue-bg, #EBF2FA); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Led UX research on a 4-person team: defined research questions, designed the study protocol, ran 8 think-aloud usability sessions, owned team communication, and synthesized findings for the CoreAI team.</p>
+      <p class="body-text" style="margin-top: 12px; font-size: 12.5px; color: var(--mid); font-style: italic;">Note: Due to the confidential nature of this product and user privacy, visuals in this case study are limited.</p>
     </div>
   </section>
 
@@ -1287,13 +1289,13 @@
         <div class="process-connector"></div>
         <div class="process-icon">📋</div>
         <div class="process-step-title">Protocol Design</div>
-        <div class="process-step-desc">Co-designed study protocol and task scenarios</div>
+        <div class="process-step-desc">Designed study protocol and task scenarios</div>
       </div>
       <div class="process-step">
         <div class="process-connector"></div>
         <div class="process-icon">🎙️</div>
         <div class="process-step-title">8 Sessions</div>
-        <div class="process-step-desc">Moderated think-aloud usability sessions (I facilitated 3)</div>
+        <div class="process-step-desc">Moderated think-aloud usability sessions</div>
       </div>
       <div class="process-step">
         <div class="process-connector"></div>
@@ -1317,7 +1319,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Research Questions</p>
       <h2 class="section-title">What we set out<br />to understand.</h2>
-      <p class="body-text">I shaped the research questions to go beyond surface-level usability by investigating participants' mental models: where confusion transforms from "learning curve" into "I'm done," and what users actually envision building. The distinction between temporary confusion and hard blockers turned out to be the most critical framing of the entire study.</p>
+      <p class="body-text">I shaped research questions to go beyond surface-level usability, investigating where confusion transforms from "learning curve" into "I'm done." The distinction between temporary confusion and hard blockers turned out to be the most critical framing of the study.</p>
     </div>
 
     <div class="container fade-in">
@@ -1349,7 +1351,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Method</p>
       <h2 class="section-title">How we conducted<br />the study.</h2>
-      <p class="body-text">I chose <strong>moderated usability testing</strong> with a within-subject design deliberately. Because the research questions centered on mental models, I needed to be in the room (virtually) when confusion happened. Remote unmoderated testing would have captured task failure, but not <em>why</em> it felt like a failure. The <strong>Think Aloud protocol</strong> let me hear participants' reasoning in real time, and the moments where they went silent were often the most revealing.</p>
+      <p class="body-text">I chose <strong>moderated usability testing</strong> because the research centered on mental models—I needed to be there when confusion happened. Remote unmoderated testing would capture task failure, but not <em>why</em>. The <strong>Think Aloud protocol</strong> revealed participants' reasoning in real time, and their silences were often most revealing.</p>
     </div>
 
     <div class="container-wide">
@@ -1357,7 +1359,7 @@
         <div class="method-card">
           <div class="method-icon">🎙️</div>
           <div class="method-name">Moderated Sessions</div>
-          <div class="method-desc">I facilitated one-on-one moderated usability tests with real tasks in the live Foundry platform, using Think Aloud protocol to capture real-time reasoning and confusion points.</div>
+          <div class="method-desc">One-on-one moderated usability tests with real tasks in the live Foundry platform, using Think Aloud protocol to capture real-time reasoning and confusion points.</div>
           <span class="method-n">n = 8 participants</span>
         </div>
         <div class="method-card">
@@ -1378,7 +1380,7 @@
     <!-- Participant Criteria -->
     <div class="container fade-in">
       <h3 class="sub-heading">Participant Criteria</h3>
-      <p class="body-text">I recruited participants who matched Foundry's target audience: students and early-career professionals with technical backgrounds who are curious about AI and looking to leverage it for projects.</p>
+      <p class="body-text">I recruited participants matching Foundry's target audience: students and early-career professionals with technical backgrounds, curious about AI and looking to leverage it for projects.</p>
 
       <div class="criteria-strip">
         <div class="criteria-title">Critical Criteria</div>
@@ -1399,7 +1401,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Findings</p>
       <h2 class="section-title">What worked well.</h2>
-      <p class="body-text">Not everything was broken, and that matters. Identifying what works well is just as important as flagging problems because it tells the team which patterns to protect and replicate as they iterate.</p>
+      <p class="body-text">Not everything was broken, and that matters. Identifying what works is just as important as flagging problems — it tells the team which patterns to protect as they iterate.</p>
     </div>
 
     <div class="container fade-in">
@@ -1430,7 +1432,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Areas of Improvement</p>
       <h2 class="section-title">Five issues. One that stops <em>everything.</em></h2>
-      <p class="body-text">I prioritized findings using Norman's severity scale because not all usability issues are equal. A confusing label is a different kind of problem than a blocker that prevents every single user from completing the core task. Framing severity clearly was essential for giving the Foundry team an actionable roadmap, not just a list of complaints.</p>
+      <p class="body-text">I prioritized findings using Norman's severity scale. A confusing label is a different problem than a blocker preventing every user from completing the core task. Clear severity framing gave the Foundry team an actionable roadmap, not just a list of complaints.</p>
     </div>
 
     <div class="container fade-in">
@@ -1571,7 +1573,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Next Steps</p>
       <h2 class="section-title">Where this research<br /><em>goes from here.</em></h2>
-      <p class="body-text">Good research doesn't just answer questions; it reveals the next ones. My study surfaced both immediate fixes and open areas that need deeper exploration.</p>
+      <p class="body-text">Good research doesn't just answer questions — it reveals the next ones. My study surfaced both immediate fixes and areas needing deeper exploration.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1610,7 +1612,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
       <h2 class="section-title">What I learned & <em>what surprised me.</em></h2>
-      <p class="body-text">The biggest lesson wasn't methodological; it was about adaptability. The guardrail blocker emerged in Session 1 and immediately threatened to derail the study. Every participant hit the same wall, and I had to decide in real time: do I help them past it (and lose data about the blocker's impact) or let them struggle (and lose data about everything downstream)? I chose a hybrid approach where participants attempted the task fully while I documented their confusion, then provided a workaround so we could still test the rest of the flow. That decision preserved both the severity-4 finding and the downstream insights.</p>
+      <p class="body-text">The biggest lesson was about adaptability. The guardrail blocker emerged in Session 1 and threatened to derail the study. Every participant hit the same wall, forcing a real-time decision: help them past it (losing data about the blocker's impact) or let them struggle (losing downstream data)? I chose a hybrid approach—participants attempted the task fully while I documented confusion, then I provided a workaround so we could test the rest of the flow. That decision preserved both the critical finding and downstream insights.</p>
 
       <div class="callout-box">
         <p>Biweekly check-ins with the Microsoft sponsor became more critical than I'd expected: not just for logistics, but for <strong>real-time alignment on what mattered most</strong>. When I flagged the guardrail issue after Session 2, the sponsor confirmed it was a known-but-underestimated bug. My data gave the engineering team the evidence they needed to prioritize the fix. That moment of watching research directly influence a product decision was the highlight of this experience.</p>

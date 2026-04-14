@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexstera Tech | Jasmine Sayed</title>
+  <title>Nexstera Tech — UX Design Case Study | Jasmine Sayed</title>
+  <meta name="description" content="UX design case study: website redesign for a climate tech startup. Led investor page design, journey mapping, and usability testing in Figma. Result: $65K seed funding and 120% engagement increase." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -1262,7 +1263,7 @@
       .nav-logo img { height: 40px; }
       .section-tabs { padding: 0 20px; justify-content: flex-start; }
       .hero { padding: 100px 28px 48px; }
-      .skip-pill { align-self: flex-start; }
+      .skip-pill { align-self: center; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 32px 28px; gap: 24px; }
@@ -1274,10 +1275,11 @@
       .nav-cards { flex-direction: column; padding: 0 28px 36px; }
       footer { padding: 22px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 6px; }
+      .footer-center { display: none; }
     }
 
     @media (max-width: 600px) {
+      .role-callout { padding: 12px 16px !important; font-size: 13px !important; }
       .hero { padding: 85px 20px 36px; }
       .hero h1 { font-size: clamp(32px, 9vw, 48px); }
       .hero-sub { font-size: 15px; }
@@ -1431,10 +1433,9 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How might we build investor trust while educating the public about battery safety?</h2>
-      <p class="body-text">Every year, lithium-ion batteries hiding in waste streams cause hundreds of facility fires. This destruction of equipment, injuries to workers, and costs to the industry amount to millions in losses. Nexstera Tech built <strong>Pyrotack</strong>, an AI system that detects these batteries before they ignite. The technology was real and working. But here was the problem: <strong>nobody outside the founding team understood why it mattered.</strong></p>
-      <p class="body-text" style="margin-top: 16px; padding: 16px 20px; background: var(--green-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> One of five UX designers on the team. I owned the Investor and Education pages end-to-end, conducting competitive analysis, journey mapping, wireframing, visual design, prototyping, and usability testing.</p>
-      <p class="body-text">Their website read like an engineering spec sheet: dense, unfocused, and missing the human stakes entirely. There was no investor page, no educational content, and no clear reason for a first-time visitor to care. For a startup that needed funding to survive, this was an existential gap.</p>
-As a <strong>UX Designer</strong> on a five-person design team, I owned the <strong>Education and Investor pages</strong> end-to-end. I conducted competitive analysis and usability testing, created journey maps to understand investor decision-making, and iterated from wireframes through high-fidelity screens. I collaborated closely with project managers and the founding team to align every design decision with Nexstera's funding goals.</p>
+      <p class="body-text">Every year, lithium-ion batteries hiding in waste streams cause hundreds of facility fires, costing millions. Nexstera Tech built <strong>Pyrotack</strong>, an AI system that detects these batteries before they ignite. The technology worked. But <strong>nobody outside the founding team understood why it mattered.</strong></p>
+      <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: var(--green-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> UX designer — owned the Investor and Education pages end-to-end: competitive analysis, journey mapping, wireframing, visual design, prototyping, and usability testing.</p>
+      <p class="body-text">Their website read like an engineering spec sheet: dense, unfocused, and missing the human stakes. No investor page, no educational content, no reason for a first-time visitor to care. For a startup that needed funding to survive, this was an existential gap.</p>
       <p class="body-text">Following the redesign, Nexstera secured <strong>$65,000 in seed funding</strong> and saw a <strong>120% increase in investor engagement</strong>. The founding team attributed the improved investor interest to the clarity of the redesigned platform.</p>
     </div>
   </section>
@@ -1446,8 +1447,8 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Identification</p>
       <h2 class="section-title">A brilliant product<br />nobody could explain.</h2>
-      <p class="body-text">Nexstera had a real technology solving a real problem, but their digital presence was actively working against them. When I first audited the site, I tried to answer one question: <strong>"If I were an investor landing here for the first time, would I understand what this company does within 30 seconds?"</strong> The answer was no.</p>
-      <p class="body-text">The site buried its value proposition under technical jargon, had no pathway for investors, and offered nothing to educate a curious visitor about why battery fires matter. For a startup racing to secure seed funding, every confused visitor was a missed opportunity. Three critical gaps stood out:</p>
+      <p class="body-text">Nexstera had real technology solving a real problem, but their digital presence worked against them. I tried to answer one question: <strong>"If I were an investor landing here for the first time, would I understand what this company does within 30 seconds?"</strong> The answer was no.</p>
+      <p class="body-text">The site buried its value proposition under jargon, had no investor pathway, and offered nothing to educate visitors about why battery fires matter. Three critical gaps stood out:</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1478,7 +1479,7 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">I assumed investors wanted data.<br />They actually wanted <em>a story.</em></h2>
-      <p class="body-text">My initial hypothesis was straightforward: investors want metrics, traction data, and technical proof. But when I mapped the investor journey and ran think-aloud sessions, something unexpected emerged. Investors were dropping off not because they lacked information, but because <strong>they couldn't find a reason to care</strong>. The emotional hook was missing entirely. This shifted my entire approach from "present data clearly" to "tell a story that makes data meaningful."</p>
+      <p class="body-text">My initial hypothesis: investors want metrics, traction data, and technical proof. But journey mapping and think-aloud sessions revealed something unexpected. Investors dropped off not because they lacked information, but because <strong>they couldn't find a reason to care</strong>. The emotional hook was missing. This shifted my approach from "present data clearly" to "tell a story that makes data meaningful."</p>
     </div>
 
     <div class="container-wide">
@@ -1753,7 +1754,7 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">The first version was wrong.<br />That's how I knew it was working.</h2>
-      <p class="body-text">My initial wireframes tried to do too much: cramming investor data, educational content, and product details onto a single page. During a workshop with the founding team, the CEO pointed out that we were recreating the exact problem we'd identified: information overload with no clear journey. That feedback was the turning point. I separated the experience into distinct pages, with Product, Education, FAQ, Investor, and Contact each having a single purpose and a clear next step.</p>
+      <p class="body-text">My initial wireframes tried to do too much: cramming investor data, educational content, and product details onto a single page. During a workshop, the CEO pointed out we were recreating the exact problem we'd identified: information overload with no clear journey. I separated the experience into distinct pages, each with a single purpose and a clear next step.</p>
     </div>
 
     <!-- Sketches -->
@@ -1846,7 +1847,7 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing Nexstera Tech's<br /><em>new website.</em></h2>
-      <p class="body-text">The final design isn't just a prettier website; it's a fundamentally different communication strategy. Each page now has a single job: the homepage builds emotional urgency around the battery fire problem, the investor page converts interest into meetings, and the education hub positions Nexstera as a thought leader. Every design decision traces back to what I heard in research.</p>
+      <p class="body-text">Each page now has a single job: the homepage builds emotional urgency, the investor page converts interest into meetings, and the education hub positions Nexstera as a thought leader. Every decision traces back to research.</p>
     </div>
 
     <!-- Figma Prototype -->
@@ -1859,15 +1860,15 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
       <div class="case-gif-showcase fade-in">
         <div class="case-img-wrapper">
           <div class="case-img-caption">Homepage: clean hero, clear value proposition, and streamlined navigation</div>
-          <img src="assets/nexstera-homepage-gif.gif" alt="Animated walkthrough of the redesigned Nexstera homepage" loading="lazy" />
+          <img src="assets/nexstera-homepage-gif.gif" alt="Animated walkthrough of the redesigned Nexstera homepage" />
         </div>
         <div class="case-img-wrapper">
           <div class="case-img-caption">Investor page: traction metrics, business value, and clear calls to action</div>
-          <img src="assets/nexstera-investor-page-gif.gif" alt="Animated walkthrough of the dedicated investor page" loading="lazy" />
+          <img src="assets/nexstera-investor-page-gif.gif" alt="Animated walkthrough of the dedicated investor page" />
         </div>
         <div class="case-img-wrapper">
           <div class="case-img-caption">Pyrotack features: accessible storytelling of AI-powered battery detection</div>
-          <img src="assets/nexstera-pyrotack-features-gif.gif" alt="Animated walkthrough of the Pyrotack product features page" loading="lazy" />
+          <img src="assets/nexstera-pyrotack-features-gif.gif" alt="Animated walkthrough of the Pyrotack product features page" />
         </div>
       </div>
 
@@ -1925,7 +1926,7 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
     <div class="container fade-in">
       <p class="section-eyebrow">Impact</p>
       <h2 class="section-title">From "what does this company do?" to <em>$65K in seed funding.</em></h2>
-      <p class="body-text">The redesign didn't just look better; it fundamentally changed how people experienced Nexstera's story. Investors who previously bounced within seconds were now spending time on the dedicated investor page, reaching out for meetings, and ultimately investing. The founding team described the impact as a shift from explaining their product to having the website do it for them.</p>
+      <p class="body-text">The redesign fundamentally changed how people experienced Nexstera's story. Investors who previously bounced were now exploring the dedicated investor page, reaching out for meetings, and investing. The founding team described it as a shift from explaining their product to having the website do it for them.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1951,13 +1952,13 @@ As a <strong>UX Designer</strong> on a five-person design team, I owned the <str
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
       <h2 class="section-title">What I'd do differently<br />& <em>what stays with me.</em></h2>
-      <p class="body-text">If I could restart this project, I'd push harder for direct investor interviews early on. My journey maps were built from competitive analysis and think-aloud sessions with proxy users, but nothing replaces hearing an actual investor say "this is where I'd leave the page." I also underestimated how long the design system work would take; building consistent components across five new pages meant front-loading effort that initially felt slow but paid off massively in the final sprint.</p>
+      <p class="body-text">If I could restart this project, I'd push harder for direct investor interviews early on. My journey maps were built from competitive analysis and think-aloud sessions with proxy users, but nothing replaces hearing an actual investor say "this is where I'd leave the page." I also underestimated how long design system work would take; building consistent components across five pages meant front-loading effort that paid off massively in the final sprint.</p>
 
       <div class="callout-box">
-        <p>The biggest lesson was that <strong>design for startups isn't just about usability; it's about survival.</strong> Every design decision either moved Nexstera closer to funding or further away. The founding team described the launch as a <strong>"monumental step toward attracting investors and global interest."</strong> Knowing my work contributed to a platform that the founding team credited with attracting investors and global interest remains one of the most meaningful outcomes of my career so far.</p>
+        <p>The biggest lesson: <strong>design for startups isn't just about usability; it's about survival.</strong> Every decision either moved Nexstera closer to funding or further away. The founding team described the launch as a <strong>"monumental step toward attracting investors and global interest."</strong> Knowing my work contributed to that remains one of the most meaningful outcomes of my career.</p>
       </div>
 
-      <p class="body-text">The next phase is transitioning the design into a live Webflow site. Given more time, I'd invest in A/B testing the investor page's call-to-action placement and run usability sessions with real investors rather than proxy users, which would close the one gap in my research approach.</p>
+      <p class="body-text">Next: transitioning the design into a live Webflow site. Given more time, I'd A/B test the investor page's CTA placement and run usability sessions with real investors, closing the one gap in my research approach.</p>
     </div>
   </section>
 

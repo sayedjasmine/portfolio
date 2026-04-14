@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Jasmine Sayed</title>
+  <title>About — Jasmine Sayed | Product Designer & UX Researcher</title>
+  <meta name="description" content="Product Designer and UX Researcher with a Master's in HCDE from UW. Experience at Microsoft and Amazon. Specializing in Figma, design systems, usability testing, accessibility, and AI-driven design." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -40,181 +41,100 @@
 
     /* ── HAMBURGER MENU ── */
     .hamburger {
-      display: none;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      z-index: 201;
-      background: none;
-      border: none;
-      padding: 0;
+      display: none; align-items: center; gap: 8px; cursor: pointer;
+      z-index: 201; background: none; border: none; padding: 0;
     }
     .hamburger-bars {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 28px;
-      height: 28px;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 5px; width: 28px; height: 28px;
     }
     .hamburger-bars span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--dark);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      transform-origin: center;
+      display: block; width: 100%; height: 2px; background: var(--dark);
+      border-radius: 2px; transition: all 0.3s ease; transform-origin: center;
     }
     .hamburger.active .hamburger-bars span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.active .hamburger-bars span:nth-child(2) { opacity: 0; }
     .hamburger.active .hamburger-bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hamburger-close-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--mid);
-      white-space: nowrap;
-      display: none;
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid);
+      white-space: nowrap; display: none;
     }
-    .hamburger.active .hamburger-close-label {
-      display: inline;
-    }
+    .hamburger.active .hamburger-close-label { display: inline; }
 
     .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 12px; left: 12px;
-      right: auto;
-      z-index: 199;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 16px 20px;
-      gap: 0;
-      opacity: 0;
-      transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
-      transform: translateY(-8px);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.06);
-      min-width: 160px;
+      display: none; position: fixed; top: 12px; left: 12px; right: auto; z-index: 199;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      flex-direction: column; align-items: flex-start; padding: 16px 20px; gap: 0;
+      opacity: 0; transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(-8px); box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); min-width: 160px;
     }
     .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: none;
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 100px;
-      padding: 6px 12px 6px 8px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--dark);
-      transition: all 0.2s ease;
+      display: flex; align-items: center; gap: 6px; background: none;
+      border: 1px solid rgba(0,0,0,0.1); border-radius: 100px;
+      padding: 6px 12px 6px 8px; margin-bottom: 10px; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); transition: all 0.2s ease;
     }
-    .mobile-menu-close:hover {
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(0,0,0,0.25);
-    }
-    .mobile-menu-close svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
+    .mobile-menu-close:hover { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.25); }
+    .mobile-menu-close svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; }
     .mobile-menu a {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--mid);
-      text-decoration: none;
-      padding: 10px 0;
-      transition: color 0.2s ease;
-      position: relative;
-      width: 100%;
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid);
+      text-decoration: none; padding: 10px 0; transition: color 0.2s ease;
+      position: relative; width: 100%;
     }
-    .mobile-menu a:hover {
-      color: var(--purple);
-    }
+    .mobile-menu a:hover { color: var(--purple); }
     .mobile-menu a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: rgba(0,0,0,0.06);
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: rgba(0,0,0,0.06);
     }
     .mobile-menu a:last-child::after { display: none; }
 
-    /* ── HERO ── */
+    /* ── HERO (merged with bio) ── */
     .about-hero {
-      padding: 130px 60px 80px;
+      padding: 120px 60px 56px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      min-height: 100vh;
+      gap: 56px;
+      align-items: start;
     }
 
     .about-eyebrow {
       font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--purple); margin-bottom: 22px;
+      color: var(--purple); margin-bottom: 18px;
       display: flex; align-items: center; gap: 12px;
     }
     .about-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--purple); }
 
     .hero-text h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(38px, 4.4vw, 62px);
+      font-size: clamp(36px, 4vw, 56px);
       font-weight: 400; line-height: 1.08;
-      color: var(--dark); margin-bottom: 22px;
+      color: var(--dark); margin-bottom: 18px;
     }
     .hero-text h1 em { font-style: italic; color: var(--purple); }
 
     .hero-text .lead {
-      font-size: 16px; font-weight: 300; color: var(--mid);
-      line-height: 1.78; margin-bottom: 36px; max-width: 460px;
+      font-size: 15.5px; font-weight: 300; color: var(--mid);
+      line-height: 1.78; margin-bottom: 20px; max-width: 480px;
     }
 
-    .hero-stats {
-      display: flex;
-      gap: 0;
-      margin-bottom: 0;
+    .hero-bio p {
+      font-size: 14.5px; font-weight: 300; color: var(--mid);
+      line-height: 1.78; margin-bottom: 14px;
     }
-    .hero-stat {
-      display: flex; flex-direction: column; gap: 4px;
-      padding-right: 28px; margin-right: 28px;
-      border-right: 1px solid rgba(107,63,160,0.12);
-    }
-    .hero-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px; line-height: 1; color: var(--purple);
-    }
-    .stat-label { font-size: 12px; font-weight: 400; color: var(--mid); line-height: 1.4; }
+    .hero-bio p strong { font-weight: 500; color: var(--dark); }
 
     /* Photo collage */
     .hero-photos {
       position: relative;
-      height: 580px;
+      height: 520px;
     }
     .hero-photo-main {
-      position: absolute;
-      top: 0; left: 0;
+      position: absolute; top: 0; left: 0;
       width: 72%; height: 100%;
       border-radius: 22px; overflow: hidden;
       box-shadow: 0 28px 72px rgba(107,63,160,0.16);
@@ -224,205 +144,110 @@
       object-fit: cover; object-position: center 15%; display: block;
     }
     .hero-photo-accent {
-      position: absolute;
-      bottom: 40px; right: 0;
+      position: absolute; bottom: 40px; right: 0;
       width: 46%; height: 44%;
       border-radius: 18px; overflow: hidden;
       border: 4px solid var(--white);
       box-shadow: 0 16px 48px rgba(107,63,160,0.22);
     }
     .hero-photo-accent img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
     .photo-tag {
-      position: absolute;
-      top: 24px; right: 0;
-      background: var(--purple-bg);
-      border: 1px solid rgba(107,63,160,0.15);
-      border-radius: 100px;
-      padding: 8px 16px;
+      position: absolute; top: 24px; right: 0;
+      background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.15);
+      border-radius: 100px; padding: 8px 16px;
       font-size: 12px; font-weight: 500; color: var(--purple);
-      white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(107,63,160,0.1);
+      white-space: nowrap; box-shadow: 0 4px 16px rgba(107,63,160,0.1);
       cursor: default;
     }
-
     .photo-tag-tooltip {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      background: var(--dark);
-      color: rgba(255,255,255,0.85);
-      font-size: 11.5px;
-      font-weight: 400;
-      padding: 8px 14px;
-      border-radius: 10px;
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: all 0.25s ease;
-      pointer-events: none;
+      position: absolute; top: calc(100% + 10px); right: 0;
+      background: var(--dark); color: rgba(255,255,255,0.85);
+      font-size: 11.5px; font-weight: 400; padding: 8px 14px;
+      border-radius: 10px; white-space: nowrap;
+      opacity: 0; transform: translateY(-4px);
+      transition: all 0.25s ease; pointer-events: none;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
+    .photo-tag:hover .photo-tag-tooltip { opacity: 1; transform: translateY(0); }
 
-    .photo-tag:hover .photo-tag-tooltip {
-      opacity: 1;
-      transform: translateY(0);
+    /* ── SECTION CONTAINER (shared width for all card sections) ── */
+    .section-container {
+      padding: 0 60px 48px;
     }
-
-    /* ── STORY ── */
-    .story-section { padding: 0 60px 80px; }
-
-    .section-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--mid); margin-bottom: 32px;
+    .section-label-line {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 18px;
       display: flex; align-items: center; gap: 14px;
     }
-    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--light); }
+    .section-label-line::after { content: ''; flex: 1; height: 1px; background: var(--light); }
+    .section-label-line.purple { color: var(--purple); }
 
-    .story-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: stretch;
+    /* ── FUN FACTS ── */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
     }
-
-    .story-col h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(24px, 2.6vw, 34px);
-      font-weight: 400; line-height: 1.2; color: var(--dark); margin-bottom: 22px;
+    .fact-card {
+      background: var(--purple-bg);
+      border: 1px solid rgba(107,63,160,0.1);
+      border-radius: 16px; padding: 18px 16px;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+      display: flex; flex-direction: column;
     }
-    .story-col h2 em { font-style: italic; color: var(--purple); }
-    .story-col p {
-      font-size: 15.5px; font-weight: 300; color: var(--mid);
-      line-height: 1.82; margin-bottom: 18px;
-    }
-    .story-col p strong { font-weight: 500; color: var(--dark); }
-
-    /* Fun facts */
-    .facts-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; }
-    .facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .fact-card { background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.1); border-radius: 18px; padding: 18px 16px; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; }
-    .fact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,63,160,0.12); }
+    .fact-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(107,63,160,0.1); }
     .fact-emoji { font-size: 20px; margin-bottom: 10px; display: block; }
-    .fact-card strong { display: block; font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
-    .fact-card span { font-size: 12px; font-weight: 300; color: var(--mid); line-height: 1.55; }
+    .fact-card strong { display: block; font-size: 12.5px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
+    .fact-card span { font-size: 11.5px; font-weight: 300; color: var(--mid); line-height: 1.5; }
 
-    /* ── DESIGN PHILOSOPHY ── */
-    .philosophy-section {
-      max-width: 900px;
-      margin: 0 auto 64px;
-      padding: 0 60px;
-    }
-    .philosophy-label {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--purple); margin-bottom: 24px;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .philosophy-label::after {
-      content: ''; flex: 1; height: 1px; background: var(--light);
-    }
+    /* ── HOW I WORK ── */
     .philosophy-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 14px;
     }
     .philosophy-card {
-      padding: 24px 20px;
-      border-radius: 16px;
-      border: 1px solid rgba(107,63,160,0.1);
-      background: var(--white);
+      padding: 22px 20px; border-radius: 16px;
+      border: 1px solid rgba(107,63,160,0.1); background: var(--white);
       transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+      display: flex; flex-direction: column;
     }
-    .philosophy-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(107,63,160,0.08);
-    }
+    .philosophy-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(107,63,160,0.08); }
     .philosophy-card-num {
-      font-size: 28px; font-family: 'DM Serif Display', serif;
-      color: var(--purple-light); margin-bottom: 12px;
+      font-size: 26px; font-family: 'DM Serif Display', serif;
+      color: var(--purple-light); margin-bottom: 10px;
     }
-    .philosophy-card h3 {
-      font-size: 15px; font-weight: 600; color: var(--dark);
-      margin-bottom: 8px;
-    }
-    .philosophy-card p {
-      font-size: 13px; font-weight: 300; color: var(--mid);
-      line-height: 1.6;
-    }
+    .philosophy-card h3 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    .philosophy-card p { font-size: 12.5px; font-weight: 300; color: var(--mid); line-height: 1.6; }
 
     /* ── SKILLS & TOOLS ── */
-    .skills-section {
-      max-width: 900px;
-      margin: 0 auto 64px;
-      padding: 0 60px;
-    }
-    .skills-label {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--purple); margin-bottom: 24px;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .skills-label::after {
-      content: ''; flex: 1; height: 1px; background: var(--light);
-    }
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
     .skill-group {
-      padding: 20px 18px;
-      border-radius: 14px;
-      background: var(--purple-bg);
-      border: 1px solid rgba(107,63,160,0.08);
+      padding: 20px 18px; border-radius: 16px;
+      background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.08);
     }
     .skill-group-title {
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--purple); margin-bottom: 10px;
     }
-    .skill-group ul {
-      list-style: none;
-    }
-    .skill-group li {
-      font-size: 12.5px; font-weight: 400;
-      color: var(--dark); line-height: 1.8;
-    }
-
-    /* ── AVAILABILITY ── */
-    .availability-section {
-      margin: 0 60px 80px;
-      background: var(--purple); border-radius: 24px; padding: 56px 64px;
-      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
-    }
-    .availability-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(24px, 2.4vw, 34px);
-      font-weight: 400; color: white; line-height: 1.2; margin-bottom: 14px;
-    }
-    .availability-section h2 em { font-style: italic; color: var(--purple-light); }
-    .availability-section p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.72; max-width: 520px; }
-    .availability-ctas { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
-    .avail-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 13.5px; font-weight: 500; padding: 13px 26px;
-      border-radius: 100px; text-decoration: none; white-space: nowrap; transition: all 0.22s;
-    }
-    .avail-btn.primary { background: white; color: var(--purple); border: 1.5px solid white; }
-    .avail-btn.primary:hover { background: transparent; color: white; border-color: white; }
-    .avail-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.3); }
-    .avail-btn.secondary:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.6); }
+    .skill-group ul { list-style: none; }
+    .skill-group li { font-size: 12.5px; font-weight: 400; color: var(--dark); line-height: 1.8; }
 
     /* ── CAROUSEL ── */
-    .carousel-section { padding: 0 0 88px; }
+    .carousel-section { padding: 0 0 72px; }
     .carousel-header {
-      padding: 0 60px; margin-bottom: 28px;
+      padding: 0 60px; margin-bottom: 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .carousel-title {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--mid);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid);
     }
     .carousel-hint { font-size: 12px; color: var(--purple-light); }
 
@@ -434,29 +259,26 @@
     .carousel-outer:active { cursor: grabbing; }
 
     .carousel-strip {
-      display: flex; gap: 14px;
-      padding: 0 60px 12px;
-      width: max-content;
+      display: flex; gap: 14px; padding: 0 60px 12px; width: max-content;
     }
 
     .c-slide {
-      flex-shrink: 0; height: 380px;
+      flex-shrink: 0; height: 340px;
       border-radius: 18px; overflow: hidden; background: var(--light);
     }
-    .c-slide:nth-child(5n+1) { width: 290px; }
-    .c-slide:nth-child(5n+2) { width: 340px; }
-    .c-slide:nth-child(5n+3) { width: 260px; }
-    .c-slide:nth-child(5n+4) { width: 320px; }
-    .c-slide:nth-child(5n+0) { width: 280px; }
+    .c-slide:nth-child(5n+1) { width: 260px; }
+    .c-slide:nth-child(5n+2) { width: 310px; }
+    .c-slide:nth-child(5n+3) { width: 240px; }
+    .c-slide:nth-child(5n+4) { width: 290px; }
+    .c-slide:nth-child(5n+0) { width: 250px; }
     .c-slide img {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); pointer-events: none;
     }
     .c-slide:hover img { transform: scale(1.04); }
 
     .carousel-progress-wrap {
-      padding: 16px 60px 0;
+      padding: 14px 60px 0;
       display: flex; align-items: center; gap: 14px;
     }
     .carousel-progress-track {
@@ -496,32 +318,30 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .about-hero { grid-template-columns: 1fr; padding: 120px 40px 60px; gap: 48px; min-height: auto; }
+      .about-hero { grid-template-columns: 1fr; padding: 110px 40px 48px; gap: 40px; }
       .hero-photos { height: 420px; }
-      .story-grid { grid-template-columns: 1fr; gap: 44px; }
-      .philosophy-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .facts-grid { grid-template-columns: repeat(3, 1fr); }
+      .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
+      .skills-grid { grid-template-columns: repeat(4, 1fr); }
     }
     @media (max-width: 768px) {
-      .philosophy-section, .skills-section { padding: 0 24px; margin-bottom: 48px; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
       nav { padding: 18px 24px; }
       nav ul { display: none; }
       .hamburger { display: flex; order: -1; }
       .nav-logo { order: 1; }
       .nav-logo img { height: 40px; }
-      .about-hero { padding: 100px 24px 48px; }
-      .story-section { padding: 0 24px 56px; }
-      .availability-section { grid-template-columns: 1fr; margin: 0 24px 56px; padding: 36px; }
-      .availability-ctas { flex-direction: row; }
-      .facts-grid { grid-template-columns: 1fr; }
+      .about-hero { padding: 100px 24px 40px; }
       .hero-photos { height: auto; }
       .hero-photo-main { position: relative; width: 100%; height: auto; border-radius: 16px; }
       .hero-photo-main img { height: auto; object-fit: contain; object-position: center; }
       .hero-photo-accent { width: 35%; height: auto; bottom: -20px; right: 12px; border-radius: 14px; }
       .hero-photo-accent img { height: auto; object-fit: contain; }
       .photo-tag { font-size: 11px; padding: 6px 12px; top: 16px; }
-      .carousel-section { padding: 0 0 56px; }
+      .section-container { padding: 0 24px 40px; }
+      .facts-grid { grid-template-columns: repeat(3, 1fr); }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .carousel-section { padding: 0 0 48px; }
       .carousel-header { padding: 0 24px; }
       .carousel-strip { padding: 0 24px 12px; gap: 10px; }
       .carousel-progress-wrap { padding: 14px 24px 0; }
@@ -535,19 +355,21 @@
       .nav-cards { flex-direction: column; padding: 0 24px 36px; }
       footer { padding: 24px; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .footer-left, .footer-right { width: 100%; text-align: center; }
-      .footer-center .footer-sep { margin: 0 6px; }
+      .footer-center { display: none; }
     }
     @media (max-width: 480px) {
-      .about-hero { padding: 90px 20px 36px; }
+      .about-hero { padding: 90px 20px 32px; }
       .hero-text h1 { font-size: clamp(28px, 8vw, 38px); }
       .hero-text .lead { font-size: 14px; }
-      .hero-stats { flex-wrap: wrap; gap: 16px; }
-      .hero-stat { padding-right: 20px; margin-right: 20px; }
-      .stat-num { font-size: 26px; }
-      .hero-photos { height: auto; }
-      .hero-photo-main { width: 100%; border-radius: 14px; }
+      .hero-bio p { font-size: 13.5px; }
       .hero-photo-accent { width: 32%; bottom: -16px; right: 8px; border-radius: 12px; border-width: 3px; }
       .photo-tag { font-size: 10px; padding: 5px 10px; top: 12px; }
+      .photo-tag-tooltip { display: none; }
+      .section-container { padding: 0 20px 36px; }
+      .facts-grid { grid-template-columns: repeat(2, 1fr); }
+      .facts-grid .fact-card:last-child { grid-column: 1 / -1; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
       .c-slide { height: 170px; }
       .c-slide:nth-child(5n+1) { width: 160px; }
       .c-slide:nth-child(5n+2) { width: 190px; }
@@ -555,11 +377,6 @@
       .c-slide:nth-child(5n+4) { width: 175px; }
       .c-slide:nth-child(5n+0) { width: 160px; }
       .carousel-strip { gap: 8px; }
-      .availability-section { margin: 0 20px 56px; padding: 28px 24px; }
-      .availability-ctas { flex-direction: column; }
-      .photo-tag-tooltip { display: none; }
-      .bottom-nav { flex-wrap: wrap; gap: 14px; }
-      .bottom-nav-link { font-size: 11px; }
     }
   </style>
 </head>
@@ -592,13 +409,17 @@
     <a href="index.html#contact">Contact</a>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO + BIO (merged) -->
   <section class="about-hero">
-
     <div class="hero-text fade-in">
       <p class="about-eyebrow">A little more about me</p>
       <h1>Designer, researcher,<br /><em>perpetual learner.</em></h1>
       <p class="lead">Product designer + UX researcher driven by curiosity, inclusion, and the belief that thoughtful design can make the world more human.</p>
+      <div class="hero-bio">
+        <p>I'm <strong>Jasmine Sayed</strong> — a Product Designer and UX Researcher pursuing my <strong>Master's in Human Centered Design & Engineering at the University of Washington</strong> ('27).</p>
+        <p>I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> building research-driven, human-centered experiences — especially at the crossroads of AI and accessibility.</p>
+        <p>I do both design and research because I've seen what happens when they're siloed. The best work starts with understanding people deeply and ends with designs that reflect what you learned — closing the gap between insight and interface.</p>
+      </div>
     </div>
 
     <div class="hero-photos fade-in">
@@ -612,60 +433,45 @@
         <span class="photo-tag-tooltip">SF native, currently in Seattle — city girl at heart!</span>
       </div>
     </div>
-
   </section>
 
-  <!-- STORY + FACTS -->
-  <section class="story-section">
-    <p class="section-label fade-in">My story</p>
-
-    <div class="story-grid">
-      <div class="story-col fade-in">
-        <h2>Designing with purpose,<br /><em>always.</em></h2>
-        <p>I'm <strong>Jasmine Sayed</strong> — a Product Designer and UX Researcher pursuing my <strong>Master's in Human Centered Design & Engineering at the University of Washington</strong> ('27).</p>
-        <p>My design journey started with my Girl Scout Gold Award, where I built my first website and realized tech could actually make a difference for people.</p>
-        <p>Since then I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> building research-driven, human-centered experiences — especially at the crossroads of AI and accessibility.</p>
-        <p>I do both design and research because I've seen what happens when they're siloed: designers guess, researchers report, and neither shapes the product the way it should. The best work I've done started with understanding people deeply and ended with designs that reflected what I learned. That's the practice I care about — closing the gap between insight and interface.</p>
-      </div>
-
-      <div class="fade-in">
-        <p class="facts-label">When I'm not designing</p>
-        <div class="facts-grid">
-          <div class="fact-card"><span class="fact-emoji">👩‍🏫</span><strong>I'm Teaching!</strong><span>Nothing beats watching a kid's face light up when something finally clicks</span></div>
-          <div class="fact-card"><span class="fact-emoji">🌋</span><strong>I'm Out Exploring</strong><span>I once hiked an active volcano and would absolutely do it again</span></div>
-          <div class="fact-card"><span class="fact-emoji">💡</span><strong>I'm at a Hackathon</strong><span>48 hours of chaos that somehow turns into something real? Sign me up</span></div>
-          <div class="fact-card"><span class="fact-emoji">🍣</span><strong>I'm Being a Foodie</strong><span>Sushi and tiramisu are my love languages, no further questions</span></div>
-          <div class="fact-card"><span class="fact-emoji">🏀</span><strong>I'm Cheering on My Teams</strong><span>Seahawks and Lakers ride or die — I don't make the rules</span></div>
-        </div>
-      </div>
+  <!-- FUN FACTS -->
+  <div class="section-container fade-in">
+    <p class="section-label-line">When I'm not designing</p>
+    <div class="facts-grid">
+      <div class="fact-card"><span class="fact-emoji">👩‍🏫</span><strong>I'm Teaching!</strong><span>Nothing beats watching a kid's face light up when something finally clicks</span></div>
+      <div class="fact-card"><span class="fact-emoji">🌋</span><strong>I'm Out Exploring</strong><span>I once hiked an active volcano and would absolutely do it again</span></div>
+      <div class="fact-card"><span class="fact-emoji">💡</span><strong>I'm at a Hackathon</strong><span>48 hours of chaos that somehow turns into something real? Sign me up</span></div>
+      <div class="fact-card"><span class="fact-emoji">🍣</span><strong>I'm Being a Foodie</strong><span>Sushi and tiramisu are my love languages, no further questions</span></div>
+      <div class="fact-card"><span class="fact-emoji">🏀</span><strong>I'm Cheering on My Teams</strong><span>Seahawks and Lakers ride or die — I don't make the rules</span></div>
     </div>
-  </section>
+  </div>
 
-  <!-- DESIGN PHILOSOPHY -->
-  <div class="philosophy-section fade-in">
-    <p class="philosophy-label">How I Work</p>
+  <!-- HOW I WORK -->
+  <div class="section-container fade-in">
+    <p class="section-label-line purple">How I Work</p>
     <div class="philosophy-grid">
       <div class="philosophy-card">
         <div class="philosophy-card-num">01</div>
         <h3>Research before pixels</h3>
-        <p>I don't start designing until I understand the people I'm designing for. Interviews, observations, and data come first. The best interfaces are built on evidence, not assumptions.</p>
+        <p>I don't start designing until I understand the people I'm designing for. Interviews, observations, and data come first.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-card-num">02</div>
         <h3>Design for the edges</h3>
-        <p>If it works for the most constrained user, it works for everyone. I prioritize accessibility and inclusion not as afterthoughts, but as the starting point for better product decisions.</p>
+        <p>If it works for the most constrained user, it works for everyone. Accessibility and inclusion are the starting point, not an afterthought.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-card-num">03</div>
         <h3>Show the thinking</h3>
-        <p>Good design looks obvious in hindsight. I make sure stakeholders see the reasoning behind every decision, so the work sells itself and survives beyond the meeting room.</p>
+        <p>Good design looks obvious in hindsight. I make sure stakeholders see the reasoning behind every decision.</p>
       </div>
     </div>
   </div>
 
   <!-- SKILLS & TOOLS -->
-  <div class="skills-section fade-in">
-    <p class="skills-label">Skills & Tools</p>
+  <div class="section-container fade-in">
+    <p class="section-label-line purple">Skills & Tools</p>
     <div class="skills-grid">
       <div class="skill-group">
         <p class="skill-group-title">Design</p>
@@ -711,23 +517,6 @@
     </div>
   </div>
 
-  <!-- AVAILABILITY -->
-  <div class="availability-section fade-in">
-    <div>
-      <h2>Currently open to<br /><em>new opportunities.</em></h2>
-      <p>Looking for full-time roles in <strong style="color:rgba(255,255,255,0.9)">Product Design, UX Research, Product Management, and AI</strong>.</p>
-    </div>
-    <div class="availability-ctas">
-      <a href="mailto:sayedjasmine@gmail.com" class="avail-btn primary" id="emailBtn">Say hello →</a>
-      <a href="index.html#work" class="avail-btn secondary">View my work</a>
-      <p style="margin-top: 6px; text-align: center;">
-        <span style="font-size: 12px; color: rgba(255,255,255,0.45);">Or copy my email:</span><br />
-        <span id="emailText" style="font-size: 13px; color: rgba(255,255,255,0.8); cursor: pointer; border-bottom: 1px dashed rgba(255,255,255,0.3); padding-bottom: 2px;" title="Click to copy">sayedjasmine@gmail.com</span>
-        <span id="copyConfirm" style="font-size: 11px; color: rgba(255,255,255,0.6); margin-left: 6px; opacity: 0; transition: opacity 0.3s;"></span>
-      </p>
-    </div>
-  </div>
-
   <!-- CAROUSEL -->
   <section class="carousel-section fade-in">
     <div class="carousel-header">
@@ -737,7 +526,6 @@
 
     <div class="carousel-outer" id="carouselOuter">
       <div class="carousel-strip" id="carouselStrip">
-        <!-- Set 1 — 18 photos, randomized -->
         <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-4.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
@@ -755,7 +543,7 @@
         <div class="c-slide"><img src="images/about-carousel-5.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-2.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-12.png" alt="Jasmine" /></div>
-        <!-- Set 2 — duplicate for seamless loop -->
+        <!-- Duplicate for seamless loop -->
         <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-4.png"  alt="Jasmine" /></div>
         <div class="c-slide"><img src="images/about-carousel-9.png"  alt="Jasmine" /></div>
@@ -814,134 +602,70 @@
     (function() {
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
-      if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', function(e) {
-          e.stopPropagation();
-          hamburger.classList.toggle('active');
-          mobileMenu.classList.toggle('open');
-          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        });
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-          if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-          }
-        });
-      }
-    })();
-
-    function closeMobileMenu() {
-      document.getElementById('hamburger').classList.remove('active');
-      document.getElementById('mobileMenu').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Email copy — always-visible email with click-to-copy
-    (function() {
-      const emailText = document.getElementById('emailText');
-      const copyConfirm = document.getElementById('copyConfirm');
-
-      if (!emailText) return;
-
-      emailText.addEventListener('click', function() {
-        navigator.clipboard.writeText('sayedjasmine@gmail.com').then(() => {
-          copyConfirm.textContent = 'Copied!';
-          copyConfirm.style.opacity = '1';
-          setTimeout(() => { copyConfirm.style.opacity = '0'; }, 2000);
-        }).catch(() => {
-          const range = document.createRange();
-          range.selectNodeContents(emailText);
-          const sel = window.getSelection();
-          sel.removeAllRanges();
-          sel.addRange(range);
-          try {
-            document.execCommand('copy');
-            copyConfirm.textContent = 'Copied!';
-            copyConfirm.style.opacity = '1';
-            setTimeout(() => { copyConfirm.style.opacity = '0'; }, 2000);
-          } catch(err) {
-            copyConfirm.textContent = 'Select & copy manually';
-            copyConfirm.style.opacity = '1';
-          }
-          sel.removeAllRanges();
-        });
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+      });
+      window.closeMobileMenu = function() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+      };
+      document.querySelectorAll('.mobile-menu a').forEach(function(a) {
+        a.addEventListener('click', closeMobileMenu);
       });
     })();
 
-    // Hide carousel slides whose image fails to load (no blank boxes)
-    document.querySelectorAll('.c-slide img').forEach(img => {
-      img.addEventListener('error', () => {
-        img.closest('.c-slide').style.display = 'none';
-      });
-    });
-
-    // Fade-in
+    // Fade-in on scroll
     const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.08 });
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.06 });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-    // ── CAROUSEL ──
-    const outer  = document.getElementById('carouselOuter');
-    const strip  = document.getElementById('carouselStrip');
-    const fill   = document.getElementById('progressFill');
-    const label  = document.getElementById('progressLabel');
+    // Carousel: auto-scroll + drag
+    (function() {
+      const outer = document.getElementById('carouselOuter');
+      const strip = document.getElementById('carouselStrip');
+      const fill = document.getElementById('progressFill');
+      const label = document.getElementById('progressLabel');
+      let isDown = false, startX, scrollL;
+      let paused = false;
+      const speed = 0.6; // px per frame
 
-    let isHovering = false;
-    let isDragging = false;
-    const autoSpeed = 0.7;
-
-    function autoScrollTick() {
-      if (!isHovering && !isDragging) {
-        outer.scrollLeft += autoSpeed;
-        const half = strip.scrollWidth / 2;
-        if (outer.scrollLeft >= half) outer.scrollLeft -= half;
+      function updateProgress() {
+        const pct = outer.scrollLeft / (outer.scrollWidth - outer.clientWidth) * 100;
+        fill.style.width = Math.min(pct, 100) + '%';
+        label.textContent = Math.round(Math.min(pct, 100)) + '%';
       }
-      updateProgress();
-      requestAnimationFrame(autoScrollTick);
-    }
 
-    function updateProgress() {
-      const half = strip.scrollWidth / 2;
-      const pct  = half > 0 ? Math.min((outer.scrollLeft % half) / half * 100, 100) : 0;
-      fill.style.width = pct + '%';
-      const idx = Math.round(pct / (100 / 18));
-      label.textContent = idx > 0 ? `${Math.min(idx, 18)} / 18` : 'drag to explore';
-    }
+      // Auto-scroll
+      function autoScroll() {
+        if (!paused && !isDown) {
+          outer.scrollLeft += speed;
+          // Seamless loop
+          const halfW = strip.scrollWidth / 2;
+          if (outer.scrollLeft >= halfW) outer.scrollLeft -= halfW;
+        }
+        requestAnimationFrame(autoScroll);
+      }
+      requestAnimationFrame(autoScroll);
 
-    outer.addEventListener('mouseenter', () => isHovering = true);
-    outer.addEventListener('mouseleave', () => { isHovering = false; isDragging = false; });
+      // Pause on hover
+      outer.addEventListener('mouseenter', () => { paused = true; });
+      outer.addEventListener('mouseleave', () => { paused = false; isDown = false; });
 
-    let dragStartX = 0, dragScrollL = 0;
-    outer.addEventListener('mousedown', e => {
-      isDragging = true; dragStartX = e.pageX; dragScrollL = outer.scrollLeft;
-      outer.style.cursor = 'grabbing';
-    });
-    window.addEventListener('mouseup', () => { isDragging = false; outer.style.cursor = 'grab'; });
-    window.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      e.preventDefault();
-      outer.scrollLeft = dragScrollL - (e.pageX - dragStartX) * 1.4;
-    });
+      // Pause on touch
+      outer.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+      outer.addEventListener('touchend', () => { setTimeout(() => { paused = false; }, 2000); });
 
-    let touchStartX = 0, touchScrollL = 0;
-    outer.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].pageX; touchScrollL = outer.scrollLeft; isHovering = true;
-    }, { passive: true });
-    outer.addEventListener('touchmove', e => {
-      outer.scrollLeft = touchScrollL + (touchStartX - e.touches[0].pageX);
-    }, { passive: true });
-    outer.addEventListener('touchend', () => { isHovering = false; });
-
-    outer.addEventListener('scroll', () => {
-      const half = strip.scrollWidth / 2;
-      if (outer.scrollLeft >= half) outer.scrollLeft -= half;
-      if (outer.scrollLeft <= 0 && half > 0) outer.scrollLeft += half;
-    });
-
-    autoScrollTick();
+      // Drag support
+      outer.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - outer.offsetLeft; scrollL = outer.scrollLeft; });
+      outer.addEventListener('mouseup', () => { isDown = false; });
+      outer.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); outer.scrollLeft = scrollL - (e.pageX - outer.offsetLeft - startX) * 1.4; });
+      outer.addEventListener('scroll', updateProgress);
+    })();
   </script>
+
 </body>
 </html>
