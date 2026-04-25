@@ -316,11 +316,43 @@
       .nav-logo { order: 1; }
       .nav-logo img { height: 40px; }
       .about-hero { padding: 100px 24px 40px; }
-      .hero-photos { height: auto; position: relative; }
-      .hero-photo-main { position: relative; width: 100%; height: auto; border-radius: 16px; overflow: hidden; }
-      .hero-photo-main img { width: 100%; height: auto; object-fit: contain; object-position: center; display: block; }
-      .hero-photo-accent { width: 35%; height: auto; bottom: -20px; right: 12px; border-radius: 14px; }
-      .hero-photo-accent img { width: 100%; height: auto; object-fit: contain; display: block; }
+      .hero-photos {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 12px;
+        height: auto;
+        position: relative;
+      }
+      .hero-photo-main {
+        position: relative;
+        width: 100%;
+        height: auto;
+        bottom: auto; right: auto; top: auto; left: auto;
+        border-radius: 14px;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+        box-shadow: 0 16px 40px rgba(107,63,160,0.14);
+      }
+      .hero-photo-main img {
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center 15%; display: block;
+      }
+      .hero-photo-accent {
+        position: relative;
+        width: 100%;
+        height: auto;
+        bottom: auto; right: auto; top: auto; left: auto;
+        border-radius: 12px;
+        border: 3px solid var(--white);
+        box-shadow: 0 8px 22px rgba(107,63,160,0.18);
+        aspect-ratio: 3 / 4;
+        align-self: end;
+        margin-bottom: 14px;
+      }
+      .hero-photo-accent img {
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
+      }
       .section-container { padding: 0 24px 40px; }
       .facts-grid { grid-template-columns: repeat(3, 1fr); }
       .philosophy-grid { grid-template-columns: 1fr; }
@@ -336,7 +368,8 @@
       .hero-text h1 { font-size: clamp(26px, 7vw, 34px); }
       .hero-bio p { font-size: 13.5px; }
       .section-label-line { margin-bottom: 16px; }
-      .hero-photo-accent { width: 32%; bottom: -16px; right: 8px; border-radius: 12px; border-width: 3px; }
+      .hero-photos { gap: 10px; }
+      .hero-photo-accent { border-width: 2.5px; margin-bottom: 10px; }
       .section-container { padding: 0 20px 36px; }
       .facts-grid { grid-template-columns: repeat(2, 1fr); }
       .facts-grid .fact-card:last-child { grid-column: 1 / -1; }
