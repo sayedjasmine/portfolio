@@ -205,13 +205,13 @@
 
     .hero-left { max-width: 640px; }
 
-    .page-eyebrow {
-      font-size: 11px; font-weight: 500;
+    .page-hero .page-eyebrow {
+      font-size: 13px; font-weight: 500;
       letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--purple); margin-bottom: 18px;
-      display: flex; align-items: center; gap: 12px;
+      display: flex; align-items: center; gap: 14px;
     }
-    .page-eyebrow::before {
+    .page-hero .page-eyebrow::before {
       content: ''; width: 28px; height: 1.5px; background: var(--purple);
     }
 
@@ -249,12 +249,12 @@
       margin: 0 auto;
     }
 
-    /* Section labels */
+    /* Section labels — eyebrow style, refined */
     .section-label {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--mid); margin-bottom: 20px;
-      padding-top: 40px;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 20px;
+      padding-top: 52px;
       display: flex; align-items: center; gap: 14px;
       scroll-margin-top: 90px;
     }
@@ -265,17 +265,12 @@
     /* ── FEATURED ROLE (Microsoft) ── */
     .featured-role {
       display: flex;
-      gap: 28px;
-      padding: 28px;
-      border-radius: 20px;
-      border: 1px solid rgba(107,63,160,0.1);
-      background: var(--white);
-      margin-bottom: 20px;
-      transition: box-shadow 0.2s;
+      gap: 24px;
+      padding: 20px 4px;
+      border-bottom: 1px solid rgba(107,63,160,0.10);
+      transition: background 0.2s ease;
     }
-    .featured-role:hover {
-      box-shadow: 0 8px 32px rgba(107,63,160,0.06);
-    }
+    .featured-role:hover { background: rgba(107,63,160,0.025); }
 
     .featured-logo {
       width: 52px; height: 52px;
@@ -316,73 +311,62 @@
       font-size: 11px; font-weight: 500; color: var(--purple); margin-top: 2px;
     }
 
-    .featured-desc {
-      font-size: 13px; font-weight: 300; color: var(--mid);
-      line-height: 1.6; margin-top: 4px;
-    }
-
     .featured-date {
       font-size: 11.5px; color: var(--mid);
       white-space: nowrap; flex-shrink: 0; padding-top: 2px;
     }
 
-    /* ── COMPACT WORK GRID ── */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .work-card {
+    /* ── WORK LIST (chronological) ── */
+    .work-list {
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 18px 20px;
-      border-radius: 14px;
-      border: 1px solid rgba(107,63,160,0.08);
-      background: var(--white);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .work-card:hover {
-      border-color: var(--purple-light);
-      box-shadow: 0 4px 16px rgba(107,63,160,0.06);
+      flex-direction: column;
+      margin: 8px 0 16px;
+      border-top: 1px solid rgba(107,63,160,0.10);
     }
 
-    .work-emoji {
-      width: 36px; height: 36px;
-      border-radius: 10px; background: var(--light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; flex-shrink: 0;
-      border: 1px solid rgba(107,63,160,0.08);
+    .work-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 28px;
+      padding: 18px 4px;
+      border-bottom: 1px solid rgba(107,63,160,0.10);
+      align-items: start;
+      transition: background 0.2s ease;
+    }
+    .work-row:hover { background: rgba(107,63,160,0.025); }
+
+    .work-row-date {
+      font-size: 11.5px;
+      color: var(--mid);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding-top: 3px;
     }
 
-    .work-card-info { flex: 1; min-width: 0; }
-
-    .work-card-top {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; gap: 8px;
-    }
-
-    .work-card-title {
-      font-size: 13.5px; font-weight: 500; color: var(--dark);
+    .work-row-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--dark);
       line-height: 1.3;
     }
 
-    .work-card-date {
-      font-size: 10.5px; color: var(--mid);
-      white-space: nowrap; flex-shrink: 0; padding-top: 2px;
+    .work-row-company {
+      font-size: 12.5px;
+      color: var(--purple);
+      font-weight: 500;
+      margin-top: 3px;
     }
 
-    .work-card-company {
-      font-size: 11.5px; color: var(--purple);
-      font-weight: 500; margin-top: 2px;
+    .work-year {
+      grid-column: 1 / -1;
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--purple);
+      font-weight: 400;
+      padding: 18px 4px 6px;
+      letter-spacing: -0.01em;
     }
-
-    .work-card-desc {
-      font-size: 12px; font-weight: 300;
-      color: var(--mid); line-height: 1.55; margin-top: 6px;
-    }
+    .work-year:first-child { padding-top: 4px; }
 
     /* ── ACTIVITIES (compact rows) ── */
     .activities-list {
@@ -411,11 +395,6 @@
     .activity-row-org {
       font-size: 11.5px; color: var(--purple);
       font-weight: 500; margin-top: 2px;
-    }
-
-    .activity-row-desc {
-      font-size: 12.5px; font-weight: 300;
-      color: var(--mid); line-height: 1.6; margin-top: 6px;
     }
 
     .activity-row-date {
@@ -461,60 +440,9 @@
     .activity-group-role-title {
       font-size: 13.5px; font-weight: 500; color: var(--dark);
     }
-    .activity-group-role-desc {
-      font-size: 12px; font-weight: 300; color: var(--mid);
-      line-height: 1.55; margin-top: 3px;
-    }
     .activity-group-role-date {
       font-size: 11px; color: var(--mid);
       white-space: nowrap; flex-shrink: 0; padding-top: 2px;
-    }
-
-    /* ── JOURNEY TIMELINE ── */
-    .journey-strip {
-      display: flex;
-      gap: 0;
-      margin: 0 0 36px;
-      padding: 28px 0;
-      border-top: 1px solid var(--light);
-      border-bottom: 1px solid var(--light);
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .journey-step {
-      flex: 1;
-      min-width: 140px;
-      padding: 0 20px;
-      position: relative;
-      border-left: 2px solid var(--light);
-    }
-    .journey-step:first-child { border-left: none; }
-    .journey-step-year {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--purple); margin-bottom: 6px;
-    }
-    .journey-step-title {
-      font-size: 13px; font-weight: 500;
-      color: var(--dark); margin-bottom: 2px;
-    }
-    .journey-step-desc {
-      font-size: 11.5px; font-weight: 300;
-      color: var(--mid); line-height: 1.5;
-    }
-    .journey-step.current .journey-step-year {
-      color: white;
-      background: var(--purple);
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    /* ── CERTS (inline row) ── */
-    .certs-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
     }
 
     .cert-chip {
@@ -571,7 +499,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-row { grid-template-columns: 130px 1fr; gap: 22px; }
     }
 
     @media (max-width: 960px) {
@@ -582,11 +510,9 @@
       .nav-logo img { height: 40px; }
       .page-hero { padding: 100px 28px 36px; flex-direction: column; align-items: flex-start; }
       .exp-content { padding: 0 28px 60px; }
-      .work-grid { grid-template-columns: 1fr; }
-      .journey-strip { gap: 0; padding: 20px 0; }
-      .journey-step { min-width: 120px; padding: 0 14px; }
-      .journey-step-title { font-size: 12px; }
-      .journey-step-desc { font-size: 11px; }
+      .work-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 4px; }
+      .work-row-date { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; padding-top: 0; }
+      .work-year { font-size: 18px; padding: 14px 4px 4px; }
       .certs-row { grid-template-columns: repeat(2, 1fr); }
       .nav-cards { flex-direction: column; padding: 0 24px 36px; }
       footer { padding: 24px 28px; flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -599,20 +525,6 @@
       .featured-role-row { flex-direction: column; gap: 6px; align-items: flex-start; }
       .featured-date { white-space: normal; }
       .certs-row { grid-template-columns: 1fr; }
-      .journey-strip {
-        flex-direction: column;
-        gap: 0;
-        padding: 18px 0;
-        overflow-x: visible;
-      }
-      .journey-step {
-        min-width: 0;
-        width: 100%;
-        padding: 14px 18px;
-        border-left: none;
-        border-top: 1px solid var(--light);
-      }
-      .journey-step:first-child { border-top: none; padding-top: 4px; }
     }
   </style>
 </head>
@@ -659,181 +571,121 @@
   <!-- MAIN -->
   <div class="exp-content">
 
-    <!-- ── JOURNEY ── -->
-    <div class="journey-strip fade-in">
-      <div class="journey-step">
-        <p class="journey-step-year">2020</p>
-        <p class="journey-step-title">The Spark</p>
-        <p class="journey-step-desc">Girl Scout Gold Award project. Built my first website and discovered design could create real impact.</p>
-      </div>
-      <div class="journey-step">
-        <p class="journey-step-year">2022</p>
-        <p class="journey-step-title">Going Deep</p>
-        <p class="journey-step-desc">Joined UXFest SLO and Cal Poly Iter8. Started shipping real client work and growing as a designer.</p>
-      </div>
-      <div class="journey-step">
-        <p class="journey-step-year">2024</p>
-        <p class="journey-step-title">Industry + Leadership</p>
-        <p class="journey-step-desc">Led UXFest SLO as President. Designed for AWS, Nexstera, and Ensemble. Published accessibility research in TAGA Journal.</p>
-      </div>
-      <div class="journey-step">
-        <p class="journey-step-year">2025</p>
-        <p class="journey-step-title">Graduate School</p>
-        <p class="journey-step-desc">HCDE Master's at UW. AI product design at DevSpot. Deepened research methodology and systems thinking.</p>
-      </div>
-      <div class="journey-step current">
-        <p class="journey-step-year">Now</p>
-        <p class="journey-step-title">Microsoft CoreAI</p>
-        <p class="journey-step-desc">Shaping AI developer experiences at Microsoft Foundry. Research and design for agent creation tools.</p>
-      </div>
-    </div>
-
     <!-- ── WORK ── -->
     <h2 class="section-label" id="work">Work Experience</h2>
 
-    <!-- Featured: Microsoft -->
-    <div class="featured-role fade-in">
-      <div class="featured-logo" style="background: #f25022;">
-        <svg width="52" height="52" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" fill="white"/><rect x="9" y="9" width="10" height="10" fill="#f25022"/><rect x="21" y="9" width="10" height="10" fill="#7fba00"/><rect x="9" y="21" width="10" height="10" fill="#00a4ef"/><rect x="21" y="21" width="10" height="10" fill="#ffb900"/></svg>
-      </div>
-      <div class="featured-info">
-        <div class="featured-company">Microsoft</div>
-        <div class="featured-location">Redmond, WA</div>
-        <div class="featured-roles">
-          <div>
-            <div class="featured-role-row">
-              <div class="featured-role-left">
-                <div class="featured-title">User Experience Designer</div>
-                <div class="featured-type">Co-op · Microsoft CoreAI</div>
+    <!-- Chronological work list -->
+    <div class="work-list fade-in">
+
+      <p class="work-year">2026</p>
+
+      <div class="featured-role">
+        <div class="featured-logo" style="background: #f25022;">
+          <svg width="52" height="52" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" fill="white"/><rect x="9" y="9" width="10" height="10" fill="#f25022"/><rect x="21" y="9" width="10" height="10" fill="#7fba00"/><rect x="9" y="21" width="10" height="10" fill="#00a4ef"/><rect x="21" y="21" width="10" height="10" fill="#ffb900"/></svg>
+        </div>
+        <div class="featured-info">
+          <div class="featured-company">Microsoft</div>
+          <div class="featured-location">Redmond, WA</div>
+          <div class="featured-roles">
+            <div>
+              <div class="featured-role-row">
+                <div class="featured-role-left">
+                  <div class="featured-title">User Experience Designer</div>
+                  <div class="featured-type">Co-op · Microsoft CoreAI</div>
+                </div>
+                <div class="featured-date">Apr – Jun 2026</div>
               </div>
-              <div class="featured-date">Apr – Jun 2026</div>
             </div>
-            <div class="featured-desc">Working with Microsoft's CoreAI team to redesign Microsoft Foundry.</div>
-          </div>
-          <div>
-            <div class="featured-role-row">
-              <div class="featured-role-left">
-                <div class="featured-title">User Experience Researcher</div>
-                <div class="featured-type">Co-op · Microsoft CoreAI</div>
+            <div>
+              <div class="featured-role-row">
+                <div class="featured-role-left">
+                  <div class="featured-title">User Experience Researcher</div>
+                  <div class="featured-type">Co-op · Microsoft CoreAI</div>
+                </div>
+                <div class="featured-date">Jan – Mar 2026</div>
               </div>
-              <div class="featured-date">Jan – Mar 2026</div>
             </div>
-            <div class="featured-desc">End-to-end usability testing and research to improve the Microsoft Foundry experience.</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Rest of work: compact 2-col grid -->
-    <div class="work-grid fade-in">
+      <p class="work-year">2025</p>
 
-      <div class="work-card">
-        <div class="work-emoji">🎓</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">Design & Operations Associate</div>
-            <div class="work-card-date">Sep 2025 – Present</div>
-          </div>
-          <div class="work-card-company">UW Children's Center</div>
-          <div class="work-card-desc">Digital materials and classroom operations support.</div>
+      <div class="work-row">
+        <div class="work-row-date">Sep 2025 – Present</div>
+        <div>
+          <div class="work-row-title">Design &amp; Operations Associate</div>
+          <div class="work-row-company">UW Children's Center</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">🚀</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">AI Product Design Intern</div>
-            <div class="work-card-date">Jun – Sep 2025</div>
-          </div>
-          <div class="work-card-company">DevSpot</div>
-          <div class="work-card-desc">Designed messaging feature, design system annotations, and recap reports.</div>
+      <div class="work-row">
+        <div class="work-row-date">Jun – Sep 2025</div>
+        <div>
+          <div class="work-row-title">AI Product Design Intern</div>
+          <div class="work-row-company">DevSpot</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">⚙️</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">Junior Product Designer</div>
-            <div class="work-card-date">Jun – Sep 2024</div>
-          </div>
-          <div class="work-card-company">Ensemble Technologies</div>
-          <div class="work-card-desc">UI design for software bridging design and development workflows.</div>
+      <p class="work-year">2024</p>
+
+      <div class="work-row">
+        <div class="work-row-date">Jun – Sep 2024</div>
+        <div>
+          <div class="work-row-title">Junior Product Designer</div>
+          <div class="work-row-company">Ensemble Technologies</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji" style="background: #232F3E; border-color: #232F3E;">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none"><text x="20" y="22" text-anchor="middle" fill="white" font-family="DM Sans, sans-serif" font-size="10" font-weight="600">aws</text><path d="M12 26 Q20 30 28 26" stroke="#FF9900" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M26 24 L28 26 L26 28" stroke="#FF9900" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">UX Design Consultant</div>
-            <div class="work-card-date">Feb – Jun 2024</div>
-          </div>
-          <div class="work-card-company">Amazon Web Services (AWS)</div>
-          <div class="work-card-desc">AI & Ethics Hackathon — event logistics, branding, and promotional design.</div>
+      <div class="work-row">
+        <div class="work-row-date">Feb – Jun 2024</div>
+        <div>
+          <div class="work-row-title">UX Design Consultant</div>
+          <div class="work-row-company">Amazon Web Services (AWS)</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">🌿</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">UX Designer</div>
-            <div class="work-card-date">Jan – Mar 2024</div>
-          </div>
-          <div class="work-card-company">Nexstera Tech</div>
-          <div class="work-card-desc">Full website and investor pitch deck design.</div>
+      <div class="work-row">
+        <div class="work-row-date">Jan – Mar 2024</div>
+        <div>
+          <div class="work-row-title">UX Designer</div>
+          <div class="work-row-company">Nexstera Tech</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">🛒</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">UX Designer</div>
-            <div class="work-card-date">Jun – Aug 2023</div>
-          </div>
-          <div class="work-card-company">Conspire Commerce</div>
-          <div class="work-card-desc">Shared cart pop-up extension and end-to-end user flows.</div>
+      <p class="work-year">2023</p>
+
+      <div class="work-row">
+        <div class="work-row-date">Jun – Aug 2023</div>
+        <div>
+          <div class="work-row-title">UX Designer</div>
+          <div class="work-row-company">Conspire Commerce</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">🖨️</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">Project Management Intern</div>
-            <div class="work-card-date">Apr – Jun 2023</div>
-          </div>
-          <div class="work-card-company">University Graphic Systems</div>
-          <div class="work-card-desc">Promotional items, project management, and building operations.</div>
+      <div class="work-row">
+        <div class="work-row-date">Apr – Jun 2023</div>
+        <div>
+          <div class="work-row-title">Project Management Intern</div>
+          <div class="work-row-company">University Graphic Systems</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">✈️</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">UX Designer</div>
-            <div class="work-card-date">Mar – May 2023</div>
-          </div>
-          <div class="work-card-company">Hidden Travel</div>
-          <div class="work-card-desc">Full brand identity — guidelines, logo, and website UI.</div>
+      <div class="work-row">
+        <div class="work-row-date">Mar – May 2023</div>
+        <div>
+          <div class="work-row-title">UX Designer</div>
+          <div class="work-row-company">Hidden Travel</div>
         </div>
       </div>
 
-      <div class="work-card">
-        <div class="work-emoji">🎬</div>
-        <div class="work-card-info">
-          <div class="work-card-top">
-            <div class="work-card-title">Social Media Marketing Intern</div>
-            <div class="work-card-date">Dec 2022 – May 2023</div>
-          </div>
-          <div class="work-card-company">15 Seconds of Fame, Inc.</div>
-          <div class="work-card-desc">Sports clip production for social platform brand visibility.</div>
+      <p class="work-year">2022</p>
+
+      <div class="work-row">
+        <div class="work-row-date">Dec 2022 – May 2023</div>
+        <div>
+          <div class="work-row-title">Social Media Marketing Intern</div>
+          <div class="work-row-company">15 Seconds of Fame, Inc.</div>
         </div>
       </div>
 
@@ -848,7 +700,6 @@
         <div class="activity-row-main">
           <div class="activity-row-title">Member — Figma @ University of Washington</div>
           <div class="activity-row-org">UW College of Engineering</div>
-          <div class="activity-row-desc">Collaborative design projects and community events. Won 1st place at the Figma Make Hackathon for Best Game Mechanics.</div>
         </div>
         <div class="activity-row-date">Sep 2025 – Present</div>
       </div>
@@ -864,21 +715,18 @@
           <div class="activity-group-role">
             <div>
               <div class="activity-group-role-title">President</div>
-              <div class="activity-group-role-desc">Led Cal Poly's UX design hackathon with 140+ participants. Managed 50 members across events, design, multimedia, finance, and marketing.</div>
             </div>
             <div class="activity-group-role-date">2024 – 2025</div>
           </div>
           <div class="activity-group-role">
             <div>
               <div class="activity-group-role-title">Events and Experience Director</div>
-              <div class="activity-group-role-desc">Directed event programming and attendee experience for UX-focused design events and workshops.</div>
             </div>
             <div class="activity-group-role-date">2023 – 2024</div>
           </div>
           <div class="activity-group-role">
             <div>
               <div class="activity-group-role-title">Multimedia Officer</div>
-              <div class="activity-group-role-desc">Created visual content and multimedia assets for the organization's brand and communications.</div>
             </div>
             <div class="activity-group-role-date">2022 – 2023</div>
           </div>
@@ -896,21 +744,18 @@
           <div class="activity-group-role">
             <div>
               <div class="activity-group-role-title">Product Designer</div>
-              <div class="activity-group-role-desc">Delivered user-centered web and app solutions for clients including Hidden Travel, Nexstera Tech, Amazon DX Hub, and Conspire Commerce. 15+ interactive Figma prototypes.</div>
             </div>
             <div class="activity-group-role-date">2023 – 2025</div>
           </div>
           <div class="activity-group-role">
             <div>
               <div class="activity-group-role-title">Bootcamp Lead</div>
-              <div class="activity-group-role-desc">Led design bootcamp training sessions for new members on UX fundamentals, Figma, and design thinking.</div>
             </div>
             <div class="activity-group-role-date">2023 – 2024</div>
           </div>
           <div class="activity-group-role">
             <div>
               <div class="activity-group-role-title">Design Coordinator</div>
-              <div class="activity-group-role-desc">Coordinated design workflows and deliverables across client project teams.</div>
             </div>
             <div class="activity-group-role-date">2023 – 2024</div>
           </div>
@@ -921,7 +766,6 @@
         <div class="activity-row-main">
           <div class="activity-row-title">Graphics & Marketing Coordinator — Mat Pica Pi</div>
           <div class="activity-row-org">Cal Poly San Luis Obispo</div>
-          <div class="activity-row-desc">Designed all marketing assets and visual materials for the typography and design organization.</div>
         </div>
         <div class="activity-row-date">2023 – 2024</div>
       </div>
@@ -930,7 +774,6 @@
         <div class="activity-row-main">
           <div class="activity-row-title">UX/UI Designer — Hack4Impact</div>
           <div class="activity-row-org">Cal Poly San Luis Obispo</div>
-          <div class="activity-row-desc">Delivered 2 full-stack nonprofit projects (GoSee Foundation, Central Coast Coalition) — apps and volunteer tools with engineers, PMs, and designers.</div>
         </div>
         <div class="activity-row-date">2024 – 2025</div>
       </div>
