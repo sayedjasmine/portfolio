@@ -174,24 +174,6 @@
     .section-label-line::after { content: ''; flex: 1; height: 1px; background: var(--light); }
     .section-label-line.purple { color: var(--purple); }
 
-    /* ── FUN FACTS ── */
-    .facts-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-    .fact-card {
-      background: var(--purple-bg);
-      border: 1px solid rgba(107,63,160,0.1);
-      border-radius: 16px; padding: 18px 16px;
-      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
-      display: flex; flex-direction: column;
-    }
-    .fact-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(107,63,160,0.1); }
-    .fact-emoji { font-size: 20px; margin-bottom: 10px; display: block; }
-    .fact-card strong { display: block; font-size: 12.5px; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
-    .fact-card span { font-size: 11.5px; font-weight: 300; color: var(--mid); line-height: 1.5; }
-
     /* ── HOW I WORK ── */
     .philosophy-grid {
       display: grid;
@@ -305,7 +287,6 @@
     @media (max-width: 1024px) {
       .about-hero { grid-template-columns: 1fr; padding: 110px 40px 48px; gap: 40px; }
       .hero-photos { height: 420px; }
-      .facts-grid { grid-template-columns: repeat(3, 1fr); }
       .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
       .skills-grid { grid-template-columns: repeat(4, 1fr); }
     }
@@ -318,19 +299,24 @@
       .about-hero { padding: 100px 24px 40px; }
       .hero-photos {
         display: grid;
-        grid-template-columns: 1.4fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
         height: auto;
         position: relative;
       }
-      .hero-photo-main {
+      .hero-photo-main, .hero-photo-accent {
         position: relative;
         width: 100%;
         height: auto;
         bottom: auto; right: auto; top: auto; left: auto;
-        border-radius: 14px;
-        overflow: hidden;
         aspect-ratio: 4 / 5;
+        overflow: hidden;
+        margin: 0;
+        align-self: stretch;
+      }
+      .hero-photo-main {
+        border-radius: 14px;
+        border: none;
         box-shadow: 0 16px 40px rgba(107,63,160,0.14);
       }
       .hero-photo-main img {
@@ -338,23 +324,15 @@
         object-fit: cover; object-position: center 15%; display: block;
       }
       .hero-photo-accent {
-        position: relative;
-        width: 100%;
-        height: auto;
-        bottom: auto; right: auto; top: auto; left: auto;
-        border-radius: 12px;
-        border: 3px solid var(--white);
-        box-shadow: 0 8px 22px rgba(107,63,160,0.18);
-        aspect-ratio: 3 / 4;
-        align-self: end;
-        margin-bottom: 14px;
+        border-radius: 14px;
+        border: none;
+        box-shadow: 0 16px 40px rgba(107,63,160,0.14);
       }
       .hero-photo-accent img {
         width: 100%; height: 100%;
         object-fit: cover; display: block;
       }
       .section-container { padding: 0 24px 40px; }
-      .facts-grid { grid-template-columns: repeat(3, 1fr); }
       .philosophy-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .carousel-section { display: none; }
@@ -369,10 +347,7 @@
       .hero-bio p { font-size: 13.5px; }
       .section-label-line { margin-bottom: 16px; }
       .hero-photos { gap: 10px; }
-      .hero-photo-accent { border-width: 2.5px; margin-bottom: 10px; }
       .section-container { padding: 0 20px 36px; }
-      .facts-grid { grid-template-columns: repeat(2, 1fr); }
-      .facts-grid .fact-card:last-child { grid-column: 1 / -1; }
       .philosophy-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -427,18 +402,6 @@
       </div>
     </div>
   </section>
-
-  <!-- FUN FACTS -->
-  <div class="section-container fade-in">
-    <p class="section-label-line">When I'm not designing</p>
-    <div class="facts-grid">
-      <div class="fact-card"><span class="fact-emoji">👩‍🏫</span><strong>I'm Teaching!</strong><span>Nothing beats watching a kid's face light up when something finally clicks</span></div>
-      <div class="fact-card"><span class="fact-emoji">🌋</span><strong>I'm Out Exploring</strong><span>I once hiked an active volcano and would absolutely do it again</span></div>
-      <div class="fact-card"><span class="fact-emoji">💡</span><strong>I'm at a Hackathon</strong><span>48 hours of chaos that somehow turns into something real? Sign me up</span></div>
-      <div class="fact-card"><span class="fact-emoji">🍣</span><strong>I'm Being a Foodie</strong><span>Sushi and tiramisu are my love languages, no further questions</span></div>
-      <div class="fact-card"><span class="fact-emoji">🏀</span><strong>I'm Cheering on My Teams</strong><span>Seahawks and Lakers ride or die — I don't make the rules</span></div>
-    </div>
-  </div>
 
   <!-- HOW I WORK -->
   <div class="section-container fade-in">
