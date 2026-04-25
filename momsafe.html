@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MomSAFE — UX Research Case Study | Jasmine Sayed</title>
   <meta name="description" content="UX research case study: AI-powered maternal healthcare. User interviews with mothers and providers, research synthesis, and design direction. CHI 2025 Student Design Competition." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="MomSAFE — UX Research Case Study | Jasmine Sayed" />
+  <meta property="og:description" content="AI-powered maternal healthcare research. Interviews with mothers and providers; research synthesis informed design direction for personalized prenatal support." />
+  <meta property="og:image" content="assets/momsafe-infographic.webp" />
+  <meta property="og:image:alt" content="MomSAFE maternal health case study" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MomSAFE — UX Research Case Study | Jasmine Sayed" />
+  <meta name="twitter:description" content="AI-powered maternal healthcare research. Interviews with mothers and providers; research synthesis informed design direction for personalized prenatal support." />
+  <meta name="twitter:image" content="assets/momsafe-infographic.webp" />
+  <meta name="author" content="Jasmine Sayed" />
+  <meta name="theme-color" content="#1A2744" />
+  <link rel="icon" type="image/png" href="assets/jasmine-logo.png" />
+  <link rel="apple-touch-icon" href="assets/jasmine-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -280,7 +293,7 @@
 
     .hero-doc-card:hover .hero-doc-icon {
       background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.55);
     }
 
     .hero-doc-icon span {
@@ -425,23 +438,22 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: rgba(26,39,68,0.06);
-      border-top: 1px solid rgba(26,39,68,0.08);
-      border-bottom: 1px solid rgba(26,39,68,0.08);
     }
 
     .role-strip > div {
       background: var(--white);
-      padding: 28px 36px; text-align: center;
+      padding: 18px 24px; text-align: center;
     }
 
     .role-label {
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--rose); margin-bottom: 8px;
+      color: var(--rose); margin-bottom: 6px;
+      opacity: 0.85;
     }
     .role-value {
-      font-size: 14px; font-weight: 400;
-      color: var(--dark); line-height: 1.55;
+      font-size: 13px; font-weight: 400;
+      color: var(--dark); line-height: 1.5;
     }
 
     /* ── SECTIONS ── */
@@ -795,11 +807,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
-    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-center a:hover { color: var(--pink-light); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer-center a:hover { color: var(--rose-light); }
     .footer-center .footer-sep { margin: 0 14px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in {
@@ -822,7 +834,8 @@
       .hero-doc-card { width: 100%; }
       .container { padding: 0 24px; }
       section { padding: 36px 0; }
-      .role-strip { grid-template-columns: repeat(2, 1fr); padding: 32px 28px; }
+      .role-strip { grid-template-columns: repeat(2, 1fr); }
+      .role-strip > div { padding: 14px 20px; }
       .sdg-grid { grid-template-columns: 1fr; }
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
       .principles-grid { grid-template-columns: 1fr; }
@@ -848,7 +861,11 @@
       h3.sub-heading { font-size: 16px; margin-top: 22px; margin-bottom: 10px; }
       .body-text { font-size: 14.5px; line-height: 1.72; margin-bottom: 12px; }
       .section-eyebrow { font-size: 10px; margin-bottom: 12px; }
-      .role-strip { grid-template-columns: 1fr; padding: 24px 20px; gap: 18px; }
+      .role-strip { grid-template-columns: 1fr; gap: 1px; }
+      .role-strip > div { padding: 14px 20px; }
+      .section-tabs { padding: 0 14px; }
+      .tab-link { font-size: 11px; padding: 12px 14px; }
+      .hero-doc-card { width: 100%; }
       .problem-grid { grid-template-columns: 1fr; }
       .feature-grid { grid-template-columns: 1fr; }
       .feature-card.span-full { grid-column: span 1; }
@@ -865,11 +882,11 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html#work" class="nav-back">
       <span class="arrow">←</span> Back to Work
     </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
@@ -935,7 +952,7 @@
     </div>
     <div class="hero-docs">
       <div class="hero-docs-label">Project Resources</div>
-      <a href="assets/momsafe-research-paper copy.pdf" target="_blank" class="hero-doc-card">
+      <a href="assets/momsafe-research-paper copy.pdf" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
         <div class="hero-doc-icon"><span>PDF</span></div>
         <div class="hero-doc-info">
           <div class="hero-doc-title">Research Paper</div>
@@ -943,7 +960,7 @@
         </div>
         <div class="hero-doc-arrow">→</div>
       </a>
-      <a href="assets/momsafe-infographic.png" target="_blank" class="hero-doc-card">
+      <a href="assets/momsafe-infographic.png" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
         <div class="hero-doc-icon"><span>PNG</span></div>
         <div class="hero-doc-info">
           <div class="hero-doc-title">Infographic</div>
@@ -1214,7 +1231,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -1227,14 +1244,14 @@
         hamburger.addEventListener('click', function(e) {
           e.stopPropagation();
           hamburger.classList.toggle('active');
-          mobileMenu.classList.toggle('open');
+          mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
           document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
           if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
             hamburger.classList.remove('active');
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
           }
         });

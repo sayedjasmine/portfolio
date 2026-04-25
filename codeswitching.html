@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code-Switching — Qualitative Research Study | Jasmine Sayed</title>
   <meta name="description" content="Qualitative UX research study on multilingual code-switching. Mixed methods: user interviews, observation, thematic analysis. Identified 5 interconnected themes in identity and language." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Code-Switching — Qualitative Research Study | Jasmine Sayed" />
+  <meta property="og:description" content="Mixed-methods qualitative study on how multilingual people use code-switching in everyday life. Five interconnected themes in identity and language." />
+  <meta property="og:image" content="assets/codeswitching-thumbnail.png" />
+  <meta property="og:image:alt" content="Code-Switching qualitative study" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Code-Switching — Qualitative Research Study | Jasmine Sayed" />
+  <meta name="twitter:description" content="Mixed-methods qualitative study on how multilingual people use code-switching in everyday life. Five interconnected themes in identity and language." />
+  <meta name="twitter:image" content="assets/codeswitching-thumbnail.png" />
+  <meta name="author" content="Jasmine Sayed" />
+  <meta name="theme-color" content="#4B2E83" />
+  <link rel="icon" type="image/png" href="assets/jasmine-logo.png" />
+  <link rel="apple-touch-icon" href="assets/jasmine-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -379,10 +392,10 @@
     /* ── ROLE STRIP ── */
     .role-strip {
       background: var(--purple-bg);
-      padding: 40px 60px;
+      padding: 22px 60px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
+      gap: 24px;
     }
 
     .role-label {
@@ -391,9 +404,10 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--purple);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      opacity: 0.85;
     }
-    .role-value { font-size: 14.5px; font-weight: 400; color: var(--dark); line-height: 1.6; }
+    .role-value { font-size: 13.5px; font-weight: 400; color: var(--dark); line-height: 1.5; }
 
     /* ── METHOD CARDS ── */
     .method-grid {
@@ -756,11 +770,11 @@
       align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
-    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-center a:hover { color: var(--teal-light); }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer-center a:hover { color: var(--purple-light); }
     .footer-center .footer-sep { margin: 0 14px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in {
@@ -781,7 +795,7 @@
       .hero { padding: 100px 28px 48px; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
-      .role-strip { grid-template-columns: 1fr 1fr; padding: 32px 28px; gap: 24px; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .theme-grid { grid-template-columns: repeat(3, 1fr); }
       .method-grid, .quote-grid { grid-template-columns: 1fr; }
       .insights-grid { grid-template-columns: 1fr; }
@@ -805,7 +819,9 @@
       h3.sub-heading { font-size: 16px; margin-top: 22px; margin-bottom: 10px; }
       p.body-text { font-size: 14.5px; line-height: 1.72; margin-bottom: 12px; }
       .section-eyebrow { font-size: 10px; margin-bottom: 12px; }
-      .role-strip { grid-template-columns: 1fr; padding: 24px 20px; gap: 18px; }
+      .role-strip { grid-template-columns: 1fr; padding: 16px 20px; gap: 14px; }
+      .section-tabs { padding: 0 14px; }
+      .tab-link { font-size: 11px; padding: 12px 14px; }
       .theme-grid { grid-template-columns: 1fr 1fr; }
       .method-card { padding: 20px 18px; }
       .quote-card { padding: 20px 18px; }
@@ -818,11 +834,11 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html" class="nav-back">
       <span class="arrow">&larr;</span> All work
     </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
@@ -1231,7 +1247,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">&copy; 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -1244,14 +1260,14 @@
         hamburger.addEventListener('click', function(e) {
           e.stopPropagation();
           hamburger.classList.toggle('active');
-          mobileMenu.classList.toggle('open');
+          mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
           document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
           if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
             hamburger.classList.remove('active');
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
           }
         });

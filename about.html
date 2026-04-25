@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Jasmine Sayed | Product Designer & UX Researcher</title>
   <meta name="description" content="Product Designer and UX Researcher with a Master's in HCDE from UW. Experience at Microsoft and Amazon. Specializing in Figma, design systems, usability testing, accessibility, and AI-driven design." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="About — Jasmine Sayed | Product Designer & UX Researcher" />
+  <meta property="og:description" content="Designer and researcher, closing the gap between insight and interface. Currently studying HCDE at UW and working with Microsoft's CoreAI team." />
+  <meta property="og:image" content="images/about-carousel-2.jpg" />
+  <meta property="og:image:alt" content="Jasmine Sayed" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Jasmine Sayed | Product Designer & UX Researcher" />
+  <meta name="twitter:description" content="Designer and researcher, closing the gap between insight and interface. Currently studying HCDE at UW and working with Microsoft's CoreAI team." />
+  <meta name="twitter:image" content="images/about-carousel-2.jpg" />
+  <meta name="author" content="Jasmine Sayed" />
+  <meta name="theme-color" content="#6B3FA0" />
+  <link rel="icon" type="image/png" href="assets/jasmine-logo.png" />
+  <link rel="apple-touch-icon" href="assets/jasmine-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -29,7 +42,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 60px;
+      padding: 22px 60px;
       background: rgba(255,255,255,0.88); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(107,63,160,0.08);
     }
@@ -111,16 +124,12 @@
 
     .hero-text h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 400; line-height: 1.08;
-      color: var(--dark); margin-bottom: 18px;
+      font-size: clamp(30px, 3.2vw, 42px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--dark); margin-bottom: 20px;
+      max-width: 520px;
     }
     .hero-text h1 em { font-style: italic; color: var(--purple); }
-
-    .hero-text .lead {
-      font-size: 15.5px; font-weight: 300; color: var(--mid);
-      line-height: 1.78; margin-bottom: 20px; max-width: 480px;
-    }
 
     .hero-bio p {
       font-size: 14.5px; font-weight: 300; color: var(--mid);
@@ -153,25 +162,6 @@
     .hero-photo-accent img {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
-    .photo-tag {
-      position: absolute; top: 24px; right: 0;
-      background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.15);
-      border-radius: 100px; padding: 8px 16px;
-      font-size: 12px; font-weight: 500; color: var(--purple);
-      white-space: nowrap; box-shadow: 0 4px 16px rgba(107,63,160,0.1);
-      cursor: default;
-    }
-    .photo-tag-tooltip {
-      position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--dark); color: rgba(255,255,255,0.85);
-      font-size: 11.5px; font-weight: 400; padding: 8px 14px;
-      border-radius: 10px; white-space: nowrap;
-      opacity: 0; transform: translateY(-4px);
-      transition: all 0.25s ease; pointer-events: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-    .photo-tag:hover .photo-tag-tooltip { opacity: 1; transform: translateY(0); }
-
     /* ── SECTION CONTAINER (shared width for all card sections) ── */
     .section-container {
       padding: 0 60px 48px;
@@ -301,11 +291,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
-    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.55); text-decoration: none; }
     .footer-center a:hover { color: var(--purple-light); }
     .footer-center .footer-sep { margin: 0 14px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
@@ -331,7 +321,6 @@
       .hero-photo-main img { width: 100%; height: auto; object-fit: contain; object-position: center; display: block; }
       .hero-photo-accent { width: 35%; height: auto; bottom: -20px; right: 12px; border-radius: 14px; }
       .hero-photo-accent img { width: 100%; height: auto; object-fit: contain; display: block; }
-      .photo-tag { font-size: 11px; padding: 6px 12px; top: 16px; }
       .section-container { padding: 0 24px 40px; }
       .facts-grid { grid-template-columns: repeat(3, 1fr); }
       .philosophy-grid { grid-template-columns: 1fr; }
@@ -344,12 +333,9 @@
     }
     @media (max-width: 480px) {
       .about-hero { padding: 90px 20px 32px; }
-      .hero-text h1 { font-size: clamp(28px, 8vw, 38px); }
-      .hero-text .lead { font-size: 14px; }
+      .hero-text h1 { font-size: clamp(26px, 7vw, 34px); }
       .hero-bio p { font-size: 13.5px; }
       .hero-photo-accent { width: 32%; bottom: -16px; right: 8px; border-radius: 12px; border-width: 3px; }
-      .photo-tag { font-size: 10px; padding: 5px 10px; top: 12px; }
-      .photo-tag-tooltip { display: none; }
       .section-container { padding: 0 20px 36px; }
       .facts-grid { grid-template-columns: repeat(2, 1fr); }
       .facts-grid .fact-card:last-child { grid-column: 1 / -1; }
@@ -361,7 +347,7 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <ul>
       <li><a href="index.html#work">Work</a></li>
@@ -369,7 +355,7 @@
       <li><a href="experience.html">Resume</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
@@ -390,25 +376,20 @@
   <!-- HERO + BIO (merged) -->
   <section class="about-hero">
     <div class="hero-text fade-in">
-      <p class="about-eyebrow">A little more about me</p>
-      <h1>Designer, researcher,<br /><em>perpetual learner.</em></h1>
-      <p class="lead">Product designer + UX researcher driven by curiosity, inclusion, and the belief that thoughtful design can make the world more human.</p>
+      <p class="about-eyebrow">About</p>
+      <h1>Designer and researcher,<br /><em>closing the gap between insight and interface.</em></h1>
       <div class="hero-bio">
-        <p>I'm <strong>Jasmine Sayed</strong> — a Product Designer and UX Researcher pursuing my <strong>Master's in Human Centered Design & Engineering at the University of Washington</strong> ('27).</p>
-        <p>I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> building research-driven, human-centered experiences — especially at the crossroads of AI and accessibility.</p>
-        <p>I do both design and research because I've seen what happens when they're siloed. The best work starts with understanding people deeply and ends with designs that reflect what you learned — closing the gap between insight and interface.</p>
+        <p>I'm <strong>Jasmine</strong> — a Product Designer and UX Researcher pursuing my <strong>Master's in HCDE</strong> at the University of Washington ('27), based in Seattle.</p>
+        <p>I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> at the intersection of AI and accessibility. I do both design and research because the strongest work starts with understanding people deeply and shows it in every decision.</p>
       </div>
     </div>
 
     <div class="hero-photos">
       <div class="hero-photo-main">
-        <img src="images/about-carousel-22.png" alt="Jasmine Sayed" />
+        <img src="images/about-carousel-22.jpg" alt="Portrait of Jasmine Sayed" decoding="async" />
       </div>
-      <div class="hero-photo-accent" id="heroAccent">
-        <img src="images/about-carousel-2.png" alt="Jasmine" onerror="document.getElementById('heroAccent').style.display='none'" />
-      </div>
-      <div class="photo-tag">📍 San Francisco, CA &amp; Seattle, WA
-        <span class="photo-tag-tooltip">SF native, currently in Seattle — city girl at heart!</span>
+      <div class="hero-photo-accent">
+        <img src="images/about-carousel-2.jpg" alt="Jasmine smiling" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -503,24 +484,24 @@
       <p class="carousel-hint">← drag to explore →</p>
     </div>
     <div class="carousel-outer" id="carouselOuter">
-      <div class="carousel-strip" id="carouselStrip">
-        <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-4.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-6.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-3.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
+      <div class="carousel-strip" id="carouselStrip" aria-label="Photo carousel">
+        <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-4.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-22.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-6.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-3.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
+        <div class="c-slide"><img src="images/about-carousel-14.jpg" alt="Jasmine" loading="lazy" decoding="async" /></div>
         <!-- Duplicate for seamless loop -->
-        <div class="c-slide"><img src="images/about-carousel-18.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-4.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-22.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-20.JPG" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-6.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-21.jpg" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-3.png" alt="Jasmine" /></div>
-        <div class="c-slide"><img src="images/about-carousel-14.png" alt="Jasmine" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-18.jpg" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-4.jpg" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-22.jpg" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-20.JPG" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-6.jpg" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-21.jpg" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-3.jpg" alt="" loading="lazy" decoding="async" /></div>
+        <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-14.jpg" alt="" loading="lazy" decoding="async" /></div>
       </div>
     </div>
     <div class="carousel-progress-wrap">
@@ -552,7 +533,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -563,11 +544,11 @@
       const mobileMenu = document.getElementById('mobileMenu');
       hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('open');
+        mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
       });
       window.closeMobileMenu = function() {
         hamburger.classList.remove('active');
-        mobileMenu.classList.remove('open');
+        mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false');
       };
       document.querySelectorAll('.mobile-menu a').forEach(function(a) {
         a.addEventListener('click', closeMobileMenu);

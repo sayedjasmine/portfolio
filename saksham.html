@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saksham — Accessible EdTech Case Study | Jasmine Sayed</title>
   <meta name="description" content="UX research and product design case study: inclusive learning platform for neurodivergent students. User interviews, accessibility design, and Figma prototyping. Published in TAGA Journal 2026." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Saksham — Accessible EdTech Case Study | Jasmine Sayed" />
+  <meta property="og:description" content="An inclusive learning platform for neurodivergent students in India. User research, accessibility design, and prototyping. Published in TAGA Journal 2026." />
+  <meta property="og:image" content="assets/saksham-mockup.webp" />
+  <meta property="og:image:alt" content="Saksham accessible EdTech case study" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Saksham — Accessible EdTech Case Study | Jasmine Sayed" />
+  <meta name="twitter:description" content="An inclusive learning platform for neurodivergent students in India. User research, accessibility design, and prototyping. Published in TAGA Journal 2026." />
+  <meta name="twitter:image" content="assets/saksham-mockup.webp" />
+  <meta name="author" content="Jasmine Sayed" />
+  <meta name="theme-color" content="#C4425A" />
+  <link rel="icon" type="image/png" href="assets/jasmine-logo.png" />
+  <link rel="apple-touch-icon" href="assets/jasmine-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -464,10 +477,10 @@
     /* ── ROLE STRIP ── */
     .role-strip {
       background: var(--rose-bg);
-      padding: 40px 60px;
+      padding: 22px 60px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
+      gap: 24px;
     }
 
     .role-label {
@@ -476,9 +489,10 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--rose);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      opacity: 0.85;
     }
-    .role-value { font-size: 14.5px; font-weight: 400; color: var(--dark); line-height: 1.6; }
+    .role-value { font-size: 13.5px; font-weight: 400; color: var(--dark); line-height: 1.5; }
 
     /* ── PROBLEM CARDS ── */
     .problem-grid {
@@ -1142,11 +1156,11 @@
       align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
-    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.55); text-decoration: none; }
     .footer-center a:hover { color: var(--rose-light); }
     .footer-center .footer-sep { margin: 0 14px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -1206,7 +1220,7 @@
       .hero-doc-card { width: 100%; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
-      .role-strip { grid-template-columns: 1fr 1fr; padding: 32px 28px; gap: 24px; }
+      .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .problem-grid, .method-grid, .insights-grid, .features-grid { grid-template-columns: 1fr; }
       .mockup-showcase { grid-template-columns: 1fr; gap: 16px; }
       .ds-strip { grid-template-columns: 1fr; }
@@ -1233,7 +1247,9 @@
       h3.sub-heading { font-size: 16px; margin-top: 22px; margin-bottom: 10px; }
       p.body-text { font-size: 14.5px; line-height: 1.72; margin-bottom: 12px; }
       .section-eyebrow { font-size: 10px; margin-bottom: 12px; }
-      .role-strip { grid-template-columns: 1fr; padding: 24px 20px; gap: 18px; }
+      .role-strip { grid-template-columns: 1fr; padding: 16px 20px; gap: 14px; }
+      .section-tabs { padding: 0 14px; }
+      .tab-link { font-size: 11px; padding: 12px 14px; }
       .screen-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .skip-pill { font-size: 11.5px; padding: 8px 16px; margin-top: 8px; white-space: normal; }
       .case-img-wrapper { max-width: 100%; }
@@ -1304,11 +1320,11 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html" class="nav-back">
       <span class="arrow">←</span> All work
     </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
@@ -1350,7 +1366,7 @@
     <div class="hero-content">
       <p class="hero-tag">Accessibility · EdTech · Inclusive Design</p>
       <h1>Saksham</h1>
-      <p class="hero-sub">Designing inclusive education for every learner: an accessible learning platform for neurodivergent students in India. Published on Cal Poly's Digital Commons and featured in TAGA 2026 Journal.</p>
+      <p class="hero-sub">Designing inclusive education for every learner: an accessible learning platform for neurodivergent students in India. Published on Cal Poly's Digital Commons and featured in Cal Poly's TAGA 2026 Journal.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -1372,11 +1388,11 @@
     </div>
     <div class="hero-docs">
       <div class="hero-docs-label">Project Resources</div>
-      <a href="https://docs.google.com/document/d/11UjLgznvh5pQZDShy_BykBvPtHsFwwriqmQKxYkcEPs/edit?usp=sharing" target="_blank" class="hero-doc-card">
+      <a href="https://issuu.com/calpolytaga/docs/cal_poly_taga_2026/132" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
         <div class="hero-doc-icon"><span>DOC</span></div>
         <div class="hero-doc-info">
           <div class="hero-doc-title">Research Paper</div>
-          <div class="hero-doc-meta">Cal Poly Digital Commons</div>
+          <div class="hero-doc-meta">Cal Poly TAGA Journal 2026</div>
         </div>
         <div class="hero-doc-arrow">→</div>
       </a>
@@ -1502,7 +1518,7 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Published Research</h3>
-      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published through Cal Poly's Digital Commons and set to appear in the TAGA 2026 Journal.</p>
+      <p class="body-text">This research culminated in my paper, <strong>"Designing for Neurodiversity: Accessibility in Educational Technology for India's Future Learners,"</strong> published on Cal Poly's Digital Commons and in <a href="https://issuu.com/calpolytaga/docs/cal_poly_taga_2026/132" target="_blank" rel="noopener noreferrer" style="color: var(--rose); font-weight: 500;">Cal Poly's TAGA 2026 Journal</a>.</p>
     </div>
   </section>
 
@@ -1759,7 +1775,7 @@
       <div class="impact-stats">
         <div class="impact-stat">
           <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">Published</div>
-          <div class="impact-label">on Cal Poly's Digital Commons and accepted for TAGA 2026 Journal, recognizing its contribution to inclusive design</div>
+          <div class="impact-label">on Cal Poly's Digital Commons and in Cal Poly's TAGA 2026 Journal, recognizing its contribution to inclusive design</div>
         </div>
         <div class="impact-stat">
           <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">5M+</div>
@@ -1850,7 +1866,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -1863,14 +1879,14 @@
         hamburger.addEventListener('click', function(e) {
           e.stopPropagation();
           hamburger.classList.toggle('active');
-          mobileMenu.classList.toggle('open');
+          mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
           document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
           if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
             hamburger.classList.remove('active');
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
           }
         });

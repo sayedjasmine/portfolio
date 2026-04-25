@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Experience — Jasmine Sayed | Product Designer & UX Researcher</title>
   <meta name="description" content="Professional experience: Product Designer and UX Researcher. Microsoft CoreAI, Amazon, and startup experience. Skills in Figma, usability testing, design systems, and human-centered design." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Experience — Jasmine Sayed | Product Designer & UX Researcher" />
+  <meta property="og:description" content="Professional experience: Microsoft CoreAI, Amazon, and startups. Figma, usability testing, design systems, and human-centered design." />
+  <meta property="og:image" content="assets/jasmine-logo.png" />
+  <meta property="og:image:alt" content="Jasmine Sayed — Product Designer & UX Researcher" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Experience — Jasmine Sayed | Product Designer & UX Researcher" />
+  <meta name="twitter:description" content="Professional experience: Microsoft CoreAI, Amazon, and startups. Figma, usability testing, design systems, and human-centered design." />
+  <meta name="twitter:image" content="assets/jasmine-logo.png" />
+  <meta name="author" content="Jasmine Sayed" />
+  <meta name="theme-color" content="#6B3FA0" />
+  <link rel="icon" type="image/png" href="assets/jasmine-logo.png" />
+  <link rel="apple-touch-icon" href="assets/jasmine-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -34,7 +47,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 60px;
+      padding: 22px 60px;
       background: rgba(255,255,255,0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(107,63,160,0.08);
@@ -181,7 +194,7 @@
 
     /* ── HERO (compact) ── */
     .page-hero {
-      padding: 120px 60px 48px;
+      padding: 120px 60px 56px;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
@@ -195,7 +208,7 @@
     .page-eyebrow {
       font-size: 11px; font-weight: 500;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--purple); margin-bottom: 16px;
+      color: var(--purple); margin-bottom: 18px;
       display: flex; align-items: center; gap: 12px;
     }
     .page-eyebrow::before {
@@ -204,9 +217,9 @@
 
     .page-hero h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400; line-height: 1.1;
-      color: var(--dark); margin-bottom: 14px;
+      font-size: clamp(30px, 3.2vw, 42px);
+      font-weight: 400; line-height: 1.18;
+      color: var(--dark); margin-bottom: 20px;
     }
     .page-hero h1 em { font-style: italic; color: var(--purple); }
 
@@ -543,11 +556,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .footer-center { font-size: 15px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.12em; }
-    .footer-center a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-center { font-size: 15px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.12em; }
+    .footer-center a { color: rgba(255,255,255,0.55); text-decoration: none; }
     .footer-center a:hover { color: var(--purple-light); }
     .footer-center .footer-sep { margin: 0 14px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.3); text-align: right; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in {
@@ -562,7 +575,7 @@
     }
 
     @media (max-width: 960px) {
-      nav { padding: 18px 28px; }
+      nav { padding: 18px 24px; }
       nav ul { display: none; }
       .hamburger { display: flex; order: -1; }
       .nav-logo { order: 1; }
@@ -583,16 +596,32 @@
 
     @media (max-width: 600px) {
       .featured-role { flex-direction: column; gap: 16px; }
+      .featured-role-row { flex-direction: column; gap: 6px; align-items: flex-start; }
+      .featured-date { white-space: normal; }
       .certs-row { grid-template-columns: 1fr; }
+      .journey-strip {
+        flex-direction: column;
+        gap: 0;
+        padding: 18px 0;
+        overflow-x: visible;
+      }
+      .journey-step {
+        min-width: 0;
+        width: 100%;
+        padding: 14px 18px;
+        border-left: none;
+        border-top: 1px solid var(--light);
+      }
+      .journey-step:first-child { border-top: none; padding-top: 4px; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
@@ -622,7 +651,7 @@
       <h1>Where I've been,<br /><em>what I've built.</em></h1>
       <p>From building my first website for a Girl Scout project to shaping AI experiences at Microsoft, every role taught me something new about designing for people.</p>
     </div>
-    <a href="assets/Official Jasmine Sayed Resume.pdf" target="_blank" class="resume-btn">
+    <a href="assets/Official Jasmine Sayed Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn">
       ↓ &nbsp;Download Resume
     </a>
   </div>
@@ -957,7 +986,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -969,14 +998,14 @@
         hamburger.addEventListener('click', function(e) {
           e.stopPropagation();
           hamburger.classList.toggle('active');
-          mobileMenu.classList.toggle('open');
+          mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
           document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
           if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
             hamburger.classList.remove('active');
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
           }
         });
