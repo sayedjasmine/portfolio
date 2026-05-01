@@ -132,10 +132,9 @@
     .hero-text h1 em { font-style: italic; color: var(--purple); }
 
     .hero-bio p {
-      font-size: 14.5px; font-weight: 300; color: var(--mid);
-      line-height: 1.78; margin-bottom: 14px;
+      font-size: 16.5px; font-weight: 300; color: var(--dark);
+      line-height: 1.7; margin-bottom: 16px;
     }
-    .hero-bio p strong { font-weight: 500; color: var(--dark); }
 
     /* Photo collage */
     .hero-photos {
@@ -191,26 +190,9 @@
       font-size: 26px; font-family: 'DM Serif Display', serif;
       color: var(--purple-light); margin-bottom: 10px;
     }
-    .philosophy-card h3 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
-    .philosophy-card p { font-size: 12.5px; font-weight: 300; color: var(--mid); line-height: 1.6; }
+    .philosophy-card h3 { font-family: 'DM Serif Display', serif; font-size: 19px; font-weight: 400; color: var(--dark); margin-bottom: 10px; line-height: 1.25; letter-spacing: -0.005em; }
+    .philosophy-card p { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.7; }
 
-    /* ── SKILLS & TOOLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .skill-group {
-      padding: 20px 18px; border-radius: 16px;
-      background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.08);
-    }
-    .skill-group-title {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--purple); margin-bottom: 10px;
-    }
-    .skill-group ul { list-style: none; }
-    .skill-group li { font-size: 12.5px; font-weight: 400; color: var(--dark); line-height: 1.8; }
 
     /* ── CAROUSEL ── */
     .carousel-section { padding: 0 0 72px; }
@@ -288,7 +270,6 @@
       .about-hero { grid-template-columns: 1fr; padding: 110px 40px 48px; gap: 40px; }
       .hero-photos { height: 420px; }
       .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
-      .skills-grid { grid-template-columns: repeat(4, 1fr); }
     }
     @media (max-width: 768px) {
       nav { padding: 18px 24px; }
@@ -334,7 +315,6 @@
       }
       .section-container { padding: 0 24px 40px; }
       .philosophy-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .carousel-section { display: none; }
       .nav-cards { flex-direction: column; padding: 0 24px 36px; }
       footer { padding: 24px; flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -344,12 +324,11 @@
     @media (max-width: 480px) {
       .about-hero { padding: 90px 20px 32px; }
       .hero-text h1 { font-size: clamp(26px, 7vw, 34px); }
-      .hero-bio p { font-size: 13.5px; }
+      .hero-bio p { font-size: 14.5px; }
       .section-label-line { margin-bottom: 16px; }
       .hero-photos { gap: 10px; }
       .section-container { padding: 0 20px 36px; }
       .philosophy-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -386,10 +365,10 @@
   <section class="about-hero">
     <div class="hero-text fade-in">
       <p class="about-eyebrow">About</p>
-      <h1>Designer and researcher,<br /><em>closing the gap between insight and interface.</em></h1>
+      <h1>Designer and researcher.<br /><em>Both. On purpose.</em></h1>
       <div class="hero-bio">
-        <p>I'm <strong>Jasmine</strong> — a Product Designer and UX Researcher pursuing my <strong>Master's in HCDE</strong> at the University of Washington ('27), based in Seattle.</p>
-        <p>I've worked with <strong>Microsoft, Amazon, and a handful of startups</strong> at the intersection of AI and accessibility. I do both design and research because the strongest work starts with understanding people deeply and shows it in every decision.</p>
+        <p>Currently in a co-op on Microsoft's CoreAI team (wraps end of May), and a Master's student in HCDE at UW, graduating June '27. Based between Seattle and San Francisco.</p>
+        <p>I started on Foundry as a UX researcher and just transitioned into UX design on the same team, redesigning what my own research surfaced. Before grad school: AWS, a climate-tech startup that raised seed off a site I led, and a few smaller startup gigs.</p>
       </div>
     </div>
 
@@ -405,73 +384,26 @@
 
   <!-- HOW I WORK -->
   <div class="section-container fade-in">
-    <p class="section-label-line purple">How I Work</p>
+    <p class="section-label-line purple">How I actually work</p>
     <div class="philosophy-grid">
       <div class="philosophy-card">
         <div class="philosophy-card-num">01</div>
-        <h3>Research before pixels</h3>
-        <p>I don't start designing until I understand the people I'm designing for. Interviews, observations, and data come first.</p>
+        <h3>Make the call. Document the reasoning. Surface it for veto.</h3>
+        <p>On Foundry, every methodological call was mine — recruitment, protocol, the mid-study choice to give participants a workaround. Reviews were veto-gates, not approval-gates. That's how I move fast in fuzzy projects without losing the people who need to weigh in.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-card-num">02</div>
-        <h3>Design for the edges</h3>
-        <p>If it works for the most constrained user, it works for everyone. Accessibility and inclusion are the starting point, not an afterthought.</p>
+        <h3>The hardest "no" is to your own good idea.</h3>
+        <p>On Nox+, I'd advocated for an AI document scanner. Strong demo, mockups in motion. But the research kept saying the blocker was trust, not convenience. We killed it and rebuilt around the privacy panels we'd been treating as a B-feature. Apple shipped Digital ID six months later — same bet.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-card-num">03</div>
-        <h3>Show the thinking</h3>
-        <p>Good design looks obvious in hindsight. I make sure stakeholders see the reasoning behind every decision.</p>
+        <h3>"Designed around a research gap" is sometimes the best you can do.</h3>
+        <p>On Saksham, IRB constraints meant I couldn't directly include the kids I was designing for — I had to triangulate through parents, educators, and accessibility experts. I named that limitation in the paper. Honest about gaps; honest about what you can claim.</p>
       </div>
     </div>
   </div>
 
-  <!-- SKILLS & TOOLS -->
-  <div class="section-container fade-in">
-    <p class="section-label-line purple">Skills & Tools</p>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <p class="skill-group-title">Design</p>
-        <ul>
-          <li>Figma</li>
-          <li>FigJam</li>
-          <li>Adobe Creative Suite</li>
-          <li>Prototyping</li>
-          <li>Design Systems</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-title">Research</p>
-        <ul>
-          <li>Usability Testing</li>
-          <li>User Interviews</li>
-          <li>Survey Design</li>
-          <li>Maze</li>
-          <li>UserTesting</li>
-          <li>Lookback</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-title">Analysis</p>
-        <ul>
-          <li>Miro</li>
-          <li>Affinity Mapping</li>
-          <li>Thematic Analysis</li>
-          <li>Python</li>
-          <li>R</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-title">Strategy</p>
-        <ul>
-          <li>Journey Mapping</li>
-          <li>Competitive Analysis</li>
-          <li>Information Architecture</li>
-          <li>Stakeholder Workshops</li>
-          <li>Design Thinking</li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
 
   <!-- CAROUSEL -->
