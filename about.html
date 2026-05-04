@@ -132,8 +132,16 @@
     .hero-text h1 em { font-style: italic; color: var(--purple); }
 
     .hero-bio p {
-      font-size: 16.5px; font-weight: 300; color: var(--dark);
-      line-height: 1.7; margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #3A3640;
+      line-height: 1.78;
+      margin-bottom: 18px;
+      max-width: 560px;
+    }
+    .hero-bio p strong {
+      font-weight: 500;
+      color: var(--dark);
     }
 
     /* Photo collage */
@@ -226,28 +234,18 @@
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); pointer-events: none;
     }
     .c-slide:hover img { transform: scale(1.04); }
-    .carousel-progress-wrap {
-      padding: 14px 60px 0;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .carousel-progress-track {
-      flex: 1; height: 3px; background: var(--light); border-radius: 2px; overflow: hidden;
-    }
-    .carousel-progress-fill {
-      height: 100%; background: var(--purple); border-radius: 2px;
-      width: 0%; transition: width 0.1s linear;
-    }
-    .carousel-progress-label { font-size: 11.5px; color: var(--mid); white-space: nowrap; }
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(107,63,160,0.1); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { border-color: var(--purple); box-shadow: 0 8px 28px rgba(107,63,160,0.1); transform: translateY(-3px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: var(--purple-bg); border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
-    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
-    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
-    .nav-card-arrow { font-size: 18px; color: rgba(107,63,160,0.3); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
-    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--purple); }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-arrow { font-size: 18px; color: var(--purple); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
+    .nav-card:hover .nav-card-title { color: var(--white); }
+    .nav-card:hover .nav-card-arrow { transform: translateX(6px); color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
@@ -282,7 +280,7 @@
       .about-hero { padding: 92px 24px 36px; gap: 28px; }
       .about-eyebrow { margin-bottom: 14px; font-size: 12px; }
       .hero-text h1 { font-size: clamp(28px, 6.4vw, 36px); margin-bottom: 16px; max-width: none; }
-      .hero-bio p { font-size: 15px; line-height: 1.65; margin-bottom: 12px; }
+      .hero-bio p { font-size: 15px; line-height: 1.7; margin-bottom: 14px; max-width: none; }
       .hero-photos {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -338,7 +336,6 @@
       .c-slide:nth-child(4n+2) { width: 230px; }
       .c-slide:nth-child(4n+3) { width: 180px; }
       .c-slide:nth-child(4n+0) { width: 215px; }
-      .carousel-progress-wrap { padding: 10px 24px 0; }
 
       /* Nav cards */
       .nav-cards { flex-direction: column; padding: 0 24px 32px; gap: 12px; }
@@ -353,7 +350,7 @@
       .about-hero { padding: 86px 20px 30px; gap: 24px; }
       .about-eyebrow { margin-bottom: 12px; font-size: 11.5px; }
       .hero-text h1 { font-size: clamp(26px, 7vw, 32px); margin-bottom: 14px; }
-      .hero-bio p { font-size: 14.5px; line-height: 1.6; margin-bottom: 10px; }
+      .hero-bio p { font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
       .section-label-line { margin-bottom: 14px; }
       .hero-photos { gap: 8px; }
       .hero-photo-main, .hero-photo-accent { aspect-ratio: 1 / 1.25; border-radius: 12px; }
@@ -371,7 +368,6 @@
       .c-slide:nth-child(4n+2) { width: 195px; }
       .c-slide:nth-child(4n+3) { width: 155px; }
       .c-slide:nth-child(4n+0) { width: 185px; }
-      .carousel-progress-wrap { padding: 10px 20px 0; }
       .carousel-title { font-size: 10.5px; }
       .carousel-hint { font-size: 10.5px; }
       .nav-cards { padding: 0 20px 28px; }
@@ -415,8 +411,8 @@
       <p class="about-eyebrow">About</p>
       <h1>Designer and researcher.<br /><em>Both. On purpose.</em></h1>
       <div class="hero-bio">
-        <p>Currently in a co-op on Microsoft's CoreAI team (wraps end of May), and a Master's student in HCDE at UW, graduating June '27. Based between Seattle and San Francisco.</p>
-        <p>I started on Foundry as a UX researcher and just transitioned into UX design on the same team, redesigning what my own research surfaced. Before grad school: AWS, a climate-tech startup that raised seed off a site I led, and a few smaller startup gigs.</p>
+        <p>I grew up in the Bay Area and now split my time between <strong>Seattle and San Francisco</strong>. I am pursuing a Master's in <strong>Human Centered Design and Engineering at the University of Washington</strong>, graduating in <strong>June 2027</strong>, and currently completing a co-op on <strong>Microsoft's CoreAI team</strong> that wraps this May.</p>
+        <p>Outside of work, I teach preschool, and I care deeply about educating young minds. I also spend a lot of time organizing and leading hackathons.</p>
       </div>
     </div>
 
@@ -481,12 +477,6 @@
         <div class="c-slide" aria-hidden="true"><img src="images/about-carousel-14.jpg" alt="" loading="lazy" decoding="async" /></div>
       </div>
     </div>
-    <div class="carousel-progress-wrap">
-      <div class="carousel-progress-track">
-        <div class="carousel-progress-fill" id="progressFill"></div>
-      </div>
-      <span class="carousel-progress-label" id="progressLabel">drag to explore</span>
-    </div>
   </section>
 
   <!-- NAV CARDS -->
@@ -545,21 +535,14 @@
       document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible'));
     }, 2000);
 
-    // Carousel: auto-scroll + drag
+    // Carousel: continuous auto-scroll + drag
     (function() {
       const outer = document.getElementById('carouselOuter');
       const strip = document.getElementById('carouselStrip');
-      const fill = document.getElementById('progressFill');
-      const label = document.getElementById('progressLabel');
+      if (!outer || !strip) return;
       let isDown = false, startX, scrollL;
       let paused = false;
       const speed = 0.6;
-
-      function updateProgress() {
-        const pct = outer.scrollLeft / (outer.scrollWidth - outer.clientWidth) * 100;
-        fill.style.width = Math.min(pct, 100) + '%';
-        label.textContent = Math.round(Math.min(pct, 100)) + '%';
-      }
 
       function autoScroll() {
         if (!paused && !isDown) {
@@ -571,14 +554,16 @@
       }
       requestAnimationFrame(autoScroll);
 
+      // Desktop: pause on hover, resume on leave
       outer.addEventListener('mouseenter', () => { paused = true; });
       outer.addEventListener('mouseleave', () => { paused = false; isDown = false; });
+      // Mobile: brief pause while user interacts, then resume
       outer.addEventListener('touchstart', () => { paused = true; }, { passive: true });
-      outer.addEventListener('touchend', () => { setTimeout(() => { paused = false; }, 2000); });
+      outer.addEventListener('touchend', () => { setTimeout(() => { paused = false; }, 1500); });
+      // Drag-to-scroll on desktop
       outer.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - outer.offsetLeft; scrollL = outer.scrollLeft; });
       outer.addEventListener('mouseup', () => { isDown = false; });
       outer.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); outer.scrollLeft = scrollL - (e.pageX - outer.offsetLeft - startX) * 1.4; });
-      outer.addEventListener('scroll', updateProgress);
     })();
 
   </script>

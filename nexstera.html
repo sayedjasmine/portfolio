@@ -868,11 +868,11 @@
     }
     .callout-box p strong { color: var(--dark); font-weight: 500; }
 
-    /* ── NEXT PROJECT ── */
+    /* ── NEXT PROJECT (styled in linked case study's color: Saksham rose) ── */
     .next-project {
       padding: 42px 60px;
       text-align: center;
-      border-top: 1px solid rgba(45,106,79,0.1);
+      border-top: 1px solid rgba(196,66,90,0.15);
     }
 
     .next-label {
@@ -892,7 +892,7 @@
       margin-bottom: 28px;
     }
 
-    .next-title em { font-style: italic; color: var(--green); }
+    .next-title em { font-style: italic; color: #C4425A; }
 
     .next-btn {
       display: inline-flex;
@@ -901,13 +901,13 @@
       font-size: 14px;
       font-weight: 500;
       color: white;
-      background: var(--green);
+      background: #C4425A;
       text-decoration: none;
       padding: 14px 30px;
       border-radius: 100px;
       transition: background 0.2s, gap 0.25s;
     }
-    .next-btn:hover { background: var(--green-mid); gap: 18px; }
+    .next-btn:hover { background: #D96B7E; gap: 18px; }
 
     /* ── CASE IMAGES ── */
     .case-img-wrapper {
@@ -1200,13 +1200,15 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { border-color: var(--green); box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: #F3EEFB; border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: #6B3FA0; border-color: #6B3FA0; box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
-    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); }
-    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
-    .nav-card-arrow { font-size: 18px; color: rgba(0,0,0,0.2); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
-    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--green); }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6B3FA0; transition: color 0.25s ease; }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-arrow { font-size: 18px; color: #6B3FA0; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
+    .nav-card:hover .nav-card-title { color: #fff; }
+    .nav-card:hover .nav-card-arrow { transform: translateX(6px); color: #fff; }
 
     /* ── FOOTER ── */
     footer {
@@ -1222,6 +1224,9 @@
     .footer-center a:hover { color: var(--purple-light); }
     .footer-center .footer-sep { margin: 0 14px; }
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
+
+    /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
+    section[id] { scroll-margin-top: 130px; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -1427,16 +1432,20 @@
   <!-- ROLE STRIP -->
   <div class="role-strip">
     <div>
-      <div class="role-label">Context</div>
-      <div class="role-value">Early-stage climate<br />tech startup</div>
+      <div class="role-label">Role</div>
+      <div class="role-value">UX Designer<br />(Solo)</div>
     </div>
     <div>
-      <div class="role-label">Focus</div>
-      <div class="role-value">Investor & Education<br />page design</div>
+      <div class="role-label">Timeline</div>
+      <div class="role-value">8 weeks<br />Jan – Mar 2024</div>
     </div>
     <div>
-      <div class="role-label">Funding Impact</div>
-      <div class="role-value">$65K seed funding<br />secured post-launch</div>
+      <div class="role-label">Team</div>
+      <div class="role-value">Climate-tech<br />founding team</div>
+    </div>
+    <div>
+      <div class="role-label">Tools</div>
+      <div class="role-value">Figma, Webflow,<br />FigJam</div>
     </div>
   </div>
 

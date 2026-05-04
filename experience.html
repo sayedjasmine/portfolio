@@ -242,6 +242,32 @@
       background: white; color: var(--purple); border-color: var(--purple);
     }
 
+    .hero-seeking {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #1F6F2A;
+      background: #E8F5E9;
+      border: 1px solid rgba(76,175,80,0.22);
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-top: 16px;
+    }
+    .hero-seeking-dot {
+      width: 7px; height: 7px;
+      background: #4CAF50;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(76,175,80,0.22);
+      animation: seekingPulse 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes seekingPulse {
+      0%, 100% { box-shadow: 0 0 0 2px rgba(76,175,80,0.22); }
+      50%      { box-shadow: 0 0 0 5px rgba(76,175,80,0.08); }
+    }
+
     /* ── MAIN CONTENT ── */
     .exp-content {
       padding: 0 60px 80px;
@@ -287,14 +313,31 @@
       padding-top: 1px;
     }
     .skills-row-items {
-      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-chip {
+      font-size: 12px;
+      font-weight: 500;
       color: var(--dark);
-      font-weight: 400;
-      line-height: 1.65;
+      background: rgba(107,63,160,0.06);
+      border: 1px solid rgba(107,63,160,0.18);
+      padding: 5px 11px;
+      border-radius: 100px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .skill-chip:hover {
+      background: rgba(107,63,160,0.12);
+      border-color: rgba(107,63,160,0.32);
+      color: var(--purple);
     }
     @media (max-width: 768px) {
-      .skills-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 4px; }
+      .skills-row { grid-template-columns: 1fr; gap: 8px; padding: 14px 4px; }
       .skills-row-label { font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+      .skill-chip { font-size: 11.5px; padding: 4px 10px; }
     }
 
     /* ── FEATURED ROLE (Microsoft) ── */
@@ -390,6 +433,15 @@
       color: var(--purple);
       font-weight: 500;
       margin-top: 3px;
+    }
+
+    .work-row-impact,
+    .featured-role-impact {
+      font-size: 12.5px;
+      color: var(--mid);
+      line-height: 1.55;
+      margin-top: 6px;
+      max-width: 640px;
     }
 
     .work-year {
@@ -512,13 +564,15 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(107,63,160,0.1); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { border-color: var(--purple); box-shadow: 0 8px 28px rgba(107,63,160,0.1); transform: translateY(-3px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: var(--purple-bg); border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
-    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
-    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
-    .nav-card-arrow { font-size: 18px; color: rgba(107,63,160,0.3); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
-    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--purple); }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-arrow { font-size: 18px; color: var(--purple); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
+    .nav-card:hover .nav-card-title { color: var(--white); }
+    .nav-card:hover .nav-card-arrow { transform: translateX(6px); color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
@@ -551,6 +605,8 @@
       .nav-logo { order: 1; }
       .nav-logo img { height: 40px; }
       .page-hero { padding: 100px 28px 36px; flex-direction: column; align-items: flex-start; }
+      .hero-seeking { font-size: 11.5px; padding: 8px 14px; gap: 8px; line-height: 1.4; align-items: flex-start; }
+      .hero-seeking-dot { margin-top: 4px; }
       .exp-content { padding: 0 28px 60px; }
       .work-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 4px; }
       .work-row-date { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; padding-top: 0; }
@@ -569,6 +625,8 @@
       .section-label { padding-top: 28px; margin-bottom: 14px; }
       .featured-date { white-space: normal; }
       .certs-row { grid-template-columns: 1fr; gap: 12px; }
+      .hero-seeking { font-size: 11px; padding: 8px 13px; }
+      .work-row-impact, .featured-role-impact { font-size: 12px; line-height: 1.5; }
     }
   </style>
 </head>
@@ -606,6 +664,10 @@
       <p class="page-eyebrow">Resume</p>
       <h1>Where I've been,<br /><em>what I've built.</em></h1>
       <p>From building my first website for a Girl Scout project to shaping AI experiences at Microsoft, every role taught me something new about designing for people.</p>
+      <span class="hero-seeking">
+        <span class="hero-seeking-dot" aria-hidden="true"></span>
+        Currently seeking summer internships &amp; full-time roles in product design, UX research, and AI
+      </span>
     </div>
     <a href="assets/Official Jasmine Sayed Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn">
       ↓ &nbsp;Download Resume
@@ -636,6 +698,7 @@
                 <div class="featured-role-left">
                   <div class="featured-title">User Experience Designer</div>
                   <div class="featured-type">Co-op · Microsoft CoreAI</div>
+                  <p class="featured-role-impact">Stayed on the Foundry team to design solutions to the friction my own research surfaced — translating five usability findings into shipped fixes.</p>
                 </div>
                 <div class="featured-date">Apr – Jun 2026</div>
               </div>
@@ -645,6 +708,7 @@
                 <div class="featured-role-left">
                   <div class="featured-title">User Experience Researcher</div>
                   <div class="featured-type">Co-op · Microsoft CoreAI</div>
+                  <p class="featured-role-impact">Led a usability study on Microsoft's AI agent-building platform; 8 of 8 participants hit the same Severity-4 blocker, turning a deprioritized known bug into a priority fix.</p>
                 </div>
                 <div class="featured-date">Jan – Mar 2026</div>
               </div>
@@ -694,6 +758,7 @@
         <div>
           <div class="work-row-title">UX Designer</div>
           <div class="work-row-company">Nexstera Tech</div>
+          <p class="work-row-impact">Led 8-week site redesign for climate-tech founding team. Helped raise $65K seed, +120% investor engagement, −40% nav friction.</p>
         </div>
       </div>
 
@@ -730,6 +795,45 @@
         <div>
           <div class="work-row-title">Social Media Marketing Intern</div>
           <div class="work-row-company">15 Seconds of Fame, Inc.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── HONORS & RECOGNITION ── -->
+    <h2 class="section-label" id="recognition">Honors &amp; Recognition</h2>
+
+    <div class="work-list fade-in">
+
+      <div class="work-row">
+        <div class="work-row-date">2026</div>
+        <div>
+          <div class="work-row-title">Published Research</div>
+          <div class="work-row-company">Cal Poly TAGA Journal &amp; Cal Poly Digital Commons — accessibility for neurodivergent learners (Saksham)</div>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <div class="work-row-date">2025</div>
+        <div>
+          <div class="work-row-title">1st Place — Best Game Mechanics</div>
+          <div class="work-row-company">Figma Make Hackathon · University of Washington</div>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <div class="work-row-date">2024 – 2025</div>
+        <div>
+          <div class="work-row-title">President — UXFest SLO</div>
+          <div class="work-row-company">Led Cal Poly's UX design hackathon (140+ participants, 50-member team)</div>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <div class="work-row-date">2024</div>
+        <div>
+          <div class="work-row-title">UCD Showcase Demo</div>
+          <div class="work-row-company">University of Washington — featured Nox+ identity prototype</div>
         </div>
       </div>
 
@@ -824,64 +928,85 @@
 
     </div>
 
-    <!-- ── HONORS & RECOGNITION ── -->
-    <h2 class="section-label" id="recognition">Honors &amp; Recognition</h2>
-
-    <div class="work-list fade-in">
-
-      <div class="work-row">
-        <div class="work-row-date">2026</div>
-        <div>
-          <div class="work-row-title">Published Research</div>
-          <div class="work-row-company">Cal Poly TAGA Journal &amp; Cal Poly Digital Commons — accessibility for neurodivergent learners (Saksham)</div>
-        </div>
-      </div>
-
-      <div class="work-row">
-        <div class="work-row-date">2025</div>
-        <div>
-          <div class="work-row-title">1st Place — Best Game Mechanics</div>
-          <div class="work-row-company">Figma Make Hackathon · University of Washington</div>
-        </div>
-      </div>
-
-      <div class="work-row">
-        <div class="work-row-date">2024 – 2025</div>
-        <div>
-          <div class="work-row-title">President — UXFest SLO</div>
-          <div class="work-row-company">Led Cal Poly's UX design hackathon (140+ participants, 50-member team)</div>
-        </div>
-      </div>
-
-      <div class="work-row">
-        <div class="work-row-date">2024</div>
-        <div>
-          <div class="work-row-title">UCD Showcase Demo</div>
-          <div class="work-row-company">University of Washington — featured Nox+ identity prototype</div>
-        </div>
-      </div>
-
-    </div>
-
     <!-- ── SKILLS ── -->
     <h2 class="section-label" id="skills">Skills</h2>
 
     <div class="skills-list fade-in">
       <div class="skills-row">
         <div class="skills-row-label">Design</div>
-        <div class="skills-row-items">Figma, FigJam, Design Systems, Prototyping, Interaction Design, Visual Design, Information Architecture, Service Blueprinting, Design Sprints, Adobe Creative Suite, Photoshop, Illustrator, After Effects, Framer, Webflow</div>
+        <div class="skills-row-items">
+          <span class="skill-chip">Figma</span>
+          <span class="skill-chip">FigJam</span>
+          <span class="skill-chip">Design Systems</span>
+          <span class="skill-chip">Prototyping</span>
+          <span class="skill-chip">Interaction Design</span>
+          <span class="skill-chip">Visual Design</span>
+          <span class="skill-chip">Information Architecture</span>
+          <span class="skill-chip">Service Blueprinting</span>
+          <span class="skill-chip">Design Sprints</span>
+          <span class="skill-chip">Adobe Creative Suite</span>
+          <span class="skill-chip">Photoshop</span>
+          <span class="skill-chip">Illustrator</span>
+          <span class="skill-chip">After Effects</span>
+          <span class="skill-chip">Framer</span>
+          <span class="skill-chip">Webflow</span>
+        </div>
       </div>
       <div class="skills-row">
         <div class="skills-row-label">Research</div>
-        <div class="skills-row-items">Usability Testing, User Interviews, Survey Design, Journey Mapping, Competitive Analysis, Mixed Methods, Contextual Inquiry, Diary Studies, Heuristic Evaluation, Card Sorting, Tree Testing, Affinity Mapping, Thematic Analysis, Workshop Facilitation</div>
+        <div class="skills-row-items">
+          <span class="skill-chip">Usability Testing</span>
+          <span class="skill-chip">User Interviews</span>
+          <span class="skill-chip">Survey Design</span>
+          <span class="skill-chip">Journey Mapping</span>
+          <span class="skill-chip">Competitive Analysis</span>
+          <span class="skill-chip">Mixed Methods</span>
+          <span class="skill-chip">Contextual Inquiry</span>
+          <span class="skill-chip">Diary Studies</span>
+          <span class="skill-chip">Heuristic Evaluation</span>
+          <span class="skill-chip">Card Sorting</span>
+          <span class="skill-chip">Tree Testing</span>
+          <span class="skill-chip">Affinity Mapping</span>
+          <span class="skill-chip">Thematic Analysis</span>
+          <span class="skill-chip">Workshop Facilitation</span>
+        </div>
       </div>
       <div class="skills-row">
         <div class="skills-row-label">AI &amp; Accessibility</div>
-        <div class="skills-row-items">AI Product Design, Human-AI Interaction, LLM Integration, Prompt Engineering, Multimodal Design, Conversational UI, Trust &amp; Transparency, Inclusive Design, WCAG, Cognitive Accessibility</div>
+        <div class="skills-row-items">
+          <span class="skill-chip">AI Product Design</span>
+          <span class="skill-chip">Human-AI Interaction</span>
+          <span class="skill-chip">LLM Integration</span>
+          <span class="skill-chip">Prompt Engineering</span>
+          <span class="skill-chip">Multimodal Design</span>
+          <span class="skill-chip">Conversational UI</span>
+          <span class="skill-chip">Trust &amp; Transparency</span>
+          <span class="skill-chip">Inclusive Design</span>
+          <span class="skill-chip">WCAG</span>
+          <span class="skill-chip">Cognitive Accessibility</span>
+        </div>
       </div>
       <div class="skills-row">
-        <div class="skills-row-label">Tools & Technical</div>
-        <div class="skills-row-items">Cursor, Claude, ChatGPT, Figma Make, v0, GitHub Copilot, Midjourney, Miro, Maze, UserTesting, Lookback, Dovetail, Python, R, SQL, HTML/CSS, JavaScript</div>
+        <div class="skills-row-label">Tools &amp; Technical</div>
+        <div class="skills-row-items">
+          <span class="skill-chip">Cursor</span>
+          <span class="skill-chip">Claude</span>
+          <span class="skill-chip">ChatGPT</span>
+          <span class="skill-chip">Figma Make</span>
+          <span class="skill-chip">v0</span>
+          <span class="skill-chip">GitHub Copilot</span>
+          <span class="skill-chip">Midjourney</span>
+          <span class="skill-chip">Miro</span>
+          <span class="skill-chip">Maze</span>
+          <span class="skill-chip">UserTesting</span>
+          <span class="skill-chip">Lookback</span>
+          <span class="skill-chip">Dovetail</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">R</span>
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">HTML/CSS</span>
+          <span class="skill-chip">JavaScript</span>
+        </div>
       </div>
     </div>
 

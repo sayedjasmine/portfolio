@@ -220,6 +220,9 @@
     }
     .mobile-menu a:last-child::after { display: none; }
 
+    /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
+    section[id] { scroll-margin-top: 130px; }
+
     /* ── SECTION TABS ── */
     .section-tabs {
       position: sticky;
@@ -683,11 +686,11 @@
       font-weight: 400;
     }
 
-    /* ── NEXT PROJECT ── */
+    /* ── NEXT PROJECT (styled in linked case study's color: Nexstera green) ── */
     .next-project {
       padding: 42px 60px;
       text-align: center;
-      border-top: 1px solid rgba(75,46,131,0.1);
+      border-top: 1px solid rgba(45,106,79,0.15);
     }
 
     .next-label {
@@ -706,7 +709,7 @@
       color: var(--dark);
       margin-bottom: 28px;
     }
-    .next-title em { font-style: italic; color: var(--purple); }
+    .next-title em { font-style: italic; color: #2D6A4F; }
 
     .next-btn {
       display: inline-flex;
@@ -715,13 +718,13 @@
       font-size: 14px;
       font-weight: 500;
       color: white;
-      background: var(--purple);
+      background: #2D6A4F;
       text-decoration: none;
       padding: 14px 30px;
       border-radius: 100px;
       transition: background 0.2s, gap 0.25s;
     }
-    .next-btn:hover { background: var(--purple-mid); gap: 18px; }
+    .next-btn:hover { background: #40916C; gap: 18px; }
 
     /* ── TESTIMONIAL ── */
     .testimonial-block {
@@ -753,13 +756,15 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { border-color: var(--purple); box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: var(--purple-bg); border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
-    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
-    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
-    .nav-card-arrow { font-size: 18px; color: rgba(0,0,0,0.2); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
-    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--purple); }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-arrow { font-size: 18px; color: var(--purple); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
+    .nav-card:hover .nav-card-title { color: var(--white); }
+    .nav-card:hover .nav-card-arrow { transform: translateX(6px); color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
@@ -901,20 +906,20 @@
   <!-- ROLE STRIP -->
   <div class="role-strip">
     <div>
-      <div class="role-label">Focus</div>
-      <div class="role-value">Multilingual language<br />practices &amp; identity</div>
+      <div class="role-label">Role</div>
+      <div class="role-value">UX Researcher<br />Mixed-methods</div>
     </div>
     <div>
-      <div class="role-label">Participants</div>
-      <div class="role-value">5 multilingual<br />individuals</div>
+      <div class="role-label">Timeline</div>
+      <div class="role-value">2025<br />UW HCDE</div>
     </div>
     <div>
-      <div class="role-label">Data</div>
-      <div class="role-value">Interviews &amp;<br />field observations</div>
+      <div class="role-label">Team</div>
+      <div class="role-value">UW research group<br />5 participants</div>
     </div>
     <div>
-      <div class="role-label">Analysis</div>
-      <div class="role-value">Collaborative thematic<br />coding on FigJam</div>
+      <div class="role-label">Tools</div>
+      <div class="role-value">Interviews, FigJam,<br />thematic coding</div>
     </div>
   </div>
 

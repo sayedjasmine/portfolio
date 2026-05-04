@@ -75,6 +75,9 @@
     }
     .nav-right a:hover { color: var(--rose); }
 
+    /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
+    section[id] { scroll-margin-top: 130px; }
+
     /* ── SECTION TABS ── */
     .section-tabs {
       position: sticky; top: 62px; z-index: 90;
@@ -741,11 +744,11 @@
       line-height: 1.65;
     }
 
-    /* ── NEXT PROJECT ── */
+    /* ── NEXT PROJECT (back to work — styled in brand purple) ── */
     .next-project {
       text-align: center;
       padding: 42px 60px;
-      border-top: 1px solid rgba(26,39,68,0.08);
+      border-top: 1px solid rgba(107,63,160,0.15);
     }
 
     .next-project-label {
@@ -761,7 +764,7 @@
     .next-project-title a {
       color: var(--dark); text-decoration: none; transition: color 0.2s;
     }
-    .next-project-title a:hover { color: var(--rose); }
+    .next-project-title a:hover { color: var(--purple); }
 
     /* ── TESTIMONIAL ── */
     .testimonial-block {
@@ -793,13 +796,15 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: 16px; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { border-color: var(--rose); box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: #F3EEFB; border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
-    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); }
-    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); }
-    .nav-card-arrow { font-size: 18px; color: rgba(0,0,0,0.2); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
-    .nav-card:hover .nav-card-arrow { transform: translateX(5px); color: var(--rose); }
+    .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
+    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-arrow { font-size: 18px; color: var(--purple); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
+    .nav-card:hover .nav-card-title { color: #fff; }
+    .nav-card:hover .nav-card-arrow { transform: translateX(6px); color: #fff; }
 
     /* ── FOOTER ── */
     footer {
@@ -974,20 +979,20 @@
   <!-- ROLE STRIP -->
   <div class="role-strip">
     <div>
-      <div class="role-label">Context</div>
-      <div class="role-value">Maternal health disparities<br />affecting millions globally</div>
+      <div class="role-label">Role</div>
+      <div class="role-value">UX Researcher<br />& Designer</div>
     </div>
     <div>
-      <div class="role-label">Approach</div>
-      <div class="role-value">LLM-powered insights<br />+ human-centered design</div>
+      <div class="role-label">Timeline</div>
+      <div class="role-value">2024 – 2025<br />Field research</div>
     </div>
     <div>
-      <div class="role-label">Core Tech</div>
-      <div class="role-value">Large language models<br />& machine learning</div>
+      <div class="role-label">Team</div>
+      <div class="role-value">UW HCDE<br />Cross-functional</div>
     </div>
     <div>
-      <div class="role-label">Outcome</div>
-      <div class="role-value">Evidence-based, accessible<br />pregnancy companion</div>
+      <div class="role-label">Tools</div>
+      <div class="role-value">Mixed methods,<br />LLM analysis, Figma</div>
     </div>
   </div>
 
