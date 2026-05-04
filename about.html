@@ -277,11 +277,16 @@
       .hamburger { display: flex; order: -1; }
       .nav-logo { order: 1; }
       .nav-logo img { height: 40px; }
-      .about-hero { padding: 100px 24px 40px; }
+
+      /* Hero — tightened */
+      .about-hero { padding: 92px 24px 36px; gap: 28px; }
+      .about-eyebrow { margin-bottom: 14px; font-size: 12px; }
+      .hero-text h1 { font-size: clamp(28px, 6.4vw, 36px); margin-bottom: 16px; max-width: none; }
+      .hero-bio p { font-size: 15px; line-height: 1.65; margin-bottom: 12px; }
       .hero-photos {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 10px;
         height: auto;
         position: relative;
       }
@@ -290,7 +295,7 @@
         width: 100%;
         height: auto;
         bottom: auto; right: auto; top: auto; left: auto;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 1 / 1.2;
         overflow: hidden;
         margin: 0;
         align-self: stretch;
@@ -298,7 +303,7 @@
       .hero-photo-main {
         border-radius: 14px;
         border: none;
-        box-shadow: 0 16px 40px rgba(107,63,160,0.14);
+        box-shadow: 0 12px 32px rgba(107,63,160,0.12);
       }
       .hero-photo-main img {
         width: 100%; height: 100%;
@@ -307,28 +312,71 @@
       .hero-photo-accent {
         border-radius: 14px;
         border: none;
-        box-shadow: 0 16px 40px rgba(107,63,160,0.14);
+        box-shadow: 0 12px 32px rgba(107,63,160,0.12);
       }
       .hero-photo-accent img {
         width: 100%; height: 100%;
         object-fit: cover; display: block;
       }
-      .section-container { padding: 0 24px 40px; }
-      .philosophy-grid { grid-template-columns: 1fr; }
-      .carousel-section { display: none; }
-      .nav-cards { flex-direction: column; padding: 0 24px 36px; }
-      footer { padding: 24px; flex-wrap: wrap; justify-content: center; gap: 8px; }
-      .footer-left, .footer-right { width: 100%; text-align: center; }
+
+      /* How I Work — tightened cards */
+      .section-container { padding: 0 24px 36px; }
+      .section-label-line { margin-bottom: 18px; font-size: 12px; }
+      .philosophy-grid { grid-template-columns: 1fr; gap: 12px; }
+      .philosophy-card { padding: 20px 18px; }
+      .philosophy-card-num { font-size: 22px; margin-bottom: 8px; }
+      .philosophy-card h3 { font-size: 17px; margin-bottom: 8px; }
+      .philosophy-card p { font-size: 13.5px; line-height: 1.65; }
+
+      /* Carousel */
+      .carousel-section { padding: 0 0 48px; }
+      .carousel-header { padding: 0 24px; margin-bottom: 16px; }
+      .carousel-title { font-size: 11px; }
+      .carousel-strip { gap: 12px; padding: 0 24px 10px; }
+      .c-slide { height: 260px; border-radius: 14px; }
+      .c-slide:nth-child(4n+1) { width: 200px; }
+      .c-slide:nth-child(4n+2) { width: 230px; }
+      .c-slide:nth-child(4n+3) { width: 180px; }
+      .c-slide:nth-child(4n+0) { width: 215px; }
+      .carousel-progress-wrap { padding: 10px 24px 0; }
+
+      /* Nav cards */
+      .nav-cards { flex-direction: column; padding: 0 24px 32px; gap: 12px; }
+      .nav-card { padding: 20px 22px; }
+      .nav-card-title { font-size: 17px; }
+
+      footer { padding: 22px 24px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; font-size: 12px; }
       .footer-center { display: none; }
     }
     @media (max-width: 480px) {
-      .about-hero { padding: 90px 20px 32px; }
-      .hero-text h1 { font-size: clamp(26px, 7vw, 34px); }
-      .hero-bio p { font-size: 14.5px; }
-      .section-label-line { margin-bottom: 16px; }
-      .hero-photos { gap: 10px; }
-      .section-container { padding: 0 20px 36px; }
-      .philosophy-grid { grid-template-columns: 1fr; }
+      .about-hero { padding: 86px 20px 30px; gap: 24px; }
+      .about-eyebrow { margin-bottom: 12px; font-size: 11.5px; }
+      .hero-text h1 { font-size: clamp(26px, 7vw, 32px); margin-bottom: 14px; }
+      .hero-bio p { font-size: 14.5px; line-height: 1.6; margin-bottom: 10px; }
+      .section-label-line { margin-bottom: 14px; }
+      .hero-photos { gap: 8px; }
+      .hero-photo-main, .hero-photo-accent { aspect-ratio: 1 / 1.25; border-radius: 12px; }
+      .section-container { padding: 0 20px 32px; }
+      .philosophy-grid { grid-template-columns: 1fr; gap: 10px; }
+      .philosophy-card { padding: 18px 16px; }
+      .philosophy-card-num { font-size: 20px; }
+      .philosophy-card h3 { font-size: 16px; }
+      .philosophy-card p { font-size: 13px; }
+      .carousel-section { padding: 0 0 40px; }
+      .carousel-header { padding: 0 20px; margin-bottom: 14px; }
+      .carousel-strip { padding: 0 20px 10px; gap: 10px; }
+      .c-slide { height: 220px; border-radius: 12px; }
+      .c-slide:nth-child(4n+1) { width: 170px; }
+      .c-slide:nth-child(4n+2) { width: 195px; }
+      .c-slide:nth-child(4n+3) { width: 155px; }
+      .c-slide:nth-child(4n+0) { width: 185px; }
+      .carousel-progress-wrap { padding: 10px 20px 0; }
+      .carousel-title { font-size: 10.5px; }
+      .carousel-hint { font-size: 10.5px; }
+      .nav-cards { padding: 0 20px 28px; }
+      .nav-card { padding: 18px 20px; }
+      .nav-card-title { font-size: 16px; }
     }
   </style>
 </head>
