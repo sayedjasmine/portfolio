@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,7 +37,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--white);
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -50,7 +50,7 @@
       padding: 22px 60px;
       background: rgba(255,255,255,0.88);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(107,63,160,0.08);
+      border-bottom: 1px solid rgba(24,22,26,0.06);
     }
     .nav-logo {
       text-decoration: none;
@@ -102,7 +102,7 @@
     .hamburger.active .hamburger-bars span:nth-child(2) { opacity: 0; }
     .hamburger.active .hamburger-bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hamburger-close-label {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -147,7 +147,7 @@
       padding: 6px 12px 6px 8px;
       margin-bottom: 10px;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -166,7 +166,7 @@
       stroke-width: 2;
     }
     .mobile-menu a {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -232,7 +232,7 @@
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 13px; font-weight: 500;
       color: white; background: var(--purple);
-      border: 1.5px solid var(--purple);
+      border: 1px solid var(--purple);
       padding: 10px 22px; border-radius: 100px;
       text-decoration: none;
       transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
@@ -245,27 +245,26 @@
     .hero-seeking {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      font-size: 12.5px;
-      font-weight: 500;
-      color: #1F6F2A;
-      background: #E8F5E9;
-      border: 1px solid rgba(76,175,80,0.22);
-      padding: 8px 16px;
-      border-radius: 100px;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--mid);
+      background: transparent;
+      border: none;
+      padding: 8px 4px;
       margin-top: 16px;
     }
     .hero-seeking-dot {
-      width: 7px; height: 7px;
-      background: #4CAF50;
+      width: 6px; height: 6px;
+      background: #34A853;
       border-radius: 50%;
-      box-shadow: 0 0 0 2px rgba(76,175,80,0.22);
-      animation: seekingPulse 2.4s ease-in-out infinite;
+      box-shadow: 0 0 0 3px rgba(52,168,83,0.18);
+      animation: seekingPulse 2.6s ease-in-out infinite;
       flex-shrink: 0;
     }
     @keyframes seekingPulse {
-      0%, 100% { box-shadow: 0 0 0 2px rgba(76,175,80,0.22); }
-      50%      { box-shadow: 0 0 0 5px rgba(76,175,80,0.08); }
+      0%, 100% { box-shadow: 0 0 0 3px rgba(52,168,83,0.18); }
+      50%      { box-shadow: 0 0 0 6px rgba(52,168,83,0.05); }
     }
 
     /* ── MAIN CONTENT ── */
@@ -293,18 +292,18 @@
       display: flex;
       flex-direction: column;
       margin: 8px 0 16px;
-      border-top: 1px solid rgba(107,63,160,0.10);
+      border-top: 1px solid rgba(24,22,26,0.06);
     }
     .skills-row {
       display: grid;
       grid-template-columns: 150px 1fr;
       gap: 28px;
       padding: 14px 4px;
-      border-bottom: 1px solid rgba(107,63,160,0.10);
+      border-bottom: 1px solid rgba(24,22,26,0.06);
       align-items: start;
       transition: background 0.2s ease;
     }
-    .skills-row:hover { background: rgba(107,63,160,0.025); }
+    .skills-row:hover { background: rgba(24,22,26,0.03); }
     .skills-row-label {
       font-size: 12.5px;
       color: var(--purple);
@@ -321,8 +320,8 @@
       font-size: 12px;
       font-weight: 500;
       color: var(--dark);
-      background: rgba(107,63,160,0.06);
-      border: 1px solid rgba(107,63,160,0.18);
+      background: rgba(24,22,26,0.05);
+      border: 1px solid rgba(24,22,26,0.1);
       padding: 5px 11px;
       border-radius: 100px;
       letter-spacing: 0.01em;
@@ -330,8 +329,8 @@
       transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
     .skill-chip:hover {
-      background: rgba(107,63,160,0.12);
-      border-color: rgba(107,63,160,0.32);
+      background: rgba(24,22,26,0.07);
+      border-color: rgba(24,22,26,0.1);
       color: var(--purple);
     }
     @media (max-width: 768px) {
@@ -345,10 +344,10 @@
       display: flex;
       gap: 24px;
       padding: 20px 4px;
-      border-bottom: 1px solid rgba(107,63,160,0.10);
+      border-bottom: 1px solid rgba(24,22,26,0.06);
       transition: background 0.2s ease;
     }
-    .featured-role:hover { background: rgba(107,63,160,0.025); }
+    .featured-role:hover { background: rgba(24,22,26,0.03); }
 
     .featured-logo {
       width: 52px; height: 52px;
@@ -399,7 +398,7 @@
       display: flex;
       flex-direction: column;
       margin: 8px 0 16px;
-      border-top: 1px solid rgba(107,63,160,0.10);
+      border-top: 1px solid rgba(24,22,26,0.06);
     }
 
     .work-row {
@@ -407,11 +406,11 @@
       grid-template-columns: 150px 1fr;
       gap: 28px;
       padding: 18px 4px;
-      border-bottom: 1px solid rgba(107,63,160,0.10);
+      border-bottom: 1px solid rgba(24,22,26,0.06);
       align-items: start;
       transition: background 0.2s ease;
     }
-    .work-row:hover { background: rgba(107,63,160,0.025); }
+    .work-row:hover { background: rgba(24,22,26,0.03); }
 
     .work-row-date {
       font-size: 11.5px;
@@ -516,7 +515,7 @@
       flex-direction: column;
       gap: 8px;
       padding-left: 14px;
-      border-left: 2px solid rgba(107,63,160,0.1);
+      border-left: 2px solid rgba(24,22,26,0.06);
     }
     .activity-group-role {
       display: flex;
@@ -542,13 +541,13 @@
     .cert-chip {
       padding: 18px 20px;
       border-radius: 14px;
-      border: 1px solid rgba(107,63,160,0.1);
+      border: 1px solid rgba(24,22,26,0.06);
       background: var(--white);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .cert-chip:hover {
       border-color: var(--purple-light);
-      box-shadow: 0 4px 16px rgba(107,63,160,0.06);
+      box-shadow: 0 4px 16px rgba(24,22,26,0.05);
     }
 
     .cert-chip-icon { font-size: 20px; margin-bottom: 10px; }
@@ -564,8 +563,8 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: var(--purple-bg); border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: var(--purple-bg); border: 1px solid rgba(24,22,26,0.1); box-shadow: 0 4px 18px rgba(24,22,26,0.06); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(24,22,26,0.08); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
     .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
     .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }

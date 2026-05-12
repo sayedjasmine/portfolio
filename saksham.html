@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saksham — Accessible EdTech Case Study | Jasmine Sayed</title>
+  <title>Saksham · Accessible EdTech Case Study | Jasmine Sayed</title>
   <meta name="description" content="UX research and product design case study: inclusive learning platform for neurodivergent students. User interviews, accessibility design, and Figma prototyping. Published in TAGA Journal 2026." />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Saksham — Accessible EdTech Case Study | Jasmine Sayed" />
+  <meta property="og:title" content="Saksham · Accessible EdTech Case Study | Jasmine Sayed" />
   <meta property="og:description" content="An inclusive learning platform for neurodivergent students in India. User research, accessibility design, and prototyping. Published in TAGA Journal 2026." />
   <meta property="og:image" content="assets/saksham-mockup.webp" />
   <meta property="og:image:alt" content="Saksham accessible EdTech case study" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Saksham — Accessible EdTech Case Study | Jasmine Sayed" />
+  <meta name="twitter:title" content="Saksham · Accessible EdTech Case Study | Jasmine Sayed" />
   <meta name="twitter:description" content="An inclusive learning platform for neurodivergent students in India. User research, accessibility design, and prototyping. Published in TAGA Journal 2026." />
   <meta name="twitter:image" content="assets/saksham-mockup.webp" />
   <meta name="author" content="Jasmine Sayed" />
@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,7 +41,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--white);
       color: var(--dark);
       overflow-x: hidden;
@@ -130,7 +130,7 @@
     .hamburger.active .hamburger-bars span:nth-child(2) { opacity: 0; }
     .hamburger.active .hamburger-bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hamburger-close-label {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -175,7 +175,7 @@
       padding: 6px 12px 6px 8px;
       margin-bottom: 10px;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -194,7 +194,7 @@
       stroke-width: 2;
     }
     .mobile-menu a {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -283,7 +283,7 @@
       height: 52px;
       background: rgba(240,179,190,0.12);
       border-radius: 8px;
-      border: 1.5px solid rgba(240,179,190,0.25);
+      border: 1px solid rgba(240,179,190,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -604,6 +604,76 @@
       line-height: 1.65;
     }
 
+    /* ── DESIGN DECISIONS ── */
+    .decisions-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0 0;
+    }
+    .decision-card {
+      background: var(--white);
+      border: 1px solid rgba(24,22,26,0.08);
+      border-radius: 16px;
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+    }
+    .decision-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(24,22,26,0.06);
+    }
+    .decision-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--rose-light);
+      line-height: 1;
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+    .decision-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 14px;
+      letter-spacing: -0.005em;
+    }
+    .decision-choice {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .decision-cost {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.6;
+      padding-top: 14px;
+      border-top: 1px solid rgba(24,22,26,0.06);
+      margin-top: auto;
+    }
+    .decision-cost::before {
+      content: 'TRADE-OFF';
+      display: block;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--rose-mid);
+      margin-bottom: 6px;
+    }
+    .decision-choice em { font-style: italic; }
+    .decision-choice strong { font-weight: 500; }
+    .decision-cost em { font-style: italic; }
+    @media (max-width: 980px) {
+      .decisions-list { grid-template-columns: 1fr; gap: 12px; }
+      .decision-card { padding: 22px 20px; }
+    }
+
     /* ── PERSONA CARD ── */
     .persona-card {
       background: var(--rose-bg);
@@ -672,7 +742,7 @@
       width: 52px; height: 52px;
       border-radius: 14px;
       background: var(--rose-bg);
-      border: 1.5px solid rgba(196,66,90,0.15);
+      border: 1px solid rgba(196,66,90,0.15);
       display: flex; align-items: center; justify-content: center;
       font-family: 'DM Serif Display', serif;
       font-size: 20px;
@@ -1004,25 +1074,24 @@
 
     /* ── DESIGN SYSTEM COMPONENT ── */
     .ds-wrapper {
-      margin: 24px auto;
-      max-width: 70%;
-      border-radius: 12px;
+      margin: 24px auto 0;
+      max-width: 100%;
+      border-radius: 16px;
       border: 1px solid rgba(196,66,90,0.12);
       overflow: hidden;
       background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
-    .ds-section {
-      padding: 28px 36px;
-      border-bottom: 1px solid rgba(196,66,90,0.08);
-    }
-    .ds-section:last-child { border-bottom: none; }
+    .ds-section { padding: 28px 32px; }
+    .ds-section + .ds-section { border-left: 1px solid rgba(196,66,90,0.08); }
     .ds-section-label {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 4px;
+      color: var(--rose-mid);
+      margin-bottom: 18px;
     }
     .ds-section-title {
       font-family: 'DM Serif Display', serif;
@@ -1032,31 +1101,33 @@
     }
     .ds-colors {
       display: flex;
-      gap: 40px;
+      gap: 18px;
       flex-wrap: wrap;
-      justify-content: center;
     }
     .ds-swatch {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .ds-swatch-box {
-      width: 72px;
-      height: 72px;
-      border-radius: 12px;
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
       border: 1px solid rgba(0,0,0,0.06);
+    }
+    @media (max-width: 780px) {
+      .ds-wrapper { grid-template-columns: 1fr; }
+      .ds-section + .ds-section { border-left: none; border-top: 1px solid rgba(196,66,90,0.08); }
     }
     .ds-swatch-hex {
       font-size: 10.5px;
       font-weight: 500;
       color: var(--mid);
-      font-family: 'DM Sans', monospace;
+      font-family: 'JetBrains Mono', monospace;
       letter-spacing: 0.02em;
     }
     .ds-type-specimen {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
     .ds-type-name {
       font-size: 26px;
@@ -1139,8 +1210,8 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: #F3EEFB; border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { background: #6B3FA0; border-color: #6B3FA0; box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: #F3EEFB; border: 1px solid rgba(24,22,26,0.1); box-shadow: 0 4px 18px rgba(24,22,26,0.06); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: #6B3FA0; border-color: #6B3FA0; box-shadow: 0 14px 34px rgba(24,22,26,0.08); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
     .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6B3FA0; transition: color 0.25s ease; }
     .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
@@ -1311,7 +1382,7 @@
       letter-spacing: 0.04em;
       padding: 10px 20px;
       border-radius: 100px;
-      border: 1.5px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.25);
       color: white;
       text-decoration: none;
       transition: all 0.2s;
@@ -1359,6 +1430,7 @@
     <a href="#research"  class="tab-link">Research</a>
     <a href="#insights"  class="tab-link">Insights</a>
     <a href="#design"    class="tab-link">Design Process</a>
+    <a href="#decisions" class="tab-link">Decisions</a>
     <a href="#solution"  class="tab-link">Solution</a>
     <a href="#impact"    class="tab-link">Impact</a>
     <a href="#reflection" class="tab-link">Reflection</a>
@@ -1445,7 +1517,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Statement</p>
       <h2 class="section-title">How might we create an experience that adapts to each <em>learner's</em> cognitive style?</h2>
-      <p class="body-text">I audited the tools these students actually use: Byju's, Duolingo, and government e-learning apps. Not a single major platform in India offered cognitive adaptation for neurodiverse learners. The apps were designed for a "default" student — fast-paced, visually dense, text-heavy. For a child with dyslexia, these interfaces don't just fail to help; they create anxiety.</p>
+      <p class="body-text">I audited the tools these students actually use: Byju's, Duolingo, and government e-learning apps. Not a single major platform in India offered cognitive adaptation for neurodiverse learners. The apps were designed for a "default" student: fast-paced, visually dense, text-heavy. For a child with dyslexia, these interfaces don't just fail to help; they create anxiety.</p>
       <p class="body-text">The challenge became clear: design an educational experience that adapts to each learner's cognitive style, while promoting <strong>independence and confidence</strong>, not just learning outcomes.</p>
     </div>
 
@@ -1482,7 +1554,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Research</p>
       <h2 class="section-title">The research that changed<br /><em>what I thought I was designing.</em></h2>
-      <p class="body-text">I went in thinking I was designing a learning app. After interviewing educators, parents, and accessibility experts, I realized I was designing <strong>a way for children to feel capable.</strong> Every parent described the same pattern: their child wasn't struggling with the content — they were struggling with the interface.</p>
+      <p class="body-text">I went in thinking I was designing a learning app. After interviewing educators, parents, and accessibility experts, I realized I was designing <strong>a way for children to feel capable.</strong> Every parent described the same pattern: their child wasn't struggling with the content. They were struggling with the interface.</p>
     </div>
 
     <div class="container-wide">
@@ -1652,6 +1724,40 @@
     </div>
   </section>
 
+  <!-- DESIGN DECISIONS -->
+  <section id="decisions">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Design Decisions</p>
+      <h2 class="section-title">Three choices I had to <em>defend</em><br />against my own instincts.</h2>
+      <p class="body-text">Each one was a moment where the obvious move turned out to be wrong, usually because educators and parents pushed back on assumptions I hadn't realized I was making.</p>
+
+      <div class="decisions-list fade-in">
+
+        <article class="decision-card">
+          <div class="decision-num">01</div>
+          <h3 class="decision-title">Emotion-tracking AI, or proactive customization?</h3>
+          <p class="decision-choice">My first concept was an AI that watched the child's face and adapted to detected frustration. Parents recoiled: <em>"I don't want an app watching my child's face."</em> I cut the tracker and replaced it with upfront customization, letting students set reading speed, font, contrast, and motion themselves, with no algorithm in the loop.</p>
+          <p class="decision-cost">No flashy AI hook. Accepted because the more "intelligent" the system tried to be, the less control the child had, and control was the entire point.</p>
+        </article>
+
+        <article class="decision-card">
+          <div class="decision-num">02</div>
+          <h3 class="decision-title">Calm, or clinical?</h3>
+          <p class="decision-choice">My first prototype took "visual simplicity" literally: stripped color, minimal illustration. An educator told me it felt <em>clinical.</em> I rebuilt around warm, high-saturation accents on a calm base. Joy lives in color and character; calm lives in motion and density.</p>
+          <p class="decision-cost">More illustration debt than a minimalist version. Worth it. The goal wasn't to look accessible; it was to feel inviting to a kid who's been told they're behind.</p>
+        </article>
+
+        <article class="decision-card">
+          <div class="decision-num">03</div>
+          <h3 class="decision-title">Customization as feature, or as foundation?</h3>
+          <p class="decision-choice">Most educational apps bury customization in a settings menu. Educators kept describing the same moment: when a neurodivergent child realized they could change the app's pace, font, or color, their relationship to the tool flipped. I moved customization into onboarding as the first interaction: font (including <strong>OpenDyslexic</strong>), pace, and color world chosen before any content loads.</p>
+          <p class="decision-cost">Slower time-to-first-lesson, and an upfront ask from a child whose attention may already be fragile. Mitigated with playful micro-interactions and a "skip to defaults" path.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- DESIGN SYSTEM -->
   <section id="design-system">
     <div class="container fade-in">
@@ -1663,40 +1769,19 @@
     <div class="container-wide fade-in">
       <div class="ds-wrapper">
         <div class="ds-section">
-          <div class="ds-section-label">Styles</div>
-          <div class="ds-section-title">Colors</div>
+          <div class="ds-section-label">Palette</div>
           <div class="ds-colors">
-            <div class="ds-swatch">
-              <div class="ds-swatch-box" style="background: #3D5CFF;"></div>
-              <span class="ds-swatch-hex">#3D5CFF</span>
-            </div>
-            <div class="ds-swatch">
-              <div class="ds-swatch-box" style="background: #8699FF;"></div>
-              <span class="ds-swatch-hex">#8699FF</span>
-            </div>
-            <div class="ds-swatch">
-              <div class="ds-swatch-box" style="background: #FF7C24;"></div>
-              <span class="ds-swatch-hex">#FF7C24</span>
-            </div>
-            <div class="ds-swatch">
-              <div class="ds-swatch-box" style="background: #FFD301;"></div>
-              <span class="ds-swatch-hex">#FFD301</span>
-            </div>
-            <div class="ds-swatch">
-              <div class="ds-swatch-box" style="background: #EFE0FF;"></div>
-              <span class="ds-swatch-hex">#EFE0FF</span>
-            </div>
-            <div class="ds-swatch">
-              <div class="ds-swatch-box" style="background: #FFE7EE;"></div>
-              <span class="ds-swatch-hex">#FFE7EE</span>
-            </div>
+            <div class="ds-swatch"><div class="ds-swatch-box" style="background: #3D5CFF;"></div><span class="ds-swatch-hex">#3D5CFF</span></div>
+            <div class="ds-swatch"><div class="ds-swatch-box" style="background: #8699FF;"></div><span class="ds-swatch-hex">#8699FF</span></div>
+            <div class="ds-swatch"><div class="ds-swatch-box" style="background: #FF7C24;"></div><span class="ds-swatch-hex">#FF7C24</span></div>
+            <div class="ds-swatch"><div class="ds-swatch-box" style="background: #FFD301;"></div><span class="ds-swatch-hex">#FFD301</span></div>
+            <div class="ds-swatch"><div class="ds-swatch-box" style="background: #EFE0FF;"></div><span class="ds-swatch-hex">#EFE0FF</span></div>
+            <div class="ds-swatch"><div class="ds-swatch-box" style="background: #FFE7EE;"></div><span class="ds-swatch-hex">#FFE7EE</span></div>
           </div>
         </div>
         <div class="ds-section">
-          <div class="ds-section-label">Styles</div>
-          <div class="ds-section-title">Typeface</div>
+          <div class="ds-section-label">Typography · Poppins</div>
           <div class="ds-type-specimen">
-            <div class="ds-type-name">Poppins</div>
             <div class="ds-type-row">
               <span class="ds-type-role">Heading</span>
               <span class="ds-type-sample-h">Heading</span>
@@ -1784,7 +1869,7 @@
         </div>
         <div class="impact-stat">
           <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">5M+</div>
-          <div class="impact-label">neurodivergent students in India underserved by current learning tools — the problem scale this research addresses</div>
+          <div class="impact-label">neurodivergent students in India underserved by current learning tools: the problem scale this research addresses</div>
         </div>
         <div class="impact-stat">
           <div class="impact-number" style="font-size: clamp(20px, 2.5vw, 32px);">Catalyst</div>
@@ -1807,11 +1892,10 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection & Next Steps</p>
       <h2 class="section-title">What I got wrong,<br />what I'd <em>change.</em></h2>
-      <p class="body-text">My biggest blind spot was assuming I could design for neurodivergent children without involving them directly. Ethical constraints made it difficult to include minors, so I relied on parents and educators as proxies. The designs are stronger for it, but I know there's a gap between what adults report and what children experience. Participatory design with children is the essential next step.</p>
-      <p class="body-text">I also learned that "inclusive design" and "simple design" are not the same thing. My early iterations stripped away too much, removing the visual richness that makes learning joyful. Finding the line between "calming" and "boring" required multiple rounds of testing and honest feedback from educators who told me my first prototype felt clinical.</p>
+      <p class="body-text">My biggest blind spot was assuming I could design for neurodivergent children without involving them directly. Ethical constraints made it difficult to include minors, so I relied on parents and educators as proxies. The designs are stronger for it, but there's a real gap between what adults report and what children experience. <strong>Participatory design with children is the essential next step.</strong></p>
 
       <div class="callout-box">
-        <p>This project changed how I think about design itself. Accessibility isn't a feature you add at the end; it's a lens that shapes every decision from the start. The journey from a personal question to <strong>published research</strong> was the most meaningful experience of my design career, and it's made me a fundamentally more thoughtful designer on every project since.</p>
+        <p>This project changed how I think about design itself. Accessibility isn't a feature you add at the end; it's a lens that shapes every decision from the start. The journey from a personal question to <strong>published research</strong> made me a fundamentally more thoughtful designer on every project since.</p>
       </div>
 
       <h3 class="sub-heading">Looking Ahead</h3>

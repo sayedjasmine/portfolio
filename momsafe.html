@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MomSAFE — UX Research Case Study | Jasmine Sayed</title>
+  <title>MomSAFE · UX Research Case Study | Jasmine Sayed</title>
   <meta name="description" content="UX research case study: AI-powered maternal healthcare. User interviews with mothers and providers, research synthesis, and design direction. CHI 2025 Student Design Competition." />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="MomSAFE — UX Research Case Study | Jasmine Sayed" />
+  <meta property="og:title" content="MomSAFE · UX Research Case Study | Jasmine Sayed" />
   <meta property="og:description" content="AI-powered maternal healthcare research. Interviews with mothers and providers; research synthesis informed design direction for personalized prenatal support." />
   <meta property="og:image" content="assets/momsafe-infographic.webp" />
   <meta property="og:image:alt" content="MomSAFE maternal health case study" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MomSAFE — UX Research Case Study | Jasmine Sayed" />
+  <meta name="twitter:title" content="MomSAFE · UX Research Case Study | Jasmine Sayed" />
   <meta name="twitter:description" content="AI-powered maternal healthcare research. Interviews with mothers and providers; research synthesis informed design direction for personalized prenatal support." />
   <meta name="twitter:image" content="assets/momsafe-infographic.webp" />
   <meta name="author" content="Jasmine Sayed" />
@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,7 +41,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--white);
       color: var(--dark);
       overflow-x: hidden;
@@ -95,7 +95,7 @@
       padding: 7px 16px; border-radius: 100px;
       color: var(--mid); text-decoration: none;
       white-space: nowrap; transition: all 0.2s;
-      border: 1.5px solid transparent;
+      border: 1px solid transparent;
     }
     .tab-link:hover { color: var(--rose); border-color: rgba(26,39,68,0.15); }
     .tab-link.active {
@@ -145,7 +145,7 @@
     .hamburger.active .hamburger-bars span:nth-child(2) { opacity: 0; }
     .hamburger.active .hamburger-bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hamburger-close-label {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -190,7 +190,7 @@
       padding: 6px 12px 6px 8px;
       margin-bottom: 10px;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -209,7 +209,7 @@
       stroke-width: 2;
     }
     .mobile-menu a {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -286,7 +286,7 @@
       height: 52px;
       background: white;
       border-radius: 8px;
-      border: 1.5px solid rgba(26,39,68,0.12);
+      border: 1px solid rgba(26,39,68,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -426,7 +426,7 @@
       letter-spacing: 0.04em;
       padding: 10px 20px;
       border-radius: 100px;
-      border: 1.5px solid rgba(26,39,68,0.2);
+      border: 1px solid rgba(26,39,68,0.2);
       color: var(--rose);
       text-decoration: none;
       transition: all 0.2s;
@@ -705,6 +705,76 @@
       color: var(--dark); margin-bottom: 8px;
     }
 
+    /* ── DESIGN DECISIONS ── */
+    .decisions-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 24px 0 0;
+    }
+    .decision-card {
+      background: var(--white);
+      border: 1px solid rgba(24,22,26,0.08);
+      border-radius: 16px;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+    }
+    .decision-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(24,22,26,0.06);
+    }
+    .decision-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--rose-light);
+      line-height: 1;
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+    .decision-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 14px;
+      letter-spacing: -0.005em;
+    }
+    .decision-choice {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .decision-cost {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.6;
+      padding-top: 14px;
+      border-top: 1px solid rgba(24,22,26,0.06);
+      margin-top: auto;
+    }
+    .decision-cost::before {
+      content: 'TRADE-OFF';
+      display: block;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--rose-mid);
+      margin-bottom: 6px;
+    }
+    .decision-choice em { font-style: italic; }
+    .decision-choice strong { font-weight: 500; }
+    .decision-cost em { font-style: italic; }
+    @media (max-width: 880px) {
+      .decisions-list { grid-template-columns: 1fr; gap: 12px; }
+      .decision-card { padding: 22px 20px; }
+    }
+
     .principle-desc {
       font-size: 13px; font-weight: 300;
       color: var(--mid); line-height: 1.65;
@@ -744,11 +814,11 @@
       line-height: 1.65;
     }
 
-    /* ── NEXT PROJECT (back to work — styled in brand purple) ── */
+    /* ── NEXT PROJECT (back to work, styled in brand purple) ── */
     .next-project {
       text-align: center;
       padding: 42px 60px;
-      border-top: 1px solid rgba(107,63,160,0.15);
+      border-top: 1px solid rgba(24,22,26,0.08);
     }
 
     .next-project-label {
@@ -796,8 +866,8 @@
 
     /* ── NAV CARDS ── */
     .nav-cards { display: flex; gap: 16px; padding: 0 60px 48px; max-width: 1320px; margin: 0 auto; }
-    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: #F3EEFB; border: 1.5px solid rgba(107,63,160,0.32); box-shadow: 0 4px 18px rgba(107,63,160,0.10); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
-    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(107,63,160,0.28); transform: translateY(-4px); }
+    .nav-card { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 26px 30px; border-radius: 16px; text-decoration: none; background: #F3EEFB; border: 1px solid rgba(24,22,26,0.1); box-shadow: 0 4px 18px rgba(24,22,26,0.06); transition: all 0.28s cubic-bezier(0.16,1,0.3,1); }
+    .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(24,22,26,0.08); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
     .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
     .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
@@ -1172,6 +1242,30 @@
           <div class="principle-title">Trust</div>
           <div class="principle-desc">Evidence-based recommendations, transparent AI, and user-controlled data create a safe space for health decisions.</div>
         </div>
+      </div>
+    </div>
+
+    <div class="container fade-in" style="margin-top: 56px;">
+      <p class="section-eyebrow">Design Decisions</p>
+      <h2 class="section-title">Two trade-offs the research <em>forced</em><br />us to make.</h2>
+      <p class="body-text">Mothers and providers gave us conflicting signals about what MomSAFE should be. Each conflict surfaced a real design choice, and the wrong call in either direction would have undone the research.</p>
+
+      <div class="decisions-list fade-in">
+
+        <article class="decision-card">
+          <div class="decision-num">01</div>
+          <h3 class="decision-title">Reactive logging, or longitudinal check-ins?</h3>
+          <p class="decision-choice">Mothers wanted <strong>real-time help</strong> at 2 AM. The obvious response was a reactive symptom logger. OB/GYNs pushed back: reactive data is the least useful kind. They needed <strong>longitudinal patterns</strong> to catch the early signals that distinguish normal pregnancy variation from a developing complication. I built both, with longitudinal check-ins as the spine and the AI chatbot pulling from that same context.</p>
+          <p class="decision-cost">More upfront commitment from mothers (daily input vs. only-when-needed). Mitigated by keeping each check-in under 30 seconds.</p>
+        </article>
+
+        <article class="decision-card">
+          <div class="decision-num">02</div>
+          <h3 class="decision-title">Clinical accuracy, or lay language?</h3>
+          <p class="decision-choice">A labor nurse summarized the problem: <em>"It's not expected that an average mother understands complex medical terms."</em> But pregnancy is high-stakes, and misstating a clinical concept could cost real safety. The reframe: language isn't accuracy vs. accessibility; it's about <em>who</em> it's for. Plain language defaults for mothers, full clinical language for provider-facing surfaces, tappable definitions in between.</p>
+          <p class="decision-cost">Two parallel content systems to maintain. Accepted because forcing mothers to learn medical terminology to use a maternal health app was exactly the gap MomSAFE existed to close.</p>
+        </article>
+
       </div>
     </div>
   </section>
