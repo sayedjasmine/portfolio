@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure AI Foundry – Models</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11/dist/motion.js"></script>
+<style>
+  :root {
+    --bg:          #0a0b11;
+    --surface:     #111220;
+    --elevated:    #181928;
+    --border:      #1c1d2e;
+    --border-mid:  #252640;
+    --border-hi:   #3d3f6a;
+    --text:        #e4e4f0;
+    --text-2:      #7878a0;
+    --text-3:      #3e3e5a;
+    --purple:      #7c3aed;
+    --purple-2:    #a855f7;
+    --purple-glow: rgba(124,58,237,0.18);
+    --blue:        #3b82f6;
+    --blue-2:      #60a5fa;
+    --blue-glow:   rgba(59,130,246,0.15);
+    --green:       #10b981;
+    --green-dim:   rgba(16,185,129,0.15);
+    --red:         #f87171;
+    --red-dim:     rgba(248,113,113,0.12);
+    --amber:       #fbbf24;
+  }
+
+  * { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); margin: 0; }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 4px; }
+
+  /* ── TOP NAV ── */
+  #topnav {
+    height: 46px; display: flex; align-items: center; gap: 12px; padding: 0 16px;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 40; backdrop-filter: blur(12px);
+  }
+
+  .nav-link {
+    font-size: 13px; color: var(--text-2); padding: 4px 10px; border-radius: 6px;
+    cursor: pointer; transition: color 0.15s, background 0.15s; white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--text); background: var(--elevated); }
+  .nav-link.active { color: var(--text); font-weight: 600; }
+
+  .new-foundry-pill {
+    display: flex; align-items: center; gap: 7px; padding: 3px 10px 3px 8px;
+    border-radius: 20px; border: 1px solid var(--border-mid);
+    background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(59,130,246,0.08));
+    font-size: 12px; color: var(--text); cursor: pointer; white-space: nowrap;
+  }
+  .toggle-track {
+    width: 32px; height: 18px; border-radius: 9px; position: relative; flex-shrink: 0;
+    background: linear-gradient(90deg, var(--purple), var(--blue)); cursor: pointer;
+  }
+  .toggle-thumb {
+    position: absolute; top: 2px; right: 2px; width: 14px; height: 14px;
+    border-radius: 50%; background: white;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: 188px; flex-shrink: 0; background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky; top: 46px; height: calc(100vh - 46px); overflow-y: auto;
+  }
+  .sb-item {
+    display: flex; align-items: center; gap: 10px; padding: 8px 14px;
+    font-size: 13px; color: var(--text-2); border-radius: 6px; margin: 2px 8px;
+    cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .sb-item:hover { background: var(--elevated); color: var(--text); }
+  .sb-item.active {
+    background: linear-gradient(90deg, rgba(124,58,237,0.18), rgba(59,130,246,0.10));
+    color: #c4b5fd; font-weight: 600;
+    border-left: 2px solid var(--purple-2); padding-left: 12px;
+  }
+
+  /* ── FILTER ACCORDION ── */
+  .filter-section { border-bottom: 1px solid var(--border); }
+  .filter-head-btn {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 10px 16px; font-size: 12px; font-weight: 600; color: var(--text-2);
+    text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; background: none; border: none;
+    transition: color 0.15s;
+  }
+  .filter-head-btn:hover { color: var(--text); }
+  .filter-body { padding: 4px 16px 10px; }
+  .filter-cb { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12.5px; color: var(--text-2); padding: 4px 0; transition: color 0.12s; }
+  .filter-cb:hover { color: var(--text); }
+  .filter-cb input { accent-color: var(--purple-2); }
+
+  /* ── TABS ── */
+  .tab-btn {
+    padding: 10px 16px; font-size: 13px; cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent; color: var(--text-2); background: none; border-top: none; border-left: none; border-right: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn.active { color: var(--purple-2); border-bottom-color: var(--purple-2); font-weight: 600; }
+  .tab-btn:hover:not(.active) { color: var(--text); }
+
+  /* ── MODEL CARD ── */
+  .model-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; transition: border-color 0.2s, box-shadow 0.2s; cursor: default; position: relative; overflow: hidden;
+    will-change: transform;
+  }
+  .model-card::before {
+    content: ''; position: absolute; inset: 0; opacity: 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(59,130,246,0.04));
+    transition: opacity 0.2s; pointer-events: none;
+  }
+  .model-card:hover { border-color: var(--border-hi); box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,58,237,0.1); }
+  .model-card:hover::before { opacity: 1; }
+  .model-card.in-compare { border-color: var(--purple); box-shadow: 0 0 0 2px var(--purple-glow), 0 4px 24px rgba(0,0,0,0.4); }
+
+  .model-card.list-view { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-radius: 8px; }
+
+  /* ── PROVIDER ICONS ── */
+  .picon {
+    width: 34px; height: 34px; border-radius: 9px; display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 700;
+  }
+  .pi-openai   { background: linear-gradient(135deg,#10a37f,#0d7a60); color:#fff; }
+  .pi-microsoft{ background: linear-gradient(135deg,#0078d4,#005a9e); color:#fff; }
+  .pi-meta     { background: linear-gradient(135deg,#4267b2,#2d4a8a); color:#fff; }
+  .pi-mistral  { background: linear-gradient(135deg,#f97316,#c2540a); color:#fff; }
+  .pi-anthropic{ background: linear-gradient(135deg,#c96a3a,#9a4a22); color:#fff; }
+  .pi-xai      { background: linear-gradient(135deg,#374151,#1f2937); color:#e5e7eb; }
+  .pi-cohere   { background: linear-gradient(135deg,#e5484d,#b91c1c); color:#fff; }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap;
+  }
+  .avail-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+
+  .bp-openai   { background:rgba(16,163,127,0.15);  color:#34d399; border:1px solid rgba(16,163,127,0.2); }
+  .bp-microsoft{ background:rgba(0,120,212,0.15);   color:#60a5fa; border:1px solid rgba(0,120,212,0.2); }
+  .bp-meta     { background:rgba(66,103,178,0.15);  color:#818cf8; border:1px solid rgba(66,103,178,0.2);}
+  .bp-mistral  { background:rgba(249,115,22,0.15);  color:#fb923c; border:1px solid rgba(249,115,22,0.2); }
+  .bp-anthropic{ background:rgba(201,106,58,0.15);  color:#fca57c; border:1px solid rgba(201,106,58,0.2); }
+  .bp-xai      { background:rgba(107,114,128,0.15); color:#9ca3af; border:1px solid rgba(107,114,128,0.2); }
+  .bp-cohere   { background:rgba(229,72,77,0.15);   color:#f87171; border:1px solid rgba(229,72,77,0.2); }
+
+  .bt-reasoning  { background:rgba(124,58,237,0.15); color:#c4b5fd; border:1px solid rgba(124,58,237,0.25); }
+  .bt-code       { background:rgba(16,185,129,0.12); color:#6ee7b7; border:1px solid rgba(16,185,129,0.2); }
+  .bt-multimodal { background:rgba(59,130,246,0.15); color:#93c5fd; border:1px solid rgba(59,130,246,0.25); }
+  .bt-image      { background:rgba(251,191,36,0.12); color:#fcd34d; border:1px solid rgba(251,191,36,0.2); }
+  .bt-audio      { background:rgba(236,72,153,0.12); color:#f9a8d4; border:1px solid rgba(236,72,153,0.2); }
+  .bt-embeddings { background:rgba(20,184,166,0.12); color:#5eead4; border:1px solid rgba(20,184,166,0.2); }
+  .bt-translation{ background:rgba(99,102,241,0.12); color:#a5b4fc; border:1px solid rgba(99,102,241,0.2); }
+  .bt-edge       { background:rgba(52,211,153,0.12); color:#6ee7b7; border:1px solid rgba(52,211,153,0.2); }
+
+  /* ── MINI BAR ── */
+  .mini-bar { height: 3px; border-radius: 2px; background: var(--border-mid); overflow: hidden; }
+  .mini-bar-fill { height: 100%; border-radius: 2px; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple), #5b21b6);
+    color: white; padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: opacity 0.15s, box-shadow 0.15s; will-change: transform;
+  }
+  .btn-primary:hover { opacity: 0.9; box-shadow: 0 0 16px var(--purple-glow); }
+
+  .btn-secondary {
+    background: transparent; color: var(--purple-2); padding: 7px 16px; border-radius: 6px;
+    font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid rgba(124,58,237,0.4);
+    display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s, border-color 0.15s;
+    will-change: transform;
+  }
+  .btn-secondary:hover { background: rgba(124,58,237,0.08); border-color: var(--purple-2); }
+
+  .btn-ghost {
+    background: transparent; color: var(--text-2); padding: 6px 14px; border-radius: 6px;
+    font-size: 13px; cursor: pointer; border: 1px solid var(--border-mid);
+    display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s, color 0.15s, border-color 0.15s;
+    will-change: transform;
+  }
+  .btn-ghost:hover { background: var(--elevated); color: var(--text); border-color: var(--border-hi); }
+
+  /* ── INPUTS ── */
+  .search-input {
+    padding: 7px 10px 7px 32px; border: 1px solid var(--border-mid); border-radius: 6px;
+    font-size: 13px; outline: none; width: 100%; background: var(--elevated); color: var(--text);
+  }
+  .search-input::placeholder { color: var(--text-3); }
+  .search-input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-glow); }
+
+  .region-select {
+    padding: 6px 12px; border: 1px solid rgba(124,58,237,0.35); border-radius: 6px;
+    font-size: 13px; color: var(--purple-2); background: rgba(124,58,237,0.08); cursor: pointer; outline: none; font-weight: 600;
+  }
+  .region-select option { background: var(--elevated); color: var(--text); }
+  .region-select:focus { border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-glow); }
+
+  /* ── COMPARISON BAR ── */
+  #comparison-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+    background: var(--surface); border-top: 1px solid var(--border-mid);
+    backdrop-filter: blur(16px);
+    padding: 12px 24px; display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+    transform: translateY(100%);
+  }
+  .cmp-chip {
+    display: flex; align-items: center; gap: 7px; padding: 5px 10px;
+    background: var(--elevated); border: 1px solid var(--border-mid); border-radius: 6px; font-size: 12.5px;
+  }
+
+  /* ── DEPLOYMENT PANEL ── */
+  #deployment-panel {
+    position: fixed; top: 0; right: 0; bottom: 0; width: 480px; z-index: 60;
+    background: var(--surface); border-left: 1px solid var(--border-mid);
+    box-shadow: -12px 0 48px rgba(0,0,0,0.6);
+    overflow-y: auto; display: flex; flex-direction: column;
+    transform: translateX(100%);
+  }
+  #deployment-panel.open { transform: none; }
+
+  /* ── COMPARISON MODAL ── */
+  #comparison-modal {
+    position: fixed; inset: 0; z-index: 70;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  #comparison-modal.open { display: flex; }
+  #comparison-box {
+    background: var(--surface); border: 1px solid var(--border-mid); border-radius: 14px;
+    width: min(95vw,1040px); max-height: 88vh; overflow: auto; padding: 28px 32px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(124,58,237,0.15);
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    background: var(--elevated); color: var(--text); padding: 10px 14px; border-radius: 8px;
+    font-size: 13px; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    border: 1px solid var(--border-mid);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    pointer-events: all;
+  }
+
+  /* ── OVERLAY ── */
+  #overlay { position: fixed; inset: 0; z-index: 55; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); display: none; }
+  #overlay.open { display: block; }
+
+  /* ── DEPLOYMENT STEPS ── */
+  .step-row { display: flex; align-items: flex-start; gap: 12px; position: relative; padding-bottom: 16px; }
+  .step-row:not(:last-child)::after { content:''; position:absolute; left:11px; top:24px; bottom:0; width:1px; background:var(--border-mid); }
+  .step-num { width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+
+  /* ── REGION BAR ── */
+  .region-bar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 12px 20px; border-radius: 10px; margin: 16px 20px 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.06));
+    border: 1px solid rgba(124,58,237,0.2);
+  }
+
+  /* ── GRADIENT SECTION HEADERS ── */
+  .section-gradient-header {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px;
+    border-radius: 8px; font-size: 13px; font-weight: 600;
+  }
+
+  /* ── POPULARITY BAR ── */
+  .pop-bar { height: 3px; background: var(--border-mid); border-radius: 2px; overflow: hidden; }
+  .pop-fill { height: 100%; background: linear-gradient(90deg, var(--purple), var(--blue)); }
+
+  /* ── INFO STAT BOX ── */
+  .stat-box {
+    padding: 12px; border-radius: 8px; background: var(--elevated); border: 1px solid var(--border);
+  }
+
+  /* ── VIEW TOGGLE ── */
+  .view-btn {
+    padding: 6px 12px; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .view-btn.active { background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(59,130,246,0.15)); color: var(--purple-2); }
+  .view-btn:not(.active) { background: transparent; color: var(--text-2); }
+  .view-btn:not(.active):hover { background: var(--elevated); color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- Toast -->
+<div id="toast-container" class="fixed top-14 right-4 z-[100] flex flex-col items-end" style="pointer-events:none;"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  TOP NAV                                                       -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<header id="topnav">
+  <!-- Logo + breadcrumb -->
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+      <path d="M11 1L21 20H1L11 1Z" fill="#7c3aed"/>
+      <path d="M11 5L18.5 19H3.5L11 5Z" fill="#a855f7" opacity="0.5"/>
+    </svg>
+    <span class="text-sm font-semibold" style="color:var(--text);">Microsoft Foundry</span>
+    <span style="color:var(--text-3);">/</span>
+    <span class="text-sm" style="color:var(--text-2);">test-1</span>
+    <i data-lucide="chevron-down" class="w-3 h-3" style="color:var(--text-3);"></i>
+  </div>
+
+  <!-- Portal search -->
+  <div class="flex-1 max-w-md relative mx-4">
+    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5" style="color:var(--text-3);"></i>
+    <input type="text" placeholder="Search with AI (⌘K)"
+      style="width:100%;background:var(--elevated);border:1px solid var(--border-mid);border-radius:8px;color:var(--text);padding:6px 12px 6px 32px;font-size:13px;outline:none;"
+      onclick="showToast('Feature not part of this usability study.')"/>
+  </div>
+
+  <!-- Nav links -->
+  <div class="flex items-center gap-1 ml-auto flex-shrink-0">
+    <div class="new-foundry-pill">
+      <span class="text-xs font-semibold" style="color:var(--purple-2);">New Foundry</span>
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    </div>
+    <div class="nav-link" onclick="showToast('Feature not part of this usability study.')">Home</div>
+    <div class="nav-link active">Discover</div>
+    <div class="nav-link" onclick="showToast('Feature not part of this usability study.')">Build</div>
+    <div class="nav-link" onclick="showToast('Feature not part of this usability study.')">Operate</div>
+    <div class="nav-link" onclick="showToast('Feature not part of this usability study.')">Docs</div>
+    <div class="flex items-center gap-1 ml-2">
+      <button class="p-2 rounded-lg hover:bg-[var(--elevated)] transition-colors" style="color:var(--text-2);" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="bell" class="w-4 h-4"></i>
+      </button>
+      <button class="p-2 rounded-lg hover:bg-[var(--elevated)] transition-colors" style="color:var(--text-2);" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="settings" class="w-4 h-4"></i>
+      </button>
+      <button class="p-2 rounded-lg hover:bg-[var(--elevated)] transition-colors" style="color:var(--text-2);" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="user" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  LAYOUT                                                        -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="flex" style="min-height:calc(100vh - 46px);">
+
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
+    <div class="pt-4 pb-6">
+      <div class="px-4 mb-5">
+        <div class="text-xs mb-1 font-semibold" style="color:var(--text-3);text-transform:uppercase;letter-spacing:0.5px;">Workspace</div>
+        <div class="text-sm font-semibold" style="color:var(--text);">test-1</div>
+      </div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="layout-dashboard" class="w-4 h-4 flex-shrink-0"></i><span>Overview</span>
+      </div>
+      <div class="sb-item active">
+        <i data-lucide="boxes" class="w-4 h-4 flex-shrink-0"></i><span>Models</span>
+      </div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="bot" class="w-4 h-4 flex-shrink-0"></i><span>Agents</span>
+      </div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="wrench" class="w-4 h-4 flex-shrink-0"></i><span>Tools</span>
+      </div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="layout-template" class="w-4 h-4 flex-shrink-0"></i><span>Solution templates</span>
+      </div>
+      <div class="mx-4 my-3" style="border-top:1px solid var(--border);"></div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="rocket" class="w-4 h-4 flex-shrink-0"></i><span>Deployments</span>
+      </div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="sliders" class="w-4 h-4 flex-shrink-0"></i><span>Fine-tuning</span>
+      </div>
+      <div class="sb-item" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="activity" class="w-4 h-4 flex-shrink-0"></i><span>Monitoring</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="flex-1" style="min-width:0; overflow:auto;">
+
+    <!-- Page title bar -->
+    <div class="flex items-start justify-between gap-4 flex-wrap px-6 pt-5 pb-4" style="border-bottom:1px solid var(--border);">
+      <div>
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-1.5 text-xs mb-2" style="color:var(--text-2);">
+          <a href="#" onclick="showToast('Feature not part of this usability study.');return false;" style="color:var(--blue-2);" class="hover:underline">Home</a>
+          <i data-lucide="chevron-right" class="w-3 h-3" style="color:var(--text-3);"></i>
+          <a href="#" onclick="showToast('Feature not part of this usability study.');return false;" style="color:var(--blue-2);" class="hover:underline">Discover</a>
+          <i data-lucide="chevron-right" class="w-3 h-3" style="color:var(--text-3);"></i>
+          <span style="color:var(--text);">Models</span>
+        </div>
+        <h1 class="text-xl font-semibold" style="color:var(--text);">Models</h1>
+        <p class="text-sm mt-1" style="color:var(--text-2);max-width:520px;">Browse, compare, and select AI models for your project. Filter by region to see models deployable in your target location.</p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button class="btn-ghost" onclick="showToast('Feature not part of this usability study.')">
+          <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i> View leaderboard
+        </button>
+        <button class="btn-primary" onclick="showToast('Feature not part of this usability study.')">
+          <i data-lucide="columns-2" class="w-3.5 h-3.5"></i> Compare models
+        </button>
+      </div>
+    </div>
+
+    <!-- Region selector bar -->
+    <div class="region-bar">
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <i data-lucide="map-pin" class="w-4 h-4" style="color:var(--purple-2);"></i>
+        <span class="text-sm font-semibold" style="color:var(--purple-2);">Deployment region</span>
+      </div>
+      <select id="region-selector" class="region-select" onchange="onRegionChange(this.value)">
+        <option value="all">All Regions</option>
+        <option value="East US">East US</option>
+        <option value="East US 2" selected>East US 2</option>
+        <option value="West US">West US</option>
+        <option value="West US 3">West US 3</option>
+        <option value="Sweden Central">Sweden Central</option>
+        <option value="France Central">France Central</option>
+        <option value="West Europe">West Europe</option>
+        <option value="Restricted Region">Restricted Region</option>
+      </select>
+      <span id="region-summary" class="text-sm" style="color:var(--text-2);"></span>
+      <button class="ml-auto text-xs font-semibold hover:underline" style="color:var(--purple-2);" onclick="clearFilters()">
+        Clear all filters
+      </button>
+    </div>
+
+    <!-- Filters + Results -->
+    <div class="flex" style="min-height:calc(100vh - 240px); margin-top:0;">
+
+      <!-- FILTER PANEL -->
+      <aside style="width:210px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:46px;max-height:calc(100vh - 46px);overflow-y:auto;">
+
+        <div class="filter-section">
+          <button class="filter-head-btn" onclick="toggleAccordion('acc-region')">
+            <span>Region</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="acc-region-icon"></i>
+          </button>
+          <div class="filter-body" id="acc-region">
+            <div class="relative mb-3">
+              <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5" style="color:var(--text-3);"></i>
+              <input type="text" id="search-input" placeholder="Search models…" class="search-input" oninput="onSearch(this.value)"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <button class="filter-head-btn" onclick="toggleAccordion('acc-provider')">
+            <span>Provider</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="acc-provider-icon"></i>
+          </button>
+          <div class="filter-body" id="acc-provider">
+            <div id="provider-filters"></div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <button class="filter-head-btn" onclick="toggleAccordion('acc-task')">
+            <span>Task / Capability</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="acc-task-icon"></i>
+          </button>
+          <div class="filter-body" id="acc-task">
+            <div id="task-filters"></div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <button class="filter-head-btn" onclick="toggleAccordion('acc-cost')">
+            <span>Cost Tier</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5" id="acc-cost-icon"></i>
+          </button>
+          <div class="filter-body" id="acc-cost">
+            <div class="space-y-0.5">
+              <label class="filter-cb"><input type="radio" name="cost" value="all" checked onchange="onCostChange('all')">All prices</label>
+              <label class="filter-cb"><input type="radio" name="cost" value="low"    onchange="onCostChange('low')">Low (&lt;$1 / 1M tokens)</label>
+              <label class="filter-cb"><input type="radio" name="cost" value="medium" onchange="onCostChange('medium')">Medium ($1–$5)</label>
+              <label class="filter-cb"><input type="radio" name="cost" value="high"   onchange="onCostChange('high')">High (&gt;$5)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <button class="btn-ghost w-full justify-center text-xs" onclick="clearFilters()">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i> Clear all filters
+          </button>
+        </div>
+      </aside>
+
+      <!-- RESULTS -->
+      <div class="flex-1 p-5" style="min-width:0;">
+
+        <!-- Tabs -->
+        <div class="flex items-center gap-0 mb-4" style="border-bottom:1px solid var(--border);overflow-x:auto;">
+          <button class="tab-btn active" data-tab="all"      onclick="switchTab('all')">All Models</button>
+          <button class="tab-btn"        data-tab="provider" onclick="switchTab('provider')">Browse by Provider</button>
+          <button class="tab-btn"        data-tab="task"     onclick="switchTab('task')">Browse by Task</button>
+          <button class="tab-btn"        data-tab="popular"  onclick="switchTab('popular')">Popular &amp; Recommended</button>
+        </div>
+
+        <!-- Results header -->
+        <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+          <div id="results-count" class="text-sm" style="color:var(--text-2);"></div>
+          <div class="flex items-center gap-2">
+            <div class="flex" style="border:1px solid var(--border-mid);border-radius:6px;overflow:hidden;">
+              <button id="btn-grid" class="view-btn active" onclick="setView('grid')">
+                <i data-lucide="grid-2x2" class="w-3.5 h-3.5"></i> Grid
+              </button>
+              <button id="btn-list" class="view-btn" onclick="setView('list')" style="border-left:1px solid var(--border-mid);">
+                <i data-lucide="list" class="w-3.5 h-3.5"></i> List
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model container -->
+        <div id="model-container"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  COMPARISON BAR                                                -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div id="comparison-bar">
+  <div class="flex items-center gap-2 flex-1 min-w-0 flex-wrap">
+    <span class="text-sm font-semibold flex-shrink-0" style="color:var(--text);">Comparing:</span>
+    <div id="compare-chips" class="flex gap-2 flex-wrap"></div>
+  </div>
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <span id="compare-count-label" class="text-xs" style="color:var(--text-2);"></span>
+    <button class="btn-primary" onclick="openComparisonModal()">
+      <i data-lucide="columns-2" class="w-3.5 h-3.5"></i> Compare models
+    </button>
+    <button class="btn-ghost" onclick="clearComparison()">Clear all</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeAllPanels()"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  DEPLOYMENT PANEL                                              -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div id="deployment-panel">
+  <div class="flex items-center justify-between px-5 py-4 flex-shrink-0" style="border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:1;">
+    <h2 class="font-semibold text-sm" style="color:var(--text);">Deployment Info</h2>
+    <button onclick="closeDeploymentPanel()" class="p-1.5 rounded-lg transition-colors" style="color:var(--text-2);" onmouseenter="this.style.background='var(--elevated)'" onmouseleave="this.style.background=''">
+      <i data-lucide="x" class="w-4 h-4"></i>
+    </button>
+  </div>
+  <div id="deployment-content" class="p-5 flex-1"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  COMPARISON MODAL                                              -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div id="comparison-modal" onclick="handleModalBackdrop(event)">
+  <div id="comparison-box">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="font-semibold text-lg" style="color:var(--text);">Side-by-Side Comparison</h2>
+      <button onclick="closeComparisonModal()" class="p-1.5 rounded-lg" style="color:var(--text-2);" onmouseenter="this.style.background='var(--elevated)'" onmouseleave="this.style.background=''">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div id="comparison-table"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  JAVASCRIPT                                                    -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<script>
+// Motion.dev helpers
+const mot = (typeof Motion !== 'undefined') ? Motion : null;
+function anim(el, kf, opts) {
+  if (mot && el) return mot.animate(el, kf, opts);
+  return { then(cb) { if (cb) cb(); return this; } };
+}
+
+// ──────────────────────────────────────────────
+// DATA
+// ──────────────────────────────────────────────
+const MODELS = [
+  { id:1,  name:"GPT-4o",                  provider:"OpenAI",    task:"Multimodal Reasoning", taskKey:"multimodal",
+    desc:"OpenAI's most capable multimodal model with vision, text, and audio. Industry-leading complex reasoning.",
+    regions:["East US","West US 3","Sweden Central"],
+    cost:"$5.00",costNum:5.0,costTier:"high",
+    lat:"Medium",latP:55,thr:"High",thrP:80,ctx:"128K",
+    use:"Complex reasoning, vision analysis, enterprise applications",deploy:"Low",pop:98,tag:"Best for multimodal reasoning",icon:"sparkles" },
+  { id:2,  name:"GPT-4o mini",             provider:"OpenAI",    task:"Fast Multimodal",      taskKey:"multimodal",
+    desc:"Fast, cost-effective multimodal model. Excellent balance of capability and cost for high-volume workloads.",
+    regions:["East US 2","West US","Sweden Central"],
+    cost:"$0.60",costNum:0.6,costTier:"low",
+    lat:"Low",latP:85,thr:"Very High",thrP:95,ctx:"128K",
+    use:"High-volume apps, quick responses, cost-sensitive workloads",deploy:"Low",pop:92,tag:"Low-cost multimodal option",icon:"zap" },
+  { id:3,  name:"Llama 3 70B",             provider:"Meta",      task:"Code Generation",      taskKey:"code",
+    desc:"Meta's most powerful open-weight model. Excels at code generation and complex instruction following.",
+    regions:["East US 2","West US"],
+    cost:"$0.60",costNum:0.6,costTier:"low",
+    lat:"Medium",latP:60,thr:"High",thrP:75,ctx:"128K",
+    use:"Code generation, instruction following, open-source deployments",deploy:"Medium",pop:85,tag:"Strong open-source coding model",icon:"code-2" },
+  { id:4,  name:"Mistral Large",           provider:"Mistral",   task:"NLP / Translation",    taskKey:"translation",
+    desc:"Mistral's flagship model with native multilingual support and excellent NLP across European languages.",
+    regions:["France Central","East US"],
+    cost:"$4.00",costNum:4.0,costTier:"medium",
+    lat:"Medium",latP:62,thr:"Medium",thrP:60,ctx:"32K",
+    use:"Multilingual tasks, translation, European data residency",deploy:"Low",pop:78,tag:"Strong translation model",icon:"globe" },
+  { id:5,  name:"Phi-3 Mini",              provider:"Microsoft", task:"Edge / Lightweight",   taskKey:"edge",
+    desc:"Microsoft's compact SLM for edge and resource-constrained environments. Available in all Azure regions.",
+    regions:["all"],
+    cost:"$0.10",costNum:0.10,costTier:"low",
+    lat:"Very Low",latP:96,thr:"Very High",thrP:98,ctx:"4K",
+    use:"Edge computing, IoT, mobile apps, ultra-low latency scenarios",deploy:"Low",pop:72,tag:"Fast lightweight model",icon:"cpu" },
+  { id:6,  name:"Claude 3.5 Sonnet",       provider:"Anthropic", task:"Reasoning",            taskKey:"reasoning",
+    desc:"Anthropic's advanced model with exceptional reasoning, 200K context, and strong coding capabilities.",
+    regions:["East US","West US 3","Sweden Central"],
+    cost:"$3.00",costNum:3.0,costTier:"medium",
+    lat:"Low",latP:78,thr:"High",thrP:82,ctx:"200K",
+    use:"Enterprise reasoning, long-document analysis, coding assistants",deploy:"Low",pop:90,tag:"Enterprise-ready reasoning model",icon:"brain" },
+  { id:7,  name:"Grok-2",                  provider:"xAI",       task:"Reasoning",            taskKey:"reasoning",
+    desc:"xAI's powerful reasoning model with broad knowledge coverage and strong analytical capabilities.",
+    regions:["East US 2","West US 3"],
+    cost:"$2.00",costNum:2.0,costTier:"medium",
+    lat:"Medium",latP:65,thr:"High",thrP:78,ctx:"128K",
+    use:"Analytical tasks, research applications, technical reasoning",deploy:"Medium",pop:70,tag:"Powerful analytical reasoning",icon:"telescope" },
+  { id:8,  name:"Cohere Command R+",       provider:"Cohere",    task:"NLP / Translation",    taskKey:"translation",
+    desc:"Enterprise RAG-optimized model with native tool use and retrieval-augmented generation for production search.",
+    regions:["East US","East US 2","West Europe"],
+    cost:"$3.00",costNum:3.0,costTier:"medium",
+    lat:"Low",latP:80,thr:"High",thrP:80,ctx:"128K",
+    use:"RAG pipelines, enterprise search, tool-augmented workflows",deploy:"Low",pop:74,tag:"Best for RAG and enterprise NLP",icon:"search" },
+  { id:9,  name:"DALL-E 3",               provider:"OpenAI",    task:"Image Generation",     taskKey:"image",
+    desc:"State-of-the-art image generation with precise prompt adherence and photorealistic outputs.",
+    regions:["East US","Sweden Central"],
+    cost:"$0.04",costNum:0.04,costTier:"low",
+    lat:"High",latP:30,thr:"Low",thrP:30,ctx:"N/A",
+    use:"Marketing content, creative apps, image synthesis pipelines",deploy:"Low",pop:82,tag:"Best image generation model",icon:"image" },
+  { id:10, name:"Whisper",                 provider:"OpenAI",    task:"Audio / Speech",       taskKey:"audio",
+    desc:"Robust automatic speech recognition supporting 99 languages with excellent noise tolerance.",
+    regions:["East US","East US 2","West US","West Europe"],
+    cost:"$0.006",costNum:0.006,costTier:"low",
+    lat:"Low",latP:82,thr:"High",thrP:85,ctx:"N/A",
+    use:"Transcription, captioning, voice interfaces, call center analytics",deploy:"Low",pop:76,tag:"Leading speech recognition",icon:"mic" },
+  { id:11, name:"text-embedding-3-large",  provider:"OpenAI",    task:"Embeddings",           taskKey:"embeddings",
+    desc:"High-dimensional text embeddings for semantic search, RAG, and similarity tasks. Best-in-class benchmarks.",
+    regions:["East US","East US 2","West US","West US 3","Sweden Central"],
+    cost:"$0.13",costNum:0.13,costTier:"low",
+    lat:"Very Low",latP:90,thr:"Very High",thrP:93,ctx:"8K",
+    use:"Semantic search, vector databases, RAG retrieval, similarity scoring",deploy:"Low",pop:88,tag:"Top embedding model for RAG",icon:"layers" },
+  { id:12, name:"Llama 3 8B",              provider:"Meta",      task:"Code Generation",      taskKey:"code",
+    desc:"Compact open-weight model ideal for fine-tuning and cost-sensitive coding assistants at scale.",
+    regions:["East US 2","West US","West Europe"],
+    cost:"$0.20",costNum:0.20,costTier:"low",
+    lat:"Very Low",latP:93,thr:"Very High",thrP:96,ctx:"8K",
+    use:"Fine-tuning base, lightweight coding, high-volume low-cost tasks",deploy:"Medium",pop:80,tag:"Low-cost coding option",icon:"code-2" },
+  { id:13, name:"Phi-3 Medium",            provider:"Microsoft", task:"Reasoning",            taskKey:"reasoning",
+    desc:"Microsoft's mid-tier SLM with strong reasoning at minimal compute cost for on-premises enterprise.",
+    regions:["all"],
+    cost:"$0.25",costNum:0.25,costTier:"low",
+    lat:"Low",latP:86,thr:"High",thrP:89,ctx:"128K",
+    use:"On-premises enterprise, reasoning tasks, efficient inference",deploy:"Low",pop:68,tag:"Efficient enterprise reasoning",icon:"cpu" }
+];
+
+const PROVIDERS = [...new Set(MODELS.map(m => m.provider))].sort();
+const TASKS     = [...new Set(MODELS.map(m => m.task))].sort();
+const TASK_META = [
+  {key:"reasoning",  label:"Reasoning",        icon:"brain"},
+  {key:"code",       label:"Code Generation",  icon:"code-2"},
+  {key:"multimodal", label:"Multimodal",       icon:"layers"},
+  {key:"image",      label:"Image Generation", icon:"image"},
+  {key:"audio",      label:"Audio / Speech",   icon:"mic"},
+  {key:"embeddings", label:"Embeddings",       icon:"grid-2x2"},
+  {key:"translation",label:"Translation / NLP",icon:"globe"},
+  {key:"edge",       label:"Edge / Lightweight",icon:"zap"}
+];
+
+// ──────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────
+const state = {
+  searchQuery:"", selectedRegion:"East US 2",
+  selectedProviders:[], selectedTasks:[], costFilter:"all",
+  viewMode:"grid", selectedForComparison:[], selectedDeploymentModel:null, activeTab:"all"
+};
+
+// ──────────────────────────────────────────────
+// HELPERS
+// ──────────────────────────────────────────────
+const pBadge = p => ({OpenAI:"bp-openai",Microsoft:"bp-microsoft",Meta:"bp-meta",Mistral:"bp-mistral",Anthropic:"bp-anthropic",xAI:"bp-xai",Cohere:"bp-cohere"})[p]||"bp-microsoft";
+const pIcon  = p => ({OpenAI:"pi-openai",Microsoft:"pi-microsoft",Meta:"pi-meta",Mistral:"pi-mistral",Anthropic:"pi-anthropic",xAI:"pi-xai",Cohere:"pi-cohere"})[p]||"pi-microsoft";
+const tBadge = k => ({reasoning:"bt-reasoning",code:"bt-code",multimodal:"bt-multimodal",image:"bt-image",audio:"bt-audio",embeddings:"bt-embeddings",translation:"bt-translation",edge:"bt-edge"})[k]||"bt-reasoning";
+
+function avail(m) {
+  if (state.selectedRegion === "all")   return "all";
+  if (m.regions.includes("all"))        return "all";
+  return m.regions.includes(state.selectedRegion) ? "available" : "unavailable";
+}
+function availHTML(av) {
+  if (av==="all")       return `<span class="avail-badge" style="background:var(--green-dim);color:var(--green);"><span style="font-size:7px;">●</span> All regions</span>`;
+  if (av==="available") return `<span class="avail-badge" style="background:var(--green-dim);color:var(--green);"><span style="font-size:7px;">●</span> Available</span>`;
+  return `<span class="avail-badge" style="background:var(--red-dim);color:var(--red);"><span style="font-size:7px;">●</span> Unavailable</span>`;
+}
+function filtered() {
+  return MODELS.filter(m => {
+    if (state.searchQuery) {
+      const q = state.searchQuery.toLowerCase();
+      if (![m.name,m.provider,m.task,m.desc].some(s=>s.toLowerCase().includes(q))) return false;
+    }
+    if (state.selectedProviders.length && !state.selectedProviders.includes(m.provider)) return false;
+    if (state.selectedTasks.length     && !state.selectedTasks.includes(m.task))         return false;
+    if (state.costFilter==="low"    && m.costNum>=1)              return false;
+    if (state.costFilter==="medium" && (m.costNum<1||m.costNum>5)) return false;
+    if (state.costFilter==="high"   && m.costNum<=5)              return false;
+    return true;
+  });
+}
+
+// ──────────────────────────────────────────────
+// ACCORDION
+// ──────────────────────────────────────────────
+const accOpen = { 'acc-region':true, 'acc-provider':true, 'acc-task':true, 'acc-cost':true };
+function toggleAccordion(id) {
+  const el = document.getElementById(id);
+  const ic = document.getElementById(id+'-icon');
+  accOpen[id] = !accOpen[id];
+  if (accOpen[id]) {
+    el.style.display = 'block';
+    if (mot) mot.animate(el, {opacity:[0,1],y:[-6,0]},{duration:0.2});
+    ic.style.transform = 'rotate(0deg)';
+  } else {
+    if (mot) mot.animate(el, {opacity:[1,0]},{duration:0.15}).then(()=>{ el.style.display='none'; });
+    else el.style.display='none';
+    ic.style.transform = 'rotate(-90deg)';
+  }
+}
+
+// ──────────────────────────────────────────────
+// RENDER FILTERS
+// ──────────────────────────────────────────────
+function renderFilters() {
+  document.getElementById('provider-filters').innerHTML = PROVIDERS.map(p=>`
+    <label class="filter-cb">
+      <input type="checkbox" value="${p}" ${state.selectedProviders.includes(p)?'checked':''} onchange="onProviderFilter('${p}',this.checked)">
+      <span>${p}</span>
+    </label>`).join('');
+  document.getElementById('task-filters').innerHTML = TASKS.map(t=>`
+    <label class="filter-cb">
+      <input type="checkbox" value="${t}" ${state.selectedTasks.includes(t)?'checked':''} onchange="onTaskFilter('${t}',this.checked)">
+      <span>${t}</span>
+    </label>`).join('');
+  lucide.createIcons();
+}
+
+// ──────────────────────────────────────────────
+// RENDER MODELS
+// ──────────────────────────────────────────────
+function renderModels() {
+  const models = filtered();
+  const ctr    = document.getElementById('model-container');
+  const cntEl  = document.getElementById('results-count');
+  const sumEl  = document.getElementById('region-summary');
+
+  if (state.selectedRegion !== 'all') {
+    const av = MODELS.filter(m=>m.regions.includes('all')||m.regions.includes(state.selectedRegion)).length;
+    sumEl.textContent = `${av} of ${MODELS.length} available`;
+  } else {
+    sumEl.textContent = `${MODELS.length} total models`;
+  }
+
+  if      (state.activeTab==='provider') renderByProvider(models,ctr,cntEl);
+  else if (state.activeTab==='task')     renderByTask(models,ctr,cntEl);
+  else if (state.activeTab==='popular')  renderPopular(models,ctr,cntEl);
+  else                                   renderAll(models,ctr,cntEl);
+
+  lucide.createIcons();
+  animateCards();
+}
+
+function animateCards() {
+  if (!mot) return;
+  const cards = document.querySelectorAll('.model-card');
+  if (!cards.length) return;
+  mot.animate(cards, {opacity:[0,1],y:[12,0]}, {delay:mot.stagger(0.04),duration:0.28,easing:[0.22,1,0.36,1]});
+  requestAnimationFrame(setupCardInteractions);
+}
+
+function setupCardInteractions() {
+  if (!mot) return;
+  document.querySelectorAll('.model-card').forEach(card => {
+    if (card._mi) return;
+    card._mi = true;
+    card.addEventListener('mouseenter', () =>
+      mot.animate(card, {y:-4, scale:1.012}, {duration:0.22, easing:[0.22,1,0.36,1]}));
+    card.addEventListener('mouseleave', () =>
+      mot.animate(card, {y:0, scale:1}, {duration:0.28, easing:[0.22,1,0.36,1]}));
+    card.addEventListener('mousedown', () =>
+      mot.animate(card, {scale:0.974}, {duration:0.1, easing:'ease-in'}));
+    card.addEventListener('mouseup', () =>
+      mot.animate(card, {scale:1.012}, {duration:0.18, easing:[0.22,1,0.36,1]}));
+  });
+}
+
+function animateCardSelect(id, selected) {
+  if (!mot) return;
+  const card = document.getElementById('card-'+id);
+  if (!card) return;
+  if (selected) {
+    mot.animate(card, {scale:[1,1.05,0.99,1]}, {duration:0.45, easing:[0.22,1,0.36,1]});
+  } else {
+    mot.animate(card, {scale:[1,0.96,1]}, {duration:0.3, easing:[0.22,1,0.36,1]});
+  }
+}
+
+function renderAll(models,ctr,cntEl) {
+  cntEl.textContent = `${models.length} model${models.length!==1?'s':''} found`;
+  if (!models.length) { ctr.innerHTML = emptyHTML(); return; }
+  const g = state.viewMode==='grid' ? 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4' : 'flex flex-col gap-2';
+  ctr.innerHTML = `<div class="${g}">${models.map(cardHTML).join('')}</div>`;
+}
+
+function renderByProvider(models,ctr,cntEl) {
+  cntEl.textContent = `Browsing by provider — ${models.length} models`;
+  if (!models.length) { ctr.innerHTML = emptyHTML(); return; }
+  ctr.innerHTML = PROVIDERS.map(p=>{
+    const pm = models.filter(m=>m.provider===p);
+    if (!pm.length) return '';
+    return `
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="picon ${pIcon(p)}" style="width:32px;height:32px;border-radius:8px;font-size:12px;font-weight:700;">
+          ${p.slice(0,2).toUpperCase()}
+        </div>
+        <span class="badge ${pBadge(p)}" style="font-size:12px;padding:4px 12px;">${p}</span>
+        <span class="text-sm" style="color:var(--text-2);">${pm.length} model${pm.length!==1?'s':''}</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">${pm.map(cardHTML).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderByTask(models,ctr,cntEl) {
+  cntEl.textContent = `Browsing by task — ${models.length} models`;
+  if (!models.length) { ctr.innerHTML = emptyHTML(); return; }
+  ctr.innerHTML = TASK_META.map(tg=>{
+    const tm = models.filter(m=>m.taskKey===tg.key);
+    if (!tm.length) return '';
+    return `
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="section-gradient-header ${tBadge(tg.key)}">
+          <i data-lucide="${tg.icon}" class="w-4 h-4"></i> ${tg.label}
+        </div>
+        <span class="text-sm" style="color:var(--text-2);">${tm.length} model${tm.length!==1?'s':''}</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">${tm.map(cardHTML).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderPopular(models,ctr,cntEl) {
+  const sorted = [...models].sort((a,b)=>b.pop-a.pop);
+  cntEl.textContent = `${sorted.length} models by popularity`;
+  if (!sorted.length) { ctr.innerHTML = emptyHTML(); return; }
+  ctr.innerHTML = `
+    <div class="mb-4 p-3 rounded-lg text-xs" style="background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.15);color:var(--text-2);">
+      <strong style="color:var(--purple-2);">Popularity ranking</strong> based on deployment frequency across Azure AI Foundry projects globally.
+    </div>
+    <div class="flex flex-col gap-2 model-card-wrapper">
+      ${sorted.map((m,i)=>{
+        const av = avail(m);
+        const isTop = i < 3;
+        return `
+        <div class="model-card" id="card-${m.id}" style="display:flex;align-items:center;gap:14px;padding:14px 16px;">
+          <div class="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm"
+            style="background:${isTop?'linear-gradient(135deg,var(--purple),var(--blue))':'var(--elevated)'};color:${isTop?'white':'var(--text-2)'};">
+            ${i+1}
+          </div>
+          <div class="picon ${pIcon(m.provider)} flex-shrink-0">${m.provider.slice(0,2).toUpperCase()}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="font-semibold text-sm" style="color:var(--text);">${m.name}</span>
+              <span class="badge ${pBadge(m.provider)}">${m.provider}</span>
+              ${m.tag?`<span class="text-xs px-2 py-0.5 rounded-full" style="background:rgba(124,58,237,0.12);color:var(--purple-2);border:1px solid rgba(124,58,237,0.2);">${m.tag}</span>`:''}
+            </div>
+            <p class="text-xs" style="color:var(--text-2);">${m.desc}</p>
+            <div class="flex items-center gap-3 mt-1.5 flex-wrap">
+              <span class="text-xs" style="color:var(--text-2);">Cost: <strong style="color:var(--text);">${m.cost}/1M</strong></span>
+              <span class="text-xs" style="color:var(--text-2);">Latency: <strong style="color:var(--text);">${m.lat}</strong></span>
+              <span class="text-xs" style="color:var(--text-2);">Context: <strong style="color:var(--text);">${m.ctx}</strong></span>
+              ${availHTML(av)}
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-20 text-center">
+            <div class="text-xs mb-1" style="color:var(--text-2);">Popularity</div>
+            <div class="pop-bar"><div class="pop-fill" style="width:${m.pop}%;"></div></div>
+            <div class="text-xs font-bold mt-1" style="color:var(--purple-2);">${m.pop}%</div>
+          </div>
+          <div class="flex-shrink-0 flex flex-col gap-2 items-end">
+            ${cmpCheckHTML(m)}
+            <button class="btn-primary" style="font-size:12px;padding:5px 12px;white-space:nowrap;" onclick="openDeploymentPanel(${m.id})">
+              View deployment info
+            </button>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+// ──────────────────────────────────────────────
+// CARD HTML
+// ──────────────────────────────────────────────
+function cardHTML(m) {
+  const av = avail(m);
+  const inCmp = state.selectedForComparison.includes(m.id);
+
+  if (state.viewMode==='list') {
+    return `
+    <div class="model-card list-view ${inCmp?'in-compare':''}" id="card-${m.id}">
+      <input type="checkbox" ${inCmp?'checked':''} onchange="toggleCompare(${m.id},this.checked)" class="w-4 h-4 flex-shrink-0" style="accent-color:var(--purple-2);">
+      <div class="picon ${pIcon(m.provider)} flex-shrink-0">${m.provider.slice(0,2).toUpperCase()}</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap mb-0.5">
+          <span class="font-semibold text-sm" style="color:var(--text);">${m.name}</span>
+          <span class="badge ${pBadge(m.provider)}">${m.provider}</span>
+          <span class="badge ${tBadge(m.taskKey)}">${m.task}</span>
+          ${availHTML(av)}
+        </div>
+        <p class="text-xs truncate" style="color:var(--text-2);">${m.desc}</p>
+      </div>
+      <div class="flex items-center gap-5 flex-shrink-0 ml-2">
+        <div class="text-center"><div class="text-xs" style="color:var(--text-2);">Cost/1M</div><div class="font-semibold text-sm" style="color:var(--text);">${m.cost}</div></div>
+        <div class="text-center"><div class="text-xs" style="color:var(--text-2);">Context</div><div class="font-semibold text-sm" style="color:var(--text);">${m.ctx}</div></div>
+        <div class="text-center"><div class="text-xs" style="color:var(--text-2);">Latency</div><div class="font-semibold text-sm" style="color:var(--text);">${m.lat}</div></div>
+        <button class="btn-primary" style="font-size:12px;padding:5px 12px;white-space:nowrap;" onclick="openDeploymentPanel(${m.id})">View deployment info</button>
+      </div>
+    </div>`;
+  }
+
+  return `
+  <div class="model-card ${inCmp?'in-compare':''}" id="card-${m.id}">
+    <div class="flex items-start justify-between mb-3">
+      <div class="flex items-center gap-2.5">
+        <div class="picon ${pIcon(m.provider)}">${m.provider.slice(0,2).toUpperCase()}</div>
+        <div>
+          <div class="font-semibold text-sm mb-1" style="color:var(--text);">${m.name}</div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="badge ${pBadge(m.provider)}">${m.provider}</span>
+            <span class="badge ${tBadge(m.taskKey)}">${m.task}</span>
+          </div>
+        </div>
+      </div>
+      ${cmpCheckHTML(m)}
+    </div>
+
+    <p class="text-xs leading-relaxed mb-3" style="color:var(--text-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${m.desc}</p>
+
+    <div class="mb-3">${availHTML(av)}</div>
+
+    <div class="grid grid-cols-2 gap-2 mb-3">
+      <div class="stat-box">
+        <div class="text-xs mb-0.5" style="color:var(--text-2);">Cost / 1M tokens</div>
+        <div class="font-bold text-sm" style="color:var(--text);">${m.cost}</div>
+      </div>
+      <div class="stat-box">
+        <div class="text-xs mb-0.5" style="color:var(--text-2);">Context Window</div>
+        <div class="font-bold text-sm" style="color:var(--text);">${m.ctx}</div>
+      </div>
+    </div>
+
+    <div class="space-y-1.5 mb-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs flex-shrink-0" style="color:var(--text-2);width:68px;">Latency</span>
+        <div class="mini-bar flex-1"><div class="mini-bar-fill" style="width:${m.latP}%;background:linear-gradient(90deg,var(--purple),var(--blue));"></div></div>
+        <span class="text-xs flex-shrink-0 text-right w-16" style="color:var(--text);">${m.lat}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs flex-shrink-0" style="color:var(--text-2);width:68px;">Throughput</span>
+        <div class="mini-bar flex-1"><div class="mini-bar-fill" style="width:${m.thrP}%;background:linear-gradient(90deg,var(--green),#34d399);"></div></div>
+        <span class="text-xs flex-shrink-0 text-right w-16" style="color:var(--text);">${m.thr}</span>
+      </div>
+    </div>
+
+    <button class="btn-primary w-full justify-center" style="font-size:12.5px;" onclick="openDeploymentPanel(${m.id})">
+      View deployment info
+    </button>
+  </div>`;
+}
+
+function cmpCheckHTML(m) {
+  const inCmp = state.selectedForComparison.includes(m.id);
+  return `<label class="flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+    <input type="checkbox" ${inCmp?'checked':''} onchange="toggleCompare(${m.id},this.checked)" class="w-3.5 h-3.5" style="accent-color:var(--purple-2);">
+    <span class="text-xs" style="color:var(--text-2);">Compare</span>
+  </label>`;
+}
+
+function emptyHTML() {
+  return `
+  <div class="flex flex-col items-center justify-center py-24 text-center">
+    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style="background:var(--elevated);border:1px solid var(--border-mid);">
+      <i data-lucide="search-x" class="w-8 h-8" style="color:var(--text-3);"></i>
+    </div>
+    <h3 class="font-semibold mb-1.5" style="color:var(--text);">No models found</h3>
+    <p class="text-sm mb-4 max-w-xs" style="color:var(--text-2);">
+      ${state.selectedRegion!=='all'?`No models available in <strong style="color:var(--text);">${state.selectedRegion}</strong> match your filters.`:'No models match your current filters.'}
+    </p>
+    <button class="btn-secondary" onclick="clearFilters()">Clear all filters</button>
+  </div>`;
+}
+
+// ──────────────────────────────────────────────
+// COMPARISON
+// ──────────────────────────────────────────────
+function toggleCompare(id, checked) {
+  if (checked) {
+    if (state.selectedForComparison.length >= 3) {
+      showToast('Maximum 3 models can be compared.');
+      setTimeout(()=>{
+        document.querySelectorAll(`#card-${id} input[type=checkbox]`).forEach(cb=>{cb.checked=false;});
+      },10);
+      return;
+    }
+    state.selectedForComparison.push(id);
+  } else {
+    state.selectedForComparison = state.selectedForComparison.filter(i=>i!==id);
+  }
+  animateCardSelect(id, checked);
+  syncComparisonBar();
+  updateCardBorder(id);
+}
+
+function updateCardBorder(id) {
+  const card = document.getElementById('card-'+id);
+  if (!card) return;
+  if (state.selectedForComparison.includes(id)) card.classList.add('in-compare');
+  else card.classList.remove('in-compare');
+}
+
+function syncComparisonBar() {
+  const bar   = document.getElementById('comparison-bar');
+  const chips = document.getElementById('compare-chips');
+  const label = document.getElementById('compare-count-label');
+
+  if (!state.selectedForComparison.length) {
+    anim(bar, {y:[0,80],opacity:[1,0]}, {duration:0.25,easing:[0.4,0,1,1]});
+    setTimeout(()=>bar.style.transform='translateY(100%)', 250);
+    return;
+  }
+
+  label.textContent = `${state.selectedForComparison.length}/3`;
+  chips.innerHTML = state.selectedForComparison.map(id=>{
+    const m = MODELS.find(x=>x.id===id);
+    return `<div class="cmp-chip" data-chip-id="${id}" style="will-change:transform;">
+      <div class="picon ${pIcon(m.provider)}" style="width:20px;height:20px;border-radius:4px;font-size:8px;">${m.provider.slice(0,2).toUpperCase()}</div>
+      <span class="text-xs" style="color:var(--text);">${m.name}</span>
+      <button onclick="removeFromComparison(${id})" style="color:var(--text-3);margin-left:4px;" onmouseenter="this.style.color='var(--red)'" onmouseleave="this.style.color='var(--text-3)'">
+        <i data-lucide="x" class="w-3 h-3"></i>
+      </button>
+    </div>`;
+  }).join('');
+  lucide.createIcons();
+  // Animate each chip sliding in
+  if (mot) {
+    document.querySelectorAll('#compare-chips .cmp-chip').forEach((chip, i) => {
+      mot.animate(chip, {opacity:[0,1], x:[-10,0], scale:[0.85,1]},
+        {delay: i * 0.05, duration:0.25, easing:[0.22,1,0.36,1]});
+    });
+  }
+
+  if (bar.style.transform === 'translateY(100%)' || bar.style.transform === '') {
+    bar.style.transform = 'translateY(0)';
+    anim(bar, {y:[80,0],opacity:[0,1]}, {duration:0.3,easing:[0.22,1,0.36,1]});
+  }
+}
+
+function removeFromComparison(id) {
+  const chip = document.querySelector(`[data-chip-id="${id}"]`);
+  const doRemove = () => {
+    state.selectedForComparison = state.selectedForComparison.filter(i=>i!==id);
+    syncComparisonBar();
+    updateCardBorder(id);
+    document.querySelectorAll(`#card-${id} input[type=checkbox]`).forEach(cb=>{cb.checked=false;});
+  };
+  if (chip && mot) {
+    mot.animate(chip, {scale:[1,0.7], opacity:[1,0], x:[0,-8]}, {duration:0.18, easing:'ease-in'}).then(doRemove);
+  } else {
+    doRemove();
+  }
+}
+
+function clearComparison() {
+  [...state.selectedForComparison].forEach(id=>{
+    updateCardBorder(id);
+    document.querySelectorAll(`#card-${id} input[type=checkbox]`).forEach(cb=>{cb.checked=false;});
+  });
+  state.selectedForComparison=[];
+  syncComparisonBar();
+}
+
+function openComparisonModal() {
+  if (state.selectedForComparison.length < 2) { showToast('Select at least 2 models to compare.'); return; }
+  const models = state.selectedForComparison.map(id=>MODELS.find(m=>m.id===id));
+  const rows = [
+    {label:'Provider',            fn:m=>`<span class="badge ${pBadge(m.provider)}">${m.provider}</span>`},
+    {label:'Primary Task',        fn:m=>`<span class="badge ${tBadge(m.taskKey)}">${m.task}</span>`},
+    {label:'Region Availability', fn:m=>m.regions.includes('all')?'All Azure regions':m.regions.join('<br>')},
+    {label:'Cost / 1M Tokens',    fn:m=>`<strong style="color:var(--text);">${m.cost}</strong>`},
+    {label:'Latency',             fn:m=>`<div style="color:var(--text);">${m.lat}</div><div class="mini-bar mt-1.5" style="width:100px;"><div class="mini-bar-fill" style="width:${m.latP}%;background:linear-gradient(90deg,var(--purple),var(--blue));"></div></div>`},
+    {label:'Throughput',          fn:m=>`<div style="color:var(--text);">${m.thr}</div><div class="mini-bar mt-1.5" style="width:100px;"><div class="mini-bar-fill" style="width:${m.thrP}%;background:linear-gradient(90deg,var(--green),#34d399);"></div></div>`},
+    {label:'Context Window',      fn:m=>`<span style="color:var(--text);">${m.ctx}</span>`},
+    {label:'Best Use Case',       fn:m=>`<span class="text-xs" style="color:var(--text-2);">${m.use}</span>`},
+    {label:'Deploy Complexity',   fn:m=>`<span style="color:var(--text);">${m.deploy}</span>`},
+  ];
+
+  document.getElementById('comparison-table').innerHTML = `
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:separate;border-spacing:0;">
+        <thead>
+          <tr>
+            <th style="width:17%;padding:10px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-2);background:var(--elevated);border-bottom:1px solid var(--border-mid);">Attribute</th>
+            ${models.map(m=>`
+            <th style="padding:14px;text-align:left;background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(59,130,246,0.08));border-bottom:2px solid var(--purple);border-left:1px solid var(--border);">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="picon ${pIcon(m.provider)}" style="width:28px;height:28px;border-radius:7px;font-size:10px;">${m.provider.slice(0,2).toUpperCase()}</div>
+                <span class="font-bold text-sm" style="color:var(--text);">${m.name}</span>
+              </div>
+              <button class="btn-primary" style="font-size:11px;padding:4px 10px;" onclick="closeComparisonModal();openDeploymentPanel(${m.id});">
+                View deployment info
+              </button>
+            </th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r,i)=>`
+          <tr style="background:${i%2===0?'var(--surface)':'var(--elevated)'};">
+            <td style="padding:10px 14px;font-size:11.5px;font-weight:600;color:var(--text-2);border-bottom:1px solid var(--border);white-space:nowrap;">${r.label}</td>
+            ${models.map(m=>`<td style="padding:10px 14px;font-size:13px;border-bottom:1px solid var(--border);border-left:1px solid var(--border);vertical-align:top;">${r.fn(m)}</td>`).join('')}
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  const modal = document.getElementById('comparison-modal');
+  const box   = document.getElementById('comparison-box');
+  modal.classList.add('open');
+  anim(box, {opacity:[0,1],scale:[0.96,1],y:[12,0]}, {duration:0.3,easing:[0.22,1,0.36,1]});
+  lucide.createIcons();
+  setTimeout(() => {
+    if (!mot) return;
+    const rows = document.querySelectorAll('#comparison-table tbody tr');
+    if (rows.length) mot.animate(rows, {opacity:[0,1],x:[-6,0]}, {delay:mot.stagger(0.04), duration:0.22, easing:[0.22,1,0.36,1]});
+  }, 180);
+}
+
+function closeComparisonModal() {
+  const modal = document.getElementById('comparison-modal');
+  const box   = document.getElementById('comparison-box');
+  anim(box, {opacity:[1,0],scale:[1,0.96]}, {duration:0.2}).then(()=>modal.classList.remove('open'));
+}
+
+function handleModalBackdrop(e) {
+  if (e.target === document.getElementById('comparison-modal')) closeComparisonModal();
+}
+
+// ──────────────────────────────────────────────
+// DEPLOYMENT PANEL
+// ──────────────────────────────────────────────
+function openDeploymentPanel(modelId) {
+  const m = MODELS.find(x=>x.id===modelId);
+  state.selectedDeploymentModel = modelId;
+
+  const av      = avail(m);
+  const isAvail = av !== 'unavailable';
+  const regions = m.regions.includes('all') ? 'All Azure regions' : m.regions.join(', ');
+  const costLbl = m.costNum<1?'Low cost':m.costNum<=5?'Medium cost':'Premium';
+  const costClr = m.costNum<1?'var(--green)':m.costNum<=5?'var(--amber)':'var(--red)';
+
+  document.getElementById('deployment-content').innerHTML = `
+    <!-- Model hero -->
+    <div class="p-4 rounded-xl mb-5" style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(59,130,246,0.08));border:1px solid rgba(124,58,237,0.2);">
+      <div class="flex items-start gap-3">
+        <div class="picon ${pIcon(m.provider)}" style="width:40px;height:40px;border-radius:10px;font-size:13px;">${m.provider.slice(0,2).toUpperCase()}</div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap mb-1">
+            <span class="badge ${pBadge(m.provider)}">${m.provider}</span>
+            <span class="badge ${tBadge(m.taskKey)}">${m.task}</span>
+            ${m.tag?`<span class="text-xs px-2 py-0.5 rounded-full" style="background:rgba(124,58,237,0.12);color:var(--purple-2);border:1px solid rgba(124,58,237,0.2);">${m.tag}</span>`:''}
+          </div>
+          <h3 class="font-bold text-base" style="color:var(--text);">${m.name}</h3>
+          <p class="text-xs mt-1" style="color:var(--text-2);">${m.desc}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specs grid -->
+    <div class="grid grid-cols-2 gap-3 mb-5">
+      <div class="stat-box">
+        <div class="text-xs mb-0.5" style="color:var(--text-2);">Cost / 1M tokens</div>
+        <div class="font-bold text-base" style="color:var(--text);">${m.cost}</div>
+        <div class="text-xs mt-0.5 font-semibold" style="color:${costClr};">${costLbl}</div>
+      </div>
+      <div class="stat-box">
+        <div class="text-xs mb-0.5" style="color:var(--text-2);">Context Window</div>
+        <div class="font-bold text-base" style="color:var(--text);">${m.ctx}</div>
+        <div class="text-xs mt-0.5" style="color:var(--text-2);">tokens max</div>
+      </div>
+      <div class="stat-box">
+        <div class="text-xs mb-1" style="color:var(--text-2);">Latency</div>
+        <div class="font-bold text-sm mb-1" style="color:var(--text);">${m.lat}</div>
+        <div class="mini-bar"><div class="mini-bar-fill" style="width:${m.latP}%;background:linear-gradient(90deg,var(--purple),var(--blue));"></div></div>
+      </div>
+      <div class="stat-box">
+        <div class="text-xs mb-0.5" style="color:var(--text-2);">Deploy Complexity</div>
+        <div class="font-bold text-base" style="color:var(--text);">${m.deploy}</div>
+      </div>
+    </div>
+
+    <!-- Region -->
+    <div class="mb-5">
+      <div class="font-semibold text-sm mb-2" style="color:var(--text);">Available Regions</div>
+      <div class="p-3 rounded-lg" style="background:var(--elevated);border:1px solid var(--border);">
+        <div class="flex items-start gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:var(--purple-2);"></i>
+          <span class="text-sm" style="color:var(--text);">${regions}</span>
+        </div>
+        ${isAvail?`
+        <div class="flex items-center gap-1.5 mt-2" style="color:var(--green);">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+          <span class="text-xs font-medium">Deployable in your region (${state.selectedRegion})</span>
+        </div>`:`
+        <div class="flex items-center gap-1.5 mt-2" style="color:var(--red);">
+          <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+          <span class="text-xs font-medium">Not available in ${state.selectedRegion} — change region to proceed</span>
+        </div>`}
+      </div>
+    </div>
+
+    <!-- Use case -->
+    <div class="mb-5">
+      <div class="font-semibold text-sm mb-2" style="color:var(--text);">Best Use Case</div>
+      <div class="p-3 rounded-lg text-sm" style="background:var(--elevated);border:1px solid var(--border);color:var(--text-2);">${m.use}</div>
+    </div>
+
+    <!-- Deployment steps -->
+    <div class="mb-5">
+      <div class="font-semibold text-sm mb-4" style="color:var(--text);">Deployment Steps</div>
+      ${[
+        ["Confirm region availability",`Verify ${m.name} is deployable in your target Azure region.`],
+        ["Create deployment","Navigate to Deployments and configure your model deployment settings and quota."],
+        ["Connect endpoint to project","Add the deployed model endpoint to your Azure AI Foundry project config."],
+        ["Test in Playground","Validate model responses and behavior before production integration."],
+        ["Monitor usage and latency","Enable monitoring to track token usage, latency, and cost metrics."]
+      ].map(([t,d],i)=>`
+      <div class="step-row">
+        <div class="step-num">${i+1}</div>
+        <div>
+          <div class="font-medium text-sm" style="color:var(--text);">${t}</div>
+          <div class="text-xs mt-0.5" style="color:var(--text-2);">${d}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col gap-2 pt-4" style="border-top:1px solid var(--border);">
+      <button class="btn-primary w-full justify-center" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="rocket" class="w-4 h-4"></i> Create Deployment
+      </button>
+      <button class="btn-secondary w-full justify-center" onclick="showToast('Feature not part of this usability study.')">
+        <i data-lucide="play-circle" class="w-4 h-4"></i> Try in Playground
+      </button>
+      <button class="btn-ghost w-full justify-center" onclick="closeDeploymentPanel()">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Models
+      </button>
+    </div>`;
+
+  const panel = document.getElementById('deployment-panel');
+  panel.style.transform = 'translateX(100%)';
+  panel.classList.add('open');
+  anim(panel, {x:[480,0],opacity:[0,1]}, {duration:0.35,easing:[0.22,1,0.36,1]});
+  document.getElementById('overlay').classList.add('open');
+  lucide.createIcons();
+  // Stagger deployment content blocks in after panel lands
+  setTimeout(() => {
+    if (!mot) return;
+    const blocks = document.querySelectorAll('#deployment-content > div, #deployment-content > .step-row');
+    if (blocks.length) mot.animate(blocks, {opacity:[0,1],x:[-10,0]}, {delay:mot.stagger(0.055), duration:0.28, easing:[0.22,1,0.36,1]});
+    const steps = document.querySelectorAll('#deployment-content .step-row');
+    if (steps.length) mot.animate(steps, {opacity:[0,1],x:[-12,0]}, {delay:mot.stagger(0.07,{start:0.15}), duration:0.3, easing:[0.22,1,0.36,1]});
+  }, 200);
+}
+
+function closeDeploymentPanel() {
+  const panel = document.getElementById('deployment-panel');
+  anim(panel, {x:[0,480],opacity:[1,0]}, {duration:0.25,easing:[0.4,0,1,1]}).then(()=>{
+    panel.classList.remove('open');
+    panel.style.transform = 'translateX(100%)';
+  });
+  document.getElementById('overlay').classList.remove('open');
+  state.selectedDeploymentModel = null;
+}
+
+function closeAllPanels() {
+  closeDeploymentPanel();
+  closeComparisonModal();
+}
+
+// ──────────────────────────────────────────────
+// FILTER EVENTS
+// ──────────────────────────────────────────────
+function onRegionChange(v) {
+  state.selectedRegion = v;
+  const bar = document.querySelector('.region-bar');
+  if (mot && bar) mot.animate(bar, {scale:[1,1.015,1]}, {duration:0.35, easing:[0.22,1,0.36,1]});
+  renderModels();
+}
+function onSearch(q)         { state.searchQuery=q; renderModels(); }
+function onCostChange(v)     { state.costFilter=v; renderModels(); }
+function onProviderFilter(p,checked) {
+  if (checked) { if (!state.selectedProviders.includes(p)) state.selectedProviders.push(p); }
+  else         { state.selectedProviders=state.selectedProviders.filter(x=>x!==p); }
+  renderModels();
+}
+function onTaskFilter(t,checked) {
+  if (checked) { if (!state.selectedTasks.includes(t)) state.selectedTasks.push(t); }
+  else         { state.selectedTasks=state.selectedTasks.filter(x=>x!==t); }
+  renderModels();
+}
+
+function setView(mode) {
+  state.viewMode = mode;
+  const gBtn = document.getElementById('btn-grid');
+  const lBtn = document.getElementById('btn-list');
+  gBtn.classList.toggle('active', mode==='grid');
+  lBtn.classList.toggle('active', mode==='list');
+  const clicked = mode==='grid' ? gBtn : lBtn;
+  if (mot) mot.animate(clicked, {scale:[0.88,1.06,1]}, {duration:0.35, easing:[0.22,1,0.36,1]});
+  renderModels();
+}
+
+function switchTab(tab) {
+  state.activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    const isActive = b.dataset.tab === tab;
+    b.classList.toggle('active', isActive);
+    if (isActive && mot) mot.animate(b, {scale:[0.93,1.04,1]}, {duration:0.3, easing:[0.22,1,0.36,1]});
+  });
+  const ctr = document.getElementById('model-container');
+  if (mot) mot.animate(ctr, {opacity:[0.3,1], y:[6,0]}, {duration:0.25, easing:[0.22,1,0.36,1]});
+  renderModels();
+}
+
+function clearFilters() {
+  state.searchQuery=''; state.selectedProviders=[]; state.selectedTasks=[]; state.costFilter='all';
+  document.getElementById('search-input').value='';
+  document.querySelectorAll('#provider-filters input').forEach(cb=>cb.checked=false);
+  document.querySelectorAll('#task-filters input').forEach(cb=>cb.checked=false);
+  const r = document.querySelector('input[name=cost][value=all]');
+  if (r) r.checked=true;
+  renderModels();
+}
+
+// ──────────────────────────────────────────────
+// TOAST
+// ──────────────────────────────────────────────
+function showToast(msg, dur=3200) {
+  const ctr   = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i data-lucide="info" style="width:14px;height:14px;flex-shrink:0;color:var(--purple-2);"></i><span>${msg}</span>`;
+  ctr.appendChild(toast);
+  lucide.createIcons({el:toast});
+  if (mot) mot.animate(toast, {opacity:[0,1],x:[16,0]}, {duration:0.22,easing:[0.22,1,0.36,1]});
+  setTimeout(()=>{
+    if (mot) mot.animate(toast,{opacity:[1,0],x:[0,16]},{duration:0.18}).then(()=>toast.remove());
+    else toast.remove();
+  }, dur);
+}
+
+// ──────────────────────────────────────────────
+// MICRO-INTERACTION SETUP
+// ──────────────────────────────────────────────
+function setupSidebarInteractions() {
+  if (!mot) return;
+  document.querySelectorAll('.sb-item:not(.active)').forEach(item => {
+    item.addEventListener('mouseenter', () => mot.animate(item, {x:4}, {duration:0.18, easing:[0.22,1,0.36,1]}));
+    item.addEventListener('mouseleave', () => mot.animate(item, {x:0}, {duration:0.22, easing:[0.22,1,0.36,1]}));
+    item.addEventListener('mousedown',  () => mot.animate(item, {scale:0.96}, {duration:0.1}));
+    item.addEventListener('mouseup',    () => mot.animate(item, {scale:1},    {duration:0.18, easing:[0.22,1,0.36,1]}));
+  });
+}
+
+function setupButtonInteractions() {
+  if (!mot) return;
+  document.querySelectorAll('.btn-primary, .btn-secondary, .btn-ghost').forEach(btn => {
+    if (btn._btnMi) return;
+    btn._btnMi = true;
+    btn.addEventListener('mouseenter', () => mot.animate(btn, {scale:1.05},  {duration:0.16, easing:[0.22,1,0.36,1]}));
+    btn.addEventListener('mouseleave', () => mot.animate(btn, {scale:1},     {duration:0.2,  easing:[0.22,1,0.36,1]}));
+    btn.addEventListener('mousedown',  () => mot.animate(btn, {scale:0.94},  {duration:0.08, easing:'ease-in'}));
+    btn.addEventListener('mouseup',    () => mot.animate(btn, {scale:1.05},  {duration:0.16, easing:[0.22,1,0.36,1]}));
+  });
+}
+
+function setupFilterInteractions() {
+  if (!mot) return;
+  document.querySelectorAll('.filter-cb').forEach(label => {
+    label.addEventListener('change', () =>
+      mot.animate(label, {x:[0,5,0]}, {duration:0.28, easing:[0.22,1,0.36,1]}));
+  });
+  document.querySelectorAll('.filter-head-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => mot.animate(btn, {x:2}, {duration:0.15}));
+    btn.addEventListener('mouseleave', () => mot.animate(btn, {x:0}, {duration:0.2}));
+  });
+}
+
+// ──────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderFilters();
+  renderModels();
+  lucide.createIcons();
+  setupSidebarInteractions();
+  setupButtonInteractions();
+  setupFilterInteractions();
+});
+</script>
+</body>
+</html>

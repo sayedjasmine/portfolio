@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Microsoft Foundry · Case Study · Jasmine Sayed</title>
+
+<!--
+  ==============================================================================
+  Microsoft Foundry — UX Research → UX Design case study
+  By Jasmine Sayed · UI/UX Internal Platforms candidate · Zoox
+  13 slides · ~11–13 min · process-led · self-direction emphasized
+  ==============================================================================
+
+  IMAGES expected in this folder:
+    actual-model-redesign.png         (NEW · hi-fi prototype, grid view)
+    actual-model-deploy-redesign.png  (NEW · hi-fi prototype, deployment drawer)
+    model-page.png                    (current Foundry — BEFORE)
+    foundry-home.png, foundry-discover.png, foundry-detail.png  (wireframes)
+    zoox-logo.png · foundry-prototype.html
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:            #0A0A0A;
+  --bg-elev:       #141416;
+  --bg-elev-2:     #1B1B1F;
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  --text:          #FFFFFF;
+  --text-dim:      #B4B4B8;
+  --text-faint:    #6E6E73;
+  --text-ghost:    rgba(124, 92, 252, 0.07);
+
+  --violet:        #7C5CFC;
+  --violet-bright: #A78BFA;
+  --violet-soft:   rgba(124, 92, 252, 0.12);
+  --violet-glow:   rgba(124, 92, 252, 0.22);
+
+  --sev-4:         #EF4444;
+  --sev-3:         #F59E0B;
+  --sev-2:         #A78BFA;
+
+  --font-display:  "Hanken Grotesk", system-ui, sans-serif;
+  --font-body:     "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono:     "JetBrains Mono", ui-monospace, monospace;
+
+  /* Typography — bumped for stronger hierarchy + breathing room */
+  --title-size:    clamp(1.65rem, 3.6vw, 3.2rem);
+  --h1-mega:       clamp(3rem, 8vw, 6.5rem);
+  --h2-size:       clamp(1.2rem, 2.4vw, 1.9rem);
+  --h3-size:       clamp(1rem, 1.6vw, 1.3rem);
+  --body-size:     clamp(0.92rem, 1.2vw, 1.1rem);
+  --body-large:    clamp(1rem, 1.4vw, 1.25rem);
+  --small-size:    clamp(0.75rem, 0.95vw, 0.92rem);
+  --eyebrow-size:  clamp(0.72rem, 0.92vw, 0.9rem);
+
+  /* Generous padding for breathing room */
+  --slide-pad-x:   clamp(3rem, 6vw, 7rem);
+  --slide-pad-y:   clamp(1.4rem, 2.8vw, 2.6rem);
+
+  --ease:          cubic-bezier(0.22, 1, 0.36, 1);
+  --dur:           0.7s;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: var(--slide-pad-y) var(--slide-pad-x);
+}
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  min-height: 0;
+}
+img { max-width: 100%; }
+
+.slide.has-vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 50% at 50% 0%, var(--violet-glow), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ghost slide number */
+.ghost-num {
+  position: absolute;
+  right: var(--slide-pad-x);
+  bottom: clamp(1rem, 1.8vw, 1.8rem);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 10vw, 9rem);
+  color: var(--text-ghost);
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.slide-header { position: relative; margin-bottom: clamp(0.7rem, 1.4vw, 1.2rem); max-width: 92%; }
+.slide-header h1, .slide-header h2 { max-width: 22ch; }
+.slide-header.compact { margin-bottom: clamp(1rem, 2vw, 1.6rem); }
+.slide-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: calc(-1 * clamp(0.35rem, 0.8vw, 0.7rem));
+  width: clamp(2.5rem, 5vw, 4.5rem);
+  height: 2px;
+  background: linear-gradient(90deg, var(--violet), transparent);
+  opacity: 0;
+  transition: opacity 0.8s var(--ease) 0.4s;
+}
+.slide.visible .slide-header::after { opacity: 1; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  font-weight: 700;
+  color: var(--text);
+}
+h1 { font-size: var(--title-size); font-weight: 800; }
+h2 { font-size: var(--h2-size); font-weight: 700; }
+h3 { font-size: var(--h3-size); font-weight: 600; letter-spacing: -0.015em; }
+
+p {
+  font-size: var(--body-size);
+  color: var(--text-dim);
+  max-width: 64ch;
+  line-height: 1.6;
+}
+p.lede {
+  font-size: var(--body-large);
+  color: var(--text);
+  max-width: 60ch;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-bottom: clamp(0.6rem, 1.2vw, 1rem);
+  letter-spacing: 0.01em;
+  /* Flex so the uppercase phase chip and mixed-case trailing text stay on the same vertical line.
+     Without this, the smaller uppercase chip sits a hair higher than the trailing text. */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.15em;
+}
+.label {
+  font-size: var(--small-size);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.4rem, 0.9vw, 0.7rem);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.label::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background: var(--violet);
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+.label-faint {
+  font-size: var(--small-size);
+  font-weight: 600;
+  color: var(--text-faint);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.6rem, 1.2vw, 1rem);
+}
+/* Block-level label-faint gets a violet anchor — visual cue for "section start" */
+div.label-faint::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: var(--violet);
+  margin-right: 0.55em;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+.highlight { color: var(--text); font-weight: 600; }
+
+/* Initiative chip */
+.init-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet-bright);
+  background: var(--violet-soft);
+  padding: 0.4em 0.9em;
+  border-radius: 999px;
+  border: 1px solid rgba(124,92,252,0.25);
+}
+.init-chip::before {
+  content: "";
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--violet-bright);
+  box-shadow: 0 0 6px var(--violet-bright);
+}
+
+/* Microsoft logo */
+.ms-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.45rem, 0.9vw, 0.7rem);
+}
+.ms-logo svg { width: clamp(1rem, 1.4vw, 1.3rem); height: clamp(1rem, 1.4vw, 1.3rem); flex-shrink: 0; }
+.ms-logo .ms-text {
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.ms-logo-lg svg { width: clamp(2rem, 3vw, 2.8rem); height: clamp(2rem, 3vw, 2.8rem); }
+.ms-logo-lg .ms-text { font-size: clamp(1.4rem, 2.2vw, 2rem); }
+
+.ms-watermark {
+  position: absolute;
+  top: var(--slide-pad-y);
+  left: var(--slide-pad-x);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 4;
+  opacity: 0.55;
+  font-size: var(--small-size);
+  color: var(--text-dim);
+}
+.ms-watermark svg { width: 14px; height: 14px; }
+.has-watermark .slide-content { padding-top: clamp(1.8rem, 3.5vw, 3rem); }
+
+/* Layouts — wider gaps */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 5.5vw, 6rem);
+}
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; gap: clamp(1.2rem, 3vw, 2rem); }
+}
+
+/* Components */
+.sev-pill {
+  position: absolute;
+  top: var(--slide-pad-y);
+  right: var(--slide-pad-x);
+  background: var(--violet);
+  color: var(--text);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  padding: 0.55em 1.4em;
+  border-radius: 999px;
+  z-index: 5;
+  letter-spacing: -0.01em;
+}
+
+.recommendation {
+  background: var(--violet);
+  color: var(--text);
+  padding: clamp(0.75rem, 1.4vw, 1.15rem) clamp(1rem, 1.7vw, 1.5rem);
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: clamp(0.88rem, 1.25vw, 1.08rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  max-width: 44ch;
+}
+
+.body-text {
+  font-size: var(--body-large);
+  line-height: 1.45;
+  color: var(--text);
+  max-width: 54ch;
+}
+.body-text + .body-text { margin-top: 0.85em; }
+.body-text strong { color: var(--text); font-weight: 700; }
+
+.pull-quote {
+  font-style: italic;
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  color: var(--text-dim);
+  font-weight: 400;
+  line-height: 1.45;
+  max-width: 40ch;
+}
+.pull-quote .attribution {
+  display: block;
+  margin-top: 0.7em;
+  font-style: normal;
+  font-size: var(--small-size);
+  color: var(--violet-bright);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.6rem, 1.2vw, 1.05rem);
+}
+.bullets li {
+  font-size: var(--body-size);
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 1.3em;
+  position: relative;
+  max-width: 50ch;
+}
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--violet);
+}
+.bullets li strong { color: var(--text); font-weight: 700; }
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: clamp(1rem, 3vw, 3rem);
+  border-top: 1px solid var(--border);
+  padding-top: clamp(1.2rem, 2.2vw, 1.8rem);
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.stat-num .small { font-size: 0.55em; color: var(--text-faint); font-weight: 600; }
+.stat-label {
+  font-size: var(--small-size);
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  margin-top: 0.6em;
+}
+
+.findings-table { width: 100%; border-top: 1px solid var(--border); }
+.findings-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.6fr) 1.3fr 1.3fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(0.85rem, 1.5vw, 1.25rem) 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.findings-row.head > div {
+  font-size: var(--small-size);
+  font-weight: 600;
+  color: var(--text-faint);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.findings-row > div {
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+.findings-row > div:nth-child(2) { color: var(--text); font-weight: 500; }
+
+.sev-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: clamp(0.78rem, 1vw, 0.92rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sev-chip::before { content:""; width:9px; height:9px; border-radius:50%; }
+.sev-chip.s4 { color: var(--sev-4); } .sev-chip.s4::before { background: var(--sev-4); }
+.sev-chip.s3 { color: var(--sev-3); } .sev-chip.s3::before { background: var(--sev-3); }
+.sev-chip.s2 { color: var(--sev-2); } .sev-chip.s2::before { background: var(--sev-2); }
+
+.key-change {
+  border-left: 2px solid var(--violet);
+  padding-left: clamp(0.9rem, 1.5vw, 1.3rem);
+}
+.key-change .label-faint {
+  margin-bottom: 0.4em;
+  color: var(--violet-bright);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+}
+.key-change h3 {
+  font-size: clamp(0.98rem, 1.4vw, 1.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0.2em 0 0.35em;
+}
+.key-change p {
+  color: var(--text-dim);
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.15vw, 1rem);
+  line-height: 1.45;
+}
+
+/* Audit strip — small horizontal context above the friction → lesson rows */
+.audit-strip {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+  align-items: stretch;
+  margin-bottom: clamp(1rem, 2vw, 1.6rem);
+  padding-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
+  border-bottom: 1px solid var(--border);
+}
+.audit-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3em;
+  padding-right: clamp(0.4rem, 0.8vw, 0.8rem);
+  max-width: 14ch;
+}
+.audit-label .tag {
+  color: #F87171;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: var(--small-size);
+}
+.audit-label .sub {
+  color: var(--text-faint);
+  font-size: clamp(0.78rem, 1vw, 0.92rem);
+  font-style: italic;
+  line-height: 1.3;
+}
+.audit-thumb {
+  height: clamp(85px, 13vh, 150px);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: #0a0a0a;
+}
+.audit-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Design challenge — friction → lesson rows */
+.problem-lesson {
+  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  min-height: 0;
+}
+.pl-row {
+  display: grid;
+  grid-template-columns: auto 1.05fr auto 1.05fr;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+  align-items: center;
+  padding: clamp(0.7rem, 1.4vw, 1.2rem) 0;
+  border-bottom: 1px solid var(--border);
+  min-height: 0;
+}
+.pl-row:last-child { border-bottom: 0; }
+.pl-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--violet-bright), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.pl-friction h3 {
+  font-size: clamp(0.98rem, 1.4vw, 1.18rem);
+  color: #F87171;
+  margin-bottom: 0.3em;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.pl-friction p {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  color: var(--text-dim);
+  line-height: 1.4;
+  max-width: 32ch;
+}
+.pl-arrow {
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  color: var(--violet);
+  font-weight: 400;
+  opacity: 0.65;
+  line-height: 1;
+}
+.pl-lesson h3 {
+  font-size: clamp(0.98rem, 1.4vw, 1.18rem);
+  color: var(--violet-bright);
+  margin-bottom: 0.3em;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.pl-lesson .source {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+@media (max-width: 900px) {
+  .pl-row { grid-template-columns: 1fr; gap: 0.6rem; padding: 0.8rem 0; }
+  .pl-arrow { display: none; }
+}
+
+/* Design decisions slide — trade-off cards */
+.decisions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.8rem);
+  flex: 1;
+  min-height: 0;
+}
+.decision-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.3rem, 0.6vw, 0.5rem);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(0.8rem, 1.4vw, 1.15rem);
+  background: linear-gradient(180deg, rgba(124,92,252,0.05) 0%, rgba(124,92,252,0) 60%);
+  position: relative;
+  /* No overflow:hidden — silent clipping was hiding the decision-why footer.
+     If content slightly exceeds, it visibly extends rather than disappearing. */
+  min-height: 0;
+}
+.decision-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--violet-bright) 0%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  margin-bottom: 0;
+}
+.decision-q {
+  font-size: clamp(0.92rem, 1.25vw, 1.08rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: clamp(0.15rem, 0.35vw, 0.3rem);
+}
+.decision-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+.decision-row .lbl {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.decision-row.alt .lbl { color: var(--text-faint); }
+.decision-row.chose .lbl { color: var(--violet-bright); }
+.decision-row .txt {
+  font-size: clamp(0.76rem, 1vw, 0.9rem);
+  line-height: 1.3;
+}
+.decision-row.alt .txt {
+  color: var(--text-dim);
+  text-decoration: line-through;
+  text-decoration-color: rgba(248,113,113,0.45);
+  text-decoration-thickness: 1px;
+}
+.decision-row.chose .txt { color: var(--text); font-weight: 500; }
+.decision-why {
+  margin-top: clamp(0.25rem, 0.5vw, 0.45rem);
+  padding-top: clamp(0.25rem, 0.5vw, 0.45rem);
+  border-top: 1px solid rgba(124, 92, 252, 0.18);
+  font-size: clamp(0.7rem, 0.92vw, 0.82rem);
+  color: var(--text-dim);
+  font-style: italic;
+  line-height: 1.35;
+}
+@media (max-width: 900px) {
+  .decisions-grid { grid-template-columns: 1fr; }
+}
+
+/* Design system slide — 4 reusable component cards */
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.6rem);
+  flex: 1;
+  min-height: 0;
+}
+@media (max-width: 1100px) {
+  .components-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.component-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(0.8rem, 1.4vw, 1.2rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.3rem, 0.6vw, 0.55rem);
+  background: linear-gradient(180deg, rgba(124,92,252,0.07) 0%, rgba(124,92,252,0) 60%);
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+.component-num {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+  color: var(--violet-bright);
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+.component-name {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.component-desc {
+  font-size: clamp(0.82rem, 1.1vw, 0.98rem);
+  color: var(--text-dim);
+  line-height: 1.45;
+  flex: 1;
+}
+.component-tag {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.66rem, 0.85vw, 0.78rem);
+  color: var(--violet-bright);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-top: clamp(0.5rem, 1vw, 0.85rem);
+  border-top: 1px solid var(--border);
+}
+
+/* Impact slide — Shipped / In flight / Next cards */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.8rem);
+  flex: 1;
+  min-height: 0;
+}
+.impact-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(0.85rem, 1.5vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 0.8vw, 0.7rem);
+  background: linear-gradient(180deg, rgba(124,92,252,0.04), rgba(124,92,252,0));
+  min-height: 0;
+}
+.impact-status {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+}
+.impact-status::before {
+  content: "";
+  width: 9px; height: 9px;
+  border-radius: 50%;
+}
+.impact-card.shipped .impact-status { color: #4ade80; }
+.impact-card.shipped .impact-status::before { background: #4ade80; box-shadow: 0 0 10px #4ade80; }
+.impact-card.in-flight .impact-status { color: var(--violet-bright); }
+.impact-card.in-flight .impact-status::before {
+  background: var(--violet-bright);
+  box-shadow: 0 0 10px var(--violet-bright);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+.impact-card.next .impact-status { color: var(--text-faint); }
+.impact-card.next .impact-status::before {
+  background: transparent;
+  border: 1.5px dashed var(--text-faint);
+}
+.impact-h {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: clamp(0.2rem, 0.4vw, 0.4rem);
+}
+.impact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.35rem, 0.7vw, 0.6rem);
+}
+.impact-list li {
+  font-size: clamp(0.82rem, 1.1vw, 0.98rem);
+  color: var(--text-dim);
+  line-height: 1.45;
+  padding-left: 1em;
+  position: relative;
+}
+.impact-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--violet);
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  .impact-grid { grid-template-columns: 1fr; }
+}
+
+/* Closing slide takeaway cards — strong visual hierarchy, tightened to fit */
+.closing-takeaways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.4rem, 2.5vw, 2.4rem);
+  margin-top: clamp(1.2rem, 2.4vw, 2rem);   /* tighter — was 2.5-4.5rem */
+  padding-top: clamp(1rem, 2vw, 1.6rem);
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.closing-takeaways::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: clamp(3rem, 6vw, 5rem);
+  height: 2px;
+  background: linear-gradient(90deg, var(--violet), transparent);
+}
+.takeaway-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.3rem, 0.6vw, 0.55rem);
+  position: relative;
+}
+.takeaway-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  background: linear-gradient(135deg, var(--violet-bright) 0%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: clamp(0.2rem, 0.5vw, 0.4rem);
+}
+.takeaway-card .category {
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  color: var(--violet-bright);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.15rem, 0.3vw, 0.3rem);
+}
+.takeaway-card h3 {
+  font-size: clamp(0.98rem, 1.45vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: clamp(0.25rem, 0.5vw, 0.45rem);
+}
+.takeaway-card p {
+  font-size: clamp(0.82rem, 1.08vw, 0.98rem);
+  color: var(--text-dim);
+  line-height: 1.45;
+  max-width: 32ch;
+}
+
+/* ===========================================================================
+   PROCESS TIMELINE — slide 3
+   =========================================================================== */
+.process-philosophy {
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  color: var(--text);
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 60ch;
+  letter-spacing: -0.015em;
+  margin-bottom: clamp(1rem, 2.2vw, 1.8rem);
+}
+.process-philosophy strong { color: var(--violet-bright); font-style: normal; font-weight: 600; }
+
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 2.4rem);
+  position: relative;
+  margin-top: clamp(0.5rem, 1vw, 0.8rem);
+}
+.process-timeline::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: clamp(0.6rem, 1.2vw, 1.4rem);
+  right: clamp(0.6rem, 1.2vw, 1.4rem);
+  height: 1px;
+  background: linear-gradient(90deg, var(--violet) 0%, var(--violet-bright) 100%);
+  opacity: 0.35;
+  z-index: 0;
+}
+.proc-phase {
+  position: relative;
+  padding-top: clamp(1rem, 2vw, 1.6rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.proc-phase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--violet);
+  box-shadow: 0 0 0 4px rgba(124, 92, 252, 0.18);
+  z-index: 1;
+}
+.proc-phase.active::before {
+  background: var(--violet-bright);
+  box-shadow: 0 0 0 5px rgba(167, 139, 250, 0.25), 0 0 14px var(--violet-bright);
+}
+.proc-phase .phase-time {
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 0.88vw, 0.8rem);
+  color: var(--violet-bright);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.proc-phase .phase-name {
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.proc-phase .phase-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  margin-top: 0.3em;
+}
+.proc-phase .phase-list li {
+  font-size: clamp(0.76rem, 1vw, 0.92rem);
+  color: var(--text-dim);
+  line-height: 1.4;
+  padding-left: 0.9em;
+  position: relative;
+}
+.proc-phase .phase-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--violet);
+  font-weight: 700;
+}
+.proc-phase .phase-out {
+  margin-top: 0.55em;
+  font-size: clamp(0.78rem, 1.05vw, 0.95rem);
+  color: var(--violet-bright);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* ===========================================================================
+   WIREFRAME GRID — 3 landscape wireframes in a row (filter removed)
+   The filter design surfaces in the final design + prototype slides.
+   =========================================================================== */
+.wire-row {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.8rem);
+}
+.wire-tile {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: clamp(0.35rem, 0.7vw, 0.6rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.3rem, 0.6vw, 0.5rem);
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.wire-tile:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.wire-tile .wt-img {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f5f5f7;
+}
+.wire-tile .wt-img img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;                 /* fill the tile width */
+  height: auto;
+  object-fit: contain;         /* show the full wireframe — never crop */
+  border-radius: 6px;
+}
+.wire-tile .wt-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0 0.3em 0.1em;
+}
+.wire-tile .wt-label .name {
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.wire-tile .wt-label .desc {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ===========================================================================
+   FINAL DESIGN — Before / After, AFTER gets more space (visual hierarchy)
+   =========================================================================== */
+.ba-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;   /* AFTER dominates */
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.ba-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  min-height: 0;
+}
+.ba-head { display: flex; align-items: baseline; gap: 0.7em; }
+.ba-head .tag {
+  font-size: var(--small-size);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ba-head .tag.before { color: #F87171; }
+.ba-head .tag.after  { color: var(--violet-bright); }
+.ba-head .sub { font-size: var(--small-size); color: var(--text-faint); }
+
+.ba-image {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ba-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.ba-image.dark img { box-shadow: 0 24px 70px -18px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.06); }
+.ba-image.accent img { box-shadow: 0 24px 80px -18px rgba(124,92,252,0.4), 0 0 0 1px rgba(124,92,252,0.22); }
+
+/* iframe-as-After — live clickable prototype */
+.ba-image.iframe-wrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 92, 252, 0.22);
+  box-shadow: 0 24px 80px -18px rgba(124,92,252,0.4);
+  background: #0a0b11;
+}
+.ba-image.iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0a0b11;
+  display: block;
+}
+.ba-image .live-badge {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--violet);
+  color: var(--text);
+  padding: 0.35em 0.85em;
+  border-radius: 999px;
+  font-size: var(--small-size);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  box-shadow: 0 4px 16px rgba(124,92,252,0.4);
+  pointer-events: none;
+}
+.ba-image .live-badge::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.ba-image .open-fullscreen {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  z-index: 5;
+  background: rgba(124, 92, 252, 0.85);
+  color: var(--text);
+  padding: 0.35em 0.8em;
+  border-radius: 999px;
+  font-size: var(--small-size);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.005em;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s var(--ease);
+}
+.ba-image .open-fullscreen:hover { background: var(--violet); }
+.ba-foot {
+  font-size: var(--small-size);
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+/* ===========================================================================
+   HERO SHOT — full-bleed final design state
+   =========================================================================== */
+.hero-shot {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-shot img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 100px -20px rgba(124,92,252,0.4), 0 0 0 1px rgba(124,92,252,0.2);
+}
+.hero-shot.dark img {
+  box-shadow: 0 30px 100px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* Before pair — two screenshots side by side on the Before slide */
+.before-pair {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+.before-pair .bp-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 0.8vw, 0.7rem);
+  min-height: 0;
+}
+.before-pair .bp-label {
+  font-family: var(--font-mono);
+  font-size: var(--small-size);
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+.before-pair .bp-label .num {
+  color: #F87171;
+  font-weight: 700;
+}
+.before-pair .bp-img {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.before-pair .bp-img img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px -18px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.06);
+}
+@media (max-width: 900px) {
+  .before-pair { grid-template-columns: 1fr; }
+}
+
+/* Full-bleed iframe — used on the "After" slide so the live prototype fills the slide */
+.hero-iframe {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 92, 252, 0.22);
+  box-shadow: 0 30px 100px -20px rgba(124,92,252,0.4), 0 0 0 1px rgba(124,92,252,0.15);
+  background: #0a0b11;
+}
+.hero-iframe iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0a0b11;
+  display: block;
+}
+.hero-iframe .live-badge {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--violet);
+  color: var(--text);
+  padding: 0.4em 0.95em;
+  border-radius: 999px;
+  font-size: var(--small-size);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  box-shadow: 0 4px 16px rgba(124,92,252,0.4);
+  pointer-events: none;
+}
+.hero-iframe .live-badge::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+.hero-iframe .open-fullscreen {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  z-index: 5;
+  background: rgba(124, 92, 252, 0.85);
+  color: var(--text);
+  padding: 0.4em 0.95em;
+  border-radius: 999px;
+  font-size: var(--small-size);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.005em;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s var(--ease);
+}
+.hero-iframe .open-fullscreen:hover { background: var(--violet); }
+
+/* Wide slide — tighter padding + minimal header so an iframe can dominate */
+.slide.wide-slide {
+  padding: clamp(1.2rem, 2.4vw, 2rem) clamp(1.5rem, 3vw, 2.6rem);
+}
+.wide-slide.has-watermark .slide-content { padding-top: clamp(1.3rem, 2.5vw, 2.2rem); }
+.wide-slide .slide-header { margin-bottom: clamp(0.5rem, 1vw, 0.85rem); }
+.wide-slide .slide-header::after { display: none; }
+.wide-slide .slide-header .eyebrow { margin-bottom: 0.35rem; }
+.wide-slide .slide-header h2 {
+  font-size: clamp(1.05rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+/* Caption overlay anchored to the iframe's bottom — frees up vertical real estate */
+.hero-iframe .frame-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.2rem clamp(0.9rem, 1.4vw, 1.2rem) 0.65rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,11,17,0.85) 65%, rgba(10,11,17,0.95) 100%);
+  font-size: var(--small-size);
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 4;
+  pointer-events: none;
+  letter-spacing: -0.005em;
+}
+.hero-iframe .frame-caption strong { color: var(--text); font-weight: 600; }
+.hero-iframe .frame-caption .accent { color: var(--violet-bright); font-weight: 600; }
+
+/* Prototype slide */
+.proto-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 30px 100px -20px rgba(124, 92, 252, 0.3),
+              0 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+.proto-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0a0b11;
+}
+.proto-open {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 5;
+  background: var(--violet);
+  color: var(--text);
+  padding: 0.45em 0.95em;
+  border-radius: 999px;
+  font-size: var(--small-size);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.005em;
+  box-shadow: 0 4px 16px rgba(124,92,252,0.4);
+  transition: transform 0.2s var(--ease);
+}
+.proto-open:hover { transform: translateY(-1px); }
+
+/* Title slide */
+.title-slide { padding-top: 0; padding-bottom: 0; }
+.title-slide .slide-content {
+  justify-content: space-between;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+}
+.title-slide h1 {
+  font-size: var(--h1-mega);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  max-width: 16ch;
+}
+.title-sub {
+  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-top: clamp(0.5rem, 1vw, 0.9rem);
+  letter-spacing: -0.01em;
+  max-width: none;
+  line-height: 1.2;
+}
+
+/* Title hero — text on left, thumbnail on right */
+.title-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  width: 100%;
+}
+.title-hero-text { min-width: 0; }
+.title-hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.title-hero-image img {
+  display: block;
+  max-width: 100%;
+  max-height: clamp(240px, 50vh, 480px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow:
+    0 40px 100px -20px rgba(124, 92, 252, 0.35),
+    0 20px 60px -15px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(124, 92, 252, 0.15);
+}
+@media (max-width: 900px) {
+  .title-hero { grid-template-columns: 1fr; gap: 1.5rem; }
+  .title-hero-image img { max-height: clamp(180px, 30vh, 280px); }
+}
+.title-foot {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: end;
+  justify-content: start;
+}
+.title-foot .meta { display: flex; flex-direction: column; gap: 0.35rem; }
+.title-foot .meta-label {
+  font-size: var(--small-size);
+  color: var(--text-faint);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.title-foot .meta-value {
+  font-size: clamp(0.92rem, 1.25vw, 1.1rem);
+  color: var(--text);
+  font-weight: 500;
+}
+.title-foot .for-zoox { display: flex; align-items: flex-end; gap: 0.9rem; }
+.title-foot .for-zoox img {
+  max-height: clamp(1.4rem, 2.4vw, 1.9rem);
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+@media (max-width: 900px) {
+  .title-foot { grid-template-columns: repeat(2, 1fr); }
+  .process-timeline { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .process-timeline::before { display: none; }
+  .wire-row { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); }
+  .ba-grid { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.slide.visible .reveal:nth-child(1) { transition-delay: 0.05s; }
+.slide.visible .reveal:nth-child(2) { transition-delay: 0.15s; }
+.slide.visible .reveal:nth-child(3) { transition-delay: 0.25s; }
+.slide.visible .reveal:nth-child(4) { transition-delay: 0.35s; }
+.slide.visible .reveal:nth-child(5) { transition-delay: 0.45s; }
+
+/* Chrome */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: var(--violet);
+  z-index: 100;
+  transition: width 0.25s ease-out;
+}
+.nav-dots {
+  position: fixed;
+  right: clamp(0.9rem, 1.4vw, 1.4rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column;
+  gap: 0.65rem; z-index: 50;
+}
+.nav-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0; cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.25s var(--ease);
+}
+.nav-dot:hover { opacity: 1; background: rgba(255, 255, 255, 0.6); transform: scale(1.15); }
+.nav-dot.active {
+  background: var(--violet-bright);
+  border-color: var(--violet-bright);
+  opacity: 1;
+  transform: scale(1.35);
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
+}
+
+/* Responsive — viewport height breakpoints */
+@media (max-height: 900px) {
+  :root {
+    --slide-pad-y: clamp(1.7rem, 3.5vw, 3rem);
+    --title-size: clamp(1.9rem, 4.4vw, 3.6rem);
+    --h1-mega:    clamp(2.5rem, 7vw, 5.4rem);
+    --h2-size:    clamp(1.35rem, 2.8vw, 2.1rem);
+    --body-large: clamp(0.95rem, 1.3vw, 1.18rem);
+    --body-size:  clamp(0.88rem, 1.15vw, 1.05rem);
+  }
+  .slide-header { margin-bottom: clamp(0.85rem, 1.7vw, 1.4rem); }
+  .bullets { gap: clamp(0.5rem, 1vw, 0.85rem); }
+  .stat-num { font-size: clamp(1.7rem, 3.5vw, 2.7rem); }
+  .findings-row { padding: clamp(0.6rem, 1.2vw, 0.95rem) 0; }
+  .ghost-num { font-size: clamp(3rem, 8vw, 6rem); }
+  .process-philosophy { font-size: clamp(1rem, 1.55vw, 1.35rem); margin-bottom: clamp(1.4rem, 2.6vw, 2.2rem); }
+}
+@media (max-height: 760px) {
+  :root {
+    --slide-pad-y: clamp(1.2rem, 2.6vw, 2.2rem);
+    --slide-pad-x: clamp(2rem, 4.5vw, 5rem);
+    --title-size: clamp(1.55rem, 3.8vw, 2.8rem);
+    --h1-mega:    clamp(2.1rem, 5.8vw, 4.2rem);
+    --h2-size:    clamp(1.2rem, 2.5vw, 1.85rem);
+    --body-large: clamp(0.9rem, 1.2vw, 1.08rem);
+    --body-size:  clamp(0.82rem, 1.08vw, 0.98rem);
+    --small-size: clamp(0.7rem, 0.88vw, 0.85rem);
+  }
+  .slide-header { margin-bottom: clamp(0.6rem, 1.2vw, 1rem); }
+  .stat-num { font-size: clamp(1.4rem, 2.9vw, 2.2rem); }
+  .findings-row { padding: clamp(0.45rem, 0.95vw, 0.75rem) 0; }
+  .ghost-num { font-size: clamp(2.4rem, 6vw, 4.5rem); }
+}
+@media (max-height: 620px) {
+  .nav-dots { display: none; }
+  .ghost-num { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ===========================================================================
+   POLISH — unified violet visual system
+   Phase chip in eyebrows · top-rectangle anchor on cards · gradient dividers
+   =========================================================================== */
+
+/* Phase indicator inside eyebrows — short violet bar + label */
+.eyebrow .phase {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  color: var(--violet-bright);
+  font-weight: 700;
+  font-size: clamp(0.68rem, 0.88vw, 0.82rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-right: 0.15em;
+  white-space: nowrap;
+}
+.eyebrow .phase::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--violet-bright);
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.4);
+}
+
+/* Unified card top-anchor rectangle — visual through-line across the deck */
+.decision-card,
+.component-card,
+.impact-card,
+.constraint-card {
+  position: relative;
+}
+.decision-card::before,
+.component-card::before,
+.impact-card::before,
+.constraint-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(1.2rem, 2.2vw, 1.8rem);
+  width: clamp(2.4rem, 4vw, 3.2rem);
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--violet));
+  border-radius: 0 0 3px 3px;
+  z-index: 2;
+}
+
+/* Constraint card — shared class for the three cards on Constraints slide */
+.constraint-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(1.3rem, 2.2vw, 1.9rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  background: linear-gradient(180deg, rgba(124,92,252,0.05) 0%, rgba(124,92,252,0) 70%);
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.constraint-card .label-faint {
+  color: var(--violet-bright);
+  margin-bottom: 0;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+.constraint-card h3 {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+}
+.constraint-card .body {
+  color: var(--text-dim);
+  font-size: var(--body-size);
+  line-height: 1.45;
+}
+.constraint-card .arrow {
+  color: var(--violet-bright);
+  font-size: var(--small-size);
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 0.5em;
+  padding-top: 0.7em;
+  border-top: 1px dashed rgba(124, 92, 252, 0.25);
+}
+.constraint-card:hover,
+.decision-card:hover,
+.component-card:hover,
+.impact-card:hover {
+  border-color: rgba(124, 92, 252, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Gradient violet divider — replaces flat border-top dividers */
+.divider-violet {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(124,92,252,0.55) 0%, rgba(124,92,252,0.18) 30%, rgba(124,92,252,0.04) 75%, transparent 100%);
+  margin: 0;
+}
+
+/* Friction tag — red micro-label inside decision cards */
+.friction-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  color: #F87171;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: var(--small-size);
+  margin-bottom: 0.2em;
+}
+.friction-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: #F87171;
+  flex-shrink: 0;
+}
+
+/* Phase-start slide marker — small violet rail at top-left of the slide.
+   Visually flags when the narrative crosses into a new phase. */
+.slide.phase-start::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(4rem, 7vw, 6rem);
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--violet) 70%, transparent);
+  z-index: 6;
+  pointer-events: none;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 14px rgba(124, 92, 252, 0.5);
+}
+
+/* =========================================================================
+   DESIGN PROGRESSION SLIDE — sketch → wireframes → prototype CTA
+   ========================================================================= */
+.design-progression {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  /* Three-step progression: Sketch → Wireframes → Live HTML.
+     Wireframes column gets significantly more width so all three figma
+     thumbnails display at a readable size in full (no cropping). */
+  grid-template-columns: 0.75fr auto 1.6fr auto 0.75fr;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  align-items: stretch;
+}
+.prog-step {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(0.9rem, 1.6vw, 1.3rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 0.8vw, 0.6rem);
+  background: linear-gradient(180deg, rgba(124,92,252,0.05) 0%, rgba(124,92,252,0) 70%);
+  min-height: 0;
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.prog-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(0.9rem, 1.6vw, 1.3rem);
+  width: clamp(2rem, 3.5vw, 2.6rem);
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--violet));
+  border-radius: 0 0 3px 3px;
+}
+.prog-step:hover { border-color: rgba(124, 92, 252, 0.35); transform: translateY(-2px); }
+.prog-step .prog-num {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+  color: var(--violet-bright);
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.prog-step .prog-name {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+}
+.prog-img {
+  flex: 1;
+  min-height: 0;
+  background: #f5f5f7;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+.prog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* Wireframes: 1 hero on top (Discover), 2 smaller below side-by-side (Home + Filters).
+   object-fit: contain shows each wireframe in full without any cropping. The wireframes
+   column is intentionally wide so the images still display at a usable size. */
+.prog-wireframes {
+  background: transparent;
+  display: grid;
+  grid-template-rows: 1.45fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  border: 0;
+  padding: 0;
+}
+.prog-wireframes img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: #f5f5f7;
+  min-height: 0;
+  min-width: 0;
+}
+.prog-wireframes img:first-child {
+  grid-column: span 2;
+}
+
+/* Live iframe inside Step 3 — render at full laptop size, scale to thumbnail.
+   JS sets transform on resize so the WHOLE prototype is always visible. */
+.prog-iframe {
+  background: #0a0b11;
+  border-color: rgba(124, 92, 252, 0.3);
+  padding: 0;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(124, 92, 252, 0.12);
+  overflow: hidden;
+}
+.prog-iframe iframe {
+  /* Render at native laptop dimensions so the full prototype layout displays.
+     JS then scales the iframe down with transform to fit this small container. */
+  width: 1440px;
+  height: 900px;
+  border: 0;
+  background: #0a0b11;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  /* fallback scale before JS runs */
+  transform: translate(-50%, -50%) scale(0.22);
+  pointer-events: none; /* full interaction lives on the next slide */
+}
+.prog-iframe .mini-live-badge {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  background: var(--violet);
+  color: var(--text);
+  padding: 0.25em 0.6em;
+  border-radius: 999px;
+  font-size: clamp(0.6rem, 0.78vw, 0.7rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  box-shadow: 0 3px 10px rgba(124,92,252,0.4);
+  pointer-events: none;
+}
+.prog-iframe .mini-live-badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+.prog-caption {
+  font-size: clamp(0.78rem, 1vw, 0.92rem);
+  color: var(--text-dim);
+  line-height: 1.4;
+  margin: 0;
+  max-width: none;
+}
+.prog-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  color: var(--violet-bright);
+  font-weight: 300;
+  opacity: 0.7;
+  padding: 0 clamp(0.15rem, 0.4vw, 0.4rem);
+}
+@media (max-width: 1100px) {
+  .design-progression { grid-template-columns: 1fr; grid-auto-rows: 1fr; }
+  .prog-arrow { display: none; }
+}
+
+/* =========================================================================
+   TRADEOFFS SLIDE — what I deliberately cut and why
+   Red accent (contrast vs violet) to signal "cut from scope"
+   ========================================================================= */
+.tradeoffs-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.4rem);
+  align-content: start;
+}
+.tradeoff-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(1rem, 1.8vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.45rem, 0.9vw, 0.8rem);
+  background: linear-gradient(180deg, rgba(248,113,113,0.05) 0%, rgba(248,113,113,0) 70%);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  overflow: hidden;
+}
+.tradeoff-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(1.3rem, 2.4vw, 2rem);
+  width: clamp(2.4rem, 4vw, 3.2rem);
+  height: 3px;
+  background: linear-gradient(90deg, #FCA5A5, #F87171);
+  border-radius: 0 0 3px 3px;
+}
+.tradeoff-card:hover {
+  border-color: rgba(248, 113, 113, 0.35);
+  transform: translateY(-2px);
+}
+.tradeoff-card .cut-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+  color: #F87171;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  align-self: flex-start;
+}
+.tradeoff-card .cut-tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: #F87171;
+  box-shadow: 0 0 6px rgba(248,113,113,0.5);
+}
+.tradeoff-card h3 {
+  font-size: clamp(1.25rem, 2.1vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0;
+}
+.tradeoff-card .source {
+  font-size: var(--small-size);
+  color: var(--text-faint);
+  font-style: italic;
+  margin: 0;
+  padding-bottom: clamp(0.3rem, 0.6vw, 0.5rem);
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+.tradeoff-card .reason {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 38ch;
+}
+.tradeoff-card .reason strong { color: var(--text); }
+
+/* Trade-off cards — Tradeoff slide's two-column "What I chose / gave up" */
+.trade-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(1rem, 1.8vw, 1.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.8rem);
+  background: linear-gradient(180deg, rgba(124,92,252,0.05) 0%, rgba(124,92,252,0) 70%);
+  transition: border-color 0.3s var(--ease);
+}
+.trade-card.gave-up {
+  background: linear-gradient(180deg, rgba(248,113,113,0.04) 0%, rgba(248,113,113,0) 70%);
+}
+.trade-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(1rem, 1.8vw, 1.4rem);
+  width: clamp(2rem, 3.5vw, 2.6rem);
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--violet));
+  border-radius: 0 0 3px 3px;
+}
+.trade-card.gave-up::before {
+  background: linear-gradient(90deg, #FCA5A5, #F87171);
+}
+.trade-card:hover { border-color: rgba(124,92,252,0.35); }
+.trade-card.gave-up:hover { border-color: rgba(248,113,113,0.4); }
+
+/* Role cards — Context slide's Jan-Mar / Apr-Jun phase split */
+.role-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(0.8rem, 1.4vw, 1.15rem) clamp(0.95rem, 1.7vw, 1.3rem);
+  background: linear-gradient(180deg, rgba(124,92,252,0.05) 0%, rgba(124,92,252,0) 70%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.role-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(1.1rem, 2vw, 1.5rem);
+  width: clamp(2rem, 3.5vw, 2.6rem);
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--violet));
+  border-radius: 0 0 3px 3px;
+}
+.role-card:hover { border-color: rgba(124, 92, 252, 0.35); transform: translateY(-2px); }
+.role-card .date {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.88vw, 0.82rem);
+  color: var(--violet-bright);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.role-card h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  margin: 0.1em 0 0.3em;
+  letter-spacing: -0.02em;
+}
+.role-card p {
+  font-size: var(--body-size);
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+}
+
+/* Big "After" badge on prototype slide — mirrors "Before" badge on Tradeoff */
+.after-badge {
+  position: absolute;
+  top: clamp(1.2rem, 2.4vw, 2rem);
+  right: clamp(1.5rem, 3vw, 2.6rem);
+  background: var(--violet);
+  color: #fff;
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.4em 1em;
+  border-radius: 999px;
+  z-index: 7;
+  box-shadow: 0 6px 22px rgba(124, 92, 252, 0.5);
+}
+
+/* Closing takeaway card — per-card top anchor (lives inside the closing-takeaways grid which already has a section accent) */
+.takeaway-card {
+  position: relative;
+  padding-top: clamp(0.55rem, 1vw, 0.8rem);
+}
+.takeaway-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(2rem, 3.5vw, 2.6rem);
+  height: 2px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--violet));
+  border-radius: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" aria-hidden="true"></div>
+<nav class="nav-dots" aria-label="Slide navigation"></nav>
+
+<svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+  <symbol id="ms-squares" viewBox="0 0 23 23">
+    <rect width="10" height="10" x="0" y="0" fill="#F25022"/>
+    <rect width="10" height="10" x="13" y="0" fill="#7FBA00"/>
+    <rect width="10" height="10" x="0" y="13" fill="#00A4EF"/>
+    <rect width="10" height="10" x="13" y="13" fill="#FFB900"/>
+  </symbol>
+</svg>
+
+
+<!-- 1 · TITLE -->
+<section class="slide title-slide has-vignette" data-title="Title">
+  <div class="slide-content">
+    <div class="ms-logo ms-logo-lg reveal" style="align-self:flex-start;">
+      <svg><use href="#ms-squares"/></svg>
+      <span class="ms-text">Microsoft</span>
+    </div>
+    <div class="reveal title-hero">
+      <div class="title-hero-text">
+        <h1>Microsoft Foundry</h1>
+        <p class="title-sub">Case Study</p>
+      </div>
+      <div class="title-hero-image">
+        <img src="foundry-thumnail.jpg"
+             alt="Microsoft Foundry"
+             onerror="this.onerror=null;this.src='foundry-thumbnail.jpg';this.onerror=function(){this.parentElement.style.display='none'};" />
+      </div>
+    </div>
+    <div class="title-foot reveal">
+      <div class="meta">
+        <span class="meta-label">Presented by</span>
+        <span class="meta-value">Jasmine Sayed</span>
+      </div>
+      <div class="meta">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">UX Researcher &amp; UX Designer Co-op</span>
+      </div>
+      <div class="meta">
+        <span class="meta-label">Candidate for</span>
+        <span class="meta-value">UI/UX Internal Platforms</span>
+      </div>
+      <div class="meta for-zoox">
+        <div>
+          <span class="meta-label">At</span>
+          <div class="meta-value">Zoox</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 2 · CONTEXT — what Foundry is, my role, project shape -->
+<section class="slide has-watermark phase-start" data-title="Context">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">01</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Project</span> · Context</p>
+      <h1 class="reveal">Microsoft Foundry. 6 months. Two surfaces.</h1>
+    </header>
+
+    <!-- Top: product + scope (what I did overall) -->
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,5rem);align-items:start;margin-top:clamp(1.2rem,2.4vw,1.8rem);">
+      <div style="display:flex;flex-direction:column;gap:clamp(0.6rem,1.2vw,1rem);">
+        <div class="label-faint">The product</div>
+        <p class="body-text"><strong>Microsoft Foundry is Microsoft's enterprise AI platform on Azure.</strong> Developers go there to build agents and pick from 11,000+ models.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(0.6rem,1.2vw,1rem);">
+        <div class="label-faint">What I owned</div>
+        <p class="body-text">UX research and design on two surfaces: the <strong>Models page</strong> and the <strong>agent creation page</strong>. End-to-end across both.</p>
+      </div>
+    </div>
+
+    <!-- Below: role split — Jan-Mar Researcher / Apr-Jun Designer -->
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,2.8vw,2rem);margin-top:clamp(1.4rem,2.8vw,2.2rem);">
+      <div class="role-card">
+        <div class="date">Jan – Mar</div>
+        <h3>UX Researcher</h3>
+        <p>Heuristic eval · <strong style="color:var(--text);">conducted 8 moderated sessions</strong> · Dovetail synthesis · Nielsen severity scoring.</p>
+      </div>
+      <div class="role-card">
+        <div class="date">Apr – Jun</div>
+        <h3>UX Designer</h3>
+        <p>Solo Figma wireframes · <strong style="color:var(--text);">4 reusable components</strong> · vibecoded HTML + Tailwind prototype.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:auto;display:flex;align-items:center;gap:clamp(0.8rem,1.6vw,1.4rem);flex-wrap:wrap;padding-top:clamp(1rem,1.8vw,1.4rem);border-top:1px solid rgba(124,92,252,0.2);font-size:var(--small-size);color:var(--text-faint);">
+      <span><strong style="color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;font-size:clamp(0.65rem,0.85vw,0.78rem);">Tools</strong>&nbsp;&nbsp;Figma · Dovetail · Google Forms · Claude · HTML/Tailwind</span>
+      <span style="margin-left:auto;"><strong style="color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;font-size:clamp(0.65rem,0.85vw,0.78rem);">Partners</strong>&nbsp;&nbsp;PMs · engineers · researchers · designers · sponsor</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PROBLEM — one-sentence framing + visual evidence -->
+<section class="slide has-watermark" data-title="Problem">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">02</span>
+
+  <div class="slide-content" style="display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(2.5rem,5vw,5rem);align-items:center;">
+    <!-- LEFT: header only -->
+    <div style="min-width:0;">
+      <header class="slide-header" style="margin-bottom:0;">
+        <p class="eyebrow reveal"><span class="phase">Project</span> · The problem</p>
+        <h1 class="reveal">Developers were bouncing before they could pick a model.</h1>
+      </header>
+    </div>
+
+    <!-- RIGHT: big image, top-right -->
+    <div class="reveal" style="position:relative;display:flex;align-items:center;justify-content:flex-end;width:100%;min-width:0;">
+      <img src="discover-page.png" alt="Today's Foundry Models page" style="display:block;width:100%;max-width:100%;max-height:80vh;height:auto;object-fit:contain;border-radius:10px;border:1px solid var(--border);box-shadow:0 24px 70px -18px rgba(0,0,0,0.7);" />
+      <div style="position:absolute;top:0.7rem;left:0.7rem;background:#F87171;color:#fff;font-size:var(--small-size);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.35em 0.85em;border-radius:999px;z-index:2;box-shadow:0 4px 16px rgba(248,113,113,0.35);">Before</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 3 · USERS + INSIGHTS — who they were + 3 things I learned -->
+<section class="slide has-watermark phase-start" data-title="Users + insights">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">03</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Research</span> · Users + 3 insights</p>
+      <h1 class="reveal">Developers know what to build, not which model.</h1>
+    </header>
+
+    <div class="reveal" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:clamp(1rem,2vw,1.6rem);">
+      <div class="label-faint">Who I tested with</div>
+      <p class="body-text" style="font-size:var(--body-size);"><strong>8 moderated sessions</strong> · CS students, technical builders, AI-curious founders. Think Aloud scenario: <em>"Help a baker optimize their recipe site with an AI agent."</em></p>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,2.8vw,2.4rem);padding-top:clamp(0.9rem,1.8vw,1.4rem);border-top:1px solid rgba(124,92,252,0.2);flex:1;min-height:0;align-content:start;">
+      <div class="key-change">
+        <div class="label-faint" style="color:var(--violet-bright);margin-bottom:0.35em;">01 · Mental model</div>
+        <h3 style="margin:0.2em 0 0.35em;font-size:clamp(1rem,1.4vw,1.2rem);">Region beats names.</h3>
+        <p style="font-size:var(--body-size);line-height:1.45;">Card sort showed developers rank region and capability above model names.</p>
+      </div>
+      <div class="key-change">
+        <div class="label-faint" style="color:var(--violet-bright);margin-bottom:0.35em;">02 · Sentiment</div>
+        <h3 style="margin:0.2em 0 0.35em;font-size:clamp(1rem,1.4vw,1.2rem);">Completed but frustrated.</h3>
+        <p style="font-size:var(--body-size);line-height:1.45;">8/8 finished the scenario. Post-task sentiment skewed neutral to frustrated. The gap between usable and trusted.</p>
+      </div>
+      <div class="key-change">
+        <div class="label-faint" style="color:var(--violet-bright);margin-bottom:0.35em;">03 · Comparison behavior</div>
+        <h3 style="margin:0.2em 0 0.35em;font-size:clamp(1rem,1.4vw,1.2rem);">Tab-switching kills context.</h3>
+        <p style="font-size:var(--body-size);line-height:1.45;">Users compare by opening detail pages in tabs, losing context every time they navigate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 6 · GUARDRAIL CRISIS (hero) -->
+<section class="slide has-watermark" data-title="Guardrail crisis">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="sev-pill reveal">Severity: 4 (Catastrophe)</span>
+  <span class="ghost-num">04</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Research</span> · The catastrophic finding</p>
+      <h1 class="reveal">Guardrails completely prevent usage.</h1>
+    </header>
+
+    <div class="two-col reveal" style="flex:1;align-content:start;">
+      <div style="display:flex;flex-direction:column;gap:clamp(1.2rem,2.4vw,1.8rem);">
+        <div>
+          <div class="label">What happened</div>
+          <p class="body-text"><strong>8/8 participants</strong> couldn't create an agent. The <strong>default guardrail wasn't assigned</strong>. Every session blocked.</p>
+        </div>
+        <div>
+          <div class="label">Recommendation</div>
+          <div class="recommendation">Auto-assign Microsoft's default guardrail during agent creation.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(0.8rem,1.6vw,1.3rem);">
+        <span class="init-chip" style="align-self:flex-start;margin-bottom:0.3rem;">Self-directed call</span>
+        <div class="label">The live decision</div>
+        <p class="body-text">Mid-session, no playbook. I let the participant struggle, logged every failure mode, then offered help.</p>
+        <p class="body-text"><strong>I took the notes straight to engineering, and they shipped the hotfix off them.</strong></p>
+
+        <p class="pull-quote">
+          "I don't know what this is, I got somewhere else altogether."
+          <span class="attribution">Participant 1</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · KEY DESIGN DECISIONS — three trade-offs (frictions now embedded) -->
+<section class="slide has-watermark phase-start" data-title="Key design decisions">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">05</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Design</span> · Key decisions</p>
+      <h1 class="reveal">Three forks in the road: what I shipped.</h1>
+    </header>
+
+    <div class="decisions-grid reveal" style="">
+      <!-- Decision 1 -->
+      <div class="decision-card">
+        <div class="decision-num">01</div>
+        <div class="decision-q">Search-first or filter-first?</div>
+        <div class="decision-row alt">
+          <span class="lbl">Considered</span>
+          <span class="txt">A prominent search bar (Hugging Face approach)</span>
+        </div>
+        <div class="decision-row chose">
+          <span class="lbl">Chose</span>
+          <span class="txt">Task tiles → filter sidebar with region &amp; capability promoted</span>
+        </div>
+        <div class="decision-why">Card sort: devs rank region + capability above model names. They know what to build, not which model.</div>
+      </div>
+
+      <!-- Decision 2 -->
+      <div class="decision-card">
+        <div class="decision-num">02</div>
+        <div class="decision-q">Where does region live?</div>
+        <div class="decision-row alt">
+          <span class="lbl">Considered</span>
+          <span class="txt">Region only in advanced filters · region revealed at deploy</span>
+        </div>
+        <div class="decision-row chose">
+          <span class="lbl">Chose</span>
+          <span class="txt">Region <em>in the row</em> + as primary filter + in the deploy drawer</span>
+        </div>
+        <div class="decision-why">100% of usability friction was region-related. Couldn't risk burying it again.</div>
+      </div>
+
+      <!-- Decision 3 -->
+      <div class="decision-card">
+        <div class="decision-num">03</div>
+        <div class="decision-q">Comparison: separate page or in flow?</div>
+        <div class="decision-row alt">
+          <span class="lbl">Considered</span>
+          <span class="txt">Dedicated compare page (Vertex AI) · modal popup</span>
+        </div>
+        <div class="decision-row chose">
+          <span class="lbl">Chose</span>
+          <span class="txt">Persistent compare tray pinned to the Models grid</span>
+        </div>
+        <div class="decision-why">Separate pages kill context. The tray keeps comparison <em>in</em> the decision moment.</div>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:clamp(0.8rem,1.5vw,1.2rem);font-size:var(--small-size);color:var(--text-faint);">
+      Inspired by competitive analysis of <strong style="color:var(--text-dim);">Hugging Face · Google Vertex AI · Amazon Bedrock · Optimizely Opal</strong>.
+    </p>
+  </div>
+</section>
+
+
+<!-- 9 · DESIGN PROGRESSION — sketch → wireframes → live HTML -->
+<section class="slide has-watermark" data-title="Design progression">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">06</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Design</span> · Design progression</p>
+      <h1 class="reveal">Three iterations from paper to working HTML.</h1>
+    </header>
+
+    <div class="design-progression reveal" style="">
+      <!-- 01 · Sketch -->
+      <div class="prog-step">
+        <span class="prog-num">01 · Paper</span>
+        <h3 class="prog-name">Sketch</h3>
+        <div class="prog-img">
+          <img src="foundry-sketch.png" alt="Paper prototype: region blocker, AI search, Models page flow" />
+        </div>
+        <p class="prog-caption">Pre-research exploration. Includes bets I'd later cut: <strong style="color:var(--text);">Ask AI</strong> and a <strong style="color:var(--text);">region blocker</strong> in onboarding.</p>
+      </div>
+
+      <div class="prog-arrow">→</div>
+
+      <!-- 02 · Wireframes (Discover as hero, Home + Filters below) -->
+      <div class="prog-step">
+        <span class="prog-num">02 · Mid-fi</span>
+        <h3 class="prog-name">Wireframes</h3>
+        <div class="prog-img prog-wireframes">
+          <img src="foundry-discover.png" alt="Discover wireframe — region filter, model grid, compare tray" />
+          <img src="foundry-home.png" alt="Home wireframe — task tiles" />
+          <img src="foundry-filters.png" alt="Filters wireframe — region promoted, faceted filters" />
+        </div>
+        <p class="prog-caption">Figma mid-fi. <strong style="color:var(--text);">Region promoted, compare-tray persistent.</strong> Research-validated bets only.</p>
+      </div>
+
+      <div class="prog-arrow">→</div>
+
+      <!-- 03 · Prototype (live iframe, full interaction on next slide) -->
+      <div class="prog-step">
+        <span class="prog-num">03 · Live</span>
+        <h3 class="prog-name">Prototype</h3>
+        <div class="prog-img prog-iframe">
+          <span class="mini-live-badge">Live</span>
+          <iframe src="https://ms-foundry-prototype.netlify.app/" title="Live HTML prototype preview" loading="lazy"></iframe>
+        </div>
+        <p class="prog-caption">HTML + Tailwind, vibecoded with Claude. <strong style="color:var(--violet-bright);">Full interaction on next slide ↗</strong></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 11 · AFTER — full-screen live prototype -->
+<section class="slide wide-slide has-watermark phase-start" data-title="After · Live prototype">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="after-badge reveal">After</span>
+  <span class="ghost-num">07</span>
+
+  <div class="slide-content">
+    <header class="slide-header compact">
+      <p class="eyebrow reveal" style="display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;">
+        <span class="phase">Outcome</span>
+        <span>Working prototype · <strong style="color:var(--text);">HTML + Tailwind</strong>, vibecoded with Claude to present to engineering</span>
+        <span class="init-chip">Tailwind + Claude</span>
+      </p>
+    </header>
+
+    <div class="hero-iframe reveal">
+      <span class="live-badge">Live</span>
+      <div style="position:absolute;top:0.7rem;right:0.7rem;z-index:5;display:flex;gap:0.5rem;">
+        <a class="open-fullscreen" href="https://ms-foundry-prototype.netlify.app/" target="_blank" rel="noopener" style="position:static;">Hosted ↗</a>
+        <a class="open-fullscreen" href="foundry-prototype.html" target="_blank" rel="noopener" style="position:static;background:rgba(124,92,252,0.6);">Local ↗</a>
+      </div>
+      <iframe id="prototype-iframe" src="https://ms-foundry-prototype.netlify.app/" title="Foundry Models prototype · live, interactive" loading="lazy"></iframe>
+      <div class="frame-caption">
+        <span>Filter-first · region in the row · comparison in the grid · availability in card · deployment drawer.</span>
+        <span class="accent">Click anywhere to interact ↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 12 · DESIGN SYSTEM — 4 reusable components (JD #1 requirement) -->
+<section class="slide has-watermark" data-title="Design system">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">08</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Outcome</span> · Design system</p>
+      <h1 class="reveal">Systematize first. Build once, reuse across every surface.</h1>
+    </header>
+
+    <div class="components-grid reveal" style="">
+      <div class="component-card">
+        <span class="component-num">01</span>
+        <div class="component-name">Filter sidebar</div>
+        <p class="component-desc">Region, capability, provider, price: all in one persistent, collapsible panel.</p>
+        <div class="component-tag">→ Decision 02</div>
+      </div>
+
+      <div class="component-card">
+        <span class="component-num">02</span>
+        <div class="component-name">Compare tray</div>
+        <p class="component-desc">Pinned to the top of the grid. Up to 3 models, expand to side-by-side.</p>
+        <div class="component-tag">→ Decision 03</div>
+      </div>
+
+      <div class="component-card">
+        <span class="component-num">03</span>
+        <div class="component-name">Model card</div>
+        <p class="component-desc">Region, cost, latency, capability: all visible in browse, no click required.</p>
+        <div class="component-tag">→ Decisions 01 + 02</div>
+      </div>
+
+      <div class="component-card">
+        <span class="component-num">04</span>
+        <div class="component-name">Deployment drawer</div>
+        <p class="component-desc">Cost, context window, regions, "not available" warnings in one click.</p>
+        <div class="component-tag">→ Decisions 02 + 03</div>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:clamp(0.8rem,1.5vw,1.2rem);font-size:var(--small-size);color:var(--text-faint);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+      <span>Each built as a Figma component with <strong style="color:var(--text-dim);">variants + auto-layout</strong> · <strong style="color:var(--text-dim);">type, color &amp; spacing tokens</strong> · documented inline for engineering.</span>
+      <span style="color:var(--violet-bright);"><strong>Handed off via annotated Figma file</strong> · zero translation meetings needed.</span>
+    </p>
+  </div>
+</section>
+
+<!-- TRADEOFFS — what I deliberately cut and why -->
+<section class="slide has-watermark" data-title="Tradeoffs">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">09</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Outcome</span> · Tradeoffs</p>
+      <h1 class="reveal">Two things I deliberately cut.</h1>
+    </header>
+
+    <div class="tradeoffs-grid reveal" style="margin-top:clamp(0.4rem,0.8vw,0.7rem);">
+      <div class="tradeoff-card">
+        <span class="cut-tag">Scoped down</span>
+        <h3>The expanded AI chatbot.</h3>
+        <p class="source">From the sketch: the "What are you looking to build?" Claude panel with a full conversational flow.</p>
+        <p class="reason">I <strong>kept a lightweight "Ask AI" entry point</strong> at the top of the final design. The full chatbot didn't make it. Card sort showed developers filter-first by region and capability, not by chatting. Conversation was a higher-effort, lower-confidence bet.</p>
+      </div>
+
+      <div class="tradeoff-card">
+        <span class="cut-tag">Out of scope</span>
+        <h3>Onboarding region revamp.</h3>
+        <p class="source">From the sketch: "region blocker should be addressed in onboarding."</p>
+        <p class="reason">Onboarding is <strong>owned by a different team.</strong> Outside the 6-month window and the two surfaces I owned. <strong>Flagged for handoff,</strong> not chased.</p>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:clamp(0.7rem,1.4vw,1.1rem);font-size:var(--small-size);color:var(--text-faint);font-style:italic;">
+      Cutting honestly is the part of design I take most seriously. Shipping four half-baked features helps no one.
+    </p>
+  </div>
+</section>
+
+
+<!-- IMPACT (so far) -->
+<section class="slide has-watermark" data-title="Impact">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry</span></div>
+  <span class="ghost-num">10</span>
+
+  <div class="slide-content">
+    <header class="slide-header">
+      <p class="eyebrow reveal"><span class="phase">Outcome</span> · Impact so far</p>
+      <h1 class="reveal">What's shipped, and what comes next.</h1>
+    </header>
+
+    <div class="impact-grid reveal" style="">
+      <div class="impact-card shipped">
+        <span class="impact-status">Shipped</span>
+        <div class="impact-h">Guardrail hotfix in production.</div>
+        <ul class="impact-list">
+          <li><strong style="color:var(--text);">100% of agent-creation flows</strong> unblocked since hotfix</li>
+          <li>Default guardrail now auto-assigned at agent creation</li>
+          <li>Engineering shipped from my session-1 notes within days</li>
+        </ul>
+      </div>
+
+      <div class="impact-card in-flight">
+        <span class="impact-status">In flight</span>
+        <div class="impact-h">Models page redesign with engineering buy-in.</div>
+        <ul class="impact-list">
+          <li><strong style="color:var(--text);">~70% fewer clicks</strong> to a model decision (est. from prototype tasks)</li>
+          <li><strong style="color:var(--text);">100% of region-related friction</strong> prevented (research-validated)</li>
+          <li>3 decisions documented · 4 components specced · prototype live</li>
+        </ul>
+      </div>
+
+      <div class="impact-card next">
+        <span class="impact-status">Measuring next</span>
+        <div class="impact-h">UX metrics queued for post-launch.</div>
+        <ul class="impact-list">
+          <li><strong style="color:var(--text);">Task completion time</strong> · time to first deploy</li>
+          <li><strong style="color:var(--text);">Error rate</strong> · region mismatches at deploy</li>
+          <li><strong style="color:var(--text);">Satisfaction</strong> · post-task SUS vs. baseline</li>
+          <li>Compare-tray usage · detail → deploy conversion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · CLOSING -->
+<section class="slide has-vignette" data-title="For Zoox">
+  <div class="ms-watermark" aria-hidden="true"><svg><use href="#ms-squares"/></svg><span>Microsoft Foundry · Case Study</span></div>
+  <span class="ghost-num">11</span>
+
+  <div class="slide-content" style="padding-top:clamp(1.2rem,2.4vw,1.8rem);">
+    <header class="slide-header" style="margin-bottom:0;">
+      <p class="eyebrow reveal"><span class="phase">Closing</span> · For Zoox</p>
+      <h1 class="reveal" style="font-size:clamp(1.5rem,3.2vw,2.6rem);max-width:24ch;">Three takeaways from six months of moving work forward.</h1>
+    </header>
+
+    <div class="closing-takeaways reveal">
+      <div class="takeaway-card">
+        <div class="takeaway-num">01</div>
+        <div class="category">Sole-designer ready</div>
+        <h3>One designer, full stack.</h3>
+        <p>Research → design → prototype → ship. Same vocabulary across every phase, no handoff loss. Built for solo-designer environments.</p>
+      </div>
+
+      <div class="takeaway-card">
+        <div class="takeaway-num">02</div>
+        <div class="category">Systems &amp; engineering fluency</div>
+        <h3>Designed with engineering, not at them.</h3>
+        <p>Component library → in-file documentation → HTML prototype. I speak engineering's vocabulary so the handoff doesn't reintroduce friction.</p>
+      </div>
+
+      <div class="takeaway-card">
+        <div class="takeaway-num">03</div>
+        <div class="category">Transferable posture</div>
+        <h3>Clarity beats decoration.</h3>
+        <p><strong style="color:var(--text);">Engineers under time pressure</strong> at Foundry <span style="color:var(--violet-bright);">→</span> <strong style="color:var(--text);">fleet operators under time pressure</strong> at Zoox. Same restraint, same density discipline.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:auto;padding-top:clamp(1rem,1.8vw,1.5rem);border-top:1px solid rgba(124,92,252,0.2);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+      <span style="color:var(--text);font-weight:500;font-size:clamp(0.9rem,1.2vw,1.05rem);">Thanks, Jasmine Sayed</span>
+      <span style="color:var(--text-dim);font-size:clamp(0.8rem,1.1vw,0.95rem);">UI/UX Internal Platforms candidate</span>
+      <span style="margin-left:auto;font-size:var(--small-size);color:var(--text-faint);letter-spacing:0.12em;text-transform:uppercase;">at <strong style="color:var(--text);font-weight:600;letter-spacing:0;text-transform:none;">Zoox</strong></span>
+    </div>
+  </div>
+</section>
+
+
+<script>
+class SlidePresentation {
+  constructor() {
+    this.slides = Array.from(document.querySelectorAll('.slide'));
+    this.current = 0;
+    this.navDotsContainer = document.querySelector('.nav-dots');
+    this.progressBar = document.querySelector('.progress-bar');
+    this.setupNavDots();
+    this.setupIntersectionObserver();
+    this.setupKeyboardNav();
+    this.setupTouchNav();
+    this.setupScrollListener();
+  }
+  setupNavDots() {
+    this.navDotsContainer.innerHTML = '';
+    this.slides.forEach((slide, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'nav-dot';
+      dot.setAttribute('aria-label', `Slide ${i+1}: ${slide.dataset.title || ''}`);
+      dot.addEventListener('click', () => this.goTo(i));
+      this.navDotsContainer.appendChild(dot);
+    });
+    this.updateActiveDot(0);
+  }
+  updateActiveDot(idx) {
+    this.navDotsContainer.querySelectorAll('.nav-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+    });
+  }
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0.5) {
+          entry.target.classList.add('visible');
+          const idx = this.slides.indexOf(entry.target);
+          if (idx !== -1) { this.current = idx; this.updateActiveDot(idx); }
+        }
+      });
+    }, { threshold: [0.3, 0.5, 0.7] });
+    this.slides.forEach(s => observer.observe(s));
+  }
+  setupKeyboardNav() {
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'IFRAME') return;
+      if (['ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.goTo(this.current + 1); }
+      else if (['ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.goTo(this.current - 1); }
+      else if (e.key === 'Home') this.goTo(0);
+      else if (e.key === 'End') this.goTo(this.slides.length - 1);
+    });
+  }
+  setupTouchNav() {
+    let startY = 0;
+    document.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; });
+    document.addEventListener('touchend', (e) => {
+      const dy = startY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) > 50) this.goTo(this.current + (dy > 0 ? 1 : -1));
+    });
+  }
+  setupScrollListener() {
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      this.progressBar.style.width = pct + '%';
+    }, { passive: true });
+  }
+  goTo(idx) {
+    idx = Math.max(0, Math.min(this.slides.length - 1, idx));
+    this.slides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+window.addEventListener('DOMContentLoaded', () => new SlidePresentation());
+
+// Prototype iframe fallback: if the hosted Netlify version doesn't load
+// within 4 seconds (Netlify down, blocked, or framing disallowed), swap
+// to the locally bundled foundry-prototype.html so the demo never breaks.
+window.addEventListener('load', () => {
+  // Apply fallback to ALL prototype iframes (slide 9 preview + slide 10 hero).
+  const iframes = document.querySelectorAll('iframe[src*="ms-foundry-prototype"]');
+  iframes.forEach(iframe => attachFallback(iframe));
+  // Dynamically scale the slide-9 thumbnail iframe so the WHOLE prototype fits.
+  fitThumbIframes();
+  setTimeout(fitThumbIframes, 250); // re-fit after layout settles
+});
+window.addEventListener('resize', () => fitThumbIframes());
+
+function fitThumbIframes() {
+  document.querySelectorAll('.prog-iframe iframe').forEach(iframe => {
+    const c = iframe.parentElement;
+    const cw = c.clientWidth, ch = c.clientHeight;
+    if (!cw || !ch) return;
+    // Iframe is rendered at 1440x900 internally; pick the scale that fits both axes.
+    const scale = Math.min(cw / 1440, ch / 900);
+    iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  });
+}
+function attachFallback(iframe) {
+  let loaded = false;
+  iframe.addEventListener('load', () => {
+    // The 'load' event fires even when X-Frame-Options blocks rendering.
+    // Best-effort check: if we can read the iframe's contentDocument size,
+    // the page is actually rendered. Cross-origin access throws — that's fine.
+    try {
+      if (iframe.contentWindow && iframe.contentWindow.length !== undefined) loaded = true;
+    } catch (e) {
+      loaded = true; // Cross-origin success — the page did load
+    }
+  });
+  setTimeout(() => {
+    if (!loaded) iframe.src = 'foundry-prototype.html';
+  }, 4000);
+}
+</script>
+</body>
+</html>
