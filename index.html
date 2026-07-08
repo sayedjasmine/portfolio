@@ -400,7 +400,7 @@
     .cards-grid {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 30px;
     }
 
     .card {
@@ -543,6 +543,8 @@
     /* Per-card preview background colors */
     .card-microsoft .card-preview     { background: #004369; padding: 0; }
     .card-microsoft .card-preview img { max-width: 130%; max-height: 130%; }
+    .card-foundry .card-preview       { background: #3A2350; padding: 0; }
+    .card-foundry .card-preview img   { max-width: 100%; max-height: 100%; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; filter: none; }
     .card-nox .card-preview           { background: #7f63e8; padding: 20px; }
     .card-nox .card-preview img       { max-width: 100%; max-height: 100%; }
     .card-saksham .card-preview       { background: #C4425A; padding: 16px; }
@@ -1278,43 +1280,37 @@
   <section id="work" class="work-section">
     <div class="work-header">
       <p class="section-label">My Work</p>
-      <div class="work-filters" role="tablist" aria-label="Filter case studies by category">
-        <button class="work-filter active" data-filter="all" type="button" aria-pressed="true">All</button>
-        <button class="work-filter" data-filter="design" type="button" aria-pressed="false">Design</button>
-        <button class="work-filter" data-filter="research" type="button" aria-pressed="false">Research</button>
-        <button class="work-filter" data-filter="ai" type="button" aria-pressed="false">AI</button>
-      </div>
     </div>
 
     <div class="cards-grid" id="cardsGrid">
 
-      <!-- 1. MICROSOFT FOUNDRY -->
-      <a href="microsoft.html" class="card card-microsoft fade-in" data-categories="research ai">
+      <!-- 1. FOUNDRY MODELS (redesign) -->
+      <a href="foundry-models.html" class="card card-foundry fade-in" data-categories="design ai research">
         <div class="card-preview">
-          <img src="assets/microsoft-mockup.webp" alt="Microsoft Foundry" loading="lazy" decoding="async" />
+          <img src="assets/foundry-models-project-card.png" alt="Microsoft Foundry Models page redesign" loading="lazy" decoding="async" />
         </div>
         <div class="card-info">
           <div class="card-meta">
-            <span class="card-tag">Microsoft · Research · 2026</span>
-            <span class="card-featured-badge">Latest</span>
+            <span class="card-tag" style="display:inline-flex;align-items:center;gap:5px;"><svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true" style="flex-shrink:0"><rect width="4.5" height="4.5" fill="#F25022"/><rect x="5.5" width="4.5" height="4.5" fill="#7FBA00"/><rect y="5.5" width="4.5" height="4.5" fill="#00A4EF"/><rect x="5.5" y="5.5" width="4.5" height="4.5" fill="#FFB900"/></svg>Microsoft · Product Design · 2026</span>
+            <span class="card-featured-badge">New</span>
           </div>
-          <h3>Microsoft Foundry</h3>
-          <p class="card-desc">8/8 participants hit the same Severity-4 blocker on Microsoft's AI agent-building platform — turning a deprioritized known bug into a priority fix. Five findings shipped, with prioritized recommendations handed to the Foundry design team.</p>
+          <h3>Foundry: Models Redesign</h3>
+          <p class="card-desc">Redesigning model discovery on Microsoft Foundry: turning an 11,000-model catalog into a filterable, comparable flow. Region visibility, live filters, and side-by-side compare — bets that now show up in the live Foundry product.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
 
       <!-- 2. NOX+ -->
-      <a href="nox.html" class="card card-nox fade-in" data-categories="design ai">
+      <a href="nox.html" class="card card-nox fade-in" data-categories="design ai research">
         <div class="card-preview">
           <img src="assets/nox-mockup-transparent.png" alt="Nox+ app" loading="lazy" decoding="async" />
         </div>
         <div class="card-info">
           <div class="card-meta">
-            <span class="card-tag">UW · Team of 4 · Mobile Identity</span>
+            <span class="card-tag">Mobile App · Team of 4 · Design System</span>
           </div>
           <h3>Nox+</h3>
-          <p class="card-desc">Led a 4-person team building privacy-first mobile ID. Killed our own AI scanner when research kept saying the blocker was trust, not convenience. Apple shipped Digital ID six months later — same bet, validated.</p>
+          <p class="card-desc">A privacy-first mobile identity app, designed end-to-end — onboarding, biometric setup, document sharing — on a reusable component system. I led a team of 4 and killed our own AI scanner when research said the real blocker was trust, not convenience. Apple shipped Digital ID six months later — same bet, validated.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1326,55 +1322,40 @@
         </div>
         <div class="card-info">
           <div class="card-meta">
-            <span class="card-tag">Climate-tech · Founding team · 2024</span>
+            <span class="card-tag">Web · Design System · Founding Team</span>
           </div>
           <h3>Nexstera Tech</h3>
-          <p class="card-desc">Eight weeks with a climate-tech founding team. The CEO told me my first wireframe recreated the exact problem we were solving — I'd crammed everything onto one page. Rebuilt around story, not specs. $65K seed raised, investor engagement +120%, nav friction −40%.</p>
+          <p class="card-desc">Eight weeks with a climate-tech founding team. The CEO told me my first wireframe recreated the exact problem we were solving — I'd crammed everything onto one page. Rebuilt around story, and shipped a reusable design system for the team. $65K seed raised, investor engagement +120%, nav friction −40%.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
 
-      <!-- 4. SAKSHAM -->
-      <a href="saksham.html" class="card card-saksham fade-in" data-categories="design">
+      <!-- 4. MICROSOFT FOUNDRY (research) -->
+      <a href="microsoft.html" class="card card-microsoft fade-in" data-categories="research ai">
+        <div class="card-preview">
+          <img src="assets/microsoft-mockup.webp" alt="Microsoft Foundry" loading="lazy" decoding="async" />
+        </div>
+        <div class="card-info">
+          <div class="card-meta">
+            <span class="card-tag" style="display:inline-flex;align-items:center;gap:5px;"><svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true" style="flex-shrink:0"><rect width="4.5" height="4.5" fill="#F25022"/><rect x="5.5" width="4.5" height="4.5" fill="#7FBA00"/><rect y="5.5" width="4.5" height="4.5" fill="#00A4EF"/><rect x="5.5" y="5.5" width="4.5" height="4.5" fill="#FFB900"/></svg>Microsoft · Research · 2026</span>
+          </div>
+          <h3>Foundry: UX Research</h3>
+          <p class="card-desc">8/8 participants hit the same Severity-4 blocker on Microsoft's AI agent-building platform — turning a deprioritized known bug into a priority fix. Five findings shipped, with prioritized recommendations handed to the Foundry design team.</p>
+          <div class="card-link">View case study →</div>
+        </div>
+      </a>
+
+      <!-- 5. SAKSHAM -->
+      <a href="saksham.html" class="card card-saksham fade-in" data-categories="design research">
         <div class="card-preview">
           <img src="assets/saksham-mockup.webp" alt="Saksham app" loading="lazy" decoding="async" />
         </div>
         <div class="card-info">
           <div class="card-meta">
-            <span class="card-tag">Solo · Accessibility · Published</span>
+            <span class="card-tag">Mobile App · Accessibility · Published</span>
           </div>
           <h3>Saksham</h3>
-          <p class="card-desc">Solo research and design for neurodivergent learners in India. The thing accessibility resources don't tell you: stripping back makes interfaces feel <em>clinical</em>. Published in Cal Poly's TAGA 2026 Journal.</p>
-          <div class="card-link">View case study →</div>
-        </div>
-      </a>
-
-      <!-- 5. MOMSAFE -->
-      <a href="momsafe.html" class="card card-momsafe fade-in" data-categories="research ai">
-        <div class="card-preview">
-          <img src="assets/momsafe-infographic.webp" alt="MomSAFE infographic" loading="lazy" decoding="async" />
-        </div>
-        <div class="card-info">
-          <div class="card-meta">
-            <span class="card-tag">AI · Maternal Health · Field Research</span>
-          </div>
-          <h3>MomSAFE</h3>
-          <p class="card-desc">Where do mothers go when the system fails them? Mixed-methods research with mothers and providers — informing where AI belongs in prenatal care, and where it doesn't.</p>
-          <div class="card-link">View case study →</div>
-        </div>
-      </a>
-
-      <!-- 6. CODE-SWITCHING -->
-      <a href="codeswitching.html" class="card card-codeswitching fade-in" data-categories="research">
-        <div class="card-preview">
-          <img src="assets/codeswitching-thumbnail.png" alt="Code-Switching UW Study" loading="lazy" decoding="async" />
-        </div>
-        <div class="card-info">
-          <div class="card-meta">
-            <span class="card-tag">UW · Mixed-Methods · Qualitative</span>
-          </div>
-          <h3>Code-Switching</h3>
-          <p class="card-desc">Mixed-methods study on multilingual identity at UW. Five interconnected themes that reframed how the team asks the question. Research report + companion workbook.</p>
+          <p class="card-desc">An end-to-end mobile learning app for neurodivergent students in India, designed research through hi-fi. The thing accessibility guides don't tell you: stripping back makes interfaces feel <em>clinical</em> — so I rebuilt around warm, high-contrast visual design. Published in Cal Poly's TAGA 2026 Journal.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1384,6 +1365,33 @@
         <p>No projects in this category yet — try another filter.</p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- MORE WORK -->
+  <section class="more-work-section">
+    <p class="section-label">More Work · Research &amp; Writing</p>
+    <div class="more-work-grid">
+      <a href="momsafe.html" class="more-card more-card-momsafe fade-in">
+        <div class="more-card-preview">
+          <img src="assets/momsafe-infographic.webp" alt="MomSAFE infographic" loading="lazy" decoding="async" />
+        </div>
+        <div class="more-card-info">
+          <span class="more-card-tag">AI · Maternal Health · Research</span>
+          <h3>MomSAFE</h3>
+          <p class="more-card-desc">Mixed-methods research with mothers and providers on where AI belongs in prenatal care — and where it doesn't.</p>
+        </div>
+      </a>
+      <a href="codeswitching.html" class="more-card more-card-codeswitching fade-in">
+        <div class="more-card-preview">
+          <img src="assets/codeswitching-thumbnail.png" alt="Code-Switching study" loading="lazy" decoding="async" />
+        </div>
+        <div class="more-card-info">
+          <span class="more-card-tag">UW · Mixed-Methods · Qualitative</span>
+          <h3>Code-Switching</h3>
+          <p class="more-card-desc">A mixed-methods study on multilingual identity: five themes that reframed the question, plus a companion workbook.</p>
+        </div>
+      </a>
     </div>
   </section>
 
