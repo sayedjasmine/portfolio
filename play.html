@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About · Jasmine Sayed | Product Designer & UX Researcher</title>
+  <title>Play · Jasmine Sayed | My Playground</title>
   <meta name="description" content="Product Designer and UX Researcher with a Master's in HCDE from UW and a B.S. from Cal Poly. Experience at Microsoft and Amazon. President of UXFest, a 140+ person UX hackathon. Figma, design systems, research, accessibility, and AI." />
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="About · Jasmine Sayed | Product Designer & UX Researcher" />
-  <meta property="og:description" content="Designer and researcher, closing the gap between insight and interface. HCDE master's student at UW, formerly Microsoft CoreAI, and President of UXFest." />
-  <meta property="og:image" content="images/about-carousel-22.jpg" />
+  <meta property="og:title" content="Play · Jasmine Sayed | My Playground" />
+  <meta property="og:description" content="The many sides of me beyond the case studies: leading UXFest, an award-winning game jam, a coded accessibility app, CHI research, and the design system I built at UW Laurel Village." />
+  <meta property="og:image" content="assets/uxfest-hero-poster.jpg" />
   <meta property="og:image:alt" content="Jasmine Sayed speaking at UXFest" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About · Jasmine Sayed | Product Designer & UX Researcher" />
-  <meta name="twitter:description" content="Designer and researcher, closing the gap between insight and interface. HCDE master's student at UW, formerly Microsoft CoreAI, and President of UXFest." />
+  <meta name="twitter:title" content="Play · Jasmine Sayed | My Playground" />
+  <meta name="twitter:description" content="The many sides of me beyond the case studies: leading UXFest, an award-winning game jam, a coded accessibility app, CHI research, and the design system I built at UW Laurel Village." />
   <meta name="twitter:image" content="images/about-carousel-22.jpg" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#6B3FA0" />
@@ -111,9 +111,11 @@
     .quick-fact-meta { font-size: 12.5px; font-weight: 400; color: var(--mid); margin-top: 3px; line-height: 1.5; }
 
     /* ── WHAT I LOVE · SCROLL STORY ── */
-    .love-section { padding: 64px 60px 40px; max-width: 1240px; margin: 0 auto; }
+    .love-section { padding: 122px 60px 40px; max-width: 1240px; margin: 0 auto; }
     .love-intro { max-width: 620px; margin-bottom: 8px; }
-    .love-intro h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.4vw, 40px); font-weight: 400; line-height: 1.14; color: var(--dark); margin-bottom: 14px; }
+    .love-intro { max-width: 700px; }
+    .love-intro h2 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 5vw, 58px); font-weight: 400; line-height: 1.08; color: var(--dark); margin-bottom: 16px; }
+    .love-intro p { font-size: 16px; }
     .love-intro h2 em { font-style: italic; color: var(--purple); }
     .love-intro p { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.7; }
 
@@ -153,6 +155,15 @@
     #love-1 .love-media { order: 0; }
     #love-2 .love-media { order: 2; }
     #love-3 .love-media { order: 0; }
+    #love-4 .love-media { order: 2; }
+    .love-media-saksham { aspect-ratio: 2 / 1; background: linear-gradient(150deg, #0a0b11 0%, #181233 55%, #4B2E83 120%); }
+    .saksham-ph { position: absolute; inset: 0; display: flex; flex-direction: column; }
+    .saksham-ph-bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .saksham-ph-bar span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.28); }
+    .saksham-ph-bar em { margin-left: 10px; font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 11px; color: rgba(255,255,255,0.42); }
+    .saksham-ph-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 16px; }
+    .saksham-ph-title { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4.5vw, 48px); color: #fff; line-height: 1; }
+    .saksham-ph-tag { font-size: 12.5px; color: rgba(255,255,255,0.6); letter-spacing: 0.02em; }
     .love-media-momsafe { aspect-ratio: 4 / 3; background: #1A2744; }
     .love-media-momsafe img { object-fit: contain; padding: 16px; }
     .video-controls { position: absolute; bottom: 12px; right: 12px; z-index: 3; display: flex; gap: 8px; }
@@ -163,6 +174,65 @@
     .fs-holder video:fullscreen { width: 100vw; height: 100vh; }
     .fs-holder video:-webkit-full-screen { width: 100vw; height: 100vh; }
     .love-media-tall { aspect-ratio: 3 / 4; max-width: 360px; width: 100%; margin: 0 auto; }
+
+    /* ── FACET CHIPS (multifaceted) ── */
+    .love-facets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .love-facet { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: var(--dark); background: var(--white); border: 1px solid rgba(24,22,26,0.1); padding: 7px 14px; border-radius: 100px; transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), border-color 0.22s ease, box-shadow 0.22s ease; }
+    .love-facet:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(24,22,26,0.08); }
+    .love-facet .fe { font-size: 14px; line-height: 1; }
+    .love-facet:nth-child(6n+1) { background: #F3EEFB; border-color: rgba(107,63,160,0.20); }
+    .love-facet:nth-child(6n+2) { background: #FFF0F5; border-color: rgba(214,51,132,0.18); }
+    .love-facet:nth-child(6n+3) { background: #EAF6EF; border-color: rgba(45,140,90,0.18); }
+    .love-facet:nth-child(6n+4) { background: #FFF6E9; border-color: rgba(214,140,40,0.20); }
+    .love-facet:nth-child(6n+5) { background: #EAF1FF; border-color: rgba(51,102,214,0.18); }
+    .love-facet:nth-child(6n+6) { background: #F6EEFB; border-color: rgba(150,63,160,0.18); }
+
+    /* ── LAUREL VILLAGE SHUFFLE DECK ── */
+    #love-5 .lv-deck-wrap { order: 0; }
+    .lv-deck-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+      opacity: 0; transform: translateY(34px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    }
+    .love-panel.visible .lv-deck-wrap { opacity: 1; transform: none; }
+    .lv-deck-row { display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 12px; width: 100%; }
+    .lv-nav { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--accent-bd, rgba(107,63,160,0.22)); background: var(--accent-bg, var(--purple-bg)); color: var(--accent, var(--purple)); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
+    .lv-nav:hover { background: var(--accent, var(--purple)); color: #fff; transform: scale(1.07); box-shadow: 0 8px 18px -6px color-mix(in srgb, var(--accent, #6B3FA0) 60%, transparent); }
+    .lv-nav:active { transform: scale(0.93); }
+    .lv-deck { position: relative; flex: 0 1 auto; width: 280px; max-width: calc(100% - 120px); aspect-ratio: 1545 / 2000; margin: 6px 0 0; cursor: zoom-in; }
+    .lv-card {
+      position: absolute; top: 50%; left: 50%; width: 100%; aspect-ratio: 1545 / 2000;
+      border-radius: 14px; overflow: hidden; background: var(--light);
+      box-shadow: 0 14px 34px rgba(24,22,26,0.16);
+      transform: translate(-50%, -50%);
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease, box-shadow 0.35s ease;
+      will-change: transform, opacity; backface-visibility: hidden;
+    }
+    .lv-card img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    .lv-card.is-front { box-shadow: 0 26px 60px rgba(24,22,26,0.24); }
+    .lv-deck-ui { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .lv-shuffle { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--purple); background: var(--purple-bg); border: 1px solid rgba(107,63,160,0.22); padding: 10px 18px; border-radius: 100px; cursor: pointer; transition: background 0.22s ease, color 0.22s ease, transform 0.2s ease; }
+    .lv-shuffle:hover { background: var(--purple); color: #fff; transform: translateY(-1px); }
+    .lv-shuffle:active { transform: scale(0.97); }
+    .lv-shuffle .ico { display: inline-block; font-size: 15px; transition: transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+    .lv-shuffle:hover .ico { transform: rotate(180deg); }
+    .lv-deck-meta { font-size: 12.5px; font-weight: 500; color: var(--mid); letter-spacing: 0.01em; }
+    .lv-deck-meta strong { color: var(--dark); font-weight: 600; }
+
+    /* ── PER-PANEL ACCENT COLORS (a pretty, multicolor set) ── */
+    #love-1 { --accent: #6B3FA0; --accent-bg: #F3EEFB; --accent-bd: rgba(107,63,160,0.20); }
+    #love-2 { --accent: #C2317A; --accent-bg: #FFF0F5; --accent-bd: rgba(194,49,122,0.20); }
+    #love-3 { --accent: #2C7D53; --accent-bg: #E9F6EF; --accent-bd: rgba(44,125,83,0.22); }
+    #love-4 { --accent: #3159C4; --accent-bg: #EBF1FF; --accent-bd: rgba(49,89,196,0.20); }
+    #love-5 { --accent: #C65D22; --accent-bg: #FFF2E7; --accent-bd: rgba(198,93,34,0.22); }
+    .love-copy .love-kicker { color: var(--accent, var(--purple-mid)); }
+    .love-copy h3 em { color: var(--accent, var(--purple)); }
+    .love-meta { color: var(--accent, var(--purple)); background: var(--accent-bg, var(--purple-bg)); border-color: var(--accent-bd, rgba(107,63,160,0.16)); }
+    .love-copy .video-more { color: #fff; background: var(--accent, var(--purple)); border-color: var(--accent, var(--purple)); text-decoration: none; font-weight: 600; box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--accent, #6B3FA0) 55%, transparent); transition: background 0.22s ease, color 0.22s ease, gap 0.28s cubic-bezier(0.16,1,0.3,1), transform 0.2s ease, box-shadow 0.22s ease, filter 0.22s ease; }
+    .love-copy .video-more:hover { background: #fff; color: var(--accent, var(--purple)); border-color: var(--accent, var(--purple)); filter: none; transform: translateY(-2px); box-shadow: 0 14px 30px -10px color-mix(in srgb, var(--accent, #6B3FA0) 55%, transparent); }
+    .love-badge { background: color-mix(in srgb, var(--accent, #18161A) 78%, #18161A); }
+    #love-5 .lv-shuffle { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-bd); }
+    #love-5 .lv-shuffle:hover { background: var(--accent); color: #fff; }
 
     /* ── UXFEST VIDEO FEATURE (full-width) ── */
     .love-video-feature { padding: 30px 0 22px; }
@@ -283,7 +353,7 @@
       .quick-fact { border-right: none; border-bottom: 1px solid rgba(24,22,26,0.06); padding: 18px 20px; }
       .quick-fact:last-child { border-bottom: none; }
 
-      .love-section { padding: 44px 24px 24px; }
+      .love-section { padding: 92px 24px 24px; }
       .love-panel { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; min-height: 0; }
       .love-panel:nth-child(even) .love-media { order: 0; }
       .love-video-feature { padding: 20px 0 14px; }
@@ -291,9 +361,16 @@
       .love-video-copy { text-align: left; margin-top: 18px; }
       .love-media { aspect-ratio: 16 / 10; }
       .love-media-huskies { aspect-ratio: 1320 / 1502; max-width: 300px; }
-      #love-1 .love-media, #love-2 .love-media, #love-3 .love-media { order: 0; }
+      #love-1 .love-media, #love-2 .love-media, #love-3 .love-media, #love-4 .love-media { order: 0; }
       .love-media-tall { aspect-ratio: 3 / 4; max-width: 280px; }
       .love-copy p { max-width: none; }
+      #love-5 .lv-deck-wrap { order: 0; }
+      .lv-deck { width: min(210px, 54vw); max-width: none; }
+      .lv-nav { width: 40px; height: 40px; }
+      .lv-deck-row { gap: 8px; }
+      .lv-deck-wrap { gap: 16px; }
+      .love-facets { margin-top: 18px; gap: 7px; }
+      .love-facet { font-size: 12.5px; padding: 6px 12px; }
 
       .section-container { padding: 0 24px 36px; }
       .section-label-line { margin-bottom: 18px; font-size: 12px; }
@@ -339,8 +416,8 @@
     <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <ul>
       <li><a href="index.html#work">Work</a></li>
-      <li><a href="play.html">Play</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="play.html" class="active">Play</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="experience.html">Resume</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -363,57 +440,138 @@
     <a href="index.html#contact">Contact</a>
   </div>
 
-  <!-- HERO + BIO -->
-  <section class="about-hero">
-    <div class="hero-text fade-in">
-      <p class="about-eyebrow">About</p>
-      <h1>A little more <em>about me.</em></h1>
-      <div class="hero-bio">
-        <p><strong>Hi, I'm Jasmine!</strong> I'm a product designer and UX researcher who builds calm, accessible products where AI meets real human behavior. I hold a master's in Human-Centered Design and Engineering from the University of Washington, and I'm looking for a full-time role where I can take that work further.</p>
-        <p>Beyond the work, I organize and compete in hackathons, play and follow sports, and travel every chance I get. At my core, I'm endlessly curious and always looking for the next challenge worth taking on.</p>
+  <!-- WHAT I LOVE · SCROLL STORY -->
+  <section class="love-section">
+    <div class="love-intro fade-in">
+      <h2>My <em>playground.</em></h2>
+      <p>Side projects and corners of the UX community I'm passionate about. The areas I've dived deeper into, and the ones I'm still exploring and learning from.</p>
+      <div class="love-facets" aria-label="A few of my many sides">
+        <span class="love-facet"><span class="fe">🎤</span> Speaking</span>
+        <span class="love-facet"><span class="fe">🎮</span> Game jams</span>
+        <span class="love-facet"><span class="fe">🎨</span> Design ops</span>
+        <span class="love-facet"><span class="fe">🔬</span> Research</span>
+        <span class="love-facet"><span class="fe">⚡</span> Building</span>
+        <span class="love-facet"><span class="fe">🌱</span> Teaching</span>
       </div>
     </div>
 
-    <div class="hero-photos fade-in">
-      <div class="hero-photo-main">
-        <img src="images/about-carousel-22.jpg" alt="Jasmine Sayed speaking at UXFest" decoding="async" />
+    <!-- Panel 1 · UXFest video -->
+    <article class="love-panel fade-in" id="love-1">
+      <div class="love-media love-media-uxfest">
+        <span class="love-badge">▶ UXFest</span>
+        <video id="uxfestVideo" autoplay muted loop playsinline poster="assets/uxfest-hero-poster.jpg" aria-label="Highlights from UXFest">
+          <source src="assets/uxfest-hero.mp4" type="video/mp4" />
+        </video>
+        <div class="video-controls">
+          <button type="button" class="video-btn video-play" data-video="uxfestVideo" aria-label="Pause video"><span class="vp-icon" aria-hidden="true">⏸</span></button>
+          <button type="button" class="video-btn" id="videoSound" aria-pressed="false" aria-label="Turn sound on"><span class="vs-icon" aria-hidden="true">🔇</span></button>
+          <button type="button" class="video-btn" id="videoFull" title="Watch the full recap fullscreen" aria-label="Watch the full recap fullscreen"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+        </div>
       </div>
-      <div class="hero-photo-accent">
-        <img src="images/about-carousel-2.jpg" alt="Jasmine at her Cal Poly graduation" loading="lazy" decoding="async" />
+      <div class="love-copy">
+        <p class="love-kicker">Community Leadership</p>
+        <h3>Leading at <em>scale.</em></h3>
+        <p>As <strong>President of UXFest</strong>, I ran a 140+ person UX design hackathon end to end: programming, speakers, and a 50-person team. It's where I learned to direct design across a whole program and a room full of people, not just a screen.</p>
+        <span class="love-meta">140+ participants · 50-person team · President</span>
       </div>
-    </div>
+    </article>
+
+    <!-- Panel 2 · Among hUSkies -->
+    <article class="love-panel" id="love-2">
+      <div class="love-media love-media-huskies">
+        <span class="love-badge">🏆 1st Place</span>
+        <video id="huskiesVideo" autoplay muted loop playsinline poster="assets/huskies-poster.jpg" aria-label="Among hUSkies gameplay walkthrough">
+          <source src="assets/huskies-walkthrough.mp4" type="video/mp4" />
+        </video>
+        <div class="video-controls">
+          <button type="button" class="video-btn video-play" data-video="huskiesVideo" aria-label="Pause video"><span class="vp-icon" aria-hidden="true">⏸</span></button>
+          <button type="button" class="video-btn" id="huskiesFull" title="Watch fullscreen" aria-label="Watch fullscreen"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+        </div>
+      </div>
+      <div class="love-copy">
+        <p class="love-kicker">Hackathon</p>
+        <h3>Among <em>hUSkies.</em></h3>
+        <p>A UW-themed take on Among Us with real UX tasks scattered across campus, built and curated entirely in <strong>Figma Make</strong>. It won <strong>first place</strong> at Figma Make Hackathon, proof that the most serious design lessons often hide inside the most playful ideas.</p>
+        <span class="love-meta">Figma Make Hackathon</span>
+      </div>
+    </article>
+
+    <!-- Panel 3 · Saksham (built) -->
+    <article class="love-panel fade-in" id="love-3">
+      <div class="love-media love-media-saksham">
+        <span class="love-badge">&lt;/&gt; Built it</span>
+        <div class="saksham-ph" aria-hidden="true">
+          <div class="saksham-ph-bar"><span></span><span></span><span></span><em>saksham · reading tool</em></div>
+          <div class="saksham-ph-body">
+            <div class="saksham-ph-title">Saksham</div>
+            <div class="saksham-ph-tag">Accessible reading, coded &amp; live</div>
+          </div>
+        </div>
+      </div>
+      <div class="love-copy">
+        <p class="love-kicker">Design + Code</p>
+        <h3>Saksham, <em>built.</em></h3>
+        <p>I took my published Saksham research and coded it into a working, accessible reading app: customizable type and contrast, word-level audio-synced reading through the Web Speech API, offline support, and no accounts. Research, to design, to a thing you can actually use.</p>
+        <span class="love-meta">HTML/CSS · Web Speech API · Accessibility</span>
+        <div class="love-video-cta">
+          <a class="video-more" href="https://github.com/jsayed23/miniproject2" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Panel 4 · MomSAFE (CHI) -->
+    <article class="love-panel fade-in" id="love-4">
+      <div class="love-media love-media-momsafe">
+        <span class="love-badge">🏅 CHI 2025</span>
+        <img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="lazy" decoding="async" />
+      </div>
+      <div class="love-copy">
+        <p class="love-kicker">Research</p>
+        <h3>MomSAFE at <em>CHI.</em></h3>
+        <p>Mixed-methods research with mothers and providers on where AI belongs in prenatal care, and where it doesn't. I distilled the findings into one shareable infographic and took the project to a CHI competition.</p>
+        <span class="love-meta">CHI Competition Participant · 2025</span>
+        <div class="love-video-cta">
+          <a class="video-more" href="momsafe.html">View research paper →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Panel 5 · Laurel Village design ops (shuffle deck) -->
+    <article class="love-panel fade-in" id="love-5">
+      <div class="lv-deck-wrap">
+        <div class="lv-deck-row">
+          <button type="button" class="lv-nav" id="lvPrev" aria-label="Previous flyer">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="lv-deck" id="lvDeck" role="group" aria-label="Laurel Village design system and flyers. Click a card to view it full size.">
+            <div class="lv-card" data-name="Design system"><img src="assets/lv-design-system.webp" alt="Jasmine's Laurel Village design system: type scale, components, and color palette" loading="lazy" decoding="async" /></div>
+            <div class="lv-card" data-name="You Deserve the World"><img src="assets/lv-flyer-deserve.webp" alt="You Deserve the Absolute World mental health awareness poster" loading="lazy" decoding="async" /></div>
+            <div class="lv-card" data-name="Pasta Potluck"><img src="assets/lv-flyer-pasta.webp" alt="Spring Equinox Pasta Potluck event flyer" loading="lazy" decoding="async" /></div>
+            <div class="lv-card" data-name="Outside Provocations"><img src="assets/lv-flyer-provocations.webp" alt="Outside Provocations preschool activity poster" loading="lazy" decoding="async" /></div>
+            <div class="lv-card" data-name="Weekly Newsletter"><img src="assets/lv-newsletter-1.webp" alt="Wednesday Wisdoms weekly staff newsletter" loading="lazy" decoding="async" /></div>
+            <div class="lv-card" data-name="In-Service Agenda"><img src="assets/lv-newsletter-2.webp" alt="In-Service day agenda newsletter page" loading="lazy" decoding="async" /></div>
+          </div>
+          <button type="button" class="lv-nav" id="lvNext" aria-label="Next flyer">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="lv-deck-ui">
+          <span class="lv-deck-meta" id="lvMeta" aria-live="polite"><strong>Design system</strong> · 1 / 6</span>
+        </div>
+      </div>
+      <div class="love-copy">
+        <p class="love-kicker">Design &amp; Operations</p>
+        <h3>The Laurel Village <em>system.</em></h3>
+        <p>As a <strong>Design and Operations Associate</strong> at UW's Laurel Village, I built the visual system the center runs on, then put it to work everywhere. One consistent look across event flyers, weekly newsletters, and classroom posters, all designed in <strong>Figma and Canva</strong>.</p>
+        <p>Use the arrows to flip through, and tap any card to see it full size.</p>
+        <span class="love-meta">Design system · Figma + Canva</span>
+      </div>
+    </article>
+
   </section>
-
-  <!-- QUICK FACTS -->
-  <div class="section-container fade-in">
-    <div class="quick-facts">
-      <div class="quick-fact">
-        <div class="quick-fact-label">Most recently</div>
-        <div class="quick-fact-value">UX Designer &amp; Researcher</div>
-        <div class="quick-fact-meta">Microsoft CoreAI · 2026</div>
-      </div>
-      <div class="quick-fact">
-        <div class="quick-fact-label">Education</div>
-        <div class="quick-fact-value">M.S. Human-Centered Design &amp; Engineering</div>
-        <div class="quick-fact-meta">University of Washington · B.S. Graphic Communication, Cal Poly SLO</div>
-      </div>
-      <div class="quick-fact">
-        <div class="quick-fact-label">Looking for</div>
-        <div class="quick-fact-value">Full-time roles</div>
-        <div class="quick-fact-meta">Product &amp; UX design, research, and AI · open to relocation</div>
-      </div>
-    </div>
-  </div>
 
   <!-- NAV CARDS -->
   <div class="nav-cards fade-in">
-    <a href="play.html" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">Play</span>
-        <span class="nav-card-title">Explore my playground</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
     <a href="index.html#work" class="nav-card">
       <div class="nav-card-text">
         <span class="nav-card-label">Work</span>
@@ -421,10 +579,10 @@
       </div>
       <span class="nav-card-arrow">→</span>
     </a>
-    <a href="experience.html" class="nav-card">
+    <a href="about.html" class="nav-card">
       <div class="nav-card-text">
-        <span class="nav-card-label">Resume</span>
-        <span class="nav-card-title">View my experience</span>
+        <span class="nav-card-label">About</span>
+        <span class="nav-card-title">Get to know me</span>
       </div>
       <span class="nav-card-arrow">→</span>
     </a>
@@ -436,6 +594,13 @@
     <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="footer-sep">·</span><a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
+
+  <!-- FULL RECAP (plays fullscreen from the UXFest panel button) -->
+  <div class="fs-holder" aria-hidden="true">
+    <video id="fullVideo" controls playsinline preload="none" poster="assets/uxfest-hero-poster.jpg">
+      <source src="assets/uxfest-full.mp4" type="video/mp4" />
+    </video>
+  </div>
 
   <script>
     // Hamburger menu
@@ -540,6 +705,18 @@
       fv.addEventListener('webkitendfullscreen', function(){ fv.pause(); if(hero){ var hp=hero.play(); if(hp&&hp.catch) hp.catch(function(){}); } });
     })();
 
+    // Among hUSkies → native fullscreen (single clip, silent)
+    (function(){
+      var btn=document.getElementById('huskiesFull'), v=document.getElementById('huskiesVideo');
+      if(!btn||!v) return;
+      btn.addEventListener('click', function(){
+        if (v.requestFullscreen) { v.requestFullscreen().catch(function(){}); }
+        else if (v.webkitRequestFullscreen) { v.webkitRequestFullscreen(); }
+        else if (v.webkitEnterFullscreen) { v.webkitEnterFullscreen(); }
+        var p=v.play(); if(p&&p.catch) p.catch(function(){});
+      });
+    })();
+
     // Carousel: continuous auto-scroll + drag
     (function() {
       const outer = document.getElementById('carouselOuter');
@@ -564,6 +741,81 @@
       outer.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - outer.offsetLeft; scrollL = outer.scrollLeft; });
       outer.addEventListener('mouseup', () => { isDown = false; });
       outer.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); outer.scrollLeft = scrollL - (e.pageX - outer.offsetLeft - startX) * 1.4; });
+    })();
+
+    // Laurel Village shuffle deck
+    (function(){
+      var deck = document.getElementById('lvDeck');
+      if (!deck) return;
+      var cards = Array.prototype.slice.call(deck.querySelectorAll('.lv-card'));
+      var meta = document.getElementById('lvMeta');
+      var prevBtn = document.getElementById('lvPrev');
+      var nextBtn = document.getElementById('lvNext');
+      var n = cards.length;
+      if (!n) return;
+      var order = cards.map(function(_, i){ return i; }); // order[0] = front
+      var counter = 1, busy = false;
+      var ROT = [0, -6, 5, -4], TX = [0, 16, -15, 12], TY = [0, 12, 20, 28], SC = [1, 0.95, 0.9, 0.86], OP = [1, 0.97, 0.78, 0.5];
+      function place(card, pos, animate){
+        card.style.transition = animate ? '' : 'none';
+        card.style.zIndex = String(50 - pos);
+        if (pos > 3) {
+          card.style.opacity = '0';
+          card.style.transform = 'translate(-50%, -50%) translateY(34px) scale(0.82)';
+          card.style.pointerEvents = 'none';
+          card.classList.remove('is-front');
+          return;
+        }
+        card.style.opacity = String(OP[pos]);
+        card.style.transform = 'translate(-50%, -50%) translateX(' + TX[pos] + 'px) translateY(' + TY[pos] + 'px) rotate(' + ROT[pos] + 'deg) scale(' + SC[pos] + ')';
+        card.style.pointerEvents = pos === 0 ? 'auto' : 'none';
+        card.classList.toggle('is-front', pos === 0);
+      }
+      function render(animate){ order.forEach(function(ci, pos){ place(cards[ci], pos, animate); }); }
+      function updateMeta(){
+        var name = cards[order[0]].getAttribute('data-name');
+        meta.innerHTML = '<strong>' + name + '</strong> · ' + counter + ' / ' + n;
+      }
+      function advance(){
+        if (busy) return; busy = true;
+        var front = cards[order[0]];
+        front.style.transition = 'transform 0.5s cubic-bezier(0.36,0.66,0.4,1), opacity 0.5s ease';
+        front.style.transform = 'translate(-50%, -50%) translateX(-140%) rotate(-16deg) scale(1)';
+        front.style.opacity = '0';
+        setTimeout(function(){
+          order.push(order.shift());
+          counter = counter % n + 1;
+          order.forEach(function(ci, pos){ place(cards[ci], pos, cards[ci] !== front); });
+          requestAnimationFrame(function(){ requestAnimationFrame(function(){ front.style.transition = ''; }); });
+          updateMeta();
+          busy = false;
+        }, 520);
+      }
+      function retreat(){
+        if (busy) return; busy = true;
+        order.unshift(order.pop());        // last card becomes the new front
+        counter = (counter - 2 + n) % n + 1;
+        var newFront = cards[order[0]];
+        newFront.style.transition = 'none';
+        newFront.style.zIndex = '60';
+        newFront.style.opacity = '0';
+        newFront.style.transform = 'translate(-50%, -50%) translateX(-140%) rotate(-16deg) scale(1)';
+        void newFront.offsetWidth;         // flush the off-screen start position
+        order.forEach(function(ci, pos){ place(cards[ci], pos, true); });
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ newFront.style.transition = ''; }); });
+        updateMeta();
+        setTimeout(function(){ busy = false; }, 520);
+      }
+      render(false);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ cards.forEach(function(c){ c.style.transition = ''; }); }); });
+      updateMeta();
+      deck.addEventListener('click', function(){
+        var front = cards[order[0]];
+        var img = front && front.querySelector('img');
+        if (img && window.openLightbox) window.openLightbox(img.currentSrc || img.src, img.alt);
+      });
+      if (nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); advance(); });
+      if (prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); retreat(); });
     })();
   </script>
 

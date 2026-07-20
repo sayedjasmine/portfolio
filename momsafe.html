@@ -1311,6 +1311,13 @@
 
   <!-- NAV CARDS -->
   <div class="nav-cards fade-in">
+    <a href="play.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Play</span>
+        <span class="nav-card-title">Explore my playground</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
     <a href="about.html" class="nav-card">
       <div class="nav-card-text">
         <span class="nav-card-label">About</span>
@@ -1330,7 +1337,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="footer-sep">·</span><a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -1395,5 +1402,52 @@
     window.addEventListener('scroll', updateActiveTab);
     updateActiveTab();
   </script>
+
+<!-- LIGHTBOX (site-wide click-to-fullscreen image viewer) -->
+<style>
+  .pf-zoomable { cursor: zoom-in; }
+  #pf-lightbox { position: fixed; inset: 0; z-index: 4000; display: none; align-items: center; justify-content: center; padding: 4vw; background: rgba(12,10,20,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.26s ease; }
+  #pf-lightbox.pf-open { display: flex; opacity: 1; }
+  #pf-lightbox .pf-lb-img { max-width: 94vw; max-height: 90vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,0.55); transform: scale(0.97); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); cursor: zoom-out; }
+  #pf-lightbox.pf-open .pf-lb-img { transform: scale(1); }
+  .pf-lb-close { position: fixed; top: 20px; right: 24px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.14); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; z-index: 4001; }
+  .pf-lb-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.07); }
+  .pf-lb-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.55); font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: 0.04em; pointer-events: none; z-index: 4001; }
+  @media (prefers-reduced-motion: reduce) { #pf-lightbox, #pf-lightbox .pf-lb-img { transition: none; } }
+</style>
+<div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
+  <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
+  <img class="pf-lb-img" src="" alt="" />
+  <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
+</div>
+<script>
+  (function(){
+    var lb = document.getElementById('pf-lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('.pf-lb-img');
+    var closeBtn = lb.querySelector('.pf-lb-close');
+    function open(src, alt){ if(!src) return; lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('pf-open'); document.body.style.overflow = 'hidden'; }
+    function close(){ lb.classList.remove('pf-open'); document.body.style.overflow = ''; setTimeout(function(){ if(!lb.classList.contains('pf-open')) lbImg.src=''; }, 320); }
+    window.openLightbox = open;
+    function eligible(img){
+      if (img.closest('a')) return false;
+      if (img.closest('nav')) return false;
+      if (img.closest('#pf-lightbox')) return false;
+      if (img.closest('.lv-card')) return false;
+      if (img.hasAttribute('data-nozoom')) return false;
+      if (img.complete && img.naturalWidth && img.naturalWidth < 64) return false;
+      return true;
+    }
+    document.querySelectorAll('img').forEach(function(img){
+      if (!eligible(img)) return;
+      img.classList.add('pf-zoomable');
+      img.addEventListener('click', function(e){ e.preventDefault(); open(img.currentSrc || img.src, img.alt); });
+    });
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', function(e){ if (e.target !== closeBtn) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pf-open')) close(); });
+  })();
+</script>
+
 </body>
 </html>

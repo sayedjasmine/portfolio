@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jasmine Sayed — Product Designer & UX Researcher</title>
+  <title>Jasmine Sayed | Product Designer & UX Researcher</title>
   <meta name="description" content="Product Designer and UX Researcher with experience at Microsoft and Amazon. Specializing in user research, design systems, accessibility, and AI. Currently pursuing a Master's in HCDE at the University of Washington." />
   <meta name="keywords" content="Product Designer, UX Designer, UX Researcher, Figma, Design Systems, Usability Testing, User Research, Accessibility, AI, Human-Centered Design, Microsoft, Amazon" />
-  <meta property="og:title" content="Jasmine Sayed — Product Designer & UX Researcher" />
+  <meta property="og:title" content="Jasmine Sayed | Product Designer & UX Researcher" />
   <meta property="og:description" content="Product Designer and UX Researcher building research-driven, human-centered experiences at the intersection of AI and accessibility." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/jasmine-logo.png" />
-  <meta property="og:image:alt" content="Jasmine Sayed — Product Designer & UX Researcher" />
+  <meta property="og:image:alt" content="Jasmine Sayed | Product Designer & UX Researcher" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jasmine Sayed — Product Designer & UX Researcher" />
+  <meta name="twitter:title" content="Jasmine Sayed | Product Designer & UX Researcher" />
   <meta name="twitter:description" content="Product Designer and UX Researcher building research-driven, human-centered experiences at the intersection of AI and accessibility." />
   <meta name="twitter:image" content="assets/jasmine-logo.png" />
   <meta name="author" content="Jasmine Sayed" />
@@ -221,7 +221,7 @@
       margin-top: 28px;
     }
 
-    /* Status indicator — minimal, inline */
+    /* Status indicator, minimal, inline */
     .status-pill {
       display: inline-flex;
       align-items: center;
@@ -352,7 +352,7 @@
       display: none;
     }
 
-    /* Filter transition — fade cards out then back in */
+    /* Filter transition, fade cards out then back in */
     .cards-grid.is-filtering .card {
       opacity: 0;
       transform: translateY(4px);
@@ -1228,6 +1228,7 @@
     <a href="#" class="logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <ul>
       <li><a href="#work">Work</a></li>
+      <li><a href="play.html">Play</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="experience.html">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1245,6 +1246,7 @@
       Close
     </button>
     <a href="#work" onclick="closeMobileMenu()">Work</a>
+    <a href="play.html">Play</a>
     <a href="about.html">About</a>
     <a href="experience.html">Resume</a>
     <a href="#contact" onclick="closeMobileMenu()">Contact</a>
@@ -1309,8 +1311,8 @@
           <div class="card-meta">
             <span class="card-tag" style="display:inline-flex;align-items:center;gap:5px;"><svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true" style="flex-shrink:0"><rect width="4.5" height="4.5" fill="#F25022"/><rect x="5.5" width="4.5" height="4.5" fill="#7FBA00"/><rect y="5.5" width="4.5" height="4.5" fill="#00A4EF"/><rect x="5.5" y="5.5" width="4.5" height="4.5" fill="#FFB900"/></svg>Microsoft · Research · 2026</span>
           </div>
-          <h3>Foundry: UX Research</h3>
-          <p class="card-desc">8/8 participants hit the same Severity-4 blocker on Microsoft's AI agent-building platform, turning a deprioritized known bug into a priority fix. Five findings shipped, with prioritized recommendations handed to the Foundry design team.</p>
+          <h3>Foundry: Agent-Builder Research</h3>
+          <p class="card-desc">The usability study on Foundry's agent-building platform (the redesign above is where I acted on findings like these). 8/8 participants hit the same Severity-4 blocker, turning a deprioritized known bug into a priority fix. Five findings shipped to the Foundry design team.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1325,7 +1327,7 @@
             <span class="card-tag">Mobile App · Team of 4 · Design System</span>
           </div>
           <h3>Nox+</h3>
-          <p class="card-desc">A privacy-first mobile identity app, designed end-to-end (onboarding, biometric setup, document sharing) on a reusable component system. I led a team of 4 and killed our own AI scanner when research said the real blocker was trust, not convenience. Apple shipped Digital ID six months later, same bet, validated.</p>
+          <p class="card-desc">A privacy-first mobile identity app, designed end-to-end (onboarding, biometric setup, document sharing) on a reusable component system. I led a team of 4 and killed our own AI scanner when research said the real blocker was trust, not convenience, a bet the broader identity space has moved toward since.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1340,7 +1342,7 @@
             <span class="card-tag">Web · Design System · Founding Team</span>
           </div>
           <h3>Nexstera Tech</h3>
-          <p class="card-desc">Eight weeks with a climate-tech founding team. The CEO told me my first wireframe recreated the exact problem we were solving: I'd crammed everything onto one page. Rebuilt around story, and shipped a reusable design system for the team. $65K seed raised, investor engagement +120%, nav friction −40%.</p>
+          <p class="card-desc">Eight weeks with a climate-tech founding team. The CEO told me my first wireframe recreated the exact problem we were solving: I'd crammed everything onto one page. Rebuilt around story, and shipped a reusable design system for the team. Helped raise $65K in seed, with investor engagement +120% and nav friction −40%.</p>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1362,7 +1364,7 @@
 
       <!-- Empty state shown only when filter has no matches -->
       <div class="cards-empty" id="cardsEmpty" hidden>
-        <p>No projects in this category yet — try another filter.</p>
+        <p>No projects in this category yet, try another filter.</p>
       </div>
 
     </div>
@@ -1397,6 +1399,13 @@
 
   <!-- NAV CARDS -->
   <div class="nav-cards fade-in">
+    <a href="play.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Play</span>
+        <span class="nav-card-title">Explore my playground</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
     <a href="about.html" class="nav-card">
       <div class="nav-card-text">
         <span class="nav-card-label">About</span>
@@ -1418,7 +1427,7 @@
     <div class="contact-inner fade-in">
       <div class="contact-left">
         <h2>Let's make something<br /><em>great together.</em></h2>
-        <p class="contact-desc">Open to internships and full-time roles in product design, UX research, and AI. I'd love to hear from you.</p>
+        <p class="contact-desc">Open to full-time roles in product design, UX research, and AI. I'd love to hear from you.</p>
       </div>
       <div class="contact-right">
         <div class="contact-links">
@@ -1438,7 +1447,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="footer-sep">·</span><a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -1605,5 +1614,52 @@
     })();
 
   </script>
+
+<!-- LIGHTBOX (site-wide click-to-fullscreen image viewer) -->
+<style>
+  .pf-zoomable { cursor: zoom-in; }
+  #pf-lightbox { position: fixed; inset: 0; z-index: 4000; display: none; align-items: center; justify-content: center; padding: 4vw; background: rgba(12,10,20,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.26s ease; }
+  #pf-lightbox.pf-open { display: flex; opacity: 1; }
+  #pf-lightbox .pf-lb-img { max-width: 94vw; max-height: 90vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,0.55); transform: scale(0.97); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); cursor: zoom-out; }
+  #pf-lightbox.pf-open .pf-lb-img { transform: scale(1); }
+  .pf-lb-close { position: fixed; top: 20px; right: 24px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.14); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; z-index: 4001; }
+  .pf-lb-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.07); }
+  .pf-lb-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.55); font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: 0.04em; pointer-events: none; z-index: 4001; }
+  @media (prefers-reduced-motion: reduce) { #pf-lightbox, #pf-lightbox .pf-lb-img { transition: none; } }
+</style>
+<div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
+  <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
+  <img class="pf-lb-img" src="" alt="" />
+  <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
+</div>
+<script>
+  (function(){
+    var lb = document.getElementById('pf-lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('.pf-lb-img');
+    var closeBtn = lb.querySelector('.pf-lb-close');
+    function open(src, alt){ if(!src) return; lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('pf-open'); document.body.style.overflow = 'hidden'; }
+    function close(){ lb.classList.remove('pf-open'); document.body.style.overflow = ''; setTimeout(function(){ if(!lb.classList.contains('pf-open')) lbImg.src=''; }, 320); }
+    window.openLightbox = open;
+    function eligible(img){
+      if (img.closest('a')) return false;
+      if (img.closest('nav')) return false;
+      if (img.closest('#pf-lightbox')) return false;
+      if (img.closest('.lv-card')) return false;
+      if (img.hasAttribute('data-nozoom')) return false;
+      if (img.complete && img.naturalWidth && img.naturalWidth < 64) return false;
+      return true;
+    }
+    document.querySelectorAll('img').forEach(function(img){
+      if (!eligible(img)) return;
+      img.classList.add('pf-zoomable');
+      img.addEventListener('click', function(e){ e.preventDefault(); open(img.currentSrc || img.src, img.alt); });
+    });
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', function(e){ if (e.target !== closeBtn) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pf-open')) close(); });
+  })();
+</script>
+
 </body>
 </html>

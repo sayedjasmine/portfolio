@@ -167,7 +167,7 @@
     .fix-why { color: var(--indigo); font-style: italic; }
     .figcap { font-size: 12.5px; color: var(--mid); line-height: 1.6; margin-top: 12px; text-align: center; }
     .figcap strong { color: var(--dark); font-weight: 500; }
-    .browser-frame .shot-inner img { width: 100%; display: block; }
+    .browser-frame .shot-inner img { width: 100%; height: auto; display: block; }
 
     /* ── LIVE EMBED ── */
     .embed-frame { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 70px rgba(20,19,31,0.2), 0 0 0 1px rgba(79,70,229,0.08); background: #16151F; }
@@ -431,7 +431,7 @@
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" width="1737" height="2769" alt="JS logo"></a>
     <div class="nav-right">
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
@@ -491,16 +491,8 @@
         </div>
       </div>
     </div>
-
-    <div class="hero-visual">
-      <div class="browser-frame">
-        <div class="browser-bar">
-          <div class="browser-dots"><span></span><span></span><span></span></div>
-          <div class="browser-url">ms-foundry-prototype.netlify.app</div>
-        </div>
-        <div class="shot-inner"><img src="assets/foundry-thumbnail-design.png" alt="Microsoft Foundry redesign: the project home of the live high-fidelity prototype" loading="eager" decoding="async" /></div>
-      </div>
-      <div class="hero-cta-row">
+    <div class="hero-visual" style="width:auto; margin-left:24px; align-self:flex-end;">
+      <div class="hero-cta-row" style="justify-content:flex-end; margin:0;">
         <a href="#live-prototype" class="hero-cta primary">Explore the live prototype →</a>
       </div>
     </div>
@@ -529,11 +521,11 @@
       <div class="ba">
         <div>
           <span class="ba-tag before">Before</span>
-          <div class="shot"><img src="assets/foundry-before-screen.png" alt="The current Foundry Models page: a dense list of 11,563 models with only a name and capability per tile, behind a long collapsed filter accordion" loading="lazy" decoding="async" /></div>
+          <div class="shot"><img src="assets/foundry-before-screen.png" width="2868" height="1312" alt="The current Foundry Models page: a dense list of 11,563 models with only a name and capability per tile, behind a long collapsed filter accordion" loading="lazy" decoding="async" /></div>
         </div>
         <div>
           <span class="ba-tag after">After</span>
-          <div class="shot"><img src="assets/foundry-screen-after.png" alt="The redesigned Models page: models grouped by provider with region availability, pricing, and quality metrics on every card, plus an open filter rail and compare" loading="lazy" decoding="async" /></div>
+          <div class="shot"><img src="assets/foundry-screen-after.png" width="2868" height="1322" alt="The redesigned Models page: models grouped by provider with region availability, pricing, and quality metrics on every card, plus an open filter rail and compare" loading="lazy" decoding="async" /></div>
         </div>
       </div>
       <p class="figcap">The starting point (left) lists <strong>11,563 models</strong> with little more than a name and a task per tile; every filter hidden in a collapsed accordion, and no pricing or region until you open a model. The redesign (right) surfaces those decisions in the results themselves and turns the filters into a visible, first-class way to narrow the catalog.</p>
@@ -749,7 +741,7 @@
 
     <div class="container-wide fade-in">
       <div class="figure">
-        <div class="shot tall"><img src="assets/foundry-sketch.png" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="lazy" decoding="async" /></div>
+        <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="lazy" decoding="async" /></div>
         <p class="figcap"><strong>Paper prototype.</strong> Two flows worth stealing from: a <strong>region blocker</strong> resolved during onboarding so users only ever see models they can deploy, and a <strong>model-selection flow</strong> that keeps the Discover layout, adds an “ask AI and it'll find the best model” helper, and leans on clearer descriptions to cut cognitive load.</p>
       </div>
     </div>
@@ -779,26 +771,26 @@
     <div class="container fade-in">
       <p class="section-eyebrow">Final Prototype</p>
       <h2 class="section-title">From wireframes to a<br />working build.</h2>
-      <p class="body-text">Our paper sketches gave us the wireframes for the flow, and those wireframes became this: a high-fidelity build. Here are its key screens — then see the whole thing live, just below.</p>
+      <p class="body-text">Our paper sketches gave us the wireframes for the flow, and those wireframes became this: a high-fidelity build. Here are its key screens, then see the whole thing live, just below.</p>
     </div>
 
     <div class="container-wide">
       <div class="figure proto-shot fade-in">
-        <p class="fix-h">Discover — a front door with intent</p>
+        <p class="fix-h">Discover: a front door with intent</p>
         <p class="fix-p">Instead of an 11,000-row wall, Discover opens with what you're trying to do: find, compare, try, or fine-tune a model.</p>
-        <div class="shot framed"><img src="assets/foundry-discover.png" alt="Foundry Discover page: four task cards (find, compare, try, fine-tune), featured models, providers, and model collections" loading="lazy" decoding="async" /></div>
+        <div class="shot framed"><img src="assets/foundry-discover.png" width="1580" height="1242" alt="Foundry Discover page: four task cards (find, compare, try, fine-tune), featured models, providers, and model collections" loading="lazy" decoding="async" /></div>
       </div>
 
       <div class="figure proto-shot fade-in">
-        <p class="fix-h">Models — filter, region, and compare in one place</p>
+        <p class="fix-h">Models: filter, region, and compare in one place</p>
         <p class="fix-p">The core of the redesign: a filter rail narrows 11,000+ models, region and pricing sit right in the results, and a compare tray collects models for a side-by-side decision.</p>
-        <div class="shot framed"><img src="assets/foundry-filters.png" alt="Foundry Models page: filter rail on the left, results table with region, pricing, and latency, and a compare tray holding three selected models" loading="lazy" decoding="async" /></div>
+        <div class="shot framed"><img src="assets/foundry-filters.png" width="1602" height="1250" alt="Foundry Models page: filter rail on the left, results table with region, pricing, and latency, and a compare tray holding three selected models" loading="lazy" decoding="async" /></div>
       </div>
 
       <div class="figure proto-shot fade-in">
-        <p class="fix-h">Home — pick up where you left off</p>
+        <p class="fix-h">Home: pick up where you left off</p>
         <p class="fix-p">Returning developers land on recent models and quick tasks, so a half-finished decision doesn't mean starting the search over.</p>
-        <div class="shot framed"><img src="assets/foundry-home.png" alt="Foundry home screen: a welcome header, primary actions, a pick up where you left off row, and quick task shortcuts" loading="lazy" decoding="async" /></div>
+        <div class="shot framed"><img src="assets/foundry-home.png" width="1212" height="950" alt="Foundry home screen: a welcome header, primary actions, a pick up where you left off row, and quick task shortcuts" loading="lazy" decoding="async" /></div>
       </div>
     </div>
 
@@ -819,7 +811,7 @@
             <div class="browser-dots"><span></span><span></span><span></span></div>
             <div class="browser-url">ms-foundry-prototype.netlify.app</div>
           </div>
-          <iframe src="https://ms-foundry-prototype.netlify.app/" title="Microsoft Foundry high-fidelity prototype" loading="lazy"></iframe>
+          <iframe src="assets/foundry-prototype.html" title="Microsoft Foundry high-fidelity prototype" loading="lazy"></iframe>
         </div>
       </div>
     </div>
@@ -882,7 +874,7 @@
       </div>
       <div class="validation">
         <p class="validation-eyebrow">Validation</p>
-        <p class="validation-text">The strongest signal came after the project: the live Microsoft Foundry Models page has since moved in the same direction we designed for — surfacing <strong>region availability</strong>, richer <strong>filtering</strong>, and <strong>side-by-side model comparison</strong>. The three bets we made held up in the shipping product.</p>
+        <p class="validation-text">The strongest signal came after the project: the <strong>Microsoft CoreAI team has already added region to the Models filters</strong>, one of the core changes we recommended, and is actively working on more of them. Region availability, richer filtering, and side-by-side comparison are all moving into the live product, the exact bets we made in the redesign.</p>
       </div>
     </div>
   </section>
@@ -911,6 +903,13 @@
 
   <!-- NAV CARDS -->
   <div class="nav-cards">
+    <a href="play.html" class="nav-card">
+      <div class="nav-card-text">
+        <span class="nav-card-label">Play</span>
+        <span class="nav-card-title">Explore my playground</span>
+      </div>
+      <span class="nav-card-arrow">→</span>
+    </a>
     <a href="about.html" class="nav-card">
       <div class="nav-card-text"><span class="nav-card-label">About</span><span class="nav-card-title">Get to know me</span></div>
       <span class="nav-card-arrow">→</span>
@@ -924,7 +923,7 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="footer-sep">·</span><a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
   </footer>
 
@@ -977,6 +976,75 @@
       }, { rootMargin: '-45% 0px -50% 0px' });
       map.forEach(x => spy.observe(x.sec));
     })();
+
+    // Accurate in-page anchor scrolling (corrects for late-loading media/fonts)
+    (function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        var id = a.getAttribute('href');
+        if (!id || id.length < 2) return;
+        a.addEventListener('click', function(e) {
+          var el = document.querySelector(id);
+          if (!el) return;
+          e.preventDefault();
+          if (history.pushState) history.pushState(null, '', id);
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // corrective jump once layout settles, only if we ended up off-target
+          setTimeout(function() {
+            var sm = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+            if (Math.abs(el.getBoundingClientRect().top - sm) > 8) {
+              el.scrollIntoView({ block: 'start' });
+            }
+          }, 700);
+        });
+      });
+    })();
   </script>
+
+<!-- LIGHTBOX (site-wide click-to-fullscreen image viewer) -->
+<style>
+  .pf-zoomable { cursor: zoom-in; }
+  #pf-lightbox { position: fixed; inset: 0; z-index: 4000; display: none; align-items: center; justify-content: center; padding: 4vw; background: rgba(12,10,20,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.26s ease; }
+  #pf-lightbox.pf-open { display: flex; opacity: 1; }
+  #pf-lightbox .pf-lb-img { max-width: 94vw; max-height: 90vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,0.55); transform: scale(0.97); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); cursor: zoom-out; }
+  #pf-lightbox.pf-open .pf-lb-img { transform: scale(1); }
+  .pf-lb-close { position: fixed; top: 20px; right: 24px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.14); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; z-index: 4001; }
+  .pf-lb-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.07); }
+  .pf-lb-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.55); font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: 0.04em; pointer-events: none; z-index: 4001; }
+  @media (prefers-reduced-motion: reduce) { #pf-lightbox, #pf-lightbox .pf-lb-img { transition: none; } }
+</style>
+<div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
+  <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
+  <img class="pf-lb-img" src="" alt="" />
+  <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
+</div>
+<script>
+  (function(){
+    var lb = document.getElementById('pf-lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('.pf-lb-img');
+    var closeBtn = lb.querySelector('.pf-lb-close');
+    function open(src, alt){ if(!src) return; lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('pf-open'); document.body.style.overflow = 'hidden'; }
+    function close(){ lb.classList.remove('pf-open'); document.body.style.overflow = ''; setTimeout(function(){ if(!lb.classList.contains('pf-open')) lbImg.src=''; }, 320); }
+    window.openLightbox = open;
+    function eligible(img){
+      if (img.closest('a')) return false;
+      if (img.closest('nav')) return false;
+      if (img.closest('#pf-lightbox')) return false;
+      if (img.closest('.lv-card')) return false;
+      if (img.hasAttribute('data-nozoom')) return false;
+      if (img.complete && img.naturalWidth && img.naturalWidth < 64) return false;
+      return true;
+    }
+    document.querySelectorAll('img').forEach(function(img){
+      if (!eligible(img)) return;
+      img.classList.add('pf-zoomable');
+      img.addEventListener('click', function(e){ e.preventDefault(); open(img.currentSrc || img.src, img.alt); });
+    });
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', function(e){ if (e.target !== closeBtn) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pf-open')) close(); });
+  })();
+</script>
+
 </body>
 </html>
