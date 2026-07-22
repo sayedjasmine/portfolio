@@ -1521,14 +1521,16 @@
 
   <!-- SECTION TABS -->
   <div class="section-tabs" id="sectionTabs">
-    <a href="#overview"    class="tab-link active">Overview</a>
-    <a href="#problem"     class="tab-link">Problem</a>
-    <a href="#research"    class="tab-link">Research</a>
-    <a href="#insights"    class="tab-link">Insights</a>
-    <a href="#design"      class="tab-link">Design Process</a>
-    <a href="#decisions"   class="tab-link">Decisions</a>
-    <a href="#solution"    class="tab-link">Solution</a>
-    <a href="#reflection"  class="tab-link">Reflection</a>
+    <a href="#overview"      class="tab-link active">Overview</a>
+    <a href="#problem"       class="tab-link">Problem</a>
+    <a href="#research"      class="tab-link">Research</a>
+    <a href="#insights"      class="tab-link">Insights</a>
+    <a href="#design"        class="tab-link">Design</a>
+    <a href="#decisions"     class="tab-link">Decisions</a>
+    <a href="#design-system" class="tab-link">Design System</a>
+    <a href="#solution"      class="tab-link">Solution</a>
+    <a href="#prototype"     class="tab-link">Prototype</a>
+    <a href="#reflection"    class="tab-link">Reflection</a>
   </div>
 
   <!-- HERO -->
@@ -1717,8 +1719,8 @@
     <!-- Mid-fi / Hi-fi Designs -->
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
-        <div class="case-img-caption">Mid-fi to hi-fi: the wireframes and IA I owned, evolved into polished, interaction-ready screens</div>
-        <img src="assets/nox-midfi-hifi-figma-designs.webp" alt="Mid-fidelity and high-fidelity Figma designs for Nox+" loading="lazy" />
+        <div class="case-img-caption">Wireframes: the app IA and screen structure I owned, from the verification home to documents, history, and household controls</div>
+        <img src="assets/nox-wireframes.webp" alt="Nox+ wireframes: home, documents, history, and household screens with annotations" loading="lazy" />
       </div>
     </div>
 
@@ -1764,6 +1766,13 @@
       <p class="section-eyebrow">Design System</p>
       <h2 class="section-title">The visual language<br />behind <em>Nox+.</em></h2>
       <p class="body-text">A gradient-driven system built around trust, security, and modernity: from the vibrant app icon to every screen interaction.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper" style="max-width: 340px;">
+        <div class="case-img-caption">The Nox+ mark: a shield built around a verification star, in light and dark</div>
+        <img src="assets/nox-app-icons.webp" alt="Nox+ app icon, light and dark variants" loading="lazy" />
+      </div>
     </div>
 
     <div class="container-wide fade-in">
@@ -1824,6 +1833,22 @@
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Nox+.</em></h2>
       <p class="body-text">Nox+ is built on a simple premise: <strong>people don't want to manage their identity; they want to forget about it until they need it.</strong> The app pairs a physical proof card with a mobile platform for seamless verification across digital and in-person contexts. Every feature answers the core question participants asked: "Who has my data, and can I trust them?"</p>
+    </div>
+
+    <!-- Final hi-fi screens -->
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <div class="case-img-caption">The final designs: the identity home with a branded proof-of-identity card, the document vault, a privacy-preserving share (FAFSA keeps no copy of your documents), and family access</div>
+        <img src="assets/nox-app-screens-4.webp" alt="Final Nox+ screens: IDs home, document vault, FAFSA data-shared, and family access" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Cross-platform verification flow (the payoff) -->
+    <div class="container-wide fade-in">
+      <div class="case-img-wrapper">
+        <div class="case-img-caption">The payoff, end to end: Pam uploads to FAFSA, approves the share with Face ID in Nox+, and the site confirms, without her documents ever being exposed on screen</div>
+        <img src="assets/nox-fafsa-flow.webp" alt="Cross-platform verification: from the FAFSA website to Face ID approval in Nox+ to a verified confirmation" loading="lazy" />
+      </div>
     </div>
 
     <div class="container-wide">
@@ -1978,7 +2003,7 @@
 
     // Scroll-spy: highlight active tab
     const tabLinks = document.querySelectorAll('.tab-link');
-    const sectionIds = ['overview', 'problem', 'research', 'insights', 'design', 'solution', 'reflection'];
+    const sectionIds = ['overview', 'problem', 'research', 'insights', 'design', 'decisions', 'design-system', 'solution', 'prototype', 'reflection'];
     const tabsBar = document.getElementById('sectionTabs');
     const navH = document.querySelector('nav').offsetHeight;
     const tabsH = tabsBar.offsetHeight;
