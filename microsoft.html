@@ -1183,6 +1183,7 @@
 .impact-stat{ background:transparent!important; border:none!important; padding:14px 10px!important; }
 @media(max-width:600px){ .impact-number{ font-size:clamp(52px,15vw,84px)!important; } }
 </style>
+<style id="mx-tabfade">@media(max-width:768px){.section-tabs{-webkit-mask-image:linear-gradient(to right,#000 88%,transparent 100%);mask-image:linear-gradient(to right,#000 88%,transparent 100%);}}</style>
 </head>
 <body>
 
@@ -1263,7 +1264,6 @@
         </div>
         <img src="assets/Azure-ai-website-demo.webp" alt="Azure AI Foundry website" />
       </div>
-      <div class="hero-site-pill">Explore the live platform <span style="font-size: 13px;">→</span></div>
     </a>
   </section>
 
@@ -1286,6 +1286,44 @@
       <div class="role-value">Figma, Lookback,<br />Dovetail</div>
     </div>
   </div>
+
+  <!-- AT A GLANCE -->
+  <section class="ag-section">
+    <style id="ms-ataglance">
+      .ag-section{padding:40px 0 12px;}
+      .ag-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+      .ag-eyebrow::before{content:'';width:20px;height:1.5px;background:var(--blue);border-radius:2px;}
+      .ag-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+      .ag-col{position:relative;background:var(--white,#fff);border:1px solid rgba(20,20,40,0.07);border-radius:16px;padding:26px 24px;box-shadow:0 6px 20px rgba(20,20,40,0.05);overflow:hidden;transition:transform .3s cubic-bezier(0.16,1,0.3,1),box-shadow .3s ease;}
+      .ag-col:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(20,20,40,0.09);}
+      .ag-col::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue-light);}
+      .ag-col.ag-out{background:var(--blue-bg);border-color:var(--blue-light);}
+      .ag-col.ag-out::before{background:var(--blue);}
+      .ag-num{display:block;font-family:'DM Serif Display',serif;font-size:26px;line-height:1;color:var(--blue-light);margin-bottom:13px;}
+      .ag-col.ag-out .ag-num{color:var(--blue);}
+      .ag-k{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+      .ag-v{font-size:14px;font-weight:300;color:#33405A;line-height:1.64;}
+      .ag-v strong{font-weight:600;color:var(--dark,#14131F);}
+      @media(max-width:820px){.ag-grid{grid-template-columns:1fr;gap:12px;}}
+    </style>
+    <div class="container fade-in">
+      <div class="ag-eyebrow">At a glance</div>
+      <div class="ag-grid">
+        <div class="ag-col">
+          <span class="ag-num">01</span><div class="ag-k">The challenge</div>
+          <div class="ag-v">A known but deprioritized Severity-4 bug was quietly blocking first-run users from creating an agent on Microsoft Foundry.</div>
+        </div>
+        <div class="ag-col">
+          <span class="ag-num">02</span><div class="ag-k">What I did</div>
+          <div class="ag-v">Ran a moderated think-aloud study on the live platform, framed every issue by severity, and handed a prioritized set to the Foundry design and engineering teams.</div>
+        </div>
+        <div class="ag-col ag-out">
+          <span class="ag-num">03</span><div class="ag-k">The outcome</div>
+          <div class="ag-v"><strong>8 of 8 participants hit the blocker.</strong> It was re-ranked from minor to a priority fix, and five findings entered the design team's queue.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- INTRODUCTION -->
   <section id="overview-detail">
@@ -1418,6 +1456,28 @@
         </div>
       </div>
     </div>
+
+    <!-- SCOPE & CONSTRAINTS -->
+    <div class="container fade-in">
+      <h3 class="sub-heading">What I tested, and what I left out</h3>
+      <p class="body-text">Eight sessions is enough to surface pattern-level problems, not to quantify them. I scoped the study to the first-run agent-creation path: create, add knowledge and data, configure, publish. Three things I left out of frame on purpose.</p>
+      <div class="reflection-grid">
+        <div>
+          <div class="reflection-col-title">In Scope</div>
+          <div class="reflection-item"><span class="reflection-icon">+</span><span>First-run agent creation, from empty state to a published agent</span></div>
+          <div class="reflection-item"><span class="reflection-icon">+</span><span>The Knowledge, Data, and FoundryIQ features, on the live platform</span></div>
+          <div class="reflection-item"><span class="reflection-icon">+</span><span>Where confusion turns into a hard stop, framed by severity</span></div>
+        </div>
+        <div>
+          <div class="reflection-col-title">Deliberately Out of Scope</div>
+          <div class="reflection-item"><span class="reflection-icon">~</span><span>End-to-end integration of a published agent into a real product, a study of its own</span></div>
+          <div class="reflection-item"><span class="reflection-icon">~</span><span>Statistical significance: with eight participants I report patterns, not population percentages</span></div>
+          <div class="reflection-item"><span class="reflection-icon">~</span><span>Internal telemetry and usage analytics, which sat outside my access as a co-op researcher</span></div>
+        </div>
+      </div>
+      <p class="body-text" style="margin-top: 16px;">Naming these limits up front kept the readout honest. When I reported that every participant hit the guardrail block, the team could trust it as a qualitative certainty, not a statistic stretched past what eight sessions can carry.</p>
+    </div>
+
 
   </section>
 
@@ -1565,6 +1625,34 @@
         </div>
       </div>
     </div>
+
+    <!-- FROM FINDINGS TO HANDOFF -->
+    <div class="container fade-in">
+      <h3 class="sub-heading">From findings to something the team could act on</h3>
+      <p class="body-text">A finding a team cannot act on is just an opinion. I structured every issue the same way, so design and engineering could each pick up their part without a translation step: the observed behavior, how many of the eight it hit, a severity rating, and a specific recommendation. Severity said what to fix first. The recommendation said what "fixed" looked like.</p>
+      <p class="body-text">The guardrail block shows why states matter. The system left a new agent in an ambiguous "inheriting" state instead of assigning a default, and the error steered users toward "Create Guardrail" when the real resolution was to reassign an existing one. That is a state and messaging problem, not a user mistake, and naming it that way is what moved it from "users are confused" to "assign a default and rewrite the error."</p>
+      <p class="body-text">I handed the set to the Foundry design team with the guardrail fix flagged as blocking, and the terminology audit and landing-page hierarchy sequenced behind it for later sprints.</p>
+    </div>
+
+    <div class="container-wide fade-in">
+      <style id="mflow-css">
+        .mflow-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin:6px 0 14px;text-align:center;}
+        .mflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1040px;margin:0 auto;}
+        .mstep{background:var(--blue-bg);border:1px solid rgba(0,88,180,0.16);border-radius:14px;padding:20px 18px;position:relative;}
+        .mstep-k{font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:9px;}
+        .mstep-d{font-size:12.5px;font-weight:300;color:#33405A;line-height:1.5;}
+        .mstep:not(:last-child)::after{content:'\2192';position:absolute;right:-11px;top:38px;color:var(--blue-light);font-size:18px;z-index:2;}
+        @media(max-width:760px){.mflow{grid-template-columns:1fr;}.mstep:not(:last-child)::after{content:'\2193';right:calc(50% - 6px);top:auto;bottom:-15px;}}
+      </style>
+      <div class="mflow-label">How one finding became a priority fix</div>
+      <div class="mflow">
+        <div class="mstep"><div class="mstep-k">Observed</div><div class="mstep-d">8 of 8 users left a new agent in an ambiguous "inheriting" guardrail state and hit a hard stop.</div></div>
+        <div class="mstep"><div class="mstep-k">Severity</div><div class="mstep-d">Rated Severity-4: a total blocker for first-run users, not a minor annoyance.</div></div>
+        <div class="mstep"><div class="mstep-k">Recommendation</div><div class="mstep-d">Assign a default guardrail, and rewrite the error to point to the real fix.</div></div>
+        <div class="mstep"><div class="mstep-k">What changed</div><div class="mstep-d">A deprioritized bug was re-ranked to a priority fix; five findings entered the design queue.</div></div>
+      </div>
+    </div>
+
   </section>
 
   <!-- IMPACT -->
@@ -1591,6 +1679,21 @@
         </div>
       </div>
     </div>
+
+    <div class="container fade-in">
+      <p class="section-eyebrow">What Changed</p>
+      <p class="body-text"><strong>A study earns its keep by changing a decision. This one changed three.</strong></p>
+      <div class="callout-box">
+        <p><strong>A deprioritized bug became a priority fix.</strong> The guardrail block was already known internally and had been treated as minor. Eight of eight participants failing the core task on it gave my mentor and the engineering team the evidence to re-rank it. Watching that call flip on the strength of research was the clearest proof of impact I saw.</p>
+      </div>
+      <div class="callout-box">
+        <p><strong>Five findings entered the design team's queue.</strong> Each one shipped with a severity rating and a concrete recommendation, so the team received a prioritized roadmap rather than a list of complaints. The terminology audit and landing-page hierarchy were sequenced behind the guardrail fix.</p>
+      </div>
+      <div class="callout-box">
+        <p><strong>The line between "friction" and "failure" moved.</strong> A bug filed as a minor annoyance read very differently once it was framed as a total blocker for first-run users. The study reset where that line sits.</p>
+      </div>
+    </div>
+
   </section>
 
   <!-- NEXT STEPS -->
@@ -1686,8 +1789,8 @@
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Nox+: <em>Secure Digital Identity</em></div>
-    <a href="nox.html" class="next-btn">View case study →</a>
+    <div class="next-title">Nexstera Tech: <em>Redesigning for Climate Impact</em></div>
+    <a href="nexstera.html" class="next-btn">View case study →</a>
   </div>
 
   <!-- NAV CARDS -->

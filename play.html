@@ -177,16 +177,13 @@
     .love-media-tall { aspect-ratio: 3 / 4; max-width: 360px; width: 100%; margin: 0 auto; }
 
     /* ── FACET CHIPS (multifaceted) ── */
-    .love-facets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .love-facet { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: var(--dark); background: var(--white); border: 1px solid rgba(24,22,26,0.1); padding: 7px 14px; border-radius: 100px; transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), border-color 0.22s ease, box-shadow 0.22s ease; }
-    .love-facet:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(24,22,26,0.08); }
+    .love-facets { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 24px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+    .love-facets::-webkit-scrollbar { display: none; }
+    .love-facet { flex-shrink: 0; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: var(--dark); background: var(--white); border: 1px solid rgba(24,22,26,0.12); padding: 8px 16px; border-radius: 100px; white-space: nowrap; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+    .love-facet:hover { border-color: rgba(107,63,160,0.40); background: #F3EEFB; }
+    .love-facet.active { background: var(--purple); border-color: var(--purple); color: #fff; }
     .love-facet .fe { font-size: 14px; line-height: 1; }
-    .love-facet:nth-child(6n+1) { background: #F3EEFB; border-color: rgba(107,63,160,0.20); }
-    .love-facet:nth-child(6n+2) { background: #FFF0F5; border-color: rgba(214,51,132,0.18); }
-    .love-facet:nth-child(6n+3) { background: #EAF6EF; border-color: rgba(45,140,90,0.18); }
-    .love-facet:nth-child(6n+4) { background: #FFF6E9; border-color: rgba(214,140,40,0.20); }
-    .love-facet:nth-child(6n+5) { background: #EAF1FF; border-color: rgba(51,102,214,0.18); }
-    .love-facet:nth-child(6n+6) { background: #F6EEFB; border-color: rgba(150,63,160,0.18); }
+    .love-panel[data-hidden] { display: none; }
 
     /* ── LAUREL VILLAGE SHUFFLE DECK ── */
     #love-5 .lv-deck-wrap { order: 0; }
@@ -226,6 +223,10 @@
     #love-3 { --accent: #2C7D53; --accent-bg: #E9F6EF; --accent-bd: rgba(44,125,83,0.22); }
     #love-4 { --accent: #3159C4; --accent-bg: #EBF1FF; --accent-bd: rgba(49,89,196,0.20); }
     #love-5 { --accent: #C65D22; --accent-bg: #FFF2E7; --accent-bd: rgba(198,93,34,0.22); }
+    #love-6 { --accent: #0F7B8A; --accent-bg: #E6F4F6; --accent-bd: rgba(15,123,138,0.20); }
+    #love-6 .love-media { order: 2; }
+    .love-media-cs { aspect-ratio: 4 / 3; background: linear-gradient(150deg, #06171A 0%, #0C2E33 100%); }
+    .love-media-cs img { object-fit: contain; padding: 18px; }
     .love-copy .love-kicker { color: var(--accent, var(--purple-mid)); }
     .love-copy h3 em { color: var(--accent, var(--purple)); }
     .love-meta { color: var(--accent, var(--purple)); background: var(--accent-bg, var(--purple-bg)); border-color: var(--accent-bd, rgba(107,63,160,0.16)); }
@@ -330,7 +331,7 @@
     @media (max-width: 1024px) {
       .about-hero { grid-template-columns: 1fr; padding: 110px 40px 48px; gap: 40px; }
       .hero-photos { height: 440px; max-width: 520px; }
-      .love-section { padding: 52px 40px 32px; }
+      .love-section { padding: 110px 40px 32px; }
       .section-container { padding: 0 40px 40px; }
     }
     @media (max-width: 768px) {
@@ -354,7 +355,7 @@
       .quick-fact { border-right: none; border-bottom: 1px solid rgba(24,22,26,0.06); padding: 18px 20px; }
       .quick-fact:last-child { border-bottom: none; }
 
-      .love-section { padding: 92px 24px 24px; }
+      .love-section { padding: 100px 24px 24px; }
       .love-panel { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; min-height: 0; }
       .love-panel:nth-child(even) .love-media { order: 0; }
       .love-video-feature { padding: 20px 0 14px; }
@@ -398,7 +399,7 @@
     @media (max-width: 480px) {
       .about-hero { padding: 86px 20px 30px; gap: 26px; }
       .hero-text h1 { font-size: clamp(26px, 7vw, 32px); }
-      .love-section { padding: 36px 20px 20px; }
+      .love-section { padding: 96px 20px 20px; }
       .section-container { padding: 0 20px 32px; }
     }
 
@@ -446,130 +447,64 @@
     <div class="love-intro fade-in">
       <h2>My <em>playground.</em></h2>
       <p class="love-subtitle">More than design.</p>
-      <p>Side projects and corners of the UX community I'm passionate about. The areas I've dived deeper into, and the ones I'm still exploring and learning from.</p>
-      <div class="love-facets" aria-label="A few of my many sides">
-        <span class="love-facet"><span class="fe">🎤</span> Speaking</span>
-        <span class="love-facet"><span class="fe">🎮</span> Game jams</span>
-        <span class="love-facet"><span class="fe">🎨</span> Design ops</span>
-        <span class="love-facet"><span class="fe">🔬</span> Research</span>
-        <span class="love-facet"><span class="fe">⚡</span> Building</span>
-        <span class="love-facet"><span class="fe">🌱</span> Teaching</span>
-      </div>
+      <p>The work that doesn't fit in a single case study but shapes how I think: a UX community I've led, research I've taken to competition, design systems I've built, and ideas I chased into working prototypes.</p>
+      
     </div>
 
-    <!-- Panel 1 · UXFest video -->
-    <article class="love-panel fade-in" id="love-1">
-      <div class="love-media love-media-uxfest">
-        <span class="love-badge">▶ UXFest</span>
-        <video id="uxfestVideo" autoplay muted loop playsinline poster="assets/uxfest-hero-poster.jpg" aria-label="Highlights from UXFest">
-          <source src="assets/uxfest-hero.mp4" type="video/mp4" />
-        </video>
-        <div class="video-controls">
-          <button type="button" class="video-btn video-play" data-video="uxfestVideo" aria-label="Pause video"><span class="vp-icon" aria-hidden="true">⏸</span></button>
-          <button type="button" class="video-btn" id="videoSound" aria-pressed="false" aria-label="Turn sound on"><span class="vs-icon" aria-hidden="true">🔇</span></button>
-          <button type="button" class="video-btn" id="videoFull" title="Watch the full recap fullscreen" aria-label="Watch the full recap fullscreen"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
-        </div>
-      </div>
-      <div class="love-copy">
-        <p class="love-kicker">Community Leadership</p>
-        <h3>Leading at <em>scale.</em></h3>
-        <p>As <strong>President of UXFest</strong>, I ran a 140+ person UX design hackathon end to end: programming, speakers, and a 50-person team. It's where I learned to direct design across a whole program and a room full of people, not just a screen.</p>
-        <span class="love-meta">140+ participants · 50-person team · President</span>
-      </div>
-    </article>
-
-    <!-- Panel 2 · Saksham (built) -->
-    <article class="love-panel fade-in" id="love-2">
-      <div class="love-media love-media-saksham">
-        <span class="love-badge">&lt;/&gt; Built it</span>
-        <div class="saksham-ph" aria-hidden="true">
-          <div class="saksham-ph-bar"><span></span><span></span><span></span><em>saksham · reading tool</em></div>
-          <div class="saksham-ph-body">
-            <div class="saksham-ph-title">Saksham</div>
-            <div class="saksham-ph-tag">Accessible reading, coded &amp; live</div>
-          </div>
-        </div>
-      </div>
-      <div class="love-copy">
-        <p class="love-kicker">Design + Code</p>
-        <h3>Saksham, <em>built.</em></h3>
-        <p>I took my published Saksham research and coded it into a working, accessible reading app: customizable type and contrast, word-level audio-synced reading through the Web Speech API, offline support, and no accounts. Research, to design, to a thing you can actually use.</p>
-        <span class="love-meta">HTML/CSS · Web Speech API · Accessibility</span>
-        <div class="love-video-cta">
-          <a class="video-more" href="https://github.com/jsayed23/miniproject2" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Panel 3 · MomSAFE (CHI) -->
-    <article class="love-panel fade-in" id="love-3">
-      <div class="love-media love-media-momsafe">
-        <span class="love-badge">🏅 CHI 2025</span>
-        <img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="lazy" decoding="async" />
-      </div>
-      <div class="love-copy">
-        <p class="love-kicker">Research</p>
-        <h3>MomSAFE at <em>CHI.</em></h3>
-        <p>Mixed-methods research with mothers and providers on where AI belongs in prenatal care, and where it doesn't. I distilled the findings into one shareable infographic and took the project to a CHI competition.</p>
-        <span class="love-meta">CHI Competition Participant · 2025</span>
-        <div class="love-video-cta">
-          <a class="video-more" href="momsafe.html">View the full case study →</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Panel 4 · Among hUSkies -->
-    <article class="love-panel" id="love-4">
-      <div class="love-media love-media-huskies">
-        <span class="love-badge">🏆 1st Place</span>
-        <video id="huskiesVideo" autoplay muted loop playsinline poster="assets/huskies-poster.jpg" aria-label="Among hUSkies gameplay walkthrough">
-          <source src="assets/huskies-walkthrough.mp4" type="video/mp4" />
-        </video>
-        <div class="video-controls">
-          <button type="button" class="video-btn video-play" data-video="huskiesVideo" aria-label="Pause video"><span class="vp-icon" aria-hidden="true">⏸</span></button>
-          <button type="button" class="video-btn" id="huskiesFull" title="Watch fullscreen" aria-label="Watch fullscreen"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
-        </div>
-      </div>
-      <div class="love-copy">
-        <p class="love-kicker">Hackathon</p>
-        <h3>Among <em>hUSkies.</em></h3>
-        <p>A UW-themed take on Among Us with real UX tasks scattered across campus, built and curated entirely in <strong>Figma Make</strong>. It won <strong>first place</strong> at Figma Make Hackathon, proof that the most serious design lessons often hide inside the most playful ideas.</p>
-        <span class="love-meta">Figma Make Hackathon</span>
-      </div>
-    </article>
-
-    <!-- Panel 5 · Laurel Village design ops (shuffle deck) -->
-    <article class="love-panel fade-in" id="love-5">
-      <div class="lv-deck-wrap">
-        <div class="lv-deck-row">
-          <button type="button" class="lv-nav" id="lvPrev" aria-label="Previous flyer">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="lv-deck" id="lvDeck" role="group" aria-label="Laurel Village design system and flyers. Click a card to view it full size.">
-            <div class="lv-card" data-name="Design system"><img src="assets/lv-design-system.webp" alt="Jasmine's Laurel Village design system: type scale, components, and color palette" loading="lazy" decoding="async" /></div>
-            <div class="lv-card" data-name="You Deserve the World"><img src="assets/lv-flyer-deserve.webp" alt="You Deserve the Absolute World mental health awareness poster" loading="lazy" decoding="async" /></div>
-            <div class="lv-card" data-name="Pasta Potluck"><img src="assets/lv-flyer-pasta.webp" alt="Spring Equinox Pasta Potluck event flyer" loading="lazy" decoding="async" /></div>
-            <div class="lv-card" data-name="Outside Provocations"><img src="assets/lv-flyer-provocations.webp" alt="Outside Provocations preschool activity poster" loading="lazy" decoding="async" /></div>
-            <div class="lv-card" data-name="Weekly Newsletter"><img src="assets/lv-newsletter-1.webp" alt="Wednesday Wisdoms weekly staff newsletter" loading="lazy" decoding="async" /></div>
-            <div class="lv-card" data-name="In-Service Agenda"><img src="assets/lv-newsletter-2.webp" alt="In-Service day agenda newsletter page" loading="lazy" decoding="async" /></div>
-          </div>
-          <button type="button" class="lv-nav" id="lvNext" aria-label="Next flyer">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-        <div class="lv-deck-ui">
-          <span class="lv-deck-meta" id="lvMeta" aria-live="polite"><strong>Design system</strong> · 1 / 6</span>
-        </div>
-      </div>
-      <div class="love-copy">
-        <p class="love-kicker">Design &amp; Operations</p>
-        <h3>The Laurel Village <em>system.</em></h3>
-        <p>As a <strong>Design and Operations Associate</strong> at UW's Laurel Village, I built the visual system the center runs on, then put it to work everywhere. One consistent look across event flyers, weekly newsletters, and classroom posters, all designed in <strong>Figma and Canva</strong>.</p>
-        <p>Use the arrows to flip through, and tap any card to see it full size.</p>
-        <span class="love-meta">Design system · Figma + Canva</span>
-      </div>
-    </article>
-
+  <style id="bento-css">
+    .bento { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .b-tile { position: relative; aspect-ratio: 5 / 4; border-radius: 20px; overflow: hidden; text-decoration: none; display: block; background: #14121F; box-shadow: 0 8px 28px rgba(24,22,26,0.10); cursor: pointer; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease; }
+    .b-tile:hover { transform: translateY(-5px); box-shadow: 0 22px 50px rgba(24,22,26,0.20); }
+    .b-media { position: absolute; inset: 0; }
+    .b-media img, .b-media video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .b-tile:hover .b-media img, .b-tile:hover .b-media video { transform: scale(1.05); }
+    .b-tile.b-contain .b-media { background: linear-gradient(150deg, #06171A, #0C2E33); }
+    .b-tile.b-contain .b-media img { object-fit: contain; padding: 16px; }
+    .b-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 24px; background: linear-gradient(to top, rgba(10,8,16,0.97) 0%, rgba(10,8,16,0.88) 26%, rgba(10,8,16,0.58) 50%, rgba(10,8,16,0.24) 74%, rgba(10,8,16,0) 100%); text-shadow: 0 1px 12px rgba(10,8,16,0.5); pointer-events: none; }
+    .b-kicker { font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent, #C9B3E8); margin-bottom: 7px; }
+    .b-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: #fff; line-height: 1.08; margin-bottom: 8px; }
+    .b-title em { font-style: italic; color: var(--accent, #C9B3E8); }
+    .b-desc { font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,0.76); line-height: 1.5; }
+    .b-cta { margin-top: 13px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent, #C9B3E8); }
+    .b-cta .arw { display: inline-block; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .b-tile:hover .b-cta .arw { transform: translateX(4px); }
+    .b-badge { position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: rgba(24,22,26,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 5px 11px; border-radius: 100px; pointer-events: none; }
+    .b-tile[data-hidden] { display: none; }
+    @media (max-width: 900px) { .bento { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+    @media (max-width: 560px) { .bento { grid-template-columns: 1fr; } .b-tile { aspect-ratio: 16 / 10; } }
+  </style>
+  <div class="bento">
+    <div class="b-tile fade-in b-video" data-facets="community" style="--accent:#C9B3E8;" role="button" tabindex="0" aria-label="Play the UXFest recap">
+      <div class="b-media"><video autoplay muted loop playsinline poster="assets/uxfest-hero-poster.jpg"><source src="assets/uxfest-hero.mp4" type="video/mp4" /></video></div>
+      <span class="b-badge">▶ UXFest</span>
+      <div class="b-overlay"><div class="b-kicker">Leadership</div><div class="b-title">Leading at <em>scale.</em></div><div class="b-desc">President of UXFest: I ran a 140-person UX hackathon end to end, from programming and speakers to a 50-person team.</div><span class="b-cta">▶ Watch the recap</span></div>
+    </div>
+    <a class="b-tile fade-in b-contain" href="momsafe.html" data-facets="research" style="--accent:#A8E0DF;">
+      <div class="b-media"><img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="lazy" /></div>
+      <span class="b-badge">🏅 CHI 2025</span>
+      <div class="b-overlay"><div class="b-kicker">Research</div><div class="b-title">MomSAFE at <em>CHI.</em></div><div class="b-desc">Mixed-methods research on where AI belongs in prenatal care.</div><span class="b-cta">Read the study <span class="arw">→</span></span></div>
+    </a>
+    <a class="b-tile fade-in" href="https://github.com/jsayed23/miniproject2" target="_blank" rel="noopener noreferrer" data-facets="design build" style="--accent:#F0B3BE;">
+      <div class="b-media"><img src="assets/saksham-mockup.webp" alt="Saksham accessible reading tool" loading="lazy" /></div>
+      <span class="b-badge">&lt;/&gt; Built it</span>
+      <div class="b-overlay"><div class="b-kicker">Design + Code</div><div class="b-title">Saksham, <em>built.</em></div><div class="b-desc">I coded my published Saksham design into a live, accessible reading tool.</div><span class="b-cta">See the code <span class="arw">↗</span></span></div>
+    </a>
+    <a class="b-tile fade-in b-contain" href="codeswitching.html" data-facets="research" style="--accent:#5ED2E0;">
+      <div class="b-media"><img src="assets/codeswitching-thumbnail.png" alt="Code-switching research study" loading="lazy" /></div>
+      <span class="b-badge">🗣 Research</span>
+      <div class="b-overlay"><div class="b-kicker">Language &amp; Identity</div><div class="b-title">Why we <em>code-switch.</em></div><div class="b-desc">A qualitative study on multilingual code-switching and identity.</div><span class="b-cta">Read the study <span class="arw">→</span></span></div>
+    </a>
+    <div class="b-tile fade-in b-video" data-facets="build" data-rate="0.85" style="--accent:#A9C4FF;" role="button" tabindex="0" aria-label="Play Among hUSkies">
+      <div class="b-media"><video autoplay muted loop playsinline poster="assets/huskies-poster.jpg"><source src="assets/huskies-walkthrough.mp4" type="video/mp4" /></video></div>
+      <span class="b-badge">🏆 1st Place</span>
+      <div class="b-overlay"><div class="b-kicker">Hackathon</div><div class="b-title">Among <em>hUSkies.</em></div><div class="b-desc">A UW take on Among Us with real UX tasks, built in Figma Make. First place at the Figma Make Hackathon.</div><span class="b-cta">▶ Watch the walkthrough</span></div>
+    </div>
+    <div class="b-tile fade-in" id="lv-tile" data-facets="design" style="--accent:#F3C08A;" role="button" tabindex="0" aria-label="View the Laurel Village design system and newsletter">
+      <div class="b-media"><img src="assets/lv-design-system.webp" alt="Laurel Village design system" data-nozoom loading="lazy" /></div>
+      <span class="b-badge">🎨 Design System</span>
+      <div class="b-overlay"><div class="b-kicker">Design &amp; Operations</div><div class="b-title">The Laurel Village <em>system.</em></div><div class="b-desc">The visual system a UW childcare center runs on: flyers, newsletters, and posters from one design language.</div><span class="b-cta">See the system + newsletter <span class="arw">→</span></span></div>
+    </div>
+  </div>
   </section>
 
   <!-- NAV CARDS -->
@@ -819,6 +754,35 @@
       if (nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); advance(); });
       if (prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); retreat(); });
     })();
+  (function(){
+    function box(){ return document.getElementById('pf-vbox'); }
+    function openVid(tile){
+      var b=box(); if(!b) return; var vv=b.querySelector('video');
+      var srcEl=tile.querySelector('source'); var src=srcEl?srcEl.getAttribute('src'):null;
+      var tv=tile.querySelector('video'); var pos=tv?tv.getAttribute('poster'):null;
+      if(!vv||!src) return;
+      if(vv.getAttribute('src')!==src){ vv.setAttribute('src',src); vv.load(); }
+      if(pos) vv.setAttribute('poster',pos);
+      try{ vv.currentTime=0; }catch(e){}
+      vv.muted=false; vv.volume=1;
+      var rate=parseFloat(tile.getAttribute('data-rate')||'1')||1;
+      var applyR=function(){ try{ vv.playbackRate=rate; }catch(e){} };
+      vv.addEventListener('loadedmetadata', applyR, {once:true});
+      b.classList.add('pf-open'); document.body.style.overflow='hidden';
+      var p=vv.play(); if(p&&p.catch) p.catch(function(){ vv.muted=true; var q=vv.play(); if(q&&q.catch) q.catch(function(){}); });
+      applyR();
+    }
+    function closeVid(){ var b=box(); if(!b) return; b.classList.remove('pf-open'); document.body.style.overflow=''; var vv=b.querySelector('video'); if(vv) vv.pause(); }
+    document.querySelectorAll('.bento .b-video').forEach(function(tile){
+      var tvr=tile.querySelector('video');
+      var trate=parseFloat(tile.getAttribute('data-rate')||'1')||1;
+      if(tvr && trate!==1){ var ar=function(){ try{ tvr.playbackRate=trate; }catch(e){} }; tvr.addEventListener('loadedmetadata', ar); tvr.addEventListener('play', ar); ar(); }
+      tile.addEventListener('click', function(){ openVid(tile); });
+      tile.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openVid(tile); } });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ var b=box(); if(b&&b.classList.contains('pf-open')) closeVid(); } });
+    document.addEventListener('click', function(e){ var b=box(); if(!b||!b.classList.contains('pf-open')) return; if(e.target===b || (e.target.classList&&e.target.classList.contains('pf-vb-close'))) closeVid(); });
+  })();
   </script>
 
 
@@ -1010,5 +974,70 @@
 </script>
 <!-- ===== /mx-motion-system ===== -->
 
+  
+<!-- VIDEO MODAL (large centered player, keeps proportions) -->
+<style>
+  #pf-vbox { position: fixed; inset: 0; z-index: 4200; display: none; align-items: center; justify-content: center; padding: 3vw; background: rgba(12,10,20,0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); opacity: 0; transition: opacity 0.26s ease; }
+  #pf-vbox.pf-open { display: flex; opacity: 1; }
+  #pf-vbox video { max-width: 92vw; max-height: 88vh; width: auto; height: auto; border-radius: 12px; box-shadow: 0 30px 90px rgba(0,0,0,0.6); background: #000; transform: scale(0.98); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  #pf-vbox.pf-open video { transform: scale(1); }
+  .pf-vb-close { position: fixed; top: 20px; right: 24px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.14); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; z-index: 4201; }
+  .pf-vb-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.07); }
+  .pf-vb-hint { position: fixed; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.55); font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: 0.04em; pointer-events: none; z-index: 4201; }
+  @media (prefers-reduced-motion: reduce){ #pf-vbox, #pf-vbox video { transition: none; } }
+</style>
+<div id="pf-vbox" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="pf-vb-close" type="button" aria-label="Close video (Esc)">&times;</button>
+  <video controls playsinline preload="metadata"></video>
+  <div class="pf-vb-hint">Click outside or press Esc to close</div>
+</div>
+<!-- LAUREL VILLAGE GALLERY (design system + real flyer example) -->
+<style>
+  #lv-gallery { position: fixed; inset: 0; z-index: 4300; display: none; align-items: center; justify-content: center; padding: 4vw; background: rgba(12,10,20,0.93); backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px); opacity: 0; transition: opacity 0.26s ease; }
+  #lv-gallery.open { display: flex; opacity: 1; }
+  #lv-gallery .lvg-fig { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 94vw; max-height: 92vh; }
+  #lv-gallery .lvg-img { max-width: 86vw; max-height: 80vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,0.55); background: #fff; transform: scale(0.98); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  #lv-gallery.open .lvg-img { transform: scale(1); }
+  #lv-gallery .lvg-cap { color: rgba(255,255,255,0.82); font-family: 'Inter', system-ui, sans-serif; font-size: 13.5px; letter-spacing: 0.01em; text-align: center; max-width: 62ch; }
+  .lvg-close { position: fixed; top: 20px; right: 24px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.14); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; z-index: 4301; }
+  .lvg-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.07); }
+  .lvg-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.12); color: #fff; font-size: 30px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease; z-index: 4301; }
+  .lvg-nav:hover { background: rgba(255,255,255,0.28); }
+  .lvg-prev { left: 20px; } .lvg-next { right: 20px; }
+  .lvg-count { position: fixed; bottom: 24px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.55); font-family: 'Inter', system-ui, sans-serif; font-size: 12px; letter-spacing: 0.06em; pointer-events: none; z-index: 4301; }
+  @media (max-width: 640px){ .lvg-nav { width: 42px; height: 42px; font-size: 24px; } .lvg-prev { left: 8px; } .lvg-next { right: 8px; } #lv-gallery .lvg-img { max-width: 92vw; } }
+  @media (prefers-reduced-motion: reduce){ #lv-gallery, #lv-gallery .lvg-img { transition: none; } }
+</style>
+<div id="lv-gallery" role="dialog" aria-modal="true" aria-label="Laurel Village design gallery">
+  <button class="lvg-close" type="button" aria-label="Close gallery (Esc)">&times;</button>
+  <button class="lvg-nav lvg-prev" type="button" aria-label="Previous image">&#8249;</button>
+  <figure class="lvg-fig"><img class="lvg-img" src="" alt="" /><figcaption class="lvg-cap"></figcaption></figure>
+  <button class="lvg-nav lvg-next" type="button" aria-label="Next image">&#8250;</button>
+  <div class="lvg-count"></div>
+</div>
+<script>
+  (function(){
+    var g=document.getElementById('lv-gallery'); if(!g) return;
+    var img=g.querySelector('.lvg-img'), cap=g.querySelector('.lvg-cap'), count=g.querySelector('.lvg-count');
+    var prev=g.querySelector('.lvg-prev'), next=g.querySelector('.lvg-next'), closeB=g.querySelector('.lvg-close');
+    var items=[
+      {src:'assets/lv-design-system.webp', cap:'The design system: type scale, color palette, and logo usage.'},
+      {src:'assets/lv-newsletter-1.webp', cap:'Wednesday Wisdoms, the weekly staff newsletter built straight from the system.'},
+      {src:'assets/lv-newsletter-2.webp', cap:'The same newsletter, page two, in the same visual language.'}
+    ];
+    var idx=0;
+    function render(){ var it=items[idx]; img.src=it.src; img.alt=it.cap; cap.textContent=it.cap; count.textContent=(idx+1)+' / '+items.length; var multi=items.length>1; prev.style.display=multi?'flex':'none'; next.style.display=multi?'flex':'none'; count.style.display=multi?'block':'none'; }
+    function openG(i){ idx=i||0; render(); g.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeG(){ g.classList.remove('open'); document.body.style.overflow=''; }
+    function go(d){ idx=(idx+d+items.length)%items.length; render(); }
+    var tile=document.getElementById('lv-tile');
+    if(tile){ tile.addEventListener('click', function(){ openG(0); }); tile.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openG(0); } }); }
+    prev.addEventListener('click', function(e){ e.stopPropagation(); go(-1); });
+    next.addEventListener('click', function(e){ e.stopPropagation(); go(1); });
+    closeB.addEventListener('click', function(e){ e.stopPropagation(); closeG(); });
+    g.addEventListener('click', function(e){ if(e.target===g) closeG(); });
+    document.addEventListener('keydown', function(e){ if(!g.classList.contains('open')) return; if(e.key==='Escape') closeG(); else if(e.key==='ArrowLeft') go(-1); else if(e.key==='ArrowRight') go(1); });
+  })();
+</script>
 </body>
 </html>

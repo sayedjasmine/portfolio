@@ -1432,6 +1432,7 @@
 .impact-stat{ background:transparent!important; border:none!important; padding:14px 10px!important; }
 @media(max-width:600px){ .impact-number{ font-size:clamp(52px,15vw,84px)!important; } }
 </style>
+<style id="mx-tabfade">@media(max-width:768px){.section-tabs{-webkit-mask-image:linear-gradient(to right,#000 88%,transparent 100%);mask-image:linear-gradient(to right,#000 88%,transparent 100%);}}</style>
 </head>
 <body>
 
@@ -1525,6 +1526,35 @@
       <div class="role-value">Figma, FigJam,<br />Webflow</div>
     </div>
   </div>
+
+  <!-- AT A GLANCE -->
+  <section class="ag-section">
+    <style id="ag-styles">
+      .ag-section{padding:40px 0 12px;}
+      .ag-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+      .ag-eyebrow::before{content:'';width:20px;height:1.5px;background:var(--green);border-radius:2px;}
+      .ag-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+      .ag-col{position:relative;background:var(--white,#fff);border:1px solid rgba(20,20,40,0.07);border-radius:16px;padding:26px 24px;box-shadow:0 6px 20px rgba(20,20,40,0.05);overflow:hidden;transition:transform .3s cubic-bezier(0.16,1,0.3,1),box-shadow .3s ease;}
+      .ag-col:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(20,20,40,0.09);}
+      .ag-col::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green-light);}
+      .ag-col.ag-out{background:var(--green-bg);border-color:var(--green-light);}
+      .ag-col.ag-out::before{background:var(--green);}
+      .ag-num{display:block;font-family:'DM Serif Display',serif;font-size:26px;line-height:1;color:var(--green-light);margin-bottom:13px;}
+      .ag-col.ag-out .ag-num{color:var(--green);}
+      .ag-k{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+      .ag-v{font-size:14px;font-weight:300;color:#33405A;line-height:1.64;}
+      .ag-v strong{font-weight:600;color:var(--dark,#14131F);}
+      @media(max-width:820px){.ag-grid{grid-template-columns:1fr;gap:12px;}}
+    </style>
+    <div class="container fade-in">
+      <div class="ag-eyebrow">At a glance</div>
+      <div class="ag-grid">
+        <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A climate-tech startup's site did not explain what the company did, so investors bounced before they understood the product.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Mapped investor and visitor journeys, then redesigned the site around one job: get an investor to a meeting. I rebuilt the wireframe after the CEO said an early version recreated the problem.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>The redesign supported a $65K seed raise,</strong> reframing the story from 'what does this company do?' into a clear, fundable pitch.</div></div>
+      </div>
+    </div>
+  </section>
 
   <!-- INTRODUCTION -->
   <section id="overview-detail">
@@ -1913,6 +1943,31 @@
     </div>
   </section>
 
+  <!-- SCOPE / WHAT I DIDN'T BUILD -->
+  <section id="scope">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Scope</p>
+      <h2 class="section-title">What I chose <em>not</em> to build.</h2>
+      <p class="body-text">Eight weeks and a seed-stage budget meant every hour spent on one feature was an hour taken from the raise. The journey maps surfaced more opportunities than the timeline could hold, so I ranked them against a single test: does this move an investor closer to a meeting? Three promising ideas failed that test, and waited for a later version.</p>
+    </div>
+    <div class="container-wide fade-in">
+      <div class="opportunity-grid">
+        <div class="opp-card">
+          <div class="opp-category">Deferred · Retention</div>
+          <div class="opp-text">An investor progress dashboard with recurring stat updates. Strong for long-term loyalty, but loyalty is a post-funding problem. The seed round needed the first meeting, not the tenth.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-category">Deferred · Engagement</div>
+          <div class="opp-text">A public progress tracker and shareable infographics for curious visitors. A real growth lever, and a distraction from the one page that had to convert. Parked until the funnel it feeds actually exists.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-category">Deferred · Operations</div>
+          <div class="opp-text">A battery drop-off location finder. Useful, but it depended on logistics data Nexstera did not have yet. Designing a map with no addresses to fill it would have shipped a dead end.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- DESIGN SYSTEM -->
   <section id="design-system">
     <div class="container fade-in">
@@ -1955,6 +2010,33 @@
   </section>
 
   <div class="divider"></div>
+
+  <!-- HANDOFF / SYSTEMS THINKING -->
+  <section id="handoff" style="background: var(--light-bg);">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Systems &amp; Handoff</p>
+      <h2 class="section-title">Designing something the team could <em>actually build.</em></h2>
+      <p class="body-text">Nexstera planned to move the site into Webflow and maintain it themselves. A beautiful file they could not keep up would have been worthless, so I designed for the handoff from the first component, not the last.</p>
+    </div>
+    <div class="container-wide">
+      <div class="features-list fade-in">
+        <div class="feature-row">
+          <div class="feature-icon-box">🧩</div>
+          <div>
+            <div class="feature-name">Components, not one-off screens</div>
+            <div class="feature-desc">Every page drew from one modular set of colors, type, and reusable blocks, so the founders could recombine them in Webflow without redrawing anything.</div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-icon-box">📐</div>
+          <div>
+            <div class="feature-name">A system, not a pile of screenshots</div>
+            <div class="feature-desc">Handing over tokens and repeatable blocks meant the brand stayed consistent as the team added pages I would never touch.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- SOLUTION -->
   <section id="solution">
