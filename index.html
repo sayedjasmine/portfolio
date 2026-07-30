@@ -600,6 +600,22 @@
       box-shadow: none;
     }
 
+    /* Card action row (primary case-study link + secondary code link) */
+    .card-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+    .card-actions .card-link { margin-top: 0; }
+    .card-code-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--dark); background: transparent;
+      border: 1px solid rgba(24,22,26,0.2);
+      padding: 8px 15px; border-radius: 100px;
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+      transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .card-code-chip:hover { border-color: var(--purple); color: var(--purple); background: rgba(107,63,160,0.05); transform: translateY(-1px); }
+    .card-code-chip:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    .card-code-chip svg { width: 15px; height: 15px; flex-shrink: 0; }
+
     /* Per-card preview background colors */
     .card-microsoft .card-preview     { background: #004369; padding: 28px; }
     .card-microsoft .card-preview img { max-width: 100%; max-height: 100%; }
@@ -1447,7 +1463,13 @@
             <div class="card-stat"><span class="num">6</span><span class="lbl">languages</span></div>
             <div class="card-stat"><span class="num">Live</span><span class="lbl">coded build</span></div>
           </div>
-          <div class="card-link">View case study →</div>
+          <div class="card-actions">
+            <div class="card-link">View case study →</div>
+            <span class="card-code-chip" role="link" tabindex="0" data-href="https://github.com/jsayed23/miniproject2" aria-label="View the Saksham coded web version on GitHub">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.55 7.55 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              Code
+            </span>
+          </div>
         </div>
       </a>
 
@@ -1581,6 +1603,13 @@
         else { io.observe(el); }
       });
     })();
+
+    // Secondary "Code" links on cards: open the repo without triggering the card's case-study link
+    document.querySelectorAll('.card-code-chip').forEach(function(chip){
+      function go(e){ e.preventDefault(); e.stopPropagation(); window.open(chip.getAttribute('data-href'), '_blank', 'noopener'); }
+      chip.addEventListener('click', go);
+      chip.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { go(e); } });
+    });
 
     // Stagger cards on first view (per grid)
     document.querySelectorAll('.cards-grid').forEach(grid => {
