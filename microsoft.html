@@ -1177,6 +1177,13 @@
       .next-project { padding: 40px 20px; }
       footer { padding: 18px 20px; }
     }
+  
+    /* Keyboard focus visibility (a11y) */
+    a:focus-visible, button:focus-visible, .tab-link:focus-visible, .card:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 <style id="mx-oversized">
 .impact-number{ font-size:clamp(58px,8.5vw,108px)!important; line-height:.9; letter-spacing:-.02em; color:#7BC0F7; background:linear-gradient(180deg,#ffffff 0%, #7BC0F7 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
@@ -1218,12 +1225,10 @@
   <!-- SECTION TABS -->
   <div class="section-tabs" id="sectionTabs">
     <a href="#overview"     class="tab-link active">Overview</a>
-    <a href="#questions"    class="tab-link">Research Questions</a>
     <a href="#method"       class="tab-link">Method</a>
     <a href="#findings"     class="tab-link">Findings</a>
     <a href="#improvements" class="tab-link">Improvements</a>
     <a href="#impact"       class="tab-link">Impact</a>
-    <a href="#nextsteps"    class="tab-link">Next Steps</a>
     <a href="#reflection"   class="tab-link">Reflection</a>
   </div>
 
@@ -1862,7 +1867,15 @@
         }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    // Reveal anything already in view on load immediately; observe the rest for scroll reveal
+    (function(){
+      var vh0 = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.fade-in').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh0 * 0.95) { el.classList.add('visible'); }
+        else { io.observe(el); }
+      });
+    })();
 
     // Scroll-spy: highlight the active tab
     const tabLinks = document.querySelectorAll('.tab-link');

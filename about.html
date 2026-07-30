@@ -27,7 +27,7 @@
     :root {
       --white: #FFFFFF;
       --dark: #18161A;
-      --mid: #7A7585;
+      --mid: #6A6575;
       --light: #EDE9F5;
       --purple: #6B3FA0;
       --purple-mid: #8B5CC8;
@@ -330,6 +330,13 @@
       .love-media, .love-copy, .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
       .c-slide img { transition: none; }
     }
+  
+    /* Keyboard focus visibility (a11y) */
+    a:focus-visible, button:focus-visible, .tab-link:focus-visible, .card:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -459,7 +466,15 @@
         if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); io.unobserve(e.target); }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    // Reveal anything already in view on load immediately; observe the rest for scroll reveal
+    (function(){
+      var vh0 = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.fade-in').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh0 * 0.95) { el.classList.add('visible'); }
+        else { io.observe(el); }
+      });
+    })();
 
     // Scroll-story panels reveal
     const loveIO = new IntersectionObserver(entries => {

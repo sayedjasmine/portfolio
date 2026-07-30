@@ -29,7 +29,7 @@
       --white: #FFFFFF;
       --off-white: #FAFAFA;
       --dark: #18161A;
-      --mid: #7A7585;
+      --mid: #6A6575;
       --light: #EDE9F5;
       --purple: #6B3FA0;
       --purple-mid: #8B5CC8;
@@ -426,7 +426,7 @@
       text-decoration: none;
       display: flex;
       flex-direction: row;
-      height: 280px;
+      height: 300px;
       border: 1px solid rgba(24,22,26,0.08);
       transition: transform 0.48s cubic-bezier(0.16,1,0.3,1), box-shadow 0.48s cubic-bezier(0.16,1,0.3,1), border-color 0.35s ease;
       box-shadow: 0 2px 20px rgba(24,22,26,0.06);
@@ -523,6 +523,37 @@
       color: var(--mid);
       line-height: 1.6;
       margin: 0;
+    }
+
+    .card-stats {
+      display: flex;
+      gap: 20px;
+      margin: 3px 0;
+      flex-wrap: wrap;
+    }
+    .card-stat { display: flex; flex-direction: column; gap: 2px; }
+    .card-stat .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      line-height: 1;
+      color: var(--purple);
+      white-space: nowrap;
+    }
+    .card-stat .lbl {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--mid);
+      white-space: nowrap;
+    }
+    /* Featured lead card */
+    .card-lead { height: 360px; }
+    .card-lead .card-preview { flex: 0 0 55%; }
+    .card-lead h3 { font-size: 30px; }
+    .card-lead .card-stat .num { font-size: 22px; }
+    @media (max-width: 900px) {
+      .card-lead { height: auto; }
     }
 
     .card-link {
@@ -1237,6 +1268,13 @@
       .contact-btn { padding: 11px 20px; font-size: 13.5px; }
       .contact-links { gap: 8px; }
     }
+  
+    /* Keyboard focus visibility (a11y) */
+    a:focus-visible, button:focus-visible, .tab-link:focus-visible, .card:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 <style id="mx-hero-rot">
 .hero-rot{ display:inline-block; overflow:hidden; height:1.3em; line-height:1.3em; vertical-align:bottom; position:relative; transition:width .5s cubic-bezier(.16,1,.3,1); }
@@ -1306,7 +1344,7 @@
     <div class="cards-grid" id="cardsGrid">
 
       <!-- 1. FOUNDRY MODELS (redesign) -->
-      <a href="foundry-models.html" class="card card-foundry fade-in" data-categories="design ai research">
+      <a href="foundry-models.html" class="card card-foundry card-lead fade-in" data-categories="design ai research">
         <div class="card-preview">
           <img src="assets/foundry-models-project-card.png" alt="Microsoft Foundry Models page redesign" loading="eager" decoding="async" />
         </div>
@@ -1317,6 +1355,11 @@
           </div>
           <h3>Foundry: Models Redesign</h3>
           <p class="card-desc">Turning an 11,000-model catalog on Microsoft Foundry into a filterable, comparable flow. I scoped it to the three decisions that actually blocked model selection: region visibility, live filters, and side-by-side compare, now live in the product.</p>
+          <div class="card-stats">
+            <div class="card-stat"><span class="num">11K+</span><span class="lbl">models in catalog</span></div>
+            <div class="card-stat"><span class="num">3</span><span class="lbl">decisions scoped</span></div>
+            <div class="card-stat"><span class="num">Live</span><span class="lbl">in the product</span></div>
+          </div>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1332,6 +1375,11 @@
           </div>
           <h3>Nox+</h3>
           <p class="card-desc">A privacy-first mobile identity app I designed end to end, leading a team of 4. The pivotal call: we killed two of our own AI features once research showed the real blocker was trust, not convenience.</p>
+          <div class="card-stats">
+            <div class="card-stat"><span class="num">4</span><span class="lbl">team, led</span></div>
+            <div class="card-stat"><span class="num">2</span><span class="lbl">AI features cut</span></div>
+            <div class="card-stat"><span class="num">3</span><span class="lbl">concepts tested</span></div>
+          </div>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1347,6 +1395,11 @@
           </div>
           <h3>Nexstera Tech</h3>
           <p class="card-desc">Eight weeks with a climate-tech founding team. After the CEO said my first version recreated the problem, I rebuilt the site around story and shipped a design system. The clearer story helped close a $65K seed round.</p>
+          <div class="card-stats">
+            <div class="card-stat"><span class="num">$65K</span><span class="lbl">seed round</span></div>
+            <div class="card-stat"><span class="num">8 wk</span><span class="lbl">engagement</span></div>
+            <div class="card-stat"><span class="num">1</span><span class="lbl">design system</span></div>
+          </div>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1362,6 +1415,11 @@
           </div>
           <h3>Foundry: Agent Builder</h3>
           <p class="card-desc">Research I ran that drove the design: 8 of 8 users hit the same Severity-4 blocker, so I turned a deprioritized bug into a priority fix and five design changes for the Foundry team.</p>
+          <div class="card-stats">
+            <div class="card-stat"><span class="num">8/8</span><span class="lbl">users hit blocker</span></div>
+            <div class="card-stat"><span class="num">5</span><span class="lbl">design changes</span></div>
+            <div class="card-stat"><span class="num">Sev-4</span><span class="lbl">bug reprioritized</span></div>
+          </div>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1377,6 +1435,11 @@
           </div>
           <h3>Saksham</h3>
           <p class="card-desc">An accessibility-first learning app for neurodivergent students in India, published in Cal Poly's TAGA 2026 Journal and coded into a live, working web version: read-aloud, dyslexia-friendly type, and learner-set contrast across six languages.</p>
+          <div class="card-stats">
+            <div class="card-stat"><span class="num">6</span><span class="lbl">languages</span></div>
+            <div class="card-stat"><span class="num">Live</span><span class="lbl">coded web build</span></div>
+            <div class="card-stat"><span class="num">TAGA</span><span class="lbl">2026 published</span></div>
+          </div>
           <div class="card-link">View case study →</div>
         </div>
       </a>
@@ -1502,7 +1565,15 @@
         }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    // Reveal anything already in view on load immediately; observe the rest for scroll reveal
+    (function(){
+      var vh0 = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.fade-in').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh0 * 0.95) { el.classList.add('visible'); }
+        else { io.observe(el); }
+      });
+    })();
 
     // Stagger cards on first view (per grid)
     document.querySelectorAll('.cards-grid').forEach(grid => {

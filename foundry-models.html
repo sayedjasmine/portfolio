@@ -420,6 +420,13 @@
       .ia-wrap { padding: 20px 16px 24px; }
       footer { padding: 18px 20px; }
     }
+  
+    /* Keyboard focus visibility (a11y) */
+    a:focus-visible, button:focus-visible, .tab-link:focus-visible, .card:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 <style id="hero-site-css">
     .hero-right { flex-shrink:0; width:560px; margin-left:48px; margin-bottom:8px; z-index:2; display:flex; flex-direction:column; }
@@ -478,13 +485,9 @@
   <!-- SECTION TABS -->
   <div class="section-tabs" id="sectionTabs">
     <a href="#overview"    class="tab-link active">Overview</a>
-    <a href="#objectives"  class="tab-link">Objectives</a>
     <a href="#research"    class="tab-link">Research</a>
-    <a href="#constraints" class="tab-link">Constraints</a>
     <a href="#design"      class="tab-link">Design</a>
     <a href="#prototype"   class="tab-link">Prototype</a>
-    <a href="#live-prototype" class="tab-link">Live</a>
-    <a href="#testing"     class="tab-link">Testing</a>
     <a href="#results"     class="tab-link">Results</a>
     <a href="#takeaways"   class="tab-link">Takeaways</a>
   </div>
@@ -523,7 +526,7 @@
             <div class="hero-browser-dots"><span></span><span></span><span></span></div>
             <div class="hero-browser-url">azure.microsoft.com/en-us/products/ai-foundry</div>
           </div>
-          <img src="assets/Azure-ai-website-demo.webp" alt="Microsoft Azure AI Foundry platform" loading="lazy" decoding="async" />
+          <img src="assets/Azure-ai-website-demo.webp" alt="Microsoft Azure AI Foundry platform" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <div class="hero-site-pill">Explore the live platform <span style="font-size: 13px;">→</span></div>
       </a>
@@ -1088,7 +1091,15 @@
     const io = new IntersectionObserver(entries => {
       entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); io.unobserve(e.target); } });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    // Reveal anything already in view on load immediately; observe the rest for scroll reveal
+    (function(){
+      var vh0 = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.fade-in').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh0 * 0.95) { el.classList.add('visible'); }
+        else { io.observe(el); }
+      });
+    })();
 
     // Section tabs active state
     (function() {

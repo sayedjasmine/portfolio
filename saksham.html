@@ -1391,6 +1391,13 @@
       background: rgba(255,255,255,0.12);
       border-color: rgba(255,255,255,0.5);
     }
+  
+    /* Keyboard focus visibility (a11y) */
+    a:focus-visible, button:focus-visible, .tab-link:focus-visible, .card:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 <style id="mx-oversized">
 .impact-number{ font-size:clamp(58px,8.5vw,108px)!important; line-height:.9; letter-spacing:-.02em; color:#F0B3BE; background:linear-gradient(180deg,#ffffff 0%, #F0B3BE 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
@@ -1432,15 +1439,11 @@
   <!-- SECTION TABS -->
   <div class="section-tabs" id="sectionTabs">
     <a href="#overview"  class="tab-link active">Overview</a>
-    <a href="#problem"   class="tab-link">Problem</a>
     <a href="#research"  class="tab-link">Research</a>
-    <a href="#insights"  class="tab-link">Insights</a>
     <a href="#design"    class="tab-link">Design Process</a>
-    <a href="#decisions" class="tab-link">Decisions</a>
     <a href="#accessibility" class="tab-link">Accessibility</a>
     <a href="#solution"  class="tab-link">Solution</a>
     <a href="#impact"    class="tab-link">Impact</a>
-    <a href="#reflection" class="tab-link">Reflection</a>
   </div>
 
   <!-- HERO -->
@@ -2108,7 +2111,15 @@
         }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    // Reveal anything already in view on load immediately; observe the rest for scroll reveal
+    (function(){
+      var vh0 = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.fade-in').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh0 * 0.95) { el.classList.add('visible'); }
+        else { io.observe(el); }
+      });
+    })();
 
     // Scroll-spy: highlight the active tab
     const tabLinks = document.querySelectorAll('.tab-link');
