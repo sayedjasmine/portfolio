@@ -1859,8 +1859,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       </div>
     </div>
     <div class="hero-figma">
-      <div class="hero-figma-frame">
-        <iframe src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?node-id=363-45&page-id=363%3A36&starting-point-node-id=473%3A54&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen loading="lazy" title="Nexstera Tech interactive Figma prototype"></iframe>
+      <div class="hero-figma-frame figma-embed" role="button" tabindex="0" aria-label="Load the interactive Nexstera Tech prototype" data-src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?node-id=363-45&page-id=363%3A36&starting-point-node-id=473%3A54&scaling=scale-down&content-scaling=fixed&embed-host=share" data-title="Nexstera Tech interactive Figma prototype">
+        <img class="fe-poster" src="assets/nexstera-mockup-trim.webp" alt="Preview of the Nexstera Tech website prototype">
+        <div class="fe-cta"><span class="fe-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="fe-hint">Tap to load prototype</span></div>
       </div>
       <div class="hero-figma-caption">Live Figma prototype · tap the in-app tabs to move through the flow</div>
     </div>
@@ -2353,8 +2354,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
     <!-- Figma Prototype -->
     <div class="container-wide fade-in" id="prototype">
-      <div class="mockup-showcase" style="border-radius:20px;overflow:hidden;border:1px solid rgba(62,92,118,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);">
-        <iframe style="border:1px solid rgba(0,0,0,0.1);width:100%;height:640px;display:block;" src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?content-scaling=fixed&embed_origin=cdn.embedly.com&kind=proto&node-id=363-45&page-id=363%3A36&scaling=scale-down&show-proto-sidebar=1&starting-point-node-id=473%3A54&embed-host=share" allowfullscreen></iframe>
+      <div class="mockup-showcase figma-embed" role="button" tabindex="0" aria-label="Load the interactive Nexstera Tech prototype" data-src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?content-scaling=fixed&embed_origin=cdn.embedly.com&kind=proto&node-id=363-45&page-id=363%3A36&scaling=scale-down&show-proto-sidebar=1&starting-point-node-id=473%3A54&embed-host=share" data-title="Nexstera Tech interactive Figma prototype" style="border-radius:20px;overflow:hidden;border:1px solid rgba(62,92,118,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);height:640px;background:#12172A;">
+        <img class="fe-poster" src="assets/nexstera-mockup-trim.webp" alt="Preview of the Nexstera Tech website prototype">
+        <div class="fe-cta"><span class="fe-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="fe-hint">Tap to load prototype</span></div>
       </div>
 
       <!-- Key Features -->
@@ -2415,6 +2417,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
           <div class="impact-label">drop in bounce rate on the investor page</div>
         </div>
       </div>
+      <p class="figcap" style="text-align:center; margin-top:22px;">Figures shared by Nexstera's founders from their own site analytics over the first quarter after launch (Jan–Mar), directional signals rather than a controlled study.</p>
     </div>
   </section>
 
@@ -2439,8 +2442,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Foundry: <em>Agent Builder</em></div>
-    <a href="microsoft.html" class="next-btn">View case study →</a>
+    <div class="next-title">Saksham: <em>Inclusive Learning for All</em></div>
+    <a href="saksham.html" class="next-btn">View case study →</a>
   </div>
 
   <!-- NAV CARDS -->
@@ -2769,5 +2772,36 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   document.addEventListener('mouseover',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var t=labelFor(el); if(t){ label.textContent=t; label.classList.add('show'); } } },{passive:true});
   document.addEventListener('mouseout',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var to=e.relatedTarget; if(!to||!el.contains(to)) label.classList.remove('show'); } },{passive:true});
 })();</script>
+<style id="figma-facade-css">
+.figma-embed{ position:relative; cursor:pointer; }
+.figma-embed .fe-poster{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; z-index:0; }
+.figma-embed .fe-cta{ position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; background:rgba(10,14,28,0.34); transition:background .25s ease; }
+.figma-embed:hover .fe-cta, .figma-embed:focus-visible .fe-cta{ background:rgba(10,14,28,0.16); }
+.figma-embed:focus-visible{ outline:3px solid #A9C0DA; outline-offset:3px; }
+.figma-embed .fe-play{ width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,0.96); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 34px rgba(0,0,0,0.4); transition:transform .25s ease; }
+.figma-embed:hover .fe-play{ transform:scale(1.06); }
+.figma-embed .fe-play svg{ width:24px; height:24px; margin-left:3px; fill:#14182B; }
+.figma-embed .fe-hint{ font-family:var(--mono, 'JetBrains Mono', monospace); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#fff; }
+.figma-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:none; display:block; z-index:3; background:transparent; }
+</style>
+<script id="figma-facade-js">
+(function(){
+  var nodes=document.querySelectorAll('.figma-embed');
+  nodes.forEach(function(el){
+    function load(){
+      if(el.dataset.loaded) return; el.dataset.loaded='1';
+      var f=document.createElement('iframe');
+      f.src=el.dataset.src; f.setAttribute('allowfullscreen','');
+      f.setAttribute('title', el.dataset.title || 'Figma prototype');
+      f.setAttribute('loading','eager');
+      el.appendChild(f);
+      var cta=el.querySelector('.fe-cta'); if(cta) cta.style.display='none';
+      el.style.cursor='default';
+    }
+    el.addEventListener('click', load);
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+  });
+})();
+</script>
 </body>
 </html>
