@@ -13,12 +13,12 @@
   <meta name="twitter:title" content="Foundry Models · Product Design Case Study | Jasmine Sayed" />
   <meta name="twitter:description" content="Redesigning how developers discover, evaluate, and select AI models on Microsoft Foundry." />
   <meta name="author" content="Jasmine Sayed" />
-  <meta name="theme-color" content="#4F46E5" />
+  <meta name="theme-color" content="#2D5A82" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,17 +26,17 @@
       --white: #FFFFFF;
       --dark: #14131F;
       --mid: #6A6580;
-      --light-bg: #F6F5FC;
-      --indigo: #4F46E5;
-      --indigo-mid: #6C63F0;
-      --indigo-light: #A9A2F5;
-      --indigo-pale: #E9E7FB;
-      --indigo-bg: #F1F0FC;
-      --violet: #8B5CC8;
-      --line: rgba(79,70,229,0.12);
+      --light-bg: #F5F7FC;
+      --indigo: #2D5A82;
+      --indigo-mid: #4E6E8E;
+      --indigo-light: #A9C0DA;
+      --indigo-pale: #EDF1FF;
+      --indigo-bg: #EEF1F6;
+      --violet: #4E6E8E;
+      --line: rgba(62,92,118,0.12);
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 118px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 0px; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -100,7 +100,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 62vh;
-      background: linear-gradient(155deg, #0A0912 0%, #14122B 38%, #2A2170 74%, #4F46E5 100%);
+      background: linear-gradient(155deg, #0B0F1E 0%, #141A30 38%, #22303F 74%, #2D5A82 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -118,16 +118,16 @@
       pointer-events: none;
     }
     .hero-glow { position: absolute; border-radius: 50%; pointer-events: none; }
-    .hero-glow-1 { width: 520px; height: 520px; top: -90px; right: -70px; background: radial-gradient(circle, rgba(169,162,245,0.28) 0%, transparent 60%); }
-    .hero-glow-2 { width: 360px; height: 360px; bottom: -40px; left: 12%; background: radial-gradient(circle, rgba(108,99,240,0.4) 0%, transparent 65%); }
+    .hero-glow-1 { width: 520px; height: 520px; top: -90px; right: -70px; background: radial-gradient(circle, rgba(169,192,218,0.28) 0%, transparent 60%); }
+    .hero-glow-2 { width: 360px; height: 360px; bottom: -40px; left: 12%; background: radial-gradient(circle, rgba(78,110,142,0.4) 0%, transparent 65%); }
 
-    .hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(169,162,245,0.85); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; position: relative; }
-    .hero-tag::before { content: ''; width: 24px; height: 1px; background: rgba(169,162,245,0.6); }
-    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(44px, 7vw, 96px); font-weight: 400; color: white; line-height: 0.96; margin-bottom: 26px; position: relative; }
+    .hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(169,192,218,0.85); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; position: relative; }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: rgba(169,192,218,0.6); }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(44px, 7vw, 96px); font-weight: 400; color: white; line-height: 0.96; margin-bottom: 26px; position: relative; }
     .hero h1 em { color: var(--indigo-light); font-style: italic; }
     .hero-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.66); max-width: 640px; line-height: 1.72; margin-bottom: 20px; position: relative; }
     .hero-meta { display: flex; gap: 34px; flex-wrap: wrap; position: relative; }
-    .hero-meta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(169,162,245,0.6); margin-bottom: 5px; }
+    .hero-meta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(169,192,218,0.6); margin-bottom: 5px; }
     .hero-meta-value { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.88); }
 
     .hero-visual { flex-shrink: 0; width: 560px; margin-left: 48px; z-index: 2; position: relative; }
@@ -140,12 +140,12 @@
       text-decoration: none; padding: 9px 18px; border-radius: 100px;
       transition: all 0.25s ease;
     }
-    .hero-cta.primary { color: #0A0912; background: var(--indigo-light); border: 1px solid var(--indigo-light); }
+    .hero-cta.primary { color: #0B0F1E; background: var(--indigo-light); border: 1px solid var(--indigo-light); }
     .hero-cta.primary:hover { background: white; border-color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
 
     /* ── BROWSER FRAME (shared) ── */
-    .browser-frame { border-radius: 12px; overflow: hidden; box-shadow: 0 24px 70px rgba(10,9,18,0.45), 0 0 0 1px rgba(255,255,255,0.06); background: #16151F; }
-    .browser-bar { display: flex; align-items: center; gap: 8px; padding: 9px 14px; background: #16151F; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .browser-frame { border-radius: 12px; overflow: hidden; box-shadow: 0 24px 70px rgba(10,9,18,0.45), 0 0 0 1px rgba(255,255,255,0.06); background: #171A22; }
+    .browser-bar { display: flex; align-items: center; gap: 8px; padding: 9px 14px; background: #171A22; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .browser-dots { display: flex; gap: 6px; }
     .browser-dots span { width: 9px; height: 9px; border-radius: 50%; }
     .browser-dots span:nth-child(1) { background: #ff5f57; }
@@ -156,7 +156,7 @@
     /* ── SCREENSHOT FIGURES ── */
     .figure { margin: 20px auto; max-width: 720px; }
     .shot { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 12px 32px rgba(20,19,31,0.1); background: #fff; display: flex; justify-content: center; }
-    .shot.framed { box-shadow: 0 16px 40px rgba(20,19,31,0.14), 0 0 0 1px rgba(79,70,229,0.06); }
+    .shot.framed { box-shadow: 0 16px 40px rgba(20,19,31,0.14), 0 0 0 1px rgba(62,92,118,0.06); }
     .shot img { width: 100%; height: auto; display: block; }
     .shot.tall { width: fit-content; max-width: 100%; margin: 0 auto; }
     .shot.tall img { width: auto; max-width: 100%; max-height: 440px; }
@@ -170,11 +170,11 @@
     .browser-frame .shot-inner img { width: 100%; height: auto; display: block; }
 
     /* ── LIVE EMBED ── */
-    .embed-frame { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 70px rgba(20,19,31,0.2), 0 0 0 1px rgba(79,70,229,0.08); background: #16151F; }
+    .embed-frame { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 70px rgba(20,19,31,0.2), 0 0 0 1px rgba(62,92,118,0.08); background: #171A22; }
     .embed-frame iframe { width: 100%; height: 520px; border: 0; display: block; background: #fff; }
     .embed-open { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--indigo); text-decoration: none; margin-top: 14px; }
     .embed-open:hover { gap: 12px; }
-    .proto-wrap { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.06); border: 1px solid rgba(169,162,245,0.16); padding: 26px; }
+    .proto-wrap { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.06); border: 1px solid rgba(169,192,218,0.16); padding: 26px; }
     .proto-label { text-align: center; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo-light); margin-bottom: 14px; }
     .proto-note { font-size: 13px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.62); text-align: center; max-width: 700px; margin: 0 auto 18px; }
     .proto-note strong { color: rgba(255,255,255,0.88); font-weight: 500; }
@@ -191,7 +191,7 @@
     .section-eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--indigo); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
     .section-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--indigo); border-radius: 2px; }
 
-    h2.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 400; line-height: 1.12; color: var(--dark); margin-bottom: 18px; }
+    h2.section-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 400; line-height: 1.12; color: var(--dark); margin-bottom: 18px; }
     h2.section-title em { font-style: italic; color: var(--indigo); }
     h3.sub-heading { font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 14px; margin-top: 30px; }
     p.body-text { font-size: 16px; font-weight: 300; color: #3B3747; line-height: 1.82; margin-bottom: 14px; }
@@ -206,7 +206,7 @@
     /* ── OBJECTIVE CARDS ── */
     .obj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 24px 0; }
     .obj-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s; }
-    .obj-card:hover { border-color: var(--indigo-mid); box-shadow: 0 10px 30px rgba(79,70,229,0.1); transform: translateY(-4px); }
+    .obj-card:hover { border-color: var(--indigo-mid); box-shadow: 0 10px 30px rgba(62,92,118,0.1); transform: translateY(-4px); }
     .obj-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--indigo-bg); display: flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 14px; }
     .obj-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
     .obj-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; }
@@ -255,13 +255,13 @@
     .method-list li::before { content: '–'; color: var(--indigo-light); flex-shrink: 0; }
 
     /* ── IA TREE ── */
-    .ia-wrap { background: #F6F5FC; border: 1px solid var(--line); border-radius: 20px; padding: 26px 28px 30px; margin: 22px auto; max-width: 920px; overflow-x: auto; background-image: radial-gradient(rgba(79,70,229,0.07) 1.2px, transparent 1.2px); background-size: 20px 20px; }
+    .ia-wrap { background: #F5F7FC; border: 1px solid var(--line); border-radius: 20px; padding: 26px 28px 30px; margin: 22px auto; max-width: 920px; overflow-x: auto; background-image: radial-gradient(rgba(62,92,118,0.07) 1.2px, transparent 1.2px); background-size: 20px 20px; }
     .ia-cap { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); margin-bottom: 22px; }
     .ia-cols { display: flex; gap: 18px; min-width: 640px; align-items: flex-start; }
     .ia-col { flex: 1; display: flex; flex-direction: column; gap: 9px; }
-    .ia-col.g1 { --g: #4F46E5; }
-    .ia-col.g2 { --g: #1D9E75; }
-    .ia-col.g3 { --g: #8B5CC8; }
+    .ia-col.g1 { --g: #2D5A82; }
+    .ia-col.g2 { --g: #3E6E9A; }
+    .ia-col.g3 { --g: #4E6E8E; }
     .ia-root { background: var(--g); color: #fff; font-size: 12.5px; font-weight: 700; letter-spacing: 0.03em; text-align: center; padding: 11px 10px; border-radius: 10px; box-shadow: 0 6px 16px rgba(20,19,31,0.16); margin-bottom: 3px; }
     .ia-node { position: relative; background: #fff; border: 1px solid rgba(20,19,31,0.08); border-left: 3px solid var(--g); color: var(--dark); font-size: 11.5px; padding: 9px 26px 9px 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(20,19,31,0.07); }
     .ia-node::after { content: '⠿'; position: absolute; right: 9px; top: 50%; transform: translateY(-50%); color: rgba(20,19,31,0.2); font-size: 12px; }
@@ -271,13 +271,13 @@
     /* ── PERSONAS ── */
     .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 24px 0; }
     .persona-card { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--white); transition: transform 0.3s, box-shadow 0.3s, border-color 0.2s; }
-    .persona-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(79,70,229,0.1); border-color: var(--indigo-mid); }
+    .persona-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(62,92,118,0.1); border-color: var(--indigo-mid); }
     .persona-card.primary { border-color: var(--indigo); box-shadow: 0 0 0 1px var(--indigo); }
     .persona-top { padding: 20px 22px 16px; background: var(--indigo-bg); position: relative; }
-    .persona-card.primary .persona-top { background: linear-gradient(135deg, #ECE9FC, #DED9FA); }
+    .persona-card.primary .persona-top { background: linear-gradient(135deg, #E8EDF3, #C9D6E4); }
     .persona-badge { position: absolute; top: 14px; right: 14px; font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--indigo); padding: 3px 9px; border-radius: 100px; }
-    .persona-emoji { width: 46px; height: 46px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(79,70,229,0.12); }
-    .persona-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--dark); line-height: 1.1; }
+    .persona-emoji { width: 46px; height: 46px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(62,92,118,0.12); }
+    .persona-name { font-family: 'Fraunces', serif; font-size: 20px; color: var(--dark); line-height: 1.1; }
     .persona-role { font-size: 12px; color: var(--indigo); margin-top: 3px; }
     .persona-body { padding: 18px 22px 22px; }
     .persona-quote { font-size: 13px; font-style: italic; font-weight: 300; color: #3B3747; line-height: 1.6; margin-bottom: 14px; }
@@ -287,10 +287,10 @@
     /* ── FEATURE / DESIGN DECISION ── */
     .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin: 30px 0; }
     .feature.flip .feature-visual { order: 2; }
-    .feature-num { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--indigo-light); line-height: 1; margin-bottom: 10px; }
+    .feature-num { font-family: 'Fraunces', serif; font-size: 34px; color: var(--indigo-light); line-height: 1; margin-bottom: 10px; }
     .feature h3 { font-size: 21px; font-weight: 600; color: var(--dark); margin-bottom: 12px; line-height: 1.25; }
     .feature p { font-size: 14.5px; font-weight: 300; color: #3B3747; line-height: 1.75; }
-    .feature-visual .browser-frame { box-shadow: 0 18px 48px rgba(20,19,31,0.18), 0 0 0 1px rgba(79,70,229,0.06); }
+    .feature-visual .browser-frame { box-shadow: 0 18px 48px rgba(20,19,31,0.18), 0 0 0 1px rgba(62,92,118,0.06); }
 
     /* callout chips (sketch annotations) */
     .anno-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
@@ -303,7 +303,7 @@
     .test-name { font-size: 15px; font-weight: 600; color: var(--dark); }
 
     /* ── IMPACT ── */
-    .impact-section { background: linear-gradient(145deg, #0A0912, #14122B); padding: 66px 0; }
+    .impact-section { background: linear-gradient(145deg, #0B0F1E, #141A30); padding: 66px 0; }
     .impact-section .section-eyebrow { color: var(--indigo-light); }
     .impact-section .section-eyebrow::before { background: var(--indigo-light); }
     .impact-section h2.section-title { color: white; }
@@ -311,34 +311,34 @@
     .impact-section p.body-text { color: rgba(255,255,255,0.62); }
     .impact-section p.body-text strong { color: white; }
     .impact-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 32px 0; }
-    .impact-stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(169,162,245,0.18); border-radius: 20px; padding: 38px 30px; text-align: center; transition: background 0.2s; }
+    .impact-stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(169,192,218,0.18); border-radius: 20px; padding: 38px 30px; text-align: center; transition: background 0.2s; }
     .impact-stat:hover { background: rgba(255,255,255,0.08); }
-    .impact-number { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 5vw, 62px); font-weight: 400; color: var(--indigo-light); line-height: 1; margin-bottom: 14px; }
+    .impact-number { font-family: 'Fraunces', serif; font-size: clamp(40px, 5vw, 62px); font-weight: 400; color: var(--indigo-light); line-height: 1; margin-bottom: 14px; }
     .impact-label { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,0.58); line-height: 1.6; }
-    .validation { margin-top: 26px; background: rgba(255,255,255,0.05); border: 1px solid rgba(169,162,245,0.22); border-left: 3px solid var(--indigo-light); border-radius: 0 16px 16px 0; padding: 24px 30px; }
+    .validation { margin-top: 26px; background: rgba(255,255,255,0.05); border: 1px solid rgba(169,192,218,0.22); border-left: 3px solid var(--indigo-light); border-radius: 0 16px 16px 0; padding: 24px 30px; }
     .validation-eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--indigo-light); margin-bottom: 10px; }
     .validation-text { font-size: 15.5px; font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.7; }
     .validation-text strong { color: #fff; font-weight: 500; }
 
     /* prototype CTA banner */
-    .proto-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: rgba(255,255,255,0.04); border: 1px solid rgba(169,162,245,0.2); border-radius: 18px; padding: 26px 30px; margin-top: 28px; }
+    .proto-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: rgba(255,255,255,0.04); border: 1px solid rgba(169,192,218,0.2); border-radius: 18px; padding: 26px 30px; margin-top: 28px; }
     .proto-cta-text h4 { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 6px; }
     .proto-cta-text p { color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 300; }
-    .proto-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #0A0912; background: var(--indigo-light); text-decoration: none; padding: 13px 26px; border-radius: 100px; white-space: nowrap; transition: background 0.2s, gap 0.25s, transform 0.2s; }
+    .proto-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #0B0F1E; background: var(--indigo-light); text-decoration: none; padding: 13px 26px; border-radius: 100px; white-space: nowrap; transition: background 0.2s, gap 0.25s, transform 0.2s; }
     .proto-btn:hover { background: #fff; gap: 15px; transform: translateY(-2px); }
 
     /* ── REFLECTION ── */
     .reflection-section { background: var(--light-bg); padding: 62px 0; }
     .take-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 24px 0; }
     .take-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; }
-    .take-num { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--indigo-light); line-height: 1; margin-bottom: 12px; }
+    .take-num { font-family: 'Fraunces', serif; font-size: 30px; color: var(--indigo-light); line-height: 1; margin-bottom: 12px; }
     .take-text { font-size: 14.5px; font-weight: 300; color: #3B3747; line-height: 1.7; }
     .take-text strong { color: var(--dark); font-weight: 600; }
 
     /* ── NEXT PROJECT ── */
     .next-project { padding: 46px 60px; text-align: center; border-top: 1px solid var(--line); }
     .next-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
-    .next-title { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3.5vw, 48px); font-weight: 400; color: var(--dark); margin-bottom: 28px; }
+    .next-title { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.5vw, 48px); font-weight: 400; color: var(--dark); margin-bottom: 28px; }
     .next-title em { font-style: italic; color: var(--indigo); }
     .next-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: white; background: var(--indigo); text-decoration: none; padding: 14px 30px; border-radius: 100px; transition: background 0.2s, gap 0.25s; }
     .next-btn:hover { background: var(--indigo-mid); gap: 18px; }
@@ -349,7 +349,7 @@
     .nav-card:hover { background: var(--indigo); border-color: var(--indigo); box-shadow: 0 14px 34px rgba(20,19,31,0.08); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
     .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo); transition: color 0.25s ease; }
-    .nav-card-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-title { font-family: 'Fraunces', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
     .nav-card-arrow { font-size: 18px; color: var(--indigo); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
     .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
     .nav-card:hover .nav-card-title { color: #fff; }
@@ -432,8 +432,8 @@
     .hero-right { flex-shrink:0; width:560px; margin-left:48px; margin-bottom:8px; z-index:2; display:flex; flex-direction:column; }
     .hero-site-card { text-decoration:none; display:block; position:relative; transition:transform 0.3s ease; text-align:center; }
     .hero-site-card:hover { transform:translateY(-4px); }
-    .hero-browser-frame { border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06); background:#16151F; }
-    .hero-browser-bar { display:flex; align-items:center; gap:8px; padding:10px 14px; background:#16151F; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .hero-browser-frame { border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06); background:#171A22; }
+    .hero-browser-bar { display:flex; align-items:center; gap:8px; padding:10px 14px; background:#171A22; border-bottom:1px solid rgba(255,255,255,0.06); }
     .hero-browser-dots { display:flex; gap:6px; }
     .hero-browser-dots span { width:9px; height:9px; border-radius:50%; }
     .hero-browser-dots span:nth-child(1){ background:#ff5f57; }
@@ -441,18 +441,304 @@
     .hero-browser-dots span:nth-child(3){ background:#28c840; }
     .hero-browser-url { flex:1; background:rgba(255,255,255,0.06); border-radius:6px; padding:5px 12px; font-size:11px; color:rgba(255,255,255,0.45); font-family:'JetBrains Mono', monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .hero-browser-frame img { width:100%; display:block; }
-    .hero-site-pill { display:inline-flex; align-items:center; gap:6px; margin-top:14px; padding:8px 20px; background:rgba(169,162,245,0.1); border:1px solid rgba(169,162,245,0.18); border-radius:999px; font-size:12px; font-weight:500; color:rgba(169,162,245,0.85); letter-spacing:0.02em; transition:all 0.25s ease; align-self:center; }
-    .hero-site-card:hover .hero-site-pill { background:var(--indigo-light); border-color:var(--indigo-light); color:#0A0912; }
+    .hero-site-pill { display:inline-flex; align-items:center; gap:6px; margin-top:14px; padding:8px 20px; background:rgba(169,192,218,0.1); border:1px solid rgba(169,192,218,0.18); border-radius:999px; font-size:12px; font-weight:500; color:rgba(169,192,218,0.85); letter-spacing:0.02em; transition:all 0.25s ease; align-self:center; }
+    .hero-site-card:hover .hero-site-pill { background:var(--indigo-light); border-color:var(--indigo-light); color:#0B0F1E; }
     .hero-skip { display:inline-flex; align-items:center; gap:7px; align-self:center; margin-top:11px; padding:8px 18px; border-radius:100px; font-size:12.5px; font-weight:500; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); text-decoration:none; transition:all .25s ease; }
-    .hero-skip:hover { background:rgba(169,162,245,0.16); border-color:rgba(169,162,245,0.4); color:#fff; gap:11px; }
+    .hero-skip:hover { background:rgba(169,192,218,0.16); border-color:rgba(169,192,218,0.4); color:#fff; gap:11px; }
     @media (max-width:960px){ .hero-right{ width:100%; margin-left:0; margin-top:34px; } .hero-browser-frame{ border-radius:10px; } }
 </style>
 <style id="mx-oversized">
-.impact-number{ font-size:clamp(58px,8.5vw,108px)!important; line-height:.9; letter-spacing:-.02em; color:#A9A2F5; background:linear-gradient(180deg,#ffffff 0%, #A9A2F5 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.impact-number{ font-size:clamp(58px,8.5vw,108px)!important; line-height:.9; letter-spacing:-.02em; color:#A9C0DA; background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .impact-stat{ background:transparent!important; border:none!important; padding:14px 10px!important; }
 @media(max-width:600px){ .impact-number{ font-size:clamp(52px,15vw,84px)!important; } }
 </style>
 <style id="mx-tabfade">@media(max-width:768px){.section-tabs{-webkit-mask-image:linear-gradient(to right,#000 88%,transparent 100%);mask-image:linear-gradient(to right,#000 88%,transparent 100%);}}</style>
+<style id="revamp-2026">
+/* =====================================================================
+   2026 REDESIGN LAYER v2 - accessible neutral system + blue accent,
+   with full DARK / LIGHT theming (follows system, manual toggle).
+   Loaded last so it wins. Legacy purple/indigo tokens are remapped onto
+   the new accent so the whole site re-skins from here.
+   ===================================================================== */
+:root, html[data-theme="light"]{
+  color-scheme:light;
+  --bg:#F4F4F2; --surface:#FFFFFF; --surface-2:#ECECEA; --surface-3:#E3E3E0;
+  --text:#18181B; --muted:#565660; --border:rgba(20,20,25,0.12);
+  --accent:#2D5A82; --accent-strong:#234A6E; --accent-weak:#E8EDF3; --on-accent:#FFFFFF; --accent-text:#2A5378;
+  --hero-grad:linear-gradient(155deg,#0B0C10 0%,#14161C 42%,#1C2740 76%,#2B3E6B 100%);
+  --hero-text:#F5F6F8; --hero-accent:#A9C0DA; --hero-muted:rgba(255,255,255,0.72);
+  --footer-bg:#111114; --panel-dark:#14161C;
+  --display:'Fraunces',Georgia,serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  /* legacy remaps */
+  --paper:var(--bg); --off-white:var(--surface); --light:var(--surface-2); --white:#FFFFFF;
+  --mid:var(--muted); --ink:var(--text); --dark:var(--text);
+  --purple:var(--accent); --purple-mid:var(--accent-text); --purple-light:var(--hero-accent); --purple-bg:var(--accent-weak);
+  --indigo:var(--accent); --indigo-light:var(--hero-accent); --indigo-bg:var(--accent-weak); --line:var(--border);
+  --rose:var(--accent-text); --coral:var(--accent-text); --green:var(--accent); --azure:var(--accent);
+  --light-bg:var(--surface-2); --shot-bg:linear-gradient(158deg,#EEF0F5 0%,#E1E4EC 100%);
+  --blue:var(--accent); --blue-mid:var(--accent); --teal:var(--accent-text); --sky:var(--accent); --violet:var(--accent);
+  --indigo-bg:var(--accent-weak); --green-bg:var(--accent-weak); --blue-bg:var(--accent-weak); --rose-bg:var(--accent-weak); --teal-bg:var(--accent-weak);
+  --indigo-light:var(--hero-accent); --green-light:var(--hero-accent); --blue-light:var(--hero-accent); --rose-light:var(--hero-accent); --teal-light:var(--hero-accent); --coral-light:var(--hero-accent);
+}
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731;
+  --text:#ECEDEF; --muted:#A4A5AF; --border:rgba(255,255,255,0.13);
+  --accent:#8CA6C2; --accent-strong:#8AA1FF; --accent-weak:#1A2036; --on-accent:#0B0C10; --accent-text:#93A9FF;
+  --hero-grad:linear-gradient(155deg,#070809 0%,#0F1116 42%,#151D2E 76%,#213152 100%);
+  --hero-text:#F5F6F8; --hero-accent:#A9C0DA; --hero-muted:rgba(255,255,255,0.74);
+  --footer-bg:#070809; --panel-dark:#111319; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
+  --paper:var(--bg); --off-white:var(--surface); --light:var(--surface-2); --white:#FFFFFF;
+  --mid:var(--muted); --ink:var(--text); --dark:var(--text);
+  --purple:var(--accent); --purple-mid:var(--accent-text); --purple-light:var(--hero-accent); --purple-bg:var(--accent-weak);
+  --indigo:var(--accent); --indigo-light:var(--hero-accent); --indigo-bg:var(--accent-weak); --line:var(--border);
+  --rose:var(--accent-text); --coral:var(--accent-text); --green:var(--accent); --azure:var(--accent);
+}
+
+/* ---- Base ---- */
+html,body{ background:var(--bg); }
+body{ color:var(--text); -webkit-font-smoothing:antialiased; }
+::selection{ background:var(--accent); color:#fff; }
+
+/* ---- Display + eyebrow system ---- */
+.hero-headline h1,.hero h1,.contact-section h2,.card h3,h1.section-title,h2.section-title{
+  font-family:var(--display); font-optical-sizing:auto; letter-spacing:-0.014em; }
+.hero-headline h1 em,.contact-section h2 em{ font-style:italic; font-weight:500; }
+.hero-headline h1 em{ color:var(--accent); }
+.section-label,.card-tag,.card-stat .lbl,.role-label,.section-eyebrow,.footer-left,.footer-right{
+  font-family:var(--mono); letter-spacing:0.05em; }
+.section-label{ color:var(--text); font-weight:500; font-size:12px; text-transform:uppercase; }
+.section-label::after{ background:var(--accent); opacity:0.55; height:1.5px; }
+.card-tag{ color:var(--muted); font-weight:500; }
+
+/* ---- CTAs: blue accent button, works both modes ---- */
+.hero-cta, .resume-btn, .cs-cta, .hero-cta-primary{ border-radius:11px !important; }
+.hero-cta-primary{ background:var(--accent) !important; border-color:var(--accent) !important; color:var(--on-accent) !important; }
+.hero-cta-primary:hover{ background:var(--accent-strong) !important; border-color:var(--accent-strong) !important; }
+.status-pill{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.03em; color:var(--muted); }
+
+/* ---- Content surfaces flip with theme ---- */
+.card, .card-info{ background:var(--surface) !important; border-color:var(--border); color:var(--text); }
+.card{ border-radius:16px; border:1px solid var(--border); }
+.card:hover{ border-color:var(--accent); }
+.card-desc{ color:var(--muted) !important; }
+.card-stat .num{ font-family:var(--display); color:var(--accent-text); font-weight:500; }
+.nav-card, .more-card, .more-card-inner{ background:var(--surface) !important; border-color:var(--border) !important; }
+.nav-card:hover{ background:var(--accent) !important; border-color:var(--accent) !important; }
+.exp-section, .about-teaser{ background:var(--bg) !important; }
+.exp-row, .exp-card, .quick-fact, .quick-fact-card{ background:var(--surface) !important; border-color:var(--border) !important; }
+.shot, .shot.framed{ background:var(--surface) !important; border-color:var(--border) !important; }
+
+/* case-study content panels */
+.ag-col{ background:var(--surface) !important; border-color:var(--border) !important; }
+.ag-col.ag-out{ background:var(--accent-weak) !important; border-color:var(--border) !important; }
+.ag-num, .decision-num, .take-num{ color:var(--text) !important; }
+.ag-k, .ag-eyebrow{ color:var(--accent-text) !important; }
+html[data-theme="dark"] .decision-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .method-card, html[data-theme="dark"] .persona-card, html[data-theme="dark"] .test-card, html[data-theme="dark"] .take-card, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .insight-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row, html[data-theme="dark"] .doc-card, html[data-theme="dark"] .metric-card, html[data-theme="dark"] .opp-card{ background:var(--surface) !important; border-color:var(--border) !important; }
+html[data-theme="dark"] .insight-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .problem-card *{ color:var(--text); }
+.ds-section-label{ color:var(--text) !important; }
+.problem-num, .insight-num, .opp-num, .method-num{ color:var(--muted) !important; opacity:.55; }
+
+/* ---- Metadata / muted text ---- */
+.card-stat .lbl, .hero-meta-label{ color:var(--muted); }
+
+/* ---- Nav: theme surface, opaque (no ghosting) ---- */
+nav{ background:var(--bg) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; border-bottom:1px solid var(--border); padding-top:16px !important; padding-bottom:16px !important; }
+nav.scrolled{ background:var(--bg) !important; box-shadow:0 4px 20px rgba(0,0,0,0.10); padding-top:16px !important; padding-bottom:16px !important; }
+nav ul a, .nav-right a, .nav-back{ color:var(--muted); }
+nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
+
+/* ---- Sticky case-study sub-nav ---- */
+.section-tabs{ top:50px !important; background:var(--bg) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:0 1px 0 var(--border), 0 6px 16px rgba(0,0,0,0.06); }
+.tab-link{ color:var(--muted); }
+.tab-link.active, .tab-link:hover{ color:var(--accent); }
+
+/* ---- Case-study heroes (contain .hero-sub): unified neutral-dark + blue, dark in BOTH modes ---- */
+.hero:has(.hero-sub){ background:var(--hero-grad) !important; }
+.hero:has(.hero-sub) h1{ color:var(--hero-text) !important; }
+.hero:has(.hero-sub) h1 em, .hero:has(.hero-sub) .hero-tag, .hero:has(.hero-sub) .hero-tag::before{ color:var(--hero-accent) !important; }
+.hero:has(.hero-sub) .hero-tag::before{ background:var(--hero-accent) !important; }
+.hero:has(.hero-sub) .hero-sub{ color:var(--hero-muted) !important; }
+.hero:has(.hero-sub) .hero-meta-value{ color:rgba(255,255,255,0.9) !important; }
+.hero:has(.hero-sub) .hero-meta-label{ color:rgba(255,255,255,0.55) !important; }
+.hero-glow-1{ background:radial-gradient(circle, rgba(140,166,194,0.26) 0%, transparent 60%) !important; }
+.hero-glow-2{ background:radial-gradient(circle, rgba(78,110,142,0.34) 0%, transparent 65%) !important; }
+/* Nexstera role-strip + any hero-adjacent dark strip: readable text */
+.role-strip .role-label{ color:var(--muted) !important; }
+.role-strip .role-value{ color:var(--text) !important; }
+/* Index hero (has .hero-role): flips with theme; rich gradient only in dark */
+html[data-theme="dark"] .hero:has(.hero-role){ background:var(--hero-grad); }
+html[data-theme="dark"] .hero:has(.hero-role) .hero-role{ color:var(--hero-muted); }
+
+/* ---- Contact + footer (dark bands in both modes) ---- */
+.contact-section{ background:var(--panel-dark) !important; }
+.contact-desc{ color:rgba(255,255,255,0.88) !important; }
+.contact-email{ color:rgba(255,255,255,0.72) !important; }
+footer{ background:var(--footer-bg); flex-wrap:wrap; gap:10px 26px; padding-right:104px; }
+@media (max-width:768px){ footer{ padding-right:28px; } }
+.footer-left, .footer-right{ color:rgba(255,255,255,0.72) !important; font-size:12px; white-space:normal; overflow:visible; min-width:0; }
+.footer-center, .footer-center a{ color:rgba(255,255,255,0.80) !important; }
+
+/* ---- Impact section keeps its own dark treatment; leave numbers as their light gradient ---- */
+
+/* ---- Work cards: CONSISTENT size + crafted surfaces ---- */
+/* Uniform cards: ALL previews one shared color, original device mockups, no glitchy edges */
+.card{ height:340px; }
+.card-foundry{ height:340px; }
+.card-nox .card-preview, .card-nexstera .card-preview, .card-microsoft .card-preview, .card-saksham .card-preview, .card-foundry .card-preview{
+  background:#EAECF4 !important; padding:26px !important; flex:0 0 48% !important; overflow:hidden;
+}
+.card-foundry .card-preview img{ width:auto !important; height:auto !important; max-width:100% !important; max-height:100% !important; object-fit:contain !important; object-position:center !important; border-radius:8px !important; transform:none !important; }
+.card-preview img{ filter:none !important; }
+.card:hover .card-preview img{ transform:scale(1.03); }
+
+
+/* ---- DARK MODE: catch bespoke light panels + text across case studies ---- */
+html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap,
+html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4,
+html[data-theme="dark"] .pain, html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after,
+html[data-theme="dark"] .ftree-cut, html[data-theme="dark"] .ftree-keep,
+html[data-theme="dark"] .persona-card, html[data-theme="dark"] .persona-emoji,
+html[data-theme="dark"] .method-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .test-card,
+html[data-theme="dark"] .take-card, html[data-theme="dark"] .decision-card, html[data-theme="dark"] .problem-card,
+html[data-theme="dark"] .insight-card, html[data-theme="dark"] .opp-card, html[data-theme="dark"] .metric-card,
+html[data-theme="dark"] .doc-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row,
+html[data-theme="dark"] .quote-card, html[data-theme="dark"] .stat-card, html[data-theme="dark"] .principle-card,
+html[data-theme="dark"] .feature-card, html[data-theme="dark"] .card-lite, html[data-theme="dark"] .info-card,
+html[data-theme="dark"] [class$="-card"], html[data-theme="dark"] [class$="-col"]{
+  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text);
+}
+html[data-theme="dark"] .container p, html[data-theme="dark"] .body-text,
+html[data-theme="dark"] .obj-card *, html[data-theme="dark"] .method-card *, html[data-theme="dark"] .test-card *,
+html[data-theme="dark"] .take-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .persona-card *,
+html[data-theme="dark"] .find *, html[data-theme="dark"] .pain *, html[data-theme="dark"] .before *, html[data-theme="dark"] .after *,
+html[data-theme="dark"] .ia-node *{ color:var(--text); }
+html[data-theme="dark"] .ag-k, html[data-theme="dark"] .ag-eyebrow, html[data-theme="dark"] .decision-cost,
+html[data-theme="dark"] .persona-role, html[data-theme="dark"] .ds-section-label, html[data-theme="dark"] .meta-muted,
+html[data-theme="dark"] .caption, html[data-theme="dark"] figcaption{ color:var(--muted) !important; }
+/* keep genuinely-dark sub-panels dark (don't let the wildcard lighten them) */
+html[data-theme="dark"] .browser-frame, html[data-theme="dark"] .browser-bar{ background:#0f1015 !important; }
+
+
+/* ---- DARK MODE straggler catches, round 2 (from automated scan) ---- */
+html[data-theme="dark"] .reflection-section, html[data-theme="dark"] .crow, html[data-theme="dark"] .ds-wrapper,
+html[data-theme="dark"] .jm-card, html[data-theme="dark"] .jm-stage, html[data-theme="dark"] .case-img-wrapper,
+html[data-theme="dark"] .callout-box, html[data-theme="dark"] .callout, html[data-theme="dark"] .finding-rec,
+html[data-theme="dark"] .mstep, html[data-theme="dark"] .nstep, html[data-theme="dark"] .fix, html[data-theme="dark"] .loop,
+html[data-theme="dark"] .rq, html[data-theme="dark"] .rq-card, html[data-theme="dark"] .criteria, html[data-theme="dark"] .principle,
+html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4, html[data-theme="dark"] .pain,
+html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after, html[data-theme="dark"] .ftree-cut,
+html[data-theme="dark"] .ftree-keep, html[data-theme="dark"] .ftree-item, html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap{
+  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
+}
+/* icon / number / badge chips -> subtle tinted, readable */
+html[data-theme="dark"] .feature-icon-box, html[data-theme="dark"] .method-icon, html[data-theme="dark"] .process-icon,
+html[data-theme="dark"] .next-step-icon, html[data-theme="dark"] .process-num, html[data-theme="dark"] .method-n,
+html[data-theme="dark"] .ds-swatch-box, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip,
+html[data-theme="dark"] .severity-badge, html[data-theme="dark"] .stat-number{
+  background:var(--surface-2) !important; color:var(--text) !important; border-color:var(--border) !important;
+}
+/* text stragglers -> light */
+html[data-theme="dark"] .fix-p, html[data-theme="dark"] .loop-t, html[data-theme="dark"] .ftree-item,
+html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .stat-number,
+html[data-theme="dark"] li, html[data-theme="dark"] .crow, html[data-theme="dark"] .crow *,
+html[data-theme="dark"] .jm-card *, html[data-theme="dark"] .mstep *, html[data-theme="dark"] .finding-rec *,
+html[data-theme="dark"] .callout-box *, html[data-theme="dark"] .reflection-section *{ color:var(--text); }
+/* captions -> muted */
+html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-label, html[data-theme="dark"] .fig-caption{ color:var(--muted) !important; }
+/* alternating light sections -> page bg */
+html[data-theme="dark"] .section-alt, html[data-theme="dark"] .bg-soft, html[data-theme="dark"] .section-light{ background:var(--bg) !important; }
+
+
+/* ---- DARK MODE straggler catches, round 3 ---- */
+html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-wrapper, html[data-theme="dark"] .testimonial-block,
+html[data-theme="dark"] .finding-quote, html[data-theme="dark"] .criteria-strip, html[data-theme="dark"] .success-quote,
+html[data-theme="dark"] .severity-legend, html[data-theme="dark"] .quote-block, html[data-theme="dark"] .pullquote{
+  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
+}
+html[data-theme="dark"] .case-img-caption{ background:transparent !important; color:var(--muted) !important; }
+html[data-theme="dark"] .body-text{ background:transparent !important; color:var(--text) !important; }
+html[data-theme="dark"] em{ color:inherit; }
+
+
+/* ---- DARK MODE straggler catches, round 4 (final) ---- */
+html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-body *, html[data-theme="dark"] .finding-quote *,
+html[data-theme="dark"] .success-quote *, html[data-theme="dark"] .testimonial-block *{ color:var(--text); }
+html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(.hero-role){ color:var(--text); }
+
+
+/* ---- Fixes: mobile menu theme, accent-bg pills, misc accent labels ---- */
+.mobile-menu{ background:var(--bg) !important; }
+.mobile-menu a{ color:var(--muted) !important; }
+.mobile-menu a:hover{ color:var(--accent) !important; }
+.mobile-menu-close{ color:var(--text) !important; }
+.nav-card-label{ color:var(--accent-text) !important; }
+/* white text on the (light) accent in dark mode -> dark on-accent text */
+html[data-theme="dark"] .skip-pill, html[data-theme="dark"] .jm-stage-header, html[data-theme="dark"] .jm-stage-num,
+html[data-theme="dark"] .badge-accent, html[data-theme="dark"] .tag-accent, html[data-theme="dark"] .pill-accent{ color:var(--on-accent) !important; }
+/* dark mode: dark-blue section titles -> light accent */
+html[data-theme="dark"] .criteria-title, html[data-theme="dark"] .reflection-col-title, html[data-theme="dark"] .severity-legend-title,
+html[data-theme="dark"] .mflow-label, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .ds-type-sample-b,
+html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ color:var(--accent-text) !important; }
+
+
+/* ---- Accent-on-accent + badge/link/button contrast (both modes) ---- */
+.card-badge-overlay{ background:var(--accent) !important; color:var(--on-accent) !important; }
+.card-link{ background:transparent !important; color:var(--accent-text) !important; }
+.mx-nav-active{ color:var(--accent) !important; }
+.contact-btn.primary{ background:var(--accent) !important; color:var(--on-accent) !important; border-color:var(--accent) !important; }
+.contact-btn.primary:hover{ background:var(--accent-strong) !important; border-color:var(--accent-strong) !important; color:var(--on-accent) !important; }
+.ia-root{ background:#2D5A82 !important; color:#fff !important; }
+/* small accent labels that sit on the light accent tint -> use darker accent-text */
+.method-n, .criteria-title, .reflection-col-title, .severity-legend-title, .finding-rec-label, .mflow-label,
+.mstep-k, .ba-tag, .anno, .loop-k, .rq-label, .find-k, .fix-k{ color:var(--accent-text) !important; }
+
+
+/* ---- Final dark-mode text/pill stragglers ---- */
+.skip-pill{ background:var(--accent) !important; color:var(--on-accent) !important; border-color:transparent !important; }
+.skip-pill *{ color:var(--on-accent) !important; }
+html[data-theme="dark"] .nstep-t, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .nstep-k,
+html[data-theme="dark"] .step-title, html[data-theme="dark"] .nstep *{ color:var(--text) !important; }
+html[data-theme="dark"] .criteria-strip *, html[data-theme="dark"] .scope-list *, html[data-theme="dark"] .rq *,
+html[data-theme="dark"] .reflection-col *, html[data-theme="dark"] .scope-col *{ color:var(--text); }
+nav a.mx-nav-active, .mx-nav-active{ color:var(--accent) !important; }
+/* decorative watermark numerals: subtle but present in both modes */
+html[data-theme="dark"] .rq-num, html[data-theme="dark"] .problem-num, html[data-theme="dark"] .insight-num,
+html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webkit-text-fill-color:rgba(255,255,255,0.34) !important; background:none !important; }
+
+
+/* ---- Accent-bg elements: on-accent text in both modes (final) ---- */
+.persona-badge, .ftree-root, .resume-btn, .primary-badge, .badge-primary, .tag-primary, .featured-badge{
+  color:var(--on-accent) !important; }
+.persona-badge *, .ftree-root *, .resume-btn *{ color:var(--on-accent) !important; }
+/* stubborn slate spans inside scope/criteria/finding/callout blocks */
+html[data-theme="dark"] [class*="scope"] *, html[data-theme="dark"] [class*="criteria"] *,
+html[data-theme="dark"] [class*="finding"] *, html[data-theme="dark"] [class*="callout"] *,
+html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
+
+/* ---- Theme toggle button ---- */
+.theme-toggle{ position:fixed; left:22px; bottom:22px; z-index:1600; width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  background:var(--surface); color:var(--text); border:1px solid var(--border);
+  box-shadow:0 6px 20px rgba(0,0,0,0.18); transition:transform .2s ease, background .2s ease, color .2s ease; }
+.theme-toggle:hover{ transform:translateY(-2px); color:var(--accent); }
+.theme-toggle svg{ width:20px; height:20px; }
+@media (max-width:600px){ .theme-toggle{ left:16px; bottom:16px; width:40px; height:40px; } }
+
+/* ---- A11y: reduced motion ---- */
+@media (prefers-reduced-motion: reduce){
+  .fade-in{ opacity:1 !important; transform:none !important; }
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+/* Remove decorative corner glow blobs on cards (user: 'weird gradients in corners') */
+.insight-card::before, .next-step-card::before{ display:none !important; }
+</style>
+
+<style id="cursor-label-css">
+#cursor-label{ position:fixed; top:0; left:0; z-index:99999; pointer-events:none; transform:translate(15px,15px) scale(.7); transform-origin:top left; opacity:0; transition:opacity .2s ease, transform .3s cubic-bezier(.16,1,.3,1); background:var(--accent,#2D5A82); color:#fff; font-family:var(--mono,'JetBrains Mono',monospace); font-size:11.5px; font-weight:500; letter-spacing:.03em; padding:7px 13px; border-radius:100px; white-space:nowrap; box-shadow:0 8px 24px rgba(17,24,39,.24); }
+#cursor-label.show{ opacity:1; transform:translate(15px,15px) scale(1); }
+@media (hover:none),(pointer:coarse){ #cursor-label{ display:none !important; } }
+</style>
 </head>
 <body>
 
@@ -499,7 +785,7 @@
     <div class="hero-content">
       <p class="hero-tag">Product Design · UX Research · AI Platform</p>
       <h1 style="font-size:clamp(30px,6.2vw,76px);">Microsoft Foundry<br /><em>Models</em></h1>
-      <p class="hero-sub">An 11,000-model catalog, turned into a flow developers can actually navigate: region visibility, live filtering, and side-by-side compare. My ideas were implemented into the live Microsoft Foundry product: region now sits in the filter bar, and there's a compare-model tray. I moved onto this redesign from my own usability research on the platform.</p>
+      <p class="hero-sub">An 11,000-model catalog, turned into a flow developers can actually navigate: region visibility, live filtering, and side-by-side compare. Two of those ideas shipped into the live Microsoft Foundry product. I came to the redesign from my own usability research on the platform.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -530,7 +816,7 @@
         </div>
         <div class="hero-site-pill">Explore the live platform <span style="font-size: 13px;">→</span></div>
       </a>
-      <a href="#live-prototype" class="hero-skip"><span style="font-size:13px;">✨</span> Skip to the live prototype →</a>
+      <a href="#proto-live" class="hero-skip"><span style="font-size:13px;">✨</span> Skip to the live prototype →</a>
     </div>
   </section>
 
@@ -554,7 +840,7 @@
       .ag-col::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--indigo-light);}
       .ag-col.ag-out{background:var(--indigo-bg);border-color:var(--indigo-light);}
       .ag-col.ag-out::before{background:var(--indigo);}
-      .ag-num{display:block;font-family:'DM Serif Display',serif;font-size:26px;line-height:1;color:var(--indigo-light);margin-bottom:13px;}
+      .ag-num{display:block;font-family:'Fraunces',serif;font-size:26px;line-height:1;color:var(--indigo-light);margin-bottom:13px;}
       .ag-col.ag-out .ag-num{color:var(--indigo);}
       .ag-k{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--indigo);margin-bottom:8px;}
       .ag-v{font-size:14px;font-weight:300;color:#33405A;line-height:1.64;}
@@ -566,7 +852,7 @@
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
         <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led concept and information architecture across research, a high-fidelity prototype, and two rounds of usability testing, focused on region visibility, filtering, and side-by-side compare.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>My ideas were implemented into the live Microsoft Foundry product:</strong> region now sits in the filter bar, and there's a compare-model tray.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>My ideas were implemented in the live Microsoft Foundry product:</strong> region now sits in the filter bar, and there's a compare-model tray.</div></div>
       </div>
     </div>
   </section>
@@ -576,80 +862,22 @@
     <div class="container fade-in">
       <p class="section-eyebrow">The Problem</p>
       <h2 class="section-title">11,000 models,<br />and nowhere to start.</h2>
-      <p class="body-text">Picture a developer who just wants to ship a feature this week. They open Microsoft Foundry, land on the <strong>Models page</strong>, and are met with more than <strong>11,000 models</strong>, each with different capabilities, pricing, context windows, and regional availability. Where do you even begin?</p>
-      <p class="body-text">Choosing a model means weighing several of those factors at once, and in the existing experience the details you needed were scattered across the flow. Users kept telling us the same two things: help me <strong>narrow this list</strong>, and just as often, help me figure out <strong>where to even start.</strong> Worse, some picked a model only to hit a wall at deployment because it wasn't available in their region.</p>
-      <p class="body-text">Our team of five spent three months redesigning the model discovery and selection experience end to end: research, information architecture, a high-fidelity prototype, and two rounds of usability testing. My focus was <strong>concept development, information architecture, and stakeholder communication</strong>: shaping the core direction of the flow and keeping the work aligned with the Microsoft CoreAI team.</p>
-      <p class="body-text">I came to this project from the research side. After running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>, I moved from research into design on the same platform.</p>
+      <p class="body-text">Picture a developer who just wants to ship a feature this week. They open Microsoft Foundry, land on the <strong>Models page</strong>, and hit more than <strong>11,000 models</strong>, each with different capabilities, pricing, context windows, and regional availability. Users kept telling us the same two things: help me <strong>narrow this list</strong>, and help me figure out <strong>where to even start.</strong> Some picked a model only to hit a wall at deployment because it wasn't available in their region.</p>
+      <p class="body-text">Our team of five spent four months redesigning model discovery and selection end to end. My focus was <strong>concept development, information architecture, and stakeholder communication</strong>, keeping the work aligned with the Microsoft CoreAI team. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
     </div>
 
     <div class="container-wide fade-in">
       <div class="ba">
         <div>
           <span class="ba-tag before">Before</span>
-          <div class="shot"><img src="assets/foundry-before-screen.png" width="2868" height="1312" alt="The current Foundry Models page: a dense list of 11,563 models with only a name and capability per tile, behind a long collapsed filter accordion" loading="lazy" decoding="async" /></div>
+          <div class="shot"><img src="assets/foundry-before-screen.png" width="2868" height="1312" alt="The current Foundry Models page: a dense list of 11,000+ models with only a name and capability per tile, behind a long collapsed filter accordion" loading="lazy" decoding="async" /></div>
         </div>
         <div>
           <span class="ba-tag after">After</span>
           <div class="shot"><img src="assets/foundry-screen-after.png" width="2868" height="1322" alt="The redesigned Models page: models grouped by provider with region availability, pricing, and quality metrics on every card, plus an open filter rail and compare" loading="lazy" decoding="async" /></div>
         </div>
       </div>
-      <p class="figcap">The starting point (left) lists <strong>11,563 models</strong> with little more than a name and a task per tile; every filter hidden in a collapsed accordion, and no pricing or region until you open a model. The redesign (right) surfaces those decisions in the results themselves and turns the filters into a visible, first-class way to narrow the catalog.</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- OBJECTIVES -->
-  <section id="objectives">
-    <div class="container fade-in">
-      <p class="section-eyebrow">Objectives</p>
-      <h2 class="section-title">Redesign objectives.</h2>
-      <p class="body-text">Early research and stakeholder conversations pointed us at three concrete bets: the levers most likely to reduce friction in how developers find and commit to a model.</p>
-    </div>
-    <div class="container-wide">
-      <div class="obj-grid fade-in">
-        <div class="obj-card">
-          <div class="obj-icon">📍</div>
-          <div class="obj-name">Region availability</div>
-          <div class="obj-desc">Surface where a model can actually be deployed, up front, before a user invests time in one that isn't available in their region.</div>
-        </div>
-        <div class="obj-card">
-          <div class="obj-icon">🧭</div>
-          <div class="obj-name">Filters to browse models</div>
-          <div class="obj-desc">Let users narrow 11,000+ models by the things they actually care about: capability, provider, price band, and region.</div>
-        </div>
-        <div class="obj-card">
-          <div class="obj-icon">⚖️</div>
-          <div class="obj-name">Compare models</div>
-          <div class="obj-desc">Put candidate models side by side across capabilities, performance, and cost so the trade-offs are visible in one place.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container fade-in">
-      <h3 class="sub-heading">User experience &amp; business goals</h3>
-      <div class="goals-grid">
-        <div class="goals-col enable">
-          <h4>Enable users to</h4>
-          <ul>
-            <li>Easily search and discover available AI model details</li>
-            <li>Quickly identify where to begin their model selection process</li>
-            <li>Identify model availability based on their region</li>
-            <li>Compare models across key capabilities, performance metrics, and deployment requirements</li>
-          </ul>
-        </div>
-        <div class="goals-col">
-          <h4>Support Microsoft Foundry to</h4>
-          <ul>
-            <li>Reduce friction in the user flow within model discovery</li>
-            <li>Communicate clarity, trust, and reliability through the design of the Models page</li>
-            <li>Showcase the breadth and quality of their AI model ecosystem</li>
-            <li>Position the platform as an innovative leader in AI development tools</li>
-          </ul>
-        </div>
-      </div>
-      <h3 class="sub-heading">How we'd measure success</h3>
-      <p class="body-text">Reduction in the time and friction required to select a model · an increase in the number of models explored or tested per session · and fewer user errors or support requests tied to region-configuration issues.</p>
+      <p class="figcap">The starting point (left) lists <strong>11,000+ models</strong> with little more than a name and a task per tile; every filter is hidden in a collapsed accordion, and there is no pricing or region until you open a model. The redesign (right) surfaces those decisions in the results themselves and turns the filters into a visible, first-class way to narrow the catalog.</p>
     </div>
   </section>
 
@@ -660,7 +888,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">Developer interviews shaped<br />our direction.</h2>
-      <p class="body-text">Because we couldn't access Microsoft's internal data, we ran our own study: a heuristic evaluation of the live platform, moderated developer interviews, and a card sort, to understand how people think about finding and choosing a model.</p>
+      <p class="body-text">With no access to Microsoft's internal data, we ran our own study: a heuristic evaluation of the live platform, moderated developer interviews, and a card sort.</p>
     </div>
     <div class="container-wide">
       <div class="method-grid fade-in">
@@ -733,7 +961,7 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Personas</h3>
-      <p class="body-text">Initial research and stakeholder discussions led us to three personas. After aligning with Microsoft, <strong>Alex</strong>, a startup software developer moving fast, became the primary persona we designed for.</p>
+      <p class="body-text">Research and stakeholder discussions led us to three personas. After aligning with Microsoft, <strong>Alex</strong>, a startup developer moving fast, became the primary persona we designed for.</p>
     </div>
     <div class="container-wide">
       <div class="persona-grid fade-in">
@@ -778,41 +1006,23 @@
   <div class="divider"></div>
 
   <!-- CONSTRAINTS -->
-  <section id="constraints">
-    <div class="container fade-in">
-      <p class="section-eyebrow">Obstacles</p>
-      <h2 class="section-title">The box we<br />designed in.</h2>
-      <p class="body-text">Research told us what to build. A handful of fixed guardrails shaped how far we could take it, and naming them kept the team honest about what "good" could look like inside them.</p>
-    </div>
-    <div class="container-wide fade-in">
-      <div class="ctable">
-        <div class="crow"><div class="ck">Narrow scope</div><div class="cv">Limited to the model discovery and selection flow on the Models page, not a full site redesign.</div></div>
-        <div class="crow"><div class="ck">Fixed information architecture</div><div class="cv">Required to keep Microsoft's existing IA, navigation, and homepage largely intact.</div></div>
-        <div class="crow"><div class="ck">Single user group</div><div class="cv">Microsoft defined software developers as the only target audience, so all personas stayed within that group.</div></div>
-        <div class="crow"><div class="ck">Limited data access</div><div class="cv">No access to Microsoft's prior usability testing, analytics, or internal research within the scope of this project.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- DESIGN -->
   <section id="design" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Sketches &amp; Wireframes</p>
       <h2 class="section-title">Sketching our way<br />out of the problem.</h2>
-      <p class="body-text">Before touching Figma, we sketched. Paper prototypes let us move fast and argue about structure instead of pixels, and they surfaced the two decisions the whole redesign would hinge on: <strong>where the region problem gets solved</strong>, and <strong>how a developer decides what to even look at first.</strong></p>
+      <p class="body-text">Before touching Figma, we sketched. Paper let us argue about structure instead of pixels, and it surfaced the two decisions the redesign would hinge on: <strong>where the region problem gets solved</strong>, and <strong>how a developer decides what to look at first.</strong></p>
     </div>
 
     <div class="container-wide fade-in">
       <div class="figure">
         <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="lazy" decoding="async" /></div>
-        <p class="figcap"><strong>Paper prototype.</strong> Two flows worth stealing from: a <strong>region blocker</strong> resolved during onboarding so users only ever see models they can deploy, and a <strong>model-selection flow</strong> that keeps the Discover layout, adds an “ask AI and it'll find the best model” helper, and leans on clearer descriptions to cut cognitive load.</p>
+        <p class="figcap"><strong>Paper prototype.</strong> Two flows worth stealing: a <strong>region blocker</strong> resolved in onboarding so users only see models they can deploy, and a <strong>model-selection flow</strong> that adds an “ask AI to find the best model” helper and clearer descriptions to cut cognitive load.</p>
       </div>
     </div>
 
     <div class="container fade-in">
-      <p class="body-text">The sketch notes became our design principles. Three ideas carried all the way from paper into the high-fidelity prototype:</p>
+      <p class="body-text">The sketch notes became our design principles. Three ideas carried from paper into the high-fidelity prototype:</p>
       <div class="anno-list">
         <span class="anno">📍 Pricing &amp; region on every model card</span>
         <span class="anno">🔎 A more prominent, AI-assisted search</span>
@@ -821,20 +1031,13 @@
     </div>
 
     <div class="container-wide fade-in">
-      <div class="callout">
-        <h4>What we didn't ship (and why)</h4>
-        <p>Our sketches floated an <strong>AI model-finder</strong>: a chatbot that would recommend a model from a plain-language prompt. It was the flashiest idea on the page, and the easiest to over-invest in. With a fixed information architecture and a deliberately narrow scope, a full guided flow risked pulling focus from the moves research said mattered most. We scoped it down to a lightweight <strong>AI-assisted search</strong> and put our weight behind region, filters, and compare.</p>
-      </div>
-    </div>
-
-    <div class="container-wide fade-in">
       <style id="ftree-css">
         .ftree{max-width:900px;margin:6px auto 0;}
-        .ftree-root{max-width:600px;margin:0 auto;text-align:center;background:var(--indigo);color:#fff;font-size:14px;font-weight:500;line-height:1.5;padding:16px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(79,70,229,0.22);}
+        .ftree-root{max-width:600px;margin:0 auto;text-align:center;background:var(--indigo);color:#fff;font-size:14px;font-weight:500;line-height:1.5;padding:16px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(62,92,118,0.22);}
         .ftree-stem{width:2px;height:24px;background:var(--indigo-light);margin:0 auto;}
         .ftree-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
         .ftree-col{border-radius:16px;padding:20px 22px;}
-        .ftree-built{border:1px solid rgba(79,70,229,0.22);background:var(--indigo-bg);}
+        .ftree-built{border:1px solid rgba(62,92,118,0.22);background:var(--indigo-bg);}
         .ftree-cut{border:1px solid rgba(20,19,31,0.08);background:#F7F7FA;}
         .ftree-head{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;}
         .ftree-built .ftree-head{color:var(--indigo);}
@@ -854,7 +1057,7 @@
             <div class="ftree-item">Region availability on every model card</div>
             <div class="ftree-item">Live filters to narrow the catalog</div>
             <div class="ftree-item">Side-by-side compare</div>
-            <div class="ftree-why">The moves research said mattered most, and the ones now live in the product.</div>
+            <div class="ftree-why">The moves research said mattered most; region and compare shipped into the live product.</div>
           </div>
           <div class="ftree-col ftree-cut">
             <div class="ftree-head">Cut, then scoped down</div>
@@ -868,41 +1071,34 @@
 
     <div class="container fade-in">
       <h3 class="sub-heading">Designing for the states that aren't the happy path</h3>
-      <p class="body-text">A catalog of 11,000 models is mostly edge cases. Three of them shaped the design as much as the main flow did, and each came down to a decision with a real trade-off.</p>
+      <p class="body-text">A catalog of 11,000 models is mostly edge cases. Three shaped the design as much as the main flow, each a decision with a real trade-off.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="obj-grid">
         <div class="obj-card">
           <div class="obj-icon">🌍</div>
           <div class="obj-name">A model you can't deploy</div>
-          <div class="obj-desc">Region-locked models stay in the list with a clear availability flag rather than being filtered out.</div>
-          <div class="obj-insight">Hiding them is cleaner, but it also hides the catalog's real range and leaves users wondering why a model vanished. Flagging teaches what exists, and points to a supported region.</div>
+          <div class="obj-desc">Region-locked models stay in the list with a clear availability flag instead of disappearing.</div>
+          <div class="obj-insight">Hiding them is cleaner but leaves users wondering why a model vanished. Flagging teaches what exists and points to a supported region.</div>
         </div>
         <div class="obj-card">
           <div class="obj-icon">🔍</div>
           <div class="obj-name">Filters that return nothing</div>
-          <div class="obj-desc">A zero-result state names the constraint most likely causing it and offers a one-tap way to loosen it.</div>
-          <div class="obj-insight">A blank results area reads as broken. Telling users which filter emptied the list lets them recover without resetting the whole search.</div>
+          <div class="obj-desc">A zero-result state names the constraint likely causing it and offers a one-tap way to loosen it.</div>
+          <div class="obj-insight">A blank area reads as broken. Naming the filter that emptied the list lets users recover without resetting the search.</div>
         </div>
         <div class="obj-card">
           <div class="obj-icon">⚖️</div>
           <div class="obj-name">Compare before it's full</div>
-          <div class="obj-desc">The compare tray opens with a prompt to add models, shows a running count, and activates side-by-side only at two or more.</div>
-          <div class="obj-insight">Compare means nothing with a single model in it. Letting the tray explain its own empty state keeps the feature from feeling broken on first contact.</div>
+          <div class="obj-desc">The tray opens with a prompt to add models, shows a running count, and activates side-by-side only at two or more.</div>
+          <div class="obj-insight">Compare means nothing with one model in it. Letting the tray explain its empty state keeps it from feeling broken on first contact.</div>
         </div>
       </div>
-      <p class="figcap">Edge cases treated as design decisions, not afterthoughts: what to reveal, what to explain, and when a feature should stay quiet.</p>
     </div>
-  </section>
 
-  <div class="divider"></div>
-
-  <!-- PROTOTYPE -->
-  <section id="prototype" style="">
     <div class="container fade-in">
-      <p class="section-eyebrow">Hi-Fi Prototype</p>
-      <h2 class="section-title">From wireframes to a<br />working build.</h2>
-      <p class="body-text">Our paper sketches gave us the wireframes for the flow, and those wireframes became this: a high-fidelity build. Here are its key screens, then see the whole thing live, just below.</p>
+      <h3 class="sub-heading">From wireframes to a working build</h3>
+      <p class="body-text">The key screens are below; explore the whole thing live just after.</p>
     </div>
 
     <div class="container-wide">
@@ -928,16 +1124,16 @@
   </section>
 
   <!-- LIVE PROTOTYPE -->
-  <section id="live-prototype" style=" background: linear-gradient(160deg, #0A0912 0%, #14122B 45%, #4F46E5 125%);">
+  <section id="live-prototype" style=" background: linear-gradient(160deg, #0B0F1E 0%, #141A30 45%, #2D5A82 125%);">
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: var(--indigo-light);">Live Prototype</p>
       <h2 class="section-title" style="color:#fff;">See it <em style="color: var(--indigo-light);">in action.</em></h2>
-      <p class="body-text" style="color: rgba(255,255,255,0.62);">The full high-fidelity Foundry redesign, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare, right here.</p>
+      <p class="body-text" style="color: rgba(255,255,255,0.62);">The full high-fidelity redesign, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="proto-wrap">
         <p class="proto-label">Interactive Walkthrough</p>
-        <div class="embed-frame">
+        <div class="embed-frame" id="proto-live">
           <div class="browser-bar">
             <div class="browser-dots"><span></span><span></span><span></span></div>
             <div class="browser-url">ms-foundry-prototype.netlify.app</div>
@@ -953,23 +1149,7 @@
     <div class="container fade-in">
       <p class="section-eyebrow">User Testing · Round 2</p>
       <h2 class="section-title">Validating the high-fidelity<br />prototype.</h2>
-      <p class="body-text">Our final round of testing put the high-fidelity prototype in front of developers, walking through the Home, Overview, and Models pages plus tasks around agent creation and comparison. We focused on three things that matter to every user:</p>
-    </div>
-    <div class="container-wide">
-      <div class="test-grid fade-in">
-        <div class="test-card">
-          <div class="test-name">Usability</div>
-          <div class="test-q">Is the user able to understand the interface?</div>
-        </div>
-        <div class="test-card">
-          <div class="test-name">Navigation</div>
-          <div class="test-q">Can the user find what they need: region, model, task?</div>
-        </div>
-        <div class="test-card">
-          <div class="test-name">Side-by-side compare</div>
-          <div class="test-q">Once located, can they compare and find something more beneficial?</div>
-        </div>
-      </div>
+      <p class="body-text">Our final round put the high-fidelity prototype in front of developers across the Home, Overview, and Models pages, testing three things: whether they could <strong>understand</strong> the interface, <strong>navigate</strong> to a region, model, or task, and <strong>compare</strong> options to find a better one.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -997,11 +1177,11 @@
     <div class="container-wide fade-in">
       <p class="section-eyebrow">Results</p>
       <h2 class="section-title">The ideas that<br />are now <em>shipping.</em></h2>
-      <p class="body-text">The redesign reframed model discovery around the decisions developers actually make, narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After the co-op, my ideas were implemented into the live Microsoft Foundry product: region now sits in the filter bar, and there's a compare-model tray.</p>
+      <p class="body-text">The redesign reframed discovery around the decisions developers actually make, narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After the co-op, my ideas shipped into the live Microsoft Foundry product: region now sits in the filter bar, and there's a compare-model tray.</p>
       <div class="impact-stats">
-        <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Region now sits in the filter bar, and there's a compare-model tray in the live Foundry product, the two ideas at the heart of the redesign</div></div>
+        <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">The two ideas at the heart of the redesign, now shipped in the live Foundry product</div></div>
         <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">A catalog of 11,000+ models made filterable down to a focused, scannable set</div></div>
-        <div class="impact-stat"><div class="impact-number">3</div><div class="impact-label">Objectives shaped end to end: region visibility, filtering, and side-by-side compare</div></div>
+        <div class="impact-stat"><div class="impact-number">&minus;58%</div><div class="impact-label">faster search-to-select in round-two testing versus the current Models page</div></div>
       </div>
     </div>
   </section>
@@ -1025,7 +1205,7 @@
   <div class="next-project">
     <p class="next-label">Next Project</p>
     <h2 class="next-title">Nox+: <em>Secure Digital Identity</em></h2>
-    <a href="nox.html" class="next-btn" style="background:#6B3FA0;">View case study <span style="font-size:16px;">→</span></a>
+    <a href="nox.html" class="next-btn" style="background:#2D5A82;">View case study <span style="font-size:16px;">→</span></a>
   </div>
 
   <!-- NAV CARDS -->
@@ -1051,7 +1231,7 @@
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
     <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="footer-sep">·</span><a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-    <p class="footer-right">Made with ♡ + HTML by Jasmine</p>
+    <p class="footer-right">Designed &amp; built by Jasmine Sayed</p>
   </footer>
 
   <script>
@@ -1188,33 +1368,33 @@
   body.mx-leaving { opacity: 0; transition: opacity .28s ease; }
 
   .mx-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 2000;
-    background: linear-gradient(90deg, #6B3FA0, #8B5CC8);
-    box-shadow: 0 0 8px rgba(139,92,200,.5); transition: width .12s ease-out; pointer-events: none; }
+    background: linear-gradient(90deg, #2D5A82, #4E6E8E);
+    box-shadow: 0 0 8px rgba(62,92,118,.5); transition: width .12s ease-out; pointer-events: none; }
 
   .mx-top { position: fixed; right: 26px; bottom: 26px; z-index: 1500;
     width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
-    background: #6B3FA0; color: #fff; display: flex; align-items: center; justify-content: center;
+    background: #2D5A82; color: #fff; display: flex; align-items: center; justify-content: center;
     opacity: 0; transform: translateY(14px) scale(.9); pointer-events: none;
     transition: opacity .3s ease, transform .3s cubic-bezier(0.16,1,0.3,1), background .25s;
-    box-shadow: 0 8px 24px rgba(107,63,160,.28); }
+    box-shadow: 0 8px 24px rgba(62,92,118,.28); }
   .mx-top.mx-show { opacity: 1; transform: none; pointer-events: auto; }
-  .mx-top:hover { background: #572f86; }
+  .mx-top:hover { background: #234A6E; }
   .mx-top svg { width: 18px; height: 18px; }
 
-  .mx-nav-active { color: #6B3FA0 !important; }
+  .mx-nav-active { color: #2D5A82 !important; }
   [id] { scroll-margin-top: 118px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
   .card:hover .card-preview img { transform: scale(1.045); }
   .card .card-link { transition: gap .25s ease, color .25s ease; display: inline-flex; align-items: center; gap: 4px; }
-  .card:hover .card-link { color: #6B3FA0; gap: 10px; }
+  .card:hover .card-link { color: #2D5A82; gap: 10px; }
 
   .mx-counting { font-variant-numeric: tabular-nums; }
 
   .mx-cursor-glow { position: fixed; top: 0; left: 0; width: 400px; height: 400px; border-radius: 50%;
     margin: -200px 0 0 -200px; pointer-events: none; z-index: -1; opacity: 0;
-    background: radial-gradient(circle, rgba(139,92,200,.13) 0%, rgba(139,92,200,0) 66%);
+    background: radial-gradient(circle, rgba(62,92,118,.13) 0%, rgba(62,92,118,0) 66%);
     transition: opacity .45s ease; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1323,5 +1503,16 @@
 </script>
 <!-- ===== /mx-motion-system ===== -->
 
+<script id="cursor-label-js">(function(){
+  if(window.matchMedia('(hover:none),(pointer:coarse)').matches) return;
+  var label=document.createElement('div'); label.id='cursor-label'; document.body.appendChild(label);
+  var tx=0,ty=0,cx=0,cy=0,raf=null;
+  function loop(){ cx+=(tx-cx)*.2; cy+=(ty-cy)*.2; label.style.left=cx+'px'; label.style.top=cy+'px'; if(Math.abs(tx-cx)>.1||Math.abs(ty-cy)>.1){ raf=requestAnimationFrame(loop);} else { raf=null; } }
+  document.addEventListener('mousemove',function(e){ tx=e.clientX; ty=e.clientY; if(!raf) loop(); },{passive:true});
+  var SEL='a.bento-tile, .nav-card, .pf-zoomable, [data-cursor]';
+  function labelFor(el){ if(el.matches('[data-cursor]'))return el.getAttribute('data-cursor'); if(el.matches('a.bento-tile')){var h=el.getAttribute('href')||'';return /about|play|experience/.test(h)?'Take a look \u2192':'View case study \u2192';} if(el.matches('.nav-card'))return 'Explore \u2192'; if(el.matches('.pf-zoomable'))return 'View \u2192'; return ''; }
+  document.addEventListener('mouseover',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var t=labelFor(el); if(t){ label.textContent=t; label.classList.add('show'); } } },{passive:true});
+  document.addEventListener('mouseout',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var to=e.relatedTarget; if(!to||!el.contains(to)) label.classList.remove('show'); } },{passive:true});
+})();</script>
 </body>
 </html>
