@@ -525,6 +525,7 @@ body{ color:var(--text); -webkit-font-smoothing:antialiased; }
 .card-stat .num{ font-family:var(--display); color:var(--accent-text); font-weight:500; }
 .nav-card, .more-card, .more-card-inner{ background:var(--surface) !important; border-color:var(--border) !important; }
 .nav-card:hover{ background:var(--accent) !important; border-color:var(--accent) !important; }
+.nav-card:hover .nav-card-label, .nav-card:hover .nav-card-title, .nav-card:hover .nav-card-arrow{ color:#fff !important; }
 .exp-section, .about-teaser{ background:var(--bg) !important; }
 .exp-row, .exp-card, .quick-fact, .quick-fact-card{ background:var(--surface) !important; border-color:var(--border) !important; }
 .shot, .shot.framed{ background:var(--surface) !important; border-color:var(--border) !important; }
@@ -751,7 +752,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </button>
     <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo.png" width="1737" height="2769" alt="JS logo"></a>
     <div class="nav-right">
+      <a href="play.html">Play</a>
       <a href="about.html">About</a>
+      <a href="experience.html">Resume</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
@@ -763,6 +766,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       Close
     </button>
     <a href="index.html#work">Work</a>
+    <a href="play.html">Play</a>
     <a href="about.html">About</a>
     <a href="experience.html">Resume</a>
     <a href="index.html#contact">Contact</a>
@@ -1032,7 +1036,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
     <div class="container-wide fade-in">
       <style id="ftree-css">
-        .ftree{max-width:900px;margin:6px auto 0;}
+        .ftree{max-width:900px;margin:54px auto 40px;}
         .ftree-root{max-width:600px;margin:0 auto;text-align:center;background:var(--indigo);color:#fff;font-size:14px;font-weight:500;line-height:1.5;padding:16px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(62,92,118,0.22);}
         .ftree-stem{width:2px;height:24px;background:var(--indigo-light);margin:0 auto;}
         .ftree-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
