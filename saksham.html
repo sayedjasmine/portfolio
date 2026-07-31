@@ -222,12 +222,12 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 60vh;
+      min-height: 62vh;
       background: linear-gradient(155deg, #14182B 0%, #1E2A4A 40%, #2D5A82 80%, #4E6E8E 100%);
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      padding: 90px 60px 52px;
+      padding: 76px 60px 44px;
       position: relative;
       overflow: hidden;
     }
@@ -239,13 +239,37 @@
 
     .hero-docs {
       flex-shrink: 0;
-      width: 280px;
       display: flex;
       flex-direction: column;
+      align-items: stretch;
       gap: 14px;
+      width: 424px;
       z-index: 2;
       margin-left: 48px;
       margin-bottom: 8px;
+    }
+
+    .hero-figma {
+      width: 100%;
+      height: 522px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(169,192,218,0.22);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      background: #14182B;
+    }
+    .hero-figma iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .hero-figma-caption {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin: 2px 0 6px;
     }
 
     .hero-docs-label {
@@ -262,12 +286,12 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 13px;
       background: #14182B;
       border: 1px solid rgba(169,192,218,0.2);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
       transition: all 0.25s ease;
     }
 
@@ -279,10 +303,10 @@
     }
 
     .hero-doc-icon {
-      width: 44px;
-      height: 52px;
+      width: 38px;
+      height: 38px;
       background: rgba(169,192,218,0.12);
-      border-radius: 8px;
+      border-radius: 9px;
       border: 1px solid rgba(169,192,218,0.25);
       display: flex;
       align-items: center;
@@ -405,9 +429,10 @@
     }
 
     .hero-meta {
-      display: flex;
-      gap: 36px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 244px auto;
+      column-gap: 44px;
+      row-gap: 22px;
       position: relative;
     }
 
@@ -1236,7 +1261,7 @@
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
-    section[id] { scroll-margin-top: 118px; }
+    section[id] { scroll-margin-top: 96px; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -1275,6 +1300,68 @@
     .tab-link:hover { color: var(--rose); }
     .tab-link.active { color: var(--rose); border-bottom-color: var(--rose); }
 
+    /* ── CASE STUDY SHELL: sticky left rail + content column ── */
+    .cs-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 56px;
+      padding: 56px 60px 0;
+    }
+    .cs-rail {
+      flex: 0 0 184px;
+      position: sticky;
+      top: 112px;
+      align-self: flex-start;
+    }
+    .cs-rail-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 0 14px 18px;
+    }
+    .cs-rail-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-left: 1px solid rgba(62,92,118,0.14);
+    }
+    .cs-rail .tab-link {
+      display: block;
+      top: 0;
+      padding: 10px 18px;
+      font-size: 13.5px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      border: none;
+      border-left: 2px solid transparent;
+      margin-left: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cs-rail .tab-link:hover { color: var(--rose); }
+    .cs-rail .tab-link.active {
+      color: var(--rose);
+      border-left-color: var(--rose);
+      font-weight: 600;
+    }
+    .cs-content { flex: 1; min-width: 0; }
+    /* Inner containers fill the content column */
+    .cs-content .container,
+    .cs-content .container-wide { max-width: 100%; margin: 0; }
+    /* Full-width background bands become contained cards inside the column */
+    .cs-content > section[style*="background"],
+    .cs-content > .impact-section,
+    .cs-content > .reflection-section {
+      border-radius: 22px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    /* Impact display numbers were sized for full width; scale to the column */
+    .cs-content .impact-number { font-size: clamp(28px, 3.2vw, 42px) !important; }
+
     /* ── FADE IN ── */
     .fade-in {
       opacity: 0;
@@ -1292,10 +1379,24 @@
       .nav-logo img { height: 40px; }
       .section-tabs { padding: 0 20px; justify-content: flex-start; }
       .hero { padding: 100px 28px 48px; flex-direction: column; align-items: flex-start; }
-      .hero-docs { width: 100%; margin-left: 0; margin-top: 28px; }
+      .hero-docs { width: 100%; margin-left: 0; margin-top: 28px; flex-direction: column; align-items: stretch; gap: 14px; }
+      .hero-figma { width: 100%; max-width: 340px; height: 500px; margin: 0 auto; }
       .hero-doc-card { width: 100%; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
+      /* Case-study shell: stack, rail becomes a sticky horizontal strip */
+      .cs-shell { flex-direction: column; gap: 0; padding: 0; max-width: 100%; }
+      .cs-rail-label { display: none; }
+      .cs-rail { position: sticky; top: 60px; z-index: 90; flex: none; width: 100%;
+                 background: rgba(255,255,255,0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+                 border-bottom: 1px solid rgba(62,92,118,0.1); }
+      .cs-rail-nav { flex-direction: row; overflow-x: auto; border-left: none; gap: 0; padding: 0 20px; scrollbar-width: none; }
+      .cs-rail-nav::-webkit-scrollbar { display: none; }
+      .cs-rail .tab-link { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; padding: 12px 14px; }
+      .cs-rail .tab-link.active { border-left-color: transparent; border-bottom-color: var(--rose); }
+      .cs-content > section[style*="background"],
+      .cs-content > .impact-section,
+      .cs-content > .reflection-section { border-radius: 0; margin: 0; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .problem-grid, .method-grid, .insights-grid, .features-grid { grid-template-columns: 1fr; }
       .mockup-showcase { grid-template-columns: 1fr; gap: 16px; }
@@ -1315,7 +1416,7 @@
       .hero { padding: 85px 20px 36px; }
       .hero h1 { font-size: clamp(32px, 9vw, 48px); }
       .hero-sub { font-size: 15px; }
-      .hero-meta { flex-direction: column; gap: 14px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 16px; }
       .hero-meta-value { font-size: 13px; }
       .container, .container-wide { padding: 0 20px; }
       section { padding: 28px 0; }
@@ -1503,6 +1604,7 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 
 /* ---- Sticky case-study sub-nav ---- */
 .section-tabs{ top:50px !important; background:var(--bg) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:0 1px 0 var(--border), 0 6px 16px rgba(0,0,0,0.06); }
+@media(max-width:960px){ .section-tabs{ top:72px !important; } }
 .tab-link{ color:var(--muted); }
 .tab-link.active, .tab-link:hover{ color:var(--accent); }
 
@@ -1726,16 +1828,6 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#contact">Contact</a>
   </div>
 
-  <!-- SECTION TABS -->
-  <div class="section-tabs" id="sectionTabs">
-    <a href="#overview"  class="tab-link active">Overview</a>
-    <a href="#research"  class="tab-link">Research</a>
-    <a href="#design"    class="tab-link">Design Process</a>
-    <a href="#accessibility" class="tab-link">Accessibility</a>
-    <a href="#solution"  class="tab-link">Solution</a>
-    <a href="#impact"    class="tab-link">Impact</a>
-  </div>
-
   <!-- HERO -->
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
@@ -1764,7 +1856,10 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       </div>
     </div>
     <div class="hero-docs">
-      <div class="hero-docs-label">Project Resources</div>
+      <div class="hero-figma">
+        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="lazy" title="Saksham interactive Figma prototype"></iframe>
+      </div>
+      <div class="hero-figma-caption">Live Figma prototype · tap to play</div>
       <a href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
         <div class="hero-doc-icon"><span>&lt;/&gt;</span></div>
         <div class="hero-doc-info">
@@ -1781,12 +1876,23 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
         </div>
         <div class="hero-doc-arrow">→</div>
       </a>
-      <a href="#proto-live" class="skip-pill">
-        <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
-      </a>
     </div>
   </section>
 
+  <!-- ── CASE STUDY BODY: sticky left rail + content column ── -->
+  <div class="cs-shell">
+    <aside class="cs-rail">
+      <div class="cs-rail-label">On this page</div>
+      <div class="cs-rail-nav" id="sectionTabs" role="navigation" aria-label="Case study sections">
+        <a href="#overview"  class="tab-link active">Overview</a>
+        <a href="#research"  class="tab-link">Research</a>
+        <a href="#design"    class="tab-link">Design Process</a>
+        <a href="#accessibility" class="tab-link">Accessibility</a>
+        <a href="#solution"  class="tab-link">Solution</a>
+        <a href="#impact"    class="tab-link">Impact</a>
+      </div>
+    </aside>
+    <div class="cs-content">
 
   <!-- AT A GLANCE -->
   <section class="ag-section">
@@ -2215,6 +2321,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </div>
   </section>
 
+    </div><!-- /cs-content -->
+  </div><!-- /cs-shell -->
+
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
@@ -2306,8 +2415,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     const sectionIds = ['overview', 'research', 'design', 'accessibility', 'solution', 'impact'];
     const tabsBar = document.getElementById('sectionTabs');
     const navH = document.querySelector('nav').offsetHeight;
-    const tabsH = tabsBar.offsetHeight;
-    const offset = navH + tabsH + 16;
+    const railHorizontal = window.matchMedia('(max-width: 960px)').matches;
+    const offset = navH + (railHorizontal ? tabsBar.offsetHeight : 0) + 20;
 
     function setActiveTab(id) {
       tabLinks.forEach(l => {
@@ -2415,7 +2524,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 118px; }
+  [id] { scroll-margin-top: 96px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }

@@ -225,11 +225,48 @@
       min-height: 60vh;
       background: linear-gradient(155deg, #12172A 0%, #1E2A4A 40%, #2D5A82 80%, #3E6E9A 100%);
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
       padding: 100px 60px 52px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-figma {
+      flex-shrink: 0;
+      width: 620px;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+    .hero-figma-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(169,192,218,0.22);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      background: #12172A;
+    }
+    .hero-figma-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .hero-figma-caption {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin-top: 12px;
     }
 
     .hero-glow {
@@ -288,9 +325,11 @@
     }
 
     .hero-meta {
-      display: flex;
-      gap: 36px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: max-content max-content;
+      justify-content: start;
+      column-gap: 48px;
+      row-gap: 22px;
       position: relative;
     }
 
@@ -1152,8 +1191,16 @@
     .jm-legend-dot.action { background: var(--green-pale); border: 1px solid rgba(62,92,118,0.15); }
     .jm-legend-dot.pain { background: #EEF1F6; border: 1px solid rgba(220,170,80,0.2); }
     .jm-legend-dot.solution { background: #EEF1F6; border: 1px solid rgba(80,150,210,0.2); }
+    /* Journey map: keep the 5 stages at a legible width inside the card; scroll horizontally when the column is narrow */
+    .jm-wrapper { max-width: 100%; }
+    .jm-stages { grid-template-columns: repeat(5, minmax(212px, 1fr)); overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scroll-snap-type: x proximity; }
+    .jm-stage { scroll-snap-align: start; }
+    .jm-stages::-webkit-scrollbar { height: 8px; }
+    .jm-stages::-webkit-scrollbar-track { background: rgba(62,92,118,0.06); border-radius: 4px; }
+    .jm-stages::-webkit-scrollbar-thumb { background: rgba(62,92,118,0.28); border-radius: 4px; }
+
     @media (max-width: 960px) {
-      .jm-stages { grid-template-columns: 1fr; gap: 16px; }
+      .jm-stages { grid-template-columns: 1fr; gap: 16px; overflow-x: visible; padding-bottom: 0; }
       .jm-wrapper { max-width: 95%; padding: 20px 16px 16px; }
     }
 
@@ -1297,7 +1344,7 @@
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
-    section[id] { scroll-margin-top: 118px; }
+    section[id] { scroll-margin-top: 96px; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -1336,6 +1383,19 @@
     .tab-link:hover { color: var(--green); }
     .tab-link.active { color: var(--green); border-bottom-color: var(--green); }
 
+    /* ── CASE STUDY SHELL: sticky left rail + content column ── */
+    .cs-shell { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 56px; padding: 56px 60px 0; }
+    .cs-rail { flex: 0 0 184px; position: sticky; top: 112px; align-self: flex-start; }
+    .cs-rail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding: 0 0 14px 18px; }
+    .cs-rail-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid rgba(62,92,118,0.14); }
+    .cs-rail .tab-link { display: block; top: 0; padding: 10px 18px; font-size: 13.5px; letter-spacing: 0.01em; color: var(--muted); border: none; border-left: 2px solid transparent; margin-left: -1px; transition: color 0.2s, border-color 0.2s; }
+    .cs-rail .tab-link:hover { color: var(--accent); }
+    .cs-rail .tab-link.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+    .cs-content { flex: 1; min-width: 0; }
+    .cs-content .container, .cs-content .container-wide { max-width: 100%; margin: 0; }
+    .cs-content > section[style*="background"], .cs-content > .impact-section, .cs-content > .reflection-section { border-radius: 22px; margin: 12px 0; overflow: hidden; }
+    .cs-content .impact-number { font-size: clamp(28px, 3.2vw, 42px) !important; }
+
     /* ── FADE IN ── */
     .fade-in {
       opacity: 0;
@@ -1352,10 +1412,19 @@
       .nav-logo { display: flex; }
       .nav-logo img { height: 40px; }
       .section-tabs { padding: 0 20px; justify-content: flex-start; }
-      .hero { padding: 100px 28px 48px; }
+      .hero { padding: 100px 28px 48px; flex-direction: column; align-items: flex-start; gap: 28px; }
+      .hero-figma { width: 100%; margin-top: 4px; }
       .skip-pill { align-self: center; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
+      .cs-shell { flex-direction: column; gap: 0; padding: 0; max-width: 100%; }
+      .cs-rail-label { display: none; }
+      .cs-rail { position: sticky; top: 60px; z-index: 90; flex: none; width: 100%; background: rgba(255,255,255,0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(62,92,118,0.1); }
+      .cs-rail-nav { flex-direction: row; overflow-x: auto; border-left: none; gap: 0; padding: 0 20px; scrollbar-width: none; }
+      .cs-rail-nav::-webkit-scrollbar { display: none; }
+      .cs-rail .tab-link { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; padding: 12px 14px; }
+      .cs-rail .tab-link.active { border-left-color: transparent; border-bottom-color: var(--accent); }
+      .cs-content > section[style*="background"], .cs-content > .impact-section, .cs-content > .reflection-section { border-radius: 0; margin: 0; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .problem-grid, .method-grid, .insights-grid, .competitor-grid, .opportunity-grid { grid-template-columns: 1fr; }
       .wireframe-grid { grid-template-columns: 1fr 1fr; }
@@ -1373,7 +1442,7 @@
       .hero { padding: 85px 20px 36px; }
       .hero h1 { font-size: clamp(32px, 9vw, 48px); }
       .hero-sub { font-size: 15px; }
-      .hero-meta { flex-direction: column; gap: 14px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 16px; }
       .hero-meta-value { font-size: 13px; }
       .container, .container-wide { padding: 0 20px; }
       section { padding: 28px 0; }
@@ -1538,6 +1607,7 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 
 /* ---- Sticky case-study sub-nav ---- */
 .section-tabs{ top:50px !important; background:var(--bg) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:0 1px 0 var(--border), 0 6px 16px rgba(0,0,0,0.06); }
+@media(max-width:960px){ .section-tabs{ top:72px !important; } }
 .tab-link{ color:var(--muted); }
 .tab-link.active, .tab-link:hover{ color:var(--accent); }
 
@@ -1761,45 +1831,55 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#contact">Contact</a>
   </div>
 
-  <!-- SECTION TABS -->
-  <div class="section-tabs" id="sectionTabs">
-    <a href="#overview"  class="tab-link active">Overview</a>
-    <a href="#research"  class="tab-link">Research</a>
-    <a href="#design"    class="tab-link">Design Process</a>
-    <a href="#solution"  class="tab-link">Solution</a>
-    <a href="#impact"    class="tab-link">Impact</a>
-    <a href="#reflection" class="tab-link">Reflection</a>
-  </div>
-
   <!-- HERO -->
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
-    <p class="hero-tag">UX Design · Website Redesign · Climate Tech</p>
-    <h1>Nexstera<br /><em>Tech</em></h1>
-    <p class="hero-sub">Designed the investor and education site for a lithium-ion battery AI startup, reframing a confusing pitch into a clear, investor-ready story and shipping the design system the team now builds on.</p>
-    <div class="hero-meta">
-      <div>
-        <div class="hero-meta-label">My Role</div>
-        <div class="hero-meta-value">UX Designer</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Team</div>
-        <div class="hero-meta-value">Iter8 studio team · Nexstera founders</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Timeline</div>
-        <div class="hero-meta-value">Jan – Mar 2024 (8 weeks)</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Tools</div>
-        <div class="hero-meta-value">Figma · FigJam · Webflow</div>
+    <div class="hero-content">
+      <p class="hero-tag">UX Design · Website Redesign · Climate Tech</p>
+      <h1>Nexstera<br /><em>Tech</em></h1>
+      <p class="hero-sub">Designed the investor and education site for a lithium-ion battery AI startup, reframing a confusing pitch into a clear, investor-ready story and shipping the design system the team now builds on.</p>
+      <div class="hero-meta">
+        <div>
+          <div class="hero-meta-label">My Role</div>
+          <div class="hero-meta-value">UX Designer</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Team</div>
+          <div class="hero-meta-value">Iter8 studio team · Nexstera founders</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">Jan – Mar 2024 (8 weeks)</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Tools</div>
+          <div class="hero-meta-value">Figma · FigJam · Webflow</div>
+        </div>
       </div>
     </div>
-    <a href="#prototype" class="skip-pill">
-      <span class="skip-pill-sparkle">✨</span> Too excited? Skip to the prototype →
-    </a>
+    <div class="hero-figma">
+      <div class="hero-figma-frame">
+        <iframe src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?node-id=363-45&page-id=363%3A36&starting-point-node-id=473%3A54&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen loading="lazy" title="Nexstera Tech interactive Figma prototype"></iframe>
+      </div>
+      <div class="hero-figma-caption">Live Figma prototype · tap the in-app tabs to move through the flow</div>
+    </div>
   </section>
+
+  <!-- ── CASE STUDY BODY: sticky left rail + content column ── -->
+  <div class="cs-shell">
+    <aside class="cs-rail">
+      <div class="cs-rail-label">On this page</div>
+      <div class="cs-rail-nav" id="sectionTabs" role="navigation" aria-label="Case study sections">
+        <a href="#overview"  class="tab-link active">Overview</a>
+        <a href="#research"  class="tab-link">Research</a>
+        <a href="#design"    class="tab-link">Design Process</a>
+        <a href="#solution"  class="tab-link">Solution</a>
+        <a href="#impact"    class="tab-link">Impact</a>
+        <a href="#reflection" class="tab-link">Reflection</a>
+      </div>
+    </aside>
+    <div class="cs-content">
 
   <!-- AT A GLANCE -->
   <section class="ag-section">
@@ -1895,7 +1975,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
     <!-- Journey Map · HTML Component -->
     <div class="container-wide fade-in">
-      <div class="case-img-caption" style="max-width: 85%; margin: 0 auto 0; border-radius: 6px 6px 0 0;">Journey map: dual-track mapping of the investor and curious visitor experience across five stages</div>
+      <div class="case-img-caption" style="max-width: 85%; margin: 0 auto 0; border-radius: 6px 6px 0 0;">Journey map: dual-track mapping of the investor and curious visitor experience across five stages · scroll across to see all five →</div>
       <div class="jm-wrapper">
         <div class="jm-stages">
           <!-- Stage 1: Awareness -->
@@ -2122,7 +2202,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
     <!-- Sketches -->
     <div class="container-wide fade-in">
-      <div class="case-img-grid">
+      <div class="case-img-grid" style="grid-template-columns: 1fr; max-width: 720px; gap: 30px;">
         <div class="case-img-wrapper">
           <div class="case-img-caption">Initial sketches exploring layout concepts</div>
           <img src="assets/nexstera-sketch-1.webp" alt="Early concept sketch exploring layout and information hierarchy" loading="lazy" />
@@ -2307,7 +2387,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   <!-- TESTIMONIAL -->
   <div class="container fade-in">
     <div class="testimonial-block">
-      <p class="testimonial-quote">"A clean, professional site, and a monumental step in helping us bring in investors and worldwide interest."</p>
+      <p class="testimonial-quote">"We were incredibly excited to finally have a clean, professional site that matches the company we're building. It's been a monumental step in helping Nexstera bring in investors and spark interest from around the world."</p>
       <p class="testimonial-attr"><strong>Penny Lane Case</strong> · Founder &amp; CEO, Nexstera Tech</p>
     </div>
   </div>
@@ -2352,6 +2432,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <p class="body-text">Next: A/B testing the investor page's CTA placement against live traffic, and extending the design system across the rest of the site.</p>
     </div>
   </section>
+
+    </div><!-- /cs-content -->
+  </div><!-- /cs-shell -->
 
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
@@ -2444,8 +2527,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     const sectionIds = ['overview', 'problem', 'research', 'insights', 'design', 'solution', 'impact', 'reflection'];
     const tabsBar = document.getElementById('sectionTabs');
     const navH = document.querySelector('nav').offsetHeight;
-    const tabsH = tabsBar.offsetHeight;
-    const offset = navH + tabsH + 16;
+    const railHorizontal = window.matchMedia('(max-width: 960px)').matches;
+    const offset = navH + (railHorizontal ? tabsBar.offsetHeight : 0) + 20;
 
     function setActiveTab(id) {
       tabLinks.forEach(l => {
@@ -2554,7 +2637,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 118px; }
+  [id] { scroll-margin-top: 96px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }

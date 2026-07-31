@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Foundry: Models Redesign · Product Design Case Study | Jasmine Sayed</title>
+  <title>Foundry Models · Product Design Case Study | Jasmine Sayed</title>
   <meta name="description" content="Redesigning model discovery and selection on Microsoft Foundry. A product design project with the Microsoft CoreAI team, March to June 2026: research, information architecture, a high-fidelity prototype, and two rounds of usability testing to turn an 11,000-model catalog into a flow developers can navigate." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Foundry Models · Product Design Case Study | Jasmine Sayed" />
@@ -126,7 +126,7 @@
     .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(44px, 7vw, 96px); font-weight: 400; color: white; line-height: 0.96; margin-bottom: 26px; position: relative; }
     .hero h1 em { color: var(--indigo-light); font-style: italic; }
     .hero-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.66); max-width: 640px; line-height: 1.72; margin-bottom: 20px; position: relative; }
-    .hero-meta { display: flex; gap: 34px; flex-wrap: wrap; position: relative; }
+    .hero-meta { display: grid; grid-template-columns: max-content max-content; justify-content: start; column-gap: 44px; row-gap: 20px; position: relative; }
     .hero-meta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(169,192,218,0.6); margin-bottom: 5px; }
     .hero-meta-value { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.88); }
 
@@ -172,10 +172,13 @@
     /* ── LIVE EMBED ── */
     .embed-frame { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 70px rgba(20,19,31,0.2), 0 0 0 1px rgba(62,92,118,0.08); background: #171A22; }
     .embed-frame iframe { width: 100%; height: 520px; border: 0; display: block; background: #fff; }
+    /* Scale the full-size (1280px) prototype down to fit the frame so the whole layout is visible, not cut off */
+    .proto-viewport { container-type: inline-size; width: 100%; aspect-ratio: 1280 / 880; overflow: hidden; position: relative; background: #fff; }
+    .proto-viewport iframe { position: absolute !important; top: 0; left: 0; width: 1280px !important; height: 880px !important; border: 0; display: block; transform-origin: top left; transform: scale(calc(100cqw / 1280px)); background: #fff; }
     .embed-open { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--indigo); text-decoration: none; margin-top: 14px; }
     .embed-open:hover { gap: 12px; }
-    .proto-wrap { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.06); border: 1px solid rgba(169,192,218,0.16); padding: 26px; }
-    .proto-label { text-align: center; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo-light); margin-bottom: 14px; }
+    .proto-wrap { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.06); border: 1px solid rgba(169,192,218,0.16); padding: 16px; }
+    .proto-label { text-align: center; font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo-light); margin-bottom: 10px; }
     .proto-note { font-size: 13px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.62); text-align: center; max-width: 700px; margin: 0 auto 18px; }
     .proto-note strong { color: rgba(255,255,255,0.88); font-weight: 500; }
     .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px auto 12px; max-width: 1160px; align-items: start; }
@@ -365,12 +368,25 @@
     .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── SECTION TABS ── */
-    section[id] { scroll-margin-top: 118px; }
+    section[id] { scroll-margin-top: 96px; }
     .section-tabs { position: sticky; top: 66px; z-index: 90; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); display: flex; justify-content: center; padding: 0 60px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .section-tabs::-webkit-scrollbar { display: none; }
     .tab-link { display: inline-flex; align-items: center; padding: 14px 20px; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; position: relative; top: 1px; }
     .tab-link:hover { color: var(--indigo); }
     .tab-link.active { color: var(--indigo); border-bottom-color: var(--indigo); }
+
+    /* ── CASE STUDY SHELL: sticky left rail + content column ── */
+    .cs-shell { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 56px; padding: 56px 60px 0; }
+    .cs-rail { flex: 0 0 184px; position: sticky; top: 112px; align-self: flex-start; }
+    .cs-rail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding: 0 0 14px 18px; }
+    .cs-rail-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid rgba(62,92,118,0.14); }
+    .cs-rail .tab-link { display: block; top: 0; padding: 10px 18px; font-size: 13.5px; letter-spacing: 0.01em; color: var(--muted); border: none; border-left: 2px solid transparent; margin-left: -1px; transition: color 0.2s, border-color 0.2s; }
+    .cs-rail .tab-link:hover { color: var(--accent); }
+    .cs-rail .tab-link.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+    .cs-content { flex: 1; min-width: 0; }
+    .cs-content .container, .cs-content .container-wide { max-width: 100%; margin: 0; }
+    .cs-content > section[style*="background"], .cs-content > .impact-section, .cs-content > .reflection-section { border-radius: 22px; margin: 12px 0; overflow: hidden; }
+    .cs-content .impact-number { font-size: clamp(28px, 3.2vw, 42px) !important; }
 
     /* ── FADE IN ── */
     .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
@@ -389,6 +405,15 @@
       .hero-visual .browser-frame, .hero-visual:hover .browser-frame { transform: none; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 38px 0; }
+      .cs-shell { flex-direction: column; align-items: stretch; gap: 0; padding: 0; max-width: 100%; }
+      .cs-content { width: 100%; min-width: 0; }
+      .cs-rail-label { display: none; }
+      .cs-rail { position: sticky; top: 60px; z-index: 90; flex: none; width: 100%; background: rgba(255,255,255,0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(62,92,118,0.1); }
+      .cs-rail-nav { flex-direction: row; overflow-x: auto; border-left: none; gap: 0; padding: 0 20px; scrollbar-width: none; }
+      .cs-rail-nav::-webkit-scrollbar { display: none; }
+      .cs-rail .tab-link { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; padding: 12px 14px; }
+      .cs-rail .tab-link.active { border-left-color: transparent; border-bottom-color: var(--accent); }
+      .cs-content > section[style*="background"], .cs-content > .impact-section, .cs-content > .reflection-section { border-radius: 0; margin: 0; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .obj-grid, .method-grid, .persona-grid, .test-grid, .take-grid { grid-template-columns: 1fr; }
       .goals-grid { grid-template-columns: 1fr; }
@@ -407,7 +432,7 @@
       .hero { padding: 86px 20px 36px; min-height: auto; }
       .hero h1 { font-size: clamp(34px, 10vw, 52px); }
       .hero-sub { font-size: 15px; }
-      .hero-meta { flex-direction: column; gap: 14px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 16px; }
       .container, .container-wide { padding: 0 20px; }
       section { padding: 30px 0; }
       h2.section-title { font-size: clamp(23px, 6vw, 32px); }
@@ -551,6 +576,7 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 
 /* ---- Sticky case-study sub-nav ---- */
 .section-tabs{ top:50px !important; background:var(--bg) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:0 1px 0 var(--border), 0 6px 16px rgba(0,0,0,0.06); }
+@media(max-width:960px){ .section-tabs{ top:72px !important; } }
 .tab-link{ color:var(--muted); }
 .tab-link.active, .tab-link:hover{ color:var(--accent); }
 
@@ -772,16 +798,6 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#contact">Contact</a>
   </div>
 
-  <!-- SECTION TABS -->
-  <div class="section-tabs" id="sectionTabs">
-    <a href="#overview"    class="tab-link active">Overview</a>
-    <a href="#research"    class="tab-link">Research</a>
-    <a href="#design"      class="tab-link">Design</a>
-    <a href="#live-prototype"   class="tab-link">Prototype</a>
-    <a href="#results"     class="tab-link">Results</a>
-    <a href="#takeaways"   class="tab-link">Takeaways</a>
-  </div>
-
   <!-- HERO -->
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
@@ -789,7 +805,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="hero-content">
       <p class="hero-tag">Product Design · UX Research · AI Platform</p>
       <h1 style="font-size:clamp(30px,6.2vw,76px);">Microsoft Foundry<br /><em>Models</em></h1>
-      <p class="hero-sub">An 11,000-model catalog, turned into a flow developers can actually navigate: region visibility, live filtering, and side-by-side compare. Two of those ideas shipped into the live Microsoft Foundry product. I came to the redesign from my own usability research on the platform.</p>
+      <p class="hero-sub">I turned an 11,000-model catalog into a flow developers can navigate: region visibility, live filtering, and side-by-side compare. Two of those ideas shipped into the live Microsoft Foundry product, from usability research I ran on the platform myself.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -807,6 +823,10 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
           <div class="hero-meta-label">Co-op</div>
           <div class="hero-meta-value">Microsoft CoreAI</div>
         </div>
+        <div>
+          <div class="hero-meta-label">Tools</div>
+          <div class="hero-meta-value">Figma, UXtweak, Netlify, Claude, Cursor</div>
+        </div>
       </div>
     </div>
     <div class="hero-right">
@@ -820,17 +840,24 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
         </div>
         <div class="hero-site-pill">Explore the live platform <span style="font-size: 13px;">→</span></div>
       </a>
-      <a href="#proto-live" class="hero-skip"><span style="font-size:13px;">✨</span> Skip to the live prototype →</a>
     </div>
   </section>
 
-  <!-- ROLE STRIP -->
-  <div class="role-strip">
-    <div><div class="role-label">Role</div><div class="role-value">UX Designer</div></div>
-    <div><div class="role-label">Timeline</div><div class="role-value">March to June 2026</div></div>
-    <div><div class="role-label">Team</div><div class="role-value">5 UX designers and<br />Microsoft CoreAI team</div></div>
-    <div><div class="role-label">Tools</div><div class="role-value">Figma, UXtweak, Netlify,<br />Claude, Cursor</div></div>
-  </div>
+  <!-- ── CASE STUDY BODY: sticky left rail + content column ── -->
+  <div class="cs-shell">
+    <aside class="cs-rail">
+      <div class="cs-rail-label">On this page</div>
+      <div class="cs-rail-nav" id="sectionTabs" role="navigation" aria-label="Case study sections">
+        <a href="#overview"    class="tab-link active">Overview</a>
+        <a href="#research"    class="tab-link">Research</a>
+        <a href="#design"      class="tab-link">Design</a>
+        <a href="#live-prototype"   class="tab-link">Prototype</a>
+        <a href="#testing"     class="tab-link">Testing</a>
+        <a href="#results"     class="tab-link">Results</a>
+        <a href="#takeaways"   class="tab-link">Takeaways</a>
+      </div>
+    </aside>
+    <div class="cs-content">
 
   <!-- AT A GLANCE -->
   <section class="ag-section">
@@ -855,8 +882,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led concept and information architecture across research, a high-fidelity prototype, and two rounds of usability testing, focused on region visibility, filtering, and side-by-side compare.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>My ideas were implemented in the live Microsoft Foundry product:</strong> region now sits in the filter bar, and there's a compare-model tray.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led concept development and information architecture, running research, a high-fidelity prototype, and two rounds of usability testing focused on region visibility, filtering, and side-by-side compare.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Both ideas shipped into the live Microsoft Foundry product</strong> (region in the filter bar, a side-by-side compare tray), and round-two testing showed roughly 58% faster search-to-select.</div></div>
       </div>
     </div>
   </section>
@@ -866,7 +893,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="container fade-in">
       <p class="section-eyebrow">The Problem</p>
       <h2 class="section-title">11,000 models,<br />and nowhere to start.</h2>
-      <p class="body-text">Picture a developer who just wants to ship a feature this week. They open Microsoft Foundry, land on the <strong>Models page</strong>, and hit more than <strong>11,000 models</strong>, each with different capabilities, pricing, context windows, and regional availability. Users kept telling us the same two things: help me <strong>narrow this list</strong>, and help me figure out <strong>where to even start.</strong> Some picked a model only to hit a wall at deployment because it wasn't available in their region.</p>
+      <p class="body-text">Picture a developer who just wants to ship a feature this week. They open Microsoft Foundry, land on the <strong>Models page</strong>, and hit more than <strong>11,000 models</strong>, each with different capabilities, pricing, context windows, and regional availability. Users kept telling us the same two things: help me <strong>narrow this list</strong>, and help me figure out <strong>where to start.</strong> Some picked a model only to hit a wall at deployment because it wasn't available in their region.</p>
       <p class="body-text">Our team of five spent four months redesigning model discovery and selection end to end. My focus was <strong>concept development, information architecture, and stakeholder communication</strong>, keeping the work aligned with the Microsoft CoreAI team. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
     </div>
 
@@ -910,8 +937,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
           <div class="method-icon">🎙️</div>
           <div class="method-name">User interviews</div>
           <ul class="method-list">
-            <li>Comparing models took too much back-and-forth effort</li>
-            <li>High cognitive load navigating a large catalog</li>
+            <li>Comparing models meant too much clicking back and forth</li>
+            <li>Lost their place navigating a large catalog</li>
             <li>Users needed key model details earlier in the flow</li>
           </ul>
         </div>
@@ -1021,12 +1048,12 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="container-wide fade-in">
       <div class="figure">
         <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="lazy" decoding="async" /></div>
-        <p class="figcap"><strong>Paper prototype.</strong> Two flows worth stealing: a <strong>region blocker</strong> resolved in onboarding so users only see models they can deploy, and a <strong>model-selection flow</strong> that adds an “ask AI to find the best model” helper and clearer descriptions to cut cognitive load.</p>
+        <p class="figcap"><strong>Paper prototype.</strong> Two ideas we carried forward: handling <strong>region</strong> up front so a developer never commits to a model they can't deploy, and a <strong>model-selection flow</strong> with an “ask AI to find the best model” helper and clearer descriptions to reduce overload.</p>
       </div>
     </div>
 
     <div class="container fade-in">
-      <p class="body-text">The sketch notes became our design principles. Three ideas carried from paper into the high-fidelity prototype:</p>
+      <p class="body-text">The sketch notes set our direction. Three ideas carried from paper into the high-fidelity prototype:</p>
       <div class="anno-list">
         <span class="anno">📍 Pricing &amp; region on every model card</span>
         <span class="anno">🔎 A more prominent, AI-assisted search</span>
@@ -1082,7 +1109,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
         <div class="obj-card">
           <div class="obj-icon">🌍</div>
           <div class="obj-name">A model you can't deploy</div>
-          <div class="obj-desc">Region-locked models stay in the list with a clear availability flag instead of disappearing.</div>
+          <div class="obj-desc">We first sketched gating region-locked models out of the list, but hiding them left users wondering why a model vanished, so they stay visible with a clear availability flag instead.</div>
           <div class="obj-insight">Hiding them is cleaner but leaves users wondering why a model vanished. Flagging teaches what exists and points to a supported region.</div>
         </div>
         <div class="obj-card">
@@ -1102,7 +1129,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
     <div class="container fade-in">
       <h3 class="sub-heading">From wireframes to a working build</h3>
-      <p class="body-text">The key screens are below; explore the whole thing live just after.</p>
+      <p class="body-text">The key screens are below; you can explore the full prototype just after.</p>
     </div>
 
     <div class="container-wide">
@@ -1142,7 +1169,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
             <div class="browser-dots"><span></span><span></span><span></span></div>
             <div class="browser-url">ms-foundry-prototype.netlify.app</div>
           </div>
-          <iframe src="assets/foundry-prototype.html" title="Microsoft Foundry high-fidelity prototype" loading="lazy"></iframe>
+          <div class="proto-viewport">
+            <iframe src="assets/foundry-prototype.html" title="Microsoft Foundry high-fidelity prototype" loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -1153,7 +1182,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="container fade-in">
       <p class="section-eyebrow">User Testing · Round 2</p>
       <h2 class="section-title">Validating the high-fidelity<br />prototype.</h2>
-      <p class="body-text">Our final round put the high-fidelity prototype in front of developers across the Home, Overview, and Models pages, testing three things: whether they could <strong>understand</strong> the interface, <strong>navigate</strong> to a region, model, or task, and <strong>compare</strong> options to find a better one.</p>
+      <p class="body-text">An earlier round on the wireframes had already shaped the layout; this final round put the high-fidelity prototype in front of developers across the Home, Discover, and Models pages, testing three things: whether they could <strong>understand</strong> the interface, <strong>navigate</strong> to the right region, model, or task, and <strong>compare</strong> options to find the best fit.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1161,7 +1190,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <div class="loop">
         <div class="loop-row">
           <div class="loop-cell find"><div class="loop-k">Signal</div><div class="loop-t">Developers leaned on region and price to shortlist quickly, but a few didn't notice region until they were deep into a model.</div></div>
-          <div class="loop-cell"><div class="loop-k">Refinement</div><div class="loop-t">Kept region and pricing on the model card itself, so they're visible before anyone commits.</div></div>
+          <div class="loop-cell"><div class="loop-k">Refinement</div><div class="loop-t">Pulled region and pricing to the top of each model card, so they register before anyone opens a model.</div></div>
         </div>
         <div class="loop-row">
           <div class="loop-cell find"><div class="loop-k">Signal</div><div class="loop-t">Some looked for a way to compare before they'd selected anything to compare.</div></div>
@@ -1181,10 +1210,10 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="container-wide fade-in">
       <p class="section-eyebrow">Results</p>
       <h2 class="section-title">The ideas that<br />are now <em>shipping.</em></h2>
-      <p class="body-text">The redesign reframed discovery around the decisions developers actually make, narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After the co-op, my ideas shipped into the live Microsoft Foundry product: region now sits in the filter bar, and there's a compare-model tray.</p>
+      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After the co-op, my ideas shipped into the live Microsoft Foundry product: region now sits in the filter bar, and there's a compare-model tray.</p>
       <div class="impact-stats">
         <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">The two ideas at the heart of the redesign, now shipped in the live Foundry product</div></div>
-        <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">A catalog of 11,000+ models made filterable down to a focused, scannable set</div></div>
+        <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">An 11,000+ model catalog, filtered down to a focused, scannable set</div></div>
         <div class="impact-stat"><div class="impact-number">&minus;58%</div><div class="impact-label">faster search-to-select in round-two testing versus the current Models page</div></div>
       </div>
     </div>
@@ -1199,11 +1228,14 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="container-wide">
       <div class="take-grid fade-in">
         <div class="take-card"><div class="take-num">01</div><div class="take-text"><strong>Designing for emerging tech means continuous experimentation.</strong> There was no settled pattern for browsing 11,000 AI models, so we had to prototype our way to one.</div></div>
-        <div class="take-card"><div class="take-num">02</div><div class="take-text"><strong>Constraints drive creative problem-solving.</strong> A fixed IA and no access to internal data forced sharper, more focused design decisions rather than a sprawling redesign.</div></div>
+        <div class="take-card"><div class="take-num">02</div><div class="take-text"><strong>Tight constraints sharpened the work.</strong> A fixed IA and no access to internal data forced focused decisions instead of a sprawling redesign.</div></div>
         <div class="take-card"><div class="take-num">03</div><div class="take-text"><strong>Complexity can't always be eliminated, but it can be re-imagined.</strong> We couldn't shrink the catalog; we could change how people move through it.</div></div>
       </div>
     </div>
   </section>
+
+    </div><!-- /cs-content -->
+  </div><!-- /cs-shell -->
 
   <!-- NEXT PROJECT -->
   <div class="next-project">
@@ -1386,7 +1418,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 118px; }
+  [id] { scroll-margin-top: 96px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }

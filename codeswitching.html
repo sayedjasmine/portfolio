@@ -221,7 +221,7 @@
     .mobile-menu a:last-child::after { display: none; }
 
     /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
-    section[id] { scroll-margin-top: 130px; }
+    section[id] { scroll-margin-top: 96px; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -256,6 +256,19 @@
     }
     .tab-link:hover { color: var(--purple); }
     .tab-link.active { color: var(--purple); border-bottom-color: var(--purple); }
+
+    /* ── CASE STUDY SHELL: sticky left rail + content column ── */
+    .cs-shell { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 56px; padding: 56px 60px 0; }
+    .cs-rail { flex: 0 0 184px; position: sticky; top: 112px; align-self: flex-start; }
+    .cs-rail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding: 0 0 14px 18px; }
+    .cs-rail-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid rgba(62,92,118,0.14); }
+    .cs-rail .tab-link { display: block; top: 0; padding: 10px 18px; font-size: 13.5px; letter-spacing: 0.01em; color: var(--muted); border: none; border-left: 2px solid transparent; margin-left: -1px; transition: color 0.2s, border-color 0.2s; }
+    .cs-rail .tab-link:hover { color: var(--accent); }
+    .cs-rail .tab-link.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+    .cs-content { flex: 1; min-width: 0; }
+    .cs-content .container, .cs-content .container-wide { max-width: 100%; margin: 0; }
+    .cs-content > section[style*="background"], .cs-content > .impact-section, .cs-content > .reflection-section { border-radius: 22px; margin: 12px 0; overflow: hidden; }
+    .cs-content .impact-number { font-size: clamp(28px, 3.2vw, 42px) !important; }
 
     /* ── HERO ── */
     .hero {
@@ -323,9 +336,11 @@
     }
 
     .hero-meta {
-      display: flex;
-      gap: 36px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: max-content max-content;
+      justify-content: start;
+      column-gap: 48px;
+      row-gap: 22px;
       position: relative;
     }
 
@@ -800,6 +815,14 @@
       .hero { padding: 100px 28px 48px; }
       .container, .container-wide { padding: 0 24px; }
       section { padding: 36px 0; }
+      .cs-shell { flex-direction: column; gap: 0; padding: 0; max-width: 100%; }
+      .cs-rail-label { display: none; }
+      .cs-rail { position: sticky; top: 60px; z-index: 90; flex: none; width: 100%; background: rgba(255,255,255,0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(62,92,118,0.1); }
+      .cs-rail-nav { flex-direction: row; overflow-x: auto; border-left: none; gap: 0; padding: 0 20px; scrollbar-width: none; }
+      .cs-rail-nav::-webkit-scrollbar { display: none; }
+      .cs-rail .tab-link { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; padding: 12px 14px; }
+      .cs-rail .tab-link.active { border-left-color: transparent; border-bottom-color: var(--accent); }
+      .cs-content > section[style*="background"], .cs-content > .impact-section, .cs-content > .reflection-section { border-radius: 0; margin: 0; }
       .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .theme-grid { grid-template-columns: repeat(3, 1fr); }
       .method-grid, .quote-grid { grid-template-columns: 1fr; }
@@ -816,7 +839,7 @@
       .hero { padding: 85px 20px 36px; }
       .hero h1 { font-size: clamp(24px, 7vw, 36px); }
       .hero-sub { font-size: 15px; }
-      .hero-meta { flex-direction: column; gap: 14px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 16px; }
       .hero-meta-value { font-size: 13px; }
       .container, .container-wide { padding: 0 20px; }
       section { padding: 28px 0; }
@@ -934,6 +957,7 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 
 /* ---- Sticky case-study sub-nav ---- */
 .section-tabs{ top:50px !important; background:var(--bg) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:0 1px 0 var(--border), 0 6px 16px rgba(0,0,0,0.06); }
+@media(max-width:960px){ .section-tabs{ top:72px !important; } }
 .tab-link{ color:var(--muted); }
 .tab-link.active, .tab-link:hover{ color:var(--accent); }
 
@@ -1154,16 +1178,6 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#contact">Contact</a>
   </div>
 
-  <!-- SECTION TABS -->
-  <div class="section-tabs" id="sectionTabs">
-    <a href="#overview"  class="tab-link active">Overview</a>
-    <a href="#method"    class="tab-link">Method</a>
-    <a href="#findings"  class="tab-link">Findings</a>
-    <a href="#nuance"    class="tab-link">Nuance</a>
-    <a href="#questions" class="tab-link">Open Questions</a>
-    <a href="#reflection" class="tab-link">Reflection</a>
-  </div>
-
   <!-- HERO -->
   <section class="hero" id="overview">
     <div class="hero-glow hero-glow-1"></div>
@@ -1191,25 +1205,20 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </div>
   </section>
 
-  <!-- ROLE STRIP -->
-  <div class="role-strip">
-    <div>
-      <div class="role-label">Role</div>
-      <div class="role-value">UX Researcher<br />Mixed-methods</div>
-    </div>
-    <div>
-      <div class="role-label">Timeline</div>
-      <div class="role-value">2025<br />UW HCDE</div>
-    </div>
-    <div>
-      <div class="role-label">Team</div>
-      <div class="role-value">UW research group<br />5 participants</div>
-    </div>
-    <div>
-      <div class="role-label">Tools</div>
-      <div class="role-value">Interviews, FigJam,<br />thematic coding</div>
-    </div>
-  </div>
+  <!-- ── CASE STUDY BODY: sticky left rail + content column ── -->
+  <div class="cs-shell">
+    <aside class="cs-rail">
+      <div class="cs-rail-label">On this page</div>
+      <div class="cs-rail-nav" id="sectionTabs" role="navigation" aria-label="Case study sections">
+        <a href="#overview"  class="tab-link active">Overview</a>
+        <a href="#method"    class="tab-link">Method</a>
+        <a href="#findings"  class="tab-link">Findings</a>
+        <a href="#nuance"    class="tab-link">Nuance</a>
+        <a href="#questions" class="tab-link">Open Questions</a>
+        <a href="#reflection" class="tab-link">Reflection</a>
+      </div>
+    </aside>
+    <div class="cs-content">
 
   <!-- INTRODUCTION -->
   <section id="overview-detail">
@@ -1512,6 +1521,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
   </section>
 
+    </div><!-- /cs-content -->
+  </div><!-- /cs-shell -->
+
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">More from Play</div>
@@ -1595,8 +1607,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     const sectionIds = ['overview', 'method', 'findings', 'nuance', 'questions', 'reflection'];
     const tabsBar = document.getElementById('sectionTabs');
     const navH = document.querySelector('nav').offsetHeight;
-    const tabsH = tabsBar.offsetHeight;
-    const offset = navH + tabsH + 16;
+    const railHorizontal = window.matchMedia('(max-width: 960px)').matches;
+    const offset = navH + (railHorizontal ? tabsBar.offsetHeight : 0) + 20;
 
     function setActiveTab(id) {
       tabLinks.forEach(l => {
@@ -1703,7 +1715,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 92px; }
+  [id] { scroll-margin-top: 96px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
