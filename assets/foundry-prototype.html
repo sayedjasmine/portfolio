@@ -832,7 +832,7 @@ function renderAll(models,ctr,cntEl) {
 }
 
 function renderByProvider(models,ctr,cntEl) {
-  cntEl.textContent = `Browsing by provider — ${models.length} models`;
+  cntEl.textContent = `Browsing by provider · ${models.length} models`;
   if (!models.length) { ctr.innerHTML = emptyHTML(); return; }
   ctr.innerHTML = PROVIDERS.map(p=>{
     const pm = models.filter(m=>m.provider===p);
@@ -852,7 +852,7 @@ function renderByProvider(models,ctr,cntEl) {
 }
 
 function renderByTask(models,ctr,cntEl) {
-  cntEl.textContent = `Browsing by task — ${models.length} models`;
+  cntEl.textContent = `Browsing by task · ${models.length} models`;
   if (!models.length) { ctr.innerHTML = emptyHTML(); return; }
   ctr.innerHTML = TASK_META.map(tg=>{
     const tm = models.filter(m=>m.taskKey===tg.key);
@@ -1243,7 +1243,7 @@ function openDeploymentPanel(modelId) {
         </div>`:`
         <div class="flex items-center gap-1.5 mt-2" style="color:var(--red);">
           <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
-          <span class="text-xs font-medium">Not available in ${state.selectedRegion} — change region to proceed</span>
+          <span class="text-xs font-medium">Not available in ${state.selectedRegion}: change region to proceed</span>
         </div>`}
       </div>
     </div>
