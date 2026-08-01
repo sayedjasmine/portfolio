@@ -701,6 +701,40 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 #cursor-label.show{ opacity:1; transform:translate(15px,15px) scale(1); }
 @media (hover:none),(pointer:coarse){ #cursor-label{ display:none !important; } }
 </style>
+<!-- SIGNATURE CRAFT SYSTEM v1 (site-wide flow) -->
+<style id="sig-craft">
+@media (prefers-reduced-motion: no-preference){
+  html.sig-js body{ opacity:0; }
+  html.sig-js.sig-shown body{ opacity:1; transition:opacity .5s ease; }
+  html.sig-leaving body{ opacity:0 !important; transition:opacity .28s ease; }
+}
+nav ul li a{ background-image:linear-gradient(currentColor,currentColor); background-repeat:no-repeat; background-position:0 100%; background-size:0% 1.5px; transition:background-size .32s cubic-bezier(.16,1,.3,1); }
+nav ul li a:hover{ background-size:100% 1.5px; }
+</style>
+<script id="sig-craft-js">
+(function(){
+  var h=document.documentElement;
+  h.className += ' sig-js';
+  function show(){ h.classList.add('sig-shown'); }
+  if(document.readyState!=='loading'){ show(); } else { document.addEventListener('DOMContentLoaded', show); }
+  window.addEventListener('load', show);
+  setTimeout(show, 1200);
+  var R=false; try{ R=matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  if(R) return;
+  document.addEventListener('click', function(e){
+    var a=e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    if(a.target==='_blank' || a.hasAttribute('download') || e.metaKey||e.ctrlKey||e.shiftKey||(e.button&&e.button!==0)) return;
+    var href=a.getAttribute('href')||'';
+    if(!href || href.charAt(0)==='#' || /^(mailto:|tel:|javascript:|https?:)/i.test(href)) return;
+    if(!/\.html(\?|#|$)/.test(href)) return;
+    e.preventDefault();
+    h.classList.add('sig-leaving');
+    setTimeout(function(){ window.location.href=href; }, 280);
+  }, true);
+  window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
+})();
+</script>
 </head>
 <body>
 
@@ -711,7 +745,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <li><a href="index.html#work">Work</a></li>
       <li><a href="play.html" class="active">Play</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="experience.html">Resume</a></li>
+      <li><a href="experience.html">Experience</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -729,7 +763,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#work">Work</a>
     <a href="play.html">Play</a>
     <a href="about.html">About</a>
-    <a href="experience.html">Resume</a>
+    <a href="experience.html">Experience</a>
     <a href="index.html#contact">Contact</a>
   </div>
 
@@ -804,24 +838,6 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </a>
   </div>
   </section>
-
-  <!-- NAV CARDS -->
-  <div class="nav-cards fade-in">
-    <a href="index.html#work" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">Work</span>
-        <span class="nav-card-title">View my projects</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
-    <a href="about.html" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">About</span>
-        <span class="nav-card-title">Get to know me</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
-  </div>
 
   <!-- FOOTER -->
   <footer>

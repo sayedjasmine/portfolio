@@ -1794,6 +1794,40 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 #cursor-label.show{ opacity:1; transform:translate(15px,15px) scale(1); }
 @media (hover:none),(pointer:coarse){ #cursor-label{ display:none !important; } }
 </style>
+<!-- SIGNATURE CRAFT SYSTEM v1 (site-wide flow) -->
+<style id="sig-craft">
+@media (prefers-reduced-motion: no-preference){
+  html.sig-js body{ opacity:0; }
+  html.sig-js.sig-shown body{ opacity:1; transition:opacity .5s ease; }
+  html.sig-leaving body{ opacity:0 !important; transition:opacity .28s ease; }
+}
+nav ul li a{ background-image:linear-gradient(currentColor,currentColor); background-repeat:no-repeat; background-position:0 100%; background-size:0% 1.5px; transition:background-size .32s cubic-bezier(.16,1,.3,1); }
+nav ul li a:hover{ background-size:100% 1.5px; }
+</style>
+<script id="sig-craft-js">
+(function(){
+  var h=document.documentElement;
+  h.className += ' sig-js';
+  function show(){ h.classList.add('sig-shown'); }
+  if(document.readyState!=='loading'){ show(); } else { document.addEventListener('DOMContentLoaded', show); }
+  window.addEventListener('load', show);
+  setTimeout(show, 1200);
+  var R=false; try{ R=matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  if(R) return;
+  document.addEventListener('click', function(e){
+    var a=e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    if(a.target==='_blank' || a.hasAttribute('download') || e.metaKey||e.ctrlKey||e.shiftKey||(e.button&&e.button!==0)) return;
+    var href=a.getAttribute('href')||'';
+    if(!href || href.charAt(0)==='#' || /^(mailto:|tel:|javascript:|https?:)/i.test(href)) return;
+    if(!/\.html(\?|#|$)/.test(href)) return;
+    e.preventDefault();
+    h.classList.add('sig-leaving');
+    setTimeout(function(){ window.location.href=href; }, 280);
+  }, true);
+  window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
+})();
+</script>
 </head>
 <body>
 
@@ -1810,7 +1844,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="nav-right">
       <a href="play.html">Play</a>
       <a href="about.html">About</a>
-      <a href="experience.html">Resume</a>
+      <a href="experience.html">Experience</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
@@ -1824,7 +1858,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#work">Work</a>
     <a href="play.html">Play</a>
     <a href="about.html">About</a>
-    <a href="experience.html">Resume</a>
+    <a href="experience.html">Experience</a>
     <a href="index.html#contact">Contact</a>
   </div>
 
@@ -1856,9 +1890,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       </div>
     </div>
     <div class="hero-docs">
-      <div class="hero-figma figma-embed" role="button" tabindex="0" aria-label="Load the interactive Saksham prototype" data-src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" data-title="Saksham interactive Figma prototype">
-        <img class="fe-poster" src="assets/saksham-mockup-trim.webp" alt="Preview of the Saksham reading app prototype">
-        <div class="fe-cta"><span class="fe-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="fe-hint">Tap to load prototype</span></div>
+      <div class="hero-figma" style="background:#14182B url('assets/saksham-mockup-trim.webp') center/contain no-repeat;">
+        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="lazy" title="Saksham interactive Figma prototype"></iframe>
       </div>
       <div class="hero-figma-caption">Live Figma prototype · tap to play</div>
       <a href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
@@ -2196,9 +2229,8 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
     <!-- Figma Prototype -->
     <div class="container-wide fade-in" id="prototype">
-      <div id="proto-live" class="figma-embed" role="button" tabindex="0" aria-label="Load the interactive Saksham prototype" data-src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" data-title="Saksham interactive Figma prototype" style="border-radius:20px;overflow:hidden;border:1px solid rgba(62,92,118,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);margin:40px auto;height:640px;background:#14182B;">
-        <img class="fe-poster" src="assets/saksham-mockup-trim.webp" alt="Preview of the Saksham reading app prototype">
-        <div class="fe-cta"><span class="fe-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="fe-hint">Tap to load prototype</span></div>
+      <div id="proto-live" style="border-radius:20px;overflow:hidden;border:1px solid rgba(62,92,118,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);margin:40px auto;height:640px;background:#14182B url('assets/saksham-mockup-trim.webp') center/contain no-repeat;">
+        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="lazy" title="Saksham interactive Figma prototype" style="width:100%;height:100%;border:none;display:block;"></iframe>
       </div>
     </div>
 
@@ -2331,31 +2363,6 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="next-label">Next Project</div>
     <div class="next-title">Foundry: <em>Models Redesign</em></div>
     <a href="foundry-models.html" class="next-btn">View case study →</a>
-  </div>
-
-  <!-- NAV CARDS -->
-  <div class="nav-cards fade-in">
-    <a href="play.html" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">Play</span>
-        <span class="nav-card-title">Explore my playground</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
-    <a href="about.html" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">About</span>
-        <span class="nav-card-title">Get to know me</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
-    <a href="experience.html" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">Resume</span>
-        <span class="nav-card-title">View my experience</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
   </div>
 
   <!-- FOOTER -->

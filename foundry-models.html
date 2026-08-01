@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foundry Models · Product Design Case Study | Jasmine Sayed</title>
-  <meta name="description" content="Redesigning model discovery and selection on Microsoft Foundry. A product design project with the Microsoft CoreAI team, March to June 2026: research, information architecture, a high-fidelity prototype, and two rounds of usability testing to turn an 11,000-model catalog into a flow developers can navigate." />
+  <meta name="description" content="Redesigning model discovery and selection on Microsoft Foundry. A product design project with the Microsoft CoreAI team, April to June 2026: research, information architecture, a high-fidelity prototype, and two rounds of usability testing to turn an 11,000-model catalog into a flow developers can navigate." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Foundry Models · Product Design Case Study | Jasmine Sayed" />
   <meta property="og:description" content="Redesigning how developers discover, evaluate, and select AI models on Microsoft Foundry: research, IA, prototype, and usability testing." />
@@ -181,10 +181,15 @@
     .proto-label { text-align: center; font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--indigo-light); margin-bottom: 10px; }
     .proto-note { font-size: 13px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.62); text-align: center; max-width: 700px; margin: 0 auto 18px; }
     .proto-note strong { color: rgba(255,255,255,0.88); font-weight: 500; }
-    .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px auto 12px; max-width: 1160px; align-items: start; }
-    .ba-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; padding: 4px 13px; border-radius: 100px; }
-    .ba-tag.before { color: #A32D2D; background: #FBEBEB; }
-    .ba-tag.after { color: var(--indigo); background: var(--indigo-bg); }
+    .ba { max-width: 860px; margin: 26px auto 14px; }
+    .ba-tabs { display: flex; gap: 4px; width: fit-content; margin: 0 auto 16px; padding: 4px; background: var(--indigo-bg); border-radius: 100px; }
+    .ba-tab { font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--indigo); background: transparent; border: 0; padding: 7px 24px; border-radius: 100px; cursor: pointer; transition: background 0.22s ease, color 0.22s ease; }
+    .ba-tab:hover { color: var(--dark); }
+    .ba-tab.is-active { background: var(--indigo); color: #fff; }
+    .ba-tab.is-active:hover { color: #fff; }
+    .ba-stage { position: relative; aspect-ratio: 2816 / 1316; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 12px 32px rgba(20,19,31,0.1); background: #fff; }
+    .ba-shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0; transition: opacity 0.3s ease; }
+    .ba-shot.is-active { opacity: 1; }
 
     /* ── LAYOUT ── */
     .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
@@ -417,7 +422,7 @@
       .role-strip { grid-template-columns: 1fr 1fr; padding: 18px 28px; gap: 16px 24px; }
       .obj-grid, .method-grid, .persona-grid, .test-grid, .take-grid { grid-template-columns: 1fr; }
       .goals-grid { grid-template-columns: 1fr; }
-      .ba { grid-template-columns: 1fr; }
+      .ba { max-width: 100%; }
       .impact-stats { grid-template-columns: 1fr; gap: 16px; }
       .feature { grid-template-columns: 1fr; gap: 22px; }
       .feature.flip .feature-visual { order: 0; }
@@ -454,7 +459,7 @@
     }
   </style>
 <style id="hero-site-css">
-    .hero-right { flex-shrink:0; width:560px; margin-left:48px; margin-bottom:8px; z-index:2; display:flex; flex-direction:column; }
+    .hero-right { flex-shrink:0; width:640px; margin-left:40px; margin-bottom:8px; z-index:2; display:flex; flex-direction:column; }
     .hero-site-card { text-decoration:none; display:block; position:relative; transition:transform 0.3s ease; text-align:center; }
     .hero-site-card:hover { transform:translateY(-4px); }
     .hero-browser-frame { border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06); background:#171A22; }
@@ -465,9 +470,11 @@
     .hero-browser-dots span:nth-child(2){ background:#febc2e; }
     .hero-browser-dots span:nth-child(3){ background:#28c840; }
     .hero-browser-url { flex:1; background:rgba(255,255,255,0.06); border-radius:6px; padding:5px 12px; font-size:11px; color:rgba(255,255,255,0.45); font-family:'JetBrains Mono', monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .hero-browser-frame img { width:100%; display:block; }
+    .hero-browser-frame img, .hero-browser-frame video { width:100%; display:block; background:#000; }
     .hero-site-pill { display:inline-flex; align-items:center; gap:6px; margin-top:14px; padding:8px 20px; background:rgba(169,192,218,0.1); border:1px solid rgba(169,192,218,0.18); border-radius:999px; font-size:12px; font-weight:500; color:rgba(169,192,218,0.85); letter-spacing:0.02em; transition:all 0.25s ease; align-self:center; }
     .hero-site-card:hover .hero-site-pill { background:var(--indigo-light); border-color:var(--indigo-light); color:#0B0F1E; }
+    .hero-site-pill--link { text-decoration:none; cursor:pointer; }
+    .hero-site-pill--link:hover { background:var(--indigo-light); border-color:var(--indigo-light); color:#0B0F1E; transform:translateY(-1px); }
     .hero-skip { display:inline-flex; align-items:center; gap:7px; align-self:center; margin-top:11px; padding:8px 18px; border-radius:100px; font-size:12.5px; font-weight:500; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); text-decoration:none; transition:all .25s ease; }
     .hero-skip:hover { background:rgba(169,192,218,0.16); border-color:rgba(169,192,218,0.4); color:#fff; gap:11px; }
     @media (max-width:960px){ .hero-right{ width:100%; margin-left:0; margin-top:34px; } .hero-browser-frame{ border-radius:10px; } }
@@ -766,6 +773,40 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 #cursor-label.show{ opacity:1; transform:translate(15px,15px) scale(1); }
 @media (hover:none),(pointer:coarse){ #cursor-label{ display:none !important; } }
 </style>
+<!-- SIGNATURE CRAFT SYSTEM v1 (site-wide flow) -->
+<style id="sig-craft">
+@media (prefers-reduced-motion: no-preference){
+  html.sig-js body{ opacity:0; }
+  html.sig-js.sig-shown body{ opacity:1; transition:opacity .5s ease; }
+  html.sig-leaving body{ opacity:0 !important; transition:opacity .28s ease; }
+}
+nav ul li a{ background-image:linear-gradient(currentColor,currentColor); background-repeat:no-repeat; background-position:0 100%; background-size:0% 1.5px; transition:background-size .32s cubic-bezier(.16,1,.3,1); }
+nav ul li a:hover{ background-size:100% 1.5px; }
+</style>
+<script id="sig-craft-js">
+(function(){
+  var h=document.documentElement;
+  h.className += ' sig-js';
+  function show(){ h.classList.add('sig-shown'); }
+  if(document.readyState!=='loading'){ show(); } else { document.addEventListener('DOMContentLoaded', show); }
+  window.addEventListener('load', show);
+  setTimeout(show, 1200);
+  var R=false; try{ R=matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  if(R) return;
+  document.addEventListener('click', function(e){
+    var a=e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    if(a.target==='_blank' || a.hasAttribute('download') || e.metaKey||e.ctrlKey||e.shiftKey||(e.button&&e.button!==0)) return;
+    var href=a.getAttribute('href')||'';
+    if(!href || href.charAt(0)==='#' || /^(mailto:|tel:|javascript:|https?:)/i.test(href)) return;
+    if(!/\.html(\?|#|$)/.test(href)) return;
+    e.preventDefault();
+    h.classList.add('sig-leaving');
+    setTimeout(function(){ window.location.href=href; }, 280);
+  }, true);
+  window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
+})();
+</script>
 </head>
 <body>
 
@@ -780,7 +821,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <div class="nav-right">
       <a href="play.html">Play</a>
       <a href="about.html">About</a>
-      <a href="experience.html">Resume</a>
+      <a href="experience.html">Experience</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
@@ -794,7 +835,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <a href="index.html#work">Work</a>
     <a href="play.html">Play</a>
     <a href="about.html">About</a>
-    <a href="experience.html">Resume</a>
+    <a href="experience.html">Experience</a>
     <a href="index.html#contact">Contact</a>
   </div>
 
@@ -817,7 +858,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
         </div>
         <div>
           <div class="hero-meta-label">Timeline</div>
-          <div class="hero-meta-value">March to June 2026</div>
+          <div class="hero-meta-value">April to June 2026</div>
         </div>
         <div>
           <div class="hero-meta-label">Co-op</div>
@@ -830,18 +871,28 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       </div>
     </div>
     <div class="hero-right">
-      <a href="https://azure.microsoft.com/en-us/products/ai-foundry" target="_blank" rel="noopener noreferrer" class="hero-site-card">
-        <div class="hero-browser-frame">
-          <div class="hero-browser-bar">
-            <div class="hero-browser-dots"><span></span><span></span><span></span></div>
-            <div class="hero-browser-url">azure.microsoft.com/en-us/products/ai-foundry</div>
-          </div>
-          <img src="assets/Azure-ai-website-demo.webp" alt="Microsoft Azure AI Foundry platform" loading="eager" fetchpriority="high" decoding="async" />
+      <div class="hero-browser-frame">
+        <div class="hero-browser-bar">
+          <div class="hero-browser-dots"><span></span><span></span><span></span></div>
+          <div class="hero-browser-url">ai.azure.com &rsaquo; Discover &rsaquo; Models</div>
         </div>
-        <div class="hero-site-pill">Explore the live platform <span style="font-size: 13px;">→</span></div>
-      </a>
+        <video id="foundryFlowVid" muted loop playsinline autoplay controls preload="metadata" poster="assets/foundry-flow-poster.jpg" aria-label="Screen recording of the shipped Foundry Models flow: filtering by region, then comparing models side by side">
+          <source src="assets/foundry-flow.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div style="text-align:center; margin-top:26px;">
+        <a href="https://azure.microsoft.com/en-us/products/ai-foundry" target="_blank" rel="noopener noreferrer" class="hero-site-pill hero-site-pill--link">Explore the live platform <span style="font-size:13px;">&#8599;</span></a>
+      </div>
     </div>
   </section>
+  <script>
+    (function(){
+      var v=document.getElementById('foundryFlowVid'); if(!v) return;
+      var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+      if(reduce){ v.removeAttribute('autoplay'); try{v.pause();}catch(e){} }
+    })();
+  </script>
+
 
   <!-- ── CASE STUDY BODY: sticky left rail + content column ── -->
   <div class="cs-shell">
@@ -852,6 +903,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
         <a href="#research"    class="tab-link">Research</a>
         <a href="#design"      class="tab-link">Design</a>
         <a href="#live-prototype"   class="tab-link">Prototype</a>
+        <a href="#shipped"     class="tab-link">Solution</a>
         <a href="#testing"     class="tab-link">Testing</a>
         <a href="#results"     class="tab-link">Results</a>
         <a href="#takeaways"   class="tab-link">Takeaways</a>
@@ -883,10 +935,11 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
         <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led concept development and information architecture, running research, a high-fidelity prototype, and two rounds of usability testing focused on region visibility, filtering, and side-by-side compare.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Both ideas shipped into the live Microsoft Foundry product</strong> (region in the filter bar, a side-by-side compare tray), and round-two testing showed roughly 58% faster search-to-select.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Both ideas shipped into the live Microsoft Foundry product</strong> (region in the filter bar, a side-by-side compare tray), and a small round-two test pointed to roughly 58% faster search-to-select.</div></div>
       </div>
     </div>
   </section>
+
 
   <!-- OVERVIEW -->
   <section id="overview-detail">
@@ -894,25 +947,91 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <p class="section-eyebrow">The Problem</p>
       <h2 class="section-title">11,000 models,<br />and nowhere to start.</h2>
       <p class="body-text">Picture a developer who just wants to ship a feature this week. They open Microsoft Foundry, land on the <strong>Models page</strong>, and hit more than <strong>11,000 models</strong>, each with different capabilities, pricing, context windows, and regional availability. Users kept telling us the same two things: help me <strong>narrow this list</strong>, and help me figure out <strong>where to start.</strong> Some picked a model only to hit a wall at deployment because it wasn't available in their region.</p>
-      <p class="body-text">Our team of five spent four months redesigning model discovery and selection end to end. My focus was <strong>concept development, information architecture, and stakeholder communication</strong>, keeping the work aligned with the Microsoft CoreAI team. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
+      <p class="body-text">Our team of five spent three months redesigning model discovery and selection end to end. My focus was <strong>concept development, information architecture, and stakeholder communication</strong>, keeping the work aligned with the Microsoft CoreAI team. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
     </div>
 
-    <div class="container-wide fade-in">
-      <div class="ba">
-        <div>
-          <span class="ba-tag before">Before</span>
-          <div class="shot"><img src="assets/foundry-before-screen.png" width="2868" height="1312" alt="The current Foundry Models page: a dense list of 11,000+ models with only a name and capability per tile, behind a long collapsed filter accordion" loading="lazy" decoding="async" /></div>
+    <div class="container fade-in">
+      <div class="ba" id="baToggle">
+        <div class="ba-tabs" role="tablist" aria-label="Before and after the redesign">
+          <button class="ba-tab is-active" data-view="before" type="button" role="tab" aria-selected="true">Before</button>
+          <button class="ba-tab" data-view="after" type="button" role="tab" aria-selected="false">After</button>
         </div>
-        <div>
-          <span class="ba-tag after">After</span>
-          <div class="shot"><img src="assets/foundry-screen-after.png" width="2868" height="1322" alt="The redesigned Models page: models grouped by provider with region availability, pricing, and quality metrics on every card, plus an open filter rail and compare" loading="lazy" decoding="async" /></div>
+        <div class="ba-stage">
+          <img class="ba-shot is-active" data-view="before" src="assets/before-foundry.png" width="1356" height="750" alt="The old Foundry Models page: a dense four-column grid where each model shows only a name and a task, and the filter rail has no way to narrow by region" loading="lazy" decoding="async" />
+          <img class="ba-shot" data-view="after" src="assets/foundry-models-shipped.png" width="2816" height="1316" alt="The shipped Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="lazy" decoding="async" />
         </div>
       </div>
-      <p class="figcap">The starting point (left) lists <strong>11,000+ models</strong> with little more than a name and a task per tile; every filter is hidden in a collapsed accordion, and there is no pricing or region until you open a model. The redesign (right) surfaces those decisions in the results themselves and turns the filters into a visible, first-class way to narrow the catalog.</p>
+      <p class="figcap">Toggle between the old catalog and the shipped redesign. <strong>Before:</strong> a dense multi-column grid where every model shows little more than a <strong>name and a task</strong>, with <strong>no way to narrow by region</strong>, so a developer could commit to a model and only hit a wall at deployment. <strong>After:</strong> Region is promoted into the filter rail as a first-class way to narrow the catalog, in a cleaner, more scannable layout, with Compare a click away.</p>
     </div>
+    <script>
+      (function () {
+        var ba = document.getElementById('baToggle');
+        if (!ba) return;
+        var tabs = ba.querySelectorAll('.ba-tab');
+        var shots = ba.querySelectorAll('.ba-shot');
+        function show(view) {
+          tabs.forEach(function (t) {
+            var on = t.getAttribute('data-view') === view;
+            t.classList.toggle('is-active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          shots.forEach(function (s) {
+            s.classList.toggle('is-active', s.getAttribute('data-view') === view);
+          });
+        }
+        tabs.forEach(function (t) {
+          t.addEventListener('click', function () { show(t.getAttribute('data-view')); });
+        });
+      })();
+    </script>
   </section>
 
   <div class="divider"></div>
+
+  <!-- WHAT WAS MINE (individual contribution) -->
+  <section id="contribution">
+    <style>
+      .mine-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px; }
+      .mine-card{ border:1px solid var(--line); border-radius:16px; padding:26px 26px 22px; background:var(--white,#fff); }
+      .mine-card.owned{ border-color:rgba(45,90,130,.34); background:linear-gradient(180deg, rgba(45,90,130,.05), rgba(45,90,130,0)); }
+      .mine-k{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; display:flex; align-items:center; gap:9px; }
+      .mine-card.owned .mine-k{ color:var(--accent); }
+      .mine-k .tag{ font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; padding:2px 8px; border-radius:100px; }
+      .mine-card.owned .mine-k .tag{ color:var(--on-accent,#fff); background:var(--accent); }
+      .mine-card ul{ list-style:none; margin:0; padding:0; }
+      .mine-card li{ position:relative; padding:9px 0 9px 20px; font-size:14px; line-height:1.55; color:var(--dark); border-bottom:1px solid var(--line); }
+      .mine-card li:last-child{ border-bottom:none; }
+      .mine-card li::before{ content:''; position:absolute; left:0; top:15px; width:7px; height:7px; border-radius:2px; background:var(--line); }
+      .mine-card.owned li::before{ background:var(--accent); }
+      .mine-card li strong{ font-weight:600; }
+      @media(max-width:760px){ .mine-grid{ grid-template-columns:1fr; } }
+    </style>
+    <div class="container fade-in">
+      <p class="section-eyebrow">My Contribution</p>
+      <h2 class="section-title">Five designers, three months.<br />Here's the part that was <em>mine.</em></h2>
+      <p class="body-text">On a team of five, the honest answer to &ldquo;which pixels were yours&rdquo; matters. I owned the research that started the project and the two threads that shipped: <strong>how developers narrow the catalog, and how they compare what's left.</strong></p>
+      <div class="mine-grid">
+        <div class="mine-card owned">
+          <p class="mine-k">What I owned <span class="tag">Mine</span></p>
+          <ul>
+            <li>The <strong>UX research study</strong> on Foundry that surfaced the region and &ldquo;where do I start&rdquo; problems, and seeded the redesign</li>
+            <li><strong>Filtering &amp; region IA</strong>: promoting region and pricing out of the model detail and into the results and filter rail</li>
+            <li>The <strong>compare-tray concept and interaction model</strong>, from empty state to the best-value-per-row call-out</li>
+            <li><strong>Stakeholder communication</strong> with the Microsoft CoreAI team that carried these into the live product</li>
+          </ul>
+        </div>
+        <div class="mine-card">
+          <p class="mine-k">Where the team led <span class="tag">Ours</span></p>
+          <ul>
+            <li>The overall <strong>Discover information architecture</strong> and the four-task front door</li>
+            <li>The <strong>Home / return experience</strong> and quick-task shortcuts</li>
+            <li>The shared <strong>visual system and component work</strong> across the redesign</li>
+            <li>Round-one <strong>wireframe testing</strong> we ran and synthesized together</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- RESEARCH -->
   <section id="research">
@@ -1053,7 +1172,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </div>
 
     <div class="container fade-in">
-      <p class="body-text">The sketch notes set our direction. Three ideas carried from paper into the high-fidelity prototype:</p>
+      <p class="body-text">The sketch notes set our direction. Three ideas carried from paper into the mid-fidelity wireframes:</p>
       <div class="anno-list">
         <span class="anno">📍 Pricing &amp; region on every model card</span>
         <span class="anno">🔎 A more prominent, AI-assisted search</span>
@@ -1128,8 +1247,44 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </div>
 
     <div class="container fade-in">
-      <h3 class="sub-heading">From wireframes to a working build</h3>
-      <p class="body-text">The key screens are below; you can explore the full prototype just after.</p>
+      <h3 class="sub-heading">Three directions we killed</h3>
+      <p class="body-text">The shipped answer looks obvious in hindsight. It wasn't. Before region-in-filters and a compare tray, I explored three approaches that tested worse, and killing them is what made the final design defensible.</p>
+      <style>
+        .killed-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+        .killed-card{ border:1px solid var(--line); border-radius:16px; padding:24px 22px; background:var(--white,#fff); position:relative; }
+        .killed-card::before{ content:'Killed'; position:absolute; top:16px; right:16px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#B4453B; background:#FBECEA; border:1px solid #E7C3BE; border-radius:100px; padding:3px 9px; }
+        .killed-n{ font-family:'Fraunces',serif; font-size:24px; color:var(--muted); margin-bottom:10px; }
+        .killed-t{ font-size:15.5px; font-weight:600; color:var(--dark); margin-bottom:8px; line-height:1.3; padding-right:52px; }
+        .killed-p{ font-size:13.5px; line-height:1.6; color:var(--muted); margin-bottom:12px; }
+        .killed-why{ font-size:13px; line-height:1.55; color:var(--dark); border-top:1px dashed var(--line); padding-top:11px; }
+        .killed-why b{ color:var(--accent); font-weight:600; }
+        @media(max-width:820px){ .killed-grid{ grid-template-columns:1fr; } }
+      </style>
+      <div class="killed-grid">
+        <div class="killed-card">
+          <div class="killed-n">01</div>
+          <div class="killed-t">Let the system pick the model for you</div>
+          <div class="killed-p">A recommender that took your task and returned one &ldquo;best&rdquo; model, skipping the catalog entirely.</div>
+          <div class="killed-why"><b>Why it died:</b> developers wouldn't put a black-box pick into production. They wanted to see the trade-offs and make the call, so I moved the energy into <b>compare</b>, not auto-select.</div>
+        </div>
+        <div class="killed-card">
+          <div class="killed-n">02</div>
+          <div class="killed-t">Region as a badge on every card</div>
+          <div class="killed-p">Stamp each of 11,000+ model cards with its regional availability so nothing surprised you at deploy.</div>
+          <div class="killed-why"><b>Why it died:</b> at that scale it was visual noise and still didn't let you <i>narrow</i>. Region only pays off as a <b>filter</b>, so it moved into the rail.</div>
+        </div>
+        <div class="killed-card">
+          <div class="killed-n">03</div>
+          <div class="killed-t">A full spec sheet on each result</div>
+          <div class="killed-p">Put context window, pricing, latency, and modality on every tile so the list was fully informative.</div>
+          <div class="killed-why"><b>Why it died:</b> it made scanning 11,000 rows worse, not better. Detail belongs where the decision happens, so it moved into <b>compare</b>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container fade-in">
+      <h3 class="sub-heading">Mid-fidelity wireframes</h3>
+      <p class="body-text">With the structure settled, I moved into Figma to resolve layout and hierarchy. These mid-fidelity screens worked out where each decision lives; the high-fidelity, clickable prototype comes next.</p>
     </div>
 
     <div class="container-wide">
@@ -1157,9 +1312,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
   <!-- LIVE PROTOTYPE -->
   <section id="live-prototype" style=" background: linear-gradient(160deg, #0B0F1E 0%, #141A30 45%, #2D5A82 125%);">
     <div class="container fade-in">
-      <p class="section-eyebrow" style="color: var(--indigo-light);">Live Prototype</p>
-      <h2 class="section-title" style="color:#fff;">See it <em style="color: var(--indigo-light);">in action.</em></h2>
-      <p class="body-text" style="color: rgba(255,255,255,0.62);">The full high-fidelity redesign, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare.</p>
+      <p class="section-eyebrow" style="color: var(--indigo-light);">High-Fidelity Prototype</p>
+      <h2 class="section-title" style="color:#fff;">The clickable, <em style="color: var(--indigo-light);">high-fidelity build.</em></h2>
+      <p class="body-text" style="color: rgba(255,255,255,0.62);">Before it shipped, the redesign lived here: a full high-fidelity prototype, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare, then see the shipped solution next.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="proto-wrap">
@@ -1177,6 +1332,47 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     </div>
   </section>
 
+
+  <!-- SOLUTION (shipped UI) -->
+  <section id="shipped" class="shipped-band">
+    <style>
+      .shipped-band{ background:#0B0F1E; margin-top:34px; padding:64px 0 68px; border-radius:26px; }
+      .shipped-band .container, .shipped-band .container-wide{ }
+      .shipped-eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#8Fb4de; display:flex; align-items:center; gap:11px; margin-bottom:16px; }
+      .shipped-eyebrow::before{ content:''; width:20px; height:1.5px; background:#8Fb4de; border-radius:2px; }
+      .shipped-band h2{ font-family:'Fraunces',serif; font-weight:400; letter-spacing:-.02em; line-height:1.04; font-size:clamp(28px,4vw,46px); color:#fff; margin:0 0 16px; }
+      .shipped-band h2 em{ font-style:italic; color:#9FC1E6; }
+      .shipped-lead{ font-size:15.5px; line-height:1.7; color:rgba(255,255,255,.72); max-width:60ch; margin:0 0 6px; }
+      .shipped-chip{ display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:#CDE0F5; background:rgba(143,180,222,.12); border:1px solid rgba(143,180,222,.28); border-radius:100px; padding:6px 14px; margin-top:20px; }
+      .shipped-chip .dot{ width:7px; height:7px; border-radius:50%; background:#4ADE80; box-shadow:0 0 0 3px rgba(74,222,128,.2); }
+      .shipped-figs{ display:flex; flex-direction:column; gap:34px; margin-top:44px; }
+      .shipped-fig{ margin:0; }
+      .shipped-fig .frame{ border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.09); box-shadow:0 30px 70px rgba(0,0,0,.5); background:#000; }
+      .shipped-fig img, .shipped-fig video{ display:block; width:100%; height:auto; }
+      .shipped-cap{ display:flex; gap:12px; align-items:baseline; margin-top:14px; font-size:13.5px; line-height:1.55; color:rgba(255,255,255,.66); }
+      .shipped-cap .cap-n{ font-family:var(--mono); font-size:11px; color:#8FB4DE; flex-shrink:0; letter-spacing:.05em; }
+      .shipped-cap strong{ color:#fff; font-weight:600; }
+      @media(max-width:820px){ .shipped-band{ padding:48px 0 52px; border-radius:20px; } }
+    </style>
+    <div class="container fade-in">
+      <p class="shipped-eyebrow">Solution</p>
+      <h2>Two ideas, now <em>shipped.</em></h2>
+      <p class="shipped-lead">Two ideas I drove shipped into Microsoft Foundry, and both are live in the product today. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second rebuilt <strong style="color:#fff;font-weight:600">compare</strong> from the ground up: the original was shallow and hard to act on.</p>
+      <span class="shipped-chip"><span class="dot" aria-hidden="true"></span>Live in Microsoft Foundry &middot; Discover &rsaquo; Models &rsaquo; Compare</span>
+    </div>
+    <div class="container-wide fade-in">
+      <div class="shipped-figs">
+        <figure class="shipped-fig">
+          <div class="frame"><video src="assets/foundry-region-flow.mp4" poster="assets/foundry-region-poster.jpg" muted loop playsinline controls preload="metadata" width="1600" height="738"></video></div>
+          <figcaption class="shipped-cap"><span class="cap-n">Shipped 01</span><span><strong>Region, promoted into the filter rail.</strong> An 11,000+ model catalog narrows by where a model can actually deploy, so region is a first-class filter instead of a wall you hit at deployment.</span></figcaption>
+        </figure>
+        <figure class="shipped-fig">
+          <div class="frame"><video src="assets/foundry-compare-flow.mp4" poster="assets/foundry-compare-poster.jpg" muted loop playsinline controls preload="metadata" width="1600" height="738"></video></div>
+          <figcaption class="shipped-cap"><span class="cap-n">Shipped 02</span><span><strong>Compare, rebuilt from the ground up.</strong> Three models side by side with the best value in each row called out (the trophy), so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
   <!-- TESTING -->
   <section id="testing">
     <div class="container fade-in">
@@ -1214,8 +1410,9 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
       <div class="impact-stats">
         <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">The two ideas at the heart of the redesign, now shipped in the live Foundry product</div></div>
         <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">An 11,000+ model catalog, filtered down to a focused, scannable set</div></div>
-        <div class="impact-stat"><div class="impact-number">&minus;58%</div><div class="impact-label">faster search-to-select in round-two testing versus the current Models page</div></div>
+        <div class="impact-stat"><div class="impact-number">~58%</div><div class="impact-label">faster search-to-select in a small, moderated round-two test, a directional signal rather than a significance-tested result</div></div>
       </div>
+      <p class="body-text" style="margin-top:8px;">Task-success is the design metric; the reason it mattered to Foundry is the funnel. A developer's journey is <strong>browse &rsaquo; select &rsaquo; deploy</strong>, and two things quietly leaked users out of it: picking a model that turned out to be unavailable in their region (a failed deploy, and a reason to leave), and stalling in evaluation because comparing meant opening models one at a time. Region-in-filters removes the first leak before it happens; compare shortens the second. Both are aimed at the number the platform actually cares about, <strong>models successfully deployed</strong>, not just time on task.</p>
     </div>
   </section>
 
@@ -1260,25 +1457,6 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
     <p class="next-label">Next Project</p>
     <h2 class="next-title">Nox+: <em>Secure Digital Identity</em></h2>
     <a href="nox.html" class="next-btn" style="background:#2D5A82;">View case study <span style="font-size:16px;">→</span></a>
-  </div>
-
-  <!-- NAV CARDS -->
-  <div class="nav-cards">
-    <a href="play.html" class="nav-card">
-      <div class="nav-card-text">
-        <span class="nav-card-label">Play</span>
-        <span class="nav-card-title">Explore my playground</span>
-      </div>
-      <span class="nav-card-arrow">→</span>
-    </a>
-    <a href="about.html" class="nav-card">
-      <div class="nav-card-text"><span class="nav-card-label">About</span><span class="nav-card-title">Get to know me</span></div>
-      <span class="nav-card-arrow">→</span>
-    </a>
-    <a href="index.html#work" class="nav-card">
-      <div class="nav-card-text"><span class="nav-card-label">Work</span><span class="nav-card-title">See all projects</span></div>
-      <span class="nav-card-arrow">→</span>
-    </a>
   </div>
 
   <!-- FOOTER -->
