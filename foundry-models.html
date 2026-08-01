@@ -201,6 +201,10 @@
 
     h2.section-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 400; line-height: 1.12; color: var(--dark); margin-bottom: 18px; }
     h2.section-title em { font-style: italic; color: var(--indigo); }
+
+    /* Skim-spine: one-line takeaway under each section title */
+    .cs-take { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.5; color: var(--dark, #18181B); margin: 0 0 20px; padding-left: 16px; border-left: 3px solid var(--indigo); max-width: 62ch; }
+    .impact-section .cs-take { color: #fff; border-left-color: var(--indigo-light); }
     h3.sub-heading { font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 14px; margin-top: 30px; }
     p.body-text { font-size: 16px; font-weight: 300; color: #3B3747; line-height: 1.82; margin-bottom: 14px; }
     p.body-text strong { color: var(--dark); font-weight: 500; }
@@ -847,6 +851,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       <p class="hero-tag">Product Design · UX Research · AI Platform</p>
       <h1 style="font-size:clamp(30px,6.2vw,76px);">Microsoft Foundry<br /><em>Models</em></h1>
       <p class="hero-sub">I turned an 11,000-model catalog into a flow developers can navigate: region visibility, live filtering, and side-by-side compare. Two of those ideas shipped into the live Microsoft Foundry product, from usability research I ran on the platform myself.</p>
+      <p class="hero-sub" style="margin-top:16px;font-size:14px;"><strong style="color:#fff;font-weight:600">What was mine:</strong> On a team of five UX designers, I owned the usability research that opened the project and the two threads that shipped, how developers narrow the catalog and how they compare what is left. &ldquo;Shipped&rdquo; means those two ideas are live in the product today, not that I owned the full production build.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -946,8 +951,9 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">The Problem</p>
       <h2 class="section-title">11,000 models,<br />and nowhere to start.</h2>
+      <p class="cs-take">Developers hit 11,000 models with no way to narrow the list, and no signal of what would even run in their region.</p>
       <p class="body-text">Picture a developer who just wants to ship a feature this week. They open Microsoft Foundry, land on the <strong>Models page</strong>, and hit more than <strong>11,000 models</strong>, each with different capabilities, pricing, context windows, and regional availability. Users kept telling us the same two things: help me <strong>narrow this list</strong>, and help me figure out <strong>where to start.</strong> Some picked a model only to hit a wall at deployment because it wasn't available in their region.</p>
-      <p class="body-text">Our team of five spent three months redesigning model discovery and selection end to end. My focus was <strong>concept development, information architecture, and stakeholder communication</strong>, keeping the work aligned with the Microsoft CoreAI team. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
+      <p class="body-text">Our team of five spent three months redesigning model discovery end to end. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
     </div>
 
     <div class="container fade-in">
@@ -1038,7 +1044,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">Developer interviews shaped<br />our direction.</h2>
-      <p class="body-text">With no access to Microsoft's internal data, we ran our own study: a heuristic evaluation of the live platform, moderated developer interviews, and a card sort.</p>
+      <p class="cs-take">Every method pointed to the same gaps: unclear terms, dense structure, and no way to compare.</p>
+      <p class="body-text">We ran our own study: a heuristic evaluation of the live platform, moderated developer interviews, and a card sort.</p>
     </div>
     <div class="container-wide">
       <div class="method-grid fade-in">
@@ -1073,73 +1080,15 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       </div>
     </div>
 
-    <div class="container-wide fade-in">
-      <div class="ia-wrap">
-        <div class="ia-cap">Information architecture · from the card sort</div>
-        <div class="ia-cols">
-          <div class="ia-col g1">
-            <div class="ia-root">Discover</div>
-            <div class="ia-node">Models overview</div>
-            <div class="ia-node">View all models</div>
-            <div class="ia-node">Popular platforms</div>
-            <div class="ia-node">Compare models</div>
-            <div class="ia-node">Model leaderboard</div>
-          </div>
-          <div class="ia-col g2">
-            <div class="ia-root">Models · Explore</div>
-            <div class="ia-node">Search</div>
-            <div class="ia-node">Available by region</div>
-            <div class="ia-node">Provider</div>
-            <div class="ia-sub">
-              <div class="ia-node">Azure · Anthropic · Meta</div>
-            </div>
-            <div class="ia-node">Tasks</div>
-          </div>
-          <div class="ia-col g3">
-            <div class="ia-root">Models · Build</div>
-            <div class="ia-node">Deployments</div>
-            <div class="ia-node">Deploy base model</div>
-            <div class="ia-node">Deploy fine-tuned model</div>
-            <div class="ia-sub">
-              <div class="ia-node">Open in playground · Edit</div>
-            </div>
-            <div class="ia-node">AI services · Batch jobs</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="container fade-in">
-      <h3 class="sub-heading">Personas</h3>
-      <p class="body-text">Research and stakeholder discussions led us to three personas. After aligning with Microsoft, <strong>Alex</strong>, a startup developer moving fast, became the primary persona we designed for.</p>
+      <h3 class="sub-heading">Who we designed for</h3>
+      <p class="body-text">Research pointed to three personas: Maya, a student developer, and Pam, a product manager weighing cost against capability. After aligning with Microsoft, we designed primarily for <strong>Alex</strong>, a startup developer who needs to move fast without picking a model that causes problems later.</p>
     </div>
     <div class="container-wide">
-      <div class="persona-grid fade-in">
-        <div class="persona-card">
-          <div class="persona-top">
-            <div class="persona-emoji">👩🏻‍💻</div>
-            <div class="persona-name">Maya</div>
-            <div class="persona-role">Student Developer</div>
-          </div>
-          <div class="persona-body">
-            <p class="persona-quote">“There are so many models… I just want to know which one to start with for my project.”</p>
-            <p class="persona-meta"><strong>Goal:</strong> build a functional AI project before graduating.<br /><strong>Pain:</strong> overwhelmed by the number of models and unsure where to begin.</p>
-          </div>
-        </div>
-        <div class="persona-card">
-          <div class="persona-top">
-            <div class="persona-emoji">👩🏽‍💼</div>
-            <div class="persona-name">Pam</div>
-            <div class="persona-role">Product Manager</div>
-          </div>
-          <div class="persona-body">
-            <p class="persona-quote">“I need to weigh cost and capability before I commit the team to a model.”</p>
-            <p class="persona-meta"><strong>Goal:</strong> create and automate agents that match the org's needs.<br /><strong>Pain:</strong> model details aren't easy to scan or compare at a glance.</p>
-          </div>
-        </div>
+      <div class="persona-grid fade-in" style="grid-template-columns:1fr;max-width:620px;">
         <div class="persona-card primary">
           <div class="persona-top">
-            <span class="persona-badge">Primary</span>
+            <span class="persona-badge">Primary persona</span>
             <div class="persona-emoji">👨🏻‍💻</div>
             <div class="persona-name">Alex</div>
             <div class="persona-role">Startup Software Developer</div>
@@ -1161,7 +1110,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Sketches &amp; Wireframes</p>
       <h2 class="section-title">Sketching our way<br />out of the problem.</h2>
-      <p class="body-text">Before touching Figma, we sketched. Paper let us argue about structure instead of pixels, and it surfaced the two decisions the redesign would hinge on: <strong>where the region problem gets solved</strong>, and <strong>how a developer decides what to look at first.</strong></p>
+      <p class="cs-take">Two decisions drove the redesign: where the region problem gets solved, and what a developer sees first.</p>
+      <p class="body-text">Before touching Figma, we sketched. Paper let us argue about structure instead of pixels, which is where those two decisions got settled.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -1172,50 +1122,11 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     </div>
 
     <div class="container fade-in">
-      <p class="body-text">The sketch notes set our direction. Three ideas carried from paper into the mid-fidelity wireframes:</p>
+      <p class="body-text">Three ideas carried from paper into the mid-fidelity wireframes:</p>
       <div class="anno-list">
-        <span class="anno">📍 Pricing &amp; region on every model card</span>
+        <span class="anno">📍 Region &amp; pricing visible right in the results</span>
         <span class="anno">🔎 A more prominent, AI-assisted search</span>
         <span class="anno">🧩 Clearer descriptions to reduce overload</span>
-      </div>
-    </div>
-
-    <div class="container-wide fade-in">
-      <style id="ftree-css">
-        .ftree{max-width:900px;margin:54px auto 40px;}
-        .ftree-root{max-width:600px;margin:0 auto;text-align:center;background:var(--indigo);color:#fff;font-size:14px;font-weight:500;line-height:1.5;padding:16px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(62,92,118,0.22);}
-        .ftree-stem{width:2px;height:24px;background:var(--indigo-light);margin:0 auto;}
-        .ftree-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-        .ftree-col{border-radius:16px;padding:20px 22px;}
-        .ftree-built{border:1px solid rgba(62,92,118,0.22);background:var(--indigo-bg);}
-        .ftree-cut{border:1px solid rgba(20,19,31,0.08);background:#F7F7FA;}
-        .ftree-head{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;}
-        .ftree-built .ftree-head{color:var(--indigo);}
-        .ftree-cut .ftree-head{color:#8A8698;}
-        .ftree-item{font-size:13.5px;color:var(--dark);line-height:1.5;padding:8px 0;border-bottom:1px solid rgba(20,19,31,0.06);}
-        .ftree-item:last-of-type{border-bottom:none;}
-        .ftree-cut .ftree-item{color:#6A6580;}
-        .ftree-why{margin-top:11px;font-size:12px;color:var(--mid);line-height:1.55;font-style:italic;}
-        @media(max-width:700px){.ftree-split{grid-template-columns:1fr;}}
-      </style>
-      <div class="ftree">
-        <div class="ftree-root">One question drove every call: with a fixed IA and a narrow scope, where do we spend the effort?</div>
-        <div class="ftree-stem"></div>
-        <div class="ftree-split">
-          <div class="ftree-col ftree-built">
-            <div class="ftree-head">Built</div>
-            <div class="ftree-item">Region availability on every model card</div>
-            <div class="ftree-item">Live filters to narrow the catalog</div>
-            <div class="ftree-item">Side-by-side compare</div>
-            <div class="ftree-why">The moves research said mattered most; region and compare shipped into the live product.</div>
-          </div>
-          <div class="ftree-col ftree-cut">
-            <div class="ftree-head">Cut, then scoped down</div>
-            <div class="ftree-item">A full AI model-finder chatbot</div>
-            <div class="ftree-item">Scoped to a lightweight AI-assisted search</div>
-            <div class="ftree-why">The flashiest idea on the page, and the easiest to over-invest in. It risked pulling focus from what mattered.</div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -1228,27 +1139,24 @@ nav ul li a:hover{ background-size:100% 1.5px; }
         <div class="obj-card">
           <div class="obj-icon">🌍</div>
           <div class="obj-name">A model you can't deploy</div>
-          <div class="obj-desc">We first sketched gating region-locked models out of the list, but hiding them left users wondering why a model vanished, so they stay visible with a clear availability flag instead.</div>
-          <div class="obj-insight">Hiding them is cleaner but leaves users wondering why a model vanished. Flagging teaches what exists and points to a supported region.</div>
+          <div class="obj-desc">Region-locked models stay visible with a clear availability flag, instead of vanishing and leaving users wondering why.</div>
         </div>
         <div class="obj-card">
           <div class="obj-icon">🔍</div>
           <div class="obj-name">Filters that return nothing</div>
-          <div class="obj-desc">A zero-result state names the constraint likely causing it and offers a one-tap way to loosen it.</div>
-          <div class="obj-insight">A blank area reads as broken. Naming the filter that emptied the list lets users recover without resetting the search.</div>
+          <div class="obj-desc">A zero-result state names the filter that emptied the list and offers a one-tap way to loosen it, so a blank screen never reads as broken.</div>
         </div>
         <div class="obj-card">
           <div class="obj-icon">⚖️</div>
           <div class="obj-name">Compare before it's full</div>
-          <div class="obj-desc">The tray opens with a prompt to add models, shows a running count, and activates side-by-side only at two or more.</div>
-          <div class="obj-insight">Compare means nothing with one model in it. Letting the tray explain its empty state keeps it from feeling broken on first contact.</div>
+          <div class="obj-desc">The compare tray opens with a prompt and a running count, activating side-by-side only at two or more, so it never feels broken on first contact.</div>
         </div>
       </div>
     </div>
 
     <div class="container fade-in">
       <h3 class="sub-heading">Three directions we killed</h3>
-      <p class="body-text">The shipped answer looks obvious in hindsight. It wasn't. Before region-in-filters and a compare tray, I explored three approaches that tested worse, and killing them is what made the final design defensible.</p>
+      <p class="body-text">With a fixed IA and a tight scope, the hard part was deciding where <em>not</em> to spend the effort. The shipped answer looks obvious in hindsight; it wasn't. I explored three approaches that tested worse, and killing them is what made the final design defensible.</p>
       <style>
         .killed-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
         .killed-card{ border:1px solid var(--line); border-radius:16px; padding:24px 22px; background:var(--white,#fff); position:relative; }
@@ -1379,26 +1287,12 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">User Testing · Round 2</p>
       <h2 class="section-title">Validating the high-fidelity<br />prototype.</h2>
+      <p class="cs-take">Round two tested one thing on the real prototype: could developers understand, navigate, and compare?</p>
       <p class="body-text">An earlier round on the wireframes had already shaped the layout; this final round put the high-fidelity prototype in front of developers across the Home, Discover, and Models pages, testing three things: whether they could <strong>understand</strong> the interface, <strong>navigate</strong> to the right region, model, or task, and <strong>compare</strong> options to find the best fit.</p>
     </div>
 
-    <div class="container-wide fade-in">
-      <h3 class="sub-heading" style="text-align:center;">What the sessions pointed to</h3>
-      <div class="loop">
-        <div class="loop-row">
-          <div class="loop-cell find"><div class="loop-k">Signal</div><div class="loop-t">Developers leaned on region and price to shortlist quickly, but a few didn't notice region until they were deep into a model.</div></div>
-          <div class="loop-cell"><div class="loop-k">Refinement</div><div class="loop-t">Pulled region and pricing to the top of each model card, so they register before anyone opens a model.</div></div>
-        </div>
-        <div class="loop-row">
-          <div class="loop-cell find"><div class="loop-k">Signal</div><div class="loop-t">Some looked for a way to compare before they'd selected anything to compare.</div></div>
-          <div class="loop-cell"><div class="loop-k">Refinement</div><div class="loop-t">Made the compare tray persistent, so it fills as models are selected, with a clear count and entry point.</div></div>
-        </div>
-        <div class="loop-row">
-          <div class="loop-cell find"><div class="loop-k">Signal</div><div class="loop-t">Inside a comparison, people wanted the standout option called out, not just laid side by side.</div></div>
-          <div class="loop-cell"><div class="loop-k">Refinement</div><div class="loop-t">Highlighted the best value per row (context, price, latency) so trade-offs read at a glance.</div></div>
-        </div>
-      </div>
-      <p class="figcap">Directional signals from a small, moderated round, enough to steer the design, not to claim statistical significance.</p>
+    <div class="container fade-in">
+      <p class="body-text">Three refinements came out of it: region and pricing moved to the top of each model card so they register before anyone opens a model, the compare tray became persistent with a running count, and the best value in each comparison row got called out so trade-offs read at a glance. Directional signals from a small, moderated round, enough to steer the design, not to claim statistical significance.</p>
     </div>
   </section>
 
@@ -1407,6 +1301,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container-wide fade-in">
       <p class="section-eyebrow">Results</p>
       <h2 class="section-title">The ideas that<br />are now <em>shipping.</em></h2>
+      <p class="cs-take">The two ideas I drove, region filtering and side-by-side compare, are now live for every Foundry developer.</p>
       <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After the co-op, both ideas shipped into the live product that every Foundry developer now uses to choose a model: region sits in the filter bar, and there's a compare-model tray.</p>
       <div class="impact-stats">
         <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Both ideas now shipped in the live product every Foundry developer uses to choose a model</div></div>
@@ -1420,17 +1315,9 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   <!-- ALSO AT MICROSOFT: AGENT BUILDER -->
   <section id="agent-builder">
     <div class="container-wide fade-in">
-      <div style="border:1px solid var(--line); border-radius:20px; padding:36px 40px; display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between;">
-        <div style="flex:1; min-width:280px;">
-          <p class="section-eyebrow" style="margin-bottom:12px;">Also during this co-op</p>
-          <h3 class="sub-heading" style="margin:0 0 12px;">A second Foundry project: Agent Builder research.</h3>
-          <p class="body-text" style="margin:0 0 18px;">The Models redesign wasn't the only work I shipped at Microsoft. In parallel, I ran the usability research for Foundry's Agent Builder. Eight of eight developers hit the same Severity-4 blocker, so I turned a deprioritized bug into a prioritized fix and five concrete design changes the team carried forward.</p>
-          <div style="display:flex; gap:34px; flex-wrap:wrap; margin:0 0 20px;">
-            <div><div style="font-family:var(--display); font-size:26px; color:var(--accent);">8/8</div><div style="font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:2px;">hit the blocker</div></div>
-            <div><div style="font-family:var(--display); font-size:26px; color:var(--accent);">&minus;40%</div><div style="font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:2px;">task time</div></div>
-          </div>
-          <a href="microsoft.html" style="display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px;">Read the Agent Builder research <span>&rarr;</span></a>
-        </div>
+      <div style="border:1px solid var(--line); border-radius:16px; padding:22px 28px; display:flex; flex-wrap:wrap; gap:12px 24px; align-items:baseline;">
+        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Also during this co-op:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same Severity-4 blocker, turning a deprioritized bug into a prioritized fix.</p>
+        <a href="microsoft.html" style="font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px; white-space:nowrap;">Read that study <span>&rarr;</span></a>
       </div>
     </div>
   </section>

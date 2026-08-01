@@ -512,6 +512,10 @@
     }
     h2.section-title em { font-style: italic; color: var(--blue); }
 
+    /* Skim-spine: one-line takeaway under each section title */
+    .cs-take { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.5; color: var(--dark, #18181B); margin: 0 0 20px; padding-left: 16px; border-left: 3px solid var(--blue); max-width: 62ch; }
+    .impact-section .cs-take { color: #fff; border-left-color: var(--blue-light); }
+
     h3.sub-heading {
       font-size: 18px;
       font-weight: 600;
@@ -1719,6 +1723,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">How might we make AI agent creation more intuitive for new developers?</h2>
+      <p class="cs-take">Foundry set out to democratize agent creation, but new developers kept stalling before they finished.</p>
       <p class="body-text">Microsoft Foundry lets students, developers, and startup founders build AI agents. The vision is to democratize agent creation for people still learning, but <strong>vision only matters if users can get through the flow.</strong></p>
       <p class="body-text">As a <strong>UX Researcher</strong> on Microsoft's CoreAI team, I led 8 moderated usability sessions on the Knowledge, Data, and FoundryIQ features: I defined the research questions, designed the protocol, ran the sessions, and owned team communication. In the very first session, and every one after, we found a critical blocker that <strong>100% of participants hit</strong>, one the team hadn't anticipated. The study went from "let's see how intuitive the flow is" to "we need to fix this before anything else matters."</p>
       <p class="body-text" style="margin-top: 12px; font-size: 12.5px; color: var(--mid); font-style: italic;">Note: Due to the confidential nature of this product and user privacy, visuals in this case study are limited.</p>
@@ -1769,6 +1774,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Research Questions</p>
       <h2 class="section-title">What we set out<br />to understand.</h2>
+      <p class="cs-take">The question that framed everything: when does confusion stop being a learning curve and become a dead end?</p>
       <p class="body-text">I shaped the questions to go past surface usability and find where confusion turns from "learning curve" into "I'm done." That distinction, temporary confusion versus a hard blocker, became the most important framing of the study.</p>
     </div>
 
@@ -1801,6 +1807,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Method</p>
       <h2 class="section-title">How we conducted<br />the study.</h2>
+      <p class="cs-take">Eight moderated Think-Aloud sessions, chosen to catch not just where users failed but why.</p>
       <p class="body-text">I chose <strong>moderated usability testing</strong> because the research centered on mental models. I needed to be there when confusion happened. Remote unmoderated testing would capture task failure, but not <em>why</em>. The <strong>Think Aloud protocol</strong> revealed participants' reasoning in real time, and their silences were often most revealing.</p>
     </div>
 
@@ -1871,6 +1878,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Findings</p>
       <h2 class="section-title">What worked well.</h2>
+      <p class="cs-take">Some patterns were already landing, and naming them tells the team what to protect.</p>
       <p class="body-text">Not everything was broken, and that matters. Naming what works tells the team which patterns to protect as they iterate.</p>
     </div>
 
@@ -1902,6 +1910,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Areas of Improvement</p>
       <h2 class="section-title">Five issues. One that stops <em>everything.</em></h2>
+      <p class="cs-take">One issue was a Severity-4 blocker that stopped all eight participants; the rest, I ranked behind it.</p>
       <p class="body-text">I prioritized findings using Norman's severity scale. A confusing label is a different problem than a blocker preventing every user from completing the core task. Clear severity framing gave the Foundry team an actionable roadmap, not just a list of complaints.</p>
     </div>
 
@@ -2043,6 +2052,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Study at a Glance</p>
       <h2 class="section-title">The numbers behind<br />the <em>research.</em></h2>
+      <p class="cs-take">One study, two decisions changed: a deprioritized bug became the team's top fix.</p>
       <p class="body-text">Eight sessions. Five distinct findings. One critical blocker affected every single participant, a finding so consistent it immediately became the team's top priority.</p>
     </div>
 

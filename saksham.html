@@ -480,6 +480,17 @@
     }
     h2.section-title em { font-style: italic; color: var(--rose); }
 
+    /* Skim-spine: one-line takeaway under each section title */
+    .cs-take { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.5; color: var(--dark, #18181B); margin: 0 0 20px; padding-left: 16px; border-left: 3px solid var(--rose); max-width: 62ch; }
+    .impact-section .cs-take { color: #fff; border-left-color: var(--rose-light); }
+
+    /* Compact research method strip */
+    .method-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 22px 0 4px; padding: 14px 18px; background: var(--white, #fff); border: 1px solid rgba(24,22,26,0.08); border-radius: 12px; font-size: 13.5px; color: var(--mid); }
+    .method-strip .ms-label { font-family: var(--mono, monospace); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--rose); }
+    .method-strip .ms-item b { color: var(--dark, #18181B); font-weight: 600; }
+    .method-strip .ms-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(24,22,26,0.28); }
+    html[data-theme="dark"] .method-strip { background: var(--surface); border-color: rgba(255,255,255,0.12); }
+
     h3.sub-heading {
       font-size: 18px;
       font-weight: 600;
@@ -1963,6 +1974,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Designing for neurodiversity in<br /><em>Indian education.</em></h2>
+      <p class="cs-take">40 students, no tools, one teaching style: the gap Saksham was built to close.</p>
       <p class="body-text">During an interview for this project, an educator in India told me something I couldn't stop thinking about: <strong>"I have 40 students and no tools. I know some of them learn differently, but all I can do is teach the same way and hope for the best."</strong> That sentence became the emotional foundation for everything I designed.</p>
       <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: var(--rose-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Sole designer, researcher, and developer, end to end: research, interaction design, high-fidelity prototyping, usability testing, the front-end code of the live version, and the published TAGA 2026 paper.</p>
       <p class="body-text">In India, over 5 million children with learning disabilities like dyslexia, ADHD, and autism face a system that wasn't built for them. Tools don't adapt to their cognition, interfaces overwhelm instead of support, and stigma means many go undiagnosed entirely.</p>
@@ -1976,6 +1988,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Statement</p>
       <h2 class="section-title">How might we create an experience that adapts to each <em>learner's</em> cognitive style?</h2>
+      <p class="cs-take">Every tool these students had was built for a "default" learner, and none adapted to how they think.</p>
       <p class="body-text">I audited the tools these students actually use: Byju's, Duolingo, and government e-learning apps. Not one offered cognitive adaptation for neurodivergent learners; all were built for a "default" student: fast-paced, visually dense, text-heavy. For a child with dyslexia, these interfaces don't just fail to help, they create anxiety. The challenge became clear: design a learning experience that adapts to each learner's cognitive style while building <strong>independence and confidence</strong>, not just outcomes.</p>
     </div>
 
@@ -2006,22 +2019,13 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     </div>
 
     <div class="container-wide">
-      <div class="method-grid fade-in">
-        <div class="method-card">
-          <div class="method-icon">🎙️</div>
-          <div class="method-name">Qualitative Interviews</div>
-          <div class="method-desc">In-depth conversations with educators, parents of neurodivergent children, and accessibility experts to understand real-world challenges in Indian classrooms.</div>
-        </div>
-        <div class="method-card">
-          <div class="method-icon">📖</div>
-          <div class="method-name">Literature Review</div>
-          <div class="method-desc">Academic research on accessibility, cognitive load theory, and inclusive design principles in educational technology contexts.</div>
-        </div>
-        <div class="method-card">
-          <div class="method-icon">🔍</div>
-          <div class="method-name">Comparative Analysis</div>
-          <div class="method-desc">Evaluated existing edtech tools including Byju's, Duolingo, and Microsoft Learning Tools, identifying critical gaps in accessibility features.</div>
-        </div>
+      <div class="method-strip fade-in">
+        <span class="ms-label">How I researched</span>
+        <span class="ms-item"><b>Qualitative interviews</b> (educators, parents, accessibility experts)</span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item"><b>Literature review</b></span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item"><b>Comparative analysis</b> (Byju's, Duolingo, MS Learning Tools)</span>
       </div>
     </div>
 
@@ -2061,7 +2065,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">From empathy to<br /><em>interactive prototype.</em></h2>
-      <p class="body-text">I moved from empathy to a tested prototype in five stages, refining each against feedback from educators and parents.</p>
+      <p class="cs-take">Five stages from interviews to a tested prototype, each refined against educator and parent feedback.</p>
     </div>
 
     <div class="container fade-in">
@@ -2144,6 +2148,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design Decisions</p>
       <h2 class="section-title">Three choices I had to <em>defend</em><br />against my own instincts.</h2>
+      <p class="cs-take">Three times the obvious design move was wrong, and research showed why.</p>
       <p class="body-text">Each one was a moment where the obvious move turned out to be wrong, usually because educators and parents pushed back on assumptions I hadn't realized I was making.</p>
 
       <div class="decisions-list fade-in">
@@ -2225,7 +2230,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Saksham.</em></h2>
-      <p class="body-text">"Saksham" means "capable" in Hindi, the feeling this app is built to create. Every feature traces to a research finding: the customizable dashboard because children shut down when they can't control their environment; guided reading because educators called audio reinforcement the most effective intervention they'd seen; offline access because <strong>60%</strong> of India's rural students lack reliable internet. Nothing is decorative.</p>
+      <p class="cs-take">"Saksham" means "capable." Every feature traces to a research finding, nothing decorative.</p>
+      <p class="body-text">The customizable dashboard, because children shut down when they can't control their environment; guided reading, because educators called audio reinforcement the most effective intervention they'd seen; offline access, because <strong>60%</strong> of India's rural students lack reliable internet.</p>
     </div>
 
     <!-- Figma Prototype -->
@@ -2261,7 +2267,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Impact</p>
       <h2 class="section-title">From a personal project to a<br /><em>live, growing library.</em></h2>
-      <p class="body-text">What started as a passion project became something I shipped. The research earned publication for its rigorous, human-centered framework for designing accessible educational technology where very little exists, and I took it further, coding the design into a live web library I keep expanding.</p>
+      <p class="cs-take">A passion project became a published paper and a live product I keep expanding.</p>
+      <p class="body-text">The research earned publication for its rigorous, human-centered framework for designing accessible educational technology where very little exists, and I took it further, coding the design into a live web library I keep expanding.</p>
     </div>
 
     <div class="container-wide fade-in">

@@ -377,6 +377,17 @@
     }
     h2.section-title em { font-style: italic; color: var(--green); }
 
+    /* Skim-spine: one-line takeaway under each section title */
+    .cs-take { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.5; color: var(--dark, #18181B); margin: 0 0 20px; padding-left: 16px; border-left: 3px solid var(--green); max-width: 62ch; }
+    .impact-section .cs-take { color: #fff; border-left-color: var(--green-light); }
+
+    /* Compact research method strip */
+    .method-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 22px 0 4px; padding: 14px 18px; background: var(--white, #fff); border: 1px solid rgba(24,22,26,0.08); border-radius: 12px; font-size: 13.5px; color: var(--mid); }
+    .method-strip .ms-label { font-family: var(--mono, monospace); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+    .method-strip .ms-item b { color: var(--dark, #18181B); font-weight: 600; }
+    .method-strip .ms-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(24,22,26,0.28); }
+    html[data-theme="dark"] .method-strip { background: var(--surface); border-color: rgba(255,255,255,0.12); }
+
     h3.sub-heading {
       font-size: 18px;
       font-weight: 600;
@@ -1952,6 +1963,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Identification</p>
       <h2 class="section-title">A brilliant product<br />nobody could explain.</h2>
+      <p class="cs-take">The technology worked. The website made sure no investor understood why it mattered.</p>
       <p class="body-text">Every year, lithium-ion batteries hidden in waste streams cause hundreds of facility fires costing millions. Nexstera Tech built <strong>Pyrotack</strong>, an AI system that detects these batteries before they ignite. The technology worked, but <strong>nobody outside the founding team understood why it mattered.</strong> The site read like an engineering spec sheet: dense, jargon-heavy, no investor pathway, and no reason for a first-time visitor to care.</p>
       <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: var(--green-bg); border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> UX designer. Owned the Investor and Education pages end-to-end: competitive analysis, journey mapping, wireframing, visual design, prototyping, and usability testing.</p>
       <p class="body-text">I asked one question: <strong>"If I were an investor landing here for the first time, would I understand what this company does within 30 seconds?"</strong> The answer was no. Three critical gaps stood out:</p>
@@ -1989,22 +2001,15 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     </div>
 
     <div class="container-wide">
-      <div class="method-grid fade-in">
-        <div class="method-card">
-          <div class="method-icon">🗺️</div>
-          <div class="method-name">Journey Mapping</div>
-          <div class="method-desc">Mapped the end-to-end journeys of two distinct users: an investor and a curious visitor, to identify friction points and emotional gaps at each stage.</div>
-        </div>
-        <div class="method-card">
-          <div class="method-icon">🔍</div>
-          <div class="method-name">Competitive & Market Analysis</div>
-          <div class="method-desc">Analyzed 6 competitors in the battery and sustainability space to understand effective layout, tone, and content patterns across the industry.</div>
-        </div>
-        <div class="method-card">
-          <div class="method-icon">📐</div>
-          <div class="method-name">UX & Content Audit</div>
-          <div class="method-desc">Conducted a full audit of Nexstera's existing web content and user flow to identify areas for simplification, clarity, and credibility improvement.</div>
-        </div>
+      <div class="method-strip fade-in">
+        <span class="ms-label">How I researched</span>
+        <span class="ms-item"><b>Journey mapping</b> (investor + visitor)</span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item"><b>Competitive analysis</b> (6 companies)</span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item"><b>UX &amp; content audit</b></span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item"><b>Think-aloud sessions</b></span>
       </div>
     </div>
 
@@ -2203,6 +2208,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Key Insights</p>
       <h2 class="section-title">Three findings that changed<br />the direction of this project.</h2>
+      <p class="cs-take">Investors didn't feel the stakes, had no path to a conversation, and read polish as credibility.</p>
     </div>
     <div class="container-wide">
       <div class="insights-grid fade-in">
@@ -2232,7 +2238,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">The first version was wrong.<br />That's how I knew it was working.</h2>
-      <p class="body-text">My first wireframes tried to do too much, cramming investor data, education, and product detail onto one page. The sketches and mid-fidelity frames below are where I worked that out before splitting the experience into focused, single-purpose pages.</p>
+      <p class="cs-take">The fix was splitting one overloaded page into focused, single-purpose ones.</p>
+      <p class="body-text">My first wireframes tried to do too much, cramming investor data, education, and product detail onto one page. The sketches and mid-fidelity frames below are where I worked that out.</p>
     </div>
 
     <!-- Sketches -->
@@ -2264,7 +2271,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design Decisions</p>
       <h2 class="section-title">The trade-offs <em>behind</em><br />the redesign.</h2>
-      <p class="body-text">Most of the design work was straightforward. These three were the moments where two defensible directions pointed in opposite ways, and the choice mattered more than the polish.</p>
+      <p class="cs-take">Three moments where two defensible directions pointed opposite ways, and the choice mattered more than the polish.</p>
 
       <div class="decisions-list fade-in">
 
@@ -2323,7 +2330,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design System &amp; Handoff</p>
       <h2 class="section-title">A visual language the team could <em>actually build.</em></h2>
-      <p class="body-text">I built a modular system of colors and typography grounded in Nexstera's sustainability mission. Because the team planned to maintain the site in Webflow themselves, I designed for handoff from the first component: reusable blocks and tokens they could recombine without redrawing anything.</p>
+      <p class="cs-take">Because the founders would maintain the site themselves, I designed for handoff from the first component.</p>
+      <p class="body-text">I built a modular system of colors and typography grounded in Nexstera's sustainability mission: reusable blocks and tokens the team could recombine in Webflow without redrawing anything.</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -2383,7 +2391,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing Nexstera Tech's<br /><em>new website.</em></h2>
-      <p class="body-text">Each page now has a single job: the homepage builds emotional urgency, the investor page converts interest into meetings, and the education hub positions Nexstera as a thought leader. Every decision traces back to research.</p>
+      <p class="cs-take">Each page now has one job, one audience, one next step.</p>
+      <p class="body-text">The homepage builds emotional urgency, the investor page converts interest into meetings, and the education hub positions Nexstera as a thought leader. Every decision traces back to research.</p>
     </div>
 
     <!-- Figma Prototype -->

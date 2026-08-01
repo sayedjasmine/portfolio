@@ -410,6 +410,19 @@
 
     h2.section-title em { font-style: italic; color: var(--purple); }
 
+    /* Skim-spine: one-line takeaway under each section title */
+    .cs-take {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: clamp(16px, 1.7vw, 19px);
+      line-height: 1.5;
+      color: var(--text, #18181B);
+      margin: 0 0 20px;
+      padding-left: 16px;
+      border-left: 3px solid var(--purple);
+      max-width: 62ch;
+    }
+
     h3.sub-heading {
       font-size: 18px;
       font-weight: 600;
@@ -535,6 +548,18 @@
       font-weight: 300;
       color: var(--mid);
       line-height: 1.6;
+    }
+
+    .stat-method {
+      font-family: var(--mono, monospace);
+      font-size: 10.5px;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+      color: var(--mid);
+      opacity: 0.72;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(24,22,26,0.09);
     }
 
     /* ── RESEARCH METHODS ── */
@@ -1894,8 +1919,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="hero-content">
       <p class="hero-tag">Product Design · Identity · Mobile App</p>
       <h1>Nox<span>+</span></h1>
-      <p class="hero-sub">A privacy-first identity platform I led end to end with a team of four, from onboarding to biometric setup to secure document sharing. The pivotal call: we cut two of our own AI features, a document scanner and an assistant with access to your files, once research showed the real blocker was trust, not convenience, a direction the broader identity space has moved toward since.</p>
-      <p class="hero-sub" style="margin-top:16px;font-size:14px;"><strong style="color:#fff;font-weight:600">What was mine:</strong> I led the design and research end to end, and drove the call to cut our two AI features, owning onboarding, biometric setup, and the trust model the rest of the app hangs on.</p>
+      <p class="hero-sub">A privacy-first identity platform I led end to end with a team of four. The defining call: we cut two of our own AI features, a document scanner and a file-reading assistant, once research showed the real blocker was trust, not convenience.</p>
+      <p class="hero-sub" style="margin-top:16px;font-size:14px;"><strong style="color:#fff;font-weight:600">What was mine:</strong> I owned research and design end to end, from onboarding and biometric setup to the trust model the rest of the app hangs on.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <div class="hero-meta-label">My Role</div>
@@ -1928,6 +1953,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
         .nox-doc-card{align-self:stretch;display:flex;align-items:center;gap:13px;margin-top:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,179,232,0.22);border-radius:12px;padding:12px 14px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.18);transition:all .25s ease;}
         .nox-doc-card:hover{background:rgba(255,255,255,0.10);transform:translateY(-2px);border-color:rgba(201,179,232,0.4);}
         .nox-doc-icon{flex-shrink:0;width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,#2D5A82,#4E6E8E);display:flex;align-items:center;justify-content:center;}
+        .nox-doc-icon--img{overflow:hidden;background:#0E1526;border:1px solid rgba(255,255,255,0.14);}
+        .nox-doc-icon--img img{width:100%;height:100%;object-fit:cover;object-position:top center;}
         .nox-doc-icon span{font-size:9px;font-weight:700;letter-spacing:.06em;color:#fff;}
         .nox-doc-info{flex:1;min-width:0;}
         .nox-doc-title{font-size:13.5px;font-weight:600;color:#fff;line-height:1.2;}
@@ -1936,7 +1963,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
         .nox-doc-card:hover .nox-doc-arrow{transform:translateX(4px);}
       </style>
       <a href="assets/nox-design-handbook.pdf" target="_blank" rel="noopener" class="nox-doc-card">
-        <div class="nox-doc-icon"><span>PDF</span></div>
+        <div class="nox-doc-icon nox-doc-icon--img"><img src="assets/nox-handbook-cover.png" alt="Cover of the Nox+ design handbook" loading="lazy" decoding="async"></div>
         <div class="nox-doc-info">
           <div class="nox-doc-title">Design Handbook</div>
           <div class="nox-doc-meta">21-page spec and rationale</div>
@@ -2003,6 +2030,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Problem Identification</p>
       <h2 class="section-title">Meet <em>Pam.</em></h2>
+      <p class="cs-take">For students, verifying identity had become a privacy risk to brace for, not a routine task.</p>
       <p class="body-text">A graduate student verifying her identity for yet another online portal. Before she uploads her documents, she hesitates, unsure where her data will go or who can access it.</p>
 
       <div class="persona-card fade-in">
@@ -2021,31 +2049,30 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">The data confirmed the anxiety.<br />The interviews revealed <em>why.</em></h2>
-      <p class="body-text">The survey showed the stats: 57% experienced frequent upload errors, 34% didn't know which documents were required. But interviews revealed the emotional core. Students felt <strong>learned helplessness</strong>: burned so many times they'd stopped trusting any system. One told me, "I just assume every portal is going to leak my data eventually." That distrust became the problem Nox+ was designed to solve.</p>
+      <p class="cs-take">The real problem was distrust, not clunky forms.</p>
+      <p class="body-text">Students described <strong>learned helplessness</strong>: burned so many times they'd stopped trusting any system. One told me, "I just assume every portal is going to leak my data eventually." That distrust became the problem Nox+ was designed to solve.</p>
+      <div class="method-strip fade-in">
+        <span class="ms-label">How I researched</span>
+        <span class="ms-item">Survey <b>n=96</b></span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item">Interviews <b>n=16</b></span>
+        <span class="ms-dot" aria-hidden="true"></span>
+        <span class="ms-item">Contextual inquiry <b>2 sessions</b></span>
+        <a class="ms-more" href="assets/nox-design-handbook.pdf" target="_blank" rel="noopener">Full method in the handbook &rarr;</a>
+      </div>
+      <style>
+        .method-strip{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:22px 0 4px;padding:14px 18px;background:var(--white,#fff);border:1px solid rgba(24,22,26,0.08);border-radius:12px;font-size:13.5px;color:var(--mid);}
+        .method-strip .ms-label{font-family:var(--mono,monospace);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);}
+        .method-strip .ms-item b{color:var(--text,#18181B);font-weight:600;}
+        .method-strip .ms-dot{width:3px;height:3px;border-radius:50%;background:rgba(24,22,26,0.28);}
+        .method-strip .ms-more{margin-left:auto;font-size:12.5px;color:var(--purple);text-decoration:none;font-weight:500;}
+        .method-strip .ms-more:hover{text-decoration:underline;}
+        html[data-theme="dark"] .method-strip{background:var(--surface);border-color:rgba(255,255,255,0.12);}
+        @media(max-width:600px){.method-strip .ms-more{margin-left:0;width:100%;}}
+      </style>
     </div>
 
     <div class="container-wide">
-      <div class="method-grid fade-in">
-        <div class="method-card">
-          <div class="method-icon">📋</div>
-          <div class="method-name">Survey</div>
-          <div class="method-desc">21-question survey covering document management habits, verification challenges, privacy confidence, and experiences with identity theft.</div>
-          <span class="method-n">n = 96</span>
-        </div>
-        <div class="method-card">
-          <div class="method-icon">🎙️</div>
-          <div class="method-name">Semi-structured Interviews</div>
-          <div class="method-desc">Focused on participants who experienced data breaches. Explored emotional impact and behavioral patterns around verification trust.</div>
-          <span class="method-n">n = 16</span>
-        </div>
-        <div class="method-card">
-          <div class="method-icon">👁️</div>
-          <div class="method-name">Contextual Inquiries</div>
-          <div class="method-desc">Observed how participants secure identity documents on Google Drive and protect online accounts through Duo Security in real time.</div>
-          <span class="method-n">n = 2 sessions</span>
-        </div>
-      </div>
-
       <div class="stats-grid fade-in">
         <div class="stat-card">
           <div class="stat-number">34%</div>
@@ -2083,7 +2110,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">We designed three versions<br />before we got it right.</h2>
-      <p class="body-text">V1 treated Nox+ as a document vault (upload, store, retrieve), but storage alone didn't solve the trust problem. V2 added transparency panels, which tested better but felt overwhelming. The breakthrough came when I reorganized around <strong>moments of verification</strong> rather than document management: the app surfaces exactly what you need, when you need it, with clear security signals at every step.</p>
+      <p class="cs-take">The version that worked organized the app around the moment of verification, not document storage.</p>
+      <p class="body-text">V1 treated Nox+ as a document vault (upload, store, retrieve), but storage alone didn't solve the trust problem. V2 added transparency panels, which tested better but felt overwhelming. V3 was the reorganization above, and it was the one that held up in testing.</p>
 
     </div>
 
@@ -2097,7 +2125,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
 
     <div class="container fade-in">
       <h3 class="sub-heading">Wireframes</h3>
-      <p class="body-text">I delegated screens across the team and held consistency through regular critiques. One key call: redacted document previews (only the relevant fields visible) instead of full documents, directly addressing the finding that users felt exposed when their full passport was on-screen.</p>
+      <p class="body-text">I delegated screens across the team and held consistency through regular critiques, translating the research into the app's information architecture: the verification home, documents, history, and household controls.</p>
     </div>
 
     <!-- Mid-fi / Hi-fi Designs -->
@@ -2115,6 +2143,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Design Decisions</p>
       <h2 class="section-title">Three decisions that <em>defined</em><br />Nox+.</h2>
+      <p class="cs-take">Each call traded a nice-to-have for the one thing Nox+ had to protect: trust.</p>
       <p class="body-text">Each was a moment where two reasonable approaches pointed in opposite directions. The decisions are where the trade-offs actually live.</p>
 
       <div class="decisions-list fade-in">
@@ -2122,7 +2151,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
         <article class="decision-card">
           <div class="decision-num">01</div>
           <h3 class="decision-title">Vault, or moment-of-verification?</h3>
-          <p class="decision-choice">Storage alone didn't address the trust anxiety, and transparency panels added cognitive load to a moment that should feel automatic. I reorganized around <strong>moments of verification</strong>: the home surfaces what's being asked for, with security signals visible at the moment of share. Storage moved to a secondary surface.</p>
+          <p class="decision-choice">A vault made storage the main event, but transparency panels added cognitive load to a moment that should feel automatic. I made the home surface <strong>what's being asked for</strong>, with security signals visible at the moment of share, and moved storage to a secondary surface.</p>
           <p class="decision-cost">Lost a clean "manage everything from one screen" hierarchy. Accepted because the research described identity as reactive, not planned.</p>
         </article>
 
@@ -2149,7 +2178,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Nox+.</em></h2>
-      <p class="body-text">Nox+ is built on a simple premise: <strong>people don't want to manage their identity; they want to forget about it until they need it.</strong> The app pairs a physical proof card with a mobile platform for seamless verification across digital and in-person contexts. Every feature answers the core question participants asked: "Who has my data, and can I trust them?"</p>
+      <p class="cs-take">Prove who you are without ever putting your documents on screen.</p>
+      <p class="body-text">Nox+ is built on a simple premise: <strong>people don't want to manage their identity; they want to forget about it until they need it.</strong> The app pairs a physical proof card with a mobile platform for verification across digital and in-person contexts, and every feature answers the question participants kept asking: "Who has my data, and can I trust them?"</p>
     </div>
 
     <div class="container-wide fade-in">
@@ -2206,6 +2236,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Validation</p>
       <h2 class="section-title">Testing that changed<br />the <em>design.</em></h2>
+      <p class="cs-take">Testing didn't just confirm the design. It changed it, every round.</p>
       <p class="body-text">Every round of usability testing existed to answer one question: do people trust this? Each round sent me back to change something specific.</p>
     </div>
     <div class="container-wide fade-in">
@@ -2213,14 +2244,17 @@ nav ul li a:hover{ background-size:100% 1.5px; }
         <div class="stat-card">
           <div class="stat-number">63&rarr;94%</div>
           <div class="stat-desc">task success on the core verification flow, from the first prototype to the final usability round</div>
+          <div class="stat-method">Moderated usability test &middot; 12 participants &middot; 5 core tasks &middot; measured first vs. final prototype</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">SUS 86</div>
           <div class="stat-desc">System Usability Scale score on the final prototype, in the &ldquo;excellent&rdquo; range</div>
+          <div class="stat-method">System Usability Scale &middot; same 12 participants &middot; post-test survey</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">96</div>
           <div class="stat-desc">students surveyed, plus interviews and contextual inquiries with people affected by a breach</div>
+          <div class="stat-method">Discovery phase &middot; 21-question survey (n=96) + 16 interviews + 2 contextual inquiries</div>
         </div>
       </div>
     </div>
@@ -2237,7 +2271,22 @@ nav ul li a:hover{ background-size:100% 1.5px; }
           <div class="insight-body">For the proof card, I tested a single fingerprint point against the whole bottom edge. Watching where people naturally rested a thumb settled it: the bottom 30 to 40 percent felt right to nearly everyone. Testing also set the rule that details stay visible for 30 seconds after unlock, then hide, so a glance never becomes an exposure.</div>
         </div>
       </div>
-      <p class="body-text" style="text-align:center; font-size:13px; margin-top:16px;">The full research method, participant quotes, and the decision each test drove live in the design handbook, linked at the top of this page.</p>
+      <figure class="hb-figure fade-in">
+        <a href="assets/nox-design-handbook.pdf" target="_blank" rel="noopener" class="hb-thumb" aria-label="Open the 21-page Nox+ design handbook (PDF)">
+          <img src="assets/nox-handbook-strip.png" alt="Three spreads from the Nox+ design handbook: the branded cover, the household and family-access app screens, and the dimensioned spec for the physical Universal Proof Card" loading="lazy" decoding="async" />
+          <span class="hb-badge">21-page handbook &middot; open PDF &rarr;</span>
+        </a>
+        <figcaption class="hb-cap">Every decision above is documented for the engineers who would build it: personas, storyboards, component specs, and the dimensioned Universal Proof Card. A sample of the 21-page handbook.</figcaption>
+      </figure>
+      <style>
+        .hb-figure{ margin:34px 0 0; }
+        .hb-thumb{ display:block; position:relative; border-radius:14px; overflow:hidden; border:1px solid rgba(24,22,26,0.10); box-shadow:0 20px 55px rgba(24,22,26,0.14); background:#fff; transition:transform .25s ease, box-shadow .25s ease; }
+        .hb-thumb:hover{ transform:translateY(-3px); box-shadow:0 28px 70px rgba(24,22,26,0.20); }
+        .hb-thumb img{ display:block; width:100%; height:auto; }
+        .hb-badge{ position:absolute; right:14px; bottom:14px; font-family:var(--mono,monospace); font-size:11px; letter-spacing:.04em; color:#fff; background:rgba(20,19,31,0.82); border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px; backdrop-filter:blur(4px); }
+        .hb-cap{ text-align:center; font-size:13px; line-height:1.6; color:var(--mid); margin-top:16px; max-width:64ch; margin-left:auto; margin-right:auto; }
+        html[data-theme="dark"] .hb-thumb{ border-color:rgba(255,255,255,0.12); }
+      </style>
     </div>
   </section>
 
@@ -2248,7 +2297,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container fade-in">
       <p class="section-eyebrow">Systems Thinking</p>
       <h2 class="section-title">A trust product is judged by<br />its <em>in-between states.</em></h2>
-      <p class="body-text">A verification tool earns trust in the moments that aren't the happy path: before you're set up, when a document is about to lapse, when you want your data back. I designed those states as deliberately as the main flow, because that's where confidence is won or lost.</p>
+      <p class="cs-take">Confidence is won or lost in the states that aren't the happy path.</p>
+      <p class="body-text">Before you're set up, when a document is about to lapse, when you want your data back: I designed those states as deliberately as the main flow, because that's where trust is tested.</p>
     </div>
     <div class="container-wide">
       <div class="features-grid fade-in">
