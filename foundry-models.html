@@ -887,8 +887,7 @@ html[data-theme="dark"] .stat-number{
     <div class="hero-content">
       <p class="hero-tag">Product Design · UX Research · AI Platform</p>
       <h1 style="font-size:clamp(30px,6.2vw,76px);">Microsoft Foundry<br /><em>Models</em></h1>
-      <p class="hero-sub">I turned an 11,000-model catalog into a flow developers can navigate: region visibility, live filtering, and side-by-side compare. Two of those ideas shipped into the live Microsoft Foundry product, from usability research I ran on the platform myself.</p>
-      <p class="hero-sub" style="margin-top:16px;font-size:14px;"><strong style="color:#fff;font-weight:600">What was mine:</strong> On a team of five UX designers, I owned the usability research that opened the project and the two threads that shipped, how developers narrow the catalog and how they compare what is left. &ldquo;Shipped&rdquo; means those two ideas are live in the product today, not that I owned the full production build.</p>
+      <p class="hero-sub">Microsoft Foundry&rsquo;s catalog had grown past 11,000 models, with no reliable way to find or compare them. Our team of five redesigned discovery around the decisions developers actually make: narrowing, evaluating, and committing. The redesign shipped into the live product.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -976,7 +975,7 @@ html[data-theme="dark"] .stat-number{
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led concept development and information architecture, running research, a high-fidelity prototype, and two rounds of usability testing focused on region visibility, filtering, and side-by-side compare.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">On a team of five, I ran the usability research and led concept and IA, owning the two threads that shipped: region visibility in the filter rail and side-by-side compare. I didn&rsquo;t own the full production build, but both are live today.</div></div>
         <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Both ideas shipped into the live Microsoft Foundry product</strong> (region in the filter bar, a side-by-side compare tray), and a small round-two test pointed to roughly 58% faster search-to-select.</div></div>
       </div>
     </div>
@@ -1031,51 +1030,6 @@ html[data-theme="dark"] .stat-number{
 
   <div class="divider"></div>
 
-  <!-- WHAT WAS MINE (individual contribution) -->
-  <section id="contribution">
-    <style>
-      .mine-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px; }
-      .mine-card{ border:1px solid var(--line); border-radius:16px; padding:26px 26px 22px; background:var(--white,#fff); }
-      .mine-card.owned{ border-color:rgba(45,90,130,.34); background:linear-gradient(180deg, rgba(45,90,130,.05), rgba(45,90,130,0)); }
-      .mine-k{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; display:flex; align-items:center; gap:9px; }
-      .mine-card.owned .mine-k{ color:var(--accent); }
-      .mine-k .tag{ font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; padding:2px 8px; border-radius:100px; }
-      .mine-card.owned .mine-k .tag{ color:var(--on-accent,#fff); background:var(--accent); }
-      .mine-card ul{ list-style:none; margin:0; padding:0; }
-      .mine-card li{ position:relative; padding:9px 0 9px 20px; font-size:14px; line-height:1.55; color:var(--dark); border-bottom:1px solid var(--line); }
-      .mine-card li:last-child{ border-bottom:none; }
-      .mine-card li::before{ content:''; position:absolute; left:0; top:15px; width:7px; height:7px; border-radius:2px; background:var(--line); }
-      .mine-card.owned li::before{ background:var(--accent); }
-      .mine-card li strong{ font-weight:600; }
-      @media(max-width:760px){ .mine-grid{ grid-template-columns:1fr; } }
-    </style>
-    <div class="container fade-in">
-      <p class="section-eyebrow">My Contribution</p>
-      <h2 class="section-title">Five designers, three months.<br />Here's the part that was <em>mine.</em></h2>
-      <p class="body-text">On a team of five, the honest answer to &ldquo;which pixels were yours&rdquo; matters. I owned the research that started the project and the two threads that shipped: <strong>how developers narrow the catalog, and how they compare what's left.</strong></p>
-      <div class="mine-grid">
-        <div class="mine-card owned">
-          <p class="mine-k">What I owned <span class="tag">Mine</span></p>
-          <ul>
-            <li>The <strong>UX research study</strong> on Foundry that surfaced the region and &ldquo;where do I start&rdquo; problems, and seeded the redesign</li>
-            <li><strong>Filtering &amp; region IA</strong>: promoting region and pricing out of the model detail and into the results and filter rail</li>
-            <li>The <strong>compare-tray concept and interaction model</strong>, from empty state to the best-value-per-row call-out</li>
-            <li>The <strong>Figma components</strong> for the filter and compare flows, which fed the team's developer-tooling design system and cut handoff back-and-forth</li>
-            <li><strong>Stakeholder communication</strong> with the Microsoft CoreAI team that carried these into the live product</li>
-          </ul>
-        </div>
-        <div class="mine-card">
-          <p class="mine-k">Where the team led <span class="tag">Ours</span></p>
-          <ul>
-            <li>The overall <strong>Discover information architecture</strong> and the four-task front door</li>
-            <li>The <strong>Home / return experience</strong> and quick-task shortcuts</li>
-            <li>The shared <strong>visual system</strong> across the redesign</li>
-            <li>Round-one <strong>wireframe testing</strong> we ran and synthesized together</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- RESEARCH -->
   <section id="research">
