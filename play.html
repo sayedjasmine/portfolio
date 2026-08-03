@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Play · Jasmine Sayed | My Playground</title>
+  <title>Play · Beyond the Case Studies | Jasmine Sayed</title>
+  <link rel="canonical" href="https://jasminesayedportfolio.com/play.html" />
   <meta name="description" content="Product designer with a UX research background, an HCDE master's student at UW, and a B.S. from Cal Poly. Experience at Microsoft. President of UXFest, a 140-person UX hackathon. Figma, design systems, research, accessibility, and AI." />
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Play · Jasmine Sayed | My Playground" />
+  <meta property="og:title" content="Play · Beyond the Case Studies | Jasmine Sayed" />
+  <meta property="og:url" content="https://jasminesayedportfolio.com/play.html" />
   <meta property="og:description" content="The many sides of me beyond the case studies: leading UXFest, an award-winning game jam, a coded accessibility app, CHI research, and the design system I built at UW Laurel Village." />
-  <meta property="og:image" content="assets/uxfest-hero-poster.jpg" />
+  <meta property="og:image" content="https://jasminesayedportfolio.com/assets/uxfest-hero-poster.jpg" />
   <meta property="og:image:alt" content="Jasmine Sayed speaking at UXFest" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Play · Jasmine Sayed | My Playground" />
+  <meta name="twitter:title" content="Play · Beyond the Case Studies | Jasmine Sayed" />
   <meta name="twitter:description" content="The many sides of me beyond the case studies: leading UXFest, an award-winning game jam, a coded accessibility app, CHI research, and the design system I built at UW Laurel Village." />
-  <meta name="twitter:image" content="images/about-carousel-22.jpg" />
+  <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/uxfest-hero-poster.jpg" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#2D5A82" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -735,6 +737,41 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
 })();
 </script>
+
+<style id="craft-2026">
+/* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
+
+/* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
+.fade-in{ transform:translateY(11px);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in.visible{ opacity:1; transform:none; }
+
+/* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
+.case-img-wrapper, .shot, .love-media, .browser-frame, .ba-frame{
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 70%) !important;
+  border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
+  position:relative; }
+html[data-theme="dark"] .case-img-wrapper,
+html[data-theme="dark"] .shot,
+html[data-theme="dark"] .love-media,
+html[data-theme="dark"] .browser-frame,
+html[data-theme="dark"] .ba-frame{
+  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
+/* hairline inner frame on screenshots */
+.case-img-wrapper::after, .shot::after, .browser-frame::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
+
+/* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
+html[data-theme="dark"] .stat-number{
+  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
+  -webkit-background-clip:text !important; background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
+</style>
+
 </head>
 <body>
 
@@ -771,7 +808,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   <section class="love-section">
         <div class="play-intro fade-in">
       <p class="play-eyebrow">Play</p>
-      <h2 class="play-headline">Side quests &amp; <em>experiments.</em></h2>
+      <h1 class="play-headline">Side quests &amp; <em>experiments.</em></h1>
       <p class="play-sub">Welcome to my playground, where I wander into the corners of design!</p>
     </div>
 
@@ -812,12 +849,12 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       <div class="b-overlay"><div class="b-kicker">Leadership</div><div class="b-title">Leading at <em>scale.</em></div><div class="b-desc">President of UXFest: I ran a 140-person UX hackathon end to end, from programming and speakers to a 50-person team.</div><span class="b-cta">▶ Watch the recap</span></div>
     </div>
     <a class="b-tile fade-in" href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer" data-facets="design build" style="--accent:#A9C0DA;">
-      <div class="b-media"><img src="assets/saksham-mockup.webp" alt="Saksham accessible reading tool" loading="lazy" /></div>
+      <div class="b-media"><img src="assets/saksham-mockup.webp" alt="Saksham accessible reading tool" loading="eager" decoding="async" /></div>
       <span class="b-badge">&lt;/&gt; Hand-coded</span>
       <div class="b-overlay"><div class="b-kicker">Design → Engineering</div><div class="b-title">Saksham, <em>engineered.</em></div><div class="b-desc">I hand-coded my published Saksham design into a live, accessible reading library, written in HTML, CSS, and JavaScript and still shipping.</div><span class="b-cta">See the code <span class="arw">↗</span></span></div>
     </a>
     <div class="b-tile fade-in" id="lv-tile" data-facets="design" style="--accent:#A9C0DA;" role="button" tabindex="0" aria-label="View the Laurel Village design system and newsletter">
-      <div class="b-media"><img src="assets/lv-design-system.webp" alt="Laurel Village design system" data-nozoom loading="lazy" /></div>
+      <div class="b-media"><img src="assets/lv-design-system.webp" alt="Laurel Village design system" data-nozoom loading="eager" decoding="async" /></div>
       <span class="b-badge">🎨 Design System</span>
       <div class="b-overlay"><div class="b-kicker">Design &amp; Operations</div><div class="b-title">The Laurel Village <em>system.</em></div><div class="b-desc">The visual system a UW childcare center runs on: flyers, newsletters, and posters from one design language.</div><span class="b-cta">See the system + newsletter <span class="arw">→</span></span></div>
     </div>
@@ -827,12 +864,12 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       <div class="b-overlay"><div class="b-kicker">Hackathon</div><div class="b-title">Among <em>hUSkies.</em></div><div class="b-desc">A UW take on Among Us with real UX tasks, built in Figma Make. First place at the Figma Make Hackathon.</div><span class="b-cta">▶ Watch the walkthrough</span></div>
     </div>
     <a class="b-tile fade-in b-contain" href="momsafe.html" data-facets="research" style="--accent:#A9C0DA;">
-      <div class="b-media"><img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="lazy" /></div>
+      <div class="b-media"><img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="eager" decoding="async" /></div>
       <span class="b-badge">🏅 CHI 2025</span>
       <div class="b-overlay"><div class="b-kicker">Research</div><div class="b-title">MomSAFE at <em>CHI.</em></div><div class="b-desc">Mixed-methods research on where AI belongs in prenatal care.</div><span class="b-cta">Read the study <span class="arw">→</span></span></div>
     </a>
     <a class="b-tile fade-in b-contain" href="codeswitching.html" data-facets="research" style="--accent:#A9C0DA;">
-      <div class="b-media"><img src="assets/codeswitching-thumbnail.png" alt="Code-switching research study" loading="lazy" /></div>
+      <div class="b-media"><img src="assets/codeswitching-thumbnail.png" alt="Code-switching research study" loading="eager" decoding="async" /></div>
       <span class="b-badge">🗣 Research</span>
       <div class="b-overlay"><div class="b-kicker">Language &amp; Identity</div><div class="b-title">Why we <em>code-switch.</em></div><div class="b-desc">A qualitative study on multilingual code-switching and identity.</div><span class="b-cta">Read the study <span class="arw">→</span></span></div>
     </a>
@@ -1372,5 +1409,25 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   document.addEventListener('mouseover',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var t=labelFor(el); if(t){ label.textContent=t; label.classList.add('show'); } } },{passive:true});
   document.addEventListener('mouseout',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var to=e.relatedTarget; if(!to||!el.contains(to)) label.classList.remove('show'); } },{passive:true});
 })();</script>
+
+<script id="eager-reveal">
+/* Reveal fade-in sections well before they enter view, so nothing ever reads blank */
+(function(){
+  var sel = '.fade-in:not(.visible), .love-panel:not(.visible), .card:not(.visible)';
+  var els = [].slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  function reveal(el){ el.classList.add('visible'); }
+  if(!('IntersectionObserver' in window)){ els.forEach(reveal); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ reveal(en.target); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px 42% 0px', threshold: 0 });
+  els.forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top < vh * 1.25){ reveal(el); } else { io.observe(el); }
+  });
+})();
+</script>
+
 </body>
 </html>

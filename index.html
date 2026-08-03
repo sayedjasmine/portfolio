@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jasmine Sayed | Product Designer for complex, technical products</title>
+  <title>Jasmine Sayed · Product Designer for complex, technical & AI products</title>
+  <link rel="canonical" href="https://jasminesayedportfolio.com/" />
   <meta name="description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience, research-grounded, and I build in code too. Available now for full-time roles. Master's in Human-Centered Design &amp; Engineering, University of Washington." />
   <meta name="keywords" content="Product Designer, UX Designer, UX Researcher, Figma, Design Systems, Usability Testing, User Research, Accessibility, AI, Human-Centered Design, Microsoft" />
-  <meta property="og:title" content="Jasmine Sayed | Product Designer for complex, technical products" />
+  <meta property="og:title" content="Jasmine Sayed · Product Designer for complex, technical & AI products" />
+  <meta property="og:url" content="https://jasminesayedportfolio.com/" />
   <meta property="og:description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience. Available now for full-time roles." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/jasmine-logo.png" />
+  <meta property="og:image" content="https://jasminesayedportfolio.com/assets/jasmine-logo.png" />
   <meta property="og:image:alt" content="Jasmine Sayed | Product Designer" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jasmine Sayed | Product Designer for complex, technical products" />
+  <meta name="twitter:title" content="Jasmine Sayed · Product Designer for complex, technical & AI products" />
   <meta name="twitter:description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience. Available now for full-time roles." />
-  <meta name="twitter:image" content="assets/jasmine-logo.png" />
+  <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/jasmine-logo.png" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#2D5A82" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -616,8 +618,6 @@
     .card-code-chip svg { width: 15px; height: 15px; flex-shrink: 0; }
 
     /* Per-card preview background colors */
-    .card-microsoft .card-preview     { background: #004369; padding: 28px; }
-    .card-microsoft .card-preview img { max-width: 100%; max-height: 100%; }
     .card-foundry .card-preview       { background: #1E2A4A; padding: 0; }
     .card-foundry .card-preview img   { max-width: 100%; max-height: 100%; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; filter: none; }
     .card-nox .card-preview           { background: #4E6E8E; padding: 20px; }
@@ -1438,7 +1438,7 @@ footer{ background:var(--footer-bg); flex-wrap:wrap; gap:10px 26px; padding-righ
 /* Uniform cards: ALL previews one shared color, original device mockups, no glitchy edges */
 .card{ height:340px; }
 .card-foundry{ height:340px; }
-.card-nox .card-preview, .card-nexstera .card-preview, .card-microsoft .card-preview, .card-saksham .card-preview, .card-foundry .card-preview{
+.card-nox .card-preview, .card-nexstera .card-preview, .card-saksham .card-preview, .card-foundry .card-preview{
   background:#EAECF4 !important; padding:26px !important; flex:0 0 48% !important; overflow:hidden;
 }
 .card-foundry .card-preview img{ width:auto !important; height:auto !important; max-width:100% !important; max-height:100% !important; object-fit:contain !important; object-position:center !important; border-radius:8px !important; transform:none !important; }
@@ -1882,6 +1882,41 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
 })();
 </script>
+
+<style id="craft-2026">
+/* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
+
+/* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
+.fade-in{ transform:translateY(11px);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in.visible{ opacity:1; transform:none; }
+
+/* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
+.case-img-wrapper, .shot, .love-media, .browser-frame, .ba-frame{
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 70%) !important;
+  border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
+  position:relative; }
+html[data-theme="dark"] .case-img-wrapper,
+html[data-theme="dark"] .shot,
+html[data-theme="dark"] .love-media,
+html[data-theme="dark"] .browser-frame,
+html[data-theme="dark"] .ba-frame{
+  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
+/* hairline inner frame on screenshots */
+.case-img-wrapper::after, .shot::after, .browser-frame::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
+
+/* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
+html[data-theme="dark"] .stat-number{
+  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
+  -webkit-background-clip:text !important; background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
+</style>
+
 </head>
 <body>
 
@@ -1889,7 +1924,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
 
   <!-- NAV -->
   <nav id="mainNav" aria-label="Main navigation">
-    <a href="#" class="logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
+    <a href="index.html" class="logo"><img src="assets/jasmine-logo.png" alt="JS logo"></a>
     <ul>
       <li><a href="#work">Work</a></li>
       <li><a href="play.html">Play</a></li>
@@ -1921,7 +1956,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="intro-inner">
       <div class="intro-left">
         <p class="intro-hi">Hi, I&rsquo;m <span class="hi-name">Jasmine!</span></p>
-        <p class="intro-line">A product designer making complex, technical, and AI products <span class="rot-wrap">feel&nbsp;<span class="hero-rot" id="heroRot">usable.</span></span></p>
+        <h1 class="intro-line">A product designer making complex, technical, and AI products <span class="rot-wrap">feel&nbsp;<span class="hero-rot" id="heroRot">usable.</span></span></h1>
       </div>
       <div class="intro-right">
         <span class="intro-status"><span class="status-dot" aria-hidden="true"></span>Available for full-time roles</span>
@@ -1935,7 +1970,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="bento">
 
       <a class="bento-tile bento-tile--feature bt-foundry" href="foundry-models.html" data-cursor="See how I made 11,000 models findable →">
-        <div class="bt-media"><span class="bt-badge">Latest</span><img src="assets/foundry-card-neutral.png" alt="Microsoft Foundry Models page redesign on a laptop" loading="lazy" decoding="async"></div>
+        <div class="bt-media"><span class="bt-badge">Latest</span><img src="assets/foundry-card-neutral.png" alt="Microsoft Foundry Models page redesign on a laptop" loading="eager" decoding="async"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">AI Platforms</span> · <svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true" style="flex-shrink:0;display:inline-block;vertical-align:-1px;margin-right:5px"><rect width="4.5" height="4.5" fill="#F25022"/><rect x="5.5" width="4.5" height="4.5" fill="#7FBA00"/><rect y="5.5" width="4.5" height="4.5" fill="#00A4EF"/><rect x="5.5" y="5.5" width="4.5" height="4.5" fill="#FFB900"/></svg>Microsoft · 2026</p>
           <h3 class="bt-title">Foundry: Models Redesign</h3>
@@ -1946,7 +1981,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       </a>
 
       <a class="bento-tile bento-tile--row bt-nox" href="nox.html" data-cursor="See why we cut our own AI features →">
-        <div class="bt-media"><img src="assets/nox-mockup-trim.png" alt="Nox+ two-phone mockup" loading="lazy" decoding="async"></div>
+        <div class="bt-media"><img src="assets/nox-mockup-trim.png" alt="Nox+ two-phone mockup" loading="eager" decoding="async"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">Identity &amp; Trust</span> · Mobile app</p>
           <h3 class="bt-title">Nox+</h3>
@@ -1957,7 +1992,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       </a>
 
       <a class="bento-tile bento-tile--row bt-saksham" href="saksham.html" data-cursor="See how I coded an accessible reading app for real classrooms →">
-        <div class="bt-media"><img src="assets/saksham-mockup-trim.webp" alt="Saksham accessible learning app on two phones" loading="lazy" decoding="async"></div>
+        <div class="bt-media"><img src="assets/saksham-mockup-trim.webp" alt="Saksham accessible learning app on two phones" loading="eager" decoding="async"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">Accessibility</span> · Live, coded</p>
           <h3 class="bt-title">Saksham</h3>
@@ -1968,7 +2003,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       </a>
 
       <a class="bento-tile bento-tile--row bt-nexstera" href="nexstera.html" data-cursor="See how I turned data into a story investors backed →">
-        <div class="bt-media"><img src="assets/nexstera-mockup-trim.webp" alt="Nexstera Tech website redesign on a laptop and tablet" loading="lazy" decoding="async"></div>
+        <div class="bt-media"><img src="assets/nexstera-mockup-trim.webp" alt="Nexstera Tech website redesign on a laptop and tablet" loading="eager" decoding="async"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">Design Systems</span> · Web · Founding Team</p>
           <h3 class="bt-title">Nexstera Tech</h3>
@@ -2408,5 +2443,25 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   [].slice.call(document.querySelectorAll('.nav-card')).forEach(function(el){ bind(el,'Explore →'); });
   [].slice.call(document.querySelectorAll('[data-cursor]')).forEach(function(el){ bind(el, el.getAttribute('data-cursor')); });
 })();</script>
+
+<script id="eager-reveal">
+/* Reveal fade-in sections well before they enter view, so nothing ever reads blank */
+(function(){
+  var sel = '.fade-in:not(.visible), .love-panel:not(.visible), .card:not(.visible)';
+  var els = [].slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  function reveal(el){ el.classList.add('visible'); }
+  if(!('IntersectionObserver' in window)){ els.forEach(reveal); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ reveal(en.target); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px 42% 0px', threshold: 0 });
+  els.forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top < vh * 1.25){ reveal(el); } else { io.observe(el); }
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code-Switching · Qualitative Research Study | Jasmine Sayed</title>
+  <link rel="canonical" href="https://jasminesayedportfolio.com/codeswitching.html" />
   <meta name="description" content="Qualitative UX research study on multilingual code-switching. Mixed methods: user interviews, observation, thematic analysis. Identified 5 interconnected themes in identity and language." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Code-Switching · Qualitative Research Study | Jasmine Sayed" />
+  <meta property="og:url" content="https://jasminesayedportfolio.com/codeswitching.html" />
   <meta property="og:description" content="Mixed-methods qualitative study on how multilingual people use code-switching in everyday life. Five interconnected themes in identity and language." />
-  <meta property="og:image" content="assets/codeswitching-thumbnail.png" />
+  <meta property="og:image" content="https://jasminesayedportfolio.com/assets/codeswitching-thumbnail.png" />
   <meta property="og:image:alt" content="Code-Switching qualitative study" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Code-Switching · Qualitative Research Study | Jasmine Sayed" />
   <meta name="twitter:description" content="Mixed-methods qualitative study on how multilingual people use code-switching in everyday life. Five interconnected themes in identity and language." />
-  <meta name="twitter:image" content="assets/codeswitching-thumbnail.png" />
+  <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/codeswitching-thumbnail.png" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#1E2A5A" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -1178,6 +1180,41 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
 })();
 </script>
+
+<style id="craft-2026">
+/* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
+
+/* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
+.fade-in{ transform:translateY(11px);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in.visible{ opacity:1; transform:none; }
+
+/* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
+.case-img-wrapper, .shot, .love-media, .browser-frame, .ba-frame{
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 70%) !important;
+  border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
+  position:relative; }
+html[data-theme="dark"] .case-img-wrapper,
+html[data-theme="dark"] .shot,
+html[data-theme="dark"] .love-media,
+html[data-theme="dark"] .browser-frame,
+html[data-theme="dark"] .ba-frame{
+  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
+/* hairline inner frame on screenshots */
+.case-img-wrapper::after, .shot::after, .browser-frame::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
+
+/* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
+html[data-theme="dark"] .stat-number{
+  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
+  -webkit-background-clip:text !important; background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
+</style>
+
 </head>
 <body>
 
@@ -1856,5 +1893,25 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   document.addEventListener('mouseover',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var t=labelFor(el); if(t){ label.textContent=t; label.classList.add('show'); } } },{passive:true});
   document.addEventListener('mouseout',function(e){ var el=e.target.closest&&e.target.closest(SEL); if(el){ var to=e.relatedTarget; if(!to||!el.contains(to)) label.classList.remove('show'); } },{passive:true});
 })();</script>
+
+<script id="eager-reveal">
+/* Reveal fade-in sections well before they enter view, so nothing ever reads blank */
+(function(){
+  var sel = '.fade-in:not(.visible), .love-panel:not(.visible), .card:not(.visible)';
+  var els = [].slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  function reveal(el){ el.classList.add('visible'); }
+  if(!('IntersectionObserver' in window)){ els.forEach(reveal); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ reveal(en.target); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px 42% 0px', threshold: 0 });
+  els.forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top < vh * 1.25){ reveal(el); } else { io.observe(el); }
+  });
+})();
+</script>
+
 </body>
 </html>

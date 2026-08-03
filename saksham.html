@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saksham · Accessible EdTech Case Study | Jasmine Sayed</title>
+  <link rel="canonical" href="https://jasminesayedportfolio.com/saksham.html" />
   <meta name="description" content="Product design and front-end build case study: an accessibility-first learning library for neurodivergent students in India. User research, accessibility design, and a live coded web version in six languages. Published in the TAGA 2026 Journal." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Saksham · Accessible EdTech Case Study | Jasmine Sayed" />
+  <meta property="og:url" content="https://jasminesayedportfolio.com/saksham.html" />
   <meta property="og:description" content="An accessibility-first learning library for neurodivergent students in India: research, accessibility design, and a live coded web version in six languages. Published in the Technical Association of the Graphic Arts (TAGA) 2026 Journal." />
-  <meta property="og:image" content="assets/saksham-mockup.webp" />
+  <meta property="og:image" content="https://jasminesayedportfolio.com/assets/saksham-mockup.webp" />
   <meta property="og:image:alt" content="Saksham accessible EdTech case study" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Saksham · Accessible EdTech Case Study | Jasmine Sayed" />
   <meta name="twitter:description" content="An accessibility-first learning library for neurodivergent students in India: research, accessibility design, and a live coded web version in six languages. Published in the Technical Association of the Graphic Arts (TAGA) 2026 Journal." />
-  <meta name="twitter:image" content="assets/saksham-mockup.webp" />
+  <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/saksham-mockup.webp" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#2D5A82" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -1839,6 +1841,41 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
 })();
 </script>
+
+<style id="craft-2026">
+/* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
+
+/* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
+.fade-in{ transform:translateY(11px);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in.visible{ opacity:1; transform:none; }
+
+/* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
+.case-img-wrapper, .shot, .love-media, .browser-frame, .ba-frame{
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 70%) !important;
+  border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
+  position:relative; }
+html[data-theme="dark"] .case-img-wrapper,
+html[data-theme="dark"] .shot,
+html[data-theme="dark"] .love-media,
+html[data-theme="dark"] .browser-frame,
+html[data-theme="dark"] .ba-frame{
+  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
+/* hairline inner frame on screenshots */
+.case-img-wrapper::after, .shot::after, .browser-frame::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
+
+/* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
+html[data-theme="dark"] .stat-number{
+  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
+  -webkit-background-clip:text !important; background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
+</style>
+
 </head>
 <body>
 
@@ -1903,7 +1940,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     </div>
     <div class="hero-docs">
       <div class="hero-figma" style="background:#14182B url('assets/saksham-mockup-trim.webp') center/contain no-repeat;">
-        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="lazy" title="Saksham interactive Figma prototype"></iframe>
+        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="eager" decoding="async" title="Saksham interactive Figma prototype"></iframe>
       </div>
       <div class="hero-figma-caption">Live Figma prototype · tap through the screens to explore the flow</div>
       <a href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
@@ -2053,7 +2090,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Insights synthesis: connecting research findings to design opportunities</div>
-        <img src="assets/saksham insights.webp" alt="Research insights synthesis showing key findings from user interviews and literature review" loading="lazy" />
+        <img src="assets/saksham-insights.webp" alt="Research insights synthesis showing key findings from user interviews and literature review" loading="eager" decoding="async" />
       </div>
     </div>
   </section>
@@ -2111,7 +2148,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Low-fidelity wireframes: early layout explorations for the mobile learning app</div>
-        <img src="assets/saksham-lowfi-wireframe.webp" alt="Low-fidelity wireframes showing early layout explorations for the Saksham app" loading="lazy" />
+        <img src="assets/saksham-lowfi-wireframe.webp" alt="Low-fidelity wireframes showing early layout explorations for the Saksham app" loading="eager" decoding="async" />
       </div>
     </div>
 
@@ -2237,7 +2274,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <!-- Figma Prototype -->
     <div class="container-wide fade-in" id="prototype">
       <div id="proto-live" style="border-radius:20px;overflow:hidden;border:1px solid rgba(62,92,118,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);margin:40px auto;height:640px;background:#14182B url('assets/saksham-mockup-trim.webp') center/contain no-repeat;">
-        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="lazy" title="Saksham interactive Figma prototype" style="width:100%;height:100%;border:none;display:block;"></iframe>
+        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="eager" decoding="async" title="Saksham interactive Figma prototype" style="width:100%;height:100%;border:none;display:block;"></iframe>
       </div>
     </div>
 
@@ -2369,8 +2406,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Foundry: <em>Models Redesign</em></div>
-    <a href="foundry-models.html" class="next-btn">View case study →</a>
+    <div class="next-title">Nexstera Tech: <em>Redesigning for Climate Impact</em></div>
+    <a href="nexstera.html" class="next-btn">View case study →</a>
   </div>
 
   <!-- FOOTER -->
@@ -2704,5 +2741,25 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   });
 })();
 </script>
+
+<script id="eager-reveal">
+/* Reveal fade-in sections well before they enter view, so nothing ever reads blank */
+(function(){
+  var sel = '.fade-in:not(.visible), .love-panel:not(.visible), .card:not(.visible)';
+  var els = [].slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  function reveal(el){ el.classList.add('visible'); }
+  if(!('IntersectionObserver' in window)){ els.forEach(reveal); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ reveal(en.target); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px 42% 0px', threshold: 0 });
+  els.forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top < vh * 1.25){ reveal(el); } else { io.observe(el); }
+  });
+})();
+</script>
+
 </body>
 </html>

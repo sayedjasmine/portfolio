@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexstera Tech · UX Design Case Study | Jasmine Sayed</title>
+  <link rel="canonical" href="https://jasminesayedportfolio.com/nexstera.html" />
   <meta name="description" content="UX design case study: website redesign for a climate tech startup. Led investor-page design, journey mapping, and usability testing in Figma. Result: a clear, investor-ready story and a reusable design system." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Nexstera Tech · UX Design Case Study | Jasmine Sayed" />
+  <meta property="og:url" content="https://jasminesayedportfolio.com/nexstera.html" />
   <meta property="og:description" content="Website UX redesign for a climate tech startup. Investor page, journey mapping, usability testing. Result: a clear, investor-ready story and a design system." />
-  <meta property="og:image" content="assets/nexstera-mockup.webp" />
+  <meta property="og:image" content="https://jasminesayedportfolio.com/assets/nexstera-mockup.webp" />
   <meta property="og:image:alt" content="Nexstera Tech case study" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Nexstera Tech · UX Design Case Study | Jasmine Sayed" />
   <meta name="twitter:description" content="Website UX redesign for a climate tech startup. Investor page, journey mapping, usability testing. Result: a clear, investor-ready story and a design system." />
-  <meta name="twitter:image" content="assets/nexstera-mockup.webp" />
+  <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/nexstera-mockup.webp" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#2D5A82" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -1842,6 +1844,41 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   window.addEventListener('pageshow', function(ev){ if(ev.persisted){ h.classList.remove('sig-leaving'); h.classList.add('sig-shown'); } });
 })();
 </script>
+
+<style id="craft-2026">
+/* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
+
+/* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
+.fade-in{ transform:translateY(11px);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in.visible{ opacity:1; transform:none; }
+
+/* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
+.case-img-wrapper, .shot, .love-media, .browser-frame, .ba-frame{
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 70%) !important;
+  border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
+  position:relative; }
+html[data-theme="dark"] .case-img-wrapper,
+html[data-theme="dark"] .shot,
+html[data-theme="dark"] .love-media,
+html[data-theme="dark"] .browser-frame,
+html[data-theme="dark"] .ba-frame{
+  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
+/* hairline inner frame on screenshots */
+.case-img-wrapper::after, .shot::after, .browser-frame::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
+
+/* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
+html[data-theme="dark"] .stat-number{
+  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
+  -webkit-background-clip:text !important; background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
+</style>
+
 </head>
 <body>
 
@@ -1906,7 +1943,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     </div>
     <div class="hero-figma">
       <div class="hero-figma-frame" style="background:#12172A url('assets/nexstera-mockup-trim.webp') center/contain no-repeat;">
-        <iframe src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?node-id=363-45&page-id=363%3A36&starting-point-node-id=473%3A54&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen loading="lazy" title="Nexstera Tech interactive Figma prototype"></iframe>
+        <iframe src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?node-id=363-45&page-id=363%3A36&starting-point-node-id=473%3A54&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen loading="eager" decoding="async" title="Nexstera Tech interactive Figma prototype"></iframe>
       </div>
       <div class="hero-figma-caption">Live Figma prototype · tap the in-app tabs to move through the flow</div>
     </div>
@@ -2171,7 +2208,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Think-aloud study: annotated markup highlighting usability issues and user confusion points</div>
-        <img src="assets/nexstera-thinkaloud-studies-markup.webp" alt="Think-aloud study markup showing annotated user feedback on the original site" loading="lazy" />
+        <img src="assets/nexstera-thinkaloud-studies-markup.webp" alt="Think-aloud study markup showing annotated user feedback on the original site" loading="eager" decoding="async" />
       </div>
     </div>
 
@@ -2247,11 +2284,11 @@ nav ul li a:hover{ background-size:100% 1.5px; }
       <div class="case-img-grid" style="grid-template-columns: 1fr; max-width: 720px; gap: 30px;">
         <div class="case-img-wrapper">
           <div class="case-img-caption">Initial sketches exploring layout concepts</div>
-          <img src="assets/nexstera-sketch-1.webp" alt="Early concept sketch exploring layout and information hierarchy" loading="lazy" />
+          <img src="assets/nexstera-sketch-1.webp" alt="Early concept sketch exploring layout and information hierarchy" loading="eager" decoding="async" />
         </div>
         <div class="case-img-wrapper">
           <div class="case-img-caption">Refined sketches iterating on page structure</div>
-          <img src="assets/nestera-sketch-2.webp" alt="Refined sketch iterations for key pages" loading="lazy" />
+          <img src="assets/nestera-sketch-2.webp" alt="Refined sketch iterations for key pages" loading="eager" decoding="async" />
         </div>
       </div>
     </div>
@@ -2260,7 +2297,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Mid-fidelity wireframes: translating sketches into structured Figma layouts</div>
-        <img src="assets/nexstera-midfi-wireframe.webp" alt="Mid-fidelity wireframes showing page layouts in Figma" loading="lazy" />
+        <img src="assets/nexstera-midfi-wireframe.webp" alt="Mid-fidelity wireframes showing page layouts in Figma" loading="eager" decoding="async" />
       </div>
     </div>
 
@@ -2398,7 +2435,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
     <!-- Figma Prototype -->
     <div class="container-wide fade-in" id="prototype">
       <div class="mockup-showcase" style="border-radius:20px;overflow:hidden;border:1px solid rgba(62,92,118,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.1);height:640px;background:#12172A url('assets/nexstera-mockup-trim.webp') center/contain no-repeat;">
-        <iframe src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?content-scaling=fixed&embed_origin=cdn.embedly.com&kind=proto&node-id=363-45&page-id=363%3A36&scaling=scale-down&show-proto-sidebar=1&starting-point-node-id=473%3A54&embed-host=share" allowfullscreen loading="lazy" title="Nexstera Tech interactive Figma prototype" style="width:100%;height:100%;border:none;display:block;"></iframe>
+        <iframe src="https://embed.figma.com/proto/siyeyrHHTDVOcHB4wsUgYn/Nexstera-Tech-Prototype?content-scaling=fixed&embed_origin=cdn.embedly.com&kind=proto&node-id=363-45&page-id=363%3A36&scaling=scale-down&show-proto-sidebar=1&starting-point-node-id=473%3A54&embed-host=share" allowfullscreen loading="eager" decoding="async" title="Nexstera Tech interactive Figma prototype" style="width:100%;height:100%;border:none;display:block;"></iframe>
       </div>
 
       <!-- Key Features -->
@@ -2484,8 +2521,8 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   <!-- NEXT PROJECT -->
   <div class="next-project fade-in">
     <div class="next-label">Next Project</div>
-    <div class="next-title">Saksham: <em>Inclusive Learning for All</em></div>
-    <a href="saksham.html" class="next-btn">View case study →</a>
+    <div class="next-title">Foundry: <em>Models Redesign</em></div>
+    <a href="foundry-models.html" class="next-btn">View case study →</a>
   </div>
 
   <!-- FOOTER -->
@@ -2820,5 +2857,25 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   });
 })();
 </script>
+
+<script id="eager-reveal">
+/* Reveal fade-in sections well before they enter view, so nothing ever reads blank */
+(function(){
+  var sel = '.fade-in:not(.visible), .love-panel:not(.visible), .card:not(.visible)';
+  var els = [].slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  function reveal(el){ el.classList.add('visible'); }
+  if(!('IntersectionObserver' in window)){ els.forEach(reveal); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ reveal(en.target); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px 42% 0px', threshold: 0 });
+  els.forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top < vh * 1.25){ reveal(el); } else { io.observe(el); }
+  });
+})();
+</script>
+
 </body>
 </html>
