@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Azure AI Foundry – Models</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/motion@11/dist/motion.js"></script>
 <style>
   :root {
@@ -761,7 +761,7 @@ function renderFilters() {
       <input type="checkbox" value="${t}" ${state.selectedTasks.includes(t)?'checked':''} onchange="onTaskFilter('${t}',this.checked)">
       <span>${t}</span>
     </label>`).join('');
-  lucide.createIcons();
+  window.lucide&&lucide.createIcons();
 }
 
 // ──────────────────────────────────────────────
@@ -785,7 +785,7 @@ function renderModels() {
   else if (state.activeTab==='popular')  renderPopular(models,ctr,cntEl);
   else                                   renderAll(models,ctr,cntEl);
 
-  lucide.createIcons();
+  window.lucide&&lucide.createIcons();
   animateCards();
 }
 
@@ -1071,7 +1071,7 @@ function syncComparisonBar() {
       </button>
     </div>`;
   }).join('');
-  lucide.createIcons();
+  window.lucide&&lucide.createIcons();
   // Animate each chip sliding in
   if (mot) {
     document.querySelectorAll('#compare-chips .cmp-chip').forEach((chip, i) => {
@@ -1157,7 +1157,7 @@ function openComparisonModal() {
   const box   = document.getElementById('comparison-box');
   modal.classList.add('open');
   anim(box, {opacity:[0,1],scale:[0.96,1],y:[12,0]}, {duration:0.3,easing:[0.22,1,0.36,1]});
-  lucide.createIcons();
+  window.lucide&&lucide.createIcons();
   setTimeout(() => {
     if (!mot) return;
     const rows = document.querySelectorAll('#comparison-table tbody tr');
@@ -1291,7 +1291,7 @@ function openDeploymentPanel(modelId) {
   panel.classList.add('open');
   anim(panel, {x:[480,0],opacity:[0,1]}, {duration:0.35,easing:[0.22,1,0.36,1]});
   document.getElementById('overlay').classList.add('open');
-  lucide.createIcons();
+  window.lucide&&lucide.createIcons();
   // Stagger deployment content blocks in after panel lands
   setTimeout(() => {
     if (!mot) return;
@@ -1381,7 +1381,7 @@ function showToast(msg, dur=3200) {
   toast.className = 'toast';
   toast.innerHTML = `<i data-lucide="info" style="width:14px;height:14px;flex-shrink:0;color:var(--purple-2);"></i><span>${msg}</span>`;
   ctr.appendChild(toast);
-  lucide.createIcons({el:toast});
+  window.lucide&&lucide.createIcons({el:toast});
   if (mot) mot.animate(toast, {opacity:[0,1],x:[16,0]}, {duration:0.22,easing:[0.22,1,0.36,1]});
   setTimeout(()=>{
     if (mot) mot.animate(toast,{opacity:[1,0],x:[0,16]},{duration:0.18}).then(()=>toast.remove());
@@ -1432,7 +1432,7 @@ function setupFilterInteractions() {
 document.addEventListener('DOMContentLoaded', ()=>{
   renderFilters();
   renderModels();
-  lucide.createIcons();
+  window.lucide&&lucide.createIcons();
   setupSidebarInteractions();
   setupButtonInteractions();
   setupFilterInteractions();
