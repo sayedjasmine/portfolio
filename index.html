@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jasmine Sayed · Product Designer for complex, technical & AI products</title>
   <link rel="canonical" href="https://jasminesayedportfolio.com/" />
-  <meta name="description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience, research-grounded, and I build in code too. Graduating June 2027 and available to start Summer 2027. Master's in Human-Centered Design &amp; Engineering, University of Washington." />
+  <meta name="description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience, research-grounded, and I build in code too. Available now for full-time roles. Master's in Human-Centered Design &amp; Engineering, University of Washington (June 2027)." />
   <meta name="keywords" content="Product Designer, UX Designer, UX Researcher, Figma, Design Systems, Usability Testing, User Research, Accessibility, AI, Human-Centered Design, Microsoft" />
   <meta property="og:title" content="Jasmine Sayed · Product Designer for complex, technical & AI products" />
   <meta property="og:url" content="https://jasminesayedportfolio.com/" />
-  <meta property="og:description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience. Graduating June 2027, available to start Summer 2027." />
+  <meta property="og:description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience. Available now for full-time roles; M.S. in progress (June 2027)." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://jasminesayedportfolio.com/assets/jasmine-logo-pink.png" />
   <meta property="og:image:alt" content="Jasmine Sayed | Product Designer" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jasmine Sayed · Product Designer for complex, technical & AI products" />
-  <meta name="twitter:description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience. Graduating June 2027, available to start Summer 2027." />
+  <meta name="twitter:description" content="Product designer for complex, technical, and AI products, from developer platforms to identity and trust. Microsoft experience. Available now for full-time roles; M.S. in progress (June 2027)." />
   <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/jasmine-logo-pink.png" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#9E3462" />
@@ -1978,6 +1978,9 @@ html[data-theme="dark"] .stat-number{
 
 
 
+
+
+
 <style id="pastel-2026">
 /* ===== PASTEL 2026 v2 ===== */
 :root{
@@ -2106,9 +2109,11 @@ nav .logo img, nav .nav-logo img{ transition:transform .35s cubic-bezier(.16,1,.
 nav .logo:hover img, nav .nav-logo:hover img{ transform:scale(1.07) rotate(-2deg); }
 .tab-link:hover{ color:var(--brand) !important; }
 .tab-link.active{ color:var(--brand) !important; border-bottom-color:var(--brand) !important; }
-.cs-rail .tab-link:hover{ color:var(--brand) !important; }
-.cs-rail .tab-link.active{ color:var(--brand) !important; border-left-color:var(--brand) !important; }
-@media(max-width:768px){ .cs-rail .tab-link.active{ border-left-color:transparent !important; border-bottom-color:var(--brand) !important; } }
+.cs-rail .tab-link:hover{ color:var(--accent-text) !important; }
+.cs-rail .tab-link.active{ color:var(--accent-text) !important; border-left-color:var(--accent) !important; }
+@media(max-width:768px){ .cs-rail .tab-link.active{ border-left-color:transparent !important; border-bottom-color:var(--accent) !important; } }
+.section-tabs .tab-link:hover{ color:var(--accent-text) !important; }
+.section-tabs .tab-link.active{ color:var(--accent-text) !important; border-bottom-color:var(--accent) !important; }
 .toc a.active, .toc-link.active{ color:var(--brand) !important; }
 footer{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
 .footer-left, .footer-right{ color:#5C5C67 !important; }
@@ -2178,6 +2183,59 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   .cs-content a[style*="border-bottom"]{ display:inline-block; padding:12px 0 !important; }
 }
 </style>
+<style id="polish-2026">
+
+/* legibility floor: nothing below 11px, uppercase micro-labels land on 11 */
+.hero-meta-label, .cs-rail-label, .ag-eyebrow, .ms-label, .browser-url, .hero-browser-url,
+.opp-category, .research-tag, .sdg-goal, .process-label, .cap-n, .next-label, .quote-context,
+.severity-legend-title, .reflection-col-title, .method-n, .persona-name, .hb-badge,
+.nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
+.bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
+.ag-k, .arw, .cap{ font-size:11px !important; }
+.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+/* catch-all floor for any label still under 11px */
+.doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
+.decision-cost, .decision-choice{ font-size:13px !important; }
+.cta-pdf{ letter-spacing:.06em !important; }
+
+
+/* ---- one shared page shell: nav, hero, content and footer on the same edge ---- */
+:root{ --shell:1240px; --shell-pad:40px; }
+@media(max-width:860px){ :root{ --shell-pad:22px; } }
+nav{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+     padding-right:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important; }
+footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+        padding-right:max(calc(var(--shell-pad) + 64px), calc((100% - var(--shell))/2 + var(--shell-pad) + 64px)) !important; }
+
+/* the work grid was rendered with zoom:0.93, which knocked it off the hero's edge
+   and left every label on a fractional font size */
+.bento{ zoom:1 !important; max-width:var(--shell) !important; margin:0 auto !important;
+        padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; box-sizing:border-box; }
+.intro-strip{ padding-left:0 !important; padding-right:0 !important; }
+.intro-inner{ max-width:var(--shell) !important; box-sizing:border-box;
+              padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; }
+.intro-line{ font-weight:400 !important; }
+
+/* rotating word: reserves its width and slides, so the sentence is never missing a word */
+.hero-rot{ display:inline-block; min-width:4.6em; text-align:left; position:relative; overflow:hidden; vertical-align:bottom; }
+.hero-rot .rot-cur, .hero-rot .rot-next{ display:inline-block; white-space:nowrap;
+  transition:opacity .34s ease, transform .34s cubic-bezier(.22,1,.36,1); }
+.hero-rot .rot-next{ position:absolute; left:0; top:0; opacity:0; transform:translateY(0.72em); }
+.hero-rot.is-swapping .rot-cur{ opacity:0; transform:translateY(-0.72em); }
+.hero-rot.is-swapping .rot-next{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion:reduce){ .hero-rot .rot-cur,.hero-rot .rot-next{ transition:none !important; transform:none !important; } }
+
+/* Saksham's live/repo chips were absolutely positioned over the card copy (and
+   broke loose of it entirely on mobile). Dock them as an attached row under the
+   tile so they read as part of the project at every width. */
+.bt-wrap{ display:flex !important; flex-direction:column !important; position:relative !important; }
+.bt-wrap > .bento-tile{ flex:1 1 auto; }
+.bt-chiprow{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; padding:0 2px; }
+.bt-wrap .bt-code{ position:static !important; top:auto !important; right:auto !important;
+                   left:auto !important; margin:0 !important; }
+@media(min-width:861px){ .bt-chiprow{ justify-content:flex-end; } }
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -2218,7 +2276,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     <div class="intro-inner">
       <div class="intro-left">
         <p class="intro-hi">Hi, I&rsquo;m <span class="hi-name">Jasmine!</span></p>
-        <h1 class="intro-line">A product designer making complex, technical, and AI products <span class="rot-wrap">feel&nbsp;<span class="hero-rot" id="heroRot">usable.</span></span></h1>
+        <h1 class="intro-line">A product designer making complex, technical, and AI products <span class="rot-wrap">feel&nbsp;<span class="hero-rot" id="heroRot"><span class="rot-cur">usable.</span><span class="rot-next" aria-hidden="true"></span></span></span></h1>
       </div>
       <div class="intro-right">
         <a href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener" class="intro-resume">Resume <span class="cta-pdf">PDF</span></a>
@@ -2232,7 +2290,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     <div class="bento">
 
       <a class="bento-tile bento-tile--feature bt-foundry" href="foundry-models.html" data-cursor="See how I made 11,000 models findable →">
-        <div class="bt-media"><span class="bt-badge">Latest</span><img src="assets/foundry-card-neutral.png" alt="Microsoft Foundry Models page redesign on a laptop" loading="eager" decoding="async"></div>
+        <div class="bt-media"><span class="bt-badge">Latest</span><img src="assets/foundry-card-neutral.png" alt="Microsoft Foundry Models page redesign on a laptop" loading="eager" decoding="sync" fetchpriority="high"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">AI Platforms</span> · <svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true" style="flex-shrink:0;display:inline-block;vertical-align:-1px;margin-right:5px"><rect width="4.5" height="4.5" fill="#F25022"/><rect x="5.5" width="4.5" height="4.5" fill="#7FBA00"/><rect y="5.5" width="4.5" height="4.5" fill="#00A4EF"/><rect x="5.5" y="5.5" width="4.5" height="4.5" fill="#FFB900"/></svg>Microsoft · 2026</p>
           <h3 class="bt-title">Foundry: Models Redesign</h3>
@@ -2243,7 +2301,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       </a>
 
       <a class="bento-tile bento-tile--row bt-nox" href="nox.html" data-cursor="See why we cut our own AI features →">
-        <div class="bt-media"><img src="assets/nox-mockup-trim.png" alt="Nox+ two-phone mockup" loading="eager" decoding="async"></div>
+        <div class="bt-media"><img src="assets/nox-mockup-trim.png" alt="Nox+ two-phone mockup" loading="eager" decoding="sync" fetchpriority="high"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">Identity &amp; Trust</span> · Mobile app</p>
           <h3 class="bt-title">Nox+</h3>
@@ -2255,7 +2313,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 
       <div class="bt-wrap bt-saksham">
       <a class="bento-tile bento-tile--row" href="saksham.html" data-cursor="See how I coded an accessible reading app for real classrooms &rarr;">
-        <div class="bt-media"><img src="assets/saksham-mockup-trim.webp" alt="Saksham accessible learning app on two phones" loading="eager" decoding="async"></div>
+        <div class="bt-media"><img src="assets/saksham-mockup-trim.webp" alt="Saksham accessible learning app on two phones" loading="eager" decoding="sync" fetchpriority="high"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">Accessibility</span> · Live, coded</p>
           <h3 class="bt-title">Saksham</h3>
@@ -2264,12 +2322,11 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
           <div class="bt-foot"><span class="bt-cta">View case study <i>&rarr;</i></span></div>
         </div>
       </a>
-      <a class="bt-code bt-code--live" href="https://jsayed23.github.io/saksham-reading-library/" target="_blank" rel="noopener noreferrer">Open the live library <span aria-hidden="true">&#8599;</span></a>
-      <a class="bt-code bt-code--repo" href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.55 7.55 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+      <div class="bt-chiprow"><a class="bt-code bt-code--live" href="https://jsayed23.github.io/saksham-reading-library/" target="_blank" rel="noopener noreferrer">Open the live library <span aria-hidden="true">&#8599;</span></a><a class="bt-code bt-code--repo" href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.55 7.55 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Code</a></div>
       </div>
 
       <a class="bento-tile bento-tile--row bt-nexstera" href="nexstera.html" data-cursor="See how I turned data into a story investors backed →">
-        <div class="bt-media"><img src="assets/nexstera-mockup-trim.webp" alt="Nexstera Tech website redesign on a laptop and tablet" loading="eager" decoding="async"></div>
+        <div class="bt-media"><img src="assets/nexstera-mockup-trim.webp" alt="Nexstera Tech website redesign on a laptop and tablet" loading="eager" decoding="sync" fetchpriority="high"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">Design Systems</span> · Web · Founding Team</p>
           <h3 class="bt-title">Nexstera Tech</h3>
@@ -2280,7 +2337,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       </a>
 
       <a class="bento-tile bento-tile--row bt-agent" href="microsoft.html" data-cursor="See the study that got a known bug prioritised &rarr;">
-        <div class="bt-media"><img src="assets/microsoft-mockup-trim.webp" alt="Microsoft Foundry Agent Builder usability study" loading="eager" decoding="async"></div>
+        <div class="bt-media"><img src="assets/microsoft-mockup-trim.webp" alt="Microsoft Foundry Agent Builder usability study" loading="eager" decoding="sync" fetchpriority="high"></div>
         <div class="bt-body">
           <p class="bt-eyebrow"><span class="bt-focus">UX Research</span> &middot; <svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true" style="flex-shrink:0;display:inline-block;vertical-align:-1px;margin-right:5px"><rect width="4.5" height="4.5" fill="#F25022"/><rect x="5.5" width="4.5" height="4.5" fill="#7FBA00"/><rect y="5.5" width="4.5" height="4.5" fill="#00A4EF"/><rect x="5.5" y="5.5" width="4.5" height="4.5" fill="#FFB900"/></svg>Microsoft &middot; 2026</p>
           <h3 class="bt-title">Foundry: Agent Builder</h3>
@@ -2698,14 +2755,39 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 
 <script id="mx-hero-rot-js">
 (function(){
-  var RM=false; try{RM=matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
   var WORDS=["usable","trusted","elegant","obvious","refined"];
   var rot=document.getElementById("heroRot"); if(!rot) return;
-  rot.textContent=WORDS[0]+".";
+  var cur=rot.querySelector(".rot-cur"), nxt=rot.querySelector(".rot-next");
+  if(!cur||!nxt) return;
+  cur.textContent=WORDS[0]+".";
+  var RM=false; try{RM=matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
   if(RM) return;
-  var i=0, timer=null;
-  function cycle(){ rot.classList.add("is-out"); setTimeout(function(){ i=(i+1)%WORDS.length; rot.textContent=WORDS[i]+"."; rot.classList.remove("is-out"); }, 270); }
-  function start(){ if(timer) clearInterval(timer); timer=setInterval(cycle, 2400); }
+  /* reserve the widest word so swapping never reflows the headline */
+  function reserve(){
+    var probe=document.createElement("span");
+    probe.style.cssText="position:absolute;visibility:hidden;white-space:nowrap;left:-9999px";
+    probe.style.font=getComputedStyle(cur).font;
+    document.body.appendChild(probe);
+    var w=0; for(var i=0;i<WORDS.length;i++){ probe.textContent=WORDS[i]+"."; w=Math.max(w,probe.offsetWidth); }
+    document.body.removeChild(probe);
+    if(w) rot.style.minWidth=Math.ceil(w)+"px";
+  }
+  var i=0, busy=false;
+  function cycle(){
+    if(busy||document.hidden) return; busy=true;
+    i=(i+1)%WORDS.length;
+    nxt.textContent=WORDS[i]+".";
+    rot.classList.add("is-swapping");
+    /* the outgoing word only fades once the incoming one is already painted,
+       so the sentence is never missing its last word */
+    setTimeout(function(){
+      cur.textContent=nxt.textContent;
+      rot.classList.remove("is-swapping");
+      nxt.textContent="";
+      busy=false;
+    }, 360);
+  }
+  function start(){ reserve(); setInterval(cycle, 3400); }
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(start); } else start();
 })();
 </script>
