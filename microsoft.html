@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foundry Agent Builder · UX Research Case Study | Jasmine Sayed</title>
   <link rel="canonical" href="https://jasminesayedportfolio.com/microsoft.html" />
-  <meta name="description" content="UX research case study at Microsoft CoreAI. Conducted 8 moderated usability testing sessions on an AI agent-building platform. Uncovered a critical blocker affecting 100% of participants." />
+  <meta name="description" content="UX research case study with Microsoft CoreAI. Conducted 8 moderated usability testing sessions on an AI agent-building platform. Uncovered a critical blocker affecting 100% of participants." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Foundry Agent Builder · UX Research Case Study | Jasmine Sayed" />
   <meta property="og:url" content="https://jasminesayedportfolio.com/microsoft.html" />
-  <meta property="og:description" content="UX research at Microsoft CoreAI: 8 moderated usability sessions on an AI agent-building platform. Uncovered a critical blocker that drove priority design changes." />
+  <meta property="og:description" content="UX research with Microsoft CoreAI: 8 moderated usability sessions on an AI agent-building platform. Uncovered a critical blocker that drove priority design changes." />
   <meta property="og:image" content="https://jasminesayedportfolio.com/assets/microsoft-mockup.webp" />
   <meta property="og:image:alt" content="Foundry Agent Builder case study" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Foundry Agent Builder · UX Research Case Study | Jasmine Sayed" />
-  <meta name="twitter:description" content="UX research at Microsoft CoreAI: 8 moderated usability sessions on an AI agent-building platform. Uncovered a critical blocker that drove priority design changes." />
+  <meta name="twitter:description" content="UX research with Microsoft CoreAI: 8 moderated usability sessions on an AI agent-building platform. Uncovered a critical blocker that drove priority design changes." />
   <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/microsoft-mockup.webp" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#9E3462" />
@@ -1941,6 +1941,56 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   .cs-content a[style*="border-bottom"]{ display:inline-block; padding:12px 0 !important; }
 }
 </style>
+<style id="polish-2026">
+
+/* measure: 93 chars/line -> ~74. body steps up to 17px for long-form reading */
+.cs-content p.body-text, .cs-content .body-text{ font-size:17px !important; line-height:1.75 !important; max-width:64ch !important; }
+.cs-content p.body-text.role-callout{ font-size:14.5px !important; max-width:70ch !important; }
+/* every other long paragraph in the column was running 93-111 chars a line too */
+.cs-content p, .cs-content li{ max-width:64ch; }
+.cs-content .fix-p{ font-size:15px !important; max-width:64ch !important; }
+/* captions: 115-119 cpl -> ~80, and up off 12.5px */
+.case-img-caption, .figcap, .shipped-cap{ font-size:13px !important; line-height:1.55 !important; max-width:78ch !important; }
+
+
+/* legibility floor: nothing below 11px, uppercase micro-labels land on 11 */
+.hero-meta-label, .cs-rail-label, .ag-eyebrow, .ms-label, .browser-url, .hero-browser-url,
+.opp-category, .research-tag, .sdg-goal, .process-label, .cap-n, .next-label, .quote-context,
+.severity-legend-title, .reflection-col-title, .method-n, .persona-name, .hb-badge,
+.nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
+.bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
+.ag-k, .arw, .cap{ font-size:11px !important; }
+.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+/* catch-all floor for any label still under 11px */
+.doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
+.decision-cost, .decision-choice{ font-size:13px !important; }
+.cta-pdf{ letter-spacing:.06em !important; }
+
+
+@media(max-width:768px){
+  .section-tabs{ -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%) !important;
+                 mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%) !important;
+                 scroll-snap-type:x proximity; scroll-padding-left:20px; padding-right:38px !important; }
+  .section-tabs .tab-link{ scroll-snap-align:start; }
+}
+
+.cs-content > .process-diagram{ margin-top:14px !important; margin-bottom:14px !important; }.cs-content > .impact-section{ margin-bottom:14px !important; }.cs-content > .impact-section + .container{ margin-top:0 !important; padding-top:0 !important; }
+
+/* ---- one shared page shell: nav, hero, content and footer on the same edge ---- */
+:root{ --shell:1240px; --shell-pad:40px; }
+@media(max-width:860px){ :root{ --shell-pad:22px; } }
+nav{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+     padding-right:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important; }
+footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+        padding-right:max(calc(var(--shell-pad) + 64px), calc((100% - var(--shell))/2 + var(--shell-pad) + 64px)) !important; }
+
+/* the case-study shell sat 57px inside the nav/footer edge; put it on the same rail */
+@media(min-width:861px){
+  .cs-shell{ max-width:var(--shell) !important; box-sizing:border-box;
+             padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; }
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1991,7 +2041,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
         </div>
         <div>
           <div class="hero-meta-label">Team</div>
-          <div class="hero-meta-value">4 researchers · Microsoft CoreAI</div>
+          <div class="hero-meta-value">4 UX researchers · sponsored by Microsoft CoreAI</div>
         </div>
         <div>
           <div class="hero-meta-label">Timeline</div>
@@ -2076,7 +2126,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       <h2 class="section-title">How might we make AI agent creation more intuitive for new developers?</h2>
       <p class="cs-take">Foundry set out to democratize agent creation, but new developers kept stalling before they finished.</p>
       <p class="body-text">Microsoft Foundry lets students, developers, and startup founders build AI agents. The vision is to democratize agent creation for people still learning, but <strong>vision only matters if users can get through the flow.</strong></p>
-      <p class="body-text">As a <strong>UX Researcher</strong> on Microsoft's CoreAI team, I led 8 moderated usability sessions on the Knowledge, Data, and FoundryIQ features: I defined the research questions, designed the protocol, ran the sessions, and owned team communication. In the very first session, and every one after, we found a critical blocker that <strong>100% of participants hit</strong>, one the team hadn't anticipated. The study went from "let's see how intuitive the flow is" to "we need to fix this before anything else matters."</p>
+      <p class="body-text">As a <strong>UX Researcher</strong> on a Microsoft-sponsored project with the CoreAI team, I led 8 moderated usability sessions on the Knowledge, Data, and FoundryIQ features: I defined the research questions, designed the protocol, ran the sessions, and owned team communication. In the very first session, and every one after, we found a critical blocker that <strong>100% of participants hit</strong>, one the team hadn't anticipated. The study went from "let's see how intuitive the flow is" to "we need to fix this before anything else matters."</p>
       <p class="body-text" style="margin-top: 12px; font-size: 12.5px; color: var(--mid); font-style: italic;">Note: Due to the confidential nature of this product and user privacy, visuals in this case study are limited.</p>
     </div>
   </section>
@@ -2217,7 +2267,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
           <div class="reflection-col-title">Deliberately Out of Scope</div>
           <div class="reflection-item"><span class="reflection-icon">~</span><span>End-to-end integration of a published agent into a real product, a study of its own</span></div>
           <div class="reflection-item"><span class="reflection-icon">~</span><span>Statistical significance: with eight participants I report patterns, not population percentages</span></div>
-          <div class="reflection-item"><span class="reflection-icon">~</span><span>Internal telemetry and usage analytics, which sat outside my access as a co-op researcher</span></div>
+          <div class="reflection-item"><span class="reflection-icon">~</span><span>Internal telemetry and usage analytics, which sat outside my access as an external researcher</span></div>
         </div>
       </div>
       <p class="body-text" style="margin-top: 16px;">Naming these limits up front kept the readout honest: when I reported that every participant hit the guardrail block, the team could trust it as a qualitative certainty, not a statistic stretched past what eight sessions can carry.</p>

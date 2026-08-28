@@ -740,6 +740,11 @@ html[data-theme="dark"] .stat-number{
 
 
 
+
+
+
+
+
 <style id="pastel-2026">
 /* ===== PASTEL 2026 v2 ===== */
 :root{
@@ -814,9 +819,11 @@ nav .logo img, nav .nav-logo img{ transition:transform .35s cubic-bezier(.16,1,.
 nav .logo:hover img, nav .nav-logo:hover img{ transform:scale(1.07) rotate(-2deg); }
 .tab-link:hover{ color:var(--brand) !important; }
 .tab-link.active{ color:var(--brand) !important; border-bottom-color:var(--brand) !important; }
-.cs-rail .tab-link:hover{ color:var(--brand) !important; }
-.cs-rail .tab-link.active{ color:var(--brand) !important; border-left-color:var(--brand) !important; }
-@media(max-width:768px){ .cs-rail .tab-link.active{ border-left-color:transparent !important; border-bottom-color:var(--brand) !important; } }
+.cs-rail .tab-link:hover{ color:var(--accent-text) !important; }
+.cs-rail .tab-link.active{ color:var(--accent-text) !important; border-left-color:var(--accent) !important; }
+@media(max-width:768px){ .cs-rail .tab-link.active{ border-left-color:transparent !important; border-bottom-color:var(--accent) !important; } }
+.section-tabs .tab-link:hover{ color:var(--accent-text) !important; }
+.section-tabs .tab-link.active{ color:var(--accent-text) !important; border-bottom-color:var(--accent) !important; }
 .toc a.active, .toc-link.active{ color:var(--brand) !important; }
 footer{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
 .footer-left, .footer-right{ color:#5C5C67 !important; }
@@ -852,6 +859,39 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   .contact-email-addr{ display:inline-block; min-height:44px; line-height:44px; }
   .cs-content a[style*="border-bottom"]{ display:inline-block; padding:12px 0 !important; }
 }
+</style>
+<style id="polish-2026">
+
+/* legibility floor: nothing below 11px, uppercase micro-labels land on 11 */
+.hero-meta-label, .cs-rail-label, .ag-eyebrow, .ms-label, .browser-url, .hero-browser-url,
+.opp-category, .research-tag, .sdg-goal, .process-label, .cap-n, .next-label, .quote-context,
+.severity-legend-title, .reflection-col-title, .method-n, .persona-name, .hb-badge,
+.nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
+.bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
+.ag-k, .arw, .cap{ font-size:11px !important; }
+.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+/* catch-all floor for any label still under 11px */
+.doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
+.decision-cost, .decision-choice{ font-size:13px !important; }
+.cta-pdf{ letter-spacing:.06em !important; }
+
+
+/* ---- one shared page shell: nav, hero, content and footer on the same edge ---- */
+:root{ --shell:1240px; --shell-pad:40px; }
+@media(max-width:860px){ :root{ --shell-pad:22px; } }
+nav{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+     padding-right:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important; }
+footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+        padding-right:max(calc(var(--shell-pad) + 64px), calc((100% - var(--shell))/2 + var(--shell-pad) + 64px)) !important; }
+
+.ab-hero{ max-width:var(--shell) !important; padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; box-sizing:border-box; }
+.ab-facts{ max-width:var(--shell) !important; padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; box-sizing:border-box; }
+/* sub-text baselines drifted whenever a column title wrapped to two lines */
+@media(min-width:769px){
+  .ab-fact-title{ min-height:2.35em; margin-bottom:0 !important; }
+  .ab-fact-meta{ display:block; margin-top:8px; }
+}
+
 </style>
 </head>
 <body>
@@ -960,11 +1000,11 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     <h1 class="ab-headline">A little bit <em>about me.</em></h1>
     <div class="ab-hero-grid">
       <div class="ab-lead">
-        <p><strong>I'm a product designer who specializes in the hard stuff:</strong> complex, technical, and AI products. My work runs from an 11,000-model AI platform at Microsoft CoreAI to a privacy-first identity app I led end to end, and a live accessibility product I designed and coded myself. I work where research, design, and code overlap, and I don't stop at the mockup. I ship the thing.</p>
+        <p><strong>I'm a product designer who specializes in the hard stuff:</strong> complex, technical, and AI products. My work runs from an 11,000-model AI platform with Microsoft CoreAI to a privacy-first identity app I led end to end, and a live accessibility product I designed and coded myself. I work where research, design, and code overlap, and I don't stop at the mockup. I ship the thing.</p>
         <p>What I care about most is the hard part: the tradeoffs, the features worth cutting, the moment the research contradicts the obvious answer. I led UXFest, a 140-person design event, end to end, and I bring that same ownership to every product I work on: define the problem, make the call, and ship it.</p>
       </div>
       <div class="ab-portrait">
-        <img src="assets/jasmine-headshot.JPG" alt="Jasmine Sayed" loading="eager" fetchpriority="high" decoding="async" />
+        <img src="assets/jasmine-headshot.JPG" alt="Jasmine Sayed" loading="eager" fetchpriority="high" decoding="sync" fetchpriority="high" />
       </div>
     </div>
   </section>
@@ -975,7 +1015,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     <div class="ab-fact">
       <span class="ab-fact-label">Most recently</span>
       <h3 class="ab-fact-title">UX Designer</h3>
-      <span class="ab-fact-meta">Co-op · Microsoft CoreAI · 2026</span>
+      <span class="ab-fact-meta">Sponsored Project · Microsoft CoreAI · 2026</span>
     </div>
     <div class="ab-fact">
       <span class="ab-fact-label">Education</span>
@@ -993,8 +1033,8 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   <section class="ab-film fade-in">
     <div class="ab-film-head"><h2 class="ab-section-label">Off the clock</h2></div>
     <div class="ab-film-track">
-      <figure class="ab-photo"><img src="images/about-carousel-14.jpg" alt="Jasmine's little brother mid-jump on sand dunes" loading="eager" decoding="async"><span class="cap">My little brother, sending it on the dunes</span></figure>
-      <figure class="ab-photo"><img src="images/about-carousel-22.jpg" alt="Jasmine speaking at UXFest" loading="eager" decoding="async"><span class="cap">On stage at UXFest</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-14.jpg" alt="Jasmine's little brother mid-jump on sand dunes" loading="eager" decoding="sync" fetchpriority="high"><span class="cap">My little brother, sending it on the dunes</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-22.jpg" alt="Jasmine speaking at UXFest" loading="eager" decoding="sync" fetchpriority="high"><span class="cap">On stage at UXFest</span></figure>
       <figure class="ab-photo"><img src="images/about-carousel-20.JPG" alt="Jasmine and team at a hackathon" loading="eager" decoding="async"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
       <figure class="ab-photo"><img src="images/about-carousel-21.jpg" alt="Jasmine on a coastal cliff" loading="eager" decoding="async"><span class="cap">Off exploring the coast</span></figure>
       <figure class="ab-photo"><img src="images/about-carousel-7.jpg" alt="Sunset over the ocean" loading="eager" decoding="async"><span class="cap">Sunset-chaser</span></figure>

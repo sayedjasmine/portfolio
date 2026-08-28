@@ -1163,6 +1163,55 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   .cs-content a[style*="border-bottom"]{ display:inline-block; padding:12px 0 !important; }
 }
 </style>
+<style id="polish-2026">
+
+/* measure: 93 chars/line -> ~74. body steps up to 17px for long-form reading */
+.cs-content p.body-text, .cs-content .body-text{ font-size:17px !important; line-height:1.75 !important; max-width:64ch !important; }
+.cs-content p.body-text.role-callout{ font-size:14.5px !important; max-width:70ch !important; }
+/* every other long paragraph in the column was running 93-111 chars a line too */
+.cs-content p, .cs-content li{ max-width:64ch; }
+.cs-content .fix-p{ font-size:15px !important; max-width:64ch !important; }
+/* captions: 115-119 cpl -> ~80, and up off 12.5px */
+.case-img-caption, .figcap, .shipped-cap{ font-size:13px !important; line-height:1.55 !important; max-width:78ch !important; }
+
+
+/* legibility floor: nothing below 11px, uppercase micro-labels land on 11 */
+.hero-meta-label, .cs-rail-label, .ag-eyebrow, .ms-label, .browser-url, .hero-browser-url,
+.opp-category, .research-tag, .sdg-goal, .process-label, .cap-n, .next-label, .quote-context,
+.severity-legend-title, .reflection-col-title, .method-n, .persona-name, .hb-badge,
+.nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
+.bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
+.ag-k, .arw, .cap{ font-size:11px !important; }
+.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+/* catch-all floor for any label still under 11px */
+.doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
+.decision-cost, .decision-choice{ font-size:13px !important; }
+.cta-pdf{ letter-spacing:.06em !important; }
+
+
+@media(max-width:768px){
+  .section-tabs{ -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%) !important;
+                 mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%) !important;
+                 scroll-snap-type:x proximity; scroll-padding-left:20px; padding-right:38px !important; }
+  .section-tabs .tab-link{ scroll-snap-align:start; }
+}
+
+
+/* ---- one shared page shell: nav, hero, content and footer on the same edge ---- */
+:root{ --shell:1240px; --shell-pad:40px; }
+@media(max-width:860px){ :root{ --shell-pad:22px; } }
+nav{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+     padding-right:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important; }
+footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+        padding-right:max(calc(var(--shell-pad) + 64px), calc((100% - var(--shell))/2 + var(--shell-pad) + 64px)) !important; }
+
+/* the case-study shell sat 57px inside the nav/footer edge; put it on the same rail */
+@media(min-width:861px){
+  .cs-shell{ max-width:var(--shell) !important; box-sizing:border-box;
+             padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; }
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1203,7 +1252,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     <div class="hero-content">
       <p class="hero-tag">Product Design · UX Research · AI Platform</p>
       <h1 style="font-size:clamp(30px,6.2vw,76px);">Microsoft Foundry<br /><em>Models</em></h1>
-      <p class="hero-sub">Microsoft Foundry&rsquo;s catalog had grown past 11,000 models, with no reliable way to find or compare them. Our team of five redesigned discovery around the decisions developers actually make: narrowing, evaluating, and committing. The redesign shipped into the live product.</p>
+      <p class="hero-sub">Microsoft Foundry&rsquo;s catalog had grown past 11,000 models, with no reliable way to find or compare them. Our team of five redesigned discovery around the decisions developers actually make: narrowing, evaluating, and committing. The Foundry team adopted two of our recommendations, and both are live in the product today.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -1218,8 +1267,8 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
           <div class="hero-meta-value">April to June 2026</div>
         </div>
         <div>
-          <div class="hero-meta-label">Co-op</div>
-          <div class="hero-meta-value">Microsoft CoreAI</div>
+          <div class="hero-meta-label">Engagement</div>
+          <div class="hero-meta-value">Microsoft CoreAI &middot; Sponsored Project</div>
         </div>
         <div>
           <div class="hero-meta-label">Tools</div>
@@ -1233,7 +1282,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
           <div class="hero-browser-dots"><span></span><span></span><span></span></div>
           <div class="hero-browser-url">ai.azure.com &rsaquo; Discover &rsaquo; Models</div>
         </div>
-        <video id="foundryFlowVid" muted loop playsinline autoplay controls preload="auto" poster="assets/foundry-flow-poster.jpg" aria-label="Screen recording of the shipped Foundry Models flow: filtering by region, then comparing models side by side">
+        <video id="foundryFlowVid" muted loop playsinline autoplay controls preload="auto" poster="assets/foundry-flow-poster.jpg" aria-label="Screen recording of the live Foundry Models flow: filtering by region, then comparing models side by side">
           <source src="assets/foundry-flow.mp4" type="video/mp4">
         </video>
       </div>
@@ -1291,8 +1340,8 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">On a team of five, I ran the usability research and led concept and IA, owning the two threads that shipped: region visibility in the filter rail and side-by-side compare. Both are live today.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Both ideas shipped into the live Microsoft Foundry product</strong> (region in the filter bar, a side-by-side compare tray), and a small round-two test pointed to roughly 58% faster search-to-select.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">On a team of five, I ran the usability research and led concept and IA, owning the two threads Foundry went on to adopt: region visibility in the filter rail and side-by-side compare. Both are live in the product today.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>The Foundry team adopted both ideas after our handoff</strong> (region in the filter bar, a side-by-side compare tray), and a small round-two test on our prototype pointed to roughly 58% faster search-to-select.</div></div>
       </div>
     </div>
   </section>
@@ -1315,11 +1364,11 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
           <button class="ba-tab" data-view="after" type="button" role="tab" aria-selected="false">After</button>
         </div>
         <div class="ba-stage">
-          <img class="ba-shot is-active" data-view="before" aria-hidden="false" src="assets/before-foundry.png" width="1356" height="750" alt="The old Foundry Models page: a dense four-column grid where each model shows only a name and a task, and the filter rail has no way to narrow by region" loading="eager" decoding="async" />
-          <img class="ba-shot" data-view="after" aria-hidden="true" src="assets/foundry-models-shipped.png" width="2816" height="1316" alt="The shipped Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="eager" decoding="async" />
+          <img class="ba-shot is-active" data-view="before" aria-hidden="false" src="assets/before-foundry.png" width="1356" height="750" alt="The old Foundry Models page: a dense four-column grid where each model shows only a name and a task, and the filter rail has no way to narrow by region" loading="eager" decoding="sync" fetchpriority="high" />
+          <img class="ba-shot" data-view="after" aria-hidden="true" src="assets/foundry-models-shipped.png" width="2816" height="1316" alt="The live Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="eager" decoding="sync" fetchpriority="high" />
         </div>
       </div>
-      <p class="figcap">Toggle between the old catalog and the shipped redesign. <strong>Before:</strong> a dense multi-column grid where every model shows little more than a <strong>name and a task</strong>, with <strong>no way to narrow by region</strong>, so a developer could commit to a model and only hit a wall at deployment. <strong>After:</strong> Region is promoted into the filter rail as a first-class way to narrow the catalog, in a cleaner, more scannable layout, with Compare a click away.</p>
+      <p class="figcap">Toggle between the old catalog and the redesign that is now live. <strong>Before:</strong> a dense multi-column grid where every model shows little more than a <strong>name and a task</strong>, with <strong>no way to narrow by region</strong>, so a developer could commit to a model and only hit a wall at deployment. <strong>After:</strong> Region is promoted into the filter rail as a first-class way to narrow the catalog, in a cleaner, more scannable layout, with Compare a click away.</p>
     </div>
     <script>
       (function () {
@@ -1424,7 +1473,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 
     <div class="container-wide fade-in">
       <div class="figure">
-        <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="eager" decoding="async" /></div>
+        <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="eager" decoding="sync" fetchpriority="high" /></div>
         <p class="figcap"><strong>Paper prototype.</strong> Two ideas we carried forward: handling <strong>region</strong> up front so a developer never commits to a model they can't deploy, and a <strong>model-selection flow</strong> with an “ask AI to find the best model” helper and clearer descriptions to reduce overload.</p>
       </div>
     </div>
@@ -1464,7 +1513,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 
     <div class="container fade-in">
       <h3 class="sub-heading">Three directions we killed</h3>
-      <p class="body-text">With a fixed IA and a tight scope, the hard part was deciding where <em>not</em> to spend the effort. The shipped answer looks obvious in hindsight; it wasn't. I explored three approaches that tested worse, and killing them is what made the final design defensible.</p>
+      <p class="body-text">With a fixed IA and a tight scope, the hard part was deciding where <em>not</em> to spend the effort. The final answer looks obvious in hindsight; it wasn't. I explored three approaches that tested worse, and killing them is what made the final design defensible.</p>
       <style>
         .killed-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
         .killed-card{ border:1px solid var(--line); border-radius:16px; padding:24px 22px; background:var(--white,#fff); position:relative; }
@@ -1530,7 +1579,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: var(--indigo-light);">High-Fidelity Prototype</p>
       <h2 class="section-title" style="color:#fff;">The clickable, <em style="color: var(--indigo-light);">high-fidelity build.</em></h2>
-      <p class="body-text" style="color: rgba(255,255,255,0.62);">Before it shipped, the redesign lived here: a full high-fidelity prototype, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare, then see the shipped solution next.</p>
+      <p class="body-text" style="color: rgba(255,255,255,0.62);">Before any of it reached the product, the redesign lived here: a full high-fidelity prototype, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare, then see what went live next.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="proto-wrap">
@@ -1572,19 +1621,19 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
     </style>
     <div class="container fade-in">
       <p class="shipped-eyebrow">Solution</p>
-      <h2>Two ideas, now <em>shipped.</em></h2>
-      <p class="shipped-lead">Two ideas I drove shipped into Microsoft Foundry, and both are live in the product today. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second rebuilt <strong style="color:#fff;font-weight:600">compare</strong> from the ground up: the original was shallow and hard to act on.</p>
+      <h2>Two ideas, now <em>in the product.</em></h2>
+      <p class="shipped-lead">I drove two ideas through research and design, and the Foundry team carried both into the product after our handoff. Both are live today. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second rebuilt <strong style="color:#fff;font-weight:600">compare</strong> from the ground up: the original was shallow and hard to act on.</p>
       <span class="shipped-chip"><span class="dot" aria-hidden="true"></span>Live in Microsoft Foundry &middot; Discover &rsaquo; Models &rsaquo; Compare</span>
     </div>
     <div class="container-wide fade-in">
       <div class="shipped-figs">
         <figure class="shipped-fig">
           <div class="frame"><video src="assets/foundry-region-flow.mp4" poster="assets/foundry-region-poster.jpg" muted loop playsinline controls preload="auto" width="1600" height="738"></video></div>
-          <figcaption class="shipped-cap"><span class="cap-n">Shipped 01</span><span><strong>Region, promoted into the filter rail.</strong> An 11,000+ model catalog narrows by where a model can actually deploy, so region is a first-class filter instead of a wall you hit at deployment.</span></figcaption>
+          <figcaption class="shipped-cap"><span class="cap-n">Live 01</span><span><strong>Region, promoted into the filter rail.</strong> An 11,000+ model catalog narrows by where a model can actually deploy, so region is a first-class filter instead of a wall you hit at deployment.</span></figcaption>
         </figure>
         <figure class="shipped-fig">
           <div class="frame"><video src="assets/foundry-compare-flow.mp4" poster="assets/foundry-compare-poster.jpg" muted loop playsinline controls preload="auto" width="1600" height="738"></video></div>
-          <figcaption class="shipped-cap"><span class="cap-n">Shipped 02</span><span><strong>Compare, rebuilt from the ground up.</strong> Three models side by side with the best value in each row called out (the trophy), so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
+          <figcaption class="shipped-cap"><span class="cap-n">Live 02</span><span><strong>Compare, rebuilt from the ground up.</strong> Three models side by side with the best value in each row called out (the trophy), so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
         </figure>
       </div>
     </div>
@@ -1610,9 +1659,9 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       <p class="section-eyebrow">Results</p>
       <h2 class="section-title">The ideas that<br />are now <em>shipping.</em></h2>
       <p class="cs-take">The two ideas I drove, region filtering and side-by-side compare, are now live for every Foundry developer.</p>
-      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After the co-op, both ideas shipped into the live product that every Foundry developer now uses to choose a model: region sits in the filter bar, and there's a compare-model tray.</p>
+      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After we handed off, the Foundry team built both ideas into the live product that every Foundry developer now uses to choose a model: region sits in the filter bar, and there's a compare-model tray.</p>
       <div class="impact-stats">
-        <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Both ideas now shipped in the live product every Foundry developer uses to choose a model</div></div>
+        <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Both ideas adopted into the live product every Foundry developer uses to choose a model</div></div>
         <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">An 11,000+ model catalog, filtered down to a focused, scannable set</div></div>
         <div class="impact-stat"><div class="impact-number">~58%</div><div class="impact-label">faster search-to-select in a small, moderated round-two test, a directional signal rather than a significance-tested result</div></div>
       </div>
@@ -1624,7 +1673,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   <section id="agent-builder">
     <div class="container-wide fade-in">
       <div style="border:1px solid var(--line); border-radius:16px; padding:22px 28px; display:flex; flex-wrap:wrap; gap:12px 24px; align-items:baseline;">
-        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Also during my Microsoft co-op:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same Severity-4 blocker, turning a deprioritized bug into a prioritized fix.</p>
+        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Also during the Microsoft-sponsored project:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same Severity-4 blocker, turning a deprioritized bug into a prioritized fix.</p>
         <a class="cs-inline-link" href="microsoft.html" style="font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px; white-space:nowrap;">Read that study <span>&rarr;</span></a>
       </div>
     </div>
