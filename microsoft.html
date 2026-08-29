@@ -1199,7 +1199,7 @@
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
       .nav-back, .nav-right { display: none; }
-      .hamburger { display: flex; }
+      .hamburger { display: flex; order: 1; margin-left: auto; }
       .nav-logo { display: flex; }
       .nav-logo img { height: 40px; }
       .section-tabs { padding: 0 20px; justify-content: flex-start; }
@@ -2041,11 +2041,15 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
         </div>
         <div>
           <div class="hero-meta-label">Team</div>
-          <div class="hero-meta-value">4 UX researchers · sponsored by Microsoft CoreAI</div>
+          <div class="hero-meta-value">4 UX researchers</div>
         </div>
         <div>
           <div class="hero-meta-label">Timeline</div>
           <div class="hero-meta-value">Jan – Mar 2026 (10 weeks)</div>
+        </div>
+        <div>
+          <div class="hero-meta-label">Engagement</div>
+          <div class="hero-meta-value">Microsoft CoreAI &middot; Sponsored Project</div>
         </div>
         <div>
           <div class="hero-meta-label">Methods</div>
@@ -2468,8 +2472,8 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
           <div class="impact-label">distinct usability issues identified and prioritized by severity for the Foundry team</div>
         </div>
         <div class="impact-stat">
-          <div class="impact-number">&minus;40%</div>
-          <div class="impact-label">projected drop in task time once the critical guardrail blocker (all 8 users stalled on it) is removed</div>
+          <div class="impact-number">2</div>
+          <div class="impact-label">product decisions changed: a deprioritized bug re-ranked to a priority fix, and five findings into the design queue</div>
         </div>
       </div>
     </div>

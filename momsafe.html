@@ -914,7 +914,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .nav-back, .nav-right { display: none; }
-      .hamburger { display: flex; }
+      .hamburger { display: flex; order: 1; margin-left: auto; }
       .nav-logo { display: flex; }
       .nav-logo img { height: 40px; }
       nav { padding: 18px 28px; }
@@ -1644,6 +1644,56 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   .contact-email-addr{ display:inline-block; min-height:44px; line-height:44px; }
   .cs-content a[style*="border-bottom"]{ display:inline-block; padding:12px 0 !important; }
 }
+</style>
+<style id="polish-2026">
+
+/* measure: 93 chars/line -> ~74. body steps up to 17px for long-form reading */
+.cs-content p.body-text, .cs-content .body-text{ font-size:17px !important; line-height:1.75 !important; max-width:64ch !important; }
+.cs-content p.body-text.role-callout{ font-size:14.5px !important; max-width:70ch !important; }
+/* every other long paragraph in the column was running 93-111 chars a line too */
+.cs-content p, .cs-content li{ max-width:64ch; }
+.cs-content .fix-p{ font-size:15px !important; max-width:64ch !important; }
+/* captions: 115-119 cpl -> ~80, and up off 12.5px */
+.case-img-caption, .figcap, .shipped-cap{ font-size:13px !important; line-height:1.55 !important; max-width:78ch !important; }
+
+
+/* legibility floor: nothing below 11px, uppercase micro-labels land on 11 */
+.hero-meta-label, .cs-rail-label, .ag-eyebrow, .ms-label, .browser-url, .hero-browser-url,
+.opp-category, .research-tag, .sdg-goal, .process-label, .cap-n, .next-label, .quote-context,
+.severity-legend-title, .reflection-col-title, .method-n, .persona-name, .hb-badge,
+.nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
+.bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
+.ag-k, .arw, .cap{ font-size:11px !important; }
+.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+/* catch-all floor for any label still under 11px */
+.doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
+.decision-cost, .decision-choice{ font-size:13px !important; }
+.cta-pdf{ letter-spacing:.06em !important; }
+
+.cs-content p.body-text, .cs-content .body-text{ font-size:17px !important; }
+
+@media(max-width:768px){
+  .section-tabs{ -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%) !important;
+                 mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent 100%) !important;
+                 scroll-snap-type:x proximity; scroll-padding-left:20px; padding-right:38px !important; }
+  .section-tabs .tab-link{ scroll-snap-align:start; }
+}
+
+
+/* ---- one shared page shell: nav, hero, content and footer on the same edge ---- */
+:root{ --shell:1240px; --shell-pad:40px; }
+@media(max-width:860px){ :root{ --shell-pad:22px; } }
+nav{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+     padding-right:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important; }
+footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+        padding-right:max(calc(var(--shell-pad) + 64px), calc((100% - var(--shell))/2 + var(--shell-pad) + 64px)) !important; }
+
+/* the case-study shell sat 57px inside the nav/footer edge; put it on the same rail */
+@media(min-width:861px){
+  .cs-shell{ max-width:var(--shell) !important; box-sizing:border-box;
+             padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; }
+}
+
 </style>
 </head>
 <body>

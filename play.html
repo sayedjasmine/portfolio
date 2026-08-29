@@ -339,7 +339,7 @@
     @media (max-width: 768px) {
       nav { padding: 18px 24px; }
       nav ul { display: none; }
-      .hamburger { display: flex; order: -1; }
+      .hamburger { display: flex; order: 1; margin-left: auto; }
       .nav-logo { order: 1; }
       .nav-logo img { height: 40px; }
 
@@ -819,6 +819,11 @@ html[data-theme="dark"] .stat-number{
 
 
 
+
+
+
+
+
 <style id="pastel-2026">
 /* ===== PASTEL 2026 v2 ===== */
 :root{
@@ -916,9 +921,11 @@ nav .logo img, nav .nav-logo img{ transition:transform .35s cubic-bezier(.16,1,.
 nav .logo:hover img, nav .nav-logo:hover img{ transform:scale(1.07) rotate(-2deg); }
 .tab-link:hover{ color:var(--brand) !important; }
 .tab-link.active{ color:var(--brand) !important; border-bottom-color:var(--brand) !important; }
-.cs-rail .tab-link:hover{ color:var(--brand) !important; }
-.cs-rail .tab-link.active{ color:var(--brand) !important; border-left-color:var(--brand) !important; }
-@media(max-width:768px){ .cs-rail .tab-link.active{ border-left-color:transparent !important; border-bottom-color:var(--brand) !important; } }
+.cs-rail .tab-link:hover{ color:var(--accent-text) !important; }
+.cs-rail .tab-link.active{ color:var(--accent-text) !important; border-left-color:var(--accent) !important; }
+@media(max-width:768px){ .cs-rail .tab-link.active{ border-left-color:transparent !important; border-bottom-color:var(--accent) !important; } }
+.section-tabs .tab-link:hover{ color:var(--accent-text) !important; }
+.section-tabs .tab-link.active{ color:var(--accent-text) !important; border-bottom-color:var(--accent) !important; }
 .toc a.active, .toc-link.active{ color:var(--brand) !important; }
 footer{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
 .footer-left, .footer-right{ color:#5C5C67 !important; }
@@ -954,6 +961,41 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
   .contact-email-addr{ display:inline-block; min-height:44px; line-height:44px; }
   .cs-content a[style*="border-bottom"]{ display:inline-block; padding:12px 0 !important; }
 }
+</style>
+<style id="polish-2026">
+
+/* legibility floor: nothing below 11px, uppercase micro-labels land on 11 */
+.hero-meta-label, .cs-rail-label, .ag-eyebrow, .ms-label, .browser-url, .hero-browser-url,
+.opp-category, .research-tag, .sdg-goal, .process-label, .cap-n, .next-label, .quote-context,
+.severity-legend-title, .reflection-col-title, .method-n, .persona-name, .hb-badge,
+.nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
+.bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
+.ag-k, .arw, .cap{ font-size:11px !important; }
+.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+/* catch-all floor for any label still under 11px */
+.doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
+.decision-cost, .decision-choice{ font-size:13px !important; }
+.cta-pdf{ letter-spacing:.06em !important; }
+
+
+/* ---- one shared page shell: nav, hero, content and footer on the same edge ---- */
+:root{ --shell:1240px; --shell-pad:40px; }
+@media(max-width:860px){ :root{ --shell-pad:22px; } }
+nav{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+     padding-right:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important; }
+footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--shell-pad))) !important;
+        padding-right:max(calc(var(--shell-pad) + 64px), calc((100% - var(--shell))/2 + var(--shell-pad) + 64px)) !important; }
+
+.love-section{ max-width:var(--shell) !important; padding-left:var(--shell-pad) !important; padding-right:var(--shell-pad) !important; box-sizing:border-box; }
+/* the tiles read as dark navy; go to a neutral ink instead, no blue cast,
+   and keep the artwork readable rather than tinting it */
+.b-tile{ background:#141118 !important; }
+.b-tile .b-overlay{ background:linear-gradient(to top,
+   rgba(18,15,22,0.97) 0%, rgba(18,15,22,0.90) 26%, rgba(18,15,22,0.72) 50%,
+   rgba(18,15,22,0.36) 74%, rgba(18,15,22,0.06) 100%) !important; }
+/* tile 3 now points at a crop of the palette + logos instead of the type specimen */
+.b-tile:nth-child(3) .b-media img{ object-fit:cover !important; object-position:center top !important; }
+
 </style>
 </head>
 <body>
@@ -1034,12 +1076,12 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       <div class="b-overlay"><div class="b-kicker">Leadership</div><h3 class="b-title">Leading at <em>scale.</em></h3><div class="b-desc">President of UXFest: I ran a 140-person UX hackathon end to end, from programming and speakers to a 50-person team.</div><span class="b-cta">▶ Watch the recap</span></div>
     </div>
     <a class="b-tile fade-in" href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer" data-facets="design build" style="--accent:#A9C0DA;">
-      <div class="b-media"><img src="assets/saksham-mockup.webp" alt="Saksham accessible reading tool" loading="eager" decoding="async" /></div>
+      <div class="b-media"><img src="assets/saksham-mockup.webp" alt="Saksham accessible reading tool" loading="eager" decoding="sync" fetchpriority="high" /></div>
       <span class="b-badge">&lt;/&gt; Hand-coded</span>
       <div class="b-overlay"><div class="b-kicker">Design → Engineering</div><h3 class="b-title">Saksham, <em>engineered.</em></h3><div class="b-desc">I hand-coded my published Saksham design into a live, accessible reading library, written in HTML, CSS, and JavaScript and still shipping.</div><span class="b-cta">See the code <span class="arw">↗</span></span></div>
     </a>
     <div class="b-tile fade-in" id="lv-tile" data-facets="design" style="--accent:#A9C0DA;" role="button" tabindex="0" aria-label="View the Children's Center design system and newsletter">
-      <div class="b-media"><img src="assets/lv-design-system.webp" alt="Children's Center design system" data-nozoom loading="eager" decoding="async" /></div>
+      <div class="b-media"><img src="assets/lv-design-system-card.webp" alt="Children's Center design system: colour palette and logo usage" data-nozoom loading="eager" decoding="sync" fetchpriority="high" /></div>
       <span class="b-badge">🎨 Design System</span>
       <div class="b-overlay"><div class="b-kicker">Design &amp; Operations</div><h3 class="b-title">The Children's Center <em>system.</em></h3><div class="b-desc">The visual system a UW early education center runs on: flyers, newsletters, and posters from one design language.</div><span class="b-cta">See the system + newsletter <span class="arw">→</span></span></div>
     </div>
@@ -1049,7 +1091,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
       <div class="b-overlay"><div class="b-kicker">Hackathon</div><h3 class="b-title">Among <em>hUSkies.</em></h3><div class="b-desc">A UW take on Among Us with real UX tasks, built in Figma Make. First place at the Figma Make Hackathon.</div><span class="b-cta">▶ Watch the walkthrough</span></div>
     </div>
     <a class="b-tile fade-in b-contain" href="momsafe.html" data-facets="research" style="--accent:#A9C0DA;">
-      <div class="b-media"><img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="eager" decoding="async" /></div>
+      <div class="b-media"><img src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="eager" decoding="sync" fetchpriority="high" /></div>
       <span class="b-badge">🏅 CHI 2025</span>
       <div class="b-overlay"><div class="b-kicker">Research</div><h3 class="b-title">MomSAFE at <em>CHI.</em></h3><div class="b-desc">Mixed-methods research on where AI belongs in prenatal care.</div><span class="b-cta">Read the study <span class="arw">→</span></span></div>
     </a>
