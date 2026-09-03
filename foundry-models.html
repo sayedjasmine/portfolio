@@ -1212,6 +1212,482 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 }
 
 </style>
+<style id="csfix-2026-09">
+/* ==================================================================
+   CASE-STUDY ALIGNMENT + CLARITY PASS  ·  2026-09
+   Reference: microsoft.html (Foundry Agent Builder research study).
+   Brings foundry-models / nox / nexstera / saksham to the same
+   figure treatment, caption placement and dark-panel budget.
+   Injected AFTER <style id="pastel-2026"> so it wins on equal weight.
+   Remove this whole block to revert.
+   ================================================================== */
+
+/* ---- 1 · FIGURES: one full-width framed card, caption underneath ---- */
+html body .case-img-wrapper,
+html body .figure,
+html body .figure.fix,
+html body .figure.proto-shot,
+html body .hb-figure,
+html body .embed-frame,
+html body .proto-wrap,
+html body .case-img-grid,
+html body .prototype-video-wrap{
+  max-width:100% !important;
+  width:100% !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+
+html body .case-img-wrapper{
+  display:flex !important;
+  flex-direction:column-reverse !important;   /* caption reads below the image */
+  margin:32px 0 !important;
+  overflow:hidden !important;
+}
+html body .case-img-wrapper > img{
+  width:100% !important; height:auto !important; display:block !important;
+}
+html body .case-img-caption{
+  text-align:left !important;
+  padding:13px 18px 15px !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  border-top:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  max-width:none !important;
+  font-size:13px !important;
+  line-height:1.55 !important;
+}
+
+/* an image too small to fill the column is centred on the card, never upscaled */
+html body .case-img-wrapper.is-contain{ padding:28px 0 0 !important; }
+html body .case-img-wrapper.is-contain > img{
+  width:auto !important; max-width:min(100%,440px) !important; margin:0 auto !important;
+}
+
+/* Foundry's own figure variants line up with the same edges */
+html body .figure .shot.tall{ width:100% !important; max-width:100% !important; }
+html body .figure .shot.tall img{
+  width:auto !important; max-width:100% !important; max-height:560px !important; margin:0 auto !important;
+}
+html body .figcap{ text-align:left !important; max-width:none !important; }
+
+/* ---- 2 · EVEN ROWS ---- */
+html body .feature-row{ align-items:stretch !important; }
+html body .feature-row > *{ align-self:stretch !important; }
+
+/* ---- 3 · DARK-PANEL BUDGET: the reflection band, and nothing else ---- */
+
+/* 3a · insight cards (nox, nexstera) go light */
+html body .insight-card.insight-card{
+  background:var(--surface) !important;
+  background-image:none !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 62%, transparent) !important;
+  box-shadow:var(--lift-1) !important;
+}
+html body .insight-card.insight-card .insight-title,
+html body .insight-card.insight-card strong,
+html body .insight-card.insight-card b,
+html body .insight-card.insight-card h3,
+html body .insight-card.insight-card h4{ color:var(--text) !important; }
+html body .insight-card.insight-card .insight-body,
+html body .insight-card.insight-card p,
+html body .insight-card.insight-card li{ color:var(--mid) !important; }
+html body .insight-card.insight-card em{ color:var(--c-deep) !important; }
+/* NOTE: the numeral colour/opacity is owned by a11yfix-2026-09 (it has to clear 3:1).
+   Deliberately not set here, so this block's inject order can never clobber it. */
+html[data-theme="dark"] body .insight-card.insight-card em,
+html[data-theme="dark"] body .insight-card.insight-card .insight-num{
+  color:var(--c-lite) !important; -webkit-text-fill-color:var(--c-lite) !important;
+}
+
+/* 3b · prototype bands (nox #prototype, foundry #live-prototype) go light.
+       Only .container content is retinted; media chrome keeps its own dark UI. */
+html body section#prototype,
+html body section#live-prototype{
+  background:var(--c-media) !important;
+  background-image:none !important;
+}
+html body section#prototype > .container p,
+html body section#live-prototype > .container p,
+html body section#prototype > .container .body-text,
+html body section#live-prototype > .container .body-text,
+html body section#prototype > .container li,
+html body section#live-prototype > .container li{ color:var(--mid) !important; }
+html body section#prototype > .container h2,
+html body section#live-prototype > .container h2,
+html body section#prototype > .container h3,
+html body section#live-prototype > .container h3,
+html body section#prototype > .container strong,
+html body section#live-prototype > .container strong{ color:var(--text) !important; }
+html body section#prototype > .container .cs-take,
+html body section#live-prototype > .container .cs-take{ color:var(--text) !important; }
+html body section#prototype > .container .section-eyebrow,
+html body section#live-prototype > .container .section-eyebrow,
+html body section#prototype > .container h2 em,
+html body section#live-prototype > .container h2 em{ color:var(--c-deep) !important; }
+html body section#prototype > .container .section-eyebrow::before,
+html body section#live-prototype > .container .section-eyebrow::before{ background:var(--c-deep) !important; }
+html[data-theme="dark"] body section#prototype > .container .section-eyebrow,
+html[data-theme="dark"] body section#live-prototype > .container .section-eyebrow,
+html[data-theme="dark"] body section#prototype > .container h2 em,
+html[data-theme="dark"] body section#live-prototype > .container h2 em{ color:var(--c-lite) !important; }
+
+/* the stage the media sits on */
+html body .prototype-video-wrap,
+html body .proto-wrap{
+  background:var(--surface) !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 55%, transparent) !important;
+  border-radius:18px !important;
+  padding:20px !important;
+  box-shadow:var(--lift-1) !important;
+}
+/* specificity has to clear `section[style*='linear-gradient'] .proto-label` from
+   the pastel block, which still matches because the inline gradient attribute stays */
+html body section#prototype .prototype-label,
+html body section#live-prototype .proto-label,
+html body .prototype-label,
+html body .proto-label{
+  color:var(--c-deep) !important;
+  text-align:left !important;
+  margin:0 0 14px !important;
+}
+html[data-theme="dark"] body section#prototype .prototype-label,
+html[data-theme="dark"] body section#live-prototype .proto-label,
+html[data-theme="dark"] body .prototype-label,
+html[data-theme="dark"] body .proto-label{ color:var(--c-lite) !important; }
+html body .prototype-label span{ color:var(--mid) !important; }
+
+/* 3c · Foundry's Solution band goes light, matching the reference's impact band */
+html body section.shipped-band.shipped-band{
+  background:var(--c-tint) !important;
+  background-image:none !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 50%, transparent) !important;
+}
+html body .shipped-band .shipped-eyebrow{ color:var(--c-deep) !important; }
+html body .shipped-band .shipped-eyebrow::before{ background:var(--c-deep) !important; }
+html body .shipped-band h2{ color:var(--text) !important; }
+html body .shipped-band h2 em{ color:var(--c-deep) !important; }
+html body .shipped-band .shipped-lead{ color:var(--mid) !important; max-width:70ch !important; }
+html body .shipped-band .shipped-lead strong{ color:var(--text) !important; }
+html body .shipped-band .shipped-chip{
+  color:var(--c-deep) !important;
+  background:color-mix(in srgb, var(--c-mid) 30%, transparent) !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 65%, transparent) !important;
+}
+html body .shipped-band .shipped-cap{ color:var(--mid) !important; }
+html body .shipped-band .shipped-cap .cap-n{ color:var(--c-deep) !important; }
+html body .shipped-band .shipped-cap strong{ color:var(--text) !important; }
+html body .shipped-band .shipped-fig .frame{
+  border:1px solid color-mix(in srgb, var(--text) 12%, transparent) !important;
+  box-shadow:var(--lift-2) !important;
+}
+html[data-theme="dark"] body section.shipped-band.shipped-band{ background:var(--c-tint) !important; }
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow,
+html[data-theme="dark"] body .shipped-band h2 em,
+html[data-theme="dark"] body .shipped-band .shipped-chip,
+html[data-theme="dark"] body .shipped-band .shipped-cap .cap-n{ color:var(--c-lite) !important; }
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
+
+/* ---- 4 · SECTION RHYTHM: the pull quote sits the same everywhere ---- */
+html body .cs-take{ margin-top:18px !important; margin-bottom:22px !important; }
+
+/* ---- 5 · AA on the tinted bands ----
+   .impact-label and the band eyebrows clear 4.5:1 on white but not on the
+   band's own tint. Scoped to the band only: no global text-colour rule here,
+   so nothing leaks into the dark reflection panel. */
+html:not([data-theme="dark"]) body .impact-section .impact-label,
+html:not([data-theme="dark"]) body .shipped-band .shipped-cap{ color:#4A4A55 !important; }
+html:not([data-theme="dark"]) body .impact-section .section-eyebrow,
+html:not([data-theme="dark"]) body .impact-section .built-eyebrow,
+html:not([data-theme="dark"]) body .shipped-band .shipped-eyebrow{
+  color:color-mix(in srgb, var(--c-deep) 80%, #000) !important;
+}
+html:not([data-theme="dark"]) body .impact-section .section-eyebrow::before,
+html:not([data-theme="dark"]) body .impact-section .built-eyebrow::before,
+html:not([data-theme="dark"]) body .shipped-band .shipped-eyebrow::before{
+  background:color-mix(in srgb, var(--c-deep) 80%, #000) !important;
+}
+html[data-theme="dark"] body .impact-section .impact-label,
+html[data-theme="dark"] body .shipped-band .shipped-cap{ color:rgba(255,255,255,.80) !important; }
+html[data-theme="dark"] body .impact-section .section-eyebrow,
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow{ color:var(--c-lite) !important; }
+html[data-theme="dark"] body .impact-section .section-eyebrow::before,
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
+
+
+/* ---- 6 · NOX HERO VIDEO ----
+   The source recording is a phone mockup centred on black: 49% of its width was
+   padding, so the phone rendered ~121px wide inside a 236px box and read as cut
+   off. The video is now cropped to the phone SCREEN only (the mockup bezel and
+   the black surround are both gone) and this frame supplies the device instead:
+   one rounded, hairlined rectangle, identical on every case study. 464x1004 is
+   the exact iPhone screen ratio, so `contain` never letterboxes. */
+html body .hero-video-frame--portrait{
+  width:188px !important;
+  max-width:100% !important;
+  aspect-ratio:464 / 1004 !important;
+  background:#0B0C10 !important;
+}
+html body .hero-video-frame--portrait video{ object-fit:contain !important; }
+@media(max-width:860px){
+  html body .hero-video-frame--portrait{ width:210px !important; }
+}
+/* the in-page prototype player: same crop, so cap it to a phone-sized column */
+html body .prototype-video-wrap video{
+  max-width:300px !important;
+  margin:0 auto !important;
+}
+
+
+/* ---- 7 · NOX FINAL SCREENS ----
+   Was one 1800px strip showing four phones at ~180px each, where none of the
+   UI was legible. Now four individual screens, 2-up, at roughly 2x that size. */
+html body .nox-screens{
+  display:grid !important;
+  grid-template-columns:repeat(2,1fr) !important;
+  gap:26px !important;
+  margin:8px 0 4px !important;
+}
+html body .nox-screens .nox-screen{ margin:0 !important; }
+html body .nox-screens .nox-screen-shot{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--c-tint) 70%, #FFF) 0%, var(--surface) 72%);
+  border:1px solid color-mix(in srgb, var(--c-mid) 55%, transparent);
+  border-radius:16px;
+  padding:18px 18px 0;
+  overflow:hidden;
+  box-shadow:var(--lift-1);
+}
+html body .nox-screens .nox-screen-shot img{
+  width:100% !important; height:auto !important; display:block !important;
+  border-radius:10px 10px 0 0;
+}
+html body .nox-screens figcaption{
+  font-size:13px; line-height:1.55; color:#4A4A55; padding:12px 2px 0;
+}
+html body .nox-screens figcaption strong{ color:var(--text); font-weight:600; display:block; margin-bottom:2px; }
+@media(max-width:700px){
+  html body .nox-screens{ grid-template-columns:1fr !important; gap:22px !important; }
+}
+
+
+/* ---- 8 · ENLARGE AFFORDANCE ----
+   Dense artefacts (the affinity map above all) are click-to-zoom but nothing
+   said so, so they read as illegible rather than explorable.
+   ::after is already the hairline inner frame, so this uses ::before. */
+html body .case-img-wrapper:has(> img.pf-zoomable),
+html body .figure .shot:has(img.pf-zoomable){ position:relative; }
+html body .case-img-wrapper:has(> img.pf-zoomable)::before,
+html body .figure .shot:has(img.pf-zoomable)::before{
+  content:"Click to enlarge";
+  position:absolute; top:12px; right:12px; z-index:4;
+  font-family:var(--mono, ui-monospace, monospace);
+  font-size:10.5px; letter-spacing:.04em;
+  padding:6px 10px; border-radius:999px;
+  color:#FFFFFF; background:rgba(18,18,22,.72);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  pointer-events:none;
+  opacity:0; transform:translateY(-3px);
+  transition:opacity .18s ease, transform .18s ease;
+}
+html body .case-img-wrapper:has(> img.pf-zoomable):hover::before,
+html body .case-img-wrapper:has(> img.pf-zoomable):focus-within::before,
+html body .figure .shot:has(img.pf-zoomable):hover::before,
+html body .figure .shot:has(img.pf-zoomable):focus-within::before{ opacity:1; transform:none; }
+/* touch devices never hover, so show it there by default */
+@media (hover:none){
+  html body .case-img-wrapper:has(> img.pf-zoomable)::before,
+  html body .figure .shot:has(img.pf-zoomable)::before{ opacity:1; transform:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  html body .case-img-wrapper:has(> img.pf-zoomable)::before,
+  html body .figure .shot:has(img.pf-zoomable)::before{ transition:none; }
+}
+
+
+/* ---- 9 · (was: hero walkthrough videos on nexstera + saksham) ----
+   Reverted. Both heroes are back to the live Figma prototype, which reads
+   better there than a recording, so the --wide / --tall frame variants and the
+   .hero-figma overrides they needed are gone and the pages' own hero CSS is
+   left to do its original job. --portrait, in section 6, is still live on Nox. */
+
+
+/* ---- 10 · HERO MEDIA MUST CLEAR THE FIXED NAV ----
+   The nav is position:fixed and 97px tall; the hero's padding-top is only 84px.
+   Any media column taller than the hero's content box gets clamped to that 84px
+   and slides under the nav, which clipped the top of the Nox phone.
+   Cap the column and let flex centring do the rest. */
+html body .hero .hero-video,
+html body .hero .hero-figma,
+html body .hero .hero-docs{
+  max-height:calc(100vh - 150px) !important;
+  align-self:center !important;
+}
+@media(min-width:961px){
+  html body .hero.hero.hero{ padding-top:110px !important; }
+}
+
+
+/* ---- 11 · HERO VIDEO: custom pause control ----
+   The native control bar is a black strip painted over the product UI. These
+   clips autoplay, are silent and loop, so the only control they need is
+   pause/play (WCAG 2.2.2 requires one for anything auto-playing over 5s).
+   Always visible, not hover-only, so it works on touch and by keyboard. */
+html body .hero-video-frame{ position:relative !important; }
+html body .hero-video-frame .hv-toggle{
+  position:absolute; right:10px; bottom:10px; z-index:3;
+  width:34px; height:34px; padding:0; border:0; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  color:#FFFFFF;
+  background:rgba(14,15,20,.52);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 2px 10px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.30);
+  opacity:.72;   /* has to stay findable over a dark splash frame as well as a white UI */
+  transition:opacity .18s ease, transform .18s ease, background .18s ease;
+}
+html body .hero-video-frame:hover .hv-toggle,
+html body .hero-video-frame .hv-toggle:hover,
+html body .hero-video-frame .hv-toggle:focus-visible{
+  opacity:1; background:rgba(14,15,20,.74); transform:scale(1.06);
+}
+html body .hero-video-frame .hv-toggle svg{ width:15px; height:15px; display:block; fill:currentColor; }
+html body .hero-video-frame .hv-toggle .hv-play{ display:none; }
+html body .hero-video-frame .hv-toggle[data-paused="true"] .hv-pause{ display:none; }
+html body .hero-video-frame .hv-toggle[data-paused="true"] .hv-play{ display:block; }
+@media (prefers-reduced-motion:reduce){
+  html body .hero-video-frame .hv-toggle{ transition:none; }
+}
+
+</style>
+<style id="a11yfix-2026-09">
+/* ==================================================================
+   ACCESSIBILITY PASS (WCAG 2.2 AA) · 2026-09
+   Measured from real rendered pixels, in the state the site actually
+   ships in (no data-theme attribute is ever set on this site).
+   Remove this whole block to revert.
+   ================================================================== */
+
+/* ---- 1 · WATERMARK NUMERALS ----
+   The ghosted 01/02/03 numerals are meaningful (they sequence the cards),
+   so they carry the 3:1 large-text requirement. They were 1.8–2.5:1. */
+html body .insight-num,
+html body .problem-num,
+html body .rq-num,
+html body .theme-num,
+html body .opp-num,
+html body .method-num,
+html body .killed-n,
+html body .decision-num{
+  opacity:1 !important;
+  color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  -webkit-text-fill-color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+}
+html body .insight-card.insight-card .insight-num{
+  color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  -webkit-text-fill-color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  opacity:1 !important;
+}
+
+/* ---- 2 · SMALL GREY LABELS ---- (were 3.5–4.4:1 against their own surface) */
+html body .stat-method,
+html body .nox-doc-meta,
+html body .hero-doc-meta,
+html body .prototype-label span,
+html body .proto-label span{ color:#4A4A55 !important; opacity:1 !important; }
+/* .hero:has(.hero-sub) is (0,2,0)+!important, so the caption needs .hero.hero.hero */
+html:not([data-theme="dark"]) body .hero.hero.hero .hero-figma-caption,
+html:not([data-theme="dark"]) body .hero.hero.hero .hero-video-caption,
+html body .hero.hero.hero .hero-figma-caption,
+html body .hero-figma-caption{ color:#2F2F38 !important; opacity:1 !important; }
+
+/* white-on-colour micro-label inside the journey-map stage headers */
+html body .jm-stage-num{ opacity:.92 !important; color:#FFFFFF !important; }
+
+/* ---- 3 · FOCUS VISIBILITY (2.4.7 + 2.4.11) ----
+   Ten interactive elements had no focus indicator at all. One ring for
+   everything focusable, in the brand pink, with a light halo so it stays
+   visible on both pale and saturated surfaces. */
+html body a:focus-visible,
+html body button:focus-visible,
+html body [tabindex]:focus-visible,
+html body video:focus-visible,
+html body input:focus-visible,
+html body textarea:focus-visible,
+html body select:focus-visible{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:3px !important;
+  border-radius:6px;
+  box-shadow:0 0 0 6px rgba(255,255,255,.85) !important;
+}
+/* cards already carry a radius: match it so the ring hugs the shape */
+html body .bento-tile:focus-visible,
+html body .nox-doc-card:focus-visible,
+html body .hero-doc-card:focus-visible,
+html body .b-tile:focus-visible,
+html body .next-btn:focus-visible,
+html body .contact-btn:focus-visible,
+html body .hero-site-pill:focus-visible{ border-radius:16px; }
+/* focusing an iframe hands focus to the embedded document, so the parent page
+   can only show it on the wrapper */
+html body .embed-frame:focus-within,
+html body .proto-viewport:focus-within,
+html body .mockup-showcase:focus-within,
+html body .hero-figma:focus-within,
+html body .hero-figma-frame:focus-within{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:3px !important;
+}
+
+/* never let a decorative rule swallow the ring */
+html body *:focus-visible{ outline-color:var(--brand, #9E3462) !important; }
+
+/* ---- 4 · TARGET SIZE (2.5.8, 24x24 CSS px) ----
+   Nav and back links were 14–18px tall. Padding only: no layout shift,
+   the flex row keeps its alignment. */
+html body nav a,
+html body .nav-links a,
+html body .mx-nav a,
+html body .nav-back{
+  padding-block:6px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:24px !important;
+}
+
+/* Standalone links that sit in flex strips rather than in a sentence, so the
+   2.5.8 inline exception does not cover them. Padding grows the hit area and an
+   equal negative margin gives the space back, so nothing moves on screen. */
+html body .ms-more{
+  display:inline-block !important;
+  padding-block:6px !important;
+  margin-block:-6px !important;
+}
+html body .cs-inline-link{
+  display:inline-block !important;
+  padding-top:8px !important;
+  margin-top:-8px !important;
+}
+html body .contact-email-addr{
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:26px !important;
+}
+
+/* Tabbing into an embedded frame moves focus to the child document: Chromium then
+   matches neither :focus on the iframe nor :focus-within on its ancestors, so
+   the rules above only fire for programmatic focus. ifrfocus-2026-09, the script injected at the end of the page,
+   sets this class instead. Inset, because both the frame and
+   its wrapper clip overflow and an outward ring would be cut off. */
+html body .embed-frame.ifr-focus,
+html body .proto-viewport.ifr-focus,
+html body .mockup-showcase.ifr-focus,
+html body .hero-figma.ifr-focus,
+html body .hero-figma-frame.ifr-focus{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:-3px !important;
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1252,7 +1728,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="hero-content">
       <p class="hero-tag">Product Design · UX Research · AI Platform</p>
       <h1 style="font-size:clamp(30px,6.2vw,76px);">Microsoft Foundry<br /><em>Models</em></h1>
-      <p class="hero-sub">Microsoft Foundry&rsquo;s catalog had grown past 11,000 models, with no reliable way to find or compare them. Our team of five redesigned discovery around the decisions developers actually make: narrowing, evaluating, and committing. The Foundry team adopted two of our recommendations, and both are live in the product today.</p>
+      <p class="hero-sub">Microsoft Foundry&rsquo;s catalog had grown past 11,000 models, with no reliable way to find or compare them. Our team of five redesigned discovery around the decisions developers actually make: narrowing, evaluating, and committing. Two of our recommendations were carried forward by the Foundry team after handoff, and both are visible in the product today.</p>
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
@@ -1340,8 +1816,8 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">On a team of five, I ran the usability research and led concept and IA, owning the two threads Foundry went on to adopt: region visibility in the filter rail and side-by-side compare. Both are live in the product today.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>The Foundry team adopted both ideas after our handoff</strong> (region in the filter bar, a side-by-side compare tray), and a small round-two test on our prototype pointed to roughly 58% faster search-to-select.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">On a team of five, I ran the usability research and led concept and IA on two threads Foundry carried forward: making region visible in the filter rail, and deepening the existing compare feature so pricing, regional availability, and a recommended pick sit in the comparison itself.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>The Foundry team carried both recommendations forward after our handoff</strong> (region in the filter bar, a deeper compare tray), and a small round-two test on our prototype pointed to roughly 58% faster search-to-select.</div></div>
       </div>
     </div>
   </section>
@@ -1439,7 +1915,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 
     <div class="container fade-in">
       <h3 class="sub-heading">Who we designed for</h3>
-      <p class="body-text">Research pointed to three personas: Maya, a student developer, and Priya, a product manager weighing cost against capability. After aligning with Microsoft, we designed primarily for <strong>Alex</strong>, a startup developer who needs to move fast without picking a model that causes problems later.</p>
+      <p class="body-text">Research pointed to three personas: Maya, a student developer, Priya, a product manager weighing cost against capability, and Alex, a startup developer. After aligning with Microsoft, we designed primarily for <strong>Alex</strong>, a startup developer who needs to move fast without picking a model that causes problems later.</p>
     </div>
     <div class="container-wide">
       <div class="persona-grid fade-in" style="grid-template-columns:1fr;max-width:620px;">
@@ -1579,6 +2055,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: var(--indigo-light);">High-Fidelity Prototype</p>
       <h2 class="section-title" style="color:#fff;">The clickable, <em style="color: var(--indigo-light);">high-fidelity build.</em></h2>
+      <p class="cs-take">Everything that shipped was argued in a clickable build first, not a static deck.</p>
       <p class="body-text" style="color: rgba(255,255,255,0.62);">Before any of it reached the product, the redesign lived here: a full high-fidelity prototype, embedded and clickable. Explore Discover, the Models page, filtering, and side-by-side compare, then see what went live next.</p>
     </div>
     <div class="container-wide fade-in">
@@ -1621,19 +2098,19 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     </style>
     <div class="container fade-in">
       <p class="shipped-eyebrow">Solution</p>
-      <h2>Two ideas, now <em>in the product.</em></h2>
-      <p class="shipped-lead">I drove two ideas through research and design, and the Foundry team carried both into the product after our handoff. Both are live today. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second rebuilt <strong style="color:#fff;font-weight:600">compare</strong> from the ground up: the original was shallow and hard to act on.</p>
+      <h2>Two recommendations, <em>carried forward.</em></h2>
+      <p class="shipped-lead">Our team took two recommendations through research and design, and the Foundry team built them after our handoff. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second deepened <strong style="color:#fff;font-weight:600">compare</strong>, a feature the platform already had: we proposed surfacing pricing and regional availability inside the comparison and calling out a recommended pick, so the trade-off is legible instead of something you reconstruct yourself.</p>
       <span class="shipped-chip"><span class="dot" aria-hidden="true"></span>Live in Microsoft Foundry &middot; Discover &rsaquo; Models &rsaquo; Compare</span>
     </div>
     <div class="container-wide fade-in">
       <div class="shipped-figs">
         <figure class="shipped-fig">
-          <div class="frame"><video src="assets/foundry-region-flow.mp4" poster="assets/foundry-region-poster.jpg" muted loop playsinline controls preload="auto" width="1600" height="738"></video></div>
+          <div class="frame"><video src="assets/foundry-region-flow.mp4" poster="assets/foundry-region-poster.jpg" muted loop playsinline controls preload="auto" width="1600" height="738" aria-label="Screen recording of the live Foundry Models page: narrowing the catalog by region from the filter rail"></video></div>
           <figcaption class="shipped-cap"><span class="cap-n">Live 01</span><span><strong>Region, promoted into the filter rail.</strong> An 11,000+ model catalog narrows by where a model can actually deploy, so region is a first-class filter instead of a wall you hit at deployment.</span></figcaption>
         </figure>
         <figure class="shipped-fig">
-          <div class="frame"><video src="assets/foundry-compare-flow.mp4" poster="assets/foundry-compare-poster.jpg" muted loop playsinline controls preload="auto" width="1600" height="738"></video></div>
-          <figcaption class="shipped-cap"><span class="cap-n">Live 02</span><span><strong>Compare, rebuilt from the ground up.</strong> Three models side by side with the best value in each row called out (the trophy), so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
+          <div class="frame"><video src="assets/foundry-compare-flow.mp4" poster="assets/foundry-compare-poster.jpg" muted loop playsinline controls preload="auto" width="1600" height="738" aria-label="Screen recording of the live Foundry compare tray: three models side by side with the best value in each row called out"></video></div>
+          <figcaption class="shipped-cap"><span class="cap-n">Live 02</span><span><strong>Compare, made decision-ready.</strong> Compare existed already; what we argued for was depth inside it. Three models side by side with the best value in each row called out (the trophy), so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
         </figure>
       </div>
     </div>
@@ -1657,11 +2134,11 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
   <section class="impact-section" id="results">
     <div class="container-wide fade-in">
       <p class="section-eyebrow">Results</p>
-      <h2 class="section-title">The ideas that<br />are now <em>shipping.</em></h2>
-      <p class="cs-take">The two ideas I drove, region filtering and side-by-side compare, are now live for every Foundry developer.</p>
-      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After we handed off, the Foundry team built both ideas into the live product that every Foundry developer now uses to choose a model: region sits in the filter bar, and there's a compare-model tray.</p>
+      <h2 class="section-title">The recommendations<br />that <em>went forward.</em></h2>
+      <p class="cs-take">Two of our team's recommendations, region filtering and a deeper compare, were carried into the product Foundry developers use.</p>
+      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, and committing, instead of scrolling an 11,000-row list and hoping. After we handed off, the Foundry team built on both: region now sits in the filter bar, and the compare tray, which the platform already had, carries the depth we argued for. Neither is solely mine, and neither was built by me. I ran the research and led the concept and IA behind them on a team of five, and Foundry's own team shipped the result.</p>
       <div class="impact-stats">
-        <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Both ideas adopted into the live product every Foundry developer uses to choose a model</div></div>
+        <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Both recommendations carried into the product Foundry developers use to choose a model, built by Foundry's team after our handoff</div></div>
         <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">An 11,000+ model catalog, filtered down to a focused, scannable set</div></div>
         <div class="impact-stat"><div class="impact-number">~58%</div><div class="impact-label">faster search-to-select in a small, moderated round-two test, a directional signal rather than a significance-tested result</div></div>
       </div>
@@ -1673,7 +2150,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
   <section id="agent-builder">
     <div class="container-wide fade-in">
       <div style="border:1px solid var(--line); border-radius:16px; padding:22px 28px; display:flex; flex-wrap:wrap; gap:12px 24px; align-items:baseline;">
-        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Also during the Microsoft-sponsored project:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same Severity-4 blocker, turning a deprioritized bug into a prioritized fix.</p>
+        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Also during the Microsoft-sponsored project:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same blocker, a usability catastrophe on Nielsen&rsquo;s severity scale, turning a deprioritized bug into a prioritized fix.</p>
         <a class="cs-inline-link" href="microsoft.html" style="font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px; white-space:nowrap;">Read that study <span>&rarr;</span></a>
       </div>
     </div>
@@ -2034,5 +2511,27 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 })();
 </script>
 
+<script id="ifrfocus-2026-09">
+(function(){
+  var WRAP = '.embed-frame,.proto-viewport,.mockup-showcase,.hero-figma-frame,.hero-figma';
+  function sync(){
+    var on = document.querySelectorAll('.ifr-focus');
+    for (var i = 0; i < on.length; i++) on[i].classList.remove('ifr-focus');
+    var el = document.activeElement;
+    if (el && el.tagName === 'IFRAME' && document.hasFocus()){
+      var w = el.closest(WRAP);
+      if (w) w.classList.add('ifr-focus');
+    }
+  }
+  // Focus entering a child browsing context reaches the parent only as a window
+  // blur, and no focusin fires for the frame. activeElement is already the frame
+  // when blur runs, so sync straight away; the timeout covers engines where the
+  // switch lands a tick later.
+  window.addEventListener('blur', function(){ sync(); setTimeout(sync, 0); });
+  window.addEventListener('focus', function(){ sync(); setTimeout(sync, 0); });
+  document.addEventListener('focusin', sync);
+  document.addEventListener('mousedown', function(){ setTimeout(sync, 0); });
+})();
+</script>
 </body>
 </html>

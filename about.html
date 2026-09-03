@@ -893,6 +893,135 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 }
 
 </style>
+<style id="a11yfix-2026-09">
+/* ==================================================================
+   ACCESSIBILITY PASS (WCAG 2.2 AA) · 2026-09
+   Measured from real rendered pixels, in the state the site actually
+   ships in (no data-theme attribute is ever set on this site).
+   Remove this whole block to revert.
+   ================================================================== */
+
+/* ---- 1 · WATERMARK NUMERALS ----
+   The ghosted 01/02/03 numerals are meaningful (they sequence the cards),
+   so they carry the 3:1 large-text requirement. They were 1.8–2.5:1. */
+html body .insight-num,
+html body .problem-num,
+html body .rq-num,
+html body .theme-num,
+html body .opp-num,
+html body .method-num,
+html body .killed-n,
+html body .decision-num{
+  opacity:1 !important;
+  color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  -webkit-text-fill-color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+}
+html body .insight-card.insight-card .insight-num{
+  color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  -webkit-text-fill-color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  opacity:1 !important;
+}
+
+/* ---- 2 · SMALL GREY LABELS ---- (were 3.5–4.4:1 against their own surface) */
+html body .stat-method,
+html body .nox-doc-meta,
+html body .hero-doc-meta,
+html body .prototype-label span,
+html body .proto-label span{ color:#4A4A55 !important; opacity:1 !important; }
+/* .hero:has(.hero-sub) is (0,2,0)+!important, so the caption needs .hero.hero.hero */
+html:not([data-theme="dark"]) body .hero.hero.hero .hero-figma-caption,
+html:not([data-theme="dark"]) body .hero.hero.hero .hero-video-caption,
+html body .hero.hero.hero .hero-figma-caption,
+html body .hero-figma-caption{ color:#2F2F38 !important; opacity:1 !important; }
+
+/* white-on-colour micro-label inside the journey-map stage headers */
+html body .jm-stage-num{ opacity:.92 !important; color:#FFFFFF !important; }
+
+/* ---- 3 · FOCUS VISIBILITY (2.4.7 + 2.4.11) ----
+   Ten interactive elements had no focus indicator at all. One ring for
+   everything focusable, in the brand pink, with a light halo so it stays
+   visible on both pale and saturated surfaces. */
+html body a:focus-visible,
+html body button:focus-visible,
+html body [tabindex]:focus-visible,
+html body video:focus-visible,
+html body input:focus-visible,
+html body textarea:focus-visible,
+html body select:focus-visible{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:3px !important;
+  border-radius:6px;
+  box-shadow:0 0 0 6px rgba(255,255,255,.85) !important;
+}
+/* cards already carry a radius: match it so the ring hugs the shape */
+html body .bento-tile:focus-visible,
+html body .nox-doc-card:focus-visible,
+html body .hero-doc-card:focus-visible,
+html body .b-tile:focus-visible,
+html body .next-btn:focus-visible,
+html body .contact-btn:focus-visible,
+html body .hero-site-pill:focus-visible{ border-radius:16px; }
+/* focusing an iframe hands focus to the embedded document, so the parent page
+   can only show it on the wrapper */
+html body .embed-frame:focus-within,
+html body .proto-viewport:focus-within,
+html body .mockup-showcase:focus-within,
+html body .hero-figma:focus-within,
+html body .hero-figma-frame:focus-within{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:3px !important;
+}
+
+/* never let a decorative rule swallow the ring */
+html body *:focus-visible{ outline-color:var(--brand, #9E3462) !important; }
+
+/* ---- 4 · TARGET SIZE (2.5.8, 24x24 CSS px) ----
+   Nav and back links were 14–18px tall. Padding only: no layout shift,
+   the flex row keeps its alignment. */
+html body nav a,
+html body .nav-links a,
+html body .mx-nav a,
+html body .nav-back{
+  padding-block:6px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:24px !important;
+}
+
+/* Standalone links that sit in flex strips rather than in a sentence, so the
+   2.5.8 inline exception does not cover them. Padding grows the hit area and an
+   equal negative margin gives the space back, so nothing moves on screen. */
+html body .ms-more{
+  display:inline-block !important;
+  padding-block:6px !important;
+  margin-block:-6px !important;
+}
+html body .cs-inline-link{
+  display:inline-block !important;
+  padding-top:8px !important;
+  margin-top:-8px !important;
+}
+html body .contact-email-addr{
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:26px !important;
+}
+
+/* Tabbing into an embedded frame moves focus to the child document: Chromium then
+   matches neither :focus on the iframe nor :focus-within on its ancestors, so
+   the rules above only fire for programmatic focus. ifrfocus-2026-09, the script injected at the end of the page,
+   sets this class instead. Inset, because both the frame and
+   its wrapper clip overflow and an outward ring would be cut off. */
+html body .embed-frame.ifr-focus,
+html body .proto-viewport.ifr-focus,
+html body .mockup-showcase.ifr-focus,
+html body .hero-figma.ifr-focus,
+html body .hero-figma-frame.ifr-focus{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:-3px !important;
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1000,7 +1129,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <h1 class="ab-headline">A little bit <em>about me.</em></h1>
     <div class="ab-hero-grid">
       <div class="ab-lead">
-        <p><strong>I'm a product designer who specializes in the hard stuff:</strong> complex, technical, and AI products. My work runs from an 11,000-model AI platform with Microsoft CoreAI to a privacy-first identity app I led end to end, and a live accessibility product I designed and coded myself. I work where research, design, and code overlap, and I don't stop at the mockup. I ship the thing.</p>
+        <p><strong>I'm a product designer who specializes in the hard stuff:</strong> complex, technical, and AI products. My work runs from an 11,000-model AI platform with Microsoft CoreAI to a privacy-first identity app I led the design of, and a live accessibility product I designed and coded myself. I work where research, design, and code overlap, and I don't stop at the mockup. I ship the thing.</p>
         <p>What I care about most is the hard part: the tradeoffs, the features worth cutting, the moment the research contradicts the obvious answer. I led UXFest, a 140-person design event, end to end, and I bring that same ownership to every product I work on: define the problem, make the call, and ship it.</p>
       </div>
       <div class="ab-portrait">
@@ -1040,12 +1169,12 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
       <figure class="ab-photo"><img src="images/about-carousel-7.jpg" alt="Sunset over the ocean" loading="eager" decoding="async"><span class="cap">Sunset-chaser</span></figure>
       <figure class="ab-photo"><img src="images/about-carousel-8.jpg" alt="City skyline at night" loading="eager" decoding="async"><span class="cap">New city, every chance I get</span></figure>
       <!-- duplicate for seamless loop -->
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-14.jpg" alt="" loading="eager" decoding="async"><span class="cap">My little brother, sending it on the dunes</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-22.jpg" alt="" loading="eager" decoding="async"><span class="cap">On stage at UXFest</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-20.JPG" alt="" loading="eager" decoding="async"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-21.jpg" alt="" loading="eager" decoding="async"><span class="cap">Off exploring the coast</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-7.jpg" alt="" loading="eager" decoding="async"><span class="cap">Sunset-chaser</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-8.jpg" alt="" loading="eager" decoding="async"><span class="cap">New city, every chance I get</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-14.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">My little brother, sending it on the dunes</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-22.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">On stage at UXFest</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-20.JPG" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-21.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">Off exploring the coast</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-7.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">Sunset-chaser</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-8.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">New city, every chance I get</span></figure>
     </div>
   </section>
 
@@ -1213,7 +1342,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 </style>
 <div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
   <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
-  <img class="pf-lb-img" src="" alt="" />
+  <img class="pf-lb-img" src="" alt="" / aria-hidden="true">
   <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
 </div>
 <script>

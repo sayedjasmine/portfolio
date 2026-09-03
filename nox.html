@@ -2278,6 +2278,482 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 }
 
 </style>
+<style id="csfix-2026-09">
+/* ==================================================================
+   CASE-STUDY ALIGNMENT + CLARITY PASS  ·  2026-09
+   Reference: microsoft.html (Foundry Agent Builder research study).
+   Brings foundry-models / nox / nexstera / saksham to the same
+   figure treatment, caption placement and dark-panel budget.
+   Injected AFTER <style id="pastel-2026"> so it wins on equal weight.
+   Remove this whole block to revert.
+   ================================================================== */
+
+/* ---- 1 · FIGURES: one full-width framed card, caption underneath ---- */
+html body .case-img-wrapper,
+html body .figure,
+html body .figure.fix,
+html body .figure.proto-shot,
+html body .hb-figure,
+html body .embed-frame,
+html body .proto-wrap,
+html body .case-img-grid,
+html body .prototype-video-wrap{
+  max-width:100% !important;
+  width:100% !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+
+html body .case-img-wrapper{
+  display:flex !important;
+  flex-direction:column-reverse !important;   /* caption reads below the image */
+  margin:32px 0 !important;
+  overflow:hidden !important;
+}
+html body .case-img-wrapper > img{
+  width:100% !important; height:auto !important; display:block !important;
+}
+html body .case-img-caption{
+  text-align:left !important;
+  padding:13px 18px 15px !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  border-top:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
+  max-width:none !important;
+  font-size:13px !important;
+  line-height:1.55 !important;
+}
+
+/* an image too small to fill the column is centred on the card, never upscaled */
+html body .case-img-wrapper.is-contain{ padding:28px 0 0 !important; }
+html body .case-img-wrapper.is-contain > img{
+  width:auto !important; max-width:min(100%,440px) !important; margin:0 auto !important;
+}
+
+/* Foundry's own figure variants line up with the same edges */
+html body .figure .shot.tall{ width:100% !important; max-width:100% !important; }
+html body .figure .shot.tall img{
+  width:auto !important; max-width:100% !important; max-height:560px !important; margin:0 auto !important;
+}
+html body .figcap{ text-align:left !important; max-width:none !important; }
+
+/* ---- 2 · EVEN ROWS ---- */
+html body .feature-row{ align-items:stretch !important; }
+html body .feature-row > *{ align-self:stretch !important; }
+
+/* ---- 3 · DARK-PANEL BUDGET: the reflection band, and nothing else ---- */
+
+/* 3a · insight cards (nox, nexstera) go light */
+html body .insight-card.insight-card{
+  background:var(--surface) !important;
+  background-image:none !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 62%, transparent) !important;
+  box-shadow:var(--lift-1) !important;
+}
+html body .insight-card.insight-card .insight-title,
+html body .insight-card.insight-card strong,
+html body .insight-card.insight-card b,
+html body .insight-card.insight-card h3,
+html body .insight-card.insight-card h4{ color:var(--text) !important; }
+html body .insight-card.insight-card .insight-body,
+html body .insight-card.insight-card p,
+html body .insight-card.insight-card li{ color:var(--mid) !important; }
+html body .insight-card.insight-card em{ color:var(--c-deep) !important; }
+/* NOTE: the numeral colour/opacity is owned by a11yfix-2026-09 (it has to clear 3:1).
+   Deliberately not set here, so this block's inject order can never clobber it. */
+html[data-theme="dark"] body .insight-card.insight-card em,
+html[data-theme="dark"] body .insight-card.insight-card .insight-num{
+  color:var(--c-lite) !important; -webkit-text-fill-color:var(--c-lite) !important;
+}
+
+/* 3b · prototype bands (nox #prototype, foundry #live-prototype) go light.
+       Only .container content is retinted; media chrome keeps its own dark UI. */
+html body section#prototype,
+html body section#live-prototype{
+  background:var(--c-media) !important;
+  background-image:none !important;
+}
+html body section#prototype > .container p,
+html body section#live-prototype > .container p,
+html body section#prototype > .container .body-text,
+html body section#live-prototype > .container .body-text,
+html body section#prototype > .container li,
+html body section#live-prototype > .container li{ color:var(--mid) !important; }
+html body section#prototype > .container h2,
+html body section#live-prototype > .container h2,
+html body section#prototype > .container h3,
+html body section#live-prototype > .container h3,
+html body section#prototype > .container strong,
+html body section#live-prototype > .container strong{ color:var(--text) !important; }
+html body section#prototype > .container .cs-take,
+html body section#live-prototype > .container .cs-take{ color:var(--text) !important; }
+html body section#prototype > .container .section-eyebrow,
+html body section#live-prototype > .container .section-eyebrow,
+html body section#prototype > .container h2 em,
+html body section#live-prototype > .container h2 em{ color:var(--c-deep) !important; }
+html body section#prototype > .container .section-eyebrow::before,
+html body section#live-prototype > .container .section-eyebrow::before{ background:var(--c-deep) !important; }
+html[data-theme="dark"] body section#prototype > .container .section-eyebrow,
+html[data-theme="dark"] body section#live-prototype > .container .section-eyebrow,
+html[data-theme="dark"] body section#prototype > .container h2 em,
+html[data-theme="dark"] body section#live-prototype > .container h2 em{ color:var(--c-lite) !important; }
+
+/* the stage the media sits on */
+html body .prototype-video-wrap,
+html body .proto-wrap{
+  background:var(--surface) !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 55%, transparent) !important;
+  border-radius:18px !important;
+  padding:20px !important;
+  box-shadow:var(--lift-1) !important;
+}
+/* specificity has to clear `section[style*='linear-gradient'] .proto-label` from
+   the pastel block, which still matches because the inline gradient attribute stays */
+html body section#prototype .prototype-label,
+html body section#live-prototype .proto-label,
+html body .prototype-label,
+html body .proto-label{
+  color:var(--c-deep) !important;
+  text-align:left !important;
+  margin:0 0 14px !important;
+}
+html[data-theme="dark"] body section#prototype .prototype-label,
+html[data-theme="dark"] body section#live-prototype .proto-label,
+html[data-theme="dark"] body .prototype-label,
+html[data-theme="dark"] body .proto-label{ color:var(--c-lite) !important; }
+html body .prototype-label span{ color:var(--mid) !important; }
+
+/* 3c · Foundry's Solution band goes light, matching the reference's impact band */
+html body section.shipped-band.shipped-band{
+  background:var(--c-tint) !important;
+  background-image:none !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 50%, transparent) !important;
+}
+html body .shipped-band .shipped-eyebrow{ color:var(--c-deep) !important; }
+html body .shipped-band .shipped-eyebrow::before{ background:var(--c-deep) !important; }
+html body .shipped-band h2{ color:var(--text) !important; }
+html body .shipped-band h2 em{ color:var(--c-deep) !important; }
+html body .shipped-band .shipped-lead{ color:var(--mid) !important; max-width:70ch !important; }
+html body .shipped-band .shipped-lead strong{ color:var(--text) !important; }
+html body .shipped-band .shipped-chip{
+  color:var(--c-deep) !important;
+  background:color-mix(in srgb, var(--c-mid) 30%, transparent) !important;
+  border:1px solid color-mix(in srgb, var(--c-mid) 65%, transparent) !important;
+}
+html body .shipped-band .shipped-cap{ color:var(--mid) !important; }
+html body .shipped-band .shipped-cap .cap-n{ color:var(--c-deep) !important; }
+html body .shipped-band .shipped-cap strong{ color:var(--text) !important; }
+html body .shipped-band .shipped-fig .frame{
+  border:1px solid color-mix(in srgb, var(--text) 12%, transparent) !important;
+  box-shadow:var(--lift-2) !important;
+}
+html[data-theme="dark"] body section.shipped-band.shipped-band{ background:var(--c-tint) !important; }
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow,
+html[data-theme="dark"] body .shipped-band h2 em,
+html[data-theme="dark"] body .shipped-band .shipped-chip,
+html[data-theme="dark"] body .shipped-band .shipped-cap .cap-n{ color:var(--c-lite) !important; }
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
+
+/* ---- 4 · SECTION RHYTHM: the pull quote sits the same everywhere ---- */
+html body .cs-take{ margin-top:18px !important; margin-bottom:22px !important; }
+
+/* ---- 5 · AA on the tinted bands ----
+   .impact-label and the band eyebrows clear 4.5:1 on white but not on the
+   band's own tint. Scoped to the band only: no global text-colour rule here,
+   so nothing leaks into the dark reflection panel. */
+html:not([data-theme="dark"]) body .impact-section .impact-label,
+html:not([data-theme="dark"]) body .shipped-band .shipped-cap{ color:#4A4A55 !important; }
+html:not([data-theme="dark"]) body .impact-section .section-eyebrow,
+html:not([data-theme="dark"]) body .impact-section .built-eyebrow,
+html:not([data-theme="dark"]) body .shipped-band .shipped-eyebrow{
+  color:color-mix(in srgb, var(--c-deep) 80%, #000) !important;
+}
+html:not([data-theme="dark"]) body .impact-section .section-eyebrow::before,
+html:not([data-theme="dark"]) body .impact-section .built-eyebrow::before,
+html:not([data-theme="dark"]) body .shipped-band .shipped-eyebrow::before{
+  background:color-mix(in srgb, var(--c-deep) 80%, #000) !important;
+}
+html[data-theme="dark"] body .impact-section .impact-label,
+html[data-theme="dark"] body .shipped-band .shipped-cap{ color:rgba(255,255,255,.80) !important; }
+html[data-theme="dark"] body .impact-section .section-eyebrow,
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow{ color:var(--c-lite) !important; }
+html[data-theme="dark"] body .impact-section .section-eyebrow::before,
+html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
+
+
+/* ---- 6 · NOX HERO VIDEO ----
+   The source recording is a phone mockup centred on black: 49% of its width was
+   padding, so the phone rendered ~121px wide inside a 236px box and read as cut
+   off. The video is now cropped to the phone SCREEN only (the mockup bezel and
+   the black surround are both gone) and this frame supplies the device instead:
+   one rounded, hairlined rectangle, identical on every case study. 464x1004 is
+   the exact iPhone screen ratio, so `contain` never letterboxes. */
+html body .hero-video-frame--portrait{
+  width:188px !important;
+  max-width:100% !important;
+  aspect-ratio:464 / 1004 !important;
+  background:#0B0C10 !important;
+}
+html body .hero-video-frame--portrait video{ object-fit:contain !important; }
+@media(max-width:860px){
+  html body .hero-video-frame--portrait{ width:210px !important; }
+}
+/* the in-page prototype player: same crop, so cap it to a phone-sized column */
+html body .prototype-video-wrap video{
+  max-width:300px !important;
+  margin:0 auto !important;
+}
+
+
+/* ---- 7 · NOX FINAL SCREENS ----
+   Was one 1800px strip showing four phones at ~180px each, where none of the
+   UI was legible. Now four individual screens, 2-up, at roughly 2x that size. */
+html body .nox-screens{
+  display:grid !important;
+  grid-template-columns:repeat(2,1fr) !important;
+  gap:26px !important;
+  margin:8px 0 4px !important;
+}
+html body .nox-screens .nox-screen{ margin:0 !important; }
+html body .nox-screens .nox-screen-shot{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--c-tint) 70%, #FFF) 0%, var(--surface) 72%);
+  border:1px solid color-mix(in srgb, var(--c-mid) 55%, transparent);
+  border-radius:16px;
+  padding:18px 18px 0;
+  overflow:hidden;
+  box-shadow:var(--lift-1);
+}
+html body .nox-screens .nox-screen-shot img{
+  width:100% !important; height:auto !important; display:block !important;
+  border-radius:10px 10px 0 0;
+}
+html body .nox-screens figcaption{
+  font-size:13px; line-height:1.55; color:#4A4A55; padding:12px 2px 0;
+}
+html body .nox-screens figcaption strong{ color:var(--text); font-weight:600; display:block; margin-bottom:2px; }
+@media(max-width:700px){
+  html body .nox-screens{ grid-template-columns:1fr !important; gap:22px !important; }
+}
+
+
+/* ---- 8 · ENLARGE AFFORDANCE ----
+   Dense artefacts (the affinity map above all) are click-to-zoom but nothing
+   said so, so they read as illegible rather than explorable.
+   ::after is already the hairline inner frame, so this uses ::before. */
+html body .case-img-wrapper:has(> img.pf-zoomable),
+html body .figure .shot:has(img.pf-zoomable){ position:relative; }
+html body .case-img-wrapper:has(> img.pf-zoomable)::before,
+html body .figure .shot:has(img.pf-zoomable)::before{
+  content:"Click to enlarge";
+  position:absolute; top:12px; right:12px; z-index:4;
+  font-family:var(--mono, ui-monospace, monospace);
+  font-size:10.5px; letter-spacing:.04em;
+  padding:6px 10px; border-radius:999px;
+  color:#FFFFFF; background:rgba(18,18,22,.72);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  pointer-events:none;
+  opacity:0; transform:translateY(-3px);
+  transition:opacity .18s ease, transform .18s ease;
+}
+html body .case-img-wrapper:has(> img.pf-zoomable):hover::before,
+html body .case-img-wrapper:has(> img.pf-zoomable):focus-within::before,
+html body .figure .shot:has(img.pf-zoomable):hover::before,
+html body .figure .shot:has(img.pf-zoomable):focus-within::before{ opacity:1; transform:none; }
+/* touch devices never hover, so show it there by default */
+@media (hover:none){
+  html body .case-img-wrapper:has(> img.pf-zoomable)::before,
+  html body .figure .shot:has(img.pf-zoomable)::before{ opacity:1; transform:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  html body .case-img-wrapper:has(> img.pf-zoomable)::before,
+  html body .figure .shot:has(img.pf-zoomable)::before{ transition:none; }
+}
+
+
+/* ---- 9 · (was: hero walkthrough videos on nexstera + saksham) ----
+   Reverted. Both heroes are back to the live Figma prototype, which reads
+   better there than a recording, so the --wide / --tall frame variants and the
+   .hero-figma overrides they needed are gone and the pages' own hero CSS is
+   left to do its original job. --portrait, in section 6, is still live on Nox. */
+
+
+/* ---- 10 · HERO MEDIA MUST CLEAR THE FIXED NAV ----
+   The nav is position:fixed and 97px tall; the hero's padding-top is only 84px.
+   Any media column taller than the hero's content box gets clamped to that 84px
+   and slides under the nav, which clipped the top of the Nox phone.
+   Cap the column and let flex centring do the rest. */
+html body .hero .hero-video,
+html body .hero .hero-figma,
+html body .hero .hero-docs{
+  max-height:calc(100vh - 150px) !important;
+  align-self:center !important;
+}
+@media(min-width:961px){
+  html body .hero.hero.hero{ padding-top:110px !important; }
+}
+
+
+/* ---- 11 · HERO VIDEO: custom pause control ----
+   The native control bar is a black strip painted over the product UI. These
+   clips autoplay, are silent and loop, so the only control they need is
+   pause/play (WCAG 2.2.2 requires one for anything auto-playing over 5s).
+   Always visible, not hover-only, so it works on touch and by keyboard. */
+html body .hero-video-frame{ position:relative !important; }
+html body .hero-video-frame .hv-toggle{
+  position:absolute; right:10px; bottom:10px; z-index:3;
+  width:34px; height:34px; padding:0; border:0; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  color:#FFFFFF;
+  background:rgba(14,15,20,.52);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 2px 10px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.30);
+  opacity:.72;   /* has to stay findable over a dark splash frame as well as a white UI */
+  transition:opacity .18s ease, transform .18s ease, background .18s ease;
+}
+html body .hero-video-frame:hover .hv-toggle,
+html body .hero-video-frame .hv-toggle:hover,
+html body .hero-video-frame .hv-toggle:focus-visible{
+  opacity:1; background:rgba(14,15,20,.74); transform:scale(1.06);
+}
+html body .hero-video-frame .hv-toggle svg{ width:15px; height:15px; display:block; fill:currentColor; }
+html body .hero-video-frame .hv-toggle .hv-play{ display:none; }
+html body .hero-video-frame .hv-toggle[data-paused="true"] .hv-pause{ display:none; }
+html body .hero-video-frame .hv-toggle[data-paused="true"] .hv-play{ display:block; }
+@media (prefers-reduced-motion:reduce){
+  html body .hero-video-frame .hv-toggle{ transition:none; }
+}
+
+</style>
+<style id="a11yfix-2026-09">
+/* ==================================================================
+   ACCESSIBILITY PASS (WCAG 2.2 AA) · 2026-09
+   Measured from real rendered pixels, in the state the site actually
+   ships in (no data-theme attribute is ever set on this site).
+   Remove this whole block to revert.
+   ================================================================== */
+
+/* ---- 1 · WATERMARK NUMERALS ----
+   The ghosted 01/02/03 numerals are meaningful (they sequence the cards),
+   so they carry the 3:1 large-text requirement. They were 1.8–2.5:1. */
+html body .insight-num,
+html body .problem-num,
+html body .rq-num,
+html body .theme-num,
+html body .opp-num,
+html body .method-num,
+html body .killed-n,
+html body .decision-num{
+  opacity:1 !important;
+  color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  -webkit-text-fill-color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+}
+html body .insight-card.insight-card .insight-num{
+  color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  -webkit-text-fill-color:color-mix(in srgb, var(--c-deep) 78%, #FFFFFF) !important;
+  opacity:1 !important;
+}
+
+/* ---- 2 · SMALL GREY LABELS ---- (were 3.5–4.4:1 against their own surface) */
+html body .stat-method,
+html body .nox-doc-meta,
+html body .hero-doc-meta,
+html body .prototype-label span,
+html body .proto-label span{ color:#4A4A55 !important; opacity:1 !important; }
+/* .hero:has(.hero-sub) is (0,2,0)+!important, so the caption needs .hero.hero.hero */
+html:not([data-theme="dark"]) body .hero.hero.hero .hero-figma-caption,
+html:not([data-theme="dark"]) body .hero.hero.hero .hero-video-caption,
+html body .hero.hero.hero .hero-figma-caption,
+html body .hero-figma-caption{ color:#2F2F38 !important; opacity:1 !important; }
+
+/* white-on-colour micro-label inside the journey-map stage headers */
+html body .jm-stage-num{ opacity:.92 !important; color:#FFFFFF !important; }
+
+/* ---- 3 · FOCUS VISIBILITY (2.4.7 + 2.4.11) ----
+   Ten interactive elements had no focus indicator at all. One ring for
+   everything focusable, in the brand pink, with a light halo so it stays
+   visible on both pale and saturated surfaces. */
+html body a:focus-visible,
+html body button:focus-visible,
+html body [tabindex]:focus-visible,
+html body video:focus-visible,
+html body input:focus-visible,
+html body textarea:focus-visible,
+html body select:focus-visible{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:3px !important;
+  border-radius:6px;
+  box-shadow:0 0 0 6px rgba(255,255,255,.85) !important;
+}
+/* cards already carry a radius: match it so the ring hugs the shape */
+html body .bento-tile:focus-visible,
+html body .nox-doc-card:focus-visible,
+html body .hero-doc-card:focus-visible,
+html body .b-tile:focus-visible,
+html body .next-btn:focus-visible,
+html body .contact-btn:focus-visible,
+html body .hero-site-pill:focus-visible{ border-radius:16px; }
+/* focusing an iframe hands focus to the embedded document, so the parent page
+   can only show it on the wrapper */
+html body .embed-frame:focus-within,
+html body .proto-viewport:focus-within,
+html body .mockup-showcase:focus-within,
+html body .hero-figma:focus-within,
+html body .hero-figma-frame:focus-within{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:3px !important;
+}
+
+/* never let a decorative rule swallow the ring */
+html body *:focus-visible{ outline-color:var(--brand, #9E3462) !important; }
+
+/* ---- 4 · TARGET SIZE (2.5.8, 24x24 CSS px) ----
+   Nav and back links were 14–18px tall. Padding only: no layout shift,
+   the flex row keeps its alignment. */
+html body nav a,
+html body .nav-links a,
+html body .mx-nav a,
+html body .nav-back{
+  padding-block:6px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:24px !important;
+}
+
+/* Standalone links that sit in flex strips rather than in a sentence, so the
+   2.5.8 inline exception does not cover them. Padding grows the hit area and an
+   equal negative margin gives the space back, so nothing moves on screen. */
+html body .ms-more{
+  display:inline-block !important;
+  padding-block:6px !important;
+  margin-block:-6px !important;
+}
+html body .cs-inline-link{
+  display:inline-block !important;
+  padding-top:8px !important;
+  margin-top:-8px !important;
+}
+html body .contact-email-addr{
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:26px !important;
+}
+
+/* Tabbing into an embedded frame moves focus to the child document: Chromium then
+   matches neither :focus on the iframe nor :focus-within on its ancestors, so
+   the rules above only fire for programmatic focus. ifrfocus-2026-09, the script injected at the end of the page,
+   sets this class instead. Inset, because both the frame and
+   its wrapper clip overflow and an outward ring would be cut off. */
+html body .embed-frame.ifr-focus,
+html body .proto-viewport.ifr-focus,
+html body .mockup-showcase.ifr-focus,
+html body .hero-figma.ifr-focus,
+html body .hero-figma-frame.ifr-focus{
+  outline:3px solid var(--brand, #9E3462) !important;
+  outline-offset:-3px !important;
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -2320,7 +2796,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="hero-content">
       <p class="hero-tag">Product Design · Identity · Mobile App</p>
       <h1>Nox<span>+</span></h1>
-      <p class="hero-sub">A privacy-first identity platform I led end to end with a team of four. The defining call: we cut two of our own AI features, a document scanner and a file-reading assistant, once research showed the real blocker was trust, not convenience.</p>
+      <p class="hero-sub">A privacy-first identity platform. I led design and research on a team of four. The defining call: we cut two of our own AI features, a document scanner and a file-reading assistant, once research showed the real blocker was trust, not convenience.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <div class="hero-meta-label">My Role</div>
@@ -2328,7 +2804,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Team</div>
-          <div class="hero-meta-value">1 lead · 1 researcher · 2 designers</div>
+          <div class="hero-meta-value">4 designers</div>
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Timeline</div>
@@ -2342,9 +2818,12 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     </div>
     <div class="hero-video">
       <div class="hero-video-frame hero-video-frame--portrait">
-        <video id="noxProto" src="assets/nox-prototype.mp4" poster="assets/nox-prototype-poster.jpg"
-               muted loop playsinline controls preload="auto"
+        <video autoplay id="noxProto" data-still="11" src="assets/nox-prototype-crop.mp4" poster="assets/nox-prototype-poster-crop.jpg"
+               muted loop playsinline preload="auto"
                aria-label="Nox+ Figma prototype walkthrough, a silent screen recording with no audio"></video>
+            <button type="button" class="hv-toggle" aria-label="Pause the walkthrough">
+              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect class="hv-pause" x="4.4" y="3.2" width="2.6" height="9.6" rx="1"/><rect class="hv-pause" x="9" y="3.2" width="2.6" height="9.6" rx="1"/><path class="hv-play" d="M5.4 3.4l7 4.6-7 4.6z"/></svg>
+            </button>
       </div>
       <style>
         .hero-video-frame--portrait{width:340px;max-width:100%;aspect-ratio:1280 / 1460;}
@@ -2418,7 +2897,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">College students felt anxious every time they uploaded identity documents to another portal, with no transparency about where their data went.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Leading a 4-person team, I owned research and design end to end, from a survey of 96 and contextual inquiry to the trust model the app hangs on, cutting two of our own AI features once testing showed the real blocker was trust.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Leading a 4-person team, I ran the research myself and drove the design direction, from a survey of 96 and contextual inquiry to the trust model the app is built on, delegating screens to the other three designers and holding consistency through critique, cutting two of our own AI features once testing showed the real blocker was trust.</div></div>
         <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>A privacy-first verification flow</strong> built around visible trust: redacted previews, revocable sharing, and a cross-platform Face ID handoff, a direction the identity space has moved toward since.</div></div>
       </div>
     </div>
@@ -2577,12 +3056,12 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="container fade-in">
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Nox+.</em></h2>
-      <p class="cs-take">Prove who you are without ever putting your documents on screen.</p>
+      <p class="cs-take">Prove who you are without putting your full document on screen, or in anyone else&rsquo;s hands.</p>
       <p class="body-text">Nox+ is built on a simple premise: <strong>people don't want to manage their identity; they want to forget about it until they need it.</strong> The app pairs a physical proof card with a mobile platform for verification across digital and in-person contexts, and every feature answers the question participants kept asking: "Who has my data, and can I trust them?"</p>
     </div>
 
     <div class="container-wide fade-in">
-      <div class="case-img-wrapper" style="max-width: 340px;">
+      <div class="case-img-wrapper is-contain">
         <div class="case-img-caption">The Nox+ mark: a shield built around a verification star, in light and dark</div>
         <img src="assets/nox-app-icons.webp" alt="Nox+ app icon, light and dark variants" loading="eager" decoding="async" />
       </div>
@@ -2590,16 +3069,31 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 
     <!-- Final hi-fi screens -->
     <div class="container-wide fade-in">
-      <div class="case-img-wrapper">
-        <div class="case-img-caption">The final designs: the identity home with a branded proof-of-identity card, the document vault, a privacy-preserving share (FAFSA keeps no copy of your documents), and family access</div>
-        <img src="assets/nox-app-screens-4.webp" alt="Final Nox+ screens: IDs home, document vault, FAFSA data-shared, and family access" loading="eager" decoding="async" />
+      <p class="figcap" style="margin:0 0 18px;">The final designs, screen by screen.</p>
+      <div class="nox-screens">
+        <figure class="nox-screen">
+          <div class="nox-screen-shot"><img src="assets/nox-screen-1.webp" width="411" height="901" alt="Nox+ identity home: a branded proof-of-identity card for Pam Privacy, with public services, school, healthcare, airport and onboarding shortcuts" loading="eager" decoding="async" /></div>
+          <figcaption><strong>Identity home</strong> A branded proof-of-identity card, with quick verification contexts underneath.</figcaption>
+        </figure>
+        <figure class="nox-screen">
+          <div class="nox-screen-shot"><img src="assets/nox-screen-2.webp" width="411" height="901" alt="Nox+ document vault: passport, driver&rsquo;s license, social security card and TSA PreCheck, with a passport expiry notice" loading="eager" decoding="async" /></div>
+          <figcaption><strong>Document vault</strong> Government IDs in one place, with an expiry warning before it becomes a problem.</figcaption>
+        </figure>
+        <figure class="nox-screen">
+          <div class="nox-screen-shot"><img src="assets/nox-screen-3.webp" width="411" height="901" alt="Nox+ FAFSA share confirmation: the fields sent, the recipient, and a note that FAFSA keeps no copy" loading="eager" decoding="async" /></div>
+          <figcaption><strong>Privacy-preserving share</strong> Only the requested fields leave, and the page says exactly which ones did.</figcaption>
+        </figure>
+        <figure class="nox-screen">
+          <div class="nox-screen-shot"><img src="assets/nox-screen-4.webp" width="411" height="901" alt="Nox+ family access: Taylor and Alex Nobrainer listed with request and revoke controls" loading="eager" decoding="async" /></div>
+          <figcaption><strong>Family access</strong> Access granted for a set window, revocable at any time.</figcaption>
+        </figure>
       </div>
     </div>
 
     <!-- Cross-platform verification flow (the payoff) -->
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
-        <div class="case-img-caption">The payoff, end to end: Pam uploads to FAFSA, approves the share with Face ID in Nox+, and the site confirms, without her documents ever being exposed on screen</div>
+        <div class="case-img-caption">The payoff, end to end: Pam uploads to FAFSA, approves the share with Face ID in Nox+, and the site confirms, without her full document ever being exposed to the site</div>
         <img src="assets/nox-fafsa-flow.webp" alt="Cross-platform verification: from the FAFSA website to Face ID approval in Nox+ to a verified confirmation" loading="eager" decoding="async" />
       </div>
     </div>
@@ -2635,13 +3129,13 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="container fade-in">
       <p class="section-eyebrow">Validation</p>
       <h2 class="section-title">Testing that changed<br />the <em>design.</em></h2>
-      <p class="cs-take">Testing didn't just confirm the design. It changed it, every round.</p>
+      <p class="cs-take">Two things came straight out of testing: the AI came out, and the fingerprint pad got bigger.</p>
       <p class="body-text">Every round of usability testing existed to answer one question: do people trust this? Each round sent me back to change something specific.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-number">63&rarr;94%</div>
+          <div class="stat-number">63&rarr;95%</div>
           <div class="stat-desc">task success on the core verification flow, from the first prototype to the final usability round</div>
           <div class="stat-method">Moderated usability test &middot; 8 participants &middot; 5 core tasks &middot; measured first vs. final prototype</div>
         </div>
@@ -2730,12 +3224,13 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: rgba(200,170,255,0.7);">Live Prototype</p>
       <h2 class="section-title" style="color: white;">See Nox+ <em style="color: var(--purple-light);">in action.</em></h2>
+      <p class="cs-take">The whole flow end to end: onboarding, biometric setup, and a verification that never puts the document on screen.</p>
       <p class="body-text" style="color: rgba(255,255,255,0.55);">A walkthrough of the Figma prototype demonstrating the complete user flow: from onboarding and biometric setup through document management and identity verification.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="prototype-video-wrap" id="proto-live" style="background: rgba(255,255,255,0.06);">
         <p class="prototype-label">Prototype Walkthrough <span style="opacity:.72;letter-spacing:0;text-transform:none;font-weight:400">&middot; silent screen recording</span></p>
-        <video src="assets/nox-prototype.mp4" poster="assets/nox-prototype-poster.jpg" controls playsinline preload="auto" style="display:block;margin:0 auto;width:100%;max-width:440px;height:auto;border-radius:22px;background:#000;" aria-label="Nox+ Figma prototype walkthrough, a silent screen recording with no audio"></video>
+        <video src="assets/nox-prototype-crop.mp4" poster="assets/nox-prototype-poster-crop.jpg" controls playsinline preload="auto" style="display:block;margin:0 auto;width:100%;max-width:440px;height:auto;border-radius:22px;background:#000;" aria-label="Nox+ Figma prototype walkthrough, a silent screen recording with no audio"></video>
       </div>
     </div>
   </section>
@@ -2747,7 +3242,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
     <div class="container fade-in">
       <p class="section-eyebrow">Reflection</p>
       <h2 class="section-title">What leading taught me<br />& <em>what I'd do differently.</em></h2>
-      <p class="body-text">The hardest part of leading this wasn't the design itself. It was prioritization. With four people and 10 weeks, every yes to a feature was a no to two others. <strong>Saying no to good ideas, especially my own, was the work.</strong></p>
+      <p class="body-text">The hardest part of leading this wasn't the design itself. It was prioritization. With four people and a 10-week build inside the term, every yes to a feature was a no to two others. <strong>Saying no to good ideas, especially my own, was the work.</strong></p>
 
       <div class="callout-box">
         <p>Apple's Digital ID launched in November 2025 while we were still building Nox+: the same trust problem, now surfacing in the world's largest consumer ecosystem. It didn't validate our specific design, but it was a good sign we'd read the problem right.</p>
@@ -3099,5 +3594,48 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
 })();
 </script>
 
+<script>
+/* hero walkthrough: custom pause/play, and honour prefers-reduced-motion */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.hero-video-frame').forEach(function(frame){
+    var v = frame.querySelector('video'), btn = frame.querySelector('.hv-toggle');
+    if(!v || !btn) return;
+    if(reduce){
+      v.removeAttribute('autoplay'); v.autoplay = false; try{ v.pause(); }catch(e){}
+      /* the poster is frame 0, which is the loop point rather than the most
+         telling screen; with motion off, park on the frame the page is about */
+      var still = parseFloat(v.getAttribute('data-still') || '0');
+      if(still > 0){
+        var seek = function(){ try{ v.currentTime = still; }catch(e){} };
+        if(v.readyState >= 1) seek(); else v.addEventListener('loadedmetadata', seek, {once:true});
+      }
+    }
+    function sync(){
+      var paused = v.paused;
+      btn.setAttribute('data-paused', paused ? 'true' : 'false');
+      btn.setAttribute('aria-label', (paused ? 'Play' : 'Pause') + ' the walkthrough');
+    }
+    btn.addEventListener('click', function(){
+      if(v.paused){ var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
+      else { v.pause(); }
+      sync();
+    });
+    v.addEventListener('play', sync);
+    v.addEventListener('pause', sync);
+    /* pause when scrolled away so it is not looping unseen */
+    if('IntersectionObserver' in window && !reduce){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ if(!v.dataset.userPaused){ var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){}); } }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.25 }).observe(v);
+    }
+    btn.addEventListener('click', function(){ v.dataset.userPaused = v.paused ? '1' : ''; });
+    sync();
+  });
+})();
+</script>
 </body>
 </html>
