@@ -2447,17 +2447,47 @@ html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:
    padding, so the phone rendered ~121px wide inside a 236px box and read as cut
    off. The video is now cropped to the phone SCREEN only (the mockup bezel and
    the black surround are both gone) and this frame supplies the device instead:
-   one rounded, hairlined rectangle, identical on every case study. 464x1004 is
-   the exact iPhone screen ratio, so `contain` never letterboxes. */
+   one rounded, hairlined rectangle. 464x1004 is the exact iPhone screen ratio,
+   so `contain` never letterboxes.
+
+   The frame is a black bezel, not just a clip: the crop starts at the screen's
+   first row, so the notch sat flush against the frame's edge and the phone read
+   as beheaded, with the hero's lilac showing through the corner radius on either
+   side of it. 10px of black padding insets the notch the way a real device does
+   and puts black, not lilac, behind every edge of the video. */
 html body .hero-video-frame--portrait{
-  width:188px !important;
+  width:208px !important;            /* 188 of video + 10px of bezel each side */
   max-width:100% !important;
-  aspect-ratio:464 / 1004 !important;
+  /* border box, so the ratio is the 464:1004 screen plus 20px of bezel each way */
+  aspect-ratio:208 / 427 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:10px !important;
+  box-sizing:border-box !important;
   background:#0B0C10 !important;
+  border-radius:26px !important;
+  display:block !important;
 }
-html body .hero-video-frame--portrait video{ object-fit:contain !important; }
+/* The ratio above is the target, not a guarantee: on a short window the
+   nav-clearance cap in section 10 squeezes this column and flex takes the
+   difference out of the frame. Sizing the video to the frame and containing it
+   means a squeeze widens the bezel instead of slicing rows off the screen —
+   invisible, because the bezel is the same black. */
+html body .hero-video-frame--portrait video{
+  width:100% !important;
+  height:100% !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  border-radius:16px !important;
+  display:block !important;
+}
+/* absolute offsets are measured from the padding box, so the control has to
+   clear the bezel to sit inside the screen */
+html body .hero-video-frame--portrait .hv-toggle{
+  right:19px !important; bottom:19px !important;
+}
 @media(max-width:860px){
-  html body .hero-video-frame--portrait{ width:210px !important; }
+  html body .hero-video-frame--portrait{ width:230px !important; aspect-ratio:230 / 474 !important; }
 }
 /* the in-page prototype player: same crop, so cap it to a phone-sized column */
 html body .prototype-video-wrap video{
