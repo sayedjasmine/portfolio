@@ -1278,7 +1278,7 @@
     .footer-right { font-size: 13px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
-    section[id] { scroll-margin-top: 96px; }
+    section[id] { scroll-margin-top: 116px; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -2772,7 +2772,7 @@ html body .hero-figma-frame.ifr-focus{
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo-pink.png" alt="Jasmine Sayed, home"></a>
+    <a href="index.html" class="nav-logo"><img width="130" height="208" src="assets/jasmine-logo-pink.png" alt="Jasmine Sayed, home"></a>
     <div class="nav-right">
       <a href="play.html">Play</a>
       <a href="about.html">About</a>
@@ -2824,10 +2824,10 @@ html body .hero-figma-frame.ifr-focus{
       </div>
     </div>
     <div class="hero-docs">
-      <div class="hero-figma" style="background:#121317 url('assets/saksham-mockup-trim.webp') center/contain no-repeat;">
-        <iframe src="https://embed.figma.com/proto/vOScugmTaA0yo2M25I105V/Saksham-App-Design-File?node-id=2-12798&page-id=0%3A1&embed-host=share" allowfullscreen loading="eager" decoding="async" title="Saksham interactive Figma prototype"></iframe>
+      <div class="hero-figma" style="background:#121317;">
+        <img src="assets/saksham-mockup-trim.webp" width="519" height="562" alt="Two Saksham screens: a learner-controlled dashboard, and a course page tagged dyslexic friendly and visual/motor friendly" style="display:block;" loading="eager" decoding="async" fetchpriority="high" />
       </div>
-      <div class="hero-figma-caption">Live Figma prototype · tap through the screens to explore the flow</div>
+      <div class="hero-figma-caption"><a href="#prototype" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Try the live Figma prototype below &#8595;</a></div>
       <a href="https://jsayed23.github.io/saksham-reading-library/" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
         <div class="hero-doc-icon"><span>WEB</span></div>
         <div class="hero-doc-info"><div class="hero-doc-title">Open the live library</div><div class="hero-doc-meta">Working product, six languages</div></div>
@@ -2982,7 +2982,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Insights synthesis: connecting research findings to design opportunities</div>
-        <img src="assets/saksham-insights.webp" alt="Research insights synthesis showing key findings from user interviews and literature review" loading="eager" decoding="sync" fetchpriority="high" />
+        <img width="2082" height="1000" src="assets/saksham-insights.webp" alt="Research insights synthesis showing key findings from user interviews and literature review" loading="eager" decoding="sync" fetchpriority="high" />
       </div>
     </div>
   </section>
@@ -3040,7 +3040,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Low-fidelity wireframes: early layout explorations for the mobile learning app</div>
-        <img src="assets/saksham-lowfi-wireframe.webp" alt="Low-fidelity wireframes showing early layout explorations for the Saksham app" loading="lazy" decoding="async" />
+        <img width="1744" height="778" src="assets/saksham-lowfi-wireframe.webp" alt="Low-fidelity wireframes showing early layout explorations for the Saksham app" loading="lazy" decoding="async" />
       </div>
     </div>
 
@@ -3168,7 +3168,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="container-wide fade-in">
       <div class="case-img-wrapper is-contain">
         <div class="case-img-caption">The shipped library: a dashboard the learner controls, and a lesson view that labels how each course supports dyslexic and visual or motor needs before the child commits to it.</div>
-        <img src="assets/saksham-mockup-trim.webp" width="519" height="562" alt="Two Saksham screens: a personalised learning dashboard with progress and tutoring, and a Biology course page tagged dyslexic friendly and visual/motor friendly with numbered lessons" loading="lazy" decoding="async" />
+        <img src="assets/saksham-mockup-trim.webp" width="519" height="562" alt="Two Saksham screens: a personalised learning dashboard with progress and tutoring, and a Biology course page tagged dyslexic friendly and visual/motor friendly with numbered lessons" loading="eager" decoding="sync" />
       </div>
     </div>
 
@@ -3504,7 +3504,7 @@ html body .hero-figma-frame.ifr-focus{
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 96px; }
+  [id] { scroll-margin-top: 116px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
@@ -3674,6 +3674,48 @@ html body .process-icon:not([style])>svg.ico{stroke:var(--accent)!important}
 .cse-primary:hover{filter:brightness(1.08)}
 @media(max-width:720px){.cs-endcard{padding:38px 24px}.cs-endcard-title{font-size: 21px}
   .cs-endcard-links{width:100%}.cse-btn{flex:1 1 auto}}
+
+/* ---- csfix-2026-09-04: the hero still IS the artwork, so no letterbox around it.
+   The mockup is a transparent PNG of two phones; a fixed-height dark frame left a
+   large black box around it. Let the container hug the image instead. ---- */
+html body .hero-figma:has(> img){
+  height:auto !important; min-height:0 !important; background:transparent !important;
+  border:0 !important; box-shadow:none !important; overflow:visible !important;
+  max-width:470px !important; margin-left:auto !important; margin-right:auto !important;
+}
+html body .hero-figma > img{
+  width:100% !important; height:auto !important; display:block;
+  filter:drop-shadow(0 18px 40px rgba(20,19,31,.22));
+}
+
+/* ---- csfix-2026-09-04: width/height attributes exist to RESERVE space, never to
+   size the box. Where the CSS sets only width, the height attribute was being used
+   as the height and stretching the media. ---- */
+html body .hero-browser-frame img,
+html body .hero-browser-frame video,
+html body .browser-frame img,
+html body .browser-frame video{ height:auto !important; }
+
+/* ---- csfix-2026-09-04: one icon scale, not six. Icons were rendering at
+   17/18/21/24/28/32px because each container set its own font-size for emoji.
+   Chips get 20px, bare icons 22px, inline label icons 14px, one stroke weight. ---- */
+html body .method-icon > svg.ico,
+html body .obj-icon > svg.ico,
+html body .feature-icon-box > svg.ico,
+html body .next-step-icon > svg.ico,
+html body .sdg-icon > svg.ico,
+html body .process-icon > svg.ico{ width:20px !important; height:20px !important; }
+
+html body .feature-icon > svg.ico,
+html body .principle-icon > svg.ico,
+html body .vision-icon > svg.ico,
+html body .problem-icon > svg.ico,
+html body .feature-emoji > svg.ico{ width:22px !important; height:22px !important; }
+
+html body .anno > svg.ico,
+html body .success-title > span > svg.ico{ width:15px !important; height:15px !important; }
+
+html body svg.ico{ stroke-width:1.75 !important; }
 </style>
 <script id="figma-facade-js">
 (function(){

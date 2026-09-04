@@ -384,7 +384,7 @@
     .footer-right { font-size: 13px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── SECTION TABS ── */
-    section[id] { scroll-margin-top: 96px; }
+    section[id] { scroll-margin-top: 116px; }
     .section-tabs { position: sticky; top: 66px; z-index: 90; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); display: flex; justify-content: center; padding: 0 60px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .section-tabs::-webkit-scrollbar { display: none; }
     .tab-link { display: inline-flex; align-items: center; padding: 14px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; position: relative; top: 1px; }
@@ -1743,7 +1743,7 @@ html body .hero-figma-frame.ifr-focus{
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo-pink.png" width="1737" height="2769" alt="Jasmine Sayed, home"></a>
+    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo-pink.png" width="130" height="208" alt="Jasmine Sayed, home"></a>
     <div class="nav-right">
       <a href="play.html">Play</a>
       <a href="about.html">About</a>
@@ -1804,12 +1804,9 @@ html body .hero-figma-frame.ifr-focus{
           <div class="hero-browser-dots"><span></span><span></span><span></span></div>
           <div class="hero-browser-url">ai.azure.com &rsaquo; Discover &rsaquo; Models</div>
         </div>
-        <video id="foundryFlowVid" muted loop playsinline autoplay preload="auto" poster="assets/foundry-flow-poster.jpg" aria-label="Screen recording of the live Foundry Models flow: filtering by region, then comparing models side by side">
+        <video width="1600" height="738" id="foundryFlowVid" muted loop playsinline autoplay preload="auto" poster="assets/foundry-flow-poster.jpg" aria-label="Screen recording of the live Foundry Models flow: filtering by region, then comparing models side by side">
           <source src="assets/foundry-flow.mp4" type="video/mp4">
         </video>
-      </div>
-      <div style="text-align:center; margin-top:26px;">
-        <a href="https://azure.microsoft.com/en-us/products/ai-foundry" target="_blank" rel="noopener noreferrer" class="hero-site-pill hero-site-pill--link">Explore the live platform <span style="font-size:13px;">&#8599;</span></a>
       </div>
     </div>
   </section>
@@ -1887,7 +1884,7 @@ html body .hero-figma-frame.ifr-focus{
         </div>
         <div class="ba-stage">
           <img class="ba-shot is-active" data-view="before" aria-hidden="false" src="assets/before-foundry.webp" width="1356" height="750" alt="The old Foundry Models page: a dense four-column grid where each model shows only a name and a task, and the filter rail has no way to narrow by region" loading="eager" decoding="sync" fetchpriority="high" />
-          <img class="ba-shot" data-view="after" aria-hidden="true" src="assets/foundry-models-shipped.webp" width="2816" height="1316" alt="The live Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="lazy" decoding="async" />
+          <img class="ba-shot" data-view="after" aria-hidden="true" src="assets/foundry-models-shipped.webp" width="1800" height="841" alt="The live Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="lazy" decoding="async" />
         </div>
       </div>
       <p class="figcap">Toggle between the old catalog and the redesign that is now live. <strong>Before:</strong> a dense multi-column grid where every model shows little more than a <strong>name and a task</strong>, with <strong>no way to narrow by region</strong>, so a developer could commit to a model and only hit a wall at deployment. <strong>After:</strong> Region is promoted into the filter rail as a first-class way to narrow the catalog, in a cleaner, more scannable layout, with Compare a click away.</p>
@@ -1968,7 +1965,7 @@ html body .hero-figma-frame.ifr-focus{
         <div class="persona-card primary">
           <div class="persona-top">
             <span class="persona-badge">Primary persona</span>
-            <div class="persona-emoji"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+            <div class="persona-emoji">👨🏻‍💻</div>
             <div class="persona-name">Alex</div>
             <div class="persona-role">Startup Software Developer</div>
           </div>
@@ -1995,7 +1992,7 @@ html body .hero-figma-frame.ifr-focus{
 
     <div class="container-wide fade-in">
       <div class="figure">
-        <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="lazy" decoding="async" /></div>
+        <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="eager" decoding="sync" /></div>
         <p class="figcap"><strong>Paper prototype.</strong> Two ideas we carried forward: handling <strong>region</strong> up front so a developer never commits to a model they can't deploy, and a <strong>model-selection flow</strong> with an “ask AI to find the best model” helper and clearer descriptions to reduce overload.</p>
       </div>
     </div>
@@ -2404,7 +2401,7 @@ html body .hero-figma-frame.ifr-focus{
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 96px; }
+  [id] { scroll-margin-top: 116px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
@@ -2453,6 +2450,42 @@ html body .process-icon:not([style])>svg.ico{stroke:var(--accent)!important}
 .cse-primary:hover{filter:brightness(1.08)}
 @media(max-width:720px){.cs-endcard{padding:38px 24px}.cs-endcard-title{font-size: 21px}
   .cs-endcard-links{width:100%}.cse-btn{flex:1 1 auto}}
+
+/* ---- csfix-2026-09-04: a lone persona sat in the left third of a 3-up grid ---- */
+html body .persona-grid:has(> .persona-card:only-child){
+  grid-template-columns:minmax(0,560px) !important;
+  justify-content:center !important;
+}
+html body .persona-emoji{ font-size:24px !important; line-height:1 !important; }
+
+/* ---- csfix-2026-09-04: width/height attributes exist to RESERVE space, never to
+   size the box. Where the CSS sets only width, the height attribute was being used
+   as the height and stretching the media. ---- */
+html body .hero-browser-frame img,
+html body .hero-browser-frame video,
+html body .browser-frame img,
+html body .browser-frame video{ height:auto !important; }
+
+/* ---- csfix-2026-09-04: one icon scale, not six. Icons were rendering at
+   17/18/21/24/28/32px because each container set its own font-size for emoji.
+   Chips get 20px, bare icons 22px, inline label icons 14px, one stroke weight. ---- */
+html body .method-icon > svg.ico,
+html body .obj-icon > svg.ico,
+html body .feature-icon-box > svg.ico,
+html body .next-step-icon > svg.ico,
+html body .sdg-icon > svg.ico,
+html body .process-icon > svg.ico{ width:20px !important; height:20px !important; }
+
+html body .feature-icon > svg.ico,
+html body .principle-icon > svg.ico,
+html body .vision-icon > svg.ico,
+html body .problem-icon > svg.ico,
+html body .feature-emoji > svg.ico{ width:22px !important; height:22px !important; }
+
+html body .anno > svg.ico,
+html body .success-title > span > svg.ico{ width:15px !important; height:15px !important; }
+
+html body svg.ico{ stroke-width:1.75 !important; }
 </style>
 <script id="mx-motion-js">
 (function(){

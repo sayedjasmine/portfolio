@@ -1361,7 +1361,7 @@
     .footer-right { font-size: 13px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── ANCHOR SCROLL OFFSET (clears fixed nav + sticky section tabs) ── */
-    section[id] { scroll-margin-top: 96px; }
+    section[id] { scroll-margin-top: 116px; }
 
     /* ── SECTION TABS ── */
     .section-tabs {
@@ -2776,7 +2776,7 @@ html body .hero-figma-frame.ifr-focus{
       <div class="hamburger-bars"><span></span><span></span><span></span></div>
       <span class="hamburger-close-label">Close</span>
     </button>
-    <a href="index.html" class="nav-logo"><img src="assets/jasmine-logo-pink.png" alt="Jasmine Sayed, home"></a>
+    <a href="index.html" class="nav-logo"><img width="130" height="208" src="assets/jasmine-logo-pink.png" alt="Jasmine Sayed, home"></a>
     <div class="nav-right">
       <a href="play.html">Play</a>
       <a href="about.html">About</a>
@@ -2829,7 +2829,7 @@ html body .hero-figma-frame.ifr-focus{
     </div>
     <div class="hero-figma">
       <div class="hero-figma-frame" style="background:#12172A;">
-        <img src="assets/nexstera-mockup-trim.webp" width="1600" height="1000" alt="The redesigned Nexstera Tech site: investor-facing homepage and education hub" style="width:100%;height:100%;object-fit:contain;display:block;" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/nexstera-mockup-trim.webp" width="916" height="626" alt="The redesigned Nexstera Tech site: investor-facing homepage and education hub" style="width:100%;height:100%;object-fit:contain;display:block;" loading="eager" decoding="async" fetchpriority="high" />
       </div>
       <div class="hero-figma-caption"><a href="#prototype" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Try the live Figma prototype below ↓</a></div>
     </div>
@@ -3164,11 +3164,11 @@ html body .hero-figma-frame.ifr-focus{
       <div class="case-img-grid" style="grid-template-columns: 1fr; max-width: 720px; gap: 30px;">
         <div class="case-img-wrapper">
           <div class="case-img-caption">Initial sketches exploring layout concepts</div>
-          <img src="assets/nexstera-sketch-1.webp" alt="Early concept sketch exploring layout and information hierarchy" loading="lazy" decoding="async" />
+          <img width="990" height="626" src="assets/nexstera-sketch-1.webp" alt="Early concept sketch exploring layout and information hierarchy" loading="lazy" decoding="async" />
         </div>
         <div class="case-img-wrapper">
           <div class="case-img-caption">Refined sketches iterating on page structure</div>
-          <img src="assets/nexstera-sketch-2.webp" alt="Refined sketch iterations for key pages" loading="lazy" decoding="async" />
+          <img width="846" height="1074" src="assets/nexstera-sketch-2.webp" alt="Refined sketch iterations for key pages" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -3177,7 +3177,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Mid-fidelity wireframes: translating sketches into structured Figma layouts</div>
-        <img src="assets/nexstera-midfi-wireframe.webp" alt="Mid-fidelity wireframes showing page layouts in Figma" loading="lazy" decoding="async" />
+        <img width="1708" height="1158" src="assets/nexstera-midfi-wireframe.webp" alt="Mid-fidelity wireframes showing page layouts in Figma" loading="lazy" decoding="async" />
       </div>
     </div>
 
@@ -3185,7 +3185,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Think-aloud study: annotated markup highlighting usability issues and user confusion points</div>
-        <img src="assets/nexstera-thinkaloud-studies-markup.webp" alt="Think-aloud study markup showing annotated user feedback on the original site" loading="lazy" decoding="async" />
+        <img width="1028" height="892" src="assets/nexstera-thinkaloud-studies-markup.webp" alt="Think-aloud study markup showing annotated user feedback on the original site" loading="lazy" decoding="async" />
       </div>
     </div>
 
@@ -3325,7 +3325,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="container-wide fade-in">
       <div class="case-img-wrapper is-contain">
         <div class="case-img-caption">The launched site: the investor page leads with traction and a direct path to a meeting, and the education hub carries the news and progress modules that make Nexstera legible to a first-time visitor.</div>
-        <img src="assets/nexstera-mockup-trim.webp" width="916" height="626" alt="The redesigned Nexstera Tech site on a laptop and tablet: the investor-facing homepage with product and education entry points, and the education hub showing news and progress modules" loading="lazy" decoding="async" />
+        <img src="assets/nexstera-mockup-trim.webp" width="916" height="626" alt="The redesigned Nexstera Tech site on a laptop and tablet: the investor-facing homepage with product and education entry points, and the education hub showing news and progress modules" loading="eager" decoding="sync" />
       </div>
     </div>
 
@@ -3614,7 +3614,7 @@ html body .hero-figma-frame.ifr-focus{
   .mx-top svg { width: 18px; height: 18px; }
 
   .mx-nav-active { color: #2D5A82 !important; }
-  [id] { scroll-margin-top: 96px; }
+  [id] { scroll-margin-top: 116px; }
 
   .card .card-preview { overflow: hidden; }
   .card .card-preview img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
@@ -3784,6 +3784,35 @@ html body .process-icon:not([style])>svg.ico{stroke:var(--accent)!important}
 .cse-primary:hover{filter:brightness(1.08)}
 @media(max-width:720px){.cs-endcard{padding:38px 24px}.cs-endcard-title{font-size: 21px}
   .cs-endcard-links{width:100%}.cse-btn{flex:1 1 auto}}
+
+/* ---- csfix-2026-09-04: width/height attributes exist to RESERVE space, never to
+   size the box. Where the CSS sets only width, the height attribute was being used
+   as the height and stretching the media. ---- */
+html body .hero-browser-frame img,
+html body .hero-browser-frame video,
+html body .browser-frame img,
+html body .browser-frame video{ height:auto !important; }
+
+/* ---- csfix-2026-09-04: one icon scale, not six. Icons were rendering at
+   17/18/21/24/28/32px because each container set its own font-size for emoji.
+   Chips get 20px, bare icons 22px, inline label icons 14px, one stroke weight. ---- */
+html body .method-icon > svg.ico,
+html body .obj-icon > svg.ico,
+html body .feature-icon-box > svg.ico,
+html body .next-step-icon > svg.ico,
+html body .sdg-icon > svg.ico,
+html body .process-icon > svg.ico{ width:20px !important; height:20px !important; }
+
+html body .feature-icon > svg.ico,
+html body .principle-icon > svg.ico,
+html body .vision-icon > svg.ico,
+html body .problem-icon > svg.ico,
+html body .feature-emoji > svg.ico{ width:22px !important; height:22px !important; }
+
+html body .anno > svg.ico,
+html body .success-title > span > svg.ico{ width:15px !important; height:15px !important; }
+
+html body svg.ico{ stroke-width:1.75 !important; }
 </style>
 <script id="figma-facade-js">
 (function(){
