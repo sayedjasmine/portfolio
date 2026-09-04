@@ -10,12 +10,15 @@
   <meta property="og:title" content="About · Designer & Researcher | Jasmine Sayed" />
   <meta property="og:url" content="https://jasminesayedportfolio.com/about.html" />
   <meta property="og:description" content="Designer and researcher, closing the gap between insight and interface. HCDE master's student at UW, formerly Microsoft CoreAI, and President of UXFest." />
-  <meta property="og:image" content="https://jasminesayedportfolio.com/images/about-carousel-22.jpg" />
+  <meta property="og:image" content="https://jasminesayedportfolio.com/assets/og-about.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:alt" content="Jasmine Sayed speaking at UXFest" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About · Designer & Researcher | Jasmine Sayed" />
   <meta name="twitter:description" content="Designer and researcher, closing the gap between insight and interface. HCDE master's student at UW, formerly Microsoft CoreAI, and President of UXFest." />
-  <meta name="twitter:image" content="https://jasminesayedportfolio.com/images/about-carousel-22.jpg" />
+  <meta name="twitter:image" content="https://jasminesayedportfolio.com/assets/og-about.png" />
   <meta name="author" content="Jasmine Sayed" />
   <meta name="theme-color" content="#9E3462" />
   <link rel="icon" type="image/png" href="assets/favicon-pink.png" />
@@ -51,7 +54,7 @@
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
     .nav-logo img { height: 52px; width: auto; display: block; }
     nav ul { display: flex; gap: 32px; list-style: none; }
-    nav ul a { font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    nav ul a { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
     nav ul a:hover, nav ul a.active { color: var(--purple); }
 
     /* ── HAMBURGER MENU ── */
@@ -73,10 +76,10 @@
       border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); min-width: 160px;
     }
     .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
-    .mobile-menu-close { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(0,0,0,0.1); border-radius: 100px; padding: 6px 12px 6px 8px; margin-bottom: 10px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); transition: all 0.2s ease; }
+    .mobile-menu-close { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(0,0,0,0.1); border-radius: 100px; padding: 6px 12px 6px 8px; margin-bottom: 10px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); transition: all 0.2s ease; }
     .mobile-menu-close:hover { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.25); }
     .mobile-menu-close svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; }
-    .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 10px 0; transition: color 0.2s ease; position: relative; width: 100%; }
+    .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 10px 0; transition: color 0.2s ease; position: relative; width: 100%; }
     .mobile-menu a:hover { color: var(--purple); }
     .mobile-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(0,0,0,0.06); }
     .mobile-menu a:last-child::after { display: none; }
@@ -87,7 +90,7 @@
     .about-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--purple); }
     .hero-text h1 { font-family: 'Fraunces', serif; font-size: clamp(30px, 3.2vw, 44px); font-weight: 400; line-height: 1.16; color: var(--dark); margin-bottom: 22px; max-width: 540px; }
     .hero-text h1 em { font-style: italic; color: var(--purple); }
-    .hero-bio p { font-size: 16px; font-weight: 400; color: #3A3640; line-height: 1.9; margin-bottom: 20px; max-width: 560px; }
+    .hero-bio p { font-size: 15px; font-weight: 400; color: #3A3640; line-height: 1.9; margin-bottom: 20px; max-width: 560px; }
     .hero-bio p strong { font-weight: 600; color: var(--dark); }
 
     /* Photo collage */
@@ -95,7 +98,7 @@
     .hero-photo-main { position: absolute; top: 0; left: 0; width: 72%; height: 100%; border-radius: 22px; overflow: hidden; box-shadow: 0 28px 72px rgba(24,22,26,0.10); }
     .hero-photo-main img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
     .hero-photo-caption { position: absolute; left: 0; bottom: 0; width: 72%; padding: 40px 18px 16px; background: linear-gradient(to top, rgba(24,22,26,0.72), transparent); border-radius: 0 0 22px 22px; }
-    .hero-photo-caption span { color: #fff; font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.4; }
+    .hero-photo-caption span { color: #fff; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.4; }
     .hero-photo-accent { position: absolute; bottom: 34px; right: 0; width: 46%; height: 46%; border-radius: 18px; overflow: hidden; border: 4px solid var(--white); box-shadow: 0 16px 48px rgba(24,22,26,0.12); }
     .hero-photo-accent img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 
@@ -108,9 +111,9 @@
     .quick-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(24,22,26,0.08); border-bottom: 1px solid rgba(24,22,26,0.08); }
     .quick-fact { padding: 22px 24px; border-right: 1px solid rgba(24,22,26,0.06); }
     .quick-fact:last-child { border-right: none; }
-    .quick-fact-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 10px; }
-    .quick-fact-value { font-size: 14.5px; font-weight: 500; color: var(--dark); line-height: 1.5; }
-    .quick-fact-meta { font-size: 12.5px; font-weight: 400; color: var(--mid); margin-top: 3px; line-height: 1.5; }
+    .quick-fact-label { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 10px; }
+    .quick-fact-value { font-size: 15px; font-weight: 500; color: var(--dark); line-height: 1.5; }
+    .quick-fact-meta { font-size: 13px; font-weight: 400; color: var(--mid); margin-top: 3px; line-height: 1.5; }
 
     /* ── WHAT I LOVE · SCROLL STORY ── */
     .love-section { padding: 64px 60px 40px; max-width: 1240px; margin: 0 auto; }
@@ -135,19 +138,19 @@
     .love-media img, .love-media video { width: 100%; height: 100%; object-fit: cover; display: block; will-change: transform; }
     .love-media-inner { position: absolute; inset: -6% 0; }
     .love-media-inner img, .love-media-inner video { width: 100%; height: 112%; object-fit: cover; }
-    .love-badge { position: absolute; top: 16px; left: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: rgba(24,22,26,0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 6px 12px; border-radius: 100px; }
+    .love-badge { position: absolute; top: 16px; left: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: rgba(24,22,26,0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 6px 12px; border-radius: 100px; }
 
     .love-copy {
       opacity: 0; transform: translateY(28px);
       transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s;
     }
     .love-panel.visible .love-copy { opacity: 1; transform: none; }
-    .love-copy .love-kicker { font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 12px; }
+    .love-copy .love-kicker { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 12px; }
     .love-copy h3 { font-family: 'Fraunces', serif; font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; line-height: 1.18; color: var(--dark); margin-bottom: 14px; letter-spacing: -0.005em; }
     .love-copy h3 em { font-style: italic; color: var(--purple); }
     .love-copy p { font-size: 15px; font-weight: 400; color: #3A3640; line-height: 1.72; margin-bottom: 14px; max-width: 480px; }
     .love-copy p strong { font-weight: 600; color: var(--dark); }
-    .love-meta { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--purple); background: var(--purple-bg); border: 1px solid rgba(62,92,118,0.16); padding: 6px 14px; border-radius: 100px; }
+    .love-meta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: var(--purple); background: var(--purple-bg); border: 1px solid rgba(62,92,118,0.16); padding: 6px 14px; border-radius: 100px; }
 
     /* Among hUSkies walkthrough video panel (near-square) */
     .love-media-huskies { aspect-ratio: 1320 / 1502; max-width: 440px; width: 100%; margin: 0 auto; }
@@ -171,12 +174,12 @@
     .love-video { position: relative; max-width: 560px; margin: 0 auto; border-radius: 20px; overflow: hidden; background: #000; box-shadow: 0 22px 54px rgba(24,22,26,0.16); }
     .love-video video { display: block; width: 100%; height: auto; }
     .love-video .love-badge { top: 16px; left: 16px; }
-    .video-sound { position: absolute; bottom: 16px; right: 16px; z-index: 3; display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #fff; background: rgba(24,22,26,0.58); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.28); padding: 9px 15px; border-radius: 100px; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
+    .video-sound { position: absolute; bottom: 16px; right: 16px; z-index: 3; display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #fff; background: rgba(24,22,26,0.58); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.28); padding: 9px 15px; border-radius: 100px; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
     .video-sound:hover { background: rgba(62,92,118,0.9); transform: translateY(-1px); }
     .video-sound:active { transform: scale(0.97); }
     .love-video video::cue { background: rgba(24,22,26,0.74); color: #fff; }
     .love-video-copy { max-width: 600px; margin: 28px auto 0; text-align: center; }
-    .love-video-copy .love-kicker { font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 14px; }
+    .love-video-copy .love-kicker { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 14px; }
     .love-video-copy h3 { font-family: 'Fraunces', serif; font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; line-height: 1.2; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.005em; }
     .love-video-copy h3 em { font-style: italic; color: var(--purple); }
     .love-video-copy p { font-size: 15px; font-weight: 400; color: #3A3640; line-height: 1.8; margin: 0 auto 18px; max-width: 520px; }
@@ -191,7 +194,7 @@
     .video-modal-inner { position: relative; width: 100%; max-width: 1000px; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 30px 80px rgba(0,0,0,0.5); transform: translateY(12px) scale(0.99); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
     .video-modal.open .video-modal-inner { transform: none; }
     .video-modal-inner video { display: block; width: 100%; height: auto; max-height: 82vh; background: #000; }
-    .video-modal-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(24,22,26,0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; }
+    .video-modal-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(24,22,26,0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: #fff; font-size: 21px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; }
     .video-modal-close:hover { background: rgba(62,92,118,0.9); transform: scale(1.05); }
     @media (max-width: 768px) { .video-modal { padding: 16px; } }
 
@@ -199,10 +202,10 @@
     .recognition-list { display: flex; flex-direction: column; }
     .recognition-item { display: grid; grid-template-columns: 96px 1fr 220px; gap: 28px; padding: 20px 0; border-top: 1px solid rgba(24,22,26,0.06); align-items: baseline; }
     .recognition-item:last-child { border-bottom: 1px solid rgba(24,22,26,0.06); }
-    .recognition-year { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
-    .recognition-title { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 400; color: var(--dark); line-height: 1.3; letter-spacing: -0.005em; }
+    .recognition-year { font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .recognition-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 400; color: var(--dark); line-height: 1.3; letter-spacing: -0.005em; }
     .recognition-title em { font-style: italic; color: var(--purple); }
-    .recognition-detail { font-size: 12.5px; font-weight: 400; color: var(--mid); line-height: 1.5; margin-top: 4px; }
+    .recognition-detail { font-size: 13px; font-weight: 400; color: var(--mid); line-height: 1.5; margin-top: 4px; }
     .recognition-venue { font-size: 13px; font-weight: 400; color: var(--mid); text-align: right; line-height: 1.5; }
     .recognition-more { margin-top: 26px; }
     .recognition-more a { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--purple); text-decoration: none; padding: 11px 22px; border: 1px solid var(--purple); border-radius: 100px; transition: background 0.22s, color 0.22s, gap 0.28s cubic-bezier(0.16,1,0.3,1); }
@@ -210,16 +213,16 @@
 
     /* ── WHAT I BRING (skills snapshot) ── */
     .bring-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .bring-group-title { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 14px; }
+    .bring-group-title { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 14px; }
     .bring-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .bring-tag { font-size: 12.5px; font-weight: 400; color: var(--dark); background: var(--white); border: 1px solid rgba(24,22,26,0.1); padding: 6px 12px; border-radius: 100px; white-space: nowrap; transition: border-color 0.2s ease, color 0.2s ease; }
+    .bring-tag { font-size: 13px; font-weight: 400; color: var(--dark); background: var(--white); border: 1px solid rgba(24,22,26,0.1); padding: 6px 12px; border-radius: 100px; white-space: nowrap; transition: border-color 0.2s ease, color 0.2s ease; }
     .bring-tag:hover { border-color: var(--purple); color: var(--purple); }
 
     /* ── CAROUSEL ── */
     .carousel-section { padding: 24px 0 72px; }
     .carousel-header { padding: 0 60px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
-    .carousel-title { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
-    .carousel-hint { font-size: 12px; color: var(--purple-light); }
+    .carousel-title { font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .carousel-hint { font-size: 13px; color: var(--purple-light); }
     .carousel-outer { overflow-x: scroll; overflow-y: hidden; cursor: grab; scrollbar-width: none; -ms-overflow-style: none; }
     .carousel-outer::-webkit-scrollbar { display: none; }
     .carousel-outer:active { cursor: grabbing; }
@@ -238,8 +241,8 @@
     .nav-card:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 14px 34px rgba(24,22,26,0.08); transform: translateY(-4px); }
     .nav-card-text { display: flex; flex-direction: column; gap: 2px; }
     .nav-card-label { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); transition: color 0.25s ease; }
-    .nav-card-title { font-family: 'Fraunces', serif; font-size: 18px; color: var(--dark); transition: color 0.25s ease; }
-    .nav-card-arrow { font-size: 18px; color: var(--purple); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .nav-card-title { font-family: 'Fraunces', serif; font-size: 17px; color: var(--dark); transition: color 0.25s ease; }
+    .nav-card-arrow { font-size: 17px; color: var(--purple); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
     .nav-card:hover .nav-card-label { color: rgba(255,255,255,0.85); }
     .nav-card:hover .nav-card-title { color: var(--white); }
     .nav-card:hover .nav-card-arrow { transform: translateX(6px); color: var(--white); }
@@ -251,7 +254,7 @@
     .footer-center a { color: rgba(255,255,255,0.55); text-decoration: none; }
     .footer-center a:hover { color: var(--purple-light); }
     .footer-center .footer-sep { margin: 0 14px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
+    .footer-right { font-size: 13px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
     .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
@@ -272,7 +275,7 @@
       .nav-logo img { height: 40px; }
 
       .about-hero { padding: 92px 24px 36px; gap: 30px; }
-      .about-eyebrow { margin-bottom: 14px; font-size: 12px; }
+      .about-eyebrow { margin-bottom: 14px; font-size: 13px; }
       .hero-text h1 { font-size: clamp(28px, 6.4vw, 36px); margin-bottom: 16px; max-width: none; }
       .hero-bio p { font-size: 15px; line-height: 1.7; margin-bottom: 14px; max-width: none; }
       .hero-photos { height: auto; max-width: none; display: block; position: relative; }
@@ -289,7 +292,7 @@
       .love-panel { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; min-height: 0; }
       .love-panel:nth-child(even) .love-media { order: 0; }
       .love-video-feature { padding: 20px 0 14px; }
-      .video-sound { font-size: 11.5px; padding: 8px 13px; }
+      .video-sound { font-size: 13px; padding: 8px 13px; }
       .love-video-copy { text-align: left; margin-top: 18px; }
       .love-media { aspect-ratio: 16 / 10; }
       .love-media-huskies { aspect-ratio: 1320 / 1502; max-width: 300px; }
@@ -298,7 +301,7 @@
       .love-copy p { max-width: none; }
 
       .section-container { padding: 0 24px 36px; }
-      .section-label-line { margin-bottom: 18px; font-size: 12px; }
+      .section-label-line { margin-bottom: 18px; font-size: 13px; }
       .recognition-item { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
       .recognition-venue { text-align: left; }
       .bring-grid { grid-template-columns: 1fr; gap: 22px; }
@@ -316,7 +319,7 @@
       .nav-card { padding: 20px 22px; }
       .nav-card-title { font-size: 17px; }
       footer { padding: 22px 24px; flex-wrap: wrap; justify-content: center; gap: 8px; }
-      .footer-left, .footer-right { width: 100%; text-align: center; font-size: 12px; }
+      .footer-left, .footer-right { width: 100%; text-align: center; font-size: 13px; }
       .footer-center { display: none; }
     }
     @media (max-width: 480px) {
@@ -394,7 +397,7 @@ body{ color:var(--text); -webkit-font-smoothing:antialiased; }
 .hero-headline h1 em{ color:var(--accent); }
 .section-label,.card-tag,.card-stat .lbl,.role-label,.section-eyebrow,.footer-left,.footer-right{
   font-family:var(--mono); letter-spacing:0.05em; }
-.section-label{ color:var(--text); font-weight:500; font-size:12px; text-transform:uppercase; }
+.section-label{ color:var(--text); font-weight:500; font-size: 13px; text-transform:uppercase; }
 .section-label::after{ background:var(--accent); opacity:0.55; height:1.5px; }
 .card-tag{ color:var(--muted); font-weight:500; }
 
@@ -464,7 +467,7 @@ html[data-theme="dark"] .hero:has(.hero-role) .hero-role{ color:var(--hero-muted
 .contact-email{ color:rgba(255,255,255,0.72) !important; }
 footer{ background:var(--footer-bg); flex-wrap:wrap; gap:10px 26px; padding-right:104px; }
 @media (max-width:768px){ footer{ padding-right:28px; } }
-.footer-left, .footer-right{ color:rgba(255,255,255,0.72) !important; font-size:12px; white-space:normal; overflow:visible; min-width:0; }
+.footer-left, .footer-right{ color:rgba(255,255,255,0.72) !important; font-size: 13px; white-space:normal; overflow:visible; min-width:0; }
 .footer-center, .footer-center a{ color:rgba(255,255,255,0.80) !important; }
 
 /* ---- Impact section keeps its own dark treatment; leave numbers as their light gradient ---- */
@@ -786,7 +789,7 @@ html[data-theme="dark"] body::before{ background:
     radial-gradient(900px 820px at 88% 52%, rgba(220,206,247,0.090) 0%, transparent 64%),
     radial-gradient(1080px 760px at -6% 66%, rgba(251,211,180,0.090) 0%, transparent 64%),
     radial-gradient(980px 700px at 46% 104%, rgba(248,202,221,0.090) 0%, transparent 64%); }
-nav, nav.scrolled{ background:rgba(251,251,249,.86) !important; -webkit-backdrop-filter:saturate(160%) blur(18px) !important; backdrop-filter:saturate(160%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
+nav, nav.scrolled{ background:rgba(251,251,249,.955) !important; -webkit-backdrop-filter:saturate(160%) blur(18px) !important; backdrop-filter:saturate(160%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
 html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.72) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
 .mobile-menu{ background:rgba(252,252,251,.96) !important; -webkit-backdrop-filter:blur(20px) !important; backdrop-filter:blur(20px) !important; }
 html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.96) !important; }
@@ -869,7 +872,7 @@ html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 .nflow-label, .nox-doc-meta, .hero-doc-meta, .b-badge, .b-kicker, .b-cta, .bt-badge,
 .bt-focus, .lbl, .cta-pdf, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .persona-badge,
 .ag-k, .arw, .cap{ font-size:11px !important; }
-.persona-meta{ font-size:12.5px !important; max-width:62ch !important; }
+.persona-meta{ font-size: 13px !important; max-width:62ch !important; }
 /* catch-all floor for any label still under 11px */
 .doc-badge, .doc-type, .file-type, .badge-sm, .b-badge, .tag, .chip, .pill{ font-size:11px !important; }
 .decision-cost, .decision-choice{ font-size:13px !important; }
@@ -1021,6 +1024,17 @@ html body .hero-figma-frame.ifr-focus{
   outline-offset:-3px !important;
 }
 
+/* ---- 5 · HERO MUST CLEAR THE FIXED NAV (site-wide) ----
+   The nav is fixed and 97px tall above 960px. The five case studies get 110px
+   of hero padding from csfix-2026-09, but MomSafe and Code-Switching kept the
+   original 84px, so their eyebrow line ("CHI 2025 Student Design Competition…")
+   rendered 13px *behind* the nav and was invisible. Same value, applied on the
+   same breakpoint; pages already at 110px are unchanged, and pages with no
+   .hero are untouched. */
+@media (min-width:961px){
+  html body .hero{ padding-top:110px !important; }
+}
+
 </style>
 </head>
 <body>
@@ -1033,6 +1047,7 @@ html body .hero-figma-frame.ifr-focus{
       <li><a href="index.html#work">Work</a></li>
       <li><a href="play.html">Play</a></li>
       <li><a href="about.html" class="active">About</a></li>
+      <li><a href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1050,7 +1065,8 @@ html body .hero-figma-frame.ifr-focus{
     <a href="index.html#work">Work</a>
     <a href="play.html">Play</a>
     <a class="mx-nav-active" aria-current="page" href="about.html">About</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="index.html#contact">Contact</a>
   </div>
 
   <main id="main">
@@ -1058,7 +1074,7 @@ html body .hero-figma-frame.ifr-focus{
 <style id="ab-bold">
 .ab-wrap{ --pad:60px; }
 .ab-hero{ padding:112px var(--pad) 20px; max-width:1280px; margin:0 auto; }
-.ab-eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-text); margin:0 0 26px; display:flex; align-items:center; gap:12px; }
+.ab-eyebrow{ font-family:var(--mono); font-size: 13px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-text); margin:0 0 26px; display:flex; align-items:center; gap:12px; }
 .ab-eyebrow::before{ content:''; width:26px; height:2px; background:var(--accent); border-radius:2px; }
 .ab-headline{ font-family:var(--display); font-optical-sizing:auto; font-weight:420; font-size:clamp(38px,6.6vw,92px); line-height:1.0; letter-spacing:-.02em; color:var(--text); margin:0 0 30px; max-width:15ch; position:relative; z-index:2; }
 .ab-headline em{ font-style:italic; color:var(--accent); }
@@ -1067,24 +1083,24 @@ html body .hero-figma-frame.ifr-focus{
 .ab-lead p{ font-size:clamp(16px,1.35vw,19px); line-height:1.62; color:var(--muted); margin:0 0 18px; max-width:52ch; }
 .ab-lead p strong{ color:var(--text); font-weight:600; }
 .ab-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
-.ab-chip{ font-family:var(--mono); font-size:12px; letter-spacing:.02em; color:var(--text); border:1px solid var(--border); border-radius:100px; padding:8px 15px; display:inline-flex; align-items:center; gap:8px; background:var(--surface); }
+.ab-chip{ font-family:var(--mono); font-size: 13px; letter-spacing:.02em; color:var(--text); border:1px solid var(--border); border-radius:100px; padding:8px 15px; display:inline-flex; align-items:center; gap:8px; background:var(--surface); }
 .ab-chip.live::before{ content:''; width:8px; height:8px; border-radius:50%; background:#16A34A; box-shadow:0 0 0 3px rgba(22,163,74,.18); }
 .ab-portrait{ position:relative; }
 .ab-portrait img{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 18%; border-radius:20px; display:block; box-shadow:0 20px 50px rgba(17,24,39,.14); }
-.ab-portrait .ab-tag{ position:absolute; bottom:-14px; left:-14px; background:var(--accent); color:#fff; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:9px 15px; border-radius:100px; box-shadow:0 10px 24px rgba(62,92,118,.34); }
+.ab-portrait .ab-tag{ position:absolute; bottom:-14px; left:-14px; background:var(--accent); color:#fff; font-family:var(--mono); font-size: 13px; letter-spacing:.06em; text-transform:uppercase; padding:9px 15px; border-radius:100px; box-shadow:0 10px 24px rgba(62,92,118,.34); }
 
 
 /* stat band */
 .ab-facts{ max-width:1280px; margin:0 auto; padding:56px var(--pad); display:grid; grid-template-columns:repeat(3,1fr); gap:34px; }
 .ab-fact{ border-left:2px solid var(--accent); padding:2px 0 2px 20px; }
-.ab-fact-label{ display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+.ab-fact-label{ display:block; font-family:var(--mono); font-size: 13px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
 .ab-fact-title{ display:block; font-family:var(--display); font-size:clamp(20px,1.7vw,25px); font-weight:500; line-height:1.24; color:var(--text); margin-bottom:9px; }
-.ab-fact-meta{ display:block; font-size:14.5px; line-height:1.55; color:var(--muted); }
+.ab-fact-meta{ display:block; font-size: 15px; line-height:1.55; color:var(--muted); }
 
 /* film strip */
 .ab-film{ padding:8px 0 20px; overflow:hidden; }
 .ab-film-head{ max-width:1280px; margin:0 auto 10px; padding:0 var(--pad); }
-.ab-section-label{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-text); display:flex; align-items:center; gap:12px; margin:0; }
+.ab-section-label{ font-family:var(--mono); font-size: 13px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-text); display:flex; align-items:center; gap:12px; margin:0; }
 .ab-section-label::before{ content:''; width:22px; height:2px; background:var(--accent); border-radius:2px; }
 .ab-film-track{ display:flex; gap:22px; width:max-content; padding:26px var(--pad); animation:abFilm 46s linear infinite; }
 .ab-film:hover .ab-film-track{ animation-play-state:paused; }
@@ -1094,7 +1110,7 @@ html body .hero-figma-frame.ifr-focus{
 .ab-photo:nth-child(even){ transform:rotate(1.6deg); }
 .ab-photo:hover{ transform:rotate(0) scale(1.03); z-index:2; }
 .ab-photo img{ width:100%; height:230px; object-fit:cover; display:block; }
-.ab-photo .cap{ font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--muted); padding:11px 14px; display:block; }
+.ab-photo .cap{ font-family:var(--mono); font-size: 13px; letter-spacing:.03em; color:var(--muted); padding:11px 14px; display:block; }
 
 /* into row */
 .ab-into{ max-width:1280px; margin:0 auto; padding:20px var(--pad) 64px; }
@@ -1104,8 +1120,8 @@ html body .hero-figma-frame.ifr-focus{
 .ab-into-card{ border:1px solid var(--border); border-radius:18px; padding:24px 24px 26px; background:var(--surface); transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .3s ease, box-shadow .35s ease; }
 .ab-into-card:hover{ transform:translateY(-4px); border-color:var(--accent); box-shadow:0 16px 36px rgba(17,24,39,.08); }
 .ab-into-emoji{ font-size:26px; display:block; margin-bottom:14px; }
-.ab-into-card h3{ font-family:var(--display); font-weight:500; font-size:20px; letter-spacing:-.01em; color:var(--text); margin:0 0 8px; }
-.ab-into-card p{ font-size:14px; line-height:1.58; color:var(--muted); margin:0; }
+.ab-into-card h3{ font-family:var(--display); font-weight:500; font-size: 21px; letter-spacing:-.01em; color:var(--text); margin:0 0 8px; }
+.ab-into-card p{ font-size: 15px; line-height:1.58; color:var(--muted); margin:0; }
 
 @media (max-width:900px){
   .ab-wrap{ --pad:24px; }
@@ -1133,7 +1149,7 @@ html body .hero-figma-frame.ifr-focus{
         <p>What I care about most is the hard part: the tradeoffs, the features worth cutting, the moment the research contradicts the obvious answer. I led UXFest, a 140-person design event, end to end, and I bring that same ownership to every product I work on: define the problem, make the call, and ship it.</p>
       </div>
       <div class="ab-portrait">
-        <img src="assets/jasmine-headshot.JPG" alt="Jasmine Sayed" loading="eager" fetchpriority="high" decoding="sync" fetchpriority="high" />
+        <img src="assets/jasmine-headshot.JPG" alt="Jasmine Sayed" loading="eager" fetchpriority="high" decoding="sync" />
       </div>
     </div>
   </section>
@@ -1162,19 +1178,19 @@ html body .hero-figma-frame.ifr-focus{
   <section class="ab-film fade-in">
     <div class="ab-film-head"><h2 class="ab-section-label">Off the clock</h2></div>
     <div class="ab-film-track">
-      <figure class="ab-photo"><img src="images/about-carousel-14.jpg" alt="Jasmine's little brother mid-jump on sand dunes" loading="eager" decoding="sync" fetchpriority="high"><span class="cap">My little brother, sending it on the dunes</span></figure>
-      <figure class="ab-photo"><img src="images/about-carousel-22.jpg" alt="Jasmine speaking at UXFest" loading="eager" decoding="sync" fetchpriority="high"><span class="cap">On stage at UXFest</span></figure>
-      <figure class="ab-photo"><img src="images/about-carousel-20.JPG" alt="Jasmine and team at a hackathon" loading="eager" decoding="async"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
-      <figure class="ab-photo"><img src="images/about-carousel-21.jpg" alt="Jasmine on a coastal cliff" loading="eager" decoding="async"><span class="cap">Off exploring the coast</span></figure>
-      <figure class="ab-photo"><img src="images/about-carousel-7.jpg" alt="Sunset over the ocean" loading="eager" decoding="async"><span class="cap">Sunset-chaser</span></figure>
-      <figure class="ab-photo"><img src="images/about-carousel-8.jpg" alt="City skyline at night" loading="eager" decoding="async"><span class="cap">New city, every chance I get</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-14.jpg" alt="Jasmine's little brother mid-jump on sand dunes" loading="lazy" decoding="async"><span class="cap">My little brother, sending it on the dunes</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-22.jpg" alt="Jasmine speaking at UXFest" loading="lazy" decoding="async"><span class="cap">On stage at UXFest</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-20.JPG" alt="Jasmine and team at a hackathon" loading="lazy" decoding="async"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-21.jpg" alt="Jasmine on a coastal cliff" loading="lazy" decoding="async"><span class="cap">Off exploring the coast</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-7.jpg" alt="Sunset over the ocean" loading="lazy" decoding="async"><span class="cap">Sunset-chaser</span></figure>
+      <figure class="ab-photo"><img src="images/about-carousel-8.jpg" alt="City skyline at night" loading="lazy" decoding="async"><span class="cap">New city, every chance I get</span></figure>
       <!-- duplicate for seamless loop -->
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-14.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">My little brother, sending it on the dunes</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-22.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">On stage at UXFest</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-20.JPG" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-21.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">Off exploring the coast</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-7.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">Sunset-chaser</span></figure>
-      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-8.jpg" alt="" loading="eager" decoding="async" aria-hidden="true"><span class="cap">New city, every chance I get</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-14.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"><span class="cap">My little brother, sending it on the dunes</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-22.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"><span class="cap">On stage at UXFest</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-20.JPG" alt="" loading="lazy" decoding="async" aria-hidden="true"><span class="cap">Best Game Mechanics, hackathon night</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-21.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"><span class="cap">Off exploring the coast</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-7.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"><span class="cap">Sunset-chaser</span></figure>
+      <figure class="ab-photo" aria-hidden="true"><img src="images/about-carousel-8.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"><span class="cap">New city, every chance I get</span></figure>
     </div>
   </section>
 
@@ -1185,7 +1201,6 @@ html body .hero-figma-frame.ifr-focus{
 
   <footer>
     <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-center"><a href="mailto:sayedjasmine@gmail.com">Email</a><span class="footer-sep">·</span><a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn</a><span class="footer-sep">·</span><a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     <p class="footer-right">Designed &amp; built by Jasmine Sayed</p>
   </footer>
 
@@ -1342,7 +1357,7 @@ html body .hero-figma-frame.ifr-focus{
 </style>
 <div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
   <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
-  <img class="pf-lb-img" src="" alt="" / aria-hidden="true">
+  <img loading="lazy" class="pf-lb-img" alt="" / aria-hidden="true">
   <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
 </div>
 <script>
