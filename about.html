@@ -1158,11 +1158,6 @@ html body .hero-figma-frame.ifr-focus{
   <section class="ab-facts fade-in" aria-labelledby="ab-facts-h">
     <h2 class="sr-only" id="ab-facts-h">Where I am right now</h2>
     <div class="ab-fact">
-      <span class="ab-fact-label">Most recently</span>
-      <h3 class="ab-fact-title">UX Designer &amp; Researcher</h3>
-      <span class="ab-fact-meta">Sponsored Project · Microsoft CoreAI · 2026</span>
-    </div>
-    <div class="ab-fact">
       <span class="ab-fact-label">Education</span>
       <h3 class="ab-fact-title">M.S. Human-Centered Design &amp; Engineering</h3>
       <span class="ab-fact-meta">University of Washington · B.S. Graphic Communication, Cal Poly SLO</span>
@@ -1452,6 +1447,18 @@ html body .browser-frame video{ height:auto !important; }
    loses to any author rule, so this one line neutralises it everywhere while every
    deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
 img{ height:auto; }
+
+/* ---- csfix-2026-09-05: the stat band is a fixed 3-column grid. With the "Most recently"
+   fact removed, two items sat left-packed against an empty third column. Size the band to
+   however many facts it actually holds, and stay correct if one is added back. ---- */
+@media (min-width:901px){
+  html body .ab-facts:has(> div:nth-of-type(2):last-of-type){
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  html body .ab-facts:has(> div:only-of-type){
+    grid-template-columns:minmax(0,560px) !important; justify-content:center !important;
+  }
+}
 </style>
 <script id="mx-motion-js">
 (function(){
