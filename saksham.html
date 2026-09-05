@@ -2824,8 +2824,8 @@ html body .hero-figma-frame.ifr-focus{
       </div>
     </div>
     <div class="hero-docs">
-      <div class="hero-figma" style="background:#121317;">
-        <img src="assets/saksham-mockup-trim.webp" width="519" height="562" alt="Two Saksham screens: a learner-controlled dashboard, and a course page tagged dyslexic friendly and visual/motor friendly" style="display:block;" loading="eager" decoding="async" fetchpriority="high" />
+      <div class="hero-figma" style="flex:0 0 auto!important;height:auto!important;min-height:0!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;max-width:470px;margin-left:auto;margin-right:auto;">
+        <img src="assets/saksham-mockup-trim.webp" width="519" height="562" alt="Two Saksham screens: a learner-controlled dashboard, and a course page tagged dyslexic friendly and visual/motor friendly" style="display:block;width:100%;height:auto;" loading="eager" decoding="async" fetchpriority="high" />
       </div>
       <div class="hero-figma-caption"><a href="#prototype" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Try the live Figma prototype below &#8595;</a></div>
       <a href="https://jsayed23.github.io/saksham-reading-library/" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
@@ -2838,14 +2838,6 @@ html body .hero-figma-frame.ifr-focus{
         <div class="hero-doc-info">
           <div class="hero-doc-title">View the Code</div>
           <div class="hero-doc-meta">GitHub repository</div>
-        </div>
-        <div class="hero-doc-arrow">→</div>
-      </a>
-      <a href="https://issuu.com/calpolytaga/docs/cal_poly_taga_2026/132" target="_blank" rel="noopener noreferrer" class="hero-doc-card">
-        <div class="hero-doc-icon"><span>DOC</span></div>
-        <div class="hero-doc-info">
-          <div class="hero-doc-title">Research Paper</div>
-          <div class="hero-doc-meta">Technical Association of the Graphic Arts Journal, 2026</div>
         </div>
         <div class="hero-doc-arrow">→</div>
       </a>
@@ -3312,8 +3304,8 @@ html body .hero-figma-frame.ifr-focus{
   <div class="cs-endcard fade-in">
     <div class="cs-endcard-copy">
       <p class="cs-endcard-eyebrow">Thanks for reading</p>
-      <h2 class="cs-endcard-title">Want the one-page version?</h2>
-      <p class="cs-endcard-sub">The same work on a single page, or reach me directly.</p>
+      <h2 class="cs-endcard-title">Let&rsquo;s talk.</h2>
+      <p class="cs-endcard-sub">My one-page resume, or reach me directly.</p>
     </div>
     <div class="cs-endcard-links">
       <a class="cse-btn cse-primary" href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
@@ -3716,6 +3708,19 @@ html body .anno > svg.ico,
 html body .success-title > span > svg.ico{ width:15px !important; height:15px !important; }
 
 html body svg.ico{ stroke-width:1.75 !important; }
+
+/* ---- csfix-2026-09-05: the hero column is capped at calc(100vh - 150px). That cap is
+   fine for a lone media block, but this column also holds three resource cards, so the
+   cap made the flex layout SHRINK the image box while the image kept its own height and
+   spilled over the caption and the cards. Let the column size to its content. ---- */
+html body .hero .hero-docs{ max-height:none !important; }
+html body .hero .hero-figma{ flex:0 0 auto !important; max-height:none !important; }
+
+/* ---- csfix-2026-09-05: width/height attributes exist to RESERVE the aspect ratio while
+   an image loads. They must never set the box. As a presentational hint the attribute
+   loses to any author rule, so this one line neutralises it everywhere while every
+   deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
+img{ height:auto; }
 </style>
 <script id="figma-facade-js">
 (function(){

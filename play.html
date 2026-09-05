@@ -1784,6 +1784,12 @@ html body .anno > svg.ico,
 html body .success-title > span > svg.ico{ width:15px !important; height:15px !important; }
 
 html body svg.ico{ stroke-width:1.75 !important; }
+
+/* ---- csfix-2026-09-05: width/height attributes exist to RESERVE the aspect ratio while
+   an image loads. They must never set the box. As a presentational hint the attribute
+   loses to any author rule, so this one line neutralises it everywhere while every
+   deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
+img{ height:auto; }
 </style>
 <div id="lv-gallery" role="dialog" aria-modal="true" aria-label="Children's Center design gallery">
   <button class="lvg-close" type="button" aria-label="Close gallery (Esc)">&times;</button>

@@ -3306,8 +3306,8 @@ html body .hero-figma-frame.ifr-focus{
   <div class="cs-endcard fade-in">
     <div class="cs-endcard-copy">
       <p class="cs-endcard-eyebrow">Thanks for reading</p>
-      <h2 class="cs-endcard-title">Want the one-page version?</h2>
-      <p class="cs-endcard-sub">The same work on a single page, or reach me directly.</p>
+      <h2 class="cs-endcard-title">Let&rsquo;s talk.</h2>
+      <p class="cs-endcard-sub">My one-page resume, or reach me directly.</p>
     </div>
     <div class="cs-endcard-links">
       <a class="cse-btn cse-primary" href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
@@ -3588,6 +3588,12 @@ html body .anno > svg.ico,
 html body .success-title > span > svg.ico{ width:15px !important; height:15px !important; }
 
 html body svg.ico{ stroke-width:1.75 !important; }
+
+/* ---- csfix-2026-09-05: width/height attributes exist to RESERVE the aspect ratio while
+   an image loads. They must never set the box. As a presentational hint the attribute
+   loses to any author rule, so this one line neutralises it everywhere while every
+   deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
+img{ height:auto; }
 </style>
 <script id="mx-motion-js">
 (function(){

@@ -2812,6 +2812,12 @@ html body .hero-browser-frame img,
 html body .hero-browser-frame video,
 html body .browser-frame img,
 html body .browser-frame video{ height:auto !important; }
+
+/* ---- csfix-2026-09-05: width/height attributes exist to RESERVE the aspect ratio while
+   an image loads. They must never set the box. As a presentational hint the attribute
+   loses to any author rule, so this one line neutralises it everywhere while every
+   deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
+img{ height:auto; }
 </style>
 <script id="mx-motion-js">
 (function(){
