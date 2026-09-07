@@ -61,7 +61,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 22px 60px;
-      background: rgba(255,255,255,0.92);
+      background: #FBFBF9;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
@@ -94,7 +94,7 @@
     .hamburger.active .hamburger-bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hamburger-close-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); white-space: nowrap; display: none; }
     .hamburger.active .hamburger-close-label { display: inline; }
-    .mobile-menu { display: none; position: fixed; top: 12px; left: 12px; right: auto; z-index: 199; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); flex-direction: column; align-items: flex-start; padding: 16px 20px; gap: 0; opacity: 0; transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1); transform: translateY(-8px); box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); min-width: 160px; }
+    .mobile-menu { display: none; position: fixed; top: 12px; left: 12px; right: auto; z-index: 199; background: #FBFBF9; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); flex-direction: column; align-items: flex-start; padding: 16px 20px; gap: 0; opacity: 0; transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1); transform: translateY(-8px); box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); min-width: 160px; }
     .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
     .mobile-menu-close { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(0,0,0,0.1); border-radius: 100px; padding: 6px 12px 6px 8px; margin-bottom: 10px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); transition: all 0.2s ease; }
     .mobile-menu-close:hover { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.25); }
@@ -385,7 +385,7 @@
 
     /* ── SECTION TABS ── */
     section[id] { scroll-margin-top: 116px; }
-    .section-tabs { position: sticky; top: 66px; z-index: 90; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); display: flex; justify-content: center; padding: 0 60px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .section-tabs { position: sticky; top: 66px; z-index: 90; background: #FBFBF9; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); display: flex; justify-content: center; padding: 0 60px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .section-tabs::-webkit-scrollbar { display: none; }
     .tab-link { display: inline-flex; align-items: center; padding: 14px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; position: relative; top: 1px; }
     .tab-link:hover { color: var(--indigo); }
@@ -405,7 +405,7 @@
     .cs-content .impact-number { font-size: clamp(28px, 3.2vw, 42px) !important; }
 
     /* ── FADE IN ── */
-    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+    .fade-in { opacity: 1; transform: none; transition: none; }
     .fade-in.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
@@ -424,7 +424,7 @@
       .cs-shell { flex-direction: column; align-items: stretch; gap: 0; padding: 0; max-width: 100%; }
       .cs-content { width: 100%; min-width: 0; }
       .cs-rail-label { display: none; }
-      .cs-rail { position: sticky; top: 60px; z-index: 90; flex: none; width: 100%; background: rgba(255,255,255,0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(62,92,118,0.1); }
+      .cs-rail { position: sticky; top: 60px; z-index: 90; flex: none; width: 100%; background: #FBFBF9; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(62,92,118,0.1); }
       .cs-rail-nav { flex-direction: row; overflow-x: auto; border-left: none; gap: 0; padding: 0 20px; scrollbar-width: none; }
       .cs-rail-nav::-webkit-scrollbar { display: none; }
       .cs-rail .tab-link { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; padding: 12px 14px; }
@@ -772,7 +772,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
 /* ---- A11y: reduced motion ---- */
 @media (prefers-reduced-motion: reduce){
-  .fade-in{ opacity:1 !important; transform:none !important; }
+  .fade-in{ opacity: 1; transform: none; transition: none; }
   *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
 }
 /* Remove decorative corner glow blobs on cards (user: 'weird gradients in corners') */
@@ -787,7 +787,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 <!-- SIGNATURE CRAFT SYSTEM v1 (site-wide flow) -->
 <style id="sig-craft">
 @media (prefers-reduced-motion: no-preference){
-  html.sig-js body{ opacity:0; }
+  html.sig-js body{ opacity:1; }
   html.sig-js.sig-shown body{ opacity:1; transition:opacity .5s ease; }
   html.sig-leaving body{ opacity:0 !important; transition:opacity .28s ease; }
 }
@@ -823,8 +823,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
 /* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
 
 /* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
-.fade-in{ transform:translateY(11px);
-  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in{ opacity: 1; transform: none; transition: none; }
 .fade-in.visible{ opacity:1; transform:none; }
 
 /* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
@@ -948,11 +947,11 @@ body{ background:transparent; }
 body::before{ content:none !important; }
 :root{ --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#FAFAF9; --surface-3:#F2F2F1; }
 html[data-theme="dark"]{ --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731; }
-nav, nav.scrolled{ background:rgba(255,255,255,.97) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
+nav, nav.scrolled{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
 html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.80) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
-.section-tabs{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; box-shadow:0 1px 0 rgba(20,20,25,.07), 0 10px 24px -18px rgba(20,20,25,.30) !important; }
+.section-tabs{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; box-shadow:0 1px 0 rgba(20,20,25,.07), 0 10px 24px -18px rgba(20,20,25,.30) !important; }
 html[data-theme="dark"] .section-tabs{ background:rgba(13,14,17,.86) !important; box-shadow:0 1px 0 rgba(255,255,255,.08), 0 10px 24px -18px rgba(0,0,0,.9) !important; }
-.mobile-menu{ background:rgba(255,255,255,.97) !important; }
+.mobile-menu{ background:#FBFBF9 !important; }
 html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.97) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ nav, nav.scrolled, .section-tabs, .mobile-menu{ background:var(--bg) !important; } }
 .section-alt, .bg-soft, .section-light{ background:var(--light-bg) !important; }
@@ -1131,7 +1130,7 @@ nav .logo:hover img, nav .nav-logo:hover img{ transform:scale(1.07) rotate(-2deg
 .section-tabs .tab-link:hover{ color:var(--accent-text) !important; }
 .section-tabs .tab-link.active{ color:var(--accent-text) !important; border-bottom-color:var(--accent) !important; }
 .toc a.active, .toc-link.active{ color:var(--brand) !important; }
-footer{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
+footer{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
 .footer-left, .footer-right{ color:#5C5C67 !important; }
 .footer-center, .footer-center a{ color:#3B3B45 !important; }
 .footer-center a:hover{ color:var(--brand) !important; }
@@ -1965,7 +1964,7 @@ html body .hero-figma-frame.ifr-focus{
         <div class="persona-card primary">
           <div class="persona-top">
             <span class="persona-badge">Primary persona</span>
-            <div class="persona-emoji">👨🏻‍💻</div>
+            <div class="persona-emoji"><svg class="persona-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <div class="persona-name">Alex</div>
             <div class="persona-role">Startup Software Developer</div>
           </div>
@@ -2305,24 +2304,41 @@ html body .hero-figma-frame.ifr-focus{
       map.forEach(x => spy.observe(x.sec));
     })();
 
-    // Accurate in-page anchor scrolling (corrects for late-loading media/fonts)
+    // In-page anchor scrolling: native jump as the guaranteed fallback
     (function() {
+      var RM = false;
+      try { RM = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){}
+      function topOf(el){
+        var sm = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+        return Math.max(0, el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - sm);
+      }
       document.querySelectorAll('a[href^="#"]').forEach(function(a) {
         var id = a.getAttribute('href');
         if (!id || id.length < 2) return;
         a.addEventListener('click', function(e) {
-          var el = document.querySelector(id);
-          if (!el) return;
+          var el;
+          try { el = document.querySelector(id); } catch(err){ return; }
+          if (!el) return;                       // no target -> let the browser handle it
           e.preventDefault();
+          var target = topOf(el);
+          var start = window.pageYOffset || document.documentElement.scrollTop;
           if (history.pushState) history.pushState(null, '', id);
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // corrective jump once layout settles, only if we ended up off-target
-          setTimeout(function() {
-            var sm = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
-            if (Math.abs(el.getBoundingClientRect().top - sm) > 8) {
-              el.scrollIntoView({ block: 'start' });
+          try { window.scrollTo({ top: target, behavior: RM ? 'auto' : 'smooth' }); }
+          catch(err){ window.scrollTo(0, target); }
+          // Guaranteed fallbacks: if nothing moved, force it, then fall back to a native hash jump.
+          setTimeout(function(){
+            var now = window.pageYOffset || document.documentElement.scrollTop;
+            if (Math.abs(now - start) < 4 && Math.abs(target - start) > 8) {
+              window.scrollTo(0, topOf(el));
+              var after = window.pageYOffset || document.documentElement.scrollTop;
+              if (Math.abs(after - start) < 4) { el.setAttribute('tabindex','-1'); location.hash = id; }
             }
-          }, 700);
+          }, 420);
+          // Correct for late-loading media once layout settles.
+          setTimeout(function(){
+            var sm = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+            if (Math.abs(el.getBoundingClientRect().top - sm) > 8) window.scrollTo(0, topOf(el));
+          }, 900);
         });
       });
     })();
@@ -2569,7 +2585,7 @@ img{ height:auto; }
       if (!isFinite(target)) return;
       var decimals = (numStr.split('.')[1]||'').length, hasComma = numStr.indexOf(',') >= 0;
       var prefix = raw.slice(0, m.index), suffix = raw.slice(m.index + numStr.length);
-      if (RM){ el.textContent = raw; return; }
+      el.textContent = raw; return; /* render final value at rest */
       el.classList.add('mx-counting');
       var dur = 1400, start = null;
       function fmt(v){ var s = decimals ? v.toFixed(decimals) : String(Math.round(v)); if (hasComma) s = Number(s).toLocaleString('en-US'); return prefix + s + suffix; }

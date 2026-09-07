@@ -69,7 +69,7 @@
 
     .mobile-menu {
       display: none; position: fixed; top: 12px; left: 12px; right: auto; z-index: 199;
-      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: #FBFBF9; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       flex-direction: column; align-items: flex-start; padding: 16px 20px; gap: 0;
       opacity: 0; transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
       transform: translateY(-8px); box-shadow: 0 4px 24px rgba(0,0,0,0.12);
@@ -329,7 +329,7 @@
     .footer-right { font-size: 13px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
-    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+    .fade-in { opacity: 1; transform: none; transition: none; }
     .fade-in.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
@@ -411,7 +411,7 @@
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .love-media, .love-copy, .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+      .love-media, .love-copy, .fade-in { opacity: 1; transform: none; transition: none; }
       .c-slide img { transition: none; }
     }
   
@@ -697,7 +697,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
 /* ---- A11y: reduced motion ---- */
 @media (prefers-reduced-motion: reduce){
-  .fade-in{ opacity:1 !important; transform:none !important; }
+  .fade-in{ opacity: 1; transform: none; transition: none; }
   *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
 }
 </style>
@@ -709,7 +709,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 <!-- SIGNATURE CRAFT SYSTEM v1 (site-wide flow) -->
 <style id="sig-craft">
 @media (prefers-reduced-motion: no-preference){
-  html.sig-js body{ opacity:0; }
+  html.sig-js body{ opacity:1; }
   html.sig-js.sig-shown body{ opacity:1; transition:opacity .5s ease; }
   html.sig-leaving body{ opacity:0 !important; transition:opacity .28s ease; }
 }
@@ -745,8 +745,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
 /* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
 
 /* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
-.fade-in{ transform:translateY(11px);
-  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in{ opacity: 1; transform: none; transition: none; }
 .fade-in.visible{ opacity:1; transform:none; }
 
 /* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
@@ -868,7 +867,7 @@ html[data-theme="dark"] body::before{ background:
     radial-gradient(900px 820px at 88% 52%, rgba(220,206,247,0.090) 0%, transparent 64%),
     radial-gradient(1080px 760px at -6% 66%, rgba(251,211,180,0.090) 0%, transparent 64%),
     radial-gradient(980px 700px at 46% 104%, rgba(248,202,221,0.090) 0%, transparent 64%); }
-nav, nav.scrolled{ background:rgba(251,251,249,.955) !important; -webkit-backdrop-filter:saturate(160%) blur(18px) !important; backdrop-filter:saturate(160%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
+nav, nav.scrolled{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(160%) blur(18px) !important; backdrop-filter:saturate(160%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
 html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.72) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
 .mobile-menu{ background:rgba(252,252,251,.96) !important; -webkit-backdrop-filter:blur(20px) !important; backdrop-filter:blur(20px) !important; }
 html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.96) !important; }
@@ -930,7 +929,7 @@ nav .logo:hover img, nav .nav-logo:hover img{ transform:scale(1.07) rotate(-2deg
 .section-tabs .tab-link:hover{ color:var(--accent-text) !important; }
 .section-tabs .tab-link.active{ color:var(--accent-text) !important; border-bottom-color:var(--accent) !important; }
 .toc a.active, .toc-link.active{ color:var(--brand) !important; }
-footer{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
+footer{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
 .footer-left, .footer-right{ color:#5C5C67 !important; }
 .footer-center, .footer-center a{ color:#3B3B45 !important; }
 .footer-center a:hover{ color:var(--brand) !important; }
@@ -1218,7 +1217,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="b-tile fade-in b-video" data-facets="community" style="--accent:#A9C0DA;" role="button" tabindex="0" aria-label="Play the UXFest recap">
       <div class="b-media"><video width="1920" height="926" autoplay muted loop playsinline poster="assets/uxfest-hero-poster.jpg" preload="auto" aria-label="UXFest 2026 highlight reel, silent background video"><source src="assets/uxfest-hero.mp4" type="video/mp4" /></video></div>
       <span class="b-badge">▶ UXFest</span>
-      <div class="b-overlay"><div class="b-kicker">Leadership</div><h3 class="b-title">Leading at <em>scale.</em></h3><div class="b-desc">President of UXFest: I ran a 140-person UX hackathon end to end, from programming and speakers to a 50-person team.</div><span class="b-cta">▶ Watch the recap</span></div>
+      <div class="b-overlay"><div class="b-kicker">Leadership</div><h3 class="b-title">Leading at <em>scale.</em></h3><div class="b-desc">President of UXFest: I ran a 140+ person UX hackathon end to end, from programming and speakers to a 50-person team.</div><span class="b-cta">▶ Watch the recap</span></div>
     </div>
     <a class="b-tile fade-in" href="https://github.com/jsayed23/saksham-reading-library" target="_blank" rel="noopener noreferrer" data-facets="design build" style="--accent:#A9C0DA;">
       <div class="b-media"><img width="1082" height="541" src="assets/saksham-mockup.webp" alt="Saksham accessible reading tool" loading="eager" decoding="sync" fetchpriority="high" /></div>
@@ -1226,14 +1225,14 @@ html body .hero-figma-frame.ifr-focus{
       <div class="b-overlay"><div class="b-kicker">Design → Engineering</div><h3 class="b-title">Saksham, <em>engineered.</em></h3><div class="b-desc">I hand-coded my published Saksham design into a live, accessible reading library, written in HTML, CSS, and JavaScript and still shipping.</div><span class="b-cta">See the code <span class="arw">↗</span></span></div>
     </a>
     <div class="b-tile fade-in" id="lv-tile" data-facets="design" style="--accent:#A9C0DA;" role="button" tabindex="0" aria-label="View the Children's Center design system and newsletter">
-      <div class="b-media"><img width="1300" height="942" src="assets/lv-design-system-card.webp" alt="Children's Center design system: colour palette and logo usage" data-nozoom loading="lazy" decoding="async" /></div>
+      <div class="b-media"><img width="1200" height="800" src="assets/lv-system-card.webp" alt="Children's Center design system: colour palette and logo usage" data-nozoom loading="lazy" decoding="async" /></div>
       <span class="b-badge"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21a9 9 0 1 1 9-9c0 2-1.6 2.6-3 2.6h-1.4a2 2 0 0 0-1.4 3.4A2 2 0 0 1 12 21Z"/><circle cx="7.7" cy="12.5" r="1.1"/><circle cx="9.6" cy="8.3" r="1.1"/><circle cx="14.4" cy="7.7" r="1.1"/></svg> Design System</span>
       <div class="b-overlay"><div class="b-kicker">Design &amp; Operations</div><h3 class="b-title">The Children's Center <em>system.</em></h3><div class="b-desc">The visual system a UW early education center runs on: flyers, newsletters, and posters from one design language.</div><span class="b-cta">See the system + newsletter <span class="arw">→</span></span></div>
     </div>
     <div class="b-tile fade-in b-video" data-facets="build" data-rate="0.85" style="--accent:#A9C0DA;" role="button" tabindex="0" aria-label="Play Among hUSkies">
       <div class="b-media"><video width="880" height="1022" autoplay muted loop playsinline poster="assets/huskies-poster.jpg" preload="auto" aria-label="Among hUSkies walkthrough, silent screen recording"><source src="assets/huskies-walkthrough.mp4" type="video/mp4" /></video></div>
       <span class="b-badge"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4h8v5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.5A2.5 2.5 0 0 0 5.5 10.5H7M16 5.5h2.5a2.5 2.5 0 0 1 0 5H17"/><path d="M12 13v4M9 20h6M10 17h4l.8 3H9.2Z"/></svg> 1st Place</span>
-      <div class="b-overlay"><div class="b-kicker">Hackathon</div><h3 class="b-title">Among <em>hUSkies.</em></h3><div class="b-desc">A UW take on Among Us with real UX tasks, built in Figma Make. First place at the Figma Make Hackathon.</div><span class="b-cta">▶ Watch the walkthrough</span></div>
+      <div class="b-overlay"><div class="b-kicker">Hackathon</div><h3 class="b-title">Among <em>hUSkies.</em></h3><div class="b-desc">A UW take on Among Us with real UX tasks, built in Figma Make. First place, Best Game Mechanics, at the Figma Make Hackathon.</div><span class="b-cta">▶ Watch the walkthrough</span></div>
     </div>
     <a class="b-tile fade-in b-contain" href="momsafe.html" data-facets="research" style="--accent:#A9C0DA;">
       <div class="b-media"><img width="932" height="720" src="assets/momsafe-infographic.webp" alt="MomSAFE research infographic" loading="lazy" decoding="async" /></div>
@@ -1690,7 +1689,7 @@ html body .hero-figma-frame.ifr-focus{
       if (!isFinite(target)) return;
       var decimals = (numStr.split('.')[1]||'').length, hasComma = numStr.indexOf(',') >= 0;
       var prefix = raw.slice(0, m.index), suffix = raw.slice(m.index + numStr.length);
-      if (RM){ el.textContent = raw; return; }
+      el.textContent = raw; return; /* render final value at rest */
       el.classList.add('mx-counting');
       var dur = 1400, start = null;
       function fmt(v){ var s = decimals ? v.toFixed(decimals) : String(Math.round(v)); if (hasComma) s = Number(s).toLocaleString('en-US'); return prefix + s + suffix; }

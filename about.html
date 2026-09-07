@@ -69,7 +69,7 @@
 
     .mobile-menu {
       display: none; position: fixed; top: 12px; left: 12px; right: auto; z-index: 199;
-      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: #FBFBF9; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       flex-direction: column; align-items: flex-start; padding: 16px 20px; gap: 0;
       opacity: 0; transition: opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
       transform: translateY(-8px); box-shadow: 0 4px 24px rgba(0,0,0,0.12);
@@ -257,7 +257,7 @@
     .footer-right { font-size: 13px; color: rgba(255,255,255,0.55); text-align: right; }
 
     /* ── FADE IN ── */
-    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+    .fade-in { opacity: 1; transform: none; transition: none; }
     .fade-in.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
@@ -332,7 +332,7 @@
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .love-media, .love-copy, .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+      .love-media, .love-copy, .fade-in { opacity: 1; transform: none; transition: none; }
       .c-slide img { transition: none; }
     }
   
@@ -618,7 +618,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
 /* ---- A11y: reduced motion ---- */
 @media (prefers-reduced-motion: reduce){
-  .fade-in{ opacity:1 !important; transform:none !important; }
+  .fade-in{ opacity: 1; transform: none; transition: none; }
   *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
 }
 </style>
@@ -630,7 +630,7 @@ html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 <!-- SIGNATURE CRAFT SYSTEM v1 (site-wide flow) -->
 <style id="sig-craft">
 @media (prefers-reduced-motion: no-preference){
-  html.sig-js body{ opacity:0; }
+  html.sig-js body{ opacity:1; }
   html.sig-js.sig-shown body{ opacity:1; transition:opacity .5s ease; }
   html.sig-leaving body{ opacity:0 !important; transition:opacity .28s ease; }
 }
@@ -666,8 +666,7 @@ nav ul li a:hover{ background-size:100% 1.5px; }
 /* ===== CRAFT PASS 2026-08 - eager media, gentler reveals, lifted case-study figures ===== */
 
 /* Reveals: shorter travel + duration so sections settle before you look, never blank-then-full */
-.fade-in{ transform:translateY(11px);
-  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+.fade-in{ opacity: 1; transform: none; transition: none; }
 .fade-in.visible{ opacity:1; transform:none; }
 
 /* ---- Screenshot & photo figures (case studies) - lift off the page, crisp frame, subtle field ---- */
@@ -789,7 +788,7 @@ html[data-theme="dark"] body::before{ background:
     radial-gradient(900px 820px at 88% 52%, rgba(220,206,247,0.090) 0%, transparent 64%),
     radial-gradient(1080px 760px at -6% 66%, rgba(251,211,180,0.090) 0%, transparent 64%),
     radial-gradient(980px 700px at 46% 104%, rgba(248,202,221,0.090) 0%, transparent 64%); }
-nav, nav.scrolled{ background:rgba(251,251,249,.955) !important; -webkit-backdrop-filter:saturate(160%) blur(18px) !important; backdrop-filter:saturate(160%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
+nav, nav.scrolled{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(160%) blur(18px) !important; backdrop-filter:saturate(160%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
 html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.72) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
 .mobile-menu{ background:rgba(252,252,251,.96) !important; -webkit-backdrop-filter:blur(20px) !important; backdrop-filter:blur(20px) !important; }
 html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.96) !important; }
@@ -828,7 +827,7 @@ nav .logo:hover img, nav .nav-logo:hover img{ transform:scale(1.07) rotate(-2deg
 .section-tabs .tab-link:hover{ color:var(--accent-text) !important; }
 .section-tabs .tab-link.active{ color:var(--accent-text) !important; border-bottom-color:var(--accent) !important; }
 .toc a.active, .toc-link.active{ color:var(--brand) !important; }
-footer{ background:rgba(255,255,255,.92) !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
+footer{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-top:1px solid rgba(20,20,25,.09) !important; }
 .footer-left, .footer-right{ color:#5C5C67 !important; }
 .footer-center, .footer-center a{ color:#3B3B45 !important; }
 .footer-center a:hover{ color:var(--brand) !important; }
@@ -1146,7 +1145,7 @@ html body .hero-figma-frame.ifr-focus{
     <div class="ab-hero-grid">
       <div class="ab-lead">
         <p><strong>I'm a product designer who specializes in the hard stuff:</strong> complex, technical, and AI products. My work runs from an 11,000-model AI platform with Microsoft CoreAI to a privacy-first identity app I led the design of, and a live accessibility product I designed and coded myself. I work where research, design, and code overlap, and I don't stop at the mockup. I ship the thing.</p>
-        <p>What I care about most is the hard part: the tradeoffs, the features worth cutting, the moment the research contradicts the obvious answer. I led UXFest, a 140-person design event, end to end, and I bring that same ownership to every product I work on: define the problem, make the call, and ship it.</p>
+        <p>What I care about most is the hard part: the tradeoffs, the features worth cutting, the moment the research contradicts the obvious answer. I led UXFest, a 140+ person design event, end to end, and I bring that same ownership to every product I work on: define the problem, make the call, and ship it.</p>
       </div>
       <div class="ab-portrait">
         <img width="700" height="1050" src="assets/jasmine-headshot.JPG" alt="Jasmine Sayed" loading="eager" fetchpriority="high" decoding="sync" />
@@ -1536,7 +1535,7 @@ img{ height:auto; }
       if (!isFinite(target)) return;
       var decimals = (numStr.split('.')[1]||'').length, hasComma = numStr.indexOf(',') >= 0;
       var prefix = raw.slice(0, m.index), suffix = raw.slice(m.index + numStr.length);
-      if (RM){ el.textContent = raw; return; }
+      el.textContent = raw; return; /* render final value at rest */
       el.classList.add('mx-counting');
       var dur = 1400, start = null;
       function fmt(v){ var s = decimals ? v.toFixed(decimals) : String(Math.round(v)); if (hasComma) s = Number(s).toLocaleString('en-US'); return prefix + s + suffix; }
