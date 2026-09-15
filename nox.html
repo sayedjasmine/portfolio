@@ -2793,6 +2793,1310 @@ html body .hero-figma-frame.ifr-focus{
 }
 
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style id="hero-2026">
+/* ---------- NAV ----------
+   No bar: clear over the gradient, then a scrim that fades out at the
+   bottom so there is never a hard edge. Links are smaller and tighter,
+   pulled into the top-right corner. */
+nav, nav.scrolled{
+  background:transparent !important;
+  border-bottom:0 !important;
+  box-shadow:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  transition:color .3s ease, padding .3s ease !important;
+}
+nav::before{
+  content:'';
+  position:absolute; inset:0;
+  z-index:-1;
+  opacity:0;
+  transition:opacity .35s ease;
+  background:linear-gradient(180deg, rgba(252,252,251,0.97) 0%, rgba(252,252,251,0.94) 62%, rgba(252,252,251,0.86) 100%);
+  -webkit-backdrop-filter:saturate(150%) blur(24px);
+  backdrop-filter:saturate(150%) blur(24px);
+  -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 74%, transparent 100%);
+  mask-image:linear-gradient(180deg, #000 0%, #000 74%, transparent 100%);
+  pointer-events:none;
+}
+nav.scrolled::before{ opacity:1; }
+
+/* tighter, smaller, hard right.
+   Only `nav ul` gets margin-left:auto. The case-study nav centres its
+   logo between the back link and the links, and forcing auto there
+   collapsed the logo onto "All work". */
+nav ul{
+  gap:20px !important;
+  margin-left:auto !important;
+  align-items:center;
+}
+nav .nav-right{
+  gap:20px !important;
+  align-items:center;
+}
+nav ul a,
+nav .nav-right a{
+  font-size:11.5px !important;
+  font-weight:500 !important;
+  letter-spacing:.085em !important;
+  text-transform:uppercase;
+}
+nav ul a::after{ height:1px !important; bottom:-3px !important; }
+nav .nav-back{ font-size:11.5px !important; letter-spacing:.06em !important; }
+nav .logo img, nav .nav-logo img{ height:42px !important; }
+
+/* ---------- FOOTER ----------
+   Rebuilt as a centred stack: one mark line, then a row of outbound
+   links. Sits on the page rather than in its own dark block. */
+footer.site-footer{
+  /* full bleed: it is the last thing on the page and should run the whole
+     width of the screen rather than sitting in the content column */
+  background:transparent !important;
+  border-top:1px solid rgba(24,24,27,0.10);
+  display:flex !important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  text-align:center;
+  width:100% !important;
+  max-width:none !important;
+  margin:72px 0 0 !important;
+  padding:64px clamp(20px, 5vw, 80px) 68px !important;
+  flex-wrap:nowrap !important;
+  box-sizing:border-box;
+}
+footer.site-footer .foot-mark{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size:12.5px;
+  letter-spacing:.02em;
+  color:rgba(24,24,27,0.55) !important;
+  margin:0;
+}
+footer.site-footer .foot-links{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:12px clamp(20px, 3.5vw, 44px);
+}
+footer.site-footer .foot-links a{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size:13px;
+  font-weight:500;
+  color:#18181B !important;
+  text-decoration:none;
+  display:inline-flex; align-items:center; gap:5px;
+  border-bottom:1px solid transparent;
+  padding-bottom:2px;
+  transition:border-color .25s ease, color .25s ease;
+}
+footer.site-footer .foot-links a:hover{
+  color:#9E3462 !important;
+  border-bottom-color:#9E3462;
+}
+footer.site-footer .foot-links a i{ font-style:normal; opacity:.45; font-size:11px; }
+@media (max-width:640px){
+  footer.site-footer{ padding:48px 20px 44px !important; gap:18px; margin-top:56px !important; }
+  footer.site-footer .foot-links{ gap:12px 20px; }
+}
+
+/* ---------- THE GRADIENT ----------
+   Her own five hues - the pink, blue, lavender and peach her page wash
+   already uses - pushed more saturated so they read as colour rather
+   than tint, and moving fast enough to actually see. Transform and
+   opacity only, so it stays on the GPU. */
+.hero-aurora{
+  position:absolute; inset:-35%;
+  z-index:0;
+  pointer-events:none;
+  filter:blur(56px) saturate(126%);
+}
+.hero-aurora i{
+  position:absolute; display:block; border-radius:50%;
+  will-change:transform, opacity;
+}
+.hero-aurora i:nth-child(1){ /* pink */
+  width:64%; height:62%; top:-12%; left:-6%;
+  background:radial-gradient(circle at 50% 50%, rgba(250,163,203,0.95) 0%, rgba(250,163,203,0) 66%);
+  animation:auroraA 5s ease-in-out infinite alternate;
+}
+.hero-aurora i:nth-child(2){ /* blue */
+  width:58%; height:56%; top:-8%; right:-8%;
+  background:radial-gradient(circle at 50% 50%, rgba(150,196,250,0.95) 0%, rgba(150,196,250,0) 66%);
+  animation:auroraB 6.5s ease-in-out infinite alternate;
+}
+.hero-aurora i:nth-child(3){ /* lavender */
+  width:56%; height:60%; top:30%; right:0%;
+  background:radial-gradient(circle at 50% 50%, rgba(198,178,252,0.95) 0%, rgba(198,178,252,0) 66%);
+  animation:auroraC 4.5s ease-in-out infinite alternate;
+}
+.hero-aurora i:nth-child(4){ /* peach */
+  width:62%; height:58%; bottom:-8%; left:-10%;
+  background:radial-gradient(circle at 50% 50%, rgba(253,188,138,0.92) 0%, rgba(253,188,138,0) 66%);
+  animation:auroraD 7s ease-in-out infinite alternate;
+}
+.hero-aurora i:nth-child(5){ /* pink, bottom centre */
+  width:56%; height:54%; bottom:-14%; left:28%;
+  background:radial-gradient(circle at 50% 50%, rgba(249,170,214,0.92) 0%, rgba(249,170,214,0) 66%);
+  animation:auroraE 5.5s ease-in-out infinite alternate;
+}
+.hero-aurora i:nth-child(6){ /* mint, keeps the field from going all-warm */
+  width:48%; height:48%; top:14%; left:30%;
+  background:radial-gradient(circle at 50% 50%, rgba(164,231,214,0.72) 0%, rgba(164,231,214,0) 68%);
+  animation:auroraF 7.5s ease-in-out infinite alternate;
+}
+
+/* big, fast travel - the movement should be obvious, not subliminal */
+@keyframes auroraA{
+  0%   { transform:translate3d(-26%, -18%, 0) scale(0.82); }
+  50%  { transform:translate3d(34%, 28%, 0) scale(1.52); }
+  100% { transform:translate3d(74%, -14%, 0) scale(1.02); }
+}
+@keyframes auroraB{
+  0%   { transform:translate3d(18%, -22%, 0) scale(1.42); }
+  50%  { transform:translate3d(-50%, 32%, 0) scale(0.78); }
+  100% { transform:translate3d(-24%, 70%, 0) scale(1.46); }
+}
+@keyframes auroraC{
+  0%   { transform:translate3d(14%, 24%, 0) scale(0.84); }
+  50%  { transform:translate3d(-44%, -40%, 0) scale(1.58); }
+  100% { transform:translate3d(-78%, 16%, 0) scale(0.98); }
+}
+@keyframes auroraD{
+  0%   { transform:translate3d(-18%, 14%, 0) scale(1.46); }
+  50%  { transform:translate3d(56%, -42%, 0) scale(0.80); }
+  100% { transform:translate3d(22%, -78%, 0) scale(1.38); }
+}
+@keyframes auroraE{
+  0%   { transform:translate3d(-34%, 20%, 0) scale(0.92); }
+  50%  { transform:translate3d(38%, -30%, 0) scale(1.62); }
+  100% { transform:translate3d(-14%, 44%, 0) scale(0.88); }
+}
+@keyframes auroraF{
+  0%   { transform:translate3d(28%, -24%, 0) scale(1.50); }
+  50%  { transform:translate3d(-42%, 36%, 0) scale(0.82); }
+  100% { transform:translate3d(18%, 62%, 0) scale(1.44); }
+}
+
+/* ---------- SPARKLES ----------
+   A white star vanishes on a pale ground, so each carries a soft plum
+   glow and reads as a glint. */
+.hero-sparks{
+  position:absolute; inset:0; z-index:1;
+  pointer-events:none; overflow:hidden;
+}
+.hero-sparks b{
+  position:absolute; display:block;
+  width:var(--s,12px); height:var(--s,12px); opacity:0;
+  will-change:transform, opacity;
+  animation:twinkle var(--dur,5s) ease-in-out var(--delay,0s) infinite;
+  filter:drop-shadow(0 0 6px rgba(158,52,98,0.55));
+}
+/* a one-shot glint spawned where the page is clicked */
+.hero-sparks b.burst{
+  animation:burstOut var(--dur,900ms) cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes burstOut{
+  0%   { opacity:0;  transform:translate(0,0) scale(.2) rotate(0deg); }
+  25%  { opacity:1;  transform:translate(calc(var(--dx) * .45), calc(var(--dy) * .45)) scale(1.15) rotate(35deg); }
+  100% { opacity:0;  transform:translate(var(--dx), var(--dy)) scale(.35) rotate(80deg); }
+}
+.hero-sparks b::before,
+.hero-sparks b::after{
+  content:''; position:absolute; inset:0; background:#FFFFFF;
+  clip-path:polygon(50% 0%, 57% 43%, 100% 50%, 57% 57%, 50% 100%, 43% 57%, 0% 50%, 43% 43%);
+}
+.hero-sparks b::after{ transform:rotate(45deg) scale(.62); opacity:.8; }
+@keyframes twinkle{
+  0%,100%{ opacity:0; transform:scale(.4) rotate(0deg); }
+  45%    { opacity:1; transform:scale(1.1) rotate(12deg); }
+  70%    { opacity:.4; transform:scale(.85) rotate(18deg); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-aurora i{ animation:none !important; }
+  .hero-sparks{ display:none !important; }
+}
+
+
+/* ---------- CLICK REPLAY ----------
+   Clicking the home page replays the headline word by word. Words are
+   inline-block so they can be transformed; the rotating word is kept as a
+   single unit so its own script keeps working. */
+.intro-hi .w, .intro-line .w{
+  display:inline-block;
+  will-change:transform, opacity, filter;
+}
+.intro-strip.hero-replay .intro-hi .w,
+.intro-strip.hero-replay .intro-line .w{
+  animation:wordIn .72s cubic-bezier(.16,1,.3,1) both;
+  animation-delay:calc(var(--i, 0) * 34ms);
+}
+@keyframes wordIn{
+  0%   { opacity:0; transform:translateY(.42em) scale(.96); filter:blur(9px); }
+  60%  { opacity:1; filter:blur(0); }
+  100% { opacity:1; transform:none; filter:blur(0); }
+}
+@media (prefers-reduced-motion:reduce){
+  .intro-strip.hero-replay .intro-hi .w,
+  .intro-strip.hero-replay .intro-line .w{ animation:none !important; }
+}
+
+/* ---------- CASE STUDIES ----------
+   Same gradient hero as the rest of the site, and a single reading
+   column instead of the rail + content split. */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#FBFBF9 !important;
+  min-height:62svh !important;
+  padding:150px 60px 90px !important;
+  display:flex; align-items:center;
+}
+/* the old static glow blobs are replaced by the moving field */
+.hero-glow-1, .hero-glow-2{ display:none !important; }
+.hero{ overflow:hidden !important; }
+.hero > .hero-aurora{
+    -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 26%, rgba(0,0,0,.62) 50%, rgba(0,0,0,.24) 68%, transparent 84%);
+  mask-image:linear-gradient(180deg, #000 0%, #000 26%, rgba(0,0,0,.62) 50%, rgba(0,0,0,.24) 68%, transparent 84%);
+}
+.hero > .hero-sparks{
+    -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 38%, transparent 72%);
+  mask-image:linear-gradient(180deg, #000 0%, #000 38%, transparent 72%);
+}
+.hero-content, .hero-video, .hero-grid{ position:relative; z-index:3; }
+
+.hero-tag{
+  font-size:11px !important;
+  letter-spacing:.16em !important;
+  margin-bottom:20px !important;
+}
+.hero h1{
+  font-family:'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight:400 !important;
+  letter-spacing:-.012em !important;
+  line-height:1.02 !important;
+}
+.hero .hero-sub{
+  font-size:clamp(15px, 1.15vw, 18px) !important;
+  line-height:1.7 !important;
+  max-width:62ch !important;
+}
+.hero-meta{ gap:28px 44px !important; }
+/* when a hero has no video the copy column had no reason to stop at half
+   the page, which is what squeezed the fact row into two cramped rows */
+.hero:not(:has(.hero-video)) .hero-content{ max-width:none !important; width:100% !important; }
+.hero-meta-label{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-size:10.5px !important; font-weight:600 !important;
+  letter-spacing:.14em !important;
+}
+.hero-meta-value{ font-size:14.5px !important; }
+
+/* ---------- single content column, with the section rail kept ----------
+   The rail is navigation, not content: the reading column stays one
+   column and the sticky "On this page" tabs sit beside it on the left. */
+.cs-shell{
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:64px !important;
+  max-width:1200px !important;
+  margin:0 auto !important;
+  padding:76px 50px 0 !important;
+}
+.cs-rail{
+  display:block !important;
+  flex:0 0 176px !important;
+  position:sticky !important;
+  top:104px !important;
+  align-self:flex-start !important;
+}
+.cs-rail-label{
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif !important;
+  font-size:10px !important; font-weight:600 !important;
+  letter-spacing:.15em !important; text-transform:uppercase;
+  color:rgba(24,24,27,.6) !important;
+  margin-bottom:14px !important;
+}
+.cs-rail .tab-link{
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif !important;
+  font-size:13px !important;
+  padding:9px 0 9px 16px !important;
+  color:rgba(24,24,27,.62) !important;
+}
+.cs-rail .tab-link:hover{ color:#18181B !important; }
+.cs-rail .tab-link.active{
+  color:#7E2A4E !important;
+  border-left-color:#9E3462 !important;
+  font-weight:600 !important;
+}
+.cs-content{ flex:1 1 auto !important; min-width:0 !important; }
+
+@media (max-width:1040px){
+  /* align-items:flex-start sizes a column flex item to its max-content
+     width, so the content column grew past the shell and the page
+     scrolled sideways. Stretch it once the shell stacks. */
+  .cs-shell{
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:0 !important;
+  }
+  .cs-content{ width:100% !important; max-width:100% !important; }
+  .cs-rail{ position:sticky !important; top:60px !important; z-index:90;
+            flex:none !important; width:100% !important; }
+}
+
+/* ---------- reading rhythm ---------- */
+.cs-content > section{
+  padding-top:84px !important;
+  padding-bottom:84px !important;
+}
+.section-title{
+  font-family:'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight:400 !important;
+  letter-spacing:-.012em !important;
+  line-height:1.06 !important;
+  margin-bottom:20px !important;
+}
+.section-label, .eyebrow{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-size:10.5px !important; font-weight:600 !important;
+  letter-spacing:.15em !important;
+}
+.cs-take{
+  font-size:18px !important;
+  line-height:1.55 !important;
+  margin:0 0 30px !important;
+  padding-left:22px !important;
+  border-left-width:2px !important;
+}
+.cs-content p{ line-height:1.75 !important; }
+
+/* panels and figures: softer, larger radius, no heavy shadow */
+.cs-content > section[style*="background"],
+.cs-content > .impact-section,
+.cs-content > .reflection-section{
+  border-radius:26px !important;
+  margin:20px 0 !important;
+  padding-left:44px !important;
+  padding-right:44px !important;
+}
+figure, .cs-figure, .shot{
+  border-radius:20px !important;
+  margin:34px 0 !important;
+  overflow:hidden;
+}
+figure img, .cs-figure img, .shot img{ border-radius:12px !important; }
+figcaption, .cs-caption, .shot-cap{
+  font-size:12.5px !important;
+  line-height:1.6 !important;
+  margin-top:14px !important;
+}
+.card, .glance-card, .ag-card, .quote-card, .decision-card{
+  border-radius:20px !important;
+}
+
+/* ---------- endcard ---------- */
+.cs-endcard{
+  border-radius:26px !important;
+  padding:44px !important;
+  max-width:1010px;
+  margin:0 auto !important;
+}
+
+@media (max-width:1040px){
+  .hero{ padding:126px 32px 72px !important; min-height:0 !important; }
+  .cs-shell{ padding:56px 32px 0 !important; }
+  .cs-content > section{ padding-top:60px !important; padding-bottom:60px !important; }
+  .cs-content > section[style*="background"],
+  .cs-content > .impact-section,
+  .cs-content > .reflection-section{ padding-left:28px !important; padding-right:28px !important; }
+}
+@media (max-width:640px){
+  .hero{ padding:112px 20px 56px !important; }
+  .cs-shell{ padding:40px 20px 0 !important; }
+  .cs-endcard{ padding:28px !important; border-radius:20px !important; }
+  figure, .cs-figure, .shot{ border-radius:14px !important; margin:24px 0 !important; }
+}
+
+/* =====================================================================
+   CRAFT PASS
+   1. One display face everywhere, so the site stops speaking in two
+      voices (see the DISPLAY TYPE block at the end for the weights)
+   2. An availability signal in the hero - the first thing a recruiter
+      looks for, and the thing Chang's hero leads with
+   3. Tighter, more even rhythm in the places that read as unfinished
+   ===================================================================== */
+
+/* ---------- 1. one display face ---------- */
+:root{ --display:'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+.bt-title,
+.b-title,
+.section-title,
+.contact-section h2,
+.cs-endcard-title,
+.ab-headline, .play-headline, .pf-name,
+.hero h1, .hero-headline h1,
+h1.section-title, h2.section-title,
+.impact-number, .stat-number,
+.bt-stat .num, .card-stat .num{
+  font-family:'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight:400 !important;
+  font-optical-sizing:auto;
+}
+/* base tracking; the DISPLAY TYPE block at the end of this file sets
+   the final per-size values */
+.bt-title, .b-title, .section-title,
+.contact-section h2, .ab-headline, .play-headline{
+  letter-spacing:-.012em !important;
+  line-height:1.05 !important;
+}
+
+/* ---------- 2. availability, up front ---------- */
+.intro-status{
+  display:inline-flex !important;
+  align-items:center; gap:9px;
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+  font-size:12px; font-weight:500;
+  letter-spacing:.02em;
+  color:rgba(24,24,27,.78);
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(24,24,27,.12);
+  border-radius:100px;
+  padding:9px 16px 9px 13px;
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  white-space:nowrap;
+  text-transform:none !important;
+}
+.intro-status .dot{
+  width:7px; height:7px; border-radius:50%;
+  background:#2E9E6B;
+  box-shadow:0 0 0 3px rgba(46,158,107,.20);
+  flex-shrink:0;
+}
+.intro-right{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  justify-content:center;
+}
+@media (max-width:520px){
+  .intro-right{ flex-direction:column-reverse; gap:12px; }
+  .intro-status{ font-size:11.5px; }
+}
+
+/* ---------- 3. rhythm ---------- */
+/* One row, always. A fixed 4-column grid pushed the fifth fact onto a
+   second row and squashed all of them; flex lets each fact take the width
+   its value actually needs. */
+.hero-meta{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  gap:0 clamp(20px, 2.8vw, 48px) !important;
+  align-items:flex-start !important;
+  border-top:1px solid rgba(24,24,27,.12);
+  padding-top:22px !important;
+  margin-top:30px !important;
+  max-width:none !important;
+}
+.hero-meta-item{ flex:0 1 auto; min-width:0; padding-right:0 !important; }
+.hero-meta-value{ line-height:1.45 !important; }
+@media (max-width:860px){
+  .hero-meta{ flex-wrap:wrap !important; gap:22px 32px !important; }
+  .hero-meta-item{ flex:1 1 40%; }
+}
+
+/* the closing CTA and the footer were two stacked contact blocks */
+.contact-section{ padding-bottom:64px !important; }
+footer.site-footer{ border-top:1px solid rgba(24,24,27,.10); }
+
+/* project cards: slightly calmer borders, same system */
+.bento-tile{ border-radius:22px !important; }
+.bt-title{ font-size:clamp(23px,1.9vw,30px) !important; }
+.bento-tile--feature .bt-title{ font-size:clamp(30px,2.8vw,42px) !important; }
+
+/* links that were mono are now Inter, matching the rest of the chrome */
+.bt-cta, .bt-eyebrow, .bt-stat .lbl, .wi-hint{
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif !important;
+}
+.bt-eyebrow, .bt-stat .lbl{ font-weight:600 !important; letter-spacing:.11em !important; }
+.bt-cta{ font-weight:500 !important; letter-spacing:.02em !important; }
+
+/* Wider label tracking pushed the two metrics onto separate lines on the
+   cards with longer labels. A fixed two-column grid keeps every card's
+   pair side by side and lets the label wrap inside its own column. */
+.bt-stats{
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+  gap:0 28px !important;
+  align-items:start;
+}
+.bt-stat{ min-width:0; }
+.bt-stat .lbl{
+  white-space:normal !important;
+  line-height:1.5 !important;
+  letter-spacing:.09em !important;
+  font-size:10.5px !important;
+}
+.bt-stat .num{ white-space:nowrap; margin-bottom:3px; }
+
+/* The nav links shrank to 11.5px, which moves them under the AA floor
+   for small text: her --muted (#565660) measured 4.03-4.14:1 against the
+   darkest point of the moving gradient. 74% ink clears it at 5.4:1, and
+   the hover/active plum moves to the darker #7E2A4E (5.01:1 vs 3.74:1). */
+nav ul a,
+nav .nav-right a,
+nav .nav-back{ color:rgba(24,24,27,0.74) !important; }
+nav ul a:hover,
+nav .nav-right a:hover,
+nav .nav-back:hover,
+nav ul a[aria-current="page"],
+nav ul a.mx-nav-active{ color:#7E2A4E !important; }
+nav ul a::after{ background:#7E2A4E !important; }
+
+/* the footer mark measured 3.84-3.95:1 at 13px - under the AA floor */
+footer.site-footer .foot-mark{ color:rgba(24,24,27,0.68) !important; }
+
+/* the work list opened with no visible label - the heading was
+   screen-reader only, so the page jumped from hero straight to cards */
+.work-label{
+  display:block;
+  max-width:1240px;
+  margin:0 auto 30px;
+  padding-top:26px;
+  border-top:1px solid rgba(24,24,27,.12);
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+  font-size:10.5px; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase;
+  color:rgba(24,24,27,.66);
+}
+
+/* Three different left edges down the home page: the work label sat at
+   100, the cards at 140 and the contact block at 170. Snap them all to
+   the card edge, which the footer already matches. */
+/* Match .bento's box exactly - same max-width and same 40px inset - so
+   all three resolve to the identical content edge at every width. */
+.work-label,
+.contact-section .contact-inner{
+  max-width:1240px !important;
+  margin-left:auto !important; margin-right:auto !important;
+  padding-left:40px !important; padding-right:40px !important;
+  box-sizing:border-box;
+}
+@media (max-width:640px){
+  .work-label,
+  .contact-section .contact-inner{ padding-left:0 !important; padding-right:0 !important; }
+}
+
+/* =====================================================================
+   HOME WORK LIST: bento -> single column
+   Five stacked full-width cards, artwork left and copy right, instead of
+   a feature tile plus a 2x2 arrangement. The card containers, borders and
+   per-project tints all stay.
+   ===================================================================== */
+.bento{
+  display:block !important;
+  max-width:1240px !important;
+  padding:0 40px !important;
+  margin:0 auto !important;
+  zoom:1 !important;
+  box-sizing:border-box;
+}
+.bento-tile,
+.bento-tile--feature,
+.bento-tile--row,
+.bento-tile--card{
+  display:flex !important;
+  flex-direction:row !important;
+  width:100% !important;
+  margin:0 0 30px !important;
+  grid-column:auto !important;
+  grid-row:auto !important;
+}
+/* the Agent Builder tile was mirrored to break up the old grid; with one
+   card per row every band should read the same way */
+.bt-agent.bento-tile--row{ flex-direction:row !important; }
+
+.bento-tile .bt-media,
+.bento-tile--feature .bt-media,
+.bento-tile--row .bt-media,
+.bento-tile--card .bt-media{
+  flex:0 0 46% !important;
+  max-width:46% !important;
+  min-height:0 !important;
+  aspect-ratio:16 / 11;
+  padding:30px !important;
+  display:flex; align-items:center; justify-content:center;
+}
+.bento-tile .bt-media img{ object-position:center !important; }
+
+.bento-tile .bt-body,
+.bento-tile--feature .bt-body,
+.bento-tile--row .bt-body,
+.bento-tile--card .bt-body{
+  flex:1 1 auto !important;
+  padding:34px 38px !important;
+  justify-content:center !important;
+}
+.bento-tile--row .bt-title,
+.bento-tile--card .bt-title,
+.bento-tile--feature .bt-title{
+  font-size:clamp(26px, 2.5vw, 38px) !important;
+  margin-bottom:12px !important;
+}
+.bento-tile--row .bt-desc,
+.bento-tile--card .bt-desc,
+.bento-tile--feature .bt-desc{
+  font-size:15px !important;
+  line-height:1.65 !important;
+  max-width:60ch !important;
+  margin:0 0 18px !important;
+}
+.bento-tile .bt-stats{ margin:0 0 18px !important; max-width:560px; }
+.bento-tile .bt-foot{ margin-top:0 !important; }
+
+/* Saksham's live/code chips wrap the card, so the wrapper needs the same
+   full-width block treatment */
+.bento .bt-wrap{
+  display:block !important;
+  width:100% !important;
+  margin:0 0 30px !important;
+}
+.bento .bt-wrap > .bento-tile{ margin:0 !important; }
+.bento .bt-wrap .bt-chiprow{
+  position:static !important;
+  display:flex; gap:10px; flex-wrap:wrap;
+  justify-content:flex-end;
+  padding:14px 38px 0 0;
+}
+.bento .bt-wrap .bt-code,
+.bt-saksham .bt-code{
+  position:static !important;
+  top:auto !important; left:auto !important; right:auto !important;
+}
+
+@media (max-width:1040px){
+  .bento{ padding:0 !important; }
+  .bento-tile,
+  .bento-tile--feature,
+  .bento-tile--row,
+  .bento-tile--card,
+  .bt-agent.bento-tile--row{ flex-direction:column !important; margin:0 0 24px !important; }
+  .bento-tile .bt-media,
+  .bento-tile--feature .bt-media,
+  .bento-tile--row .bt-media,
+  .bento-tile--card .bt-media{
+    flex:none !important; max-width:100% !important; aspect-ratio:16/10;
+  }
+  .bento-tile .bt-body{ padding:26px 26px 28px !important; }
+  .bento .bt-wrap{ margin:0 0 24px !important; }
+  .bento .bt-wrap .bt-chiprow{ justify-content:flex-start; padding:12px 0 0 26px; }
+}
+
+
+/* =====================================================================
+   DISPLAY TYPE — Inter Tight
+   Instrument Serif shipped a single weight, so every heading sat at 400
+   and emphasis could only come from size. Inter Tight is variable, so
+   weight carries the hierarchy and tracking tightens as size grows.
+   ===================================================================== */
+.intro-hi,
+.ab-headline, .play-headline,
+.hero h1, .hero-headline h1,
+.contact-section h2{
+  font-weight:600 !important;
+  letter-spacing:-.034em !important;
+  line-height:1.02 !important;
+}
+.bt-title, .b-title,
+.section-title, h1.section-title, h2.section-title,
+.cs-endcard-title, .pf-name{
+  font-weight:600 !important;
+  letter-spacing:-.024em !important;
+  line-height:1.08 !important;
+}
+.pf-col span{
+  font-weight:600 !important;
+  letter-spacing:-.012em !important;
+}
+.bt-stat .num, .card-stat .num,
+.impact-number, .stat-number{
+  font-weight:600 !important;
+  letter-spacing:-.02em !important;
+}
+/* italic accents keep their colour but lose the serif slope, which reads
+   awkward on a grotesk at display size. Weight INHERITS so an accent word
+   never ends up heavier than the headline it sits inside. */
+.intro-hi .hi-name,
+.ab-headline em, .play-headline em,
+.section-title em, .b-title em,
+.hero h1 span, .hero h1 em,
+.contact-section h2 em{
+  font-style:normal !important;
+  font-weight:inherit !important;
+}
+
+
+/* =====================================================================
+   SAKSHAM'S LIVE / CODE CHIPS
+   They cannot be nested inside the card, because the card itself is an
+   <a> and anchors cannot contain anchors - which is why they sit as a
+   sibling. Positioning them inside the wrapper puts them on the card,
+   bottom right, opposite the "View case study" link.
+   ===================================================================== */
+.bento .bt-wrap{ position:relative !important; }
+.bento .bt-wrap .bt-chiprow{
+  position:absolute !important;
+  right:38px;
+  bottom:34px;
+  z-index:6;
+  display:flex; gap:10px; flex-wrap:wrap;
+  justify-content:flex-end;
+  padding:0 !important;
+}
+.bento .bt-wrap .bt-code,
+.bt-saksham .bt-code{
+  position:static !important;
+  background:rgba(255,255,255,.88) !important;
+  border:1px solid rgba(24,24,27,.14) !important;
+  box-shadow:0 2px 8px rgba(24,24,27,.08) !important;
+  font-size:12px !important;
+  padding:8px 14px !important;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.bento .bt-wrap .bt-code:hover,
+.bt-saksham .bt-code:hover{
+  background:#fff !important;
+  border-color:#9E3462 !important;
+  color:#9E3462 !important;
+}
+@media (max-width:1040px){
+  .bento .bt-wrap .bt-chiprow{
+    position:static !important;
+    justify-content:flex-start;
+    padding:0 26px 24px !important;
+    margin-top:-8px;
+  }
+}
+
+/* =====================================================================
+   PLAY + ABOUT PAGE TITLES
+   The small eyebrow above each big title was redundant with the nav's
+   current-page state and the title itself, so it goes. "Side quests &
+   experiments." holds one line down to tablet width.
+   ===================================================================== */
+.play-eyebrow,
+.ab-eyebrow{ display:none !important; }
+
+.play-headline{
+  white-space:nowrap !important;
+  font-size:clamp(30px, 5.6vw, 84px) !important;
+  max-width:none !important;
+}
+.play-intro > .play-headline,
+.ab-hero > .ab-headline{ max-width:1300px !important; }
+
+@media (max-width:760px){
+  .play-headline{
+    white-space:normal !important;
+    font-size:clamp(34px, 10vw, 52px) !important;
+  }
+}
+
+/* =====================================================================
+   TYPE SYSTEM — SITE-WIDE SWEEP
+   A font audit found ~57 elements still on Fraunces or JetBrains Mono,
+   scattered through selectors the earlier rules never named (.ag-num,
+   .decision-title, .insight-num, .section-eyebrow and dozens more).
+   Naming them one by one does not scale, so this sets Inter as the
+   blanket default and then opts specific things back into the display
+   face or into real mono.
+
+   Specificity note: the blanket rule is `body *` (0,0,1). Every opt-in
+   below is class-based (0,1,0), so the opt-ins win regardless of order,
+   while old un-flagged declarations lose to the blanket !important.
+   ===================================================================== */
+body,
+body *{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important;
+}
+
+/* ---- mono, only where it carries meaning ---- */
+code, pre, kbd, samp,
+.bt-code, .built-cta,
+.ds-swatch-hex,
+.browser-url, .hero-browser-url,
+.cap-n, .cta-pdf{
+  font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace !important;
+}
+
+/* ---- display face: titles ---- */
+.bt-title, .b-title,
+.section-title, h1.section-title, h2.section-title,
+.cs-endcard-title, .pf-name, .next-title,
+.hero h1, .hero-headline h1,
+.decision-title, .theme-title, .finding-block-title,
+.feature-title, .sdg-title, .principle-title, .vision-title,
+.research-title, .persona-name, .sub-heading,
+.next-title em, .section-title em{
+  font-family:'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight:600 !important;
+  letter-spacing:-.024em !important;
+}
+
+/* ---- display face: the big numbers ---- */
+.ag-num, .decision-num, .insight-num, .rq-num,
+.killed-n, .take-num, .problem-num, .problem-stat,
+.process-num, .question-marker,
+.impact-number, .stat-number,
+.bt-stat .num, .card-stat .num, .pf-col span{
+  font-family:'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight:600 !important;
+  letter-spacing:-.02em !important;
+}
+
+/* ---- labels: Inter, uppercase, tracked ---- */
+.section-eyebrow, .cs-endcard-eyebrow, .section-label, .eyebrow,
+.ms-label, .stat-method, .shipped-eyebrow, .shipped-chip,
+.b-badge, .bt-badge, .bt-eyebrow, .bt-stat .lbl,
+.hero-tag, .hero-meta-label, .cs-rail-label, .work-label,
+.play-eyebrow, .ab-eyebrow, .ab-grid-head, .pf-role, .pf-col b{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight:600 !important;
+}
+
+/* ---- UI glyph controls kept a fallback that renders the arrows ---- */
+.pf-lb-close, .pf-vb-close, .lvg-close, .lvg-nav, .ba-tab, .skip-link{
+  font-family:'Inter', Arial, ui-sans-serif, system-ui, sans-serif !important;
+}
+
+/* ---- pull quotes drop the serif with everything else ---- */
+.quote-text, .testimonial-quote, .persona-text{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-style:normal !important;
+}
+
+/* ---- the three page titles keep Instrument Serif (0,1,0 + later) ---- */
+.intro-hi,
+.play-headline,
+.ab-headline{
+  font-family:'Instrument Serif', 'Times New Roman', Georgia, serif !important;
+  font-weight:400 !important;
+  letter-spacing:-.012em !important;
+}
+.intro-hi .hi-name,
+.play-headline em,
+.ab-headline em{
+  font-family:'Instrument Serif', 'Times New Roman', Georgia, serif !important;
+  font-style:italic !important;
+  font-weight:400 !important;
+}
+
+/* =====================================================================
+   HERO REFINEMENT
+   ===================================================================== */
+
+/* 1. The click-replay wraps each word in a .w span. The site-wide
+      `body *` default then repainted those spans in Inter, so "Hi, I'm"
+      rendered sans while "Jasmine!" (which has its own rule) stayed
+      serif. The word spans must inherit their parent's face. */
+.intro-hi .w, .intro-hi .w *,
+.play-headline .w, .ab-headline .w{
+  font-family:'Instrument Serif', 'Times New Roman', Georgia, serif !important;
+  font-weight:400 !important;
+}
+.intro-line .w, .intro-line .w *{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important;
+}
+.intro-hi .w .hi-name{ font-style:italic !important; }
+
+/* 2. A soft light behind the headline so the type lifts off the colour
+      instead of sitting flat in it. */
+.intro-strip::before{
+  content:'';
+  position:absolute; inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:radial-gradient(58% 46% at 50% 44%,
+    rgba(255,255,255,.62) 0%, rgba(255,255,255,.28) 45%, transparent 72%);
+}
+
+/* 3. Optical centre: dead-centre left the block marooned between two
+      equal voids. Sitting a little high reads as composed. */
+.intro-strip{ align-items:flex-start !important; padding-top:min(30vh, 260px) !important; }
+
+/* 4. The subhead was 15px under a 106px headline - too big a jump, and
+      it needs room to breathe. */
+.intro-line{
+  font-size:clamp(16px, 1.32vw, 19px) !important;
+  line-height:1.6 !important;
+  margin-top:22px !important;
+  max-width:60ch !important;
+}
+.intro-hi{ margin-bottom:0 !important; }
+
+/* 5. The status pill and the resume button were 34px and 47px tall and
+      sat on different baselines. Same height, same centre. */
+.intro-right{ align-items:center !important; gap:12px !important; margin-top:38px !important; }
+.intro-status,
+.intro-resume{
+  min-height:46px;
+  display:inline-flex !important;
+  align-items:center;
+  box-sizing:border-box;
+}
+.intro-status{ padding:0 18px 0 15px !important; font-size:12.5px !important; }
+.intro-resume{ padding:0 26px !important; }
+
+/* 6. The subhead was breaking before "feel usable." - widen it so the
+      sentence holds one line on desktop, and let the browser pick a
+      balanced break when it does have to wrap. */
+.intro-line{
+  max-width:76ch !important;
+  text-wrap:balance;
+}
+
+/* 7. The field faded out by ~70% of the hero, leaving the lower third
+      almost colourless and the empty space reading as flat rather than
+      airy. Carry the colour further, still finishing before the edge so
+      no seam comes back. */
+.intro-strip > .hero-aurora{
+  -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 40%, rgba(0,0,0,.72) 62%, rgba(0,0,0,.34) 78%, transparent 92%) !important;
+  mask-image:linear-gradient(180deg, #000 0%, #000 40%, rgba(0,0,0,.72) 62%, rgba(0,0,0,.34) 78%, transparent 92%) !important;
+}
+
+/* =====================================================================
+   CASE STUDY TITLE WEIGHT
+   600 reads heavy once the type gets to 46-64px. Larger sizes need less
+   weight to carry the same presence, so the big headings drop to 500
+   while the smaller card titles stay at 600.
+   ===================================================================== */
+.hero h1, .hero-headline h1,
+.section-title, h1.section-title, h2.section-title,
+.next-title, .next-title em,
+.section-title em,
+.cs-endcard-title{
+  font-weight:500 !important;
+}
+
+/* =====================================================================
+   FOUNDRY PERSONA BLOCK
+   It was pinned to 620px inline and 560px by a later rule, so it sat
+   narrower than every other section and read as a stray card. It now
+   runs the full width of the reading column like everything else.
+   ===================================================================== */
+/* Her 560px cap lives in a style block inside <body>, which wins over
+   anything in <head> at equal specificity. Adding .cs-content raises
+   this above it. */
+html body .cs-content .persona-grid,
+html body .cs-content .persona-grid:has(> .persona-card:only-child),
+html body .container-wide .persona-grid{
+  grid-template-columns:minmax(0,1fr) !important;
+  justify-content:stretch !important;
+  max-width:none !important;
+  width:100% !important;
+}
+html body .cs-content .persona-card{ width:100% !important; max-width:none !important; }
+.persona-top{ padding:26px 30px !important; }
+.persona-body{ padding:24px 30px 28px !important; }
+
+/* the emoji replaces the outline-person icon */
+html body .persona-emoji{
+  font-size:40px !important;
+  line-height:1 !important;
+  margin-bottom:10px;
+}
+.persona-glyph{
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif !important;
+  font-size:40px;
+  line-height:1;
+  display:inline-block;
+}
+
+/* the persona sits in .container-wide (60px inset) while the copy around
+   it sits in .container (48px), so the card hung 12px proud on each
+   side. Match the reading column exactly. */
+html body .cs-content .container-wide:has(.persona-grid){
+  padding-left:48px !important;
+  padding-right:48px !important;
+}
+@media (max-width:1040px){
+  html body .cs-content .container-wide:has(.persona-grid){
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+}
+
+/* =====================================================================
+   RESPONSIVE PASS
+   Measured across 1440 / 1280 / 1024 / 834 / 768 / 430 / 360. No page
+   scrolled sideways at any width; what follows fixes the things that
+   fit but did not READ well on a phone.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. PLAY TILES — stop overlaying once the tile gets short
+   The tiles are an image with an absolutely-positioned scrim carrying
+   the copy. At 390px the forced 16/10 ratio made each tile 214px tall
+   while the copy block needs ~190px, so the text sat flush against the
+   top of the picture and the scrim covered the whole image. Below 860px
+   the tile becomes a real stack: picture on top, copy underneath on a
+   solid ground.
+   --------------------------------------------------------------------- */
+@media (max-width:860px){
+  .love-section .b-tile{
+    display:flex !important;
+    flex-direction:column !important;
+    aspect-ratio:auto !important;
+    height:auto !important;
+    background:#0E1018 !important;
+  }
+  .love-section .bento > *:nth-child(n){
+    grid-column:span 12 !important;
+    grid-row:auto !important;
+    aspect-ratio:auto !important;
+    height:auto !important;
+  }
+  .love-section .b-media{
+    position:relative !important;
+    inset:auto !important;
+    flex:0 0 auto !important;
+    width:100% !important;
+    aspect-ratio:16 / 10 !important;
+    height:auto !important;
+  }
+  .love-section .b-media img,
+  .love-section .b-media video{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important; height:100% !important;
+    object-fit:cover !important;
+    object-position:center 34% !important;
+  }
+  .love-section .b-tile.b-contain .b-media img{ object-fit:contain !important; }
+  .love-section .b-overlay{
+    position:relative !important;
+    inset:auto !important;
+    flex:1 1 auto !important;
+    background:#0E1018 !important;
+    padding:22px 22px 24px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
+  }
+  .love-section .b-badge{ top:14px !important; left:14px !important; }
+  .love-section .b-title{ font-size:clamp(23px, 6vw, 29px) !important; }
+  .love-section .b-desc{ font-size:14px !important; }
+  /* the lift-on-hover is a pointer affordance; on touch it just jitters */
+  .love-section .b-tile:hover{ transform:none !important; }
+}
+
+/* ---------------------------------------------------------------------
+   2. CASE-STUDY RAIL — make the scrolling strip look scrollable
+   Below 1040px the "On this page" rail turns into a horizontal strip
+   (up to 630px of tabs inside 350px). It scrolled, but the tabs were
+   sheared off at the right edge with no cue, so it read as broken
+   rather than swipeable. Now: a soft ground, a fade at each end that
+   only appears when there is more to see, snap points, and no
+   scrollbar gutter.
+   --------------------------------------------------------------------- */
+@media (max-width:1040px){
+  .cs-rail{
+    padding:10px 0 0 !important;
+    margin-bottom:4px !important;
+    background:rgba(252,252,251,.88) !important;
+    -webkit-backdrop-filter:saturate(150%) blur(18px);
+    backdrop-filter:saturate(150%) blur(18px);
+    border-bottom:1px solid rgba(24,24,27,.10) !important;
+  }
+  .cs-rail .cs-rail-label{ display:none !important; }
+  .cs-rail .cs-rail-nav{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    gap:4px !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    padding:0 4px 10px !important;
+    /* the fade only shows on the side that still has content: the two
+       custom properties are set from script as the strip scrolls */
+    -webkit-mask-image:linear-gradient(90deg,
+      transparent 0, #000 var(--fade-l, 0px),
+      #000 calc(100% - var(--fade-r, 0px)), transparent 100%);
+    mask-image:linear-gradient(90deg,
+      transparent 0, #000 var(--fade-l, 0px),
+      #000 calc(100% - var(--fade-r, 0px)), transparent 100%);
+  }
+  .cs-rail .cs-rail-nav::-webkit-scrollbar{ display:none; }
+  .cs-rail .tab-link{
+    flex:0 0 auto !important;
+    scroll-snap-align:start;
+    white-space:nowrap !important;
+    padding:9px 12px !important;
+    border-left:0 !important;
+    border-bottom:2px solid transparent !important;
+    border-radius:8px 8px 0 0;
+  }
+  .cs-rail .tab-link.active{
+    border-left:0 !important;
+    border-bottom-color:#9E3462 !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   3. TOUCH TARGETS
+   The footer links were 18px tall and the live/code chips 15px - both
+   well under a comfortable thumb. The visible design does not change;
+   the tappable box grows around it.
+   --------------------------------------------------------------------- */
+@media (max-width:860px){
+  footer.site-footer .foot-links{ gap:4px 8px !important; }
+  footer.site-footer .foot-links a{
+    min-height:44px;
+    align-items:center;
+    padding:0 10px !important;
+    border-bottom:0 !important;
+  }
+  footer.site-footer .foot-links a:hover{ border-bottom:0 !important; }
+  .bt-code, .built-cta, .bt-cta, .b-cta, .cs-endcard a, .proto-cta{
+    min-height:40px;
+    display:inline-flex !important;
+    align-items:center;
+  }
+  nav ul a, nav .nav-right a{
+    min-height:40px;
+    display:inline-flex !important;
+    align-items:center;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   4. SMALL TYPE ON PHONES
+   A dozen label styles sat at 10-10.5px. That is legible on a 27"
+   monitor and squinty on a phone, so every tracked label lifts to 11px
+   below 500px. Tracking eases slightly to pay for the extra width.
+   --------------------------------------------------------------------- */
+@media (max-width:500px){
+  .hero-meta-label, .work-label, .b-kicker, .b-badge, .bt-badge,
+  .ab-grid-head, .proto-label, .bt-stat .lbl, .bt-eyebrow,
+  .ds-section-label, .ds-type-role, .ds-swatch-hex, .jm-legend-item,
+  .section-label, .eyebrow, .section-eyebrow, .cs-endcard-eyebrow,
+  .cs-rail-label, .ms-label, .shipped-eyebrow, .stat-method,
+  .b-cta, .cap-n, .pf-col b, .pf-role{
+    font-size:11px !important;
+    letter-spacing:.10em !important;
+  }
+  .bt-stat .lbl{ letter-spacing:.07em !important; }
+}
+
+/* ---------------------------------------------------------------------
+   5. CASE-STUDY NAV — the back link and the logo were touching
+   "All work" ended at x97 and the logo began at x97 on a 390px screen.
+   --------------------------------------------------------------------- */
+@media (max-width:640px){
+  nav .nav-back{ margin-right:18px !important; }
+  nav .logo img, nav .nav-logo img{ height:34px !important; }
+  nav{ padding-left:18px !important; padding-right:18px !important; }
+}
+
+/* ---------------------------------------------------------------------
+   6. HERO HEIGHT ON PHONES
+   The home hero held 253px of top padding inside a 776px band, which
+   left a large dead field under the CTA. The About and Play bands were
+   similarly bottom-heavy. Tighter, so the first scroll reaches content.
+   --------------------------------------------------------------------- */
+@media (max-width:760px){
+  .intro-strip{
+    min-height:86svh !important;
+    padding-top:min(17vh, 140px) !important;
+  }
+  .intro-right{ margin-top:30px !important; }
+  .intro-line{ margin-top:18px !important; }
+}
+@media (max-width:640px){
+  .ab-hero, .play-intro{ min-height:50svh !important; padding:96px 20px 48px !important; }
+}
+
+/* ---------------------------------------------------------------------
+   7. NEXSTERA JOURNEY MAP — same treatment as the rail
+   The stage strip is 1108px wide inside 594px at every screen size, so
+   it already scrolled on desktop with no sign that it did.
+   --------------------------------------------------------------------- */
+.jm-stages{
+  scrollbar-width:thin;
+  scroll-snap-type:x proximity;
+  -webkit-mask-image:linear-gradient(90deg,
+    transparent 0, #000 var(--fade-l, 0px),
+    #000 calc(100% - var(--fade-r, 0px)), transparent 100%);
+  mask-image:linear-gradient(90deg,
+    transparent 0, #000 var(--fade-l, 0px),
+    #000 calc(100% - var(--fade-r, 0px)), transparent 100%);
+}
+.jm-stage{ scroll-snap-align:start; }
+
+/* ---------------------------------------------------------------------
+   8. HOME CARDS ON PHONES
+   The stacked cards kept a 38px inner inset from the desktop layout,
+   which left the copy sitting in a narrow channel on a 360px screen.
+   --------------------------------------------------------------------- */
+@media (max-width:640px){
+  .bento{ padding:0 20px !important; }
+  .bento-tile .bt-body{ padding:24px 22px 26px !important; }
+  .bento-tile .bt-media{ padding:20px !important; }
+  .bento-tile--row .bt-title,
+  .bento-tile--card .bt-title,
+  .bento-tile--feature .bt-title{ font-size:clamp(24px, 7vw, 30px) !important; }
+  .bento .bt-wrap .bt-chiprow{ padding:0 22px 22px !important; }
+  .bt-stats{ gap:0 18px !important; }
+  .work-label{ padding-left:20px !important; padding-right:20px !important; }
+}
+
+/* ---------------------------------------------------------------------
+   9. LONG STRINGS
+   URLs and hex values in the browser chrome and design-system blocks
+   have no break opportunities, so they were the one thing that could
+   still push a panel wide on a narrow screen.
+   --------------------------------------------------------------------- */
+.browser-url, .hero-browser-url, .ds-swatch-hex, .bt-code, .built-cta{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* ---------------------------------------------------------------------
+   10. PLAY TILE SCRIM — anchor the ramp in pixels, not percent
+   The scrim was a percentage ramp, so on the short 16/10 tiles it was
+   still only ~50% opaque where the copy sits and the phone mockups and
+   colour swatches read straight through the titles. Measured across
+   1440/1280/1024/900, the copy always occupies the bottom 156-216px of
+   a tile, whatever that tile's height. A pixel-anchored ramp is
+   therefore opaque exactly where the words are and leaves the tall
+   tiles' artwork clear above it.
+   --------------------------------------------------------------------- */
+@media (min-width:861px){
+  .love-section .b-overlay{
+    background:linear-gradient(to top,
+      rgba(8,10,18,0.975)   0px,
+      rgba(8,10,18,0.955) 150px,
+      rgba(8,10,18,0.90)  225px,
+      rgba(8,10,18,0.62)  275px,
+      rgba(8,10,18,0.26)  330px,
+      rgba(8,10,18,0)     400px) !important;
+  }
+  /* the tall feature tile has the most headroom, so its artwork can
+     stay clear a little longer */
+  .love-section .bento > *:nth-child(1) .b-overlay{
+    background:linear-gradient(to top,
+      rgba(8,10,18,0.975)   0px,
+      rgba(8,10,18,0.955) 165px,
+      rgba(8,10,18,0.88)  245px,
+      rgba(8,10,18,0.52)  305px,
+      rgba(8,10,18,0.18)  370px,
+      rgba(8,10,18,0)     440px) !important;
+  }
+}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -2811,7 +4115,6 @@ html body .hero-figma-frame.ifr-focus{
       <a href="play.html">Play</a>
       <a href="about.html">About</a>
       <a href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      <a href="index.html#contact">Contact</a>
     </div>
   </nav>
 
@@ -2825,13 +4128,14 @@ html body .hero-figma-frame.ifr-focus{
     <a href="play.html">Play</a>
     <a href="about.html">About</a>
     <a href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      <a href="index.html#contact">Contact</a>
   </div>
 
   <main id="main">
 
   <!-- HERO -->
   <section class="hero" id="overview">
+    <div class="hero-aurora"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="hero-sparks" id="heroSparks"></div>
     <div class="hero-glow-1"></div>
     <div class="hero-glow-2"></div>
     <div class="hero-content">
@@ -2938,7 +4242,7 @@ html body .hero-figma-frame.ifr-focus{
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">College students felt anxious every time they uploaded identity documents to another portal, with no transparency about where their data went.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Leading a 4-person team, I ran the research myself and drove the design direction, from a survey of 96 and contextual inquiry to the trust model the app is built on, delegating screens to the other three designers and holding consistency through critique, cutting two of our own AI features once testing showed the real blocker was trust.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led a team of four: ran the research myself, set the trust model the app is built on, and delegated screens while holding consistency through critique. <strong>Cut two of our own AI features</strong> when testing showed the blocker was trust, not convenience.</div></div>
         <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>A privacy-first verification flow</strong> built around visible trust: redacted previews, revocable sharing, and a cross-platform Face ID handoff, a direction the identity space has moved toward since.</div></div>
       </div>
     </div>
@@ -2950,14 +4254,13 @@ html body .hero-figma-frame.ifr-focus{
       <p class="section-eyebrow">Problem Identification</p>
       <h2 class="section-title">Meet <em>Pam.</em></h2>
       <p class="cs-take">For students, verifying identity had become a privacy risk to brace for, not a routine task.</p>
-      <p class="body-text">A graduate student verifying her identity for yet another online portal. Before she uploads her documents, she hesitates, unsure where her data will go or who can access it.</p>
 
       <div class="persona-card fade-in">
         <div class="persona-name">Pam · Graduate Student · University of Washington</div>
         <p class="persona-text">"I've uploaded my passport to so many different portals. I never know who actually sees it or how it's stored. Every new system feels like a privacy risk."</p>
       </div>
 
-      <p class="body-text">For students like Pam, verification is fragmented and opaque: multiple logins, inconsistent requirements, and vague privacy policies. Users feel <strong>exposed rather than protected.</strong></p>
+      <p class="body-text">Verification is fragmented and opaque: multiple logins, inconsistent requirements, vague privacy policies. Users feel <strong>exposed rather than protected.</strong></p>
     </div>
   </section>
 
@@ -3063,7 +4366,6 @@ html body .hero-figma-frame.ifr-focus{
       <p class="section-eyebrow">Design Decisions</p>
       <h2 class="section-title">Three decisions that <em>defined</em><br />Nox+.</h2>
       <p class="cs-take">Each call traded a nice-to-have for the one thing Nox+ had to protect: trust.</p>
-      <p class="body-text">Each was a moment where two reasonable approaches pointed in opposite directions. The decisions are where the trade-offs actually live.</p>
 
       <div class="decisions-list fade-in">
 
@@ -3098,7 +4400,7 @@ html body .hero-figma-frame.ifr-focus{
       <p class="section-eyebrow">Solution</p>
       <h2 class="section-title">Introducing <em>Nox+.</em></h2>
       <p class="cs-take">Prove who you are without putting your full document on screen, or in anyone else&rsquo;s hands.</p>
-      <p class="body-text">Nox+ is built on a simple premise: <strong>people don't want to manage their identity; they want to forget about it until they need it.</strong> The app pairs a physical proof card with a mobile platform for verification across digital and in-person contexts, and every feature answers the question participants kept asking: "Who has my data, and can I trust them?"</p>
+      <p class="body-text">Nox+ is built on a simple premise: people don't want to manage their identity, they want to forget about it until they need it. Every feature answers the question participants kept asking: <strong>&ldquo;Who has my data, and can I trust them?&rdquo;</strong></p>
     </div>
 
     <div class="container-wide fade-in">
@@ -3171,7 +4473,7 @@ html body .hero-figma-frame.ifr-focus{
       <p class="section-eyebrow">Validation</p>
       <h2 class="section-title">Testing that changed<br />the <em>design.</em></h2>
       <p class="cs-take">Two things came straight out of testing: the AI came out, and the fingerprint pad got bigger.</p>
-      <p class="body-text">Every round of usability testing existed to answer one question: do people trust this? Each round sent me back to change something specific.</p>
+      <p class="body-text">Every round asked one question: <strong>do people trust this?</strong> Each one sent me back to change something specific.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="stats-grid">
@@ -3232,7 +4534,6 @@ html body .hero-figma-frame.ifr-focus{
       <p class="section-eyebrow">Systems Thinking</p>
       <h2 class="section-title">A trust product is judged by<br />its <em>in-between states.</em></h2>
       <p class="cs-take">Confidence is won or lost in the states that aren't the happy path.</p>
-      <p class="body-text">Before you're set up, when a document is about to lapse, when you want your data back: I designed those states as deliberately as the main flow, because that's where trust is tested.</p>
     </div>
     <div class="container-wide">
       <div class="features-grid fade-in">
@@ -3266,7 +4567,6 @@ html body .hero-figma-frame.ifr-focus{
       <p class="section-eyebrow" style="color: rgba(200,170,255,0.7);">Live Prototype</p>
       <h2 class="section-title" style="color: white;">See Nox+ <em style="color: var(--purple-light);">in action.</em></h2>
       <p class="cs-take">The whole flow end to end: onboarding, biometric setup, and a verification that never puts the document on screen.</p>
-      <p class="body-text" style="color: rgba(255,255,255,0.55);">A walkthrough of the Figma prototype demonstrating the complete user flow: from onboarding and biometric setup through document management and identity verification.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="prototype-video-wrap" id="proto-live" style="background: rgba(255,255,255,0.06);">
@@ -3321,9 +4621,14 @@ html body .hero-figma-frame.ifr-focus{
   <!-- FOOTER -->
     </main>
 
-  <footer>
-    <p class="footer-left">© 2026 Jasmine Sayed</p>
-    <p class="footer-right">Designed &amp; built by Jasmine Sayed</p>
+  <footer class="site-footer">
+    <p class="foot-mark">&copy; 2026 Jasmine Sayed</p>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/sayedjasmine" target="_blank" rel="noopener noreferrer">LinkedIn <i aria-hidden="true">&#8599;</i></a>
+      <a href="mailto:sayedjasmine@gmail.com">Email <i aria-hidden="true">&#8599;</i></a>
+      <a href="assets/Jasmine-Sayed-Resume.pdf" target="_blank" rel="noopener">Resume <i aria-hidden="true">&#8599;</i></a>
+      <a href="https://github.com/jsayed23" target="_blank" rel="noopener noreferrer">GitHub <i aria-hidden="true">&#8599;</i></a>
+    </div>
   </footer>
 
   <script>
@@ -3754,5 +5059,95 @@ img{ height:auto; }
   });
 })();
 </script>
+
+  <script>
+  /* ===== gradient hero: sparkles, scroll transition, nav state ===== */
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var field = document.getElementById('heroSparks');
+    if (field && !reduce) {
+      var COUNT = window.innerWidth < 640 ? 24 : 46;
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < COUNT; i++) {
+        var b = document.createElement('b');
+        b.style.setProperty('--s', (6 + Math.random() * 17).toFixed(1) + 'px');
+        b.style.setProperty('--dur', (2.6 + Math.random() * 3.8).toFixed(2) + 's');
+        /* negative delay starts each glint part-way through its cycle,
+           so the field is already twinkling on first paint */
+        b.style.setProperty('--delay', '-' + (Math.random() * 6).toFixed(2) + 's');
+        /* keep the field clear of the centre, where the headline sits -
+           glints landing on the type read as dirt, not sparkle */
+        var x, y, tries = 0;
+        do {
+          x = Math.random() * 98;
+          y = Math.random() * 96;
+          tries++;
+        } while (tries < 12 && x > 18 && x < 82 && y > 26 && y < 60);
+        b.style.left = x.toFixed(2) + '%';
+        b.style.top = y.toFixed(2) + '%';
+        frag.appendChild(b);
+      }
+      field.appendChild(frag);
+    }
+
+    /* Only index shipped a nav scroll handler; every page needs one or
+       the clear nav never picks up its scrim. Every hero is light now,
+       so there is no dark state to track. */
+    var nav = document.querySelector('nav');
+    if (nav) {
+      var navTick = false;
+      var navUpd = function () {
+        nav.classList.toggle('scrolled', (window.scrollY || 0) > 24);
+        navTick = false;
+      };
+      window.addEventListener('scroll', function () {
+        if (!navTick) { navTick = true; requestAnimationFrame(navUpd); }
+      }, { passive: true });
+      navUpd();
+    }
+
+    /* ---- horizontal strips: fade only on the side that has more ----
+       The case-study rail (below 1040px) and the Nexstera journey map are
+       both wider than their frame. Without a cue they read as clipped
+       rather than swipeable, so each end fades out only while there is
+       something past it, and the rail opens on the active tab. */
+    var strips = document.querySelectorAll('.cs-rail-nav, .jm-stages');
+    if (strips.length) {
+      var edge = function (el) {
+        var max = el.scrollWidth - el.clientWidth;
+        if (max < 4) { el.style.setProperty('--fade-l', '0px');
+                       el.style.setProperty('--fade-r', '0px'); return; }
+        var x = el.scrollLeft;
+        el.style.setProperty('--fade-l', Math.min(x, 28).toFixed(0) + 'px');
+        el.style.setProperty('--fade-r', Math.min(max - x, 28).toFixed(0) + 'px');
+      };
+      strips.forEach(function (el) {
+        var t = false;
+        el.addEventListener('scroll', function () {
+          if (!t) { t = true; requestAnimationFrame(function () { edge(el); t = false; }); }
+        }, { passive: true });
+        window.addEventListener('resize', function () { edge(el); }, { passive: true });
+        edge(el);
+      });
+      /* keep the current section's tab in view as the reader moves down */
+      var rail = document.querySelector('.cs-rail-nav');
+      if (rail) {
+        var centre = function (tab) {
+          if (!tab || rail.scrollWidth - rail.clientWidth < 4) return;
+          var want = tab.offsetLeft - (rail.clientWidth - tab.offsetWidth) / 2;
+          rail.scrollTo({ left: Math.max(0, want), behavior: reduce ? 'auto' : 'smooth' });
+        };
+        centre(rail.querySelector('.tab-link.active'));
+        var seen = rail.querySelector('.tab-link.active');
+        setInterval(function () {
+          var now = rail.querySelector('.tab-link.active');
+          if (now && now !== seen) { seen = now; centre(now); }
+        }, 400);
+      }
+    }
+
+  })();
+  </script>
 </body>
 </html>
