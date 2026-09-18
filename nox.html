@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1584,20 +1584,6 @@
   --indigo-bg:var(--accent-weak); --green-bg:var(--accent-weak); --blue-bg:var(--accent-weak); --rose-bg:var(--accent-weak); --teal-bg:var(--accent-weak);
   --indigo-light:var(--hero-accent); --green-light:var(--hero-accent); --blue-light:var(--hero-accent); --rose-light:var(--hero-accent); --teal-light:var(--hero-accent); --coral-light:var(--hero-accent);
 }
-html[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731;
-  --text:#ECEDEF; --muted:#A4A5AF; --border:rgba(255,255,255,0.13);
-  --accent:#8CA6C2; --accent-strong:#8AA1FF; --accent-weak:#1A2036; --on-accent:#0B0C10; --accent-text:#93A9FF;
-  --hero-grad:linear-gradient(155deg,#070809 0%,#0F1116 42%,#151D2E 76%,#213152 100%);
-  --hero-text:#F5F6F8; --hero-accent:#A9C0DA; --hero-muted:rgba(255,255,255,0.74);
-  --footer-bg:#070809; --panel-dark:#111319; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
-  --paper:var(--bg); --off-white:var(--surface); --light:var(--surface-2); --white:#FFFFFF;
-  --mid:var(--muted); --ink:var(--text); --dark:var(--text);
-  --purple:var(--accent); --purple-mid:var(--accent-text); --purple-light:var(--hero-accent); --purple-bg:var(--accent-weak);
-  --indigo:var(--accent); --indigo-light:var(--hero-accent); --indigo-bg:var(--accent-weak); --line:var(--border);
-  --rose:var(--accent-text); --coral:var(--accent-text); --green:var(--accent); --azure:var(--accent);
-}
 
 /* ---- Base ---- */
 html,body{ background:var(--bg); }
@@ -1639,8 +1625,6 @@ body{ color:var(--text); -webkit-font-smoothing:antialiased; }
 .ag-col.ag-out{ background:var(--accent-weak) !important; border-color:var(--border) !important; }
 .ag-num, .decision-num, .take-num{ color:var(--text) !important; }
 .ag-k, .ag-eyebrow{ color:var(--accent-text) !important; }
-html[data-theme="dark"] .decision-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .method-card, html[data-theme="dark"] .persona-card, html[data-theme="dark"] .test-card, html[data-theme="dark"] .take-card, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .insight-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row, html[data-theme="dark"] .doc-card, html[data-theme="dark"] .metric-card, html[data-theme="dark"] .opp-card{ background:var(--surface) !important; border-color:var(--border) !important; }
-html[data-theme="dark"] .insight-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .problem-card *{ color:var(--text); }
 .ds-section-label{ color:var(--text) !important; }
 .problem-num, .insight-num, .opp-num, .method-num{ color:var(--muted) !important; opacity:.55; }
 
@@ -1673,8 +1657,6 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 .role-strip .role-label{ color:var(--muted) !important; }
 .role-strip .role-value{ color:var(--text) !important; }
 /* Index hero (has .hero-role): flips with theme; rich gradient only in dark */
-html[data-theme="dark"] .hero:has(.hero-role){ background:var(--hero-grad); }
-html[data-theme="dark"] .hero:has(.hero-role) .hero-role{ color:var(--hero-muted); }
 
 /* ---- Contact + footer (dark bands in both modes) ---- */
 .contact-section{ background:var(--panel-dark) !important; }
@@ -1700,77 +1682,20 @@ footer{ background:var(--footer-bg); flex-wrap:wrap; gap:10px 26px; padding-righ
 
 
 /* ---- DARK MODE: catch bespoke light panels + text across case studies ---- */
-html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap,
-html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4,
-html[data-theme="dark"] .pain, html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after,
-html[data-theme="dark"] .ftree-cut, html[data-theme="dark"] .ftree-keep,
-html[data-theme="dark"] .persona-card, html[data-theme="dark"] .persona-emoji,
-html[data-theme="dark"] .method-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .test-card,
-html[data-theme="dark"] .take-card, html[data-theme="dark"] .decision-card, html[data-theme="dark"] .problem-card,
-html[data-theme="dark"] .insight-card, html[data-theme="dark"] .opp-card, html[data-theme="dark"] .metric-card,
-html[data-theme="dark"] .doc-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row,
-html[data-theme="dark"] .quote-card, html[data-theme="dark"] .stat-card, html[data-theme="dark"] .principle-card,
-html[data-theme="dark"] .feature-card, html[data-theme="dark"] .card-lite, html[data-theme="dark"] .info-card,
-html[data-theme="dark"] [class$="-card"], html[data-theme="dark"] [class$="-col"]{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text);
-}
-html[data-theme="dark"] .container p, html[data-theme="dark"] .body-text,
-html[data-theme="dark"] .obj-card *, html[data-theme="dark"] .method-card *, html[data-theme="dark"] .test-card *,
-html[data-theme="dark"] .take-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .persona-card *,
-html[data-theme="dark"] .find *, html[data-theme="dark"] .pain *, html[data-theme="dark"] .before *, html[data-theme="dark"] .after *,
-html[data-theme="dark"] .ia-node *{ color:var(--text); }
-html[data-theme="dark"] .ag-k, html[data-theme="dark"] .ag-eyebrow, html[data-theme="dark"] .decision-cost,
-html[data-theme="dark"] .persona-role, html[data-theme="dark"] .ds-section-label, html[data-theme="dark"] .meta-muted,
-html[data-theme="dark"] .caption, html[data-theme="dark"] figcaption{ color:var(--muted) !important; }
 /* keep genuinely-dark sub-panels dark (don't let the wildcard lighten them) */
-html[data-theme="dark"] .browser-frame, html[data-theme="dark"] .browser-bar{ background:#0f1015 !important; }
 
 
 /* ---- DARK MODE straggler catches, round 2 (from automated scan) ---- */
-html[data-theme="dark"] .reflection-section, html[data-theme="dark"] .crow, html[data-theme="dark"] .ds-wrapper,
-html[data-theme="dark"] .jm-card, html[data-theme="dark"] .jm-stage, html[data-theme="dark"] .case-img-wrapper,
-html[data-theme="dark"] .callout-box, html[data-theme="dark"] .callout, html[data-theme="dark"] .finding-rec,
-html[data-theme="dark"] .mstep, html[data-theme="dark"] .nstep, html[data-theme="dark"] .fix, html[data-theme="dark"] .loop,
-html[data-theme="dark"] .rq, html[data-theme="dark"] .rq-card, html[data-theme="dark"] .criteria, html[data-theme="dark"] .principle,
-html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4, html[data-theme="dark"] .pain,
-html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after, html[data-theme="dark"] .ftree-cut,
-html[data-theme="dark"] .ftree-keep, html[data-theme="dark"] .ftree-item, html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
-}
 /* icon / number / badge chips -> subtle tinted, readable */
-html[data-theme="dark"] .feature-icon-box, html[data-theme="dark"] .method-icon, html[data-theme="dark"] .process-icon,
-html[data-theme="dark"] .next-step-icon, html[data-theme="dark"] .process-num, html[data-theme="dark"] .method-n,
-html[data-theme="dark"] .ds-swatch-box, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip,
-html[data-theme="dark"] .severity-badge, html[data-theme="dark"] .stat-number{
-  background:var(--surface-2) !important; color:var(--text) !important; border-color:var(--border) !important;
-}
 /* text stragglers -> light */
-html[data-theme="dark"] .fix-p, html[data-theme="dark"] .loop-t, html[data-theme="dark"] .ftree-item,
-html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .stat-number,
-html[data-theme="dark"] li, html[data-theme="dark"] .crow, html[data-theme="dark"] .crow *,
-html[data-theme="dark"] .jm-card *, html[data-theme="dark"] .mstep *, html[data-theme="dark"] .finding-rec *,
-html[data-theme="dark"] .callout-box *, html[data-theme="dark"] .reflection-section *{ color:var(--text); }
 /* captions -> muted */
-html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-label, html[data-theme="dark"] .fig-caption{ color:var(--muted) !important; }
 /* alternating light sections -> page bg */
-html[data-theme="dark"] .section-alt, html[data-theme="dark"] .bg-soft, html[data-theme="dark"] .section-light{ background:var(--bg) !important; }
 
 
 /* ---- DARK MODE straggler catches, round 3 ---- */
-html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-wrapper, html[data-theme="dark"] .testimonial-block,
-html[data-theme="dark"] .finding-quote, html[data-theme="dark"] .criteria-strip, html[data-theme="dark"] .success-quote,
-html[data-theme="dark"] .severity-legend, html[data-theme="dark"] .quote-block, html[data-theme="dark"] .pullquote{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
-}
-html[data-theme="dark"] .case-img-caption{ background:transparent !important; color:var(--muted) !important; }
-html[data-theme="dark"] .body-text{ background:transparent !important; color:var(--text) !important; }
-html[data-theme="dark"] em{ color:inherit; }
 
 
 /* ---- DARK MODE straggler catches, round 4 (final) ---- */
-html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-body *, html[data-theme="dark"] .finding-quote *,
-html[data-theme="dark"] .success-quote *, html[data-theme="dark"] .testimonial-block *{ color:var(--text); }
-html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(.hero-role){ color:var(--text); }
 
 
 /* ---- Fixes: mobile menu theme, accent-bg pills, misc accent labels ---- */
@@ -1780,12 +1705,7 @@ html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(
 .mobile-menu-close{ color:var(--text) !important; }
 .nav-card-label{ color:var(--accent-text) !important; }
 /* white text on the (light) accent in dark mode -> dark on-accent text */
-html[data-theme="dark"] .skip-pill, html[data-theme="dark"] .jm-stage-header, html[data-theme="dark"] .jm-stage-num,
-html[data-theme="dark"] .badge-accent, html[data-theme="dark"] .tag-accent, html[data-theme="dark"] .pill-accent{ color:var(--on-accent) !important; }
 /* dark mode: dark-blue section titles -> light accent */
-html[data-theme="dark"] .criteria-title, html[data-theme="dark"] .reflection-col-title, html[data-theme="dark"] .severity-legend-title,
-html[data-theme="dark"] .mflow-label, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .ds-type-sample-b,
-html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ color:var(--accent-text) !important; }
 
 
 /* ---- Accent-on-accent + badge/link/button contrast (both modes) ---- */
@@ -1803,14 +1723,8 @@ html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ c
 /* ---- Final dark-mode text/pill stragglers ---- */
 .skip-pill{ background:var(--accent) !important; color:var(--on-accent) !important; border-color:transparent !important; }
 .skip-pill *{ color:var(--on-accent) !important; }
-html[data-theme="dark"] .nstep-t, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .nstep-k,
-html[data-theme="dark"] .step-title, html[data-theme="dark"] .nstep *{ color:var(--text) !important; }
-html[data-theme="dark"] .criteria-strip *, html[data-theme="dark"] .scope-list *, html[data-theme="dark"] .rq *,
-html[data-theme="dark"] .reflection-col *, html[data-theme="dark"] .scope-col *{ color:var(--text); }
 nav a.mx-nav-active, .mx-nav-active{ color:var(--accent) !important; }
 /* decorative watermark numerals: subtle but present in both modes */
-html[data-theme="dark"] .rq-num, html[data-theme="dark"] .problem-num, html[data-theme="dark"] .insight-num,
-html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webkit-text-fill-color:rgba(255,255,255,0.34) !important; background:none !important; }
 
 
 /* ---- Accent-bg elements: on-accent text in both modes (final) ---- */
@@ -1818,9 +1732,6 @@ html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webk
   color:var(--on-accent) !important; }
 .persona-badge *, .ftree-root *, .resume-btn *{ color:var(--on-accent) !important; }
 /* stubborn slate spans inside scope/criteria/finding/callout blocks */
-html[data-theme="dark"] [class*="scope"] *, html[data-theme="dark"] [class*="criteria"] *,
-html[data-theme="dark"] [class*="finding"] *, html[data-theme="dark"] [class*="callout"] *,
-html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
 /* ---- Theme toggle button ---- */
 .theme-toggle{ position:fixed; left:22px; bottom:22px; z-index:1600; width:44px; height:44px; border-radius:50%;
@@ -1894,23 +1805,12 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
   box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
   position:relative; }
-html[data-theme="dark"] .case-img-wrapper,
-html[data-theme="dark"] .shot,
-html[data-theme="dark"] .love-media,
-html[data-theme="dark"] .browser-frame,
-html[data-theme="dark"] .ba-frame{
-  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
 /* hairline inner frame on screenshots */
 .case-img-wrapper::after, .shot::after, .browser-frame::after{
   content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
 
 /* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
-html[data-theme="dark"] .stat-number{
-  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
-  -webkit-background-clip:text !important; background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
 </style>
 
 
@@ -1994,31 +1894,16 @@ html[data-theme="dark"] .stat-number{
   --light-bg:#FAFAF9; --shot-bg:linear-gradient(158deg,#F3F4F6 0%,#E9EAEE 100%);
   --hero-grad:linear-gradient(152deg,#0B0C10 0%,#14161C 38%,#291F49 72%,#45317C 100%);
 }
-html[data-theme="dark"]{
-  --accent:#C8B4F0; --accent-strong:#C0AEE8; --accent-text:#C8B4F0; --accent-weak:#1E1733; --hero-accent:#C8B4F0; --on-accent:#0B0C10;
-  --c-tint:#1E1733; --c-soft:#1E1733; --c-media:#1E1733; --c-deep:#C8B4F0;
-  --c-glow:rgba(200,180,240,0.220); --c-glow-soft:rgba(200,180,240,0.100);
-  --light-bg:#141519; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
-  --hero-grad:linear-gradient(152deg,#07080A 0%,#0E1014 38%,#241B3F 72%,#34265E 100%);
-  --lift-1:0 1px 2px rgba(0,0,0,.30), 0 6px 18px -10px rgba(0,0,0,.55);
-  --lift-2:0 2px 6px rgba(0,0,0,.34), 0 20px 46px -22px rgba(0,0,0,.66);
-}
 html, body{ background:var(--bg); }
 body{ background:transparent; }
 body::before{ content:none !important; }
 :root{ --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#FAFAF9; --surface-3:#F2F2F1; }
-html[data-theme="dark"]{ --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731; }
 nav, nav.scrolled{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
-html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.80) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
 .section-tabs{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; box-shadow:0 1px 0 rgba(20,20,25,.07), 0 10px 24px -18px rgba(20,20,25,.30) !important; }
-html[data-theme="dark"] .section-tabs{ background:rgba(13,14,17,.86) !important; box-shadow:0 1px 0 rgba(255,255,255,.08), 0 10px 24px -18px rgba(0,0,0,.9) !important; }
 .mobile-menu{ background:#FBFBF9 !important; }
-html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.97) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ nav, nav.scrolled, .section-tabs, .mobile-menu{ background:var(--bg) !important; } }
 .section-alt, .bg-soft, .section-light{ background:var(--light-bg) !important; }
 .hero.hero.hero{ background:var(--hero-grad) !important; }
-html[data-theme="dark"] .hero-glow-1{ background:radial-gradient(circle, rgba(200,180,240,0.260) 0%, transparent 62%) !important; }
-html[data-theme="dark"] .hero-glow-2{ background:radial-gradient(circle, rgba(192,174,232,0.300) 0%, transparent 66%) !important; }
 html:not([data-theme="dark"]) .hero.hero.hero{ background:linear-gradient(148deg, #FEFDFC 0%, #EFE9FB 28%, #E2D9F6 62%, #CFC1EE 100%) !important; }
 html:not([data-theme="dark"]) .hero-glow-1{ background:radial-gradient(circle, rgba(192,174,232,0.420) 0%, transparent 62%) !important; }
 html:not([data-theme="dark"]) .hero-glow-2{ background:radial-gradient(circle, rgba(239,181,205,0.340) 0%, transparent 66%) !important; }
@@ -2091,44 +1976,27 @@ html:not([data-theme="dark"]) .impact-section .built-cta{ background:#5B3FA6 !im
 html:not([data-theme="dark"]) .impact-section .shipped-chip, html:not([data-theme="dark"]) .impact-section .shipped-eyebrow{ color:#5B3FA6 !important; }
 html:not([data-theme="dark"]) .impact-section .shipped-lead, html:not([data-theme="dark"]) .impact-section .shipped-cap, html:not([data-theme="dark"]) .impact-section .figcap{ color:#3B3B45 !important; }
 html:not([data-theme="dark"]) .impact-section .impact-number{ color:#5B3FA6 !important; background:linear-gradient(180deg,#5B3FA6 0%, #937CCA 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; }
-html[data-theme="dark"] .impact-number{ color:#C8B4F0 !important; background:linear-gradient(180deg,#ffffff 0%, #C8B4F0 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; }
 .stat-number{ color:#5B3FA6 !important; background:linear-gradient(180deg,#5B3FA6 0%, #937CCA 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; border:0 !important; box-shadow:none !important; }
-html[data-theme="dark"] .stat-number{ background:linear-gradient(180deg,#ffffff 0%, #C8B4F0 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; border:0 !important; box-shadow:none !important; }
-html[data-theme="dark"] .finding-block, html[data-theme="dark"] .quote-card{ background:var(--surface) !important; border-color:var(--border) !important; }
-html[data-theme="dark"] .hero-doc-icon{ background:#F2F2F0 !important; border-color:rgba(20,20,25,.16) !important; }
-html[data-theme="dark"] .hero-doc-icon span{ color:#5B3FA6 !important; }
 
 /* --- retired-blue sweep: leftovers from the old single-accent theme --- */
 .next-project{ border-top:0 !important; }
 .next-label, .next-project-label{ color:var(--brand) !important; }
 .next-project-title a{ color:#9C4E15 !important; }
 .next-project-title a:hover{ color:#7A3D10 !important; }
-html[data-theme="dark"] .next-project-title a{ color:#F3BE93 !important; }
 .next-project em, .next-project h2 em{ color:#9C4E15 !important; }
-html[data-theme="dark"] .next-project em, html[data-theme="dark"] .next-project h2 em{ color:#F3BE93 !important; }
 .next-btn{ background:#9C4E15 !important; color:#FFFFFF !important; border-color:#9C4E15 !important; }
 .next-btn:hover{ background:#7D3E11 !important; }
-html[data-theme="dark"] .next-btn{ background:#F3BE93 !important; color:#0B0C10 !important; border-color:#F3BE93 !important; }
-html[data-theme="dark"] .next-btn:hover{ background:#F1B98A !important; }
 .cs-rail-nav{ border-left-color:rgba(192,174,232,0.550) !important; }
 .nstep, .mstep, .problem-card, .callout-box, .built-note, .ag-v, .ag-col, .insight-card, .opp-card, .metric-card, .doc-card{ border-color:rgba(192,174,232,0.500) !important; }
-html[data-theme="dark"] .nstep, html[data-theme="dark"] .mstep, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .callout-box, html[data-theme="dark"] .built-note, html[data-theme="dark"] .ag-v, html[data-theme="dark"] .ag-col{ border-color:rgba(200,180,240,0.260) !important; }
 .ag-v{ color:var(--text) !important; }
 .hero-figma{ background:#121317 !important; border-color:rgba(192,174,232,0.450) !important; }
 .hero-figma:has(> .hero-figma-frame){ background:transparent !important; border:0 !important; box-shadow:none !important; }
 .hero-figma-frame{ background:transparent !important; border:0 !important; }
-html[data-theme="dark"] .hero-figma, html[data-theme="dark"] .hero-figma-frame{ background:#0F1116 !important; border-color:rgba(200,180,240,0.220) !important; }
-html[data-theme="dark"] .built-cta{ background:#C8B4F0 !important; color:#0B0C10 !important; }
-html[data-theme="dark"] .stat-number{ color:#C8B4F0 !important; }
 .hero-doc-card, .nox-doc-card, .hero-site-card{ color:var(--text); }
 .feature-card, .process-num, .ds-panel, .ds-wrapper, .ds-section, .mockup-showcase, .doc-card, .metric-card, .rq-card{ border-color:rgba(192,174,232,0.500) !important; }
 .rq-num{ color:rgba(192,174,232,0.850) !important; border-color:rgba(192,174,232,0.400) !important; }
-html[data-theme="dark"] .rq-card{ border-color:rgba(200,180,240,0.240) !important; }
-html[data-theme="dark"] .rq-num{ color:rgba(200,180,240,0.550) !important; }
 p.body-text, .rq-text, .reflection-item, .finding-body, .finding-rec-text, .mstep-d, .nstep-d, .step-d, .callout-box p{ color:#3B3747 !important; }
-html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-rec-text, html[data-theme="dark"] .mstep-d, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .step-d{ color:rgba(255,255,255,.76) !important; }
 .finding-card{ border-color:rgba(192,174,232,0.500) !important; }
-html[data-theme="dark"] .finding-card{ border-color:rgba(200,180,240,0.240) !important; }
 
 /* --- dark panels: navy -> this study's colour, and light text on them --- */
 .reflection-section.reflection-section, .insight-card.insight-card, .theme-card.theme-card, .vision-card.vision-card, section[style*='linear-gradient']{ background:linear-gradient(145deg, #201937 0%, #2E2252 100%) !important; }
@@ -2148,21 +2016,15 @@ html:not([data-theme="dark"]) .hero.hero.hero .hero-figma:has(> .hero-figma-fram
 .finding-card.sev-3::before{ background:#F59E0B !important; }
 .finding-card.sev-2::before{ background:#1E5A9E !important; }
 .finding-card.sev-1::before{ background:#2E7D32 !important; }
-html[data-theme="dark"] .rq-text, html[data-theme="dark"] .reflection-item{ color:rgba(255,255,255,.76) !important; }
 .criteria-tag, .cert-chip{ border-color:rgba(192,174,232,0.500) !important; }
-html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip{ border-color:rgba(200,180,240,0.240) !important; }
-html[data-theme="dark"] p.body-text, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .reflection-item, html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-rec-text, html[data-theme="dark"] .mstep-d, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .step-d, html[data-theme="dark"] .callout-box p, html[data-theme="dark"] .process-body{ color:rgba(255,255,255,.78) !important; }
 .role-callout, p.body-text.role-callout{ background:#EFE9FB !important; border-color:rgba(192,174,232,0.550) !important; }
-html[data-theme="dark"] .role-callout, html[data-theme="dark"] p.body-text.role-callout{ background:#1E1733 !important; border-color:rgba(200,180,240,0.240) !important; }
 .sdg-icon.reduce, .sdg-icon{ background:#EFE9FB !important; }
 .jm-card-action, .jm-legend-dot.action{ background:var(--surface-2) !important; border-color:rgba(20,20,25,.12) !important; }
 .jm-card-pain, .jm-legend-dot.pain{ background:var(--surface-3) !important; border-color:rgba(20,20,25,.12) !important; }
 .jm-card-solution, .jm-legend-dot.solution{ background:#EFE9FB !important; border-color:rgba(192,174,232,0.600) !important; }
-html[data-theme="dark"] .jm-card-solution, html[data-theme="dark"] .jm-legend-dot.solution{ background:#1E1733 !important; border-color:rgba(200,180,240,0.260) !important; }
 
 /* craft */
 .hero-browser-url{ color:rgba(255,255,255,.72) !important; }
-html[data-theme="dark"] .hero .hero-meta-label, html[data-theme="dark"] .hero:has(.hero-sub) .hero-meta-label{ color:rgba(255,255,255,0.70) !important; }
 .hero-doc-meta, .nox-doc-meta{ color:rgba(255,255,255,.72); }
 html:not([data-theme="dark"]) .hero-doc-meta, html:not([data-theme="dark"]) .nox-doc-meta{ color:#5C5C67 !important; }
 .cs-take{ font-family:'Inter',sans-serif !important; box-shadow:none !important; border-radius:0 !important; }
@@ -2176,7 +2038,6 @@ html:not([data-theme="dark"]) .hero-doc-meta, html:not([data-theme="dark"]) .nox
 
 /* ===== brand chrome: logo, nav and tabs are always pink ===== */
 :root{ --brand:#9E3462; --brand-soft:#F6D8E4; --brand-mid:#EFB5CD; }
-html[data-theme="dark"]{ --brand:#F0B7CE; --brand-soft:#2A1721; --brand-mid:#EFB5CD; }
 nav a.mx-nav-active, .mx-nav-active{ color:var(--brand) !important; }
 nav ul li a.mx-nav-active{ background-size:100% 1.5px !important; }
 nav ul li a:hover{ color:var(--brand); }
@@ -2195,25 +2056,17 @@ footer{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) bl
 .footer-left, .footer-right{ color:#5C5C67 !important; }
 .footer-center, .footer-center a{ color:#3B3B45 !important; }
 .footer-center a:hover{ color:var(--brand) !important; }
-html[data-theme="dark"] footer{ background:rgba(13,14,17,.90) !important; border-top:1px solid rgba(255,255,255,.10) !important; }
-html[data-theme="dark"] .footer-left, html[data-theme="dark"] .footer-right{ color:rgba(255,255,255,.62) !important; }
-html[data-theme="dark"] .footer-center, html[data-theme="dark"] .footer-center a{ color:rgba(255,255,255,.80) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ footer{ background:#FFFFFF !important; } }
 ::selection{ background:var(--brand-soft); color:var(--text); }
-html[data-theme="dark"] ::selection{ background:rgba(240,183,206,0.300); color:#ECEDEF; }
 a:focus-visible, button:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; border-radius:4px; }
 html{ scrollbar-color:var(--brand-mid) transparent; }
-html[data-theme="dark"] .ab-photo{ background:var(--surface) !important; }
 .sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
 .skip-link{ position:absolute; left:-9999px; top:0; z-index:10000; background:var(--brand); color:#fff; padding:12px 18px; border-radius:0 0 10px 0; font-family:var(--mono); font-size:13px; text-decoration:none; }
 .skip-link:focus{ left:0; outline:3px solid var(--brand); outline-offset:2px; }
 .mx-top{ background:var(--brand) !important; color:#FFFFFF !important; border-color:var(--brand) !important; }
-html[data-theme="dark"] .mx-top{ color:#0B0C10 !important; }
 .mx-top:hover{ background:#7E2A4E !important; }
 .mx-top{ box-shadow:0 0 0 3px rgba(255,255,255,.92), 0 10px 26px -10px rgba(158,52,98,0.450) !important; }
-html[data-theme="dark"] .mx-top{ box-shadow:0 0 0 3px rgba(13,14,17,.92), 0 10px 26px -10px rgba(0,0,0,.7) !important; }
 @media (max-width:640px){ .mx-top{ width:38px !important; height:38px !important; right:12px !important; bottom:12px !important; } .mx-top svg{ width:15px !important; height:15px !important; } }
-html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 .pf-zoomable:focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
 @media (max-width:520px){
   .cta-pdf, .persona-badge, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .bt-eyebrow, .bt-stat .lbl{ font-size:11px !important; letter-spacing:.04em !important; }
@@ -2282,7 +2135,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
    Reference: microsoft.html (Foundry Agent Builder research study).
    Brings foundry-models / nox / nexstera / saksham to the same
    figure treatment, caption placement and dark-panel budget.
-   Injected AFTER <style id="pastel-2026"> so it wins on equal weight.
+   Injected AFTER \3c style id="pastel-2026"> so it wins on equal weight.
    Remove this whole block to revert.
    ================================================================== */
 
@@ -2359,10 +2212,6 @@ html body .insight-card.insight-card li{ color:var(--mid) !important; }
 html body .insight-card.insight-card em{ color:var(--c-deep) !important; }
 /* NOTE: the numeral colour/opacity is owned by a11yfix-2026-09 (it has to clear 3:1).
    Deliberately not set here, so this block's inject order can never clobber it. */
-html[data-theme="dark"] body .insight-card.insight-card em,
-html[data-theme="dark"] body .insight-card.insight-card .insight-num{
-  color:var(--c-lite) !important; -webkit-text-fill-color:var(--c-lite) !important;
-}
 
 /* 3b · prototype bands (nox #prototype, foundry #live-prototype) go light.
        Only .container content is retinted; media chrome keeps its own dark UI. */
@@ -2391,10 +2240,6 @@ html body section#prototype > .container h2 em,
 html body section#live-prototype > .container h2 em{ color:var(--c-deep) !important; }
 html body section#prototype > .container .section-eyebrow::before,
 html body section#live-prototype > .container .section-eyebrow::before{ background:var(--c-deep) !important; }
-html[data-theme="dark"] body section#prototype > .container .section-eyebrow,
-html[data-theme="dark"] body section#live-prototype > .container .section-eyebrow,
-html[data-theme="dark"] body section#prototype > .container h2 em,
-html[data-theme="dark"] body section#live-prototype > .container h2 em{ color:var(--c-lite) !important; }
 
 /* the stage the media sits on */
 html body .prototype-video-wrap,
@@ -2415,10 +2260,6 @@ html body .proto-label{
   text-align:left !important;
   margin:0 0 14px !important;
 }
-html[data-theme="dark"] body section#prototype .prototype-label,
-html[data-theme="dark"] body section#live-prototype .proto-label,
-html[data-theme="dark"] body .prototype-label,
-html[data-theme="dark"] body .proto-label{ color:var(--c-lite) !important; }
 html body .prototype-label span{ color:var(--mid) !important; }
 
 /* 3c · Foundry's Solution band goes light, matching the reference's impact band */
@@ -2445,12 +2286,6 @@ html body .shipped-band .shipped-fig .frame{
   border:1px solid color-mix(in srgb, var(--text) 12%, transparent) !important;
   box-shadow:var(--lift-2) !important;
 }
-html[data-theme="dark"] body section.shipped-band.shipped-band{ background:var(--c-tint) !important; }
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow,
-html[data-theme="dark"] body .shipped-band h2 em,
-html[data-theme="dark"] body .shipped-band .shipped-chip,
-html[data-theme="dark"] body .shipped-band .shipped-cap .cap-n{ color:var(--c-lite) !important; }
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
 
 /* ---- 4 · SECTION RHYTHM: the pull quote sits the same everywhere ---- */
 html body .cs-take{ margin-top:18px !important; margin-bottom:22px !important; }
@@ -2471,12 +2306,6 @@ html:not([data-theme="dark"]) body .impact-section .built-eyebrow::before,
 html:not([data-theme="dark"]) body .shipped-band .shipped-eyebrow::before{
   background:color-mix(in srgb, var(--c-deep) 80%, #000) !important;
 }
-html[data-theme="dark"] body .impact-section .impact-label,
-html[data-theme="dark"] body .shipped-band .shipped-cap{ color:rgba(255,255,255,.80) !important; }
-html[data-theme="dark"] body .impact-section .section-eyebrow,
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow{ color:var(--c-lite) !important; }
-html[data-theme="dark"] body .impact-section .section-eyebrow::before,
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
 
 
 /* ---- 6 · NOX HERO VIDEO ----
@@ -2793,10 +2622,7 @@ html body .hero-figma-frame.ifr-focus{
 }
 
 </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style id="hero-2026">
+  <style id="hero-2026">
 /* ---------- NAV ----------
    No bar: clear over the gradient, then a scrim that fades out at the
    bottom so there is never a hard edge. Links are smaller and tighter,
@@ -4242,8 +4068,8 @@ html body .cs-content .container-wide:has(.persona-grid){
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">College students felt anxious every time they uploaded identity documents to another portal, with no transparency about where their data went.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led a team of four: ran the research myself, set the trust model the app is built on, and delegated screens while holding consistency through critique. <strong>Cut two of our own AI features</strong> when testing showed the blocker was trust, not convenience.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>A privacy-first verification flow</strong> built around visible trust: redacted previews, revocable sharing, and a cross-platform Face ID handoff, a direction the identity space has moved toward since.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">Led a team of four: ran the research myself, set the trust model the app is built on, and delegated screens while holding consistency through critique. <strong>Cut two of our own AI features</strong> after round-two testing.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>A privacy-first verification flow</strong> built around visible trust: redacted previews, revocable sharing, and a cross-platform Face ID handoff.</div></div>
       </div>
     </div>
   </section>
@@ -4271,7 +4097,6 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">The data confirmed the anxiety.<br />The interviews revealed <em>why.</em></h2>
-      <p class="cs-take">The real problem was distrust, not clunky forms.</p>
       <p class="body-text">Students described <strong>learned helplessness</strong>: burned so many times they'd stopped trusting any system. One told me, "I just assume every portal is going to leak my data eventually." That distrust became the problem Nox+ was designed to solve.</p>
       <div class="method-strip fade-in">
         <span class="ms-label">How I researched</span>
@@ -4289,7 +4114,6 @@ html body .cs-content .container-wide:has(.persona-grid){
         .method-strip .ms-dot{width:3px;height:3px;border-radius:50%;background:rgba(24,22,26,0.28);}
         .method-strip .ms-more{margin-left:auto;font-size: 13px;color:var(--purple);text-decoration:none;font-weight:500;}
         .method-strip .ms-more:hover{text-decoration:underline;}
-        html[data-theme="dark"] .method-strip{background:var(--surface);border-color:rgba(255,255,255,0.12);}
         @media(max-width:600px){.method-strip .ms-more{margin-left:0;width:100%;}}
       </style>
     </div>
@@ -4333,7 +4157,7 @@ html body .cs-content .container-wide:has(.persona-grid){
       <p class="section-eyebrow">Design Process</p>
       <h2 class="section-title">We designed three versions<br />before we got it right.</h2>
       <p class="cs-take">The version that worked organized the app around the moment of verification, not document storage.</p>
-      <p class="body-text">V1 treated Nox+ as a document vault (upload, store, retrieve), but storage alone didn't solve the trust problem. V2 added transparency panels, which tested better but felt overwhelming. V3 was the reorganization above, and it was the one that held up in testing.</p>
+      <p class="body-text">V1 treated Nox+ as a document vault (upload, store, retrieve), but storage alone didn't solve the trust problem. V2 added transparency panels, which tested better but felt overwhelming. V3 was the reorganization around the moment of verification, and it was the one that held up in testing.</p>
 
     </div>
 
@@ -4341,20 +4165,20 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
         <div class="case-img-caption">Sketching: exploring feature ideas, screen flows, and layout before moving to digital</div>
-        <img width="750" height="740" src="assets/nox-sketch.webp" alt="Early concept sketches exploring Nox+ app features and layout" loading="lazy" decoding="async" />
+        <img width="750" height="740" src="assets/nox-sketch.webp" alt="Early concept sketches exploring Nox+ app features and layout" loading="eager" decoding="async" />
       </div>
     </div>
 
     <div class="container fade-in">
       <h3 class="sub-heading">Wireframes</h3>
-      <p class="body-text">I delegated screens across the team and held consistency through regular critiques, translating the research into the app's information architecture: the verification home, documents, history, and household controls.</p>
+      <p class="body-text">I delegated screens across the team and held consistency through regular critiques, translating the research into the app's information architecture: the identity home, documents, history, and family access.</p>
     </div>
 
     <!-- Mid-fi / Hi-fi Designs -->
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
-        <div class="case-img-caption">Wireframes: the app IA and screen structure I owned, from the verification home to documents, history, and household controls</div>
-        <img width="1800" height="487" src="assets/nox-wireframes.webp" alt="Nox+ wireframes: home, documents, history, and household screens with annotations" loading="lazy" decoding="async" />
+        <div class="case-img-caption">Wireframes: the app IA and screen structure I owned, from the identity home to documents, history, and family access</div>
+        <img width="1800" height="487" src="assets/nox-wireframes.webp" alt="Nox+ wireframes: home, documents, history, and household screens with annotations" loading="eager" decoding="async" />
       </div>
     </div>
 
@@ -4372,7 +4196,7 @@ html body .cs-content .container-wide:has(.persona-grid){
         <article class="decision-card">
           <div class="decision-num">01</div>
           <h3 class="decision-title">Vault, or moment-of-verification?</h3>
-          <p class="decision-choice">A vault made storage the main event, but transparency panels added cognitive load to a moment that should feel automatic. I made the home surface <strong>what's being asked for</strong>, with security signals visible at the moment of share, and moved storage to a secondary surface.</p>
+          <p class="decision-choice">A vault made storage the main event, but transparency panels on that screen added cognitive load to a moment that should feel automatic. I made the home surface <strong>what's being asked for</strong>, with security signals visible at the moment of share, and moved storage to a secondary surface.</p>
           <p class="decision-cost">Lost a clean "manage everything from one screen" hierarchy. Accepted because the research described identity as reactive, not planned.</p>
         </article>
 
@@ -4386,7 +4210,7 @@ html body .cs-content .container-wide:has(.persona-grid){
         <article class="decision-card">
           <div class="decision-num">03</div>
           <h3 class="decision-title">What I cut, and why.</h3>
-          <p class="decision-choice">An <strong>AI document scanner</strong> and an <strong>assistant with access to your files</strong> were strong pitches. Both expanded the trust surface area, exactly the thing Nox+ existed to shrink. I cut both for V1 and held the line at biometric setup, document management, the Nox+ card, transparency panels, and family controls.</p>
+          <p class="decision-choice">An <strong>AI document scanner</strong> and an <strong>assistant with access to your files</strong> were strong pitches. Both expanded the trust surface area, exactly the thing Nox+ existed to shrink. I cut both for V1 and held the line at biometric setup, document management, the Nox+ card, transparency panels, and family access.</p>
           <p class="decision-cost">Less differentiation in a pitch deck. But every cut feature would have diluted the core promise.</p>
         </article>
 
@@ -4415,19 +4239,19 @@ html body .cs-content .container-wide:has(.persona-grid){
       <p class="figcap" style="margin:0 0 18px;">The final designs, screen by screen.</p>
       <div class="nox-screens">
         <figure class="nox-screen">
-          <div class="nox-screen-shot"><img src="assets/nox-screen-1.webp" width="411" height="901" alt="Nox+ identity home: a branded proof-of-identity card for Pam Privacy, with public services, school, healthcare, airport and onboarding shortcuts" loading="lazy" decoding="async" /></div>
-          <figcaption><strong>Identity home</strong> A branded proof-of-identity card, with quick verification contexts underneath.</figcaption>
+          <div class="nox-screen-shot"><img src="assets/nox-screen-1.webp" width="411" height="901" alt="Nox+ identity home: the Nox+ card for Pam Privacy, with public services, school, healthcare, airport and onboarding shortcuts" loading="eager" decoding="async" /></div>
+          <figcaption><strong>Identity home</strong> The Nox+ card, with quick verification contexts underneath.</figcaption>
         </figure>
         <figure class="nox-screen">
-          <div class="nox-screen-shot"><img src="assets/nox-screen-2.webp" width="411" height="901" alt="Nox+ document vault: passport, driver&rsquo;s license, social security card and TSA PreCheck, with a passport expiry notice" loading="lazy" decoding="async" /></div>
+          <div class="nox-screen-shot"><img src="assets/nox-screen-2.webp" width="411" height="901" alt="Nox+ document vault: passport, driver&rsquo;s license, social security card and TSA PreCheck, with a passport expiry notice" loading="eager" decoding="async" /></div>
           <figcaption><strong>Document vault</strong> Government IDs in one place, with an expiry warning before it becomes a problem.</figcaption>
         </figure>
         <figure class="nox-screen">
-          <div class="nox-screen-shot"><img src="assets/nox-screen-3.webp" width="411" height="901" alt="Nox+ FAFSA share confirmation: the fields sent, the recipient, and a note that FAFSA keeps no copy" loading="lazy" decoding="async" /></div>
+          <div class="nox-screen-shot"><img src="assets/nox-screen-3.webp" width="411" height="901" alt="Nox+ FAFSA share confirmation: the fields sent, the recipient, and a note that FAFSA keeps no copy" loading="eager" decoding="async" /></div>
           <figcaption><strong>Privacy-preserving share</strong> Only the requested fields leave, and the page says exactly which ones did.</figcaption>
         </figure>
         <figure class="nox-screen">
-          <div class="nox-screen-shot"><img src="assets/nox-screen-4.webp" width="411" height="901" alt="Nox+ family access: Taylor and Alex Nobrainer listed with request and revoke controls" loading="lazy" decoding="async" /></div>
+          <div class="nox-screen-shot"><img src="assets/nox-screen-4.webp" width="411" height="901" alt="Nox+ family access: Taylor and Alex Nobrainer listed with request and revoke controls" loading="eager" decoding="async" /></div>
           <figcaption><strong>Family access</strong> Access granted for a set window, revocable at any time.</figcaption>
         </figure>
       </div>
@@ -4436,8 +4260,8 @@ html body .cs-content .container-wide:has(.persona-grid){
     <!-- Cross-platform verification flow (the payoff) -->
     <div class="container-wide fade-in">
       <div class="case-img-wrapper">
-        <div class="case-img-caption">The payoff, end to end: Pam uploads to FAFSA, approves the share with Face ID in Nox+, and the site confirms, without her full document ever being exposed to the site</div>
-        <img width="1800" height="346" src="assets/nox-fafsa-flow.webp" alt="Cross-platform verification: from the FAFSA website to Face ID approval in Nox+ to a verified confirmation" loading="lazy" decoding="async" />
+        <div class="case-img-caption">The payoff, end to end: Pam uploads to FAFSA, approves the share with Face ID in Nox+, and the site confirms, without her full document ever being exposed</div>
+        <img width="1800" height="346" src="assets/nox-fafsa-flow.webp" alt="Cross-platform verification: from the FAFSA website to Face ID approval in Nox+ to a verified confirmation" loading="eager" decoding="async" />
       </div>
     </div>
 
@@ -4472,8 +4296,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">Validation</p>
       <h2 class="section-title">Testing that changed<br />the <em>design.</em></h2>
-      <p class="cs-take">Two things came straight out of testing: the AI came out, and the fingerprint pad got bigger.</p>
-      <p class="body-text">Every round asked one question: <strong>do people trust this?</strong> Each one sent me back to change something specific.</p>
+      <p class="body-text">Every round asked one question: <strong>do people trust this?</strong></p>
     </div>
     <div class="container-wide fade-in">
       <div class="stats-grid">
@@ -4489,7 +4312,7 @@ html body .cs-content .container-wide:has(.persona-grid){
         </div>
         <div class="stat-card">
           <div class="stat-number">96</div>
-          <div class="stat-desc">students surveyed, plus interviews and contextual inquiries with people affected by a breach</div>
+          <div class="stat-desc">students surveyed, plus 16 interviews and 2 contextual inquiries</div>
           <div class="stat-method">Discovery phase &middot; 21-question survey (n=96) + 16 interviews + 2 contextual inquiries</div>
         </div>
       </div>
@@ -4504,15 +4327,15 @@ html body .cs-content .container-wide:has(.persona-grid){
         <div class="insight-card">
           <div class="insight-num">02</div>
           <div class="insight-title">A fingerprint pad sized by hand</div>
-          <div class="insight-body">For the proof card, I tested a single fingerprint point against the whole bottom edge. Watching where people naturally rested a thumb settled it: the bottom 30 to 40 percent felt right to nearly everyone. Testing also set the rule that details stay visible for 30 seconds after unlock, then hide, so a glance never becomes an exposure.</div>
+          <div class="insight-body">For the Nox+ card, I tested a single fingerprint point against the whole bottom edge. Watching where people naturally rested a thumb settled it: the bottom 30 to 40 percent felt right to nearly everyone in testing.</div>
         </div>
       </div>
       <figure class="hb-figure fade-in">
         <a href="assets/nox-design-handbook.pdf" target="_blank" rel="noopener" class="hb-thumb" aria-label="Open the 21-page Nox+ design handbook (PDF)">
-          <img width="1600" height="685" src="assets/nox-handbook-strip.webp" alt="Three spreads from the Nox+ design handbook: the branded cover, the household and family-access app screens, and the dimensioned spec for the physical Universal Proof Card" loading="lazy" decoding="async" />
+          <img width="1600" height="685" src="assets/nox-handbook-strip.webp" alt="Three spreads from the Nox+ design handbook: the branded cover, the household and family-access app screens, and the dimensioned spec for the physical Nox+ card" loading="eager" decoding="async" />
           <span class="hb-badge">21-page handbook &middot; open PDF &rarr;</span>
         </a>
-        <figcaption class="hb-cap">Every decision above is documented for the engineers who would build it: personas, storyboards, component specs, and the dimensioned Universal Proof Card. A sample of the 21-page handbook.</figcaption>
+        <figcaption class="hb-cap">Every decision above is documented for the engineers who would build it: personas, storyboards, component specs, and the dimensioned Nox+ card. A sample of the 21-page handbook.</figcaption>
       </figure>
       <style>
         .hb-figure{ margin:34px 0 0; }
@@ -4521,7 +4344,6 @@ html body .cs-content .container-wide:has(.persona-grid){
         .hb-thumb img{ display:block; width:100%; height:auto; }
         .hb-badge{ position:absolute; right:14px; bottom:14px; font-family:var(--mono,monospace); font-size:11px; letter-spacing:.04em; color:#fff; background:rgba(20,19,31,0.82); border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px; backdrop-filter:blur(4px); }
         .hb-cap{ text-align:center; font-size:13px; line-height:1.6; color:var(--mid); margin-top:16px; max-width:64ch; margin-left:auto; margin-right:auto; }
-        html[data-theme="dark"] .hb-thumb{ border-color:rgba(255,255,255,0.12); }
       </style>
     </div>
   </section>
@@ -4533,8 +4355,8 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">Systems Thinking</p>
       <h2 class="section-title">A trust product is judged by<br />its <em>in-between states.</em></h2>
-      <p class="cs-take">Confidence is won or lost in the states that aren't the happy path.</p>
-    </div>
+      <p class="cs-take">Four states carry the trust: the first run, the unlocked card, a document about to lapse, and access shared with family.</p>
+      </div>
     <div class="container-wide">
       <div class="features-grid fade-in">
         <div class="feature-card">
@@ -4545,17 +4367,17 @@ html body .cs-content .container-wide:has(.persona-grid){
         <div class="feature-card">
           <span class="feature-emoji"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h3"/></svg></span>
           <div class="feature-name">The card that goes dark</div>
-          <div class="feature-desc">The physical proof card shows nothing until a biometric unlock, reveals your details for 30 seconds, then deactivates. A dropped card is just a blank card.</div>
+          <div class="feature-desc">The physical Nox+ card shows nothing until a biometric unlock, reveals your details for 30 seconds, then deactivates. A dropped card is just a blank card.</div>
         </div>
         <div class="feature-card">
           <span class="feature-emoji">⏰</span>
           <div class="feature-name">Documents that warn before they lapse</div>
-          <div class="feature-desc">Expiration alerts surface ahead of time ("your passport expires in 6 months"), so a verification never fails at the worst possible moment. Any share can also be revoked from the transparency panel.</div>
+          <div class="feature-desc">Expiration alerts surface ahead of time ("your passport expires in 6 months"), so a verification never fails at the worst possible moment.</div>
         </div>
         <div class="feature-card">
           <span class="feature-emoji"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.2a3.4 3.4 0 0 1 0 6.6M17.5 14.4A6.5 6.5 0 0 1 21.5 20"/></svg></span>
           <div class="feature-name">Family access that expires</div>
-          <div class="feature-desc">Guardian access is time-boxed to 14 days and managed from one screen, so a permission granted in a hurry cannot quietly live forever.</div>
+          <div class="feature-desc">Family access is time-boxed to 14 days and managed from one screen, so a permission granted in a hurry cannot quietly live forever.</div>
         </div>
       </div>
     </div>
@@ -4751,7 +4573,7 @@ html body .cs-content .container-wide:has(.persona-grid){
 </style>
 <div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
   <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
-  <img loading="lazy" class="pf-lb-img" alt="" />
+  <img loading="eager" class="pf-lb-img" alt="" />
   <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
 </div>
 <script>
@@ -4894,6 +4716,127 @@ html body svg.ico{ stroke-width:1.75 !important; }
    loses to any author rule, so this one line neutralises it everywhere while every
    deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
 img{ height:auto; }
+
+
+/* =====================================================================
+   TYPE SYSTEM - 2026-09-17
+   One scale, applied on every page. Display is Inter Tight 600; text is
+   Inter. Before this block the site carried 125 distinct type styles:
+   body copy at weight 300, inline emphasis at 500 and 600, and 28
+   different uppercase label treatments between 10px and 13px.
+
+     Display   Inter Tight 600, tracking -0.02em   (sizes unchanged)
+     Lead      18 / 500
+     Body L    17 / 400
+     Body      15 / 400
+     Body S    13 / 400
+     Emphasis  600
+     Label L   12 / 600 / .14em uppercase
+     Label S   11 / 600 / .12em uppercase
+     Nav       11.5 / 600 / .12em uppercase
+   ===================================================================== */
+
+/* Body copy: 400, never 300. Inter at 300 reads fragile at 13px. */
+html body .ag-v.ag-v.ag-v.ag-v.ag-v,
+html body .b-desc.b-desc.b-desc.b-desc.b-desc,
+html body .body-text.body-text.body-text.body-text.body-text,
+html body .competitor-desc.competitor-desc.competitor-desc.competitor-desc.competitor-desc,
+html body .ds-type-sample-b.ds-type-sample-b.ds-type-sample-b.ds-type-sample-b.ds-type-sample-b,
+html body .feature-desc.feature-desc.feature-desc.feature-desc.feature-desc,
+html body .finding-quote.finding-quote.finding-quote.finding-quote.finding-quote,
+html body .finding-rec-text.finding-rec-text.finding-rec-text.finding-rec-text.finding-rec-text,
+html body .fix-p.fix-p.fix-p.fix-p.fix-p,
+html body .hero-sub.hero-sub.hero-sub.hero-sub.hero-sub,
+html body .impact-label.impact-label.impact-label.impact-label.impact-label,
+html body .insight-body.insight-body.insight-body.insight-body.insight-body,
+html body .method-desc.method-desc.method-desc.method-desc.method-desc,
+html body .mstep-d.mstep-d.mstep-d.mstep-d.mstep-d,
+html body .next-step-desc.next-step-desc.next-step-desc.next-step-desc.next-step-desc,
+html body .nstep-d.nstep-d.nstep-d.nstep-d.nstep-d,
+html body .obj-desc.obj-desc.obj-desc.obj-desc.obj-desc,
+html body .opp-text.opp-text.opp-text.opp-text.opp-text,
+html body .persona-quote.persona-quote.persona-quote.persona-quote.persona-quote,
+html body .principle-desc.principle-desc.principle-desc.principle-desc.principle-desc,
+html body .problem-desc.problem-desc.problem-desc.problem-desc.problem-desc,
+html body .process-step-desc.process-step-desc.process-step-desc.process-step-desc.process-step-desc,
+html body .reflection-icon.reflection-icon.reflection-icon.reflection-icon.reflection-icon,
+html body .research-desc.research-desc.research-desc.research-desc.research-desc,
+html body .sdg-desc.sdg-desc.sdg-desc.sdg-desc.sdg-desc,
+html body .stat-desc.stat-desc.stat-desc.stat-desc.stat-desc,
+html body .success-quote.success-quote.success-quote.success-quote.success-quote,
+html body .theme-desc.theme-desc.theme-desc.theme-desc.theme-desc,
+html body .vision-desc.vision-desc.vision-desc.vision-desc.vision-desc
+{ font-weight:400 !important; }
+
+/* Inline emphasis: one weight. */
+html body p strong, html body p b, html body li strong, html body li b,
+html body .body-text strong, html body .ag-v strong, html body .cs-take strong
+{ font-weight:600 !important; }
+
+/* Label L: section eyebrows. */
+html body .built-eyebrow.built-eyebrow.built-eyebrow.built-eyebrow.built-eyebrow,
+html body .cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow,
+html body .finding-rec-label.finding-rec-label.finding-rec-label.finding-rec-label.finding-rec-label,
+html body .hero-docs-label.hero-docs-label.hero-docs-label.hero-docs-label.hero-docs-label,
+html body .mstep-k.mstep-k.mstep-k.mstep-k.mstep-k,
+html body .next-project-label.next-project-label.next-project-label.next-project-label.next-project-label,
+html body .section-eyebrow.section-eyebrow.section-eyebrow.section-eyebrow.section-eyebrow,
+html body .shipped-eyebrow.shipped-eyebrow.shipped-eyebrow.shipped-eyebrow.shipped-eyebrow
+{ font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important; font-size:12px !important; font-weight:600 !important; letter-spacing:.14em !important; text-transform:uppercase !important; }
+
+/* Label S: every other micro-label. */
+html body .ab-eyebrow.ab-eyebrow.ab-eyebrow.ab-eyebrow.ab-eyebrow,
+html body .ab-grid-head.ab-grid-head.ab-grid-head.ab-grid-head.ab-grid-head,
+html body .ag-eyebrow.ag-eyebrow.ag-eyebrow.ag-eyebrow.ag-eyebrow,
+html body .ag-k.ag-k.ag-k.ag-k.ag-k,
+html body .b-badge.b-badge.b-badge.b-badge.b-badge,
+html body .b-cta.b-cta.b-cta.b-cta.b-cta,
+html body .b-kicker.b-kicker.b-kicker.b-kicker.b-kicker,
+html body .ba-tab.ba-tab.ba-tab.ba-tab.ba-tab,
+html body .bt-badge.bt-badge.bt-badge.bt-badge.bt-badge,
+html body .bt-focus.bt-focus.bt-focus.bt-focus.bt-focus,
+html body .criteria-title.criteria-title.criteria-title.criteria-title.criteria-title,
+html body .cs-rail-label.cs-rail-label.cs-rail-label.cs-rail-label.cs-rail-label,
+html body .ds-section-label.ds-section-label.ds-section-label.ds-section-label.ds-section-label,
+html body .ds-type-role.ds-type-role.ds-type-role.ds-type-role.ds-type-role,
+html body .hero-meta-label.hero-meta-label.hero-meta-label.hero-meta-label.hero-meta-label,
+html body .hero-tag.hero-tag.hero-tag.hero-tag.hero-tag,
+html body .jm-dim-label.jm-dim-label.jm-dim-label.jm-dim-label.jm-dim-label,
+html body .jm-stage-num.jm-stage-num.jm-stage-num.jm-stage-num.jm-stage-num,
+html body .lbl.lbl.lbl.lbl.lbl,
+html body .mflow-label.mflow-label.mflow-label.mflow-label.mflow-label,
+html body .ms-label.ms-label.ms-label.ms-label.ms-label,
+html body .next-label.next-label.next-label.next-label.next-label,
+html body .nflow-label.nflow-label.nflow-label.nflow-label.nflow-label,
+html body .opp-category.opp-category.opp-category.opp-category.opp-category,
+html body .persona-badge.persona-badge.persona-badge.persona-badge.persona-badge,
+html body .pf-role.pf-role.pf-role.pf-role.pf-role,
+html body .play-eyebrow.play-eyebrow.play-eyebrow.play-eyebrow.play-eyebrow,
+html body .process-label.process-label.process-label.process-label.process-label,
+html body .proto-label.proto-label.proto-label.proto-label.proto-label,
+html body .reflection-col-title.reflection-col-title.reflection-col-title.reflection-col-title.reflection-col-title,
+html body .research-tag.research-tag.research-tag.research-tag.research-tag,
+html body .sdg-goal.sdg-goal.sdg-goal.sdg-goal.sdg-goal,
+html body .severity-legend-title.severity-legend-title.severity-legend-title.severity-legend-title.severity-legend-title,
+html body .work-label.work-label.work-label.work-label.work-label
+{ font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important; font-size:11px !important; font-weight:600 !important; letter-spacing:.12em !important; text-transform:uppercase !important; }
+
+/* Nav: same size on every page (it was 11.5px on index, 13px on the case studies). */
+html body nav a.nav-link, html body nav ul a, html body nav .nav-right a
+{ font-size:11.5px !important; font-weight:600 !important; letter-spacing:.12em !important; }
+
+/* Two stragglers off the 13 / 15 / 17 scale. */
+html body .b-desc.b-desc.b-desc{ font-size:13px !important; }
+html body .hero-sub.hero-sub.hero-sub{ font-size:17px !important; }
+
+/* Type system, second pass: the last elements inheriting weight 300, and nav parity. */
+html body .callout-box p, html body .callout-box span, html body .callout-box li,
+html body .container li, html body .container-wide li,
+html body .body-text span, html body .ag-v span
+{ font-weight:400 !important; }
+html body nav a.nav-back{ font-weight:600 !important; letter-spacing:.12em !important; }
+html body .hamburger-close-label.hamburger-close-label.hamburger-close-label
+{ font-size:11px !important; font-weight:600 !important; letter-spacing:.12em !important; }
 </style>
 <script id="mx-motion-js">
 (function(){

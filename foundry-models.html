@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foundry Models · Product Design Case Study | Jasmine Sayed</title>
   <link rel="canonical" href="https://jasminesayedportfolio.com/foundry-models.html" />
-  <meta name="description" content="Redesigning model discovery and selection on Microsoft Foundry. A product design project with the Microsoft CoreAI team, April to June 2026: research, information architecture, a high-fidelity prototype, and two rounds of usability testing to turn an 11,000-model catalog into a flow developers can navigate." />
+  <meta name="description" content="Redesigning model discovery on Microsoft Foundry: research, information architecture, a high-fidelity prototype, and two rounds of usability testing." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Foundry Models · Product Design Case Study | Jasmine Sayed" />
   <meta property="og:url" content="https://jasminesayedportfolio.com/foundry-models.html" />
@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -523,20 +523,6 @@
   --indigo-bg:var(--accent-weak); --green-bg:var(--accent-weak); --blue-bg:var(--accent-weak); --rose-bg:var(--accent-weak); --teal-bg:var(--accent-weak);
   --indigo-light:var(--hero-accent); --green-light:var(--hero-accent); --blue-light:var(--hero-accent); --rose-light:var(--hero-accent); --teal-light:var(--hero-accent); --coral-light:var(--hero-accent);
 }
-html[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731;
-  --text:#ECEDEF; --muted:#A4A5AF; --border:rgba(255,255,255,0.13);
-  --accent:#8CA6C2; --accent-strong:#8AA1FF; --accent-weak:#1A2036; --on-accent:#0B0C10; --accent-text:#93A9FF;
-  --hero-grad:linear-gradient(155deg,#070809 0%,#0F1116 42%,#151D2E 76%,#213152 100%);
-  --hero-text:#F5F6F8; --hero-accent:#A9C0DA; --hero-muted:rgba(255,255,255,0.74);
-  --footer-bg:#070809; --panel-dark:#111319; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
-  --paper:var(--bg); --off-white:var(--surface); --light:var(--surface-2); --white:#FFFFFF;
-  --mid:var(--muted); --ink:var(--text); --dark:var(--text);
-  --purple:var(--accent); --purple-mid:var(--accent-text); --purple-light:var(--hero-accent); --purple-bg:var(--accent-weak);
-  --indigo:var(--accent); --indigo-light:var(--hero-accent); --indigo-bg:var(--accent-weak); --line:var(--border);
-  --rose:var(--accent-text); --coral:var(--accent-text); --green:var(--accent); --azure:var(--accent);
-}
 
 /* ---- Base ---- */
 html,body{ background:var(--bg); }
@@ -578,8 +564,6 @@ body{ color:var(--text); -webkit-font-smoothing:antialiased; }
 .ag-col.ag-out{ background:var(--accent-weak) !important; border-color:var(--border) !important; }
 .ag-num, .decision-num, .take-num{ color:var(--text) !important; }
 .ag-k, .ag-eyebrow{ color:var(--accent-text) !important; }
-html[data-theme="dark"] .decision-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .method-card, html[data-theme="dark"] .persona-card, html[data-theme="dark"] .test-card, html[data-theme="dark"] .take-card, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .insight-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row, html[data-theme="dark"] .doc-card, html[data-theme="dark"] .metric-card, html[data-theme="dark"] .opp-card{ background:var(--surface) !important; border-color:var(--border) !important; }
-html[data-theme="dark"] .insight-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .problem-card *{ color:var(--text); }
 .ds-section-label{ color:var(--text) !important; }
 .problem-num, .insight-num, .opp-num, .method-num{ color:var(--muted) !important; opacity:.55; }
 
@@ -612,8 +596,6 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 .role-strip .role-label{ color:var(--muted) !important; }
 .role-strip .role-value{ color:var(--text) !important; }
 /* Index hero (has .hero-role): flips with theme; rich gradient only in dark */
-html[data-theme="dark"] .hero:has(.hero-role){ background:var(--hero-grad); }
-html[data-theme="dark"] .hero:has(.hero-role) .hero-role{ color:var(--hero-muted); }
 
 /* ---- Contact + footer (dark bands in both modes) ---- */
 .contact-section{ background:var(--panel-dark) !important; }
@@ -639,77 +621,20 @@ footer{ background:var(--footer-bg); flex-wrap:wrap; gap:10px 26px; padding-righ
 
 
 /* ---- DARK MODE: catch bespoke light panels + text across case studies ---- */
-html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap,
-html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4,
-html[data-theme="dark"] .pain, html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after,
-html[data-theme="dark"] .ftree-cut, html[data-theme="dark"] .ftree-keep,
-html[data-theme="dark"] .persona-card, html[data-theme="dark"] .persona-emoji,
-html[data-theme="dark"] .method-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .test-card,
-html[data-theme="dark"] .take-card, html[data-theme="dark"] .decision-card, html[data-theme="dark"] .problem-card,
-html[data-theme="dark"] .insight-card, html[data-theme="dark"] .opp-card, html[data-theme="dark"] .metric-card,
-html[data-theme="dark"] .doc-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row,
-html[data-theme="dark"] .quote-card, html[data-theme="dark"] .stat-card, html[data-theme="dark"] .principle-card,
-html[data-theme="dark"] .feature-card, html[data-theme="dark"] .card-lite, html[data-theme="dark"] .info-card,
-html[data-theme="dark"] [class$="-card"], html[data-theme="dark"] [class$="-col"]{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text);
-}
-html[data-theme="dark"] .container p, html[data-theme="dark"] .body-text,
-html[data-theme="dark"] .obj-card *, html[data-theme="dark"] .method-card *, html[data-theme="dark"] .test-card *,
-html[data-theme="dark"] .take-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .persona-card *,
-html[data-theme="dark"] .find *, html[data-theme="dark"] .pain *, html[data-theme="dark"] .before *, html[data-theme="dark"] .after *,
-html[data-theme="dark"] .ia-node *{ color:var(--text); }
-html[data-theme="dark"] .ag-k, html[data-theme="dark"] .ag-eyebrow, html[data-theme="dark"] .decision-cost,
-html[data-theme="dark"] .persona-role, html[data-theme="dark"] .ds-section-label, html[data-theme="dark"] .meta-muted,
-html[data-theme="dark"] .caption, html[data-theme="dark"] figcaption{ color:var(--muted) !important; }
 /* keep genuinely-dark sub-panels dark (don't let the wildcard lighten them) */
-html[data-theme="dark"] .browser-frame, html[data-theme="dark"] .browser-bar{ background:#0f1015 !important; }
 
 
 /* ---- DARK MODE straggler catches, round 2 (from automated scan) ---- */
-html[data-theme="dark"] .reflection-section, html[data-theme="dark"] .crow, html[data-theme="dark"] .ds-wrapper,
-html[data-theme="dark"] .jm-card, html[data-theme="dark"] .jm-stage, html[data-theme="dark"] .case-img-wrapper,
-html[data-theme="dark"] .callout-box, html[data-theme="dark"] .callout, html[data-theme="dark"] .finding-rec,
-html[data-theme="dark"] .mstep, html[data-theme="dark"] .nstep, html[data-theme="dark"] .fix, html[data-theme="dark"] .loop,
-html[data-theme="dark"] .rq, html[data-theme="dark"] .rq-card, html[data-theme="dark"] .criteria, html[data-theme="dark"] .principle,
-html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4, html[data-theme="dark"] .pain,
-html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after, html[data-theme="dark"] .ftree-cut,
-html[data-theme="dark"] .ftree-keep, html[data-theme="dark"] .ftree-item, html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
-}
 /* icon / number / badge chips -> subtle tinted, readable */
-html[data-theme="dark"] .feature-icon-box, html[data-theme="dark"] .method-icon, html[data-theme="dark"] .process-icon,
-html[data-theme="dark"] .next-step-icon, html[data-theme="dark"] .process-num, html[data-theme="dark"] .method-n,
-html[data-theme="dark"] .ds-swatch-box, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip,
-html[data-theme="dark"] .severity-badge, html[data-theme="dark"] .stat-number{
-  background:var(--surface-2) !important; color:var(--text) !important; border-color:var(--border) !important;
-}
 /* text stragglers -> light */
-html[data-theme="dark"] .fix-p, html[data-theme="dark"] .loop-t, html[data-theme="dark"] .ftree-item,
-html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .stat-number,
-html[data-theme="dark"] li, html[data-theme="dark"] .crow, html[data-theme="dark"] .crow *,
-html[data-theme="dark"] .jm-card *, html[data-theme="dark"] .mstep *, html[data-theme="dark"] .finding-rec *,
-html[data-theme="dark"] .callout-box *, html[data-theme="dark"] .reflection-section *{ color:var(--text); }
 /* captions -> muted */
-html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-label, html[data-theme="dark"] .fig-caption{ color:var(--muted) !important; }
 /* alternating light sections -> page bg */
-html[data-theme="dark"] .section-alt, html[data-theme="dark"] .bg-soft, html[data-theme="dark"] .section-light{ background:var(--bg) !important; }
 
 
 /* ---- DARK MODE straggler catches, round 3 ---- */
-html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-wrapper, html[data-theme="dark"] .testimonial-block,
-html[data-theme="dark"] .finding-quote, html[data-theme="dark"] .criteria-strip, html[data-theme="dark"] .success-quote,
-html[data-theme="dark"] .severity-legend, html[data-theme="dark"] .quote-block, html[data-theme="dark"] .pullquote{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
-}
-html[data-theme="dark"] .case-img-caption{ background:transparent !important; color:var(--muted) !important; }
-html[data-theme="dark"] .body-text{ background:transparent !important; color:var(--text) !important; }
-html[data-theme="dark"] em{ color:inherit; }
 
 
 /* ---- DARK MODE straggler catches, round 4 (final) ---- */
-html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-body *, html[data-theme="dark"] .finding-quote *,
-html[data-theme="dark"] .success-quote *, html[data-theme="dark"] .testimonial-block *{ color:var(--text); }
-html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(.hero-role){ color:var(--text); }
 
 
 /* ---- Fixes: mobile menu theme, accent-bg pills, misc accent labels ---- */
@@ -719,12 +644,7 @@ html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(
 .mobile-menu-close{ color:var(--text) !important; }
 .nav-card-label{ color:var(--accent-text) !important; }
 /* white text on the (light) accent in dark mode -> dark on-accent text */
-html[data-theme="dark"] .skip-pill, html[data-theme="dark"] .jm-stage-header, html[data-theme="dark"] .jm-stage-num,
-html[data-theme="dark"] .badge-accent, html[data-theme="dark"] .tag-accent, html[data-theme="dark"] .pill-accent{ color:var(--on-accent) !important; }
 /* dark mode: dark-blue section titles -> light accent */
-html[data-theme="dark"] .criteria-title, html[data-theme="dark"] .reflection-col-title, html[data-theme="dark"] .severity-legend-title,
-html[data-theme="dark"] .mflow-label, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .ds-type-sample-b,
-html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ color:var(--accent-text) !important; }
 
 
 /* ---- Accent-on-accent + badge/link/button contrast (both modes) ---- */
@@ -742,14 +662,8 @@ html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ c
 /* ---- Final dark-mode text/pill stragglers ---- */
 .skip-pill{ background:var(--accent) !important; color:var(--on-accent) !important; border-color:transparent !important; }
 .skip-pill *{ color:var(--on-accent) !important; }
-html[data-theme="dark"] .nstep-t, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .nstep-k,
-html[data-theme="dark"] .step-title, html[data-theme="dark"] .nstep *{ color:var(--text) !important; }
-html[data-theme="dark"] .criteria-strip *, html[data-theme="dark"] .scope-list *, html[data-theme="dark"] .rq *,
-html[data-theme="dark"] .reflection-col *, html[data-theme="dark"] .scope-col *{ color:var(--text); }
 nav a.mx-nav-active, .mx-nav-active{ color:var(--accent) !important; }
 /* decorative watermark numerals: subtle but present in both modes */
-html[data-theme="dark"] .rq-num, html[data-theme="dark"] .problem-num, html[data-theme="dark"] .insight-num,
-html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webkit-text-fill-color:rgba(255,255,255,0.34) !important; background:none !important; }
 
 
 /* ---- Accent-bg elements: on-accent text in both modes (final) ---- */
@@ -757,9 +671,6 @@ html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webk
   color:var(--on-accent) !important; }
 .persona-badge *, .ftree-root *, .resume-btn *{ color:var(--on-accent) !important; }
 /* stubborn slate spans inside scope/criteria/finding/callout blocks */
-html[data-theme="dark"] [class*="scope"] *, html[data-theme="dark"] [class*="criteria"] *,
-html[data-theme="dark"] [class*="finding"] *, html[data-theme="dark"] [class*="callout"] *,
-html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
 /* ---- Theme toggle button ---- */
 .theme-toggle{ position:fixed; left:22px; bottom:22px; z-index:1600; width:44px; height:44px; border-radius:50%;
@@ -833,23 +744,12 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
   box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
   position:relative; }
-html[data-theme="dark"] .case-img-wrapper,
-html[data-theme="dark"] .shot,
-html[data-theme="dark"] .love-media,
-html[data-theme="dark"] .browser-frame,
-html[data-theme="dark"] .ba-frame{
-  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
 /* hairline inner frame on screenshots */
 .case-img-wrapper::after, .shot::after, .browser-frame::after{
   content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
 
 /* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
-html[data-theme="dark"] .stat-number{
-  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
-  -webkit-background-clip:text !important; background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
 </style>
 
 
@@ -933,38 +833,23 @@ html[data-theme="dark"] .stat-number{
   --light-bg:#FAFAF9; --shot-bg:linear-gradient(158deg,#F3F4F6 0%,#E9EAEE 100%);
   --hero-grad:linear-gradient(152deg,#0B0C10 0%,#14161C 38%,#182A3B 72%,#234462 100%);
 }
-html[data-theme="dark"]{
-  --accent:#A9C0DA; --accent-strong:#A6C4E9; --accent-text:#A9C0DA; --accent-weak:#16202E; --hero-accent:#A9C0DA; --on-accent:#0B0C10;
-  --c-tint:#16202E; --c-soft:#16202E; --c-media:#16202E; --c-deep:#A9C0DA;
-  --c-glow:rgba(169,192,218,0.220); --c-glow-soft:rgba(169,192,218,0.100);
-  --light-bg:#141519; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
-  --hero-grad:linear-gradient(152deg,#07080A 0%,#0E1014 38%,#142433 72%,#1C344B 100%);
-  --lift-1:0 1px 2px rgba(0,0,0,.30), 0 6px 18px -10px rgba(0,0,0,.55);
-  --lift-2:0 2px 6px rgba(0,0,0,.34), 0 20px 46px -22px rgba(0,0,0,.66);
-}
 html, body{ background:var(--bg); }
 body{ background:transparent; }
 body::before{ content:none !important; }
 :root{ --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#FAFAF9; --surface-3:#F2F2F1; }
-html[data-theme="dark"]{ --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731; }
 nav, nav.scrolled{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
-html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.80) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
 .section-tabs{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; box-shadow:0 1px 0 rgba(20,20,25,.07), 0 10px 24px -18px rgba(20,20,25,.30) !important; }
-html[data-theme="dark"] .section-tabs{ background:rgba(13,14,17,.86) !important; box-shadow:0 1px 0 rgba(255,255,255,.08), 0 10px 24px -18px rgba(0,0,0,.9) !important; }
 .mobile-menu{ background:#FBFBF9 !important; }
-html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.97) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ nav, nav.scrolled, .section-tabs, .mobile-menu{ background:var(--bg) !important; } }
 .section-alt, .bg-soft, .section-light{ background:var(--light-bg) !important; }
 .hero.hero.hero{ background:var(--hero-grad) !important; }
-html[data-theme="dark"] .hero-glow-1{ background:radial-gradient(circle, rgba(169,192,218,0.260) 0%, transparent 62%) !important; }
-html[data-theme="dark"] .hero-glow-2{ background:radial-gradient(circle, rgba(166,196,233,0.300) 0%, transparent 66%) !important; }
 html:not([data-theme="dark"]) .hero.hero.hero{ background:linear-gradient(148deg, #FEFDFC 0%, #E6EFFB 28%, #D5E4F6 62%, #BBD2EF 100%) !important; }
 html:not([data-theme="dark"]) .hero-glow-1{ background:radial-gradient(circle, rgba(166,196,233,0.420) 0%, transparent 62%) !important; }
 html:not([data-theme="dark"]) .hero-glow-2{ background:radial-gradient(circle, rgba(239,181,205,0.340) 0%, transparent 66%) !important; }
 html:not([data-theme="dark"]) .hero.hero.hero h1, html:not([data-theme="dark"]) .hero.hero.hero .hero-headline h1{ color:#18181B !important; }
-html:not([data-theme="dark"]) .hero.hero.hero h1 em, html:not([data-theme="dark"]) .hero.hero.hero h1 span{ color:#2D5A82 !important; }
-html:not([data-theme="dark"]) .hero.hero.hero .hero-tag{ color:#2D5A82 !important; }
-html:not([data-theme="dark"]) .hero.hero.hero .hero-tag::before{ background:#2D5A82 !important; }
+html:not([data-theme="dark"]) .hero.hero.hero h1 em, html:not([data-theme="dark"]) .hero.hero.hero h1 span{ color:#295277 !important; }
+html:not([data-theme="dark"]) .hero.hero.hero .hero-tag{ color:#295277 !important; }
+html:not([data-theme="dark"]) .hero.hero.hero .hero-tag::before{ background:#295277 !important; }
 html:not([data-theme="dark"]) .hero.hero.hero .hero-sub{ color:#3B3B45 !important; }
 html:not([data-theme="dark"]) .hero.hero.hero .hero-meta-value{ color:#18181B !important; }
 html:not([data-theme="dark"]) .hero.hero.hero .hero-meta-label, html:not([data-theme="dark"]) .hero.hero.hero .hero-video-caption, html:not([data-theme="dark"]) .hero.hero.hero .hero-figma-caption, html:not([data-theme="dark"]) .hero.hero.hero .hero-docs-label{ color:#5C5C67 !important; }
@@ -1030,44 +915,27 @@ html:not([data-theme="dark"]) .impact-section .built-cta{ background:#2D5A82 !im
 html:not([data-theme="dark"]) .impact-section .shipped-chip, html:not([data-theme="dark"]) .impact-section .shipped-eyebrow{ color:#2D5A82 !important; }
 html:not([data-theme="dark"]) .impact-section .shipped-lead, html:not([data-theme="dark"]) .impact-section .shipped-cap, html:not([data-theme="dark"]) .impact-section .figcap{ color:#3B3B45 !important; }
 html:not([data-theme="dark"]) .impact-section .impact-number{ color:#2D5A82 !important; background:linear-gradient(180deg,#2D5A82 0%, #7094BB 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; }
-html[data-theme="dark"] .impact-number{ color:#A9C0DA !important; background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; }
 .stat-number{ color:#2D5A82 !important; background:linear-gradient(180deg,#2D5A82 0%, #7094BB 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; border:0 !important; box-shadow:none !important; }
-html[data-theme="dark"] .stat-number{ background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; border:0 !important; box-shadow:none !important; }
-html[data-theme="dark"] .finding-block, html[data-theme="dark"] .quote-card{ background:var(--surface) !important; border-color:var(--border) !important; }
-html[data-theme="dark"] .hero-doc-icon{ background:#F2F2F0 !important; border-color:rgba(20,20,25,.16) !important; }
-html[data-theme="dark"] .hero-doc-icon span{ color:#2D5A82 !important; }
 
 /* --- retired-blue sweep: leftovers from the old single-accent theme --- */
 .next-project{ border-top:0 !important; }
 .next-label, .next-project-label{ color:var(--brand) !important; }
 .next-project-title a{ color:#5B3FA6 !important; }
 .next-project-title a:hover{ color:#473181 !important; }
-html[data-theme="dark"] .next-project-title a{ color:#C8B4F0 !important; }
 .next-project em, .next-project h2 em{ color:#5B3FA6 !important; }
-html[data-theme="dark"] .next-project em, html[data-theme="dark"] .next-project h2 em{ color:#C8B4F0 !important; }
 .next-btn{ background:#5B3FA6 !important; color:#FFFFFF !important; border-color:#5B3FA6 !important; }
 .next-btn:hover{ background:#493285 !important; }
-html[data-theme="dark"] .next-btn{ background:#C8B4F0 !important; color:#0B0C10 !important; border-color:#C8B4F0 !important; }
-html[data-theme="dark"] .next-btn:hover{ background:#C0AEE8 !important; }
 .cs-rail-nav{ border-left-color:rgba(166,196,233,0.550) !important; }
 .nstep, .mstep, .problem-card, .callout-box, .built-note, .ag-v, .ag-col, .insight-card, .opp-card, .metric-card, .doc-card{ border-color:rgba(166,196,233,0.500) !important; }
-html[data-theme="dark"] .nstep, html[data-theme="dark"] .mstep, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .callout-box, html[data-theme="dark"] .built-note, html[data-theme="dark"] .ag-v, html[data-theme="dark"] .ag-col{ border-color:rgba(169,192,218,0.260) !important; }
 .ag-v{ color:var(--text) !important; }
 .hero-figma{ background:#121317 !important; border-color:rgba(166,196,233,0.450) !important; }
 .hero-figma:has(> .hero-figma-frame){ background:transparent !important; border:0 !important; box-shadow:none !important; }
 .hero-figma-frame{ background:transparent !important; border:0 !important; }
-html[data-theme="dark"] .hero-figma, html[data-theme="dark"] .hero-figma-frame{ background:#0F1116 !important; border-color:rgba(169,192,218,0.220) !important; }
-html[data-theme="dark"] .built-cta{ background:#A9C0DA !important; color:#0B0C10 !important; }
-html[data-theme="dark"] .stat-number{ color:#A9C0DA !important; }
 .hero-doc-card, .nox-doc-card, .hero-site-card{ color:var(--text); }
 .feature-card, .process-num, .ds-panel, .ds-wrapper, .ds-section, .mockup-showcase, .doc-card, .metric-card, .rq-card{ border-color:rgba(166,196,233,0.500) !important; }
 .rq-num{ color:rgba(166,196,233,0.850) !important; border-color:rgba(166,196,233,0.400) !important; }
-html[data-theme="dark"] .rq-card{ border-color:rgba(169,192,218,0.240) !important; }
-html[data-theme="dark"] .rq-num{ color:rgba(169,192,218,0.550) !important; }
 p.body-text, .rq-text, .reflection-item, .finding-body, .finding-rec-text, .mstep-d, .nstep-d, .step-d, .callout-box p{ color:#3B3747 !important; }
-html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-rec-text, html[data-theme="dark"] .mstep-d, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .step-d{ color:rgba(255,255,255,.76) !important; }
 .finding-card{ border-color:rgba(166,196,233,0.500) !important; }
-html[data-theme="dark"] .finding-card{ border-color:rgba(169,192,218,0.240) !important; }
 
 /* --- dark panels: navy -> this study's colour, and light text on them --- */
 .reflection-section.reflection-section, .insight-card.insight-card, .theme-card.theme-card, .vision-card.vision-card, section[style*='linear-gradient']{ background:linear-gradient(145deg, #14202E 0%, #1A2E42 100%) !important; }
@@ -1087,21 +955,15 @@ html:not([data-theme="dark"]) .hero.hero.hero .hero-figma:has(> .hero-figma-fram
 .finding-card.sev-3::before{ background:#F59E0B !important; }
 .finding-card.sev-2::before{ background:#1E5A9E !important; }
 .finding-card.sev-1::before{ background:#2E7D32 !important; }
-html[data-theme="dark"] .rq-text, html[data-theme="dark"] .reflection-item{ color:rgba(255,255,255,.76) !important; }
 .criteria-tag, .cert-chip{ border-color:rgba(166,196,233,0.500) !important; }
-html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip{ border-color:rgba(169,192,218,0.240) !important; }
-html[data-theme="dark"] p.body-text, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .reflection-item, html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-rec-text, html[data-theme="dark"] .mstep-d, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .step-d, html[data-theme="dark"] .callout-box p, html[data-theme="dark"] .process-body{ color:rgba(255,255,255,.78) !important; }
 .role-callout, p.body-text.role-callout{ background:#E6EFFB !important; border-color:rgba(166,196,233,0.550) !important; }
-html[data-theme="dark"] .role-callout, html[data-theme="dark"] p.body-text.role-callout{ background:#16202E !important; border-color:rgba(169,192,218,0.240) !important; }
 .sdg-icon.reduce, .sdg-icon{ background:#E6EFFB !important; }
 .jm-card-action, .jm-legend-dot.action{ background:var(--surface-2) !important; border-color:rgba(20,20,25,.12) !important; }
 .jm-card-pain, .jm-legend-dot.pain{ background:var(--surface-3) !important; border-color:rgba(20,20,25,.12) !important; }
 .jm-card-solution, .jm-legend-dot.solution{ background:#E6EFFB !important; border-color:rgba(166,196,233,0.600) !important; }
-html[data-theme="dark"] .jm-card-solution, html[data-theme="dark"] .jm-legend-dot.solution{ background:#16202E !important; border-color:rgba(169,192,218,0.260) !important; }
 
 /* craft */
 .hero-browser-url{ color:rgba(255,255,255,.72) !important; }
-html[data-theme="dark"] .hero .hero-meta-label, html[data-theme="dark"] .hero:has(.hero-sub) .hero-meta-label{ color:rgba(255,255,255,0.70) !important; }
 .hero-doc-meta, .nox-doc-meta{ color:rgba(255,255,255,.72); }
 html:not([data-theme="dark"]) .hero-doc-meta, html:not([data-theme="dark"]) .nox-doc-meta{ color:#5C5C67 !important; }
 .cs-take{ font-family:'Inter',sans-serif !important; box-shadow:none !important; border-radius:0 !important; }
@@ -1115,7 +977,6 @@ html:not([data-theme="dark"]) .hero-doc-meta, html:not([data-theme="dark"]) .nox
 
 /* ===== brand chrome: logo, nav and tabs are always pink ===== */
 :root{ --brand:#9E3462; --brand-soft:#F6D8E4; --brand-mid:#EFB5CD; }
-html[data-theme="dark"]{ --brand:#F0B7CE; --brand-soft:#2A1721; --brand-mid:#EFB5CD; }
 nav a.mx-nav-active, .mx-nav-active{ color:var(--brand) !important; }
 nav ul li a.mx-nav-active{ background-size:100% 1.5px !important; }
 nav ul li a:hover{ color:var(--brand); }
@@ -1134,25 +995,17 @@ footer{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) bl
 .footer-left, .footer-right{ color:#5C5C67 !important; }
 .footer-center, .footer-center a{ color:#3B3B45 !important; }
 .footer-center a:hover{ color:var(--brand) !important; }
-html[data-theme="dark"] footer{ background:rgba(13,14,17,.90) !important; border-top:1px solid rgba(255,255,255,.10) !important; }
-html[data-theme="dark"] .footer-left, html[data-theme="dark"] .footer-right{ color:rgba(255,255,255,.62) !important; }
-html[data-theme="dark"] .footer-center, html[data-theme="dark"] .footer-center a{ color:rgba(255,255,255,.80) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ footer{ background:#FFFFFF !important; } }
 ::selection{ background:var(--brand-soft); color:var(--text); }
-html[data-theme="dark"] ::selection{ background:rgba(240,183,206,0.300); color:#ECEDEF; }
 a:focus-visible, button:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; border-radius:4px; }
 html{ scrollbar-color:var(--brand-mid) transparent; }
-html[data-theme="dark"] .ab-photo{ background:var(--surface) !important; }
 .sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
 .skip-link{ position:absolute; left:-9999px; top:0; z-index:10000; background:var(--brand); color:#fff; padding:12px 18px; border-radius:0 0 10px 0; font-family:var(--mono); font-size:13px; text-decoration:none; }
 .skip-link:focus{ left:0; outline:3px solid var(--brand); outline-offset:2px; }
 .mx-top{ background:var(--brand) !important; color:#FFFFFF !important; border-color:var(--brand) !important; }
-html[data-theme="dark"] .mx-top{ color:#0B0C10 !important; }
 .mx-top:hover{ background:#7E2A4E !important; }
 .mx-top{ box-shadow:0 0 0 3px rgba(255,255,255,.92), 0 10px 26px -10px rgba(158,52,98,0.450) !important; }
-html[data-theme="dark"] .mx-top{ box-shadow:0 0 0 3px rgba(13,14,17,.92), 0 10px 26px -10px rgba(0,0,0,.7) !important; }
 @media (max-width:640px){ .mx-top{ width:38px !important; height:38px !important; right:12px !important; bottom:12px !important; } .mx-top svg{ width:15px !important; height:15px !important; } }
-html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 .pf-zoomable:focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
 @media (max-width:520px){
   .cta-pdf, .persona-badge, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .bt-eyebrow, .bt-stat .lbl{ font-size:11px !important; letter-spacing:.04em !important; }
@@ -1220,7 +1073,7 @@ footer{ padding-left:max(var(--shell-pad), calc((100% - var(--shell))/2 + var(--
    Reference: microsoft.html (Foundry Agent Builder research study).
    Brings foundry-models / nox / nexstera / saksham to the same
    figure treatment, caption placement and dark-panel budget.
-   Injected AFTER <style id="pastel-2026"> so it wins on equal weight.
+   Injected AFTER \3c style id="pastel-2026"> so it wins on equal weight.
    Remove this whole block to revert.
    ================================================================== */
 
@@ -1297,10 +1150,6 @@ html body .insight-card.insight-card li{ color:var(--mid) !important; }
 html body .insight-card.insight-card em{ color:var(--c-deep) !important; }
 /* NOTE: the numeral colour/opacity is owned by a11yfix-2026-09 (it has to clear 3:1).
    Deliberately not set here, so this block's inject order can never clobber it. */
-html[data-theme="dark"] body .insight-card.insight-card em,
-html[data-theme="dark"] body .insight-card.insight-card .insight-num{
-  color:var(--c-lite) !important; -webkit-text-fill-color:var(--c-lite) !important;
-}
 
 /* 3b · prototype bands (nox #prototype, foundry #live-prototype) go light.
        Only .container content is retinted; media chrome keeps its own dark UI. */
@@ -1329,10 +1178,6 @@ html body section#prototype > .container h2 em,
 html body section#live-prototype > .container h2 em{ color:var(--c-deep) !important; }
 html body section#prototype > .container .section-eyebrow::before,
 html body section#live-prototype > .container .section-eyebrow::before{ background:var(--c-deep) !important; }
-html[data-theme="dark"] body section#prototype > .container .section-eyebrow,
-html[data-theme="dark"] body section#live-prototype > .container .section-eyebrow,
-html[data-theme="dark"] body section#prototype > .container h2 em,
-html[data-theme="dark"] body section#live-prototype > .container h2 em{ color:var(--c-lite) !important; }
 
 /* the stage the media sits on */
 html body .prototype-video-wrap,
@@ -1353,10 +1198,6 @@ html body .proto-label{
   text-align:left !important;
   margin:0 0 14px !important;
 }
-html[data-theme="dark"] body section#prototype .prototype-label,
-html[data-theme="dark"] body section#live-prototype .proto-label,
-html[data-theme="dark"] body .prototype-label,
-html[data-theme="dark"] body .proto-label{ color:var(--c-lite) !important; }
 html body .prototype-label span{ color:var(--mid) !important; }
 
 /* 3c · Foundry's Solution band goes light, matching the reference's impact band */
@@ -1383,12 +1224,6 @@ html body .shipped-band .shipped-fig .frame{
   border:1px solid color-mix(in srgb, var(--text) 12%, transparent) !important;
   box-shadow:var(--lift-2) !important;
 }
-html[data-theme="dark"] body section.shipped-band.shipped-band{ background:var(--c-tint) !important; }
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow,
-html[data-theme="dark"] body .shipped-band h2 em,
-html[data-theme="dark"] body .shipped-band .shipped-chip,
-html[data-theme="dark"] body .shipped-band .shipped-cap .cap-n{ color:var(--c-lite) !important; }
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
 
 /* ---- 4 · SECTION RHYTHM: the pull quote sits the same everywhere ---- */
 html body .cs-take{ margin-top:18px !important; margin-bottom:22px !important; }
@@ -1409,12 +1244,6 @@ html:not([data-theme="dark"]) body .impact-section .built-eyebrow::before,
 html:not([data-theme="dark"]) body .shipped-band .shipped-eyebrow::before{
   background:color-mix(in srgb, var(--c-deep) 80%, #000) !important;
 }
-html[data-theme="dark"] body .impact-section .impact-label,
-html[data-theme="dark"] body .shipped-band .shipped-cap{ color:rgba(255,255,255,.80) !important; }
-html[data-theme="dark"] body .impact-section .section-eyebrow,
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow{ color:var(--c-lite) !important; }
-html[data-theme="dark"] body .impact-section .section-eyebrow::before,
-html[data-theme="dark"] body .shipped-band .shipped-eyebrow::before{ background:var(--c-lite) !important; }
 
 
 /* ---- 6 · NOX HERO VIDEO ----
@@ -1731,10 +1560,7 @@ html body .hero-figma-frame.ifr-focus{
 }
 
 </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style id="hero-2026">
+  <style id="hero-2026">
 /* ---------- NAV ----------
    No bar: clear over the gradient, then a scrim that fades out at the
    bottom so there is never a hard edge. Links are smaller and tighter,
@@ -3081,7 +2907,7 @@ html body .cs-content .container-wide:has(.persona-grid){
       <div class="hero-meta">
         <div>
           <div class="hero-meta-label">My Role</div>
-          <div class="hero-meta-value">User Experience Designer</div>
+          <div class="hero-meta-value">UX Designer</div>
         </div>
         <div>
           <div class="hero-meta-label">Team</div>
@@ -3163,7 +2989,7 @@ html body .cs-content .container-wide:has(.persona-grid){
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">A catalog of 11,000+ AI models with no clear place to start, and no sign of which ones a developer could even deploy in their region.</div></div>
         <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">On a team of five, I ran the usability research and led concept and IA on the two threads we recommended: <strong>making region visible in the filter rail</strong>, and deepening compare so pricing, regional availability and a recommended pick sit inside the comparison itself.</div></div>
-        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Two recommendations came out of the research and design work</strong>: making region a first-class filter, and deepening compare. <strong>Region filtering is on the live site today.</strong> A small round-two test on our prototype pointed to roughly 58% faster search-to-select.</div></div>
+        <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Two recommendations came out of the research and design work</strong>: making region a first-class filter, and deepening compare. <strong>Region filtering is on the live site today.</strong> A round-two test with 6 developers on our prototype pointed to roughly 58% faster search-to-select.</div></div>
       </div>
     </div>
   </section>
@@ -3174,7 +3000,6 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">The Problem</p>
       <h2 class="section-title">11,000 models,<br />and nowhere to start.</h2>
-      <p class="cs-take">Developers hit 11,000 models with no way to narrow the list, and no signal of what would even run in their region.</p>
       <p class="body-text">A developer who wants to ship this week opens the Models page and hits <strong>11,000+ models</strong>. Users kept asking for the same two things: help me narrow this list, and help me know where to start. Some picked a model and only hit the wall at deployment, because it wasn't available in their region.</p>
       <p class="body-text">Our team of five spent three months redesigning model discovery end to end. I came to the project from the research side, after running a <a href="microsoft.html" style="color:var(--indigo);font-weight:500;text-decoration:none;border-bottom:1px solid var(--indigo-light);">UX research study on Foundry</a>.</p>
     </div>
@@ -3187,7 +3012,7 @@ html body .cs-content .container-wide:has(.persona-grid){
         </div>
         <div class="ba-stage">
           <img class="ba-shot is-active" data-view="before" aria-hidden="false" src="assets/before-foundry.webp" width="1356" height="750" alt="The old Foundry Models page: a dense four-column grid where each model shows only a name and a task, and the filter rail has no way to narrow by region" loading="eager" decoding="sync" fetchpriority="high" />
-          <img class="ba-shot" data-view="after" aria-hidden="true" src="assets/foundry-models-shipped.webp" width="1800" height="841" alt="The live Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="lazy" decoding="async" />
+          <img class="ba-shot" data-view="after" aria-hidden="true" src="assets/foundry-models-shipped.webp" width="1800" height="841" alt="The live Models page: Region promoted into the filter rail as a first-class filter, in a cleaner, more scannable layout, with Compare models a click away" loading="eager" decoding="async" />
         </div>
       </div>
       <p class="figcap">Toggle between the old catalog and the live Models page today. <strong>Before:</strong> a dense multi-column grid where every model shows little more than a <strong>name and a task</strong>, with <strong>no way to narrow by region</strong>, so a developer could commit to a model and only hit a wall at deployment. <strong>After:</strong> Region is promoted into the filter rail as a first-class way to narrow the catalog, in a cleaner, more scannable layout, with Compare a click away.</p>
@@ -3223,7 +3048,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">User Research</p>
       <h2 class="section-title">Developer interviews shaped<br />our direction.</h2>
-      <p class="cs-take">Every method pointed to the same gaps: unclear terms, dense structure, and no way to compare.</p>
+      <p class="cs-take">The methods converged on three gaps: unclear terms, dense structure, and no way to compare.</p>
       <p class="body-text">We ran our own study: a heuristic evaluation of the live platform, moderated developer interviews, and a card sort.</p>
     </div>
     <div class="container-wide">
@@ -3290,17 +3115,17 @@ html body .cs-content .container-wide:has(.persona-grid){
       <p class="section-eyebrow">Sketches &amp; Wireframes</p>
       <h2 class="section-title">Sketching our way<br />out of the problem.</h2>
       <p class="cs-take">Two decisions drove the redesign: where the region problem gets solved, and what a developer sees first.</p>
-    </div>
+      </div>
 
     <div class="container-wide fade-in">
       <div class="figure">
         <div class="shot tall"><img src="assets/foundry-sketch.png" width="1264" height="1632" alt="Hand-drawn paper prototype: a region blocker handled in onboarding, and a models selection flow with an AI helper and clearer descriptions" loading="eager" decoding="sync" /></div>
-        <p class="figcap"><strong>Paper prototype.</strong> Two ideas we carried forward: handling <strong>region</strong> up front so a developer never commits to a model they can't deploy, and a <strong>model-selection flow</strong> with an “ask AI to find the best model” helper and clearer descriptions to reduce overload.</p>
+        <p class="figcap"><strong>Paper prototype.</strong> Two ideas we carried forward: handling <strong>region</strong> up front so a developer never commits to a model they can't deploy, and a <strong>model-selection flow</strong> with an “ask AI” helper and clearer descriptions to reduce overload.</p>
       </div>
     </div>
 
     <div class="container fade-in">
-      <p class="body-text">Three ideas carried from paper into the mid-fidelity wireframes:</p>
+      <p class="body-text">Three things the wireframes had to solve:</p>
       <div class="anno-list">
         <span class="anno"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Region &amp; pricing visible right in the results</span>
         <span class="anno"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9Z"/><path d="M18 15l.9 2.1 2.1.9-2.1.9L18 21l-.9-2.1-2.1-.9 2.1-.9Z"/></svg> A more prominent, AI-assisted search</span>
@@ -3333,7 +3158,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     </div>
 
     <div class="container fade-in">
-      <h3 class="sub-heading">Three directions we killed</h3>
+      <h3 class="sub-heading">Three directions I killed</h3>
       <p class="body-text">With a fixed IA and a tight scope, the hard part was deciding where <em>not</em> to spend the effort. The final answer looks obvious in hindsight; it wasn't. I explored three approaches that tested worse, and killing them is what made the final design defensible.</p>
       <style>
         .killed-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
@@ -3377,19 +3202,19 @@ html body .cs-content .container-wide:has(.persona-grid){
       <div class="figure proto-shot fade-in">
         <p class="fix-h">Discover: a front door with intent</p>
         <p class="fix-p">Instead of an 11,000-row wall, Discover opens with what you're trying to do: find, compare, try, or fine-tune a model.</p>
-        <div class="shot framed"><img src="assets/foundry-discover.png" width="1580" height="1242" alt="Foundry Discover page: four task cards (find, compare, try, fine-tune), featured models, providers, and model collections" loading="lazy" decoding="async" /></div>
+        <div class="shot framed"><img src="assets/foundry-discover.png" width="1580" height="1242" alt="Foundry Discover page: four task cards (find, compare, try, fine-tune), featured models, providers, and model collections" loading="eager" decoding="async" /></div>
       </div>
 
       <div class="figure proto-shot fade-in">
         <p class="fix-h">Models: filter, region, and compare in one place</p>
         <p class="fix-p">The core of the redesign: a filter rail narrows 11,000+ models, region and pricing sit right in the results, and a compare tray collects models for a side-by-side decision.</p>
-        <div class="shot framed"><img src="assets/foundry-filters.webp" width="1602" height="1250" alt="Foundry Models page: filter rail on the left, results table with region, pricing, and latency, and a compare tray holding three selected models" loading="lazy" decoding="async" /></div>
+        <div class="shot framed"><img src="assets/foundry-filters.webp" width="1602" height="1250" alt="Foundry Models page: filter rail on the left, results table with region, pricing, and latency, and a compare tray holding three selected models" loading="eager" decoding="async" /></div>
       </div>
 
       <div class="figure proto-shot fade-in">
         <p class="fix-h">Home: pick up where you left off</p>
         <p class="fix-p">Returning developers land on recent models and quick tasks, so a half-finished decision doesn't mean starting the search over.</p>
-        <div class="shot framed"><img src="assets/foundry-home.webp" width="1212" height="950" alt="Foundry home screen: a welcome header, primary actions, a pick up where you left off row, and quick task shortcuts" loading="lazy" decoding="async" /></div>
+        <div class="shot framed"><img src="assets/foundry-home.webp" width="1212" height="950" alt="Foundry home screen: a welcome header, primary actions, a pick up where you left off row, and quick task shortcuts" loading="eager" decoding="async" /></div>
       </div>
     </div>
 
@@ -3400,7 +3225,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow" style="color: var(--indigo-light);">High-Fidelity Prototype</p>
       <h2 class="section-title" style="color:#fff;">The clickable, <em style="color: var(--indigo-light);">high-fidelity build.</em></h2>
-      <p class="cs-take">Everything that shipped was argued in a clickable build first, not a static deck.</p>
+      <p class="cs-take">Every recommendation was argued in a clickable build first, not a static deck.</p>
     </div>
     <div class="container-wide fade-in">
       <div class="proto-wrap">
@@ -3443,18 +3268,18 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="shipped-eyebrow">Recommendations</p>
       <h2>Two changes, <em>argued through design.</em></h2>
-      <p class="shipped-lead">Our team took two recommendations through research and design, for the Foundry team to take the page significantly further. Region filtering is on the live site today. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second deepened <strong style="color:#fff;font-weight:600">compare</strong>, a feature the platform already had: we proposed surfacing pricing and regional availability inside the comparison and calling out a recommended pick, so the trade-off is legible instead of something you reconstruct yourself.</p>
+      <p class="shipped-lead">Our team took two recommendations through research and design. The first promoted <strong style="color:#fff;font-weight:600">Region into the filter rail</strong>, so developers narrow the catalog by where a model can actually deploy, before they commit rather than after they hit a wall. The second deepened <strong style="color:#fff;font-weight:600">compare</strong>, a feature the platform already had: we proposed surfacing pricing and regional availability inside the comparison and calling out a recommended pick, so the trade-off is legible instead of something you reconstruct yourself.</p>
       <span class="shipped-chip"><span class="dot" aria-hidden="true"></span>Region filter live in Microsoft Foundry &middot; Discover &rsaquo; Models</span>
     </div>
     <div class="container-wide fade-in">
       <div class="shipped-figs">
         <figure class="shipped-fig">
           <div class="frame"><video src="assets/foundry-region-flow.mp4" poster="assets/foundry-region-poster.jpg" muted loop playsinline autoplay preload="auto" width="1600" height="738" aria-label="Screen recording of the live Foundry Models page: narrowing the catalog by region from the filter rail"></video></div>
-          <figcaption class="shipped-cap"><span class="cap-n">Live</span><span><strong>Region, promoted into the filter rail.</strong> An 11,000+ model catalog narrows by where a model can actually deploy, so region is a first-class filter instead of a wall you hit at deployment.</span></figcaption>
+          <figcaption class="shipped-cap"><span class="cap-n">Live</span><span><strong>Region, promoted into the filter rail.</strong> An 11,000+ model catalog narrows by region, a first-class filter.</span></figcaption>
         </figure>
         <figure class="shipped-fig">
           <div class="frame"><video src="assets/foundry-compare-flow.mp4" poster="assets/foundry-compare-poster.jpg" muted loop playsinline autoplay preload="auto" width="1600" height="738" aria-label="Screen recording of the live Foundry compare tray: three models side by side with the best value in each row called out"></video></div>
-          <figcaption class="shipped-cap"><span class="cap-n">Proposed</span><span><strong>Compare, made decision-ready.</strong> Compare existed already; what we argued for was depth inside it. Three models side by side with pricing and regional availability in the comparison and the best value in each row called out, so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
+          <figcaption class="shipped-cap"><span class="cap-n">Compare</span><span><strong>Compare, made decision-ready.</strong> Compare existed already; what we argued for was depth inside it. Three models side by side with pricing and regional availability in the comparison and the best value in each row called out, so trade-offs across quality, cost, and throughput read at a glance.</span></figcaption>
         </figure>
       </div>
     </div>
@@ -3465,12 +3290,11 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">User Testing · Round 2</p>
       <h2 class="section-title">Validating the high-fidelity<br />prototype.</h2>
-      <p class="cs-take">Round two tested one thing on the real prototype: could developers understand, navigate, and compare?</p>
-      <p class="body-text">An earlier round on the wireframes shaped the layout. This one put the high-fidelity prototype in front of developers: could they understand it, navigate to the right region and model, and compare options to find the best fit?</p>
+      <p class="body-text">An earlier round on the wireframes shaped the layout. This one put the high-fidelity prototype in front of 6 developers, each working the flow as though they were choosing a specific model to build their agent on: could they understand it, navigate to the right region and model, and compare options to find the best fit? <strong>Search-to-select</strong> is the time from starting the flow to committing to a model.</p>
     </div>
 
     <div class="container fade-in">
-      <p class="body-text">Three refinements: region and pricing moved to the top of each card so they register before anyone opens a model, compare became a persistent tray with a running count, and the best value in each row got called out. Directional signals from a small moderated round, enough to steer the design, not to claim significance.</p>
+      <p class="body-text">Three refinements: region and pricing moved to the top of each card so they register before anyone opens a model, compare became a persistent tray with a running count, and the best value in each row got called out. Directional signals from a moderated round of 6, enough to steer the design, not to claim significance.</p>
     </div>
   </section>
 
@@ -3479,14 +3303,13 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container-wide fade-in">
       <p class="section-eyebrow">Results</p>
       <h2 class="section-title">The recommendations<br />we <em>put forward.</em></h2>
-      <p class="cs-take">Our team came out of this with two recommendations, region filtering and a deeper compare. Region filtering is on the live site today.</p>
-      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, committing. Our research and design work put two recommendations in front of the team: make region a first-class filter, and deepen compare. Region now sits in the filter rail on the live site. I ran the research and led the concept and IA on both.</p>
+      <p class="body-text">The redesign reframed discovery around the decisions developers make: narrowing, evaluating, committing. Our research and design work put two recommendations in front of the team: make region a first-class filter, and deepen compare. I ran the research and led the concept and IA on both.</p>
       <div class="impact-stats">
         <div class="impact-stat"><div class="impact-number">Live</div><div class="impact-label">Region filtering, one of our two recommendations, is on the live Foundry site today.</div></div>
         <div class="impact-stat"><div class="impact-number">11K&rarr;</div><div class="impact-label">An 11,000+ model catalog, filtered down to a focused, scannable set</div></div>
-        <div class="impact-stat"><div class="impact-number">~58%</div><div class="impact-label">faster search-to-select in a small, moderated round-two test, a directional signal rather than a significance-tested result</div></div>
+        <div class="impact-stat"><div class="impact-number">~58%</div><div class="impact-label">faster search-to-select, measured with 6 developers in a moderated round-two test. A directional signal rather than a significance-tested result.</div></div>
       </div>
-      <p class="body-text" style="margin-top:8px;">Task-success is the design metric; the funnel is why Foundry cared. Two things leaked developers out of browse &rsaquo; select &rsaquo; deploy: picking a model unavailable in their region, and stalling in evaluation because comparing meant opening models one at a time. Region-in-filters removes the first; compare shortens the second. Both aim at <strong>models successfully deployed</strong>, not time on task.</p>
+      <p class="body-text" style="margin-top:8px;">Task-success is the design metric; the funnel is why Foundry cared. Two things leaked developers out of browse &rsaquo; select &rsaquo; deploy: picking a model unavailable in their region, and stalling in evaluation because comparing meant opening models one at a time. Region-in-filters removes the first; compare shortens the second. Both aim at <strong>models successfully deployed</strong>.</p>
     </div>
   </section>
 
@@ -3494,7 +3317,7 @@ html body .cs-content .container-wide:has(.persona-grid){
   <section id="agent-builder">
     <div class="container-wide fade-in">
       <div style="border:1px solid var(--line); border-radius:16px; padding:22px 28px; display:flex; flex-wrap:wrap; gap:12px 24px; align-items:baseline;">
-        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Also during the Microsoft-sponsored project:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same blocker, a usability catastrophe on Nielsen&rsquo;s severity scale, turning a deprioritized bug into a prioritized fix.</p>
+        <p class="body-text" style="margin:0; flex:1; min-width:260px;"><strong>Earlier in the Microsoft-sponsored project:</strong> I ran the usability research for Foundry's Agent Builder, where 8 of 8 developers hit the same blocker, a usability catastrophe on Nielsen&rsquo;s severity scale, turning a deprioritized bug into a prioritized fix.</p>
         <a class="cs-inline-link" href="microsoft.html" style="font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px; white-space:nowrap;">Read that study <span>&rarr;</span></a>
       </div>
     </div>
@@ -3665,7 +3488,7 @@ html body .cs-content .container-wide:has(.persona-grid){
 </style>
 <div id="pf-lightbox" role="dialog" aria-modal="true" aria-label="Full-screen image viewer">
   <button class="pf-lb-close" type="button" aria-label="Close full-screen image (Esc)">&times;</button>
-  <img loading="lazy" class="pf-lb-img" alt="" />
+  <img loading="eager" class="pf-lb-img" alt="" />
   <div class="pf-lb-hint">Click anywhere or press Esc to close</div>
 </div>
 <script>
@@ -3815,6 +3638,128 @@ html body svg.ico{ stroke-width:1.75 !important; }
    loses to any author rule, so this one line neutralises it everywhere while every
    deliberate CSS height (.ab-photo img, .card-preview img, …) still wins on specificity. */
 img{ height:auto; }
+
+
+
+/* =====================================================================
+   TYPE SYSTEM - 2026-09-17
+   One scale, applied on every page. Display is Inter Tight 600; text is
+   Inter. Before this block the site carried 125 distinct type styles:
+   body copy at weight 300, inline emphasis at 500 and 600, and 28
+   different uppercase label treatments between 10px and 13px.
+
+     Display   Inter Tight 600, tracking -0.02em   (sizes unchanged)
+     Lead      18 / 500
+     Body L    17 / 400
+     Body      15 / 400
+     Body S    13 / 400
+     Emphasis  600
+     Label L   12 / 600 / .14em uppercase
+     Label S   11 / 600 / .12em uppercase
+     Nav       11.5 / 600 / .12em uppercase
+   ===================================================================== */
+
+/* Body copy: 400, never 300. Inter at 300 reads fragile at 13px. */
+html body .ag-v.ag-v.ag-v.ag-v.ag-v,
+html body .b-desc.b-desc.b-desc.b-desc.b-desc,
+html body .body-text.body-text.body-text.body-text.body-text,
+html body .competitor-desc.competitor-desc.competitor-desc.competitor-desc.competitor-desc,
+html body .ds-type-sample-b.ds-type-sample-b.ds-type-sample-b.ds-type-sample-b.ds-type-sample-b,
+html body .feature-desc.feature-desc.feature-desc.feature-desc.feature-desc,
+html body .finding-quote.finding-quote.finding-quote.finding-quote.finding-quote,
+html body .finding-rec-text.finding-rec-text.finding-rec-text.finding-rec-text.finding-rec-text,
+html body .fix-p.fix-p.fix-p.fix-p.fix-p,
+html body .hero-sub.hero-sub.hero-sub.hero-sub.hero-sub,
+html body .impact-label.impact-label.impact-label.impact-label.impact-label,
+html body .insight-body.insight-body.insight-body.insight-body.insight-body,
+html body .method-desc.method-desc.method-desc.method-desc.method-desc,
+html body .mstep-d.mstep-d.mstep-d.mstep-d.mstep-d,
+html body .next-step-desc.next-step-desc.next-step-desc.next-step-desc.next-step-desc,
+html body .nstep-d.nstep-d.nstep-d.nstep-d.nstep-d,
+html body .obj-desc.obj-desc.obj-desc.obj-desc.obj-desc,
+html body .opp-text.opp-text.opp-text.opp-text.opp-text,
+html body .persona-quote.persona-quote.persona-quote.persona-quote.persona-quote,
+html body .principle-desc.principle-desc.principle-desc.principle-desc.principle-desc,
+html body .problem-desc.problem-desc.problem-desc.problem-desc.problem-desc,
+html body .process-step-desc.process-step-desc.process-step-desc.process-step-desc.process-step-desc,
+html body .reflection-icon.reflection-icon.reflection-icon.reflection-icon.reflection-icon,
+html body .research-desc.research-desc.research-desc.research-desc.research-desc,
+html body .sdg-desc.sdg-desc.sdg-desc.sdg-desc.sdg-desc,
+html body .stat-desc.stat-desc.stat-desc.stat-desc.stat-desc,
+html body .success-quote.success-quote.success-quote.success-quote.success-quote,
+html body .theme-desc.theme-desc.theme-desc.theme-desc.theme-desc,
+html body .vision-desc.vision-desc.vision-desc.vision-desc.vision-desc
+{ font-weight:400 !important; }
+
+/* Inline emphasis: one weight. */
+html body p strong, html body p b, html body li strong, html body li b,
+html body .body-text strong, html body .ag-v strong, html body .cs-take strong
+{ font-weight:600 !important; }
+
+/* Label L: section eyebrows. */
+html body .built-eyebrow.built-eyebrow.built-eyebrow.built-eyebrow.built-eyebrow,
+html body .cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow,
+html body .finding-rec-label.finding-rec-label.finding-rec-label.finding-rec-label.finding-rec-label,
+html body .hero-docs-label.hero-docs-label.hero-docs-label.hero-docs-label.hero-docs-label,
+html body .mstep-k.mstep-k.mstep-k.mstep-k.mstep-k,
+html body .next-project-label.next-project-label.next-project-label.next-project-label.next-project-label,
+html body .section-eyebrow.section-eyebrow.section-eyebrow.section-eyebrow.section-eyebrow,
+html body .shipped-eyebrow.shipped-eyebrow.shipped-eyebrow.shipped-eyebrow.shipped-eyebrow
+{ font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important; font-size:12px !important; font-weight:600 !important; letter-spacing:.14em !important; text-transform:uppercase !important; }
+
+/* Label S: every other micro-label. */
+html body .ab-eyebrow.ab-eyebrow.ab-eyebrow.ab-eyebrow.ab-eyebrow,
+html body .ab-grid-head.ab-grid-head.ab-grid-head.ab-grid-head.ab-grid-head,
+html body .ag-eyebrow.ag-eyebrow.ag-eyebrow.ag-eyebrow.ag-eyebrow,
+html body .ag-k.ag-k.ag-k.ag-k.ag-k,
+html body .b-badge.b-badge.b-badge.b-badge.b-badge,
+html body .b-cta.b-cta.b-cta.b-cta.b-cta,
+html body .b-kicker.b-kicker.b-kicker.b-kicker.b-kicker,
+html body .ba-tab.ba-tab.ba-tab.ba-tab.ba-tab,
+html body .bt-badge.bt-badge.bt-badge.bt-badge.bt-badge,
+html body .bt-focus.bt-focus.bt-focus.bt-focus.bt-focus,
+html body .criteria-title.criteria-title.criteria-title.criteria-title.criteria-title,
+html body .cs-rail-label.cs-rail-label.cs-rail-label.cs-rail-label.cs-rail-label,
+html body .ds-section-label.ds-section-label.ds-section-label.ds-section-label.ds-section-label,
+html body .ds-type-role.ds-type-role.ds-type-role.ds-type-role.ds-type-role,
+html body .hero-meta-label.hero-meta-label.hero-meta-label.hero-meta-label.hero-meta-label,
+html body .hero-tag.hero-tag.hero-tag.hero-tag.hero-tag,
+html body .jm-dim-label.jm-dim-label.jm-dim-label.jm-dim-label.jm-dim-label,
+html body .jm-stage-num.jm-stage-num.jm-stage-num.jm-stage-num.jm-stage-num,
+html body .lbl.lbl.lbl.lbl.lbl,
+html body .mflow-label.mflow-label.mflow-label.mflow-label.mflow-label,
+html body .ms-label.ms-label.ms-label.ms-label.ms-label,
+html body .next-label.next-label.next-label.next-label.next-label,
+html body .nflow-label.nflow-label.nflow-label.nflow-label.nflow-label,
+html body .opp-category.opp-category.opp-category.opp-category.opp-category,
+html body .persona-badge.persona-badge.persona-badge.persona-badge.persona-badge,
+html body .pf-role.pf-role.pf-role.pf-role.pf-role,
+html body .play-eyebrow.play-eyebrow.play-eyebrow.play-eyebrow.play-eyebrow,
+html body .process-label.process-label.process-label.process-label.process-label,
+html body .proto-label.proto-label.proto-label.proto-label.proto-label,
+html body .reflection-col-title.reflection-col-title.reflection-col-title.reflection-col-title.reflection-col-title,
+html body .research-tag.research-tag.research-tag.research-tag.research-tag,
+html body .sdg-goal.sdg-goal.sdg-goal.sdg-goal.sdg-goal,
+html body .severity-legend-title.severity-legend-title.severity-legend-title.severity-legend-title.severity-legend-title,
+html body .work-label.work-label.work-label.work-label.work-label
+{ font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important; font-size:11px !important; font-weight:600 !important; letter-spacing:.12em !important; text-transform:uppercase !important; }
+
+/* Nav: same size on every page (it was 11.5px on index, 13px on the case studies). */
+html body nav a.nav-link, html body nav ul a, html body nav .nav-right a
+{ font-size:11.5px !important; font-weight:600 !important; letter-spacing:.12em !important; }
+
+/* Two stragglers off the 13 / 15 / 17 scale. */
+html body .b-desc.b-desc.b-desc{ font-size:13px !important; }
+html body .hero-sub.hero-sub.hero-sub{ font-size:17px !important; }
+
+/* Type system, second pass: the last elements inheriting weight 300, and nav parity. */
+html body .callout-box p, html body .callout-box span, html body .callout-box li,
+html body .container li, html body .container-wide li,
+html body .body-text span, html body .ag-v span
+{ font-weight:400 !important; }
+html body nav a.nav-back{ font-weight:600 !important; letter-spacing:.12em !important; }
+html body .hamburger-close-label.hamburger-close-label.hamburger-close-label
+{ font-size:11px !important; font-weight:600 !important; letter-spacing:.12em !important; }
 </style>
 <script id="mx-motion-js">
 (function(){

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code-Switching · Qualitative Research Study | Jasmine Sayed</title>
   <link rel="canonical" href="https://jasminesayedportfolio.com/codeswitching.html" />
-  <meta name="description" content="Qualitative UX research study on multilingual code-switching. Mixed methods: user interviews, observation, thematic analysis. Identified 5 interconnected themes in identity and language." />
+  <meta name="description" content="A qualitative study of multilingual code-switching: interviews, observation, and thematic analysis across five interconnected themes." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Code-Switching · Qualitative Research Study | Jasmine Sayed" />
   <meta property="og:url" content="https://jasminesayedportfolio.com/codeswitching.html" />
@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -887,20 +887,6 @@
   --indigo-bg:var(--accent-weak); --green-bg:var(--accent-weak); --blue-bg:var(--accent-weak); --rose-bg:var(--accent-weak); --teal-bg:var(--accent-weak);
   --indigo-light:var(--hero-accent); --green-light:var(--hero-accent); --blue-light:var(--hero-accent); --rose-light:var(--hero-accent); --teal-light:var(--hero-accent); --coral-light:var(--hero-accent);
 }
-html[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731;
-  --text:#ECEDEF; --muted:#A4A5AF; --border:rgba(255,255,255,0.13);
-  --accent:#8CA6C2; --accent-strong:#8AA1FF; --accent-weak:#1A2036; --on-accent:#0B0C10; --accent-text:#93A9FF;
-  --hero-grad:linear-gradient(155deg,#070809 0%,#0F1116 42%,#151D2E 76%,#213152 100%);
-  --hero-text:#F5F6F8; --hero-accent:#A9C0DA; --hero-muted:rgba(255,255,255,0.74);
-  --footer-bg:#070809; --panel-dark:#111319; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
-  --paper:var(--bg); --off-white:var(--surface); --light:var(--surface-2); --white:#FFFFFF;
-  --mid:var(--muted); --ink:var(--text); --dark:var(--text);
-  --purple:var(--accent); --purple-mid:var(--accent-text); --purple-light:var(--hero-accent); --purple-bg:var(--accent-weak);
-  --indigo:var(--accent); --indigo-light:var(--hero-accent); --indigo-bg:var(--accent-weak); --line:var(--border);
-  --rose:var(--accent-text); --coral:var(--accent-text); --green:var(--accent); --azure:var(--accent);
-}
 
 /* ---- Base ---- */
 html,body{ background:var(--bg); }
@@ -942,8 +928,6 @@ body{ color:var(--text); -webkit-font-smoothing:antialiased; }
 .ag-col.ag-out{ background:var(--accent-weak) !important; border-color:var(--border) !important; }
 .ag-num, .decision-num, .take-num{ color:var(--text) !important; }
 .ag-k, .ag-eyebrow{ color:var(--accent-text) !important; }
-html[data-theme="dark"] .decision-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .method-card, html[data-theme="dark"] .persona-card, html[data-theme="dark"] .test-card, html[data-theme="dark"] .take-card, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .insight-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row, html[data-theme="dark"] .doc-card, html[data-theme="dark"] .metric-card, html[data-theme="dark"] .opp-card{ background:var(--surface) !important; border-color:var(--border) !important; }
-html[data-theme="dark"] .insight-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .problem-card *{ color:var(--text); }
 .ds-section-label{ color:var(--text) !important; }
 .problem-num, .insight-num, .opp-num, .method-num{ color:var(--muted) !important; opacity:.55; }
 
@@ -976,8 +960,6 @@ nav ul a:hover, .nav-right a:hover, .nav-back:hover{ color:var(--accent); }
 .role-strip .role-label{ color:var(--muted) !important; }
 .role-strip .role-value{ color:var(--text) !important; }
 /* Index hero (has .hero-role): flips with theme; rich gradient only in dark */
-html[data-theme="dark"] .hero:has(.hero-role){ background:var(--hero-grad); }
-html[data-theme="dark"] .hero:has(.hero-role) .hero-role{ color:var(--hero-muted); }
 
 /* ---- Contact + footer (dark bands in both modes) ---- */
 .contact-section{ background:var(--panel-dark) !important; }
@@ -1003,77 +985,20 @@ footer{ background:var(--footer-bg); flex-wrap:wrap; gap:10px 26px; padding-righ
 
 
 /* ---- DARK MODE: catch bespoke light panels + text across case studies ---- */
-html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap,
-html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4,
-html[data-theme="dark"] .pain, html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after,
-html[data-theme="dark"] .ftree-cut, html[data-theme="dark"] .ftree-keep,
-html[data-theme="dark"] .persona-card, html[data-theme="dark"] .persona-emoji,
-html[data-theme="dark"] .method-card, html[data-theme="dark"] .obj-card, html[data-theme="dark"] .test-card,
-html[data-theme="dark"] .take-card, html[data-theme="dark"] .decision-card, html[data-theme="dark"] .problem-card,
-html[data-theme="dark"] .insight-card, html[data-theme="dark"] .opp-card, html[data-theme="dark"] .metric-card,
-html[data-theme="dark"] .doc-card, html[data-theme="dark"] .ds-panel, html[data-theme="dark"] .ds-swatch-row,
-html[data-theme="dark"] .quote-card, html[data-theme="dark"] .stat-card, html[data-theme="dark"] .principle-card,
-html[data-theme="dark"] .feature-card, html[data-theme="dark"] .card-lite, html[data-theme="dark"] .info-card,
-html[data-theme="dark"] [class$="-card"], html[data-theme="dark"] [class$="-col"]{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text);
-}
-html[data-theme="dark"] .container p, html[data-theme="dark"] .body-text,
-html[data-theme="dark"] .obj-card *, html[data-theme="dark"] .method-card *, html[data-theme="dark"] .test-card *,
-html[data-theme="dark"] .take-card *, html[data-theme="dark"] .decision-card *, html[data-theme="dark"] .persona-card *,
-html[data-theme="dark"] .find *, html[data-theme="dark"] .pain *, html[data-theme="dark"] .before *, html[data-theme="dark"] .after *,
-html[data-theme="dark"] .ia-node *{ color:var(--text); }
-html[data-theme="dark"] .ag-k, html[data-theme="dark"] .ag-eyebrow, html[data-theme="dark"] .decision-cost,
-html[data-theme="dark"] .persona-role, html[data-theme="dark"] .ds-section-label, html[data-theme="dark"] .meta-muted,
-html[data-theme="dark"] .caption, html[data-theme="dark"] figcaption{ color:var(--muted) !important; }
 /* keep genuinely-dark sub-panels dark (don't let the wildcard lighten them) */
-html[data-theme="dark"] .browser-frame, html[data-theme="dark"] .browser-bar{ background:#0f1015 !important; }
 
 
 /* ---- DARK MODE straggler catches, round 2 (from automated scan) ---- */
-html[data-theme="dark"] .reflection-section, html[data-theme="dark"] .crow, html[data-theme="dark"] .ds-wrapper,
-html[data-theme="dark"] .jm-card, html[data-theme="dark"] .jm-stage, html[data-theme="dark"] .case-img-wrapper,
-html[data-theme="dark"] .callout-box, html[data-theme="dark"] .callout, html[data-theme="dark"] .finding-rec,
-html[data-theme="dark"] .mstep, html[data-theme="dark"] .nstep, html[data-theme="dark"] .fix, html[data-theme="dark"] .loop,
-html[data-theme="dark"] .rq, html[data-theme="dark"] .rq-card, html[data-theme="dark"] .criteria, html[data-theme="dark"] .principle,
-html[data-theme="dark"] .severity-3, html[data-theme="dark"] .severity-4, html[data-theme="dark"] .pain,
-html[data-theme="dark"] .find, html[data-theme="dark"] .before, html[data-theme="dark"] .after, html[data-theme="dark"] .ftree-cut,
-html[data-theme="dark"] .ftree-keep, html[data-theme="dark"] .ftree-item, html[data-theme="dark"] .ia-node, html[data-theme="dark"] .ia-wrap{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
-}
 /* icon / number / badge chips -> subtle tinted, readable */
-html[data-theme="dark"] .feature-icon-box, html[data-theme="dark"] .method-icon, html[data-theme="dark"] .process-icon,
-html[data-theme="dark"] .next-step-icon, html[data-theme="dark"] .process-num, html[data-theme="dark"] .method-n,
-html[data-theme="dark"] .ds-swatch-box, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip,
-html[data-theme="dark"] .severity-badge, html[data-theme="dark"] .stat-number{
-  background:var(--surface-2) !important; color:var(--text) !important; border-color:var(--border) !important;
-}
 /* text stragglers -> light */
-html[data-theme="dark"] .fix-p, html[data-theme="dark"] .loop-t, html[data-theme="dark"] .ftree-item,
-html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .stat-number,
-html[data-theme="dark"] li, html[data-theme="dark"] .crow, html[data-theme="dark"] .crow *,
-html[data-theme="dark"] .jm-card *, html[data-theme="dark"] .mstep *, html[data-theme="dark"] .finding-rec *,
-html[data-theme="dark"] .callout-box *, html[data-theme="dark"] .reflection-section *{ color:var(--text); }
 /* captions -> muted */
-html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-label, html[data-theme="dark"] .fig-caption{ color:var(--muted) !important; }
 /* alternating light sections -> page bg */
-html[data-theme="dark"] .section-alt, html[data-theme="dark"] .bg-soft, html[data-theme="dark"] .section-light{ background:var(--bg) !important; }
 
 
 /* ---- DARK MODE straggler catches, round 3 ---- */
-html[data-theme="dark"] .case-img-caption, html[data-theme="dark"] .jm-wrapper, html[data-theme="dark"] .testimonial-block,
-html[data-theme="dark"] .finding-quote, html[data-theme="dark"] .criteria-strip, html[data-theme="dark"] .success-quote,
-html[data-theme="dark"] .severity-legend, html[data-theme="dark"] .quote-block, html[data-theme="dark"] .pullquote{
-  background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;
-}
-html[data-theme="dark"] .case-img-caption{ background:transparent !important; color:var(--muted) !important; }
-html[data-theme="dark"] .body-text{ background:transparent !important; color:var(--text) !important; }
-html[data-theme="dark"] em{ color:inherit; }
 
 
 /* ---- DARK MODE straggler catches, round 4 (final) ---- */
-html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-body *, html[data-theme="dark"] .finding-quote *,
-html[data-theme="dark"] .success-quote *, html[data-theme="dark"] .testimonial-block *{ color:var(--text); }
-html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(.hero-role){ color:var(--text); }
 
 
 /* ---- Fixes: mobile menu theme, accent-bg pills, misc accent labels ---- */
@@ -1083,12 +1008,7 @@ html[data-theme="dark"] p:not(.card-desc):not(.hero-sub):not(.contact-desc):not(
 .mobile-menu-close{ color:var(--text) !important; }
 .nav-card-label{ color:var(--accent-text) !important; }
 /* white text on the (light) accent in dark mode -> dark on-accent text */
-html[data-theme="dark"] .skip-pill, html[data-theme="dark"] .jm-stage-header, html[data-theme="dark"] .jm-stage-num,
-html[data-theme="dark"] .badge-accent, html[data-theme="dark"] .tag-accent, html[data-theme="dark"] .pill-accent{ color:var(--on-accent) !important; }
 /* dark mode: dark-blue section titles -> light accent */
-html[data-theme="dark"] .criteria-title, html[data-theme="dark"] .reflection-col-title, html[data-theme="dark"] .severity-legend-title,
-html[data-theme="dark"] .mflow-label, html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .ds-type-sample-b,
-html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ color:var(--accent-text) !important; }
 
 
 /* ---- Accent-on-accent + badge/link/button contrast (both modes) ---- */
@@ -1106,14 +1026,8 @@ html[data-theme="dark"] .finding-rec-label, html[data-theme="dark"] .rq-label{ c
 /* ---- Final dark-mode text/pill stragglers ---- */
 .skip-pill{ background:var(--accent) !important; color:var(--on-accent) !important; border-color:transparent !important; }
 .skip-pill *{ color:var(--on-accent) !important; }
-html[data-theme="dark"] .nstep-t, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .nstep-k,
-html[data-theme="dark"] .step-title, html[data-theme="dark"] .nstep *{ color:var(--text) !important; }
-html[data-theme="dark"] .criteria-strip *, html[data-theme="dark"] .scope-list *, html[data-theme="dark"] .rq *,
-html[data-theme="dark"] .reflection-col *, html[data-theme="dark"] .scope-col *{ color:var(--text); }
 nav a.mx-nav-active, .mx-nav-active{ color:var(--accent) !important; }
 /* decorative watermark numerals: subtle but present in both modes */
-html[data-theme="dark"] .rq-num, html[data-theme="dark"] .problem-num, html[data-theme="dark"] .insight-num,
-html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webkit-text-fill-color:rgba(255,255,255,0.34) !important; background:none !important; }
 
 
 /* ---- Accent-bg elements: on-accent text in both modes (final) ---- */
@@ -1121,9 +1035,6 @@ html[data-theme="dark"] .opp-num{ color:rgba(255,255,255,0.34) !important; -webk
   color:var(--on-accent) !important; }
 .persona-badge *, .ftree-root *, .resume-btn *{ color:var(--on-accent) !important; }
 /* stubborn slate spans inside scope/criteria/finding/callout blocks */
-html[data-theme="dark"] [class*="scope"] *, html[data-theme="dark"] [class*="criteria"] *,
-html[data-theme="dark"] [class*="finding"] *, html[data-theme="dark"] [class*="callout"] *,
-html[data-theme="dark"] [class*="reflection"] *{ color:var(--text); }
 
 /* ---- Theme toggle button ---- */
 .theme-toggle{ position:fixed; left:22px; bottom:22px; z-index:1600; width:44px; height:44px; border-radius:50%;
@@ -1194,23 +1105,12 @@ nav ul li a:hover{ background-size:100% 1.5px; }
   border:1px solid color-mix(in srgb, var(--text) 9%, transparent) !important;
   box-shadow: 0 26px 60px -30px rgba(10,14,28,.5), 0 2px 6px rgba(10,14,28,.07) !important;
   position:relative; }
-html[data-theme="dark"] .case-img-wrapper,
-html[data-theme="dark"] .shot,
-html[data-theme="dark"] .love-media,
-html[data-theme="dark"] .browser-frame,
-html[data-theme="dark"] .ba-frame{
-  box-shadow: 0 28px 64px -30px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.4) !important; }
 /* hairline inner frame on screenshots */
 .case-img-wrapper::after, .shot::after, .browser-frame::after{
   content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent); z-index:3; }
 
 /* ===== DARK-MODE FIX: gradient stat numbers were boxed out by a straggler rule ===== */
-html[data-theme="dark"] .stat-number{
-  background:linear-gradient(180deg,#ffffff 0%, #A9C0DA 100%) !important;
-  -webkit-background-clip:text !important; background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  color:#A9C0DA !important; border:0 !important; box-shadow:none !important; }
 </style>
 
 
@@ -1294,38 +1194,23 @@ html[data-theme="dark"] .stat-number{
   --light-bg:#FAFAF9; --shot-bg:linear-gradient(158deg,#F3F4F6 0%,#E9EAEE 100%);
   --hero-grad:linear-gradient(152deg,#0B0C10 0%,#14161C 38%,#291F49 72%,#45317C 100%);
 }
-html[data-theme="dark"]{
-  --accent:#C8B4F0; --accent-strong:#C0AEE8; --accent-text:#C8B4F0; --accent-weak:#1E1733; --hero-accent:#C8B4F0; --on-accent:#0B0C10;
-  --c-tint:#1E1733; --c-soft:#1E1733; --c-media:#1E1733; --c-deep:#C8B4F0;
-  --c-glow:rgba(200,180,240,0.220); --c-glow-soft:rgba(200,180,240,0.100);
-  --light-bg:#141519; --shot-bg:linear-gradient(158deg,#20222B 0%,#15161C 100%);
-  --hero-grad:linear-gradient(152deg,#07080A 0%,#0E1014 38%,#241B3F 72%,#34265E 100%);
-  --lift-1:0 1px 2px rgba(0,0,0,.30), 0 6px 18px -10px rgba(0,0,0,.55);
-  --lift-2:0 2px 6px rgba(0,0,0,.34), 0 20px 46px -22px rgba(0,0,0,.66);
-}
 html, body{ background:var(--bg); }
 body{ background:transparent; }
 body::before{ content:none !important; }
 :root{ --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#FAFAF9; --surface-3:#F2F2F1; }
-html[data-theme="dark"]{ --bg:#0D0E11; --surface:#17181D; --surface-2:#1E1F26; --surface-3:#262731; }
 nav, nav.scrolled{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; border-bottom:1px solid rgba(20,20,25,.07) !important; }
-html[data-theme="dark"] nav, html[data-theme="dark"] nav.scrolled{ background:rgba(13,14,17,.80) !important; border-bottom:1px solid rgba(255,255,255,.09) !important; }
 .section-tabs{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) blur(18px) !important; backdrop-filter:saturate(150%) blur(18px) !important; box-shadow:0 1px 0 rgba(20,20,25,.07), 0 10px 24px -18px rgba(20,20,25,.30) !important; }
-html[data-theme="dark"] .section-tabs{ background:rgba(13,14,17,.86) !important; box-shadow:0 1px 0 rgba(255,255,255,.08), 0 10px 24px -18px rgba(0,0,0,.9) !important; }
 .mobile-menu{ background:#FBFBF9 !important; }
-html[data-theme="dark"] .mobile-menu{ background:rgba(13,14,17,.97) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ nav, nav.scrolled, .section-tabs, .mobile-menu{ background:var(--bg) !important; } }
 .section-alt, .bg-soft, .section-light{ background:var(--light-bg) !important; }
 .hero.hero.hero{ background:var(--hero-grad) !important; }
-html[data-theme="dark"] .hero-glow-1{ background:radial-gradient(circle, rgba(200,180,240,0.260) 0%, transparent 62%) !important; }
-html[data-theme="dark"] .hero-glow-2{ background:radial-gradient(circle, rgba(192,174,232,0.300) 0%, transparent 66%) !important; }
 html:not([data-theme="dark"]) .hero.hero.hero{ background:linear-gradient(148deg, #FEFDFC 0%, #EFE9FB 28%, #E2D9F6 62%, #CFC1EE 100%) !important; }
 html:not([data-theme="dark"]) .hero-glow-1{ background:radial-gradient(circle, rgba(192,174,232,0.420) 0%, transparent 62%) !important; }
 html:not([data-theme="dark"]) .hero-glow-2{ background:radial-gradient(circle, rgba(239,181,205,0.340) 0%, transparent 66%) !important; }
 html:not([data-theme="dark"]) .hero.hero.hero h1, html:not([data-theme="dark"]) .hero.hero.hero .hero-headline h1{ color:#18181B !important; }
-html:not([data-theme="dark"]) .hero.hero.hero h1 em, html:not([data-theme="dark"]) .hero.hero.hero h1 span{ color:#5B3FA6 !important; }
-html:not([data-theme="dark"]) .hero.hero.hero .hero-tag{ color:#5B3FA6 !important; }
-html:not([data-theme="dark"]) .hero.hero.hero .hero-tag::before{ background:#5B3FA6 !important; }
+html:not([data-theme="dark"]) .hero.hero.hero h1 em, html:not([data-theme="dark"]) .hero.hero.hero h1 span{ color:#583DA0 !important; }
+html:not([data-theme="dark"]) .hero.hero.hero .hero-tag{ color:#583DA0 !important; }
+html:not([data-theme="dark"]) .hero.hero.hero .hero-tag::before{ background:#583DA0 !important; }
 html:not([data-theme="dark"]) .hero.hero.hero .hero-sub{ color:#3B3B45 !important; }
 html:not([data-theme="dark"]) .hero.hero.hero .hero-meta-value{ color:#18181B !important; }
 html:not([data-theme="dark"]) .hero.hero.hero .hero-meta-label, html:not([data-theme="dark"]) .hero.hero.hero .hero-video-caption, html:not([data-theme="dark"]) .hero.hero.hero .hero-figma-caption, html:not([data-theme="dark"]) .hero.hero.hero .hero-docs-label{ color:#5C5C67 !important; }
@@ -1391,44 +1276,27 @@ html:not([data-theme="dark"]) .impact-section .built-cta{ background:#5B3FA6 !im
 html:not([data-theme="dark"]) .impact-section .shipped-chip, html:not([data-theme="dark"]) .impact-section .shipped-eyebrow{ color:#5B3FA6 !important; }
 html:not([data-theme="dark"]) .impact-section .shipped-lead, html:not([data-theme="dark"]) .impact-section .shipped-cap, html:not([data-theme="dark"]) .impact-section .figcap{ color:#3B3B45 !important; }
 html:not([data-theme="dark"]) .impact-section .impact-number{ color:#5B3FA6 !important; background:linear-gradient(180deg,#5B3FA6 0%, #937CCA 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; }
-html[data-theme="dark"] .impact-number{ color:#C8B4F0 !important; background:linear-gradient(180deg,#ffffff 0%, #C8B4F0 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; }
 .stat-number{ color:#5B3FA6 !important; background:linear-gradient(180deg,#5B3FA6 0%, #937CCA 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; border:0 !important; box-shadow:none !important; }
-html[data-theme="dark"] .stat-number{ background:linear-gradient(180deg,#ffffff 0%, #C8B4F0 100%) !important; -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important; border:0 !important; box-shadow:none !important; }
-html[data-theme="dark"] .finding-block, html[data-theme="dark"] .quote-card{ background:var(--surface) !important; border-color:var(--border) !important; }
-html[data-theme="dark"] .hero-doc-icon{ background:#F2F2F0 !important; border-color:rgba(20,20,25,.16) !important; }
-html[data-theme="dark"] .hero-doc-icon span{ color:#5B3FA6 !important; }
 
 /* --- retired-blue sweep: leftovers from the old single-accent theme --- */
 .next-project{ border-top:0 !important; }
 .next-label, .next-project-label{ color:var(--brand) !important; }
 .next-project-title a{ color:#9E3462 !important; }
 .next-project-title a:hover{ color:#7B294C !important; }
-html[data-theme="dark"] .next-project-title a{ color:#F0B7CE !important; }
 .next-project em, .next-project h2 em{ color:#9E3462 !important; }
-html[data-theme="dark"] .next-project em, html[data-theme="dark"] .next-project h2 em{ color:#F0B7CE !important; }
 .next-btn{ background:#9E3462 !important; color:#FFFFFF !important; border-color:#9E3462 !important; }
 .next-btn:hover{ background:#7E2A4E !important; }
-html[data-theme="dark"] .next-btn{ background:#F0B7CE !important; color:#0B0C10 !important; border-color:#F0B7CE !important; }
-html[data-theme="dark"] .next-btn:hover{ background:#EFB5CD !important; }
 .cs-rail-nav{ border-left-color:rgba(192,174,232,0.550) !important; }
 .nstep, .mstep, .problem-card, .callout-box, .built-note, .ag-v, .ag-col, .insight-card, .opp-card, .metric-card, .doc-card{ border-color:rgba(192,174,232,0.500) !important; }
-html[data-theme="dark"] .nstep, html[data-theme="dark"] .mstep, html[data-theme="dark"] .problem-card, html[data-theme="dark"] .callout-box, html[data-theme="dark"] .built-note, html[data-theme="dark"] .ag-v, html[data-theme="dark"] .ag-col{ border-color:rgba(200,180,240,0.260) !important; }
 .ag-v{ color:var(--text) !important; }
 .hero-figma{ background:#121317 !important; border-color:rgba(192,174,232,0.450) !important; }
 .hero-figma:has(> .hero-figma-frame){ background:transparent !important; border:0 !important; box-shadow:none !important; }
 .hero-figma-frame{ background:transparent !important; border:0 !important; }
-html[data-theme="dark"] .hero-figma, html[data-theme="dark"] .hero-figma-frame{ background:#0F1116 !important; border-color:rgba(200,180,240,0.220) !important; }
-html[data-theme="dark"] .built-cta{ background:#C8B4F0 !important; color:#0B0C10 !important; }
-html[data-theme="dark"] .stat-number{ color:#C8B4F0 !important; }
 .hero-doc-card, .nox-doc-card, .hero-site-card{ color:var(--text); }
 .feature-card, .process-num, .ds-panel, .ds-wrapper, .ds-section, .mockup-showcase, .doc-card, .metric-card, .rq-card{ border-color:rgba(192,174,232,0.500) !important; }
 .rq-num{ color:rgba(192,174,232,0.850) !important; border-color:rgba(192,174,232,0.400) !important; }
-html[data-theme="dark"] .rq-card{ border-color:rgba(200,180,240,0.240) !important; }
-html[data-theme="dark"] .rq-num{ color:rgba(200,180,240,0.550) !important; }
 p.body-text, .rq-text, .reflection-item, .finding-body, .finding-rec-text, .mstep-d, .nstep-d, .step-d, .callout-box p{ color:#3B3747 !important; }
-html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-rec-text, html[data-theme="dark"] .mstep-d, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .step-d{ color:rgba(255,255,255,.76) !important; }
 .finding-card{ border-color:rgba(192,174,232,0.500) !important; }
-html[data-theme="dark"] .finding-card{ border-color:rgba(200,180,240,0.240) !important; }
 
 /* --- dark panels: navy -> this study's colour, and light text on them --- */
 .reflection-section.reflection-section, .insight-card.insight-card, .theme-card.theme-card, .vision-card.vision-card, section[style*='linear-gradient']{ background:linear-gradient(145deg, #201937 0%, #2E2252 100%) !important; }
@@ -1448,21 +1316,15 @@ html:not([data-theme="dark"]) .hero.hero.hero .hero-figma:has(> .hero-figma-fram
 .finding-card.sev-3::before{ background:#F59E0B !important; }
 .finding-card.sev-2::before{ background:#1E5A9E !important; }
 .finding-card.sev-1::before{ background:#2E7D32 !important; }
-html[data-theme="dark"] .rq-text, html[data-theme="dark"] .reflection-item{ color:rgba(255,255,255,.76) !important; }
 .criteria-tag, .cert-chip{ border-color:rgba(192,174,232,0.500) !important; }
-html[data-theme="dark"] .criteria-tag, html[data-theme="dark"] .cert-chip{ border-color:rgba(200,180,240,0.240) !important; }
-html[data-theme="dark"] p.body-text, html[data-theme="dark"] .rq-text, html[data-theme="dark"] .reflection-item, html[data-theme="dark"] .finding-body, html[data-theme="dark"] .finding-rec-text, html[data-theme="dark"] .mstep-d, html[data-theme="dark"] .nstep-d, html[data-theme="dark"] .step-d, html[data-theme="dark"] .callout-box p, html[data-theme="dark"] .process-body{ color:rgba(255,255,255,.78) !important; }
 .role-callout, p.body-text.role-callout{ background:#EFE9FB !important; border-color:rgba(192,174,232,0.550) !important; }
-html[data-theme="dark"] .role-callout, html[data-theme="dark"] p.body-text.role-callout{ background:#1E1733 !important; border-color:rgba(200,180,240,0.240) !important; }
 .sdg-icon.reduce, .sdg-icon{ background:#EFE9FB !important; }
 .jm-card-action, .jm-legend-dot.action{ background:var(--surface-2) !important; border-color:rgba(20,20,25,.12) !important; }
 .jm-card-pain, .jm-legend-dot.pain{ background:var(--surface-3) !important; border-color:rgba(20,20,25,.12) !important; }
 .jm-card-solution, .jm-legend-dot.solution{ background:#EFE9FB !important; border-color:rgba(192,174,232,0.600) !important; }
-html[data-theme="dark"] .jm-card-solution, html[data-theme="dark"] .jm-legend-dot.solution{ background:#1E1733 !important; border-color:rgba(200,180,240,0.260) !important; }
 
 /* craft */
 .hero-browser-url{ color:rgba(255,255,255,.72) !important; }
-html[data-theme="dark"] .hero .hero-meta-label, html[data-theme="dark"] .hero:has(.hero-sub) .hero-meta-label{ color:rgba(255,255,255,0.70) !important; }
 .hero-doc-meta, .nox-doc-meta{ color:rgba(255,255,255,.72); }
 html:not([data-theme="dark"]) .hero-doc-meta, html:not([data-theme="dark"]) .nox-doc-meta{ color:#5C5C67 !important; }
 .cs-take{ font-family:'Inter',sans-serif !important; box-shadow:none !important; border-radius:0 !important; }
@@ -1476,7 +1338,6 @@ html:not([data-theme="dark"]) .hero-doc-meta, html:not([data-theme="dark"]) .nox
 
 /* ===== brand chrome: logo, nav and tabs are always pink ===== */
 :root{ --brand:#9E3462; --brand-soft:#F6D8E4; --brand-mid:#EFB5CD; }
-html[data-theme="dark"]{ --brand:#F0B7CE; --brand-soft:#2A1721; --brand-mid:#EFB5CD; }
 nav a.mx-nav-active, .mx-nav-active{ color:var(--brand) !important; }
 nav ul li a.mx-nav-active{ background-size:100% 1.5px !important; }
 nav ul li a:hover{ color:var(--brand); }
@@ -1495,25 +1356,17 @@ footer{ background:#FBFBF9 !important; -webkit-backdrop-filter:saturate(150%) bl
 .footer-left, .footer-right{ color:#5C5C67 !important; }
 .footer-center, .footer-center a{ color:#3B3B45 !important; }
 .footer-center a:hover{ color:var(--brand) !important; }
-html[data-theme="dark"] footer{ background:rgba(13,14,17,.90) !important; border-top:1px solid rgba(255,255,255,.10) !important; }
-html[data-theme="dark"] .footer-left, html[data-theme="dark"] .footer-right{ color:rgba(255,255,255,.62) !important; }
-html[data-theme="dark"] .footer-center, html[data-theme="dark"] .footer-center a{ color:rgba(255,255,255,.80) !important; }
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){ footer{ background:#FFFFFF !important; } }
 ::selection{ background:var(--brand-soft); color:var(--text); }
-html[data-theme="dark"] ::selection{ background:rgba(240,183,206,0.300); color:#ECEDEF; }
 a:focus-visible, button:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; border-radius:4px; }
 html{ scrollbar-color:var(--brand-mid) transparent; }
-html[data-theme="dark"] .ab-photo{ background:var(--surface) !important; }
 .sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
 .skip-link{ position:absolute; left:-9999px; top:0; z-index:10000; background:var(--brand); color:#fff; padding:12px 18px; border-radius:0 0 10px 0; font-family:var(--mono); font-size:13px; text-decoration:none; }
 .skip-link:focus{ left:0; outline:3px solid var(--brand); outline-offset:2px; }
 .mx-top{ background:var(--brand) !important; color:#FFFFFF !important; border-color:var(--brand) !important; }
-html[data-theme="dark"] .mx-top{ color:#0B0C10 !important; }
 .mx-top:hover{ background:#7E2A4E !important; }
 .mx-top{ box-shadow:0 0 0 3px rgba(255,255,255,.92), 0 10px 26px -10px rgba(158,52,98,0.450) !important; }
-html[data-theme="dark"] .mx-top{ box-shadow:0 0 0 3px rgba(13,14,17,.92), 0 10px 26px -10px rgba(0,0,0,.7) !important; }
 @media (max-width:640px){ .mx-top{ width:38px !important; height:38px !important; right:12px !important; bottom:12px !important; } .mx-top svg{ width:15px !important; height:15px !important; } }
-html[data-theme="dark"] .skip-link{ color:#0B0C10; }
 .pf-zoomable:focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
 @media (max-width:520px){
   .cta-pdf, .persona-badge, .jm-stage-num, .jm-dim-label, .jm-persona-tag, .bt-eyebrow, .bt-stat .lbl{ font-size:11px !important; letter-spacing:.04em !important; }
@@ -1715,10 +1568,7 @@ html body .hero-figma-frame.ifr-focus{
 }
 
 </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style id="hero-2026">
+  <style id="hero-2026">
 /* ---------- NAV ----------
    No bar: clear over the gradient, then a scrim that fades out at the
    bottom so there is never a hard edge. Links are smaller and tighter,
@@ -3066,7 +2916,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="hero-meta">
       <div>
         <div class="hero-meta-label">My Role</div>
-        <div class="hero-meta-value">UX Researcher</div>
+        <div class="hero-meta-value">Lead UX Researcher</div>
       </div>
       <div>
         <div class="hero-meta-label">Team</div>
@@ -3120,7 +2970,7 @@ html body .cs-content .container-wide:has(.persona-grid){
       <div class="ag-eyebrow">At a glance</div>
       <div class="ag-grid">
         <div class="ag-col"><span class="ag-num">01</span><div class="ag-k">The challenge</div><div class="ag-v">Multilingual people describe their own code-switching as unconscious. Nobody had tested that against what they actually do.</div></div>
-        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">I designed the study, recruited participants, ran narrative interviews and fly-on-the-wall observations with five multilingual participants, and led the thematic analysis.</div></div>
+        <div class="ag-col"><span class="ag-num">02</span><div class="ag-k">What I did</div><div class="ag-v">I designed the study, recruited participants, ran narrative interviews with five multilingual participants and fly-on-the-wall observations, and led the thematic analysis.</div></div>
         <div class="ag-col ag-out"><span class="ag-num">03</span><div class="ag-k">The outcome</div><div class="ag-v"><strong>Five interconnected themes</strong>, and one finding that still shapes how I design: a second language can work as a psychological safe space, not just a comprehension aid.</div></div>
       </div>
     </div>
@@ -3132,7 +2982,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">Introduction</p>
       <h2 class="section-title">Why do multilingual people switch between <em>languages?</em></h2>
-      <p class="body-text">As a multilingual person I've always been caught by the moments when I slip between languages without thinking. This grew from personal curiosity into a rigorous qualitative project: what drives multilingual people to code-switch, and what does that reveal about identity, emotion and belonging?</p>
+      <p class="body-text">As a multilingual person I've always been caught by the moments when I slip between languages without thinking. That curiosity grew into a rigorous qualitative project: what drives multilingual people to code-switch, and what does that reveal about identity, emotion and belonging?</p>
       <p class="body-text">I designed the study, recruited participants, ran narrative interviews and fly-on-the-wall observations, and led thematic analysis. What made it rich was <strong>the gap between what participants said they did and what we watched them do.</strong></p>
       <p class="body-text">Our dataset represents five multilingual participants from East, Southeast, and South Asian communities, each completing a one-hour interview, with a subset also observed in natural settings.</p>
       <p class="body-text role-callout" style="margin-top: 16px; padding: 16px 20px; background: #F3EEFB; border-radius: 10px; font-size: 13.5px;"><strong>My role:</strong> Lead UX researcher on a 4-person team. I designed the mixed-methods study, conducted interviews and fly-on-the-wall observations, led thematic analysis, and authored the final report.</p>
@@ -3145,8 +2995,7 @@ html body .cs-content .container-wide:has(.persona-grid){
   <section id="method" style="background: var(--light-bg);">
     <div class="container fade-in">
       <p class="section-eyebrow">Analytical Process</p>
-      <h2 class="section-title">Why we used two methods,<br />and what that <em>revealed.</em></h2>
-      <p class="cs-take">Participants called their switching unconscious. Watching them showed it was strategic.</p>
+      <h2 class="section-title">Why we used mixed methods,<br />and what that <em>revealed.</em></h2>
       <p class="body-text">Interviews give self-narrative; observation gives behavior without context. We needed both. Participants described their switching as &ldquo;natural&rdquo; and &ldquo;unconscious,&rdquo; yet we watched them <strong>make highly strategic choices based on who walked into the room.</strong> That discrepancy became our richest analytical thread.</p>
     </div>
 
@@ -3182,7 +3031,6 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">Findings</p>
       <h2 class="section-title">Five themes that explain why <em>people switch.</em></h2>
-      <p class="cs-take">The surprise was the overlap: one switch could serve identity, emotion and comfort at once.</p>
       <p class="body-text">Collaborative thematic analysis surfaced five interconnected themes, and the surprise was how often they overlapped. One switch could serve identity, emotion and comfort at once. Code-switching isn't one behavior with one motive; it's a negotiation happening in real time, often below conscious awareness.</p>
     </div>
 
@@ -3339,8 +3187,7 @@ html body .cs-content .container-wide:has(.persona-grid){
     <div class="container fade-in">
       <p class="section-eyebrow">Boundaries &amp; Nuance</p>
       <h2 class="section-title">The contradictions are the <em>most interesting part.</em></h2>
-      <p class="cs-take">Clean themes present well. The tensions between them are where the finding actually lives.</p>
-      <p class="body-text">Clean themes make for a tidy presentation, but the real insight lives in the tensions between them. Every theme carries contradictions that reveal code-switching as a behavior in constant negotiation: never fully strategic, never fully spontaneous.</p>
+      <p class="body-text">Every theme carries contradictions that reveal code-switching as a behavior in constant negotiation: never fully strategic, never fully spontaneous.</p>
     </div>
 
     <div class="container-wide">
@@ -3692,6 +3539,128 @@ html body .finding-block-icon>svg.ico{ stroke:var(--accent) !important; width:20
    white text colour would paint these icons white-on-white */
 html body .theme-icon>svg.ico{ width:22px !important; height:22px !important; stroke:var(--hero-accent) !important; }
 html body svg.ico{ stroke-width:1.75 !important; }
+
+
+
+/* =====================================================================
+   TYPE SYSTEM - 2026-09-17
+   One scale, applied on every page. Display is Inter Tight 600; text is
+   Inter. Before this block the site carried 125 distinct type styles:
+   body copy at weight 300, inline emphasis at 500 and 600, and 28
+   different uppercase label treatments between 10px and 13px.
+
+     Display   Inter Tight 600, tracking -0.02em   (sizes unchanged)
+     Lead      18 / 500
+     Body L    17 / 400
+     Body      15 / 400
+     Body S    13 / 400
+     Emphasis  600
+     Label L   12 / 600 / .14em uppercase
+     Label S   11 / 600 / .12em uppercase
+     Nav       11.5 / 600 / .12em uppercase
+   ===================================================================== */
+
+/* Body copy: 400, never 300. Inter at 300 reads fragile at 13px. */
+html body .ag-v.ag-v.ag-v.ag-v.ag-v,
+html body .b-desc.b-desc.b-desc.b-desc.b-desc,
+html body .body-text.body-text.body-text.body-text.body-text,
+html body .competitor-desc.competitor-desc.competitor-desc.competitor-desc.competitor-desc,
+html body .ds-type-sample-b.ds-type-sample-b.ds-type-sample-b.ds-type-sample-b.ds-type-sample-b,
+html body .feature-desc.feature-desc.feature-desc.feature-desc.feature-desc,
+html body .finding-quote.finding-quote.finding-quote.finding-quote.finding-quote,
+html body .finding-rec-text.finding-rec-text.finding-rec-text.finding-rec-text.finding-rec-text,
+html body .fix-p.fix-p.fix-p.fix-p.fix-p,
+html body .hero-sub.hero-sub.hero-sub.hero-sub.hero-sub,
+html body .impact-label.impact-label.impact-label.impact-label.impact-label,
+html body .insight-body.insight-body.insight-body.insight-body.insight-body,
+html body .method-desc.method-desc.method-desc.method-desc.method-desc,
+html body .mstep-d.mstep-d.mstep-d.mstep-d.mstep-d,
+html body .next-step-desc.next-step-desc.next-step-desc.next-step-desc.next-step-desc,
+html body .nstep-d.nstep-d.nstep-d.nstep-d.nstep-d,
+html body .obj-desc.obj-desc.obj-desc.obj-desc.obj-desc,
+html body .opp-text.opp-text.opp-text.opp-text.opp-text,
+html body .persona-quote.persona-quote.persona-quote.persona-quote.persona-quote,
+html body .principle-desc.principle-desc.principle-desc.principle-desc.principle-desc,
+html body .problem-desc.problem-desc.problem-desc.problem-desc.problem-desc,
+html body .process-step-desc.process-step-desc.process-step-desc.process-step-desc.process-step-desc,
+html body .reflection-icon.reflection-icon.reflection-icon.reflection-icon.reflection-icon,
+html body .research-desc.research-desc.research-desc.research-desc.research-desc,
+html body .sdg-desc.sdg-desc.sdg-desc.sdg-desc.sdg-desc,
+html body .stat-desc.stat-desc.stat-desc.stat-desc.stat-desc,
+html body .success-quote.success-quote.success-quote.success-quote.success-quote,
+html body .theme-desc.theme-desc.theme-desc.theme-desc.theme-desc,
+html body .vision-desc.vision-desc.vision-desc.vision-desc.vision-desc
+{ font-weight:400 !important; }
+
+/* Inline emphasis: one weight. */
+html body p strong, html body p b, html body li strong, html body li b,
+html body .body-text strong, html body .ag-v strong, html body .cs-take strong
+{ font-weight:600 !important; }
+
+/* Label L: section eyebrows. */
+html body .built-eyebrow.built-eyebrow.built-eyebrow.built-eyebrow.built-eyebrow,
+html body .cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow.cs-endcard-eyebrow,
+html body .finding-rec-label.finding-rec-label.finding-rec-label.finding-rec-label.finding-rec-label,
+html body .hero-docs-label.hero-docs-label.hero-docs-label.hero-docs-label.hero-docs-label,
+html body .mstep-k.mstep-k.mstep-k.mstep-k.mstep-k,
+html body .next-project-label.next-project-label.next-project-label.next-project-label.next-project-label,
+html body .section-eyebrow.section-eyebrow.section-eyebrow.section-eyebrow.section-eyebrow,
+html body .shipped-eyebrow.shipped-eyebrow.shipped-eyebrow.shipped-eyebrow.shipped-eyebrow
+{ font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important; font-size:12px !important; font-weight:600 !important; letter-spacing:.14em !important; text-transform:uppercase !important; }
+
+/* Label S: every other micro-label. */
+html body .ab-eyebrow.ab-eyebrow.ab-eyebrow.ab-eyebrow.ab-eyebrow,
+html body .ab-grid-head.ab-grid-head.ab-grid-head.ab-grid-head.ab-grid-head,
+html body .ag-eyebrow.ag-eyebrow.ag-eyebrow.ag-eyebrow.ag-eyebrow,
+html body .ag-k.ag-k.ag-k.ag-k.ag-k,
+html body .b-badge.b-badge.b-badge.b-badge.b-badge,
+html body .b-cta.b-cta.b-cta.b-cta.b-cta,
+html body .b-kicker.b-kicker.b-kicker.b-kicker.b-kicker,
+html body .ba-tab.ba-tab.ba-tab.ba-tab.ba-tab,
+html body .bt-badge.bt-badge.bt-badge.bt-badge.bt-badge,
+html body .bt-focus.bt-focus.bt-focus.bt-focus.bt-focus,
+html body .criteria-title.criteria-title.criteria-title.criteria-title.criteria-title,
+html body .cs-rail-label.cs-rail-label.cs-rail-label.cs-rail-label.cs-rail-label,
+html body .ds-section-label.ds-section-label.ds-section-label.ds-section-label.ds-section-label,
+html body .ds-type-role.ds-type-role.ds-type-role.ds-type-role.ds-type-role,
+html body .hero-meta-label.hero-meta-label.hero-meta-label.hero-meta-label.hero-meta-label,
+html body .hero-tag.hero-tag.hero-tag.hero-tag.hero-tag,
+html body .jm-dim-label.jm-dim-label.jm-dim-label.jm-dim-label.jm-dim-label,
+html body .jm-stage-num.jm-stage-num.jm-stage-num.jm-stage-num.jm-stage-num,
+html body .lbl.lbl.lbl.lbl.lbl,
+html body .mflow-label.mflow-label.mflow-label.mflow-label.mflow-label,
+html body .ms-label.ms-label.ms-label.ms-label.ms-label,
+html body .next-label.next-label.next-label.next-label.next-label,
+html body .nflow-label.nflow-label.nflow-label.nflow-label.nflow-label,
+html body .opp-category.opp-category.opp-category.opp-category.opp-category,
+html body .persona-badge.persona-badge.persona-badge.persona-badge.persona-badge,
+html body .pf-role.pf-role.pf-role.pf-role.pf-role,
+html body .play-eyebrow.play-eyebrow.play-eyebrow.play-eyebrow.play-eyebrow,
+html body .process-label.process-label.process-label.process-label.process-label,
+html body .proto-label.proto-label.proto-label.proto-label.proto-label,
+html body .reflection-col-title.reflection-col-title.reflection-col-title.reflection-col-title.reflection-col-title,
+html body .research-tag.research-tag.research-tag.research-tag.research-tag,
+html body .sdg-goal.sdg-goal.sdg-goal.sdg-goal.sdg-goal,
+html body .severity-legend-title.severity-legend-title.severity-legend-title.severity-legend-title.severity-legend-title,
+html body .work-label.work-label.work-label.work-label.work-label
+{ font-family:'Inter', ui-sans-serif, system-ui, sans-serif !important; font-size:11px !important; font-weight:600 !important; letter-spacing:.12em !important; text-transform:uppercase !important; }
+
+/* Nav: same size on every page (it was 11.5px on index, 13px on the case studies). */
+html body nav a.nav-link, html body nav ul a, html body nav .nav-right a
+{ font-size:11.5px !important; font-weight:600 !important; letter-spacing:.12em !important; }
+
+/* Two stragglers off the 13 / 15 / 17 scale. */
+html body .b-desc.b-desc.b-desc{ font-size:13px !important; }
+html body .hero-sub.hero-sub.hero-sub{ font-size:17px !important; }
+
+/* Type system, second pass: the last elements inheriting weight 300, and nav parity. */
+html body .callout-box p, html body .callout-box span, html body .callout-box li,
+html body .container li, html body .container-wide li,
+html body .body-text span, html body .ag-v span
+{ font-weight:400 !important; }
+html body nav a.nav-back{ font-weight:600 !important; letter-spacing:.12em !important; }
+html body .hamburger-close-label.hamburger-close-label.hamburger-close-label
+{ font-size:11px !important; font-weight:600 !important; letter-spacing:.12em !important; }
 </style>
 <script id="mx-motion-js">
 (function(){
